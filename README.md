@@ -3,25 +3,20 @@
 ## Ficha Técnica
 |Genero|Publico Objetivo|
 |--|---|
-|No se|Ni idea|
+|Simulación|Jugadores interesados en los Indies|
 ## Mecanicas
 
 ### Movimiento en la exploracion
-*Hola* **esto** es un texto de ejemplo
+Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá seleccionar hacia donde ir clicando en las direcciones de las calles, estilo Profesor Layton.
 
-la lista de la compra
-
-1. huevos
-2. pan
-
-- elemento 1
-- elemento 2
+### Dialogos con los NPC
+Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostrará en pantalla un cuadro de diálogo con lo que te dice dicho NPC. (Determinar que pasa cuando vuelves a hablar con un jugador)
 
 ### Gestión de paquetes
 
 La fase de gestión de **paquetes** consta de varias mecánicas que se irán aplicando de forma incremental (añadiendose a las mecánicas anteriores) cada ciertas *jornadas* (por determinar).
 
-![Alt text](image.png)
+![Diagrama de flujo de paquetes](image.png)
 
 Al envíar un paqute de forma incorrecta el jugador recibirá una **amonestación**, con varias **amonestaciones** el jugador recibirá menos dinero al final de la *jornada*.
 
@@ -31,7 +26,12 @@ Cada paquete tendrá un bloque de texto donde se podrá leer: **nombre**, **cóg
 El jugador deberá comprobar que el **código postal** y el barrio son validos. Esto es que el **código postal** exista y que el **barrio** pertenezca al distrito al que va asociado el **codigo postal**. Para comprobar estas cosas el jugador cuenta con un **manual de trabajo** donde están enlistados los distritos con sus barrios.
 
 ##### Manual de trabajo
-
+El jugador contará con una libreta que podrá abrir (situada en la zona inferior derecha). En esta se podrán ver distintas páginas que explicarán en cada una de ellas las mecánicas sobre los paquetes que el jugador tenga disponibles. Por tanto debe haber las siguientes páginas al final de juego:
+ - [Direcciones y cintas de colores](#direcciones)
+ - [Sellos](#sello-de-tipo-de-paquete)
+ - [Pesos](#pesado)
+ - [Explicación de envoltura](#envoltura)
+ - Anotaciones sobre la historia (nice to have).
 
 #### Etiquetado por barrio
 En el caso de que la **dirección** sea correcta el jugador deberá emplear un sello del color correspondiente al barrio (ver en el **manual de trabajo**). Poner el color incorrecto o envíar el paquete teniendo la dirección incorrecta conllevará a una **amonestación**
@@ -54,10 +54,29 @@ Un paquete con un **sello de pesado** deberá ser pesado y comprobado respecto a
 #### Envoltura
 Un paquete con un **sello de fragil** deberá ser envuelto con **cinta de embalaje**. Para ello el jugador deberá realizar un movimiento de *arriba abajo* sobre el **paquete** mientras sostiene el objeto de cinta de embalaje.
 
+#### Cálculo del dinero al final de la jornada
+Al final de la jornada se abonará al jugador cierta cantidad de dinero siguiendo el siguiente cálculo
+
+> Envíos correctos * 20 - Envíos Erroneos * 50
+
+Tras saber cuanto recibe el jugador se le quitará lo correspondiente para pagar el alquier. Si el jugador se queda sin dinero implica fin de partida.
+
+
 ### Calculo de Finales y Felicidad
 
 #### Finales
-Cada personaje tiene asociada una barra de felicidad, dicha barra se va llenando o reduciendo dependiendo de si se envia correctamente un paquete (+1), se redirige un paquete para beneficiar lo que ha pedido uno de los NPC (+5), o se a estraviado el paquete que se dirigía a su distrito (-3). Dichas barras pueden ir desde el -X hasta el Y, teniendo diferentes puntos que actuan como flags. Si se reduce la felicidad al máximo de un NPC, da igual lo que se haga que esta ya no podrá volver a subir. Si no se llega hasta cierto punto, el NPC tendra un final malo, si se llega más o menos a un tercio de la barra el NPC tendra un final neutral, si se llega a dos tercios de la barra, el NPC tendra un final bueno y si se consigue llenar toda la barra el NPC tendra un final Maxi Feliz, el cual implique recibir una mejora de dicho NPC que facilita otra de las mecánicas del juego. Este comprobación del nivel de barras se hace al final de los 14 días de trabajo, en donde se analizarán y se iran poniendo los distintos finales de cada NPC mediante un texto. 
+Cada personaje tiene asociado un parámetro de felicidad, dicho valor va aumentando o reduciendose dependiendo de si se envia **correctamente un paquete** (+1/-1), se redirige un paquete para **beneficiar** lo que ha pedido uno de los NPC (+5), o se a **extraviado** el paquete que se dirigía a su distrito (-3). 
+
+La felicidad puede ir desde el -X hasta el Y, teniendo diferentes puntos que actuan como flags. 
+
+Condiciones del comportamiento de la felicidad:
+
+- Envío de lo que ha pedido un NPC (+5 felicidad)
+- Envío extraviado de lo que ha pedido un NPC (-5 felicidad)
+- Si se reduce la felicidad al máximo de un NPC, da igual lo que se haga que esta ya no podrá volver a subir. 
+- Si no se supera cierto umbral, el NPC tendra un final malo, si se llega más o menos a un tercio de la barra el NPC tendra un final neutral, si se llega a dos tercios de la barra, el NPC tendra un final bueno y si se consigue llenar toda la barra el NPC tendra un final Maxi Feliz, el cual implique recibir una mejora de dicho NPC que facilita otra de las mecánicas del juego. 
+
+Este comprobación del nivel de barras se hace al final de los 14 días de trabajo, en donde se analizarán y se iran poniendo los distintos finales de cada NPC mediante un texto. 
 
 #### NPCs especiales (nice to have)
 A parte de esto hay tres NPC especiales los cuales son el vagabundo, el secretario real y el campesino. Al ayudar a uno de estos si o si se reduce la felicidad de los otros siempre que sea mediante paquetes extraviados. Al llegar a la maxifelicidad de uno de ellos el día 14 incluira un día extra en el que el jugador deberá cumplir ciertos mandados para desbloquear su verdadero final, el cual afectara a toda la Atlantida y no solo a esos personajes personalmente. Si no se cumple el mandado saldra el final bueno por defecto. Aun con esto incluido, una vez se alcance la maxifelicidad el NPC te entregara la mejora para lo que queda de run.
@@ -88,7 +107,7 @@ Durante la fase de gestíon el jugador deberá comprobar la validez de los **paq
 
 Cada paquete que se envíe tendrá impacto en la actitud de los distintos npc *(felicidad)*. Esta *felicidad* tendrá un impacto en la fase de exploración.
 
-
+### Finales
 
 ---
 
@@ -97,7 +116,7 @@ Al irnos moviendo por los diferentes distritos, lo haremos a través de diferent
 
 La parte estética de los escenarios se basará en una arquitectura griega antigua, teniendo como referencia a juegos como Assassin's Creed Odyssey.
 
-### Paleta de color
+### Paletas de color
 
 ---
 
@@ -106,7 +125,7 @@ La parte estética de los escenarios se basará en una arquitectura griega antig
 ### Narrativa de Atlantis
 Hace miles de años, el mundo era capaz espectador del punto máximo de una de las ciudades más avanzadas que jamas hayan existido, la Atlantida. Este pueblo griego del mediterraneo se destacaba por su gran tecnologia, bajo la cual sus habitantes prosperaban y vivian en paz. Sin embargo, esto provoco un sentimiento de soberbia absoluta en ellos, los cuales renegaron de los dioses que durante años habian venerado al sentir que ya no los necesitaban. Esto provoco la ira del Olimpo, en especial de poseidón, por lo que en un arrebato de rabia decidió echar tres maldiciones a los habitantes. La primera fue invocar un terremoto que acabaría hundiendo la civilización en el oceano. La segunda fue convertir a sus habitantes en diferentes amalgamas al ponerles características de seres marinos. Por último hizo que cada nueva generación de la ciudad fuera más ignorante que la anterior, provocando que toda la tecnología con la que alguna vez contaron se perdiera en el olvido. Afortunadamente antes de que la ciudad se hundiera del todo, los atlantes diseñaron y construyeron una cúpula la cual les protegiera del agua, de la presión de la profundidad y filtrase oxigeno del propio agua. Al final tras muchos años y generaciones, los atlantes lograron adaptarse a la vida oceanica, pero al mismo tiempo, olvidando todo lo que alguna vez sabian, incluyendo la existencia de los humanos a los cuales veían como un simple mito.
 
-### Funcionamiento interno de la Atlantida
+#### Funcionamiento interno de la Atlantida
 La Atlantida es una monarquía centralista, en la cual hay una gran división entre las diferentes clases sociales. La ciudad esta compuesta por varios distritos divididos por muros, teniendo una forma de anillos. En cada distrito reside una clase social u oficio diferente. En los cuatro distritos exteriores que conforman el primer anillo se encuentran: los campesinos (Distrito de Demeter), los artesanos (Distrito de Hefesto), los boticarios y adivinos (Distrito de Artemisa) y los desechos sociales (Distrito de Hestia). Después en el segundo anillo más al interior podemos encontrar dos distritos, el de los comerciantes (Distrito de Hermes) y el de los nobles (Distrito de Apolo). Por último en el centro de la ciudad se encuentra el castillo real, donde reside la monarquia y los diferentes criados que la atienden.
 
 ### Personajes
