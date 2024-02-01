@@ -54,6 +54,26 @@ Un paquete con un **sello de pesado** deberá ser pesado y comprobado respecto a
 #### Envoltura
 Un paquete con un **sello de fragil** deberá ser envuelto con **cinta de embalaje**. Para ello el jugador deberá realizar un movimiento de *arriba abajo* sobre el **paquete** mientras sostiene el objeto de cinta de embalaje.
 
+### Calculo de Finales y Felicidad
+
+#### Finales
+Cada personaje tiene asociada una barra de felicidad, dicha barra se va llenando o reduciendo dependiendo de si se envia correctamente un paquete (+1), se redirige un paquete para beneficiar lo que ha pedido uno de los NPC (+5), o se a estraviado el paquete que se dirigía a su distrito (-3). Dichas barras pueden ir desde el -X hasta el Y, teniendo diferentes puntos que actuan como flags. Si se reduce la felicidad al máximo de un NPC, da igual lo que se haga que esta ya no podrá volver a subir. Si no se llega hasta cierto punto, el NPC tendra un final malo, si se llega más o menos a un tercio de la barra el NPC tendra un final neutral, si se llega a dos tercios de la barra, el NPC tendra un final bueno y si se consigue llenar toda la barra el NPC tendra un final Maxi Feliz, el cual implique recibir una mejora de dicho NPC que facilita otra de las mecánicas del juego. Este comprobación del nivel de barras se hace al final de los 14 días de trabajo, en donde se analizarán y se iran poniendo los distintos finales de cada NPC mediante un texto. 
+
+#### NPCs especiales (nice to have)
+A parte de esto hay tres NPC especiales los cuales son el vagabundo, el secretario real y el campesino. Al ayudar a uno de estos si o si se reduce la felicidad de los otros siempre que sea mediante paquetes extraviados. Al llegar a la maxifelicidad de uno de ellos el día 14 incluira un día extra en el que el jugador deberá cumplir ciertos mandados para desbloquear su verdadero final, el cual afectara a toda la Atlantida y no solo a esos personajes personalmente. Si no se cumple el mandado saldra el final bueno por defecto. Aun con esto incluido, una vez se alcance la maxifelicidad el NPC te entregara la mejora para lo que queda de run.
+
+#### Mejoras de los NPC
+Los NPCs te entregaran un regalo que te hará la labor más fácil en el trabajo. Estos regalos una vez recibidos ya no se pueden perder, siendo una mejora permanente para el jugador, aunque si es posible que la felicidad del NPC reduzca después de eso. Estas mejoras son:
+
+- Vagabundo: te da una cinta multicolor que se puede poner a los paquetes y vale para todas las calles
+- Tarotisa: te entrega una bola de cristal que tiene 1/x posibilidad de lanzar un brillo cuando el paquete actual es erroneo
+- Artesano: te permite envolver rapidamente un paquete tan solo pulsando E
+- Campesino: te permite conocer el peso del paquete sin necesidad de usar la balanza
+- Contable: hace que los paquetes bien entregados te den dinero extra por cada paquete que envies correctamente
+- Soldado: te permite equivocarte con x paquetes antes de que se te aplique una penalización
+- Secretario real: te permite pasar rapidamente el libro de instrucciones pulsando A y D sin necesidad de usar el ratón.
+
+
 ---
 
 ## Diseño
