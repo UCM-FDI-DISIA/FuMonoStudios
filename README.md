@@ -17,6 +17,7 @@
       - [Finales](#finales)
       - [NPCs especiales (nice to have)](#npcs-especiales-nice-to-have)
       - [Mejoras de los NPC](#mejoras-de-los-npc)
+      - [Hablar con personajes](#hablar-con-personajes)
   - [Diseño](#diseño)
     - [Fase de exploracion](#fase-de-exploracion)
     - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
@@ -86,16 +87,16 @@ En el caso de que la **dirección** sea correcta el jugador deberá emplear un s
 Llegado cierto punto se exigirá al jugador detectar la falsificación de **sellos**. En el **manual de trabajo** se añadirá una entrada para ver los **sellos** auténticos. 
 
 Existen 5 tipos de sellos:
-- Alimento
-- Medicinas
-- Joyas
-- Materiales
-- Armamento
+- **Alimento**
+- **Medicinas**
+- **Joyas**
+- **Materiales**
+- **Armamento**
 
 Enviar un paquete con un **sello** falso implica una **amonestación**
 
 #### Pesado
-Un paquete con un **sello de pesado** deberá ser pesado y comprobado respecto a el peso que le asigna el **sello** por tanto un paquete con este **sello** solo debe ser enviado si su peso medido en la balanza coincide con las métricas que indica el **sello** (referirse al **manual de trabajo**). Una vez presentada esta mecánica aparecerá una balanza en la oficina de trabajao donde se podrán pesar los **paquetes** colocándolos encima de estos.
+Un paquete con un **sello de pesado** deberá ser pesado y comprobado respecto a el peso que le asigna el **sello** por tanto un paquete con este **sello** solo debe ser enviado si su **peso** medido en la **balanza** coincide con las métricas que indica el **sello** (referirse al **manual de trabajo**). Una vez presentada esta mecánica aparecerá una balanza en la oficina de trabajao donde se podrán pesar los **paquetes** colocándolos encima de estos.
 
 #### Envoltura
 Un paquete con un **sello de fragil** deberá ser envuelto con **cinta de embalaje**. Para ello el jugador deberá realizar un movimiento de *arriba abajo* sobre el **paquete** mientras sostiene el objeto de cinta de embalaje.
@@ -138,6 +139,12 @@ Los NPCs te entregaran un regalo que te hará la labor más fácil en el trabajo
 - **Soldado**: te permite equivocarte con x paquetes antes de que se te aplique una penalización
 - **Secretario real**: te permite pasar rapidamente el libro de instrucciones pulsando A y D sin necesidad de usar el ratón.
 
+#### Hablar con personajes
+Al hacer click sobre un NPC durante la **fase de exploración**, se abrirá una pantalla donde el NPC hablará con el jugador diciendo sus lineas de diálogo. El jugador podrá pasar los bloques de texto con un botón (todavía por determinar).
+
+Si el jugador vuelve a hablar con un NPC este dirá un diálogo reducido.
+
+Tras el trascurso de varios días el jugador vera **limitado** el número de personajes con los que puede hablar. En el momento que exceda ese número acabará la **fase de exploración** y se irá a la **fase de revisión de paquetes**.
 
 ---
 
