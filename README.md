@@ -1,9 +1,55 @@
 # FuMonoStudios (Mail to atlantis)
 
+- [FuMonoStudios (Mail to atlantis)](#fumonostudios-mail-to-atlantis)
+  - [Ficha Técnica](#ficha-técnica)
+  - [Mecanicas](#mecanicas)
+    - [Movimiento en la exploracion](#movimiento-en-la-exploracion)
+    - [Dialogos con los NPC](#dialogos-con-los-npc)
+    - [Gestión de paquetes](#gestión-de-paquetes)
+      - [Direcciones](#direcciones)
+        - [Manual de trabajo](#manual-de-trabajo)
+      - [Etiquetado por barrio](#etiquetado-por-barrio)
+      - [Sello de tipo de paquete](#sello-de-tipo-de-paquete)
+      - [Pesado](#pesado)
+      - [Envoltura](#envoltura)
+      - [Cálculo del dinero al final de la jornada](#cálculo-del-dinero-al-final-de-la-jornada)
+    - [Calculo de Finales y Felicidad](#calculo-de-finales-y-felicidad)
+      - [Finales](#finales)
+      - [NPCs especiales (nice to have)](#npcs-especiales-nice-to-have)
+      - [Mejoras de los NPC](#mejoras-de-los-npc)
+  - [Diseño](#diseño)
+    - [Fase de exploracion](#fase-de-exploracion)
+    - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
+    - [Finales](#finales-1)
+  - [Arte](#arte)
+    - [Paletas de color](#paletas-de-color)
+    - [Lugares](#lugares)
+      - [Oficina de trabajo](#oficina-de-trabajo)
+      - [Distritos](#distritos)
+  - [Narrativa](#narrativa)
+    - [Narrativa de Atlantis](#narrativa-de-atlantis)
+      - [Funcionamiento interno de la Atlantida](#funcionamiento-interno-de-la-atlantida)
+    - [Personajes](#personajes)
+      - [Protagonista](#protagonista)
+      - [Campesino](#campesino)
+      - [Artesano](#artesano)
+        - [Finales](#finales-2)
+      - [Vagabundo](#vagabundo)
+      - [Tarotisa](#tarotisa)
+      - [Soldado](#soldado)
+      - [Contable](#contable)
+        - [Finales](#finales-3)
+      - [Secretario del rey](#secretario-del-rey)
+
+---
+
 ## Ficha Técnica
 |Genero|Publico Objetivo|
 |--|---|
 |Simulación|Jugadores interesados en los Indies|
+
+---
+
 ## Mecanicas
 
 ### Movimiento en la exploracion
@@ -16,7 +62,7 @@ Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostr
 
 La fase de gestión de **paquetes** consta de varias mecánicas que se irán aplicando de forma incremental (añadiendose a las mecánicas anteriores) cada ciertas *jornadas* (por determinar).
 
-![Diagrama de flujo de paquetes](image.png)
+![Diagrama de flujo de paquetes](Imagenes/image.png)
 
 Al envíar un paqute de forma incorrecta el jugador recibirá una **amonestación**, con varias **amonestaciones** el jugador recibirá menos dinero al final de la *jornada*.
 
@@ -84,13 +130,13 @@ A parte de esto hay tres NPC especiales los cuales son el vagabundo, el secretar
 #### Mejoras de los NPC
 Los NPCs te entregaran un regalo que te hará la labor más fácil en el trabajo. Estos regalos una vez recibidos ya no se pueden perder, siendo una mejora permanente para el jugador, aunque si es posible que la felicidad del NPC reduzca después de eso. Estas mejoras son:
 
-- Vagabundo: te da una cinta multicolor que se puede poner a los paquetes y vale para todas las calles
-- Tarotisa: te entrega una bola de cristal que tiene 1/x posibilidad de lanzar un brillo cuando el paquete actual es erroneo
-- Artesano: te permite envolver rapidamente un paquete tan solo pulsando E
-- Campesino: te permite conocer el peso del paquete sin necesidad de usar la balanza
-- Contable: hace que los paquetes bien entregados te den dinero extra por cada paquete que envies correctamente
-- Soldado: te permite equivocarte con x paquetes antes de que se te aplique una penalización
-- Secretario real: te permite pasar rapidamente el libro de instrucciones pulsando A y D sin necesidad de usar el ratón.
+- **Vagabundo**: te da una cinta multicolor que se puede poner a los paquetes y vale para todas las calles
+- **Tarotisa**: te entrega una bola de cristal que tiene 1/x posibilidad de lanzar un brillo cuando el paquete actual es erroneo
+- **Artesano**: te permite envolver rapidamente un paquete tan solo pulsando E
+- **Campesino**: te permite conocer el peso del paquete sin necesidad de usar la balanza
+- **Contable**: hace que los paquetes bien entregados te den dinero extra por cada paquete que envies correctamente
+- **Soldado**: te permite equivocarte con x paquetes antes de que se te aplique una penalización
+- **Secretario real**: te permite pasar rapidamente el libro de instrucciones pulsando A y D sin necesidad de usar el ratón.
 
 
 ---
@@ -118,6 +164,12 @@ La parte estética de los escenarios se basará en una arquitectura griega antig
 
 ### Paletas de color
 Los fondos de la ciudad de la Atlántida tendrán una paleta de colores similar de grises y blancos, con un color extra predominante único de cada distrito: En el distrito de Démeter será el verde, en el de Hefesto el naranja, en el de Hestia el rojo, en el de Artemisa el gris, en el de Hermes el morado, en el de Apolo el amarillo y en el de Poseidón el azul.
+
+### Lugares
+
+#### Oficina de trabajo
+
+#### Distritos
 
 ---
 
@@ -150,15 +202,19 @@ Su caracter es amigable y alegre con todos aquellos de los anillos exteriores y 
  
  En cuanto a su personalidad, este es orgulloso en cuanto a la calidad de sus creaciones y muy curioso con todo lo que respecta a los humanos. No soporta que le metan prisa cuando hace las cosas y es muy dedicado en todos los ambitos que domina.
 
- ##### Finales
+##### Finales
 
- Malo: en el final malo el artesano Paulino jamas logra alcanzar minimamente la belleza de las supuestas construcciones y creaciones humanas, lo que le lleva a frustrarse y abandonar su sueño. Al final termina trabajando durante todo lo que le queda de vida haciendo encargos simples y sin un apice de creatividad por una miseria de dinero.
+**Malo**
+: en el final malo el artesano Paulino jamas logra alcanzar minimamente la belleza de las supuestas construcciones y creaciones humanas, lo que le lleva a frustrarse y abandonar su sueño. Al final termina trabajando durante todo lo que le queda de vida haciendo encargos simples y sin un apice de creatividad por una miseria de dinero.
 
- Neutral: si bien el artesano no logra captar la belleza de los mitos humanos en sus creaciones no deja de esforzarse día tras día mejorando un poco en cada intento. Además varias de sus creaciones captan la atención de varias personas que le halagan por su sentido artistico. Aún sin lograr hacer una gran creación disfruta de sus días trabajando en creaciones sencillas mientras en sus ratos libres deja libre su creatividad.
+ **Neutral**
+ : si bien el artesano no logra captar la belleza de los mitos humanos en sus creaciones no deja de esforzarse día tras día mejorando un poco en cada intento. Además varias de sus creaciones captan la atención de varias personas que le halagan por su sentido artistico. Aún sin lograr hacer una gran creación disfruta de sus días trabajando en creaciones sencillas mientras en sus ratos libres deja libre su creatividad.
 
- Feliz: ante la negativa de su jefe por permitirle expresar su creatividad decide dejar su empleo, montando su propio taller en donde empezo a expresar su amor a la mitología humana mediante vasijas, herramientas de hierro, copas y vasos de vidrio... poco a poco su taller fue llamando la atención de gente de todos sus distritos, que fueron conociendo su gran talento. Es así como logro tener una base solida de clientes que estaban dispuestos incluso a pisar el distrito de Hefesto con tal de hacerse con obras de arte tan espectaculares. Si bien esto enfado a los comerciantes al no poder hacer de intermediarios, no pudieron hacer nada gracias a la fama que se había cosechado.
+ **Feliz**
+ : ante la negativa de su jefe por permitirle expresar su creatividad decide dejar su empleo, montando su propio taller en donde empezo a expresar su amor a la mitología humana mediante vasijas, herramientas de hierro, copas y vasos de vidrio... poco a poco su taller fue llamando la atención de gente de todos sus distritos, que fueron conociendo su gran talento. Es así como logro tener una base solida de clientes que estaban dispuestos incluso a pisar el distrito de Hefesto con tal de hacerse con obras de arte tan espectaculares. Si bien esto enfado a los comerciantes al no poder hacer de intermediarios, no pudieron hacer nada gracias a la fama que se había cosechado.
 
- MaxiFeliz: después de que Paco le revelara su secreto y le mostrase como es un humano realmente, Paulino se lleno de dicha y alegría al saber que las maravillosas obras que siempre había tomado como inreplicables habían sido hechas por seres mortales, seres como él o cualquiero otro. Es así como dedico el resto de su vida a investigar todos los procesos y técnicas artísticas, con ayuda claro esta de Paco. Gracias a todos estos conocimientos, no solo abrió un existoso negocio de artesanía, donde hacia desde vasijas diminutas hasta grandes estatuas de oricalco, sino que también consiguio un gran grupo de estudiantes y aprendices que harían que su magnifica técnica se recordarse a lo largo de los siglos venideros.
+ **MaxiFeliz**
+ : después de que Paco le revelara su secreto y le mostrase como es un humano realmente, Paulino se lleno de dicha y alegría al saber que las maravillosas obras que siempre había tomado como inreplicables habían sido hechas por seres mortales, seres como él o cualquiero otro. Es así como dedico el resto de su vida a investigar todos los procesos y técnicas artísticas, con ayuda claro esta de Paco. Gracias a todos estos conocimientos, no solo abrió un existoso negocio de artesanía, donde hacia desde vasijas diminutas hasta grandes estatuas de oricalco, sino que también consiguio un gran grupo de estudiantes y aprendices que harían que su magnifica técnica se recordarse a lo largo de los siglos venideros.
 
 
 #### Vagabundo
@@ -197,11 +253,14 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 
 ##### Finales
 
-Malo: si bien Glover acabo dandose cuenta de las mentiras de su padre, nunca cambio su trato hacia los campesinos y artesanos, lo único que cambio fue su motivación. Él estaba convencido de que todos a su alrededor lo menospreciaban, que pensaban que era simplemente la sombra de lo que una vez fue su padre, confundia ser inocente y amable con ser estupido. Es por ello que no solo siguio comprando a bajo precio a los de los anillos exteriores, sino que además aumento el precio de venta a los burgueses. Conocia su posición y su ventaja asi que se aprovecho de esta. Acabo sus días como una de las personas más odiadas de toda la Atlantida, muriendo en total y absoluta soledad.
+**Malo**
+: si bien Glover acabo dandose cuenta de las mentiras de su padre, nunca cambio su trato hacia los campesinos y artesanos, lo único que cambio fue su motivación. Él estaba convencido de que todos a su alrededor lo menospreciaban, que pensaban que era simplemente la sombra de lo que una vez fue su padre, confundia ser inocente y amable con ser estupido. Es por ello que no solo siguio comprando a bajo precio a los de los anillos exteriores, sino que además aumento el precio de venta a los burgueses. Conocia su posición y su ventaja asi que se aprovecho de esta. Acabo sus días como una de las personas más odiadas de toda la Atlantida, muriendo en total y absoluta soledad.
 
-Neutral: Glover siempre mantuvo las palabras de su padre como la verdad absoluta, el creia firmemente en que hacía un favor a todos aquellos campesinos y artesanos a los que compraba sus productos por bajo precio. Por otra parte, se hizo bastante amigo de varios burgueses que acabaron convirtiendose en sus clientes habituales. Aunque nunca llego a estar totalmente solo, acabo siendo repudiado por toda la gente de los anillos exteriores, no pudiendo ni pisar esa zona por su seguridad.
+**Neutral**
+: Glover siempre mantuvo las palabras de su padre como la verdad absoluta, el creia firmemente en que hacía un favor a todos aquellos campesinos y artesanos a los que compraba sus productos por bajo precio. Por otra parte, se hizo bastante amigo de varios burgueses que acabaron convirtiendose en sus clientes habituales. Aunque nunca llego a estar totalmente solo, acabo siendo repudiado por toda la gente de los anillos exteriores, no pudiendo ni pisar esa zona por su seguridad.
 
-Feliz: una vez que descubrio las mentiras de su padre y la horrible situación que viven día a día los habitantes del anillo exterior, Glover supo que debia de hacer algo para arreglar la situación. Como primera medida aumento el dinero que pagaba a los campesinos y artesanos por sus productos. Esta decisión supuso perdidas en su empresa, las cuales pudo arreglar mediante el despido de numerosos cargos de la empresa que apenas trabajanban y que fueron contratados por favores que debía su padre a numerosas personas. Esto puso en riesgo su seguridad, pero fue acogido con los brazos abiertos por todas las personas del anillo exterior, que agradecían su trato amable y sincero. Al final Glover paso sus días rodeado de amigos y vecinos amables en una casa de los anillos exteriores.
+**Feliz**
+: una vez que descubrio las mentiras de su padre y la horrible situación que viven día a día los habitantes del anillo exterior, Glover supo que debia de hacer algo para arreglar la situación. Como primera medida aumento el dinero que pagaba a los campesinos y artesanos por sus productos. Esta decisión supuso perdidas en su empresa, las cuales pudo arreglar mediante el despido de numerosos cargos de la empresa que apenas trabajanban y que fueron contratados por favores que debía su padre a numerosas personas. Esto puso en riesgo su seguridad, pero fue acogido con los brazos abiertos por todas las personas del anillo exterior, que agradecían su trato amable y sincero. Al final Glover paso sus días rodeado de amigos y vecinos amables en una casa de los anillos exteriores.
 
 #### Secretario del rey
 
@@ -212,8 +271,4 @@ Gargafiel es un pez gato de estatura diminuta, con ojos achinados y un gran y la
 Este es increiblemente astuto y perspicaz, con una capacidad de convencer y manipular casi absurda. Siempre se excusa con sus errores, no siendo capaz de admitir ningun fallo. Suele estar tan metido en sus ideas y planes que a no se que le sirva para uno de ellos, no le dará ninguna importancia a la persona que le hable. Tiene un gran complejo con su tamaño asi que se enfada con todo aquel que lo mencione. Es muy reservado con la mayor parte de la gente, contestando lo más seco posible, midiendo al milimetro sus palabras.
 
 
-### Lugares
 
-#### Oficina de trabajo
-
-#### Distritos
