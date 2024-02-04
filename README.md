@@ -280,6 +280,11 @@ Gargafiel es un pez gato de estatura diminuta, con ojos achinados y un gran y la
 
 Este es increiblemente astuto y perspicaz, con una capacidad de convencer y manipular casi absurda. Siempre se excusa con sus errores, no siendo capaz de admitir ningun fallo. Suele estar tan metido en sus ideas y planes que a no se que le sirva para uno de ellos, no le dará ninguna importancia a la persona que le hable. Tiene un gran complejo con su tamaño asi que se enfada con todo aquel que lo mencione. Es muy reservado con la mayor parte de la gente, contestando lo más seco posible, midiendo al milimetro sus palabras.
 
+##### Finales
+
+**Malo**
+: poco a poco los burgueses se fueron hartando de la negación del "supuesto" rey por atender personalmente sus encargos y necesidades, no aceptando a tener reuniones con ellos, delegando esto en Gargafiel. Por mucho que el astuto secretario intento calmar a las masas para que su plan no se viera frustrado, no puedo evitar una invasión completa de burgueses y soldados en el castillo, que decidieron encargar al rey. Al ver que el rey no se encontraba en el castillo decidieron peinar todo el reino en su busqueda. Al no encontrar al rey todo el peso recallo en el secretario, perdiendo su tapadera y siendo expulsado del reino.
+
 
 
 
