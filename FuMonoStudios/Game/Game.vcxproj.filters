@@ -33,6 +33,9 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen\Json</Filter>
     </ClCompile>
+    <ClCompile Include="dialogo.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSON.h">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="dialogo.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
