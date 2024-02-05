@@ -2,6 +2,13 @@
 #include "ecs.h"
 
 namespace ecs {
+	/*
+	TODO:
+	Hacer metodos:
+		update()
+		render()
+		handleInput(SDL_Event& event)???
+	*/
 	class Entity
 	{
 	public:
