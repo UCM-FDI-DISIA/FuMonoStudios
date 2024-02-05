@@ -33,6 +33,15 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen\Json</Filter>
     </ClCompile>
+    <ClCompile Include="src\architecture\ecs.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\architecture\Entity.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\architecture\Component.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSON.h">
@@ -43,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\ecs.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\Entity.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\Component.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
