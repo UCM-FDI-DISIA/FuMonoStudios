@@ -19,6 +19,12 @@
     <Filter Include="Archivos de encabezado\Json">
       <UniqueIdentifier>{a96239a1-06f0-43f3-82a2-0e1ae0fb696c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Architecture">
+      <UniqueIdentifier>{8077af1b-08f5-4d53-9d9f-0053ca4fa75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Architecture">
+      <UniqueIdentifier>{aa8430c6-d3b4-4f78-a602-a881bd31ea2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -33,13 +39,19 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen\Json</Filter>
     </ClCompile>
+    <ClCompile Include="src\architecture\Component.cpp">
+      <Filter>Archivos de origen\Architecture</Filter>
+    </ClCompile>
     <ClCompile Include="src\architecture\ecs.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Architecture</Filter>
     </ClCompile>
     <ClCompile Include="src\architecture\Entity.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Architecture</Filter>
     </ClCompile>
-    <ClCompile Include="src\architecture\Component.cpp">
+    <ClCompile Include="src\architecture\Scene.cpp">
+      <Filter>Archivos de origen\Architecture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\architecture\Game.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +65,19 @@
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado\Json</Filter>
     </ClInclude>
-    <ClInclude Include="src\architecture\ecs.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Entity.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\architecture\Scene.h">
+      <Filter>Archivos de encabezado\Architecture</Filter>
     </ClInclude>
     <ClInclude Include="src\architecture\Component.h">
+      <Filter>Archivos de encabezado\Architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\ecs.h">
+      <Filter>Archivos de encabezado\Architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\Entity.h">
+      <Filter>Archivos de encabezado\Architecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\Game.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

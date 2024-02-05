@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\architecture\Game.cpp" />
+    <ClCompile Include="src\architecture\Scene.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\Entity.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
@@ -140,6 +142,8 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\architecture\Game.h" />
+    <ClInclude Include="src\architecture\Scene.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\Entity.h" />
     <ClInclude Include="src\architecture\ecs.h" />
