@@ -1,6 +1,8 @@
 #pragma once
 #include<list>
 #include "Scene.h"
+#include <SDL.h>
+#include "../sdlutils/SDLUtils.h"
 class Game
 {
 public:
@@ -15,5 +17,7 @@ private:
 	//lista de todas las escenas del juego
 	std::vector<ecs::Scene*> gameScenes;
 	bool exit;
+	SDL_Window* window;
+
 };
 

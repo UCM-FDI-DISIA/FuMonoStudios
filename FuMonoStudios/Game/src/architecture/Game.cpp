@@ -2,6 +2,9 @@
 #include <list>
 #include <SDL.h>
 Game::Game():exit(false) {
+	SDLUtils::init("Mail To Atlantis", 800, 600, "recursos/config/game.resources.json");
+
+	auto& sdl = *SDLUtils::instance();
 
 }
 
