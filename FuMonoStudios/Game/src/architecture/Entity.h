@@ -1,5 +1,7 @@
 #pragma once
 #include "ecs.h"
+#include <algorithm>
+#include <array>
 
 namespace ecs {
 	/*
@@ -20,7 +22,7 @@ namespace ecs {
 
 		template<typename T, typename ...Ts>
 		inline T* addComponent(cmpId_t cId, Ts&&... args) {
-			T* c = new T(std::forward<Ts>(args)…);
+			T* c = new T(std::forward<Ts>(args)...);
 
 			removeComponent(cId);
 
@@ -56,7 +58,7 @@ namespace ecs {
 		bool alive_;
 		Manager* mngr_;
 		std::vector<Component*> currCmps_;
-		std::array<Component*, ecs::maxComponentId> cmps_;
+		std::array<Component*, cmp::maxComponentId> cmps_;
 	};
 
 }

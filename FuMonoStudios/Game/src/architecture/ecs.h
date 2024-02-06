@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+class Entity;
+
 namespace ecs {
 
 	using cmpId_t = uint8_t;
@@ -12,8 +14,8 @@ namespace ecs {
 			// do not remove this
 			_LAST_CMP_ID
 		};
+		constexpr cmpId_t maxComponentId = _LAST_CMP_ID;
 	}
-	constexpr cmpId_t maxComponentId = _LAST_CMP_ID;
 
 	class Component {
 	public:

@@ -15,9 +15,10 @@ private:
 	//lista de escenas a procesar
 	std::vector<ecs::Scene*> loadedScenes;
 	//lista de todas las escenas del juego
-	std::vector<ecs::Scene*> gameScenes;
+	std::vector<ecs::Scene> gameScenes;
 	bool exit;
 	SDL_Window* window;
+	SDL_Renderer* renderer;
 
 };
 
