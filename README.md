@@ -60,7 +60,9 @@ Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá s
 ![Imagen de como va atlantis]()
 
 ### Dialogos con los NPC
-Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostrará en pantalla un cuadro de diálogo con lo que te dice dicho NPC, dicho dialogo puede ser tanto un encargo de correo como simplemente algo de información sobre la historia de ese NPC y su entorno. Si un jugador vuelve a hablar con el NPC aparecera un dialogo predeterminado con el cual el jugador en el que le indicara que deje de molestarlo o que esta ocupado, cortando asi la conversación.
+Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostrará en pantalla un cuadro de diálogo con lo que te dice dicho NPC, dicho dialogo puede ser tanto un encargo de correo como simplemente algo de información sobre la historia de ese NPC y su entorno. Si un jugador vuelve a hablar con el NPC aparecera un dialogo predeterminado con el cual el jugador en el que le indicara que deje de molestarlo o que esta ocupado, cortando asi la conversación. 
+
+En total hay 4 tipos de dialogos, primero los dialogos de favores en donde le explicaran los NPC al jugador una adversidad y le pediran su ayuda mediante la desviación del correo. El segundo tipo son los dialogos de contexto, los cuales varían según el nivel de felicidad de los NPC y estos sirven tanto para informarte de la situación personal del NPC como su entorno. Después hay un dialogo Maxifeliz el cual te dice el NPC una vez alcanzas la felicidad máxima con él, haciendote entrega de un regalo con ello. Y por último esta el dialogo de perdida, que es un dialogo que aparece cuando haces totalmente infeliz al NPC, lo que supone en una perdida completa de la progresión de este. 
 
 ### Gestión de paquetes
 
@@ -156,6 +158,8 @@ El juego constará de varias jornadas (todavía por decidir) donde el jugador te
 
 ### Fase de exploracion
 
+En esta fase el jugador podra recorrer el mapa en primera persona moviendose por los distintos distritos de la Atalantida. En cada distrito podra encontrar a un NPC específico del distrito el cual le contará algo de su historia o le pedira un favor relacionado con el correo. En un principio los barrios de los anillos más interiores estarán bloqueados pero a partir del segundo y tercer día en el que se introduzca una nueva mecánica estos estarán libres.
+
 
 ### Fase de gestión de paquetes
 
@@ -237,11 +241,26 @@ APARIENCIA: Anemos es una carpa koi, la cual se encuentra en un estado de extrem
 
 
 #### Tarotisa
-Abigail Ampoule es una tarotista la cual tiene la increíble habilidad de consultar el futuro de las personas por medio de las cartas. Si bien esto le sirve para tener un negocio que se sostenga, su afán de dinero la impulsó a hacer un trato con los boticarios de la zona mediante el cual ella predice enfermedades inexistentes a la gente para que estos asistan al boticario a por medicina. Con esta estafa logra engañar a los ingenuos que acaban pisando por su establecimiento. Anteriormente ella no era así, ya que junto a su marido se ganaba la vida honradamente trabajando en el campo. No obstante, después de pasar innumerables penurias debido a la miseria que les pagaban los comerciantes, se le ocurrió estudiar artes oscuras y comenzar con su negocio junto a los boticarios. Esto provocó la repulsión de su marido que la acabó abandonando.
+Abigail Ampoule es una tarotista la cual tiene la increíble habilidad de consultar el futuro de las personas por medio de las cartas. Si bien esto le sirve para tener un negocio que se sostenga, su afán de dinero la impulsó a hacer un trato con los boticarios de la zona mediante el cual ella predice enfermedades inexistentes a la gente para que estos asistan al boticario a por medicina. Con esta estafa logra engañar a los ingenuos que acaban pisando por su establecimiento. Anteriormente ella no era así, ya que junto a su marido se ganaba la vida honradamente trabajando en el campo. No obstante, después de pasar innumerables penurias debido a la miseria que les pagaban los comerciantes, se le ocurrió comenzar con su negocio de timos junto a los boticarios. Esto provocó la repulsión de su marido que la acabó abandonando.
 
 En cuanto a su apariencia, Abigail es un pez abisal de unos 70 años, la cual en lugar de linterna lleva una bola de cristal que sale directamente de su frente. Esta viste con un pañuelo con adornos de monedas de oricalco que la envuelve la cabeza. También viste con un largo camisón y una especie de capa que la rodea. 
 
 Su caracter es estoico y poco empatico. Se cabrea mucho si no haces algo por ella una vez que te lee la fortuna. Siempre trata de darle la vuelta a todo y se victimiza para generar pena hacia su persona y asi vender más.
+
+
+##### Finales
+
+**Malo**
+: poco a poco Abigail se fue haciendo más y más avara, hasta el punto de vender ella misma los productos ignorando completamente a los boticarios. Estos, hartos de su soberbia decidieron traicionarla, revenlando los engaños que ha estado diciendo durante años. Si bien esto provocó una gran tensión entre Abigail y sus clientes, todo exploto cuando uno de ellos se acabo enfermando debido a una de las algas que Abigail le dió. Este último suceso provoco la ira de todos sus clientes, lo que le dió una mala fama que se propago por todo el reino. Al final Abigail acabo sus días de vejez malviviendo en el distrito de Hestia.
+
+**Neutral**
+: Abigail mantuvo su oscuro negocio con los boticarios, manteniendo a todos los habitantes de los anillos exteriores preocupados por su salud y destino, gastando sus ahorros en falsas esperanzas y soluciones para evitar tales desgracias. Todo este miedo que genero en los habitantes genero que fue repudiada por todos debido al miedo que la tenían. Al final acabo muriendo de vejez sola en una gran casa en el distrito de Artemisa. 
+
+**Feliz**
+: tras mucho pensarlo Abigail se dio cuenta de que el abandono de su marido en el pasado no fue un acto de egoismo por parte de este, mostraba su gran nobleza y pureza al preferir la pobreza a timar a personas como habia estado haciendo ella durante todo este tiempo. Decidida a mejorar tomó todos sus ahorros para comprase una pequeña granjita con la que ganarse la vida humildemente. Esto provoco el descontento de los boticarios, los cuales de vez en cuando iban a visitarla para persuadirla de volver al negocio. Ella siempre se negó a esto, trabajando honradamente y muriendo con la conciencia tranquila y con la esperanza de que su marido allá donde estuviera, haya podido saber sobre su cambio y sus arrepentimientos.
+
+**MaxiFeliz**
+: después de tantos años de rencor y odio, el corazón de Abigail se había ablandado, dejando de ver la vida como una lucha constante por ver quién es más astuto, sino más como un viaje en el que si bien hay muchas dificultades, la verdadera razón para disfrutarlo son las personas que te encuentras en este. Es por ello que Abigail trato de mejorar, siguiendo por primera vez los consejos que le dió su marido, el cual siempre se opuso a timar a la gente, viendo ahora este comportamiento, no como un símbolo de debilidad, sino de fortaleza al no dejarse degradar por el horrible entorno en el que se encontraban. Fue asi como Abigail fue devolviendo el dinero a las diferentes personas que en su vida había timado, siendo sincera con ellos sobre su pasado y esperando su perdon en un futuro. En cuanto a los boticarios, corto totalmente la relación con ellos, abandonando el negocio que tenía con ellos para siempre. Por último, y con lo poco que pudo consevar de dinero, se dispuso a buscar a su ex marido, en busca de redención y para poder compartir a su lado sus últimos años de vida. Tras unos meses pudo dar con él, el cual sobrevivio todos estos años humildemente en un granjita del distrito de Demeter. Tras explicarle todo lo que paso, entre lagrimas pudieron reconciliarse, retomando el profundo amor que una vez sintieron el uno por el otro. 
 
 
 #### Soldado
@@ -270,10 +289,10 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 : Glover siempre mantuvo las palabras de su padre como la verdad absoluta, el creia firmemente en que hacía un favor a todos aquellos campesinos y artesanos a los que compraba sus productos por bajo precio. Por otra parte, se hizo bastante amigo de varios burgueses que acabaron convirtiendose en sus clientes habituales. Aunque nunca llego a estar totalmente solo, acabo siendo repudiado por toda la gente de los anillos exteriores, no pudiendo ni pisar esa zona por su seguridad.
 
 **Feliz**
-: una vez que descubrió las mentiras de su padre y la horrible situación que viven día a día los habitantes del anillo exterior, Glover supo que debia de hacer algo para arreglar la situación. Como primera medida aumento el dinero que pagaba a los campesinos y artesanos por sus productos. Esta decisión supuso perdidas en su empresa, las cuales pudo arreglar mediante el despido de numerosos cargos de la empresa que apenas trabajanban y que fueron contratados por favores que debía su padre a numerosas personas. Esto puso en riesgo su seguridad, pero fue acogido con los brazos abiertos por todas las personas del anillo exterior, que agradecían su trato amable y sincero. Al final Glover paso sus días rodeado de amigos y vecinos amables en una casa de los anillos exteriores.
+: una vez que descubrió las mentiras de su padre y la horrible situación que viven día a día los habitantes del anillo exterior, Glover supo que debia de hacer algo para arreglar estas injusticias. Como primera medida aumento el dinero que pagaba a los campesinos y artesanos por sus productos. Esta decisión supuso perdidas en su empresa, las cuales pudo solventar mediante el despido de numerosos cargos que apenas trabajanban y que fueron contratados por favores que debía su padre a numerosas personas. Esto puso en riesgo su seguridad, pero fue acogido con los brazos abiertos por todas las personas del anillo exterior, que agradecían su trato amable y sincero. Al final Glover paso sus días rodeado de amigos y vecinos amables en una casa de los anillos exteriores.
 
 **MaxiFeliz**
-: Glover acabo dandose cuenta de que las mentiras de su padre no solo habían nublado su juicio, sino que también impidieron que los distritos del anillo exterior e interior pudieran aprender a comvivir unos con otros. Es por ello que la empresa de Glover paso a convertirse en un puro intermediario que servía para mediar entre el comercio de campesinos y artesanos con los burgueses. La empresa paso a cobrar tan solo una minima comisión de cada venta, lo que mejoró enormemente la calidad de vida de los anillos exteriores al mismo tiempo que se le daba una lección de aceptación y mentalidad abierta a los anillos interiores. Poco a poco su empresa fue ganando menos al haber una mejor convivencia entre las personas, lo que acabo con el despido de varios cargos que fueron contratados por favores que su padre debía. Glover paso el resto de su vida viviendo humildemente en el distrito de Hermes, siendo recordado en la posteridad como la persona que dio el primer paso a la convivencia y paz entre distritos.
+: Glover acabo dandose cuenta de que las mentiras de su padre no solo habían nublado su juicio, sino que también impidieron que los distritos del anillo exterior e interior pudieran aprender a comvivir unos con otros. Es por ello que la empresa de Glover paso a convertirse en un puro intermediario que servía para mediar entre el comercio de campesinos y artesanos con los burgueses. La empresa paso a cobrar tan solo una minima comisión de cada venta, lo que mejoró enormemente la calidad de vida de los anillos exteriores al mismo tiempo que se le daba una lección de aceptación y mentalidad abierta a los anillos interiores. Poco a poco su empresa fue ganando menos al haber una mejor convivencia entre las personas. Al final la empresa no pudo sostenerse por más tiempo y acabo quebrando. Aunque lejos de estar triste Glover se alegró de esto, ya que suponía el acercamiento de los distintos distritos entre sí. Con la fortuna que amaso su familia por decadas, Glover pudo hacerse con una casa humilde en su querido distrito de Hermes, donde pudo admirar cada día los frutos de su trabajo. Al final Glover paso a la historia como una de las primeras personas en dar el paso a la paz y colaboración entre distritos.
 
 #### Secretario del rey
 
@@ -285,8 +304,6 @@ Este es increiblemente astuto y perspicaz, con una capacidad de convencer y mani
 
 ##### Finales
 
-**Malo**
-: poco a poco los burgueses se fueron hartando de la negación del "supuesto" rey por atender personalmente sus encargos y necesidades, no aceptando a tener reuniones con ellos, delegando esto en Gargafiel. Por mucho que el astuto secretario intento calmar a las masas para que su plan no se viera frustrado, no puedo evitar una invasión completa de burgueses y soldados en el castillo, que decidieron encargar al rey. Al ver que el rey no se encontraba en el castillo decidieron peinar todo el reino en su busqueda. Al no encontrar al rey todo el peso recallo en el secretario, perdiendo su tapadera y siendo expulsado del reino.
 
 
 
