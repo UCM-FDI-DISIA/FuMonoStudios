@@ -14,10 +14,10 @@ namespace ecs {
 	class Entity
 	{
 	public:
-		Entity(Manager* mng);
+		Entity();
 		virtual ~Entity();
 		inline bool isAlive() const;
-		inline void setAlive();
+		inline void setAlive(bool alive) { alive_ = alive; };
 		Manager* getMngr() const;
 
 		template<typename T, typename ...Ts>

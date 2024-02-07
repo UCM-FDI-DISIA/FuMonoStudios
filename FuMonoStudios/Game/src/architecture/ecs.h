@@ -19,6 +19,7 @@ namespace ecs {
 	using scId_t = uint8_t;
 	namespace sc {
 		enum sceneId : scId_t {
+			MAIN_SCENE,
 			_LAST_SCENE
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;

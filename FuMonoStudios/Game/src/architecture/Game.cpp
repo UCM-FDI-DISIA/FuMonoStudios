@@ -1,7 +1,9 @@
 #include "Game.h"
 #include <list>
 #include <SDL.h>
+#include <algorithm>
 #include "../sdlutils/InputHandler.h"
+#include "../scenes/MainScene.h"
 /*
 TODO
 Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
@@ -15,7 +17,8 @@ Game::Game():exit(false) {
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-
+	gameScenes = {ecs::MainScene()};
+	loadScene(ecs::sc::MAIN_SCENE);
 }
 
 Game::~Game()
@@ -36,8 +39,9 @@ void Game::run()
 		}
 
 		update();
-
+		sdlutils().clearRenderer();
 		render();
+		sdlutils().presentRenderer();
 
 		Uint32 frameTime = SDL_GetTicks() - startTime;
 
@@ -59,17 +63,34 @@ void Game::loadScene(ecs::sc::sceneId scene)
 	loadedScenes.push_back(&gameScenes[scene]);
 }
 
+/// <summary>
+/// descarga al escena pedida
+/// </summary>
+/// <param name="scene"></param>
+void Game::killScene(ecs::sc::sceneId scene)
+{
+	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), &gameScenes[scene]);
+	if (it != loadedScenes.end()) {
+		loadedScenes.erase(it);
+	}
+}
 
+/// <summary>
+/// actualiza el juego
+/// </summary>
 void Game::update()
 {
-	for (auto& scene : loadedScenes) {
+	for (auto scene : loadedScenes) {
 		scene->update();
 	}	
 }
-
+/// <summary>
+/// renderiza en pantalla el juego
+/// no llamar a render clear o present se llamaran antes y despues de la llamada a este metodo
+/// </summary>
 void Game::render()
 {
-	for (auto& scene : loadedScenes) {
+	for (auto scene : loadedScenes) {
 		scene->render();
 	}
 }

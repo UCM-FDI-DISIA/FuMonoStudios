@@ -1,4 +1,6 @@
 #include "Scene.h"
+#include "Entity.h"
+#include <iostream>
 namespace ecs {
 	Scene::Scene():objs_() {
 		
@@ -6,10 +8,11 @@ namespace ecs {
 	Scene::~Scene() {
 
 	}
-	void Scene::init() {
-
+	void Scene::init()
+	{
 	}
 	void Scene::update() {
+		//std::cout << "Hola" << std::endl;
 		for (auto& e : objs_)
 			;//e.update();
 	}
@@ -17,4 +20,11 @@ namespace ecs {
 		for (auto& e : objs_)
 			;//e.render()
 	}
+	/*Entity* Scene::addEntity()
+	{
+		Entity* e = new Entity();
+		e->setAlive(true);
+		objs_.push_back(e);
+		return e;
+	}*/
 }

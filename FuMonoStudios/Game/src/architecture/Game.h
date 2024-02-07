@@ -11,6 +11,7 @@ public:
 	~Game();
 	void run();
 	void loadScene(ecs::sc::sceneId scene);
+	void killScene(ecs::sc::sceneId scene);
 private:
 	void update();
 	void render();
