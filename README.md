@@ -15,7 +15,7 @@
       - [Cálculo del dinero al final de la jornada](#cálculo-del-dinero-al-final-de-la-jornada)
     - [Calculo de Finales y Felicidad](#calculo-de-finales-y-felicidad)
       - [Finales](#finales)
-      - [NPCs especiales (nice to have)](#npcs-especiales-nice-to-have)
+      - [NPCs especiales](#npcs-especiales)
       - [Mejoras de los NPC](#mejoras-de-los-npc)
       - [Hablar con personajes](#hablar-con-personajes)
   - [Diseño](#diseño)
@@ -158,6 +158,10 @@ Si el jugador vuelve a hablar con un NPC este dirá un diálogo reducido.
 
 Tras el trascurso de varios días el jugador vera **limitado** el número de personajes con los que puede hablar. En el momento que exceda ese número acabará la **fase de exploración** y se irá a la **fase de revisión de paquetes**.
 
+#### Funcionamiento de eventos/sidequest de los NPC
+Cada NPC tendrá misiones que asignar al jugador. En estas misiones habrá una condicion concreta que tendrá que cumplir sobre un tipo de paquetes que va en contra de lo legal, por lo que será amonestado por ella, por lo que el jugador debe controlar cuanto quiere ayudar a los NPC mientras mantiene un nivel de dinero alto.
+F
+
 ---
 
 ## Diseño
@@ -172,9 +176,28 @@ En esta fase el jugador podra recorrer el mapa en primera persona moviendose por
 
 Durante la fase de gestíon el jugador deberá comprobar la validez de los **paquetes** esto llevará a distintos minijuegos que se irán añadiendo con el transcurso de los días. Cada nueva capa añadidida le irá obligando a estar más atento a los detalles en cada paquete.
 
-Cada paquete que se envíe tendrá impacto en la actitud de los distintos npc *(felicidad)*. Esta *felicidad* tendrá un impacto en la fase de exploración.
+*Amonestaciones*
+El número de paquetes que se puede fallar sin penalizar en el ingreso al final del día irá bajando conforme avanzan los días. Se avisará al jugador cuando le falte 1 fallo para penalizar. Una vez penalizado, el ingreso del día del jugador se dividirá por 2 y por cada paquete fallado más allá se irá bajando un 5 por ciento a lo que queda, es decir, si queda por cobrar 100 y se falla uno, se restará un 5 por ciento de 100 que son 5, luego 5 por ciento de 95 y así.
 
-### Finales
+*Condiciones especiales del jefe Oficina*
+El día después de añadir una mecánica, es decir, los días impares salvo el 1, el jefe te esperará en la oficina para decirte una condición extra que debes cumplir para todos los paquetes. Esto afectará a todos, sean de NPC o no. Un ejemplo sería "Ha habido obras en el transporte de paquetes a Demeter, todos los paquetes dirigidos a Demeter deben ser descartados". Si incumples esto, contará como fallo.
+
+*Paquetes especiales de NPC*
+Los NPC podrán asignar eventos que spawneen paquetes especiales a lo largo de la jornada. Estos paquetes compondrán una lista que poco a poco irán saliendo intentando salir todos antes de acabar el tiempo. Si el jugador promedio consiguiese 30 paquetes en ese día se enseñarán todos los paquetes de evento hasta antes del paquete 20. Estos paquetes serán completamente idénticos a los que pueden salir en ese día, salvo las cualidades especiales que lleve el evento.
+Por ejemplo, la medium pide que los paquetes de medicina que van hacia el distrito hestia vayan hacia el distrito de demeter, y en total serán 3. 
+Estos paquetes serán identicos al resto, es decir, si en ese día se ha desbloqueado el sello de pesaje, estos paquetes podrán llevar el sello de pesaje y así. Es de notar que serán correctos, osea que no tendrán nada ilegal ni fuera de lugar, lo único que cambiará será las características del evento, en el caso del medium, será que mandará medicinas y irá a Hestia.
+Si queda 1 minuto de juego, los paquetes que falten por salir saldrán 100% para evitar penalizar a jugadores muy lentos.
+Si se mandan a donde deben ir, no penalizarán, pero no hará feliz al NPC, sin embargo si hacemos lo que pidió el evento, penalizará y el NPC será feliz.
+
+Estos eventos pueden ser sobre todo tipo de características de los paquetes, no dejar pasar paquetes de un nombre, redirigir paquetes de medicina de un distrito a otro, descartar paquetes que pesen X, tirar todos los paquetes de una calle, etc...
+
+Para facilitar este sistema y evitar que salgan más fallos de los que tienen que ser, cada evento tendrá un número de paquetes que van a salir, y se añadirá a una lista los paquetes que no podrán salir de forma random. Por ejemplo, si un evento hace que los paquetes de medicina de Hestia deben ser eliminados y que van a salir 2, haremos que durante el día no puedan salir generados de forma random paquetes de medicina de Hestia, para que no se genere uno random y en vez de 2 salgan 3 y así.
+Luego se añadirá a una queue los paquetes especiales que deben salir y saldrán dispersados durante el día.
+
+La probabilidad $X$ de que salga un paquete especial tomando una queue de tamaño $N$, un promedio de paquetes de un jugador promedio $P$, y el paquete actual $i$
+<div align="center">
+$X = \frac{N + i + 1}{30} * 100$ 
+</div>
 
 ---
 
@@ -225,7 +248,9 @@ Actúa de forma amigable y de colegueo con el protagonista, y de forma filosófi
 APARIENCIA: Anemos es una carpa koi, la cual se encuentra en un estado de extrema hambruna. este viste con unos ropajes rasgados y holgados que usa para ocultar su lamentable estado. Este oculta su cara con una capucha, asomando únicamente su boca, bigotes y perilla. Este tiene colores vivos a pesar de estos, siendo principalmente el blanco y el rojo.
 
 ### Finales
+MaxiFinal:
 
+Malo (No consigues maxiFinal con ningún NPC grande):
 
 #### Secretario del rey
 
@@ -237,7 +262,10 @@ Gargafiel es un pez gato de estatura diminuta, con ojos achinados y un gran y la
 Este es increiblemente astuto y perspicaz, con una capacidad de convencer y manipular casi absurda. Siempre se excusa con sus errores, no siendo capaz de admitir ningun fallo. Suele estar tan metido en sus ideas y planes que a no se que le sirva para uno de ellos, no le dará ninguna importancia a la persona que le hable. Tiene un gran complejo con su tamaño asi que se enfada con todo aquel que lo mencione. Es muy reservado con la mayor parte de la gente, contestando lo más seco posible, midiendo al milimetro sus palabras.
 
 ##### Finales
-MaxiFinal: El secretario poco a poco te va mostrando su obsesión por los humanos y su afán por conocerlos. También su obsesión por Poseidón y su creencia de que el pueblo de Atlantis es superior a los humanos y que él les ayudará a reconquistar la Tierra una vez logren resurgir a la superficie.
+MaxiFinal: El secretario poco a poco te va mostrando su obsesión por los humanos y su afán por conocerlos. También su obsesión por Poseidón y su creencia de que el pueblo de Atlantis es superior a los humanos y que él les ayudará a reconquistar la Tierra una vez logren resurgir a la superficie. Durante los días finales te va pidiendo partes de un submarino que está construyendo para resurgir y te promete que te dejará que le acompañes si le ayudas.
+Finalmente, saldrás a la superficie con Gargafiel haciendo uso del submarino. Le revelas que fuiste humano desde siempre y él se queda sin palabras. Gargafiel asegura que Poseidón le ayudará y cuando llegue el día arrasará con toda la humanidad. Vuelves a tu casa original y ves un noticiero que anuncia el descubrimiento de una nueva especie terrestre y posiblemente alienígena. Esa especie no es nadie mas ni menos que Gargafiel. 
+Las autoridades te interrogan y confiesas la existencia de Atlantis. En una semana, una gran expedición llega a la ciudad submarina y retoma el gobierno diciendo que son herederos de Poseidón y los legítimos reyes de Atlantis.
+La ciudad siguió como siempre, mientras los humanos cometían experimentos e investigaciones en los humanos-pez, siempre bajo el nombre de Poseidón.
 
 Malo (No consigues maxiFinal con ningún NPC grande): Debido a la mala situación campesina, se comenzaron a hacer revueltas y protestas en contra del rey. Gargafiel aseguró que el rey no estaba haciendo nada malo y que el problema lo tenían ellos, llegando a instaurar medidas incluso más severas, haciendo abuso de su gran poder. No obstante, esto solo hizo empeorar la situación, provocando una revolución armada que irrumpió en el palacio real en búsqueda de la cabeza del rey. Al descubrir que la figura del rey era falsa, el pueblo asesinó brutalmente a Gargafiel mientras él rogaba a Poseidón que le salvase. La nobleza gobernó desde entonces hasta instaurar un nuevo linaje de reyes. El pueblo nunca sabrá la verdad de los humanos y continuará bajo el mar por los tiempos de los tiempos.
 ### NPC Menores
