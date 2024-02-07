@@ -196,7 +196,9 @@ Luego se añadirá a una queue los paquetes especiales que deben salir y saldrá
 
 La probabilidad $X$ de que salga un paquete especial tomando una queue de tamaño $N$, un promedio de paquetes de un jugador promedio $P$, y el paquete actual $i$
 <div align="center">
-$X = \frac{N + i + 1}{30} * 100$ 
+
+$$X = \frac{N + i + 1}{30} * 100$$
+
 </div>
 
 ---
