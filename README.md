@@ -31,9 +31,11 @@
     - [Narrativa de Atlantis](#narrativa-de-atlantis)
       - [Funcionamiento interno de la Atlantida](#funcionamiento-interno-de-la-atlantida)
     - [Personajes](#personajes)
+    - [Protagonista](#protagonista)
+    - [Jefe oficina](#jefe-oficina)
       - [NPC Grandes](#npc-grandes)
       - [NPC Menores](#npc-menores)
-        - [Protagonista](#protagonista)
+        
         - [Campesino](#campesino)
         - [Artesano](#artesano)
           - [Finales](#finales-2)
@@ -205,6 +207,12 @@ La Atlantida es una monarquía centralista, en la cual hay una gran división en
 #### Protagonista
 En el juego encarnamos a Paco Jones, un aventurero español de 35 años que tras innumerables fracasos acabo sus días trabajando en correos. Sin embargo, uno de sus monotonos dias de trabajo recibe una botella de cristal que en su interior tenía una gran revelación. Este lee que la carta viene de la Atlantida, por parte de un grupo que se hace llamar las lechuzas. Este, si bien al principio se muestra exceptico, acaba convenciendose gracias a una imagen en la que se ve un lugar rodeado de una cúpula con muchos hombres pez. Decidido a retomar su carrera como aventurero, decide guardarse la información para si mismo e intentar explorar esta maravillosa ciudad. Para lograr llegar a ella pide prestado un submarino bajo la promesa de devolverlo junto a una gran suma de dinero. También gasta sus ahorros para construirse un disfraz de pescado, para poder camuflarse entre los atlantes, ya que no sabia si estos serían hostiles o no. Tras un largo viaje logra llegar a la gran Atlantida, en donde, tras explorar un poco sus calles se encuentra con un hombre-salmón que cansado se su trabajo decide relegarlo en Paco. Dicho trabajo consistía en la gestión de correo de la Atlantida. Aunque de primeras esto no le convence, decide tomarlo para recaudar información. Es asi como inicía su gran aventura en Atlantis.
 
+#### Jefe oficina
+El jefe dirige la oficina de correos y es el encargado de comprobar que todo vaya bien por la oficina y que trabajes acorde a las cuotas. 
+Lo conoces en la puerta de la oficina, cabreado contigo, ya que llevas el uniforme de trabajo y el anterior empleado salió corriendo dejandote su trabajo, y será estricto contigo ya que últimamente no se ha estado trabajando bien.
+El jefe de oficina será encargado de pagarte cuando acabas los días, así como amonestarte si cometes muchas infracciones.
+De normal no te lo encontrarás en la fase de exploración salvo en los días 1, 5 y 10 que te explicará algo. En los días 5 y 10 te desbloqueará distritos ya que te has estado portando bien.
+
 ### NPC Grandes
 
 #### Vagabundo
@@ -213,6 +221,7 @@ Anemos Tokugawa es actualmente un vagabundo que pasa sus días bebiendo con el p
 Cómo se llevó a cabo la traición: El secretario real obtuvo veneno de pez globo del mismísimo padre de Glover Globus a cambio de ser este mismo el que manejara todo el comercio atlante.
 Estuvo malviviendo en las calles del distrito de Hestia mendigando, rebuscando los cubos de basura y robando en los otros distritos, lo cual le permitió tener una visión más amplia de las injusticias sufridas por cada distrito del reino.
 En la actualidad toda la información sobre los humanos y su propio destino como rey le es indiferente y se encuentra en un penoso estado maldiciendo su miserable vida.
+Actúa de forma amigable y de colegueo con el protagonista, y de forma filosófica y fuerte cuando habla sobre su situación con el secretario del rey. Cree que Poseidón ha abandonado a su pueblo y 
 APARIENCIA: Anemos es una carpa koi, la cual se encuentra en un estado de extrema hambruna. este viste con unos ropajes rasgados y holgados que usa para ocultar su lamentable estado. Este oculta su cara con una capucha, asomando únicamente su boca, bigotes y perilla. Este tiene colores vivos a pesar de estos, siendo principalmente el blanco y el rojo.
 
 ### Finales
@@ -221,13 +230,16 @@ APARIENCIA: Anemos es una carpa koi, la cual se encuentra en un estado de extrem
 #### Secretario del rey
 
 Gargafiel Mustaki es un pez gato de tamaño diminuto el cual nació y se crió en el distrito de Hestia. Desde pequeño mostró una gran ambición y una necesidad casi psicótica de controlar todo a su alrededor. Esta obsesión le provocó diferentes problemas en todos los sitios a los que intentaba ir a trabajar, ya que no le gustaba recibir órdenes de nadie. Poco a poco en sus puestos de trabajo sus superiores desaparecen en circunstancias sospechosas pero debido a su extremadamente pequeño tamaño y su habilidad para desviar la atención, nadie sospechaba de él. Fue de esta forma como poco a poco fue escalando posiciones socialmente, pasando de campesino peón a líder de campo, de ahí a aprendiz de artesano para después volverse un maestro de las herramientas, después inició un periodo como pequeño vendedor a la nobleza, hasta que poco a poco se le asignó la venta de productos a su majestad. Una vez conoció a este, utilizó su fina labia para embaucar y que así le diera un cargo dentro del castillo. Poco a poco gracias a sus acertados consejos que le daba al rey, se fue ganando su favor hasta acabar siendo su mano derecha. Sin embargo, un día que investigaba la biblioteca real, se topó con un libro que revelaba la existencia de los humanos y la superficie. Esto le impactó de primeras, lo que en poco tiempo acabó convirtiéndose en una rabia hacia el rey debido a que sentía menosprecio hacia su persona por no revelarle tal noticia, teniendo él que descubrirlo por su cuenta. Es por ello que convencido de la ineptitud del rey decide asesinarlo con la ayuda de un comerciante llamado Glande Globus, el cual accedió darle veneno a cambio de una mejor posición en el distrito de Hermes. Una vez consiguió dicho brebaje envenenó al rey sirviendo una taza con dicha ponzoña. Esto acabó matando al rey, todo ello bajo los ojos de su único heredero, en aquel entonces de 8 años. Gargafiel decido amenazarle y drogarle, dejándole a su suerte en el distrito de Hestia. Por último decidió reinar la Atlántida desde las sombras, ocultando en todo momento el estado del rey bajo la excusa de que le protegía de un atentado terrorista. En cuanto a la información sobre los humanos, decidió guardarla por el momento, para evitar así un estado de histeria colectiva que acabase revelando su horrible delito. 
+Actúa de forma cordial y amenazante con el protagonista, también de forma ambiciosa y loca cuando habla de su afán por conocer humanos. Cree que Poseidón creó la especie de los pez-humano como superiores a los seres humanos, y para comprobar si son dignos, les castigó a vivir en las mayores profundidades. Cree que si llegan a la superficie, Poseidón les ayudará a reconquistar el exterior y vivir a sus anchas.
 
 Gargafiel es un pez gato de estatura diminuta, con ojos achinados y un gran y largo bigote. Este tiene una expresión sería y enfadada. Casi siempre se dirige con prepotencia a la gente y viste una larga sotana de tonos azul marinos unida por unos trozos de madera enrollados.
 
 Este es increiblemente astuto y perspicaz, con una capacidad de convencer y manipular casi absurda. Siempre se excusa con sus errores, no siendo capaz de admitir ningun fallo. Suele estar tan metido en sus ideas y planes que a no se que le sirva para uno de ellos, no le dará ninguna importancia a la persona que le hable. Tiene un gran complejo con su tamaño asi que se enfada con todo aquel que lo mencione. Es muy reservado con la mayor parte de la gente, contestando lo más seco posible, midiendo al milimetro sus palabras.
 
 ##### Finales
+MaxiFinal: El secretario poco a poco te va mostrando su obsesión por los humanos y su afán por conocerlos. También su obsesión por Poseidón y su creencia de que el pueblo de Atlantis es superior a los humanos y que él les ayudará a reconquistar la Tierra una vez logren resurgir a la superficie.
 
+Malo (No consigues maxiFinal con ningún NPC grande): Debido a la mala situación campesina, se comenzaron a hacer revueltas y protestas en contra del rey. Gargafiel aseguró que el rey no estaba haciendo nada malo y que el problema lo tenían ellos, llegando a instaurar medidas incluso más severas, haciendo abuso de su gran poder. No obstante, esto solo hizo empeorar la situación, provocando una revolución armada que irrumpió en el palacio real en búsqueda de la cabeza del rey. Al descubrir que la figura del rey era falsa, el pueblo asesinó brutalmente a Gargafiel mientras él rogaba a Poseidón que le salvase. La nobleza gobernó desde entonces hasta instaurar un nuevo linaje de reyes. El pueblo nunca sabrá la verdad de los humanos y continuará bajo el mar por los tiempos de los tiempos.
 ### NPC Menores
 
 #### Campesino
