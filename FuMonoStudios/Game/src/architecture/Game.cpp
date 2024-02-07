@@ -46,6 +46,20 @@ void Game::run()
 	}
 }
 
+/// <summary>
+/// carga la escena indicada por el Id
+/// se ejecutara la ultima de la cadena de proceso
+/// </summary>
+/// <param name="scene"></param>
+void Game::loadScene(ecs::sc::sceneId scene)
+{
+	//llamar al init de la escena a cargar????
+	//gameScenes[scene].init();
+	//cargamos la escena
+	loadedScenes.push_back(&gameScenes[scene]);
+}
+
+
 void Game::update()
 {
 	for (auto& scene : loadedScenes) {

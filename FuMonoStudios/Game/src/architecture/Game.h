@@ -2,6 +2,7 @@
 #include<list>
 #include "Scene.h"
 #include <SDL.h>
+#include <array>
 #include "../sdlutils/SDLUtils.h"
 class Game
 {
@@ -9,13 +10,14 @@ public:
 	Game();
 	~Game();
 	void run();
+	void loadScene(ecs::sc::sceneId scene);
 private:
 	void update();
 	void render();
 	//lista de escenas a procesar
 	std::vector<ecs::Scene*> loadedScenes;
 	//lista de todas las escenas del juego
-	std::vector<ecs::Scene> gameScenes;
+	std::array<ecs::Scene,ecs::sc::maxSceneId> gameScenes;
 	bool exit;
 	SDL_Window* window;
 	SDL_Renderer* renderer;

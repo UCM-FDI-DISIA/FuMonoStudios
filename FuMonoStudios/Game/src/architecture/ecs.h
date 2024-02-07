@@ -16,6 +16,13 @@ namespace ecs {
 		};
 		constexpr cmpId_t maxComponentId = _LAST_CMP_ID;
 	}
+	using scId_t = uint8_t;
+	namespace sc {
+		enum sceneId : scId_t {
+			_LAST_SCENE
+		};
+		constexpr sceneId maxSceneId = _LAST_SCENE;
+	}
 
 	class Component {
 	public:
