@@ -355,3 +355,40 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 
 **MaxiFeliz**
 : Glover acabo dandose cuenta de que las mentiras de su padre no solo habían nublado su juicio, sino que también impidieron que los distritos del anillo exterior e interior pudieran aprender a comvivir unos con otros. Es por ello que la empresa de Glover paso a convertirse en un puro intermediario que servía para mediar entre el comercio de campesinos y artesanos con los burgueses. La empresa paso a cobrar tan solo una minima comisión de cada venta, lo que mejoró enormemente la calidad de vida de los anillos exteriores al mismo tiempo que se le daba una lección de aceptación y mentalidad abierta a los anillos interiores. Poco a poco su empresa fue ganando menos al haber una mejor convivencia entre las personas. Al final la empresa no pudo sostenerse por más tiempo y acabo quebrando. Aunque lejos de estar triste Glover se alegró de esto, ya que suponía el acercamiento de los distintos distritos entre sí. Con la fortuna que amaso su familia por decadas, Glover pudo hacerse con una casa humilde en su querido distrito de Hermes, donde pudo admirar cada día los frutos de su trabajo. Al final Glover paso a la historia como una de las primeras personas en dar el paso a la paz y colaboración entre distritos.
+
+
+### Dialogos
+
+#### Contable
+
+**Presentacion**
+"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo.
+
+**Felicidad minimo**
+"Como puedes ser asi de malo conmigo. No solo no me quieres ayudar en nada, sino que además haces todo lo posible para arruinar el negocio que tanto le a costado a mi familia sacar adelante. Pues sabes que estoy harto de tí y tus... y tus... y TUS ESTUPIDOS PAQUETES. No vuelvas a hablar conmigo"
+
+**Felicidad maximo**
+"Sabes, nunca antes nadie se había preocupado así por mi. Aunque la gente no lo crea noto muchas de las cosas que pasan a mi alrededor, por eso se que no tengo demasiados amigos, solo gente interesada en mi posición y poder. Pero a ti no te tiembla la voz al decirme las verdades a la cara y ayudandome en mis peores momentos. Te lo agradezco, espero que tu también me consideres como un amigo. Por toda tu ayuda por favor acepta esto de mi parte, no es mucho pero te ayudará"
+
+**Genericos**
+
+- **Malos:**
+  - "Ahora no puedo hablar. ¿Tienes alguna mínima idea del estres que supone manejar una empresa que se va al garete por el egoismo de muchas personas? No ¿verdad?, pues por favor vete y dejame trabajar."
+  - "Sabes, varios de los envios a mi empresa se han perdido. No quiero meterme en tus asuntos ni incomodarte pero por favor intenta tener más cuidado. Muchas familias dependen de la gestión que hacemos asi que haz tu mayor esfuerzo para no retrasarnos."
+  - "No entiendo porque la vida me trata asi. Yo siempre he intentado ser amable con todos, y que recibo a cambio, malas noticias y ninguna ayuda. Creo que ire a mi casa a comer algo y asi relajarme un poco." 
+
+- **Neutrales:**
+  - "Anda pero si es mi pimpollo favorito, Paco. Sabes no se como lo haces para tener una mira con tanta seguridad. Yo sin embargo soy un manojo de nervios jijiji, creo que el estres hace que me inche aunque no estoy seguro."
+  - "Hombre Paco, que tal te va la vida. Yo la verdad no me puedo quejar, la empresa marcha igual que siempre, aunque ultimamente he notado un pelín molestos a los campesinos. Sea como sea, los negocios no paran asi que no hay tanto problema."
+  - "No se si te lo conte alguna vez Paco pero antes el distrito de Hermes era muy diferente. Cuando mi padre aún no monto la empresa, este distrito estaba lleno de mercados ambulantes por todos lados. La verdad es que la organización era un desastre, y se escuchaban gritos de aqui para alla. Sin embargo el ambiente tenía algo único que no te se decir aún. Ojala poder replicarlo con mi empresa algún día."
+
+- **Felices:**
+  - "Muy buenos días Paco. Sabes desde hace un tiempo me he ido preguntando si realmente los campesinos y artesanos necesitan un intermediario. La verdad es que me encantaría que los anillos pudieran convivir en paz, pero por experiencia propia se que tanto los unos como los otros se odian mucho. Ojala pueda cambiar eso en algún momento."
+  - "Pero bueno Paco hoy resplandeces. Oye muchisimas gracias por haberme ayudado con el tema de los paquetes. Sabes, nunca he tenido demasiada ayuda, de pequeño se me hacia dificil hacer amigos ya que había un grupo de delfines que no paraban de reirse de mi físico, esto ha hecho qu me vuelva bastante tímido. Aunque la verdad es que contigo me siento realmente comodo siempre, muchas gracias."
+  - "Paco, ¿no me notas diferente? En efecto he logrado reducir un poco mi tamaño. En realidad yo soy un pez bastante flaco pero el estres y los nervios hacen que me inche hasta 3 veces mi tamaño normal. Estos últimos días ha sido más fácil todo el trabajo, por lo que me siento hecho un figurín, jijiji."
+
+ - **MaxiFeliz**
+  - "Ultimamente he estado pensando en como acercar unos a los otros a los habitantes de los anillos exteriores e interiores y creo haber dado con la solución, no es seguro y hace falta que le heche valor para proponer esto a todos los de mi empresa. Aunque no me cabe la menor duda de que con tu apoyo podré seguir mi instinto."
+  - "Sabes Paco, no me suele gustar mucho hablar de mi padre. Puede que haya sido el mayor empresario de la Atlantida pero como padre dejaba bastante que desear. Se solia asentar mucho de casa y mi madre y yo siempre sentiamos como que ocultaba algo. Cada vez dudo incluso más de las pocas cosas que me dijo en su día. Creo que debo seguir mi propia intuición acerca del rumbo de la empresa. Gracias por escucharme Paco, me alegro de tener un amigo tan bueno como tú."
+  - "Lo creas o no, cuando se trata de negocios no soy tan amable jijiji. Antes de que mi padre dejara este mundo me enseño un par de técnicas para conseguir mejores tratos en los típicos toma y daca. Siempre que necesites ayuda para un negocio avisame, estaré encantado de ayudar a mi mejor amigo con cualquiera de sus problemas, al igual que tu me ayudas con los mios.
+
