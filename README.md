@@ -18,10 +18,10 @@
       - [NPCs especiales](#npcs-especiales)
       - [Mejoras de los NPC](#mejoras-de-los-npc)
       - [Hablar con personajes](#hablar-con-personajes)
+      - [Funcionamiento de eventos/sidequest de los NPC](#funcionamiento-de-eventossidequest-de-los-npc)
   - [Diseño](#diseño)
     - [Fase de exploracion](#fase-de-exploracion)
     - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
-    - [Finales](#finales-1)
   - [Arte](#arte)
     - [Paletas de color](#paletas-de-color)
     - [Lugares](#lugares)
@@ -31,21 +31,24 @@
     - [Narrativa de Atlantis](#narrativa-de-atlantis)
       - [Funcionamiento interno de la Atlantida](#funcionamiento-interno-de-la-atlantida)
     - [Personajes](#personajes)
-    - [Protagonista](#protagonista)
-    - [Jefe oficina](#jefe-oficina)
-      - [NPC Grandes](#npc-grandes)
-      - [NPC Menores](#npc-menores)
-        
-        - [Campesino](#campesino)
-        - [Artesano](#artesano)
-          - [Finales](#finales-2)
-        - [Vagabundo](#vagabundo)
-        - [Tarotisa](#tarotisa)
-        - [Soldado](#soldado)
-        - [Contable](#contable)
-          - [Finales](#finales-3)
+      - [Protagonista](#protagonista)
+      - [Jefe oficina](#jefe-oficina)
+    - [NPC Grandes](#npc-grandes)
+      - [Vagabundo](#vagabundo)
+    - [Finales](#finales-1)
       - [Secretario del rey](#secretario-del-rey)
+        - [Finales](#finales-2)
+    - [NPC Menores](#npc-menores)
+      - [Campesino](#campesino)
+      - [Artesano](#artesano)
+        - [Finales](#finales-3)
+      - [Tarotisa](#tarotisa)
         - [Finales](#finales-4)
+      - [Soldado](#soldado)
+      - [Contable](#contable)
+        - [Finales](#finales-5)
+    - [Dialogos](#dialogos)
+      - [Contable](#contable-1)
 
 ---
 
@@ -81,6 +84,17 @@ Cada paquete tendrá un bloque de texto donde se podrá leer: **nombre**, **cóg
 
 El jugador deberá comprobar que el **código postal** y el barrio son validos. Esto es que el **código postal** exista y que el **barrio** pertenezca al distrito al que va asociado el **codigo postal**. Para comprobar estas cosas el jugador cuenta con un **manual de trabajo** donde están enlistados los distritos con sus barrios.
 
+|Codigo|Distrito|Calles|
+|---|---|---|
+|001|Distrito 1|C/1 <br> C/2 <br>C/3|
+|010|Distrito 2|C/1 <br> C/2 <br>C/3|
+|011|Distrito 3|C/1 <br> C/2 <br>C/3|
+|101|Distrito 4|C/1 <br> C/2 <br>C/3|
+|101|Distrito 5|C/1 <br> C/2 <br>C/3|
+|110|Distrito 6|C/1 <br> C/2 <br>C/3|
+|111|Distrito 7|C/1 <br> C/2 <br>C/3|
+
+
 ##### Manual de trabajo
 El jugador contará con una libreta que podrá abrir (situada en la zona inferior derecha). En esta se podrán ver distintas páginas que explicarán en cada una de ellas las mecánicas sobre los paquetes que el jugador tenga disponibles. Por tanto debe haber las siguientes páginas al final de juego:
  - [Direcciones y cintas de colores](#direcciones)
@@ -96,8 +110,8 @@ En el caso de que la **dirección** sea correcta el jugador deberá emplear un s
 Llegado cierto punto se exigirá al jugador detectar la falsificación de **sellos**. En el **manual de trabajo** se añadirá una entrada para ver los **sellos** auténticos. 
 
 Existen 5 tipos de sellos:
-- **Alimento**
-- **Medicinas**
+- **Alimento** ![Imagen Sello]()
+- **Medicinas** 
 - **Joyas**
 - **Materiales**
 - **Armamento**
@@ -177,19 +191,19 @@ En esta fase el jugador podra recorrer el mapa en primera persona moviendose por
 Durante la fase de gestíon el jugador deberá comprobar la validez de los **paquetes** esto llevará a distintos minijuegos que se irán añadiendo con el transcurso de los días. Cada nueva capa añadidida le irá obligando a estar más atento a los detalles en cada paquete.
 
 *Amonestaciones*
-El número de paquetes que se puede fallar sin penalizar en el ingreso al final del día irá bajando conforme avanzan los días. Se avisará al jugador cuando le falte 1 fallo para penalizar. Una vez penalizado, el ingreso del día del jugador se dividirá por 2 y por cada paquete fallado más allá se irá bajando un 5 por ciento a lo que queda, es decir, si queda por cobrar 100 y se falla uno, se restará un 5 por ciento de 100 que son 5, luego 5 por ciento de 95 y así.
+: El **número de paquetes** que se puede **fallar** sin penalizar en el ingreso al final del día irá **bajando** conforme avanzan los días. Se *avisará* al jugador cuando le falte 1 fallo para penalizar. Una vez penalizado, el **ingreso** del día del jugador se **dividirá por 2** y por cada **paquete fallado más** allá se irá bajando un **5 por ciento a lo que queda**, es decir, si queda por cobrar 100 y se falla uno, se restará un 5 por ciento de 100 que son 5, luego 5 por ciento de 95 y así.
 
 *Condiciones especiales del jefe Oficina*
-El día después de añadir una mecánica, es decir, los días impares salvo el 1, el jefe te esperará en la oficina para decirte una condición extra que debes cumplir para todos los paquetes. Esto afectará a todos, sean de NPC o no. Un ejemplo sería "Ha habido obras en el transporte de paquetes a Demeter, todos los paquetes dirigidos a Demeter deben ser descartados". Si incumples esto, contará como fallo.
+: El *día después de añadir una mecánica*, es decir, los **días impares** salvo el 1, el jefe te esperará en la oficina para decirte una **condición extra** que debes cumplir para **todos los paquetes**. Esto afectará a todos, sean de NPC o no. Un ejemplo sería "*Ha habido obras en el transporte de paquetes a Demeter, todos los paquetes dirigidos a Demeter deben ser descartados*". Si incumples esto, **contará como fallo**.
 
 *Paquetes especiales de NPC*
-Los NPC podrán asignar eventos que spawneen paquetes especiales a lo largo de la jornada. Estos paquetes compondrán una lista que poco a poco irán saliendo intentando salir todos antes de acabar el tiempo. Si el jugador promedio consiguiese 30 paquetes en ese día se enseñarán todos los paquetes de evento hasta antes del paquete 20. Estos paquetes serán completamente idénticos a los que pueden salir en ese día, salvo las cualidades especiales que lleve el evento.
-Por ejemplo, la medium pide que los paquetes de medicina que van hacia el distrito hestia vayan hacia el distrito de demeter, y en total serán 3. 
+: Los NPC podrán **asignar eventos** que spawneen paquetes especiales a lo largo de la jornada. Estos paquetes compondrán una lista que poco a poco irán saliendo intentando salir todos antes de acabar el tiempo. Si el jugador promedio consiguiese 30 paquetes en ese día se enseñarán todos los paquetes de evento hasta antes del paquete 20. Estos paquetes serán completamente idénticos a los que pueden salir en ese día, salvo las cualidades especiales que lleve el evento.
+Por ejemplo, la medium pide que los paquetes de medicina que van hacia el distrito hestia vayan hacia el distrito de demeter, y en total serán 3.
 Estos paquetes serán identicos al resto, es decir, si en ese día se ha desbloqueado el sello de pesaje, estos paquetes podrán llevar el sello de pesaje y así. Es de notar que serán correctos, osea que no tendrán nada ilegal ni fuera de lugar, lo único que cambiará será las características del evento, en el caso del medium, será que mandará medicinas y irá a Hestia.
-Si queda 1 minuto de juego, los paquetes que falten por salir saldrán 100% para evitar penalizar a jugadores muy lentos.
-Si se mandan a donde deben ir, no penalizarán, pero no hará feliz al NPC, sin embargo si hacemos lo que pidió el evento, penalizará y el NPC será feliz.
+Si queda **1 minuto de juego**, los paquetes que falten por salir **saldrán 100%** para evitar penalizar a jugadores muy lentos.
+Si *se mandan a donde deben ir*, **no penalizarán**, pero **no hará feliz** al NPC, sin embargo *si hacemos lo que pidió el evento*, **penalizará** y el **NPC será feliz**.
 
-Estos eventos pueden ser sobre todo tipo de características de los paquetes, no dejar pasar paquetes de un nombre, redirigir paquetes de medicina de un distrito a otro, descartar paquetes que pesen X, tirar todos los paquetes de una calle, etc...
+Estos eventos pueden ser sobre todo tipo de características de los paquetes, *no dejar pasar paquetes de un nombre*, *redirigir paquetes de medicina de un distrito a otro*, *descartar paquetes que pesen X*, *tirar todos los paquetes de una calle*, etc...
 
 Para facilitar este sistema y evitar que salgan más fallos de los que tienen que ser, cada evento tendrá un número de paquetes que van a salir, y se añadirá a una lista los paquetes que no podrán salir de forma random. Por ejemplo, si un evento hace que los paquetes de medicina de Hestia deben ser eliminados y que van a salir 2, haremos que durante el día no puedan salir generados de forma random paquetes de medicina de Hestia, para que no se genere uno random y en vez de 2 salgan 3 y así.
 Luego se añadirá a una queue los paquetes especiales que deben salir y saldrán dispersados durante el día.
