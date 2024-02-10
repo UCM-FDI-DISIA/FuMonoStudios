@@ -376,7 +376,7 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 #### Contable
 
 **Presentacion**
-"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo.
+"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo."
 
 **Felicidad minimo**
 "Como puedes ser asi de malo conmigo. No solo no me quieres ayudar en nada, sino que además haces todo lo posible para arruinar el negocio que tanto le a costado a mi familia sacar adelante. Pues sabes que estoy harto de tí y tus... y tus... y TUS ESTUPIDOS PAQUETES. No vuelvas a hablar conmigo"
@@ -388,21 +388,94 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 
 - **Malos:**
   - "Ahora no puedo hablar. ¿Tienes alguna mínima idea del estres que supone manejar una empresa que se va al garete por el egoismo de muchas personas? No ¿verdad?, pues por favor vete y dejame trabajar."
+
   - "Sabes, varios de los envios a mi empresa se han perdido. No quiero meterme en tus asuntos ni incomodarte pero por favor intenta tener más cuidado. Muchas familias dependen de la gestión que hacemos asi que haz tu mayor esfuerzo para no retrasarnos."
+
   - "No entiendo porque la vida me trata asi. Yo siempre he intentado ser amable con todos, y que recibo a cambio, malas noticias y ninguna ayuda. Creo que ire a mi casa a comer algo y asi relajarme un poco." 
 
 - **Neutrales:**
   - "Anda pero si es mi pimpollo favorito, Paco. Sabes no se como lo haces para tener una mira con tanta seguridad. Yo sin embargo soy un manojo de nervios jijiji, creo que el estres hace que me inche aunque no estoy seguro."
+
   - "Hombre Paco, que tal te va la vida. Yo la verdad no me puedo quejar, la empresa marcha igual que siempre, aunque ultimamente he notado un pelín molestos a los campesinos. Sea como sea, los negocios no paran asi que no hay tanto problema."
+
   - "No se si te lo conte alguna vez Paco pero antes el distrito de Hermes era muy diferente. Cuando mi padre aún no monto la empresa, este distrito estaba lleno de mercados ambulantes por todos lados. La verdad es que la organización era un desastre, y se escuchaban gritos de aqui para alla. Sin embargo el ambiente tenía algo único que no te se decir aún. Ojala poder replicarlo con mi empresa algún día."
 
 - **Felices:**
   - "Muy buenos días Paco. Sabes desde hace un tiempo me he ido preguntando si realmente los campesinos y artesanos necesitan un intermediario. La verdad es que me encantaría que los anillos pudieran convivir en paz, pero por experiencia propia se que tanto los unos como los otros se odian mucho. Ojala pueda cambiar eso en algún momento."
+
   - "Pero bueno Paco hoy resplandeces. Oye muchisimas gracias por haberme ayudado con el tema de los paquetes. Sabes, nunca he tenido demasiada ayuda, de pequeño se me hacia dificil hacer amigos ya que había un grupo de delfines que no paraban de reirse de mi físico, esto ha hecho qu me vuelva bastante tímido. Aunque la verdad es que contigo me siento realmente comodo siempre, muchas gracias."
+
   - "Paco, ¿no me notas diferente? En efecto he logrado reducir un poco mi tamaño. En realidad yo soy un pez bastante flaco pero el estres y los nervios hacen que me inche hasta 3 veces mi tamaño normal. Estos últimos días ha sido más fácil todo el trabajo, por lo que me siento hecho un figurín, jijiji."
 
  - **MaxiFeliz**
   - "Ultimamente he estado pensando en como acercar unos a los otros a los habitantes de los anillos exteriores e interiores y creo haber dado con la solución, no es seguro y hace falta que le heche valor para proponer esto a todos los de mi empresa. Aunque no me cabe la menor duda de que con tu apoyo podré seguir mi instinto."
+
   - "Sabes Paco, no me suele gustar mucho hablar de mi padre. Puede que haya sido el mayor empresario de la Atlantida pero como padre dejaba bastante que desear. Se solia asentar mucho de casa y mi madre y yo siempre sentiamos como que ocultaba algo. Cada vez dudo incluso más de las pocas cosas que me dijo en su día. Creo que debo seguir mi propia intuición acerca del rumbo de la empresa. Gracias por escucharme Paco, me alegro de tener un amigo tan bueno como tú."
+
   - "Lo creas o no, cuando se trata de negocios no soy tan amable jijiji. Antes de que mi padre dejara este mundo me enseño un par de técnicas para conseguir mejores tratos en los típicos toma y daca. Siempre que necesites ayuda para un negocio avisame, estaré encantado de ayudar a mi mejor amigo con cualquiera de sus problemas, al igual que tu me ayudas con los mios.
+
+**Eventos**
+  - "No se que voy a hacer, los campesinos se han enfadado por el precio que les he ofrecido y no me han querido vender las cosechas. Los nobles no van a ser capaces de aguantar sin esa comida, se van a enfadar y la empresa lo va a pasar mal, que puedo hacer. Ya se, no podrías por favor redigirir un par de paquetes de alimentos hasta el distrito de Hermes, te lo agradecería de verdad."
+
+  - "Madre mia Paco, no puedo estar más estresado. Ayer uno de mis clientes más importantes se porto muy mal conmigo, insultandome solo por un pequeño retraso que tuvimos con la llegada de sus artículos. Para desahogarme decidí escribir una nota poniendo todo lo que pensaba de él. Sin embargo mi secretaria penso que era una carta y la envió por correo. Si esa carta acaba llegando al cliente no se que voy a hacer."
+
+  - "Sabes pimpollo, mi empresa no solo vende la cosecha de los campesinos, también los trabajos de los artesanos. Estos son igual de importantes y valorados que los alimentos, aunque deben de tratarse con más cuidado ya que suelen ser fragiles. Hoy mismo yo en persona le he enviado al mismisimo rey una de esas... esperá. O Poseidón mio, se me ha olvidado el sello de fragilidad, por favor cuando veas mi paquete envuelvelo aunque no tenga el sello, sino quién sabe que le podría pasar. Un día de estos pierdo la cabeza."
+
+  - "Paco nunca le he dicho esto a nadie pero necesito tu ayuda. Lo creas o no, aunque mi padre montó esta exitosa empresa, no lo hizo de la nada, tuvo que pedir muchos favores a muchas personas. Sabes esas cargas están yendo a mi ahora. Un grupo de delfines con los que mi padre negociaba me están reclamando cierto dinero que les debemos. Yo sacaría eso de los fondos de la empresa pero mancharía el nombre de mi padre por negociar con tales rufianes. No podrías quiza desviar algunas joyas hacía el distrito de Hermes, con un paquete será más que suficiente. De verdad que me sabe fatal pedirte esto pero no puedo acudir a nadie más."
+
+  - "Ultimamente las ventas de alimentos no están marchando demasiado bien, no se muy bien como pero parece que los habitantes del distrito de Apolo están obteniendo cosechas de otra parte. Dudo que sea de los campesinos ya que la compra de productos a estos no ha disminuido ni un poco. Esto me huele muy mal, quiza si un par de paquetes de comida que se diríjan al distrito de Apolo se extravían, vuelvan a comprar nuestros recursos. Se que suena mal pero de verdad que lo hago principalmente por los campesinos, si no vendemos tampoco podemos comprarles a ellos y acabarán totalmente arruinados."
+
+
+  #### Tarotista
+
+**Presentacion**
+"Bendita la carne fresca, que tenemos por aquí. Joven tu debes ser nuevo en el reino ¿o me equivoco?. No hace falta que respondas, yo nunca me equivoco, ¿sabes porque?, por que puedo ver el futuro. Mi nombre es Abigail Ampoule y soy una reconocida tarotista. Secretos, engaños, enfermedades y todo lo demás, nada puede escapar de mi conocimiento, la luz de mi cabeza me muestra cualquier cosa. Ven a verme siempre que te preocupe algo, yo siempre estoy aquí para las pobres almas sin rumbo ni ambiciones.
+
+**Felicidad minimo**
+"Tu maldito atún sarnoso y desagradecido. No solo no me ayudas en mi negocio sino que encima me lo pones todo más difícil. Realmente te crees tan superior en tu pequeña posición de poder. Solo por manejar los paquetes del reino te crees en tu derecho de hacer imposible la vida de las personas, en especial de una pobre anciana como yo. Escuchame atentamente lo que te digo, que caigan mil y una desgracias en tu vida, que todo ese egoismo te atragante hasta no dejarte respirar en paz, asi lo pido a los más grandes. No quiero volver a verte jamás en mi vida."
+
+**Felicidad maximo**
+"Realmente tienes un corazón puro muchacho. Se que mi oficio no es especialmente noble, tu también lo descubriste a lo largo del tiempo, pero no me repudiaste por eso, sino que vertiste en mi una esperanza de cambio. Quiero que sepas que tu amabilidad le ha llegado a este arrugado corazón. Realmente me cuesta creer que esta podrida ciudad haya dado lugar a alguien tan empático, quiza incluso no seas de aquí. Sea como sea, es tu vida y yo no me voy a meter en ella. Muchas gracias por todo, acepta esto, quiza te aclare las dudas que tienes en la cabeza."
+
+**Genericos**
+
+- **Malos:**
+  - "La gente de este distrito esa absoluta basura, esos creidos de los boticarios se creen que me pueden tener trabajando a mi, una pobre anciana noche y día para al final darme una miseria. Yo soy la que lee el futuro a la gente para que acudan a sus estupidas tiendas. Y tu muchacho largate de aqui ahora mismo que no estoy de humor."
+
+  - "La primera vez que te ví sentí que tenías cara de bobo y ahora veo que no me equivocaba, no se que harás durante tus horas de trabajo pero siempre me llegan mal los paquetes o directamente no me llegan. Tampoco creo que haga falta ser adivino para enviar un par de cositas.
+
+  - "No entiendo porque la vida me trata asi. Yo siempre he intentado ser amable con todos, y que recibo a cambio, malas noticias y ninguna ayuda. Creo que ire a mi casa a comer algo y asi relajarme un poco." 
+
+- **Neutrales:**
+  - "Anda pero si es mi pimpollo favorito, Paco. Sabes no se como lo haces para tener una mira con tanta seguridad. Yo sin embargo soy un manojo de nervios jijiji, creo que el estres hace que me inche aunque no estoy seguro."
+
+  - "Hombre Paco, que tal te va la vida. Yo la verdad no me puedo quejar, la empresa marcha igual que siempre, aunque ultimamente he notado un pelín molestos a los campesinos. Sea como sea, los negocios no paran asi que no hay tanto problema."
+
+  - "No se si te lo conte alguna vez Paco pero antes el distrito de Hermes era muy diferente. Cuando mi padre aún no monto la empresa, este distrito estaba lleno de mercados ambulantes por todos lados. La verdad es que la organización era un desastre, y se escuchaban gritos de aqui para alla. Sin embargo el ambiente tenía algo único que no te se decir aún. Ojala poder replicarlo con mi empresa algún día."
+
+- **Felices:**
+  - "Muy buenos días Paco. Sabes desde hace un tiempo me he ido preguntando si realmente los campesinos y artesanos necesitan un intermediario. La verdad es que me encantaría que los anillos pudieran convivir en paz, pero por experiencia propia se que tanto los unos como los otros se odian mucho. Ojala pueda cambiar eso en algún momento."
+
+  - "Pero bueno Paco hoy resplandeces. Oye muchisimas gracias por haberme ayudado con el tema de los paquetes. Sabes, nunca he tenido demasiada ayuda, de pequeño se me hacia dificil hacer amigos ya que había un grupo de delfines que no paraban de reirse de mi físico, esto ha hecho qu me vuelva bastante tímido. Aunque la verdad es que contigo me siento realmente comodo siempre, muchas gracias."
+
+  - "Paco, ¿no me notas diferente? En efecto he logrado reducir un poco mi tamaño. En realidad yo soy un pez bastante flaco pero el estres y los nervios hacen que me inche hasta 3 veces mi tamaño normal. Estos últimos días ha sido más fácil todo el trabajo, por lo que me siento hecho un figurín, jijiji."
+
+ - **MaxiFeliz**
+  - "Ultimamente he estado pensando en como acercar unos a los otros a los habitantes de los anillos exteriores e interiores y creo haber dado con la solución, no es seguro y hace falta que le heche valor para proponer esto a todos los de mi empresa. Aunque no me cabe la menor duda de que con tu apoyo podré seguir mi instinto."
+
+  - "Sabes Paco, no me suele gustar mucho hablar de mi padre. Puede que haya sido el mayor empresario de la Atlantida pero como padre dejaba bastante que desear. Se solia asentar mucho de casa y mi madre y yo siempre sentiamos como que ocultaba algo. Cada vez dudo incluso más de las pocas cosas que me dijo en su día. Creo que debo seguir mi propia intuición acerca del rumbo de la empresa. Gracias por escucharme Paco, me alegro de tener un amigo tan bueno como tú."
+
+  - "Lo creas o no, cuando se trata de negocios no soy tan amable jijiji. Antes de que mi padre dejara este mundo me enseño un par de técnicas para conseguir mejores tratos en los típicos toma y daca. Siempre que necesites ayuda para un negocio avisame, estaré encantado de ayudar a mi mejor amigo con cualquiera de sus problemas, al igual que tu me ayudas con los mios.
+
+**Eventos**
+  - "No se que voy a hacer, los campesinos se han enfadado por el precio que les he ofrecido y no me han querido vender las cosechas. Los nobles no van a ser capaces de aguantar sin esa comida, se van a enfadar y la empresa lo va a pasar mal, que puedo hacer. Ya se, no podrías por favor redigirir un par de paquetes de alimentos hasta el distrito de Hermes, te lo agradecería de verdad."
+
+  - "Madre mia Paco, no puedo estar más estresado. Ayer uno de mis clientes más importantes se porto muy mal conmigo, insultandome solo por un pequeño retraso que tuvimos con la llegada de sus artículos. Para desahogarme decidí escribir una nota poniendo todo lo que pensaba de él. Sin embargo mi secretaria penso que era una carta y la envió por correo. Si esa carta acaba llegando al cliente no se que voy a hacer."
+
+  - "Sabes pimpollo, mi empresa no solo vende la cosecha de los campesinos, también los trabajos de los artesanos. Estos son igual de importantes y valorados que los alimentos, aunque deben de tratarse con más cuidado ya que suelen ser fragiles. Hoy mismo yo en persona le he enviado al mismisimo rey una de esas... esperá. O Poseidón mio, se me ha olvidado el sello de fragilidad, por favor cuando veas mi paquete envuelvelo aunque no tenga el sello, sino quién sabe que le podría pasar. Un día de estos pierdo la cabeza."
+  
+  - "Paco nunca le he dicho esto a nadie pero necesito tu ayuda. Lo creas o no, aunque mi padre montó esta exitosa empresa, no lo hizo de la nada, tuvo que pedir muchos favores a muchas personas. Sabes esas cargas están yendo a mi ahora. Un grupo de delfines con los que mi padre negociaba me están reclamando cierto dinero que les debemos. Yo sacaría eso de los fondos de la empresa pero mancharía el nombre de mi padre por negociar con tales rufianes. No podrías quiza desviar algunas joyas hacía el distrito de Hermes, con un paquete será más que suficiente. De verdad que me sabe fatal pedirte esto pero no puedo acudir a nadie más."
+
+  - "Ultimamente las ventas de alimentos no están marchando demasiado bien, no se muy bien como pero parece que los habitantes del distrito de Apolo están obteniendo cosechas de otra parte. Dudo que sea de los campesinos ya que la compra de productos a estos no ha disminuido ni un poco. Esto me huele muy mal, quiza si un par de paquetes de comida que se diríjan al distrito de Apolo se extravían, vuelvan a comprar nuestros recursos. Se que suena mal pero de verdad que lo hago principalmente por los campesinos, si no vendemos tampoco podemos comprarles a ellos y acabarán totalmente arruinados."
+
 
