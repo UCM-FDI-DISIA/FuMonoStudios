@@ -1,13 +1,15 @@
 #pragma once
 #include "../architecture/Scene.h"
 namespace ecs {
-    class MainScene :public Scene
+    class ExplorationScene :
+        public Scene
     {
     public:
-        MainScene();
-        ~MainScene();
+        ExplorationScene();
+        virtual ~ExplorationScene();
 
         void init() override;
     };
 }
+
 

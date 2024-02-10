@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "../sdlutils/InputHandler.h"
 #include "../scenes/MainScene.h"
+#include "../scenes/ExplorationScene.h"
 /*
 TODO
 Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
@@ -17,7 +18,8 @@ Game::Game():exit(false) {
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-	gameScenes = {ecs::MainScene()};
+	gameScenes = {new ecs::MainScene(),new ecs::ExplorationScene()};
+	loadScene(ecs::sc::EXPLORE_SCENE);
 	loadScene(ecs::sc::MAIN_SCENE);
 }
 
@@ -39,7 +41,7 @@ void Game::run()
 		}
 
 		update();
-		sdlutils().clearRenderer();
+		//sdlutils().clearRenderer();
 		render();
 		sdlutils().presentRenderer();
 
@@ -58,9 +60,9 @@ void Game::run()
 void Game::loadScene(ecs::sc::sceneId scene)
 {
 	//llamar al init de la escena a cargar????
-	//gameScenes[scene].init();
+	gameScenes[scene]->init();
 	//cargamos la escena
-	loadedScenes.push_back(&gameScenes[scene]);
+	loadedScenes.push_back(gameScenes[scene]);
 }
 
 /// <summary>
@@ -69,9 +71,10 @@ void Game::loadScene(ecs::sc::sceneId scene)
 /// <param name="scene"></param>
 void Game::killScene(ecs::sc::sceneId scene)
 {
-	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), &gameScenes[scene]);
+	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
 	if (it != loadedScenes.end()) {
 		loadedScenes.erase(it);
+		std::cout << "Scene Killed"<<std::endl;
 	}
 }
 

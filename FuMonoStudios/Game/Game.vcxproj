@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\ExplorationScene.cpp" />
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\architecture\Game.cpp" />
     <ClCompile Include="src\architecture\Scene.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\ExplorationScene.h" />
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\architecture\Game.h" />
     <ClInclude Include="src\architecture\Scene.h" />
