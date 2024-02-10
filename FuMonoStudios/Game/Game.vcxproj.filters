@@ -33,7 +33,7 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen\Json</Filter>
     </ClCompile>
-    <ClCompile Include="dialogo.cpp">
+    <ClCompile Include="Dialogo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado\Json</Filter>
     </ClInclude>
-    <ClInclude Include="dialogo.h">
+    <ClInclude Include="Dialogo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
