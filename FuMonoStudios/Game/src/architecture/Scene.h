@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "../sdlutils/SDLUtils.h"
 namespace ecs {
 	/*
 	Clase base de la que heredaran todas las escenas del juego
@@ -13,7 +14,7 @@ namespace ecs {
 		/// <summary>
 		/// metodo llamado para pasar informacion y para generar las entidades
 		/// </summary>
-		void init();
+		virtual void init();
 
 		//Vamos a querer tener un handle input o procesamos en el update?
 
@@ -26,8 +27,10 @@ namespace ecs {
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
 		void render();
-
+		
 		//Entity* addEntity();
+
+		//void removeEntity();
 
 	protected:
 		std::vector<Entity*> objs_;
