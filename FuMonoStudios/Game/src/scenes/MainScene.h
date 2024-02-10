@@ -5,7 +5,7 @@ namespace ecs {
     {
     public:
         MainScene();
-        ~MainScene();
+        virtual ~MainScene();
 
         void init() override;
     };

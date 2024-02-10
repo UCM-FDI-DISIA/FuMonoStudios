@@ -6,7 +6,7 @@
 
 ecs::MainScene::MainScene()
 {
-	//Entity * obj = addEntity();
+	Entity * obj = addEntity();
 }
 
 ecs::MainScene::~MainScene()

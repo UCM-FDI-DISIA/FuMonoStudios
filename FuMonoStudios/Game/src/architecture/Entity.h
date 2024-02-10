@@ -2,21 +2,20 @@
 #include "ecs.h"
 #include <algorithm>
 #include <array>
-
-class Manager;
+#include "Component.h"
+#include "Scene.h"
+//class Manager;
 
 namespace ecs {
+	class Entity
 	/*
 	TODO:
 	Hacer metodos:
-		update()
-		render()
 		handleInput(SDL_Event& event)???
 	*/
-	class Entity
 	{
 	public:
-		Entity(Manager* mngr) : mngr_(mngr), cmps_(), currCmps_(), alive_() {
+		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -24,14 +23,15 @@ namespace ecs {
 			for (auto c : currCmps_) {
 				delete c;
 			}
+			std::cout << "Entidad destruida"<<std::endl;
 		};
 
-		inline bool isAlive() const;
+		inline bool isAlive() const { return alive_; };
 
 		inline void setAlive(bool alive) { alive_ = alive; };
 
 		//ACCESOR AL MANAGER (Luis va a hacer cositas)
-		//Manager* getMngr() const;
+		inline Scene* getMngr() const { return scene_; };
 
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace ecs {
 		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
 		/// <returns>Puntero al componente creado</returns>
 		template<typename T, typename ...Ts>
-		inline T* addComponent(cmpId_t cId, Ts&&... args) {
+		inline T* addComponent(ecs::cmpId_t cId, Ts&&... args) {
 			T* c = new T(std::forward<Ts>(args)...);
 
 			removeComponent(cId);
@@ -58,7 +58,7 @@ namespace ecs {
 		}
 
 		//Remueve el componente de Entity marcado por cId
-		inline void removeComponent(cmpId_t cId) {
+		inline void removeComponent(ecs::cmpId_t cId) {
 			if (cmps_[cId] != nullptr) {
 				auto iter = std::find(currCmps_.begin(),
 					currCmps_.end(),
@@ -75,7 +75,7 @@ namespace ecs {
 			return static_cast<T*>(cmps_[cId]);
 		}
 		//Comprueba si Entity tiene el componente marcado por cId
-		inline bool hasComponent(cmpId_t cId) {
+		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
 		}
 
@@ -84,6 +84,7 @@ namespace ecs {
 			for (auto i = 0u; i < n; i++) {
 				currCmps_[i]->update();
 			}
+			std::cout << "Entidad Update" << std::endl;
 		}
 
 		inline void render() {
@@ -95,7 +96,7 @@ namespace ecs {
 
 	private:
 		bool alive_;
-		Manager* mngr_;
+		Scene* scene_;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;
 	};

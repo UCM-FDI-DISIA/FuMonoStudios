@@ -1,7 +1,12 @@
 #pragma once
-#include "Entity.h"
 #include "../sdlutils/SDLUtils.h"
+#include "ecs.h"
+//#include "Entity.h"
+
 namespace ecs {
+
+
+	class Entity;
 	/*
 	Clase base de la que heredaran todas las escenas del juego
 	*/
@@ -28,9 +33,9 @@ namespace ecs {
 		/// </summary>
 		void render();
 		
-		//Entity* addEntity();
+		Entity* addEntity();
 
-		//void removeEntity();
+		void removeEntity();
 
 	protected:
 		std::vector<Entity*> objs_;

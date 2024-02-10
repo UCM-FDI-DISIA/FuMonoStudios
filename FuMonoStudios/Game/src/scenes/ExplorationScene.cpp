@@ -10,6 +10,6 @@ ecs::ExplorationScene::~ExplorationScene()
 
 void ecs::ExplorationScene::init()
 {
-	std::cout << "Hola Exploracion";
+	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
 }

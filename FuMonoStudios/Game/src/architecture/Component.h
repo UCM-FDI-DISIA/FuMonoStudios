@@ -1,22 +1,26 @@
 #pragma once
 #include "ecs.h"
-#include "Entity.h"
+//#include "Entity.h"
 
 class Manager;
+namespace ecs {
 
-class Component {
-public:
-	Component() : ent_() {}
-	virtual ~Component() {}
+	class Entity;
 
-	inline void setContext(Entity* ent) {
-		ent_ = ent;
-	}
+	class Component {
+	public:
+		Component() : ent_() {}
+		virtual ~Component() {}
 
-	virtual void initComponent() {};
-	virtual void update() {};
-	virtual void render() {};
-protected:
-	Entity* ent_;
-};
+		inline void setContext(Entity* ent) {
+			ent_ = ent;
+		}
+
+		virtual void initComponent() {};
+		virtual void update() {};
+		virtual void render() {};
+	protected:
+		Entity* ent_;
+	};
+}
 

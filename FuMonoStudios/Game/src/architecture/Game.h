@@ -1,9 +1,10 @@
 #pragma once
 #include<list>
-#include "Scene.h"
 #include <SDL.h>
 #include <array>
+#include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
+#include "Scene.h"
 class Game
 {
 public:

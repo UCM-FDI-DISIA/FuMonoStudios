@@ -11,7 +11,7 @@ Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que car
 */
 
 Game::Game():exit(false) {
-	SDLUtils::init("Mail To Atlantis", 800, 600);
+	SDLUtils::init("Mail To Atlantis",1600 , 900);
 
 	auto& sdl = *SDLUtils::instance();
 
@@ -19,13 +19,16 @@ Game::Game():exit(false) {
 	window = sdl.window();
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::ExplorationScene()};
-	loadScene(ecs::sc::EXPLORE_SCENE);
 	loadScene(ecs::sc::MAIN_SCENE);
+	loadScene(ecs::sc::EXPLORE_SCENE);
+	killScene(ecs::sc::MAIN_SCENE);
 }
 
 Game::~Game()
 {
-
+	for (auto s : gameScenes) {
+		delete s;
+	}
 }
 
 
@@ -36,12 +39,15 @@ void Game::run()
 		ih().refresh();
 		Uint32 startTime = SDL_GetTicks();
 
-		if (ih().keyDownEvent() || ih().closeWindowEvent()) {
+		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || ih().closeWindowEvent()) {
 			exit = true;
+		}
+		if (ih().isKeyDown(SDL_SCANCODE_F)) {
+			sdlutils().toggleFullScreen();
 		}
 
 		update();
-		//sdlutils().clearRenderer();
+		sdlutils().clearRenderer();
 		render();
 		sdlutils().presentRenderer();
 
