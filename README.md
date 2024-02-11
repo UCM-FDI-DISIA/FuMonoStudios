@@ -184,7 +184,7 @@ El juego constará de varias jornadas (todavía por decidir) donde el jugador te
 ### Fase de exploracion
 
 En esta fase el jugador podra recorrer el mapa en primera persona moviendose por los distintos distritos de la Atalantida. En cada distrito podra encontrar a un NPC específico del distrito el cual le contará algo de su historia o le pedira un favor relacionado con el correo. En un principio los barrios de los anillos más interiores estarán bloqueados pero a partir del segundo y tercer día en el que se introduzca una nueva mecánica estos estarán libres.
-
+![Imagen de como va atlantis](Imagenes/Mapa1Nombres.png)
 
 ### Fase de gestión de paquetes
 
