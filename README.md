@@ -64,7 +64,7 @@
 ### Movimiento en la exploracion
 Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá seleccionar hacia donde ir clicando en las direcciones de las calles, estilo Profesor Layton. Cada vez que se clickea una flecha se cambia de un distrito a otro. En cada distrito siempre habrá un NPC con el cual se podra hablar. Este podra dejarte encargos en algunas ocasiones mientras que te contara un poco de su vida en otras. No es podible acceder a todos los distritos desde todos los distritos, estando conectados: todos los distritos en un mismo anillo, los distritos de Demeter y Hefesto con el de Hermes y el distrito de Apolo con el de Poseidón. Según pasen los días se iran desbloqueando el acceso a los distintos anillos, pudiendo al principio solo acceder a los **exteriores**, despues al **interior** y por último al **castillo real**.
 
-![Imagen de como va atlantis]()
+![Imagen de como va atlantis](Imagenes/Mapa1Nombres.png)
 
 ### Dialogos con los NPC
 Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostrará en pantalla un cuadro de diálogo con lo que te dice dicho NPC, dicho dialogo puede ser tanto un encargo de correo como simplemente algo de información sobre la historia de ese NPC y su entorno. Si un jugador vuelve a hablar con el NPC aparecera un dialogo predeterminado con el cual el jugador en el que le indicara que deje de molestarlo o que esta ocupado, cortando asi la conversación. 
