@@ -148,6 +148,7 @@
     <ClCompile Include="src\sdlutils\Texture.cpp" />
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\architecture\Component.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\utils\ptr_iterator.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
+    <ClInclude Include="src\components\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
