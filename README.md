@@ -57,6 +57,8 @@
 |--|---|
 |Simulación|Jugadores interesados en los Indies|
 
+[UML](https://lucid.app/lucidchart/29f6e8d3-db3a-4b3c-98d9-a0ec94f8a0d4/edit?view_items=jGC~qOX6U6pG&invitationId=inv_555ab00b-17ce-4af3-80db-82f253f680ba)
+
 ---
 
 ## Mecanicas
