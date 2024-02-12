@@ -19,12 +19,6 @@
     <Filter Include="Archivos de encabezado\Json">
       <UniqueIdentifier>{a96239a1-06f0-43f3-82a2-0e1ae0fb696c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\Architecture">
-      <UniqueIdentifier>{8077af1b-08f5-4d53-9d9f-0053ca4fa75a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Architecture">
-      <UniqueIdentifier>{aa8430c6-d3b4-4f78-a602-a881bd31ea2b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -39,21 +33,6 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen\Json</Filter>
     </ClCompile>
-    <ClCompile Include="src\architecture\Component.cpp">
-      <Filter>Archivos de origen\Architecture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\ecs.cpp">
-      <Filter>Archivos de origen\Architecture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Entity.cpp">
-      <Filter>Archivos de origen\Architecture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Scene.cpp">
-      <Filter>Archivos de origen\Architecture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Game.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\sdlutils\SDLUtils.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -66,18 +45,6 @@
     <ClCompile Include="src\sdlutils\Texture.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\Collisions.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\Vector2D.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\MainScene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\ExplorationScene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSON.h">
@@ -88,21 +55,6 @@
     </ClInclude>
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Scene.h">
-      <Filter>Archivos de encabezado\Architecture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Component.h">
-      <Filter>Archivos de encabezado\Architecture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\ecs.h">
-      <Filter>Archivos de encabezado\Architecture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Entity.h">
-      <Filter>Archivos de encabezado\Architecture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Game.h">
-      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\sdlutils\InputHandler.h">
       <Filter>Archivos de encabezado</Filter>
@@ -131,34 +83,10 @@
     <ClInclude Include="src\sdlutils\VirtualTimer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\Collisions.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\DynamicBitSet.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\mpl.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\ptr_iterator.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\Singleton.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\Vector2D.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\macros.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\sdlutils\Font.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\scenes\MainScene.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\ExplorationScene.h">
+    <ClInclude Include="src\sdlutils\macros.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
