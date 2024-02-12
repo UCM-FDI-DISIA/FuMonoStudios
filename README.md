@@ -493,53 +493,119 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
   #### Tarotista
 
 **Presentacion**
-"Bendita la carne fresca, que tenemos por aquí. Joven tu debes ser nuevo en el reino ¿o me equivoco?. No hace falta que respondas, yo nunca me equivoco, ¿sabes porque?, por que puedo ver el futuro. Mi nombre es Abigail Ampoule y soy una reconocida tarotista. Secretos, engaños, enfermedades y todo lo demás, nada puede escapar de mi conocimiento, la luz de mi cabeza me muestra cualquier cosa. Ven a verme siempre que te preocupe algo, yo siempre estoy aquí para las pobres almas sin rumbo ni ambiciones.
+- "Bendita la carne fresca, que tenemos por aquí. Joven tu debes ser nuevo en el reino ¿o me equivoco?. 
+- No hace falta que respondas, yo nunca me equivoco, ¿sabes porque?, por que puedo ver el futuro. 
+- Mi nombre es Abigail Ampoule y soy una reconocida tarotista. 
+- Secretos, engaños, enfermedades y todo lo demás, nada puede escapar de mi conocimiento, la luz de mi cabeza me muestra cualquier cosa. 
+- Ven a verme siempre que te preocupe algo, yo siempre estoy aquí para las pobres almas sin rumbo ni ambiciones.
 
 **Felicidad minimo**
-"Tu maldito atún sarnoso y desagradecido. No solo no me ayudas en mi negocio sino que encima me lo pones todo más difícil. Realmente te crees tan superior en tu pequeña posición de poder. Solo por manejar los paquetes del reino te crees en tu derecho de hacer imposible la vida de las personas, en especial de una pobre anciana como yo. Escuchame atentamente lo que te digo, que caigan mil y una desgracias en tu vida, que todo ese egoismo te atragante hasta no dejarte respirar en paz, asi lo pido a los más grandes. No quiero volver a verte jamás en mi vida."
+- "Tu maldito atún sarnoso y desagradecido. No solo no me ayudas en mi negocio sino que encima me lo pones todo más difícil.
+- Realmente te crees tan superior en tu pequeña posición de poder. Solo por manejar los paquetes del reino te crees en tu derecho de hacer imposible la vida de las personas, en especial de una pobre anciana como yo. 
+- Escuchame atentamente lo que te digo, que caigan mil y una desgracias en tu vida, que todo ese egoismo te atragante hasta no dejarte respirar en paz, asi lo pido a los más grandes. 
+- No quiero volver a verte jamás en mi vida."
 
 **Felicidad maximo**
-"Realmente tienes un corazón puro muchacho. Se que mi oficio no es especialmente noble, tu también lo descubriste a lo largo del tiempo, pero no me repudiaste por eso, sino que vertiste en mi una esperanza de cambio. Quiero que sepas que tu amabilidad le ha llegado a este arrugado corazón. Realmente me cuesta creer que esta podrida ciudad haya dado lugar a alguien tan empático, quiza incluso no seas de aquí. Sea como sea, es tu vida y yo no me voy a meter en ella. Muchas gracias por todo, acepta esto, quiza te aclare las dudas que tienes en la cabeza."
+- "Realmente tienes un corazón puro muchacho. Se que mi oficio no es especialmente noble, tu también lo descubriste a lo largo del tiempo, pero no me repudiaste por eso, sino que vertiste en mi una esperanza de cambio. 
+- Quiero que sepas que tu amabilidad le ha llegado a este arrugado corazón. Realmente me cuesta creer que esta podrida ciudad haya dado lugar a alguien tan empático, quiza incluso no seas de aquí. 
+- Sea como sea, es tu vida y yo no me voy a meter en ella. Muchas gracias por todo, acepta esto, quiza te aclare las dudas que tienes en la cabeza."
 
 **Genericos**
 
 - **Malos:**
-  - "La gente de este distrito esa absoluta basura, esos creidos de los boticarios se creen que me pueden tener trabajando a mi, una pobre anciana noche y día para al final darme una miseria. Yo soy la que lee el futuro a la gente para que acudan a sus estupidas tiendas. Y tu muchacho largate de aqui ahora mismo que no estoy de humor."
+  1º
+  - "La gente de este distrito esa absoluta basura, esos creidos de los boticarios se creen que me pueden tener trabajando a mi, una pobre anciana noche y día para al final darme una miseria. 
+  - Yo soy la que lee el futuro a la gente para que acudan a sus estupidas tiendas. 
+  - Y tu muchacho largate de aqui ahora mismo que no estoy de humor."
 
-  - "La primera vez que te ví sentí que tenías cara de bobo y ahora veo que no me equivocaba, no se que harás durante tus horas de trabajo pero siempre me llegan mal los paquetes o directamente no me llegan. Tampoco creo que haga falta ser adivino para enviar un par de cositas."
+  2º
+  - "La primera vez que te ví sentí que tenías cara de bobo y ahora veo que no me equivocaba, no se que harás durante tus horas de trabajo pero siempre me llegan mal los paquetes o directamente no me llegan. 
+  - Tampoco creo que haga falta ser adivino para enviar un par de cositas."
 
-  - "La gente solo es capaz de visitar a esta pobre anciana para pedirme predicciones y ayuda. Al final todos me acaban abandonando, son un atajo de egoistas. Incluso tú, no eres capaz de ayudarme, solo te me acercas a preguntarme tonterías. Vete de aquí muchacho, ahora mismo no quiero ver a nadie."
+  3º
+  - "La gente solo es capaz de visitar a esta pobre anciana para pedirme predicciones y ayuda. Al final todos me acaban abandonando, son un atajo de egoistas. 
+  - Incluso tú, no eres capaz de ayudarme, solo te me acercas a preguntarme tonterías. 
+  - Vete de aquí muchacho, ahora mismo no quiero ver a nadie."
 
 - **Neutrales:**
-  - "Por Poseidón, mira quien se ha dignado a aparecer por el distrito de Artemisa. Chico te voy a dar un consejo de gratis, para que veas mi infinita benevolencia. Ten cuidado a quien le das la espalda ya que te la puede apuñalar. Ahora vete de aqui que me acabaras espantando los clientes."
 
-  - "He muchacho ven aquí. Sabes cada vez que te veo estas hecho una pena, deberías relacionarte un poco más con otras personas. Sal, haz amigos, buscate una novia, cualquier cosa. Cuando seas mayor a penas tendras las fuerzas suficientes para soportar a los imbeciles que hay en este reino."
+  1º
+  - "Por Poseidón, mira quien se ha dignado a aparecer por el distrito de Artemisa. 
+  - Chico te voy a dar un consejo de gratis, para que veas mi infinita benevolencia. 
+  - Ten cuidado a quien le das la espalda ya que te la puede apuñalar. Ahora vete de aqui que me acabaras espantando los clientes."
 
-  - "Uy uy uy chico, ahora que veo tu cara está un poco, como te lo diría... decaida. Te voy a hacer una inspección del alma gratuita, asi vemos a que se debe. Mmmm, mmmm, mmmm. Parece que algo dentro de la boca de tu estomago no está del todo bien. Deberías ir a algún boticario y comprar pasta de algas concentrada, tan solo cuesta 500 monedas, confia en mí, yo jamás timaría a alguien."
+  2º
+  - "He muchacho ven aquí. Sabes cada vez que te veo estas hecho una pena, deberías relacionarte un poco más con otras personas.
+  - Sal, haz amigos, buscate una novia, cualquier cosa. Cuando seas mayor a penas tendras las fuerzas suficientes para soportar a los imbeciles que hay en este reino."
+
+  3º
+  - "Uy uy uy chico, ahora que veo tu cara está un poco, como te lo diría... decaida. Te voy a hacer una inspección del alma gratuita, asi vemos a que se debe. 
+  - Mmmm, mmmm, mmmm. Parece que algo dentro de la boca de tu estomago no está del todo bien. 
+  - Deberías ir a algún boticario y comprar pasta de algas concentrada, tan solo cuesta 500 monedas, confia en mí, yo jamás timaría a alguien."
 
 - **Felices:**
-  - "Mira quien a amanecido contento hoy, si es mi muchacho favorito. Aún parece que no vienen los clientes pero esto en unos minutos se llenará hasta reventar. Sabes es gracioso, una gran parte de los que vienen se quedan haciendo cola por horas y horas para al final preguntarme cosas como que hacer para conseguir amor o riqueza. No se dan cuenta que en el tiempo que gastan aquí podrían estar con sus seres queridos, haciendo algo productivo. Supongo que uno no sabe lo que tiene hasta perderlo."
 
-  - "Aunque odie que la gente me llame señora en lugar de señorita no hay nada que pueda hacer para remediarlo, a fin de cuentas soy una mujer casada. ¿No lo sabías? mi marido fue un campesino del distrito de Demeter, yo le ayudaba cuando podía. El me terminó abandonando, no estaba demasiado feliz con mi pequeño negocio."
+  1º
+  - "Mira quien a amanecido contento hoy, si es mi muchacho favorito. 
+  - Aún parece que no vienen los clientes pero esto en unos minutos se llenará hasta reventar. Sabes es gracioso, una gran parte de los que vienen se quedan haciendo cola por horas y horas para al final preguntarme cosas como que hacer para conseguir amor o riqueza. 
+  - No se dan cuenta que en el tiempo que gastan aquí podrían estar con sus seres queridos, haciendo algo productivo. Supongo que uno no sabe lo que tiene hasta perderlo."
 
-  - "Puede que no lo parezca chico pero en mi epoca de campesina estaba rodeada de amigas, la vida era difícil pero con la gente de allí una se sentía comoda y en familia. Actualmente tengo todo el dinero que pude llegar a desear en esa época, aunque en el distrito de Artemisa jamás me he llegado a sentir como en ese entonces."
+  2º
+  - "Aunque odie que la gente me llame señora en lugar de señorita no hay nada que pueda hacer para remediarlo, a fin de cuentas soy una mujer casada. 
+  - ¿No lo sabías? mi marido fue un campesino del distrito de Demeter, yo le ayudaba cuando podía. 
+  - El me terminó abandonando, no estaba demasiado feliz con mi pequeño negocio."
+
+  3º
+  - "Puede que no lo parezca chico pero en mi epoca de campesina estaba rodeada de amigas, la vida era difícil pero con la gente de allí una se sentía comoda y en familia. 
+  - Actualmente tengo todo el dinero que pude llegar a desear en esa época, aunque en el distrito de Artemisa jamás me he llegado a sentir como en ese entonces."
 
  - **MaxiFeliz**
-  - "Hola muchacho que te cuentas. ¿Que por qué nunca te llamo por tu nombre? tranquilo que me acuerdo perfectamente de como te llamas Andi, a no espera Paco eso es. Ver a tanta gente todos los días hace que me cueste recordar caras, aunque con lo que me has ayudado es difícil que ya me olvide de tí." 
 
-  - "Chico, imagino que ha estas alturas ya te habrás dado cuenta que no tengo poderes. La gente se cree cualquier cosa que adornes con efectos luminosos y montando un gran show, incluso si les dices la cosa más estúpida que hay. A pesar de eso, cada día pienso más que aún si la gente es tan inocente, aprovecharme de eso no es correcto. Antes ponía la excusa de que la vida no es justa para nadie, que si no espabilan no es mi problema, pero a medida que he visto a gente amable y desinteresada como tú, he dudado cada vez más de eso. En ese aspecto te pareces a mi marido, el tampoco era capaz ni de dañar una mosca, siempre preocupado por el resto. Le hecho mucho de menos."
+  1º
+  - "Hola muchacho que te cuentas. 
+  - ¿Que por qué nunca te llamo por tu nombre? tranquilo que me acuerdo perfectamente de como te llamas Andi, a no espera Paco eso es. 
+  - Ver a tanta gente todos los días hace que me cueste recordar caras, aunque con lo que me has ayudado es difícil que ya me olvide de tí." 
 
-  - "No creo que pueda seguir con esto muchacho. Llevo un tiempo pensando en dejar el negocio, buscar quiza a mi marido. Al menos empezar de 0, sin seguir estafando a las personas. El problema es... que tengo miedo, a mi edad arriesgarme tanto la verdad es que me aterra. Además los boticarios no estarán felices si no les sigo mandando a personas a comprar en sus tiendas con engaños de falsas predicciones. No se que haré al final, pero te agradezco toda la ayuda que me has brindado hasta ahora."
+  2º
+  - "Chico, imagino que ha estas alturas ya te habrás dado cuenta que no tengo poderes. 
+  - La gente se cree cualquier cosa que adornes con efectos luminosos y montando un gran show, incluso si les dices la cosa más estúpida que hay. 
+  - A pesar de eso, cada día pienso más que aún si la gente es tan inocente, aprovecharme de eso no es correcto. 
+  - Antes ponía la excusa de que la vida no es justa para nadie, que si no espabilan no es mi problema, pero a medida que he visto a gente amable y desinteresada como tú, he dudado cada vez más de eso. 
+  - En ese aspecto te pareces a mi marido, el tampoco era capaz ni de dañar una mosca, siempre preocupado por el resto. Le hecho mucho de menos."
+
+  3º
+  - "No creo que pueda seguir con esto muchacho. 
+  - Llevo un tiempo pensando en dejar el negocio, buscar quiza a mi marido. Al menos empezar de 0, sin seguir estafando a las personas. 
+  - El problema es... que tengo miedo, a mi edad arriesgarme tanto la verdad es que me aterra. 
+  - Además los boticarios no estarán felices si no les sigo mandando a personas a comprar en sus tiendas con engaños de falsas predicciones. 
+  - No se que haré al final, pero te agradezco toda la ayuda que me has brindado hasta ahora."
 
 **Eventos**
-  - "Maldita sea, como se atreven a decir que mi predicción es una pantomima. Sabes que hace falta, efectos luminosos de colores. Sin embargo eso solo lo puedo lograr con cristales. ¿Oye no crees que podrías desviar un paquete de joyas hasta el distrito de Artemisa. Con esas gemas seguro que se quedarán alucinados con el poder de mi "magia"."
+  1º
+  - "Maldita sea, como se atreven a decir que mi predicción es una pantomima. 
+  - Sabes que hace falta, efectos luminosos de colores. Sin embargo eso solo lo puedo lograr con cristales. 
+  - ¿Oye no crees que podrías desviar un paquete de joyas hasta el distrito de Artemisa. Con esas gemas seguro que se quedarán alucinados con el poder de mi "magia"."
 
-  - "Oye chico dejame decirte una cosa. El último día me pidió un noble que buscase una forma de ayudarle con una dieta que quiere hacer. Entre unas cosas y otras le dije que era capaz de hacer la comida más pesada para que su cuerpo se llenase antes con menos cantidad. En resumen, si ves un paquete mio con una etiqueta de mucho peso, hazlo pasar marque lo que marque la bascula. Hazle ese favor a esta pobre anciana que solo intenta ganarse la vida."
+  2º
+  - "Oye chico dejame decirte una cosa. 
+  - El último día me pidió un noble que buscase una forma de ayudarle con una dieta que quiere hacer. Entre unas cosas y otras le dije que era capaz de hacer la comida más pesada para que su cuerpo se llenase antes con menos cantidad. 
+  - En resumen, si ves un paquete mio con una etiqueta de mucho peso, hazlo pasar marque lo que marque la bascula. Hazle ese favor a esta pobre anciana que solo intenta ganarse la vida."
 
-  - "Últimamente la gente ya no viene con preocupaciones médicas a mi local. Si esto sigue asi no podré mandar tantos clientes a los boticarios y perderé dinero. Creo que todo se debe a un nuevo médicamento que se esta enviando a los nobles. Si ves alguno de esos paquetes, deshazte de ello. Tranquilo, no te preocupes por la salud de esas personas, que los remedios caseros de los boticarios son mil veces más efectivos que cualquier otra cosa. Al final esto lo hago por el bien de los habitantes del distrito de Apolo."
+  3º
+  - "Últimamente la gente ya no viene con preocupaciones médicas a mi local. 
+  - Si esto sigue asi no podré mandar tantos clientes a los boticarios y perderé dinero. Creo que todo se debe a un nuevo médicamento que se esta enviando a los nobles. 
+  - Si ves alguno de esos paquetes, deshazte de ello. Tranquilo, no te preocupes por la salud de esas personas, que los remedios caseros de los boticarios son mil veces más efectivos que cualquier otra cosa. 
+  - Al final esto lo hago por el bien de los habitantes del distrito de Apolo."
   
-  - "Mira muchacho, ves ese grupo de boticarios ahí reunidos. Por muy normales que parezcan, se dedican a entrar en los negocios rivales para vandalizar y destrozar todo a su paso. Por más que mis compañeros y yo hemos intentado denunciar esto a los soldados, estan demasiado ocupados siendo las estupidas niñeras de los nobles. Es por eso que si pudieras me gustaria que extraviaras un paquete de armas al distrito de Artemisa. Tranquilo no vamos a hacer ninguna locura, tan solo pero para meterles miedo, a fin de cuentas, por mucho que vandalicen siguen siendo solo unos charlatanes flacuchos."
+  4º
+  - "Mira muchacho, ves ese grupo de boticarios ahí reunidos. Por muy normales que parezcan, se dedican a entrar en los negocios rivales para vandalizar y destrozar todo a su paso. 
+  - Por más que mis compañeros y yo hemos intentado denunciar esto a los soldados, estan demasiado ocupados siendo las estupidas niñeras de los nobles. 
+  - Es por eso que si pudieras me gustaria que extraviaras un paquete de armas al distrito de Artemisa. 
+  - Tranquilo no vamos a hacer ninguna locura, tan solo pero para meterles miedo, a fin de cuentas, por mucho que vandalicen siguen siendo solo unos charlatanes flacuchos."
 
-  - "Sabes, aún recuerdo mis épocas como campesina de una manera muy dulce, sin embargo lo que hasta día de hoy me enfurece es como se aprovechaban esos estúpidos comerciantes para revender lo que tanto nos costo cosechar. ¿Qué te parece si les das una lección por mí y por los campesinos?, cualquier paquete de alimentos que vaya al distrito Apolo devuelvelo, cambia su ruta... me da exactamente igual, tan solo que no llegue a su destino. Esos paquetes siempre son enviados por los avariciosos de los comerciantes. Si haces eso, los honrados trabajadores como yo podrán descansar más tranquilos."
+  5º
+  - "Sabes, aún recuerdo mis épocas como campesina de una manera muy dulce, sin embargo lo que hasta día de hoy me enfurece es como se aprovechaban esos estúpidos comerciantes para revender lo que tanto nos costo cosechar. 
+  - ¿Qué te parece si les das una lección por mí y por los campesinos?, cualquier paquete de alimentos que vaya al distrito Apolo devuelvelo, cambia su ruta... me da exactamente igual, tan solo que no llegue a su destino. 
+  - Esos paquetes siempre son enviados por los avariciosos de los comerciantes. Si haces eso, los honrados trabajadores como yo podrán descansar más tranquilos."
 
 
