@@ -2,6 +2,7 @@
 #include "../architecture/Component.h"
 #include "../utils/Vector2D.h"
 #include <SDL.h>
+#include "../sdlutils/SDLUtils.h"
 
 class Transform : public ecs::Component 
 {
@@ -10,7 +11,7 @@ private:
 	float width;
 	float height;
 	SDL_Rect* getRect;
-	SDL_Renderer* window;
+	SDL_Renderer* renderer;
 public:
 	Transform(float x, float y, float w, float h);
 	~Transform();
