@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Transform.h"
+#include "../components/Render.h"
 
 
 ecs::MainScene::MainScene()
@@ -23,6 +24,10 @@ void ecs::MainScene::init()
 	//Entidad para probar el transform
 	Entity* Prueba = addEntity();
 	Transform* wakamole = Prueba->addComponent<Transform>(ecs::cmp::TRANSFORM, 200.0f, 25.0f, 300.0f, 500.0f);
+
+	Entity* Prueba2 = addEntity();
+	Transform* e = Prueba2->addComponent<Transform>(ecs::cmp::TRANSFORM);
+	RenderImage* nachos = Prueba2->addComponent<RenderImage>(ecs::cmp::IMAGE);
 }
 
 
