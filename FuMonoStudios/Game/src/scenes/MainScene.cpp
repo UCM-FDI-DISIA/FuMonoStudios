@@ -26,8 +26,9 @@ void ecs::MainScene::init()
 	Transform* wakamole = Prueba->addComponent<Transform>(ecs::cmp::TRANSFORM, 200.0f, 25.0f, 300.0f, 500.0f);
 
 	Entity* Prueba2 = addEntity();
-	Transform* e = Prueba2->addComponent<Transform>(ecs::cmp::TRANSFORM);
-	RenderImage* nachos = Prueba2->addComponent<RenderImage>(ecs::cmp::IMAGE);
+	Texture* sujetaplazas = &sdlutils().images().at("placeHolder");
+	Transform* e = Prueba2->addComponent<Transform>(ecs::cmp::TRANSFORM, 0.0f, 0.0f, sujetaplazas->width(), sujetaplazas->height());
+	RenderImage* nachos = Prueba2->addComponent<RenderImage>(ecs::cmp::IMAGE, sujetaplazas);
 }
 
 
