@@ -20,7 +20,7 @@ void ecs::MainScene::init()
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
 	Entity* Prueba = addEntity();
-	Transform* wakamole = Prueba->addComponent(ecs::cmp::TRANSFORM, 10.0f, 10.0f, 200.0f, 100.0f);
+	Transform* wakamole = Prueba->addComponent<Transform>(ecs::cmp::TRANSFORM, 10.0f, 10.0f, 200.0f, 100.0f);
 }
 
 
