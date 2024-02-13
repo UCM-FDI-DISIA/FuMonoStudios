@@ -6,11 +6,11 @@
 Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h){
 	auto& sdl = *SDLUtils::instance();
 
-	getRect = new SDL_Rect();
-	getRect->h = h;
-	getRect->w = w;
-	getRect->x = x;
-	getRect->y = y;
+	rect = new SDL_Rect();
+	rect->h = h;
+	rect->w = w;
+	rect->x = x;
+	rect->y = y;
 	renderer = sdl.renderer();
 }
 
@@ -23,15 +23,19 @@ void Transform::Move(std::pair<float,float> pos) {
 }
 
 void Transform::update() {
-#ifdef DEBUG
+#ifdef _DEBUG
 	std::cout << "Me transformo\n";
-#endif // DEBUG
+#endif // _DEBUG
 }
 
 void Transform::render() const {
 #ifdef _DEBUG
 	SDL_SetRenderDrawColor(renderer, 100, 100, 0, 255);
 	std::cout << "Me renderizo\n";
-	SDL_RenderDrawRect(renderer, getRect);
+	SDL_RenderDrawRect(renderer, rect);
 #endif // _DEBUG
+}
+
+SDL_Rect* Transform::getRect() const {
+	return rect;
 }

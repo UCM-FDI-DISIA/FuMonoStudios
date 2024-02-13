@@ -6,17 +6,18 @@
 
 class Transform : public ecs::Component 
 {
-private:
-	Vector2D position;
-	float width;
-	float height;
-	SDL_Rect* getRect;
-	SDL_Renderer* renderer;
 public:
 	Transform(float x, float y, float w, float h);
 	~Transform();
 	void Move(std::pair<float, float> pos);
+	SDL_Rect* getRect() const;
 	void update();
 	void render() const;
+private:
+	Vector2D position;
+	float width;
+	float height;
+	SDL_Rect* rect;
+	SDL_Renderer* renderer;
 };
 
