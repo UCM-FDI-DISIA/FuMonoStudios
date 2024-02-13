@@ -6,7 +6,7 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-RenderImage::RenderImage(Texture* img) : myTexture(img) {}
+RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr) {}
 
 RenderImage::~RenderImage() {}
 

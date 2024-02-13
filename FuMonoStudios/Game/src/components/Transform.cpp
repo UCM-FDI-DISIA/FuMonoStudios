@@ -24,14 +24,14 @@ void Transform::Move(std::pair<float,float> pos) {
 
 void Transform::update() {
 #ifdef _DEBUG
-	std::cout << "Me transformo\n";
+	//std::cout << "Me transformo\n";
 #endif // _DEBUG
 }
 
 void Transform::render() const {
 #ifdef _DEBUG
 	SDL_SetRenderDrawColor(renderer, 100, 100, 0, 255);
-	std::cout << "Me renderizo\n";
+	//std::cout << "Me renderizo\n";
 	SDL_RenderDrawRect(renderer, rect);
 #endif // _DEBUG
 }
