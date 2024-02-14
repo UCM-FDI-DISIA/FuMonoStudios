@@ -10,6 +10,9 @@ public:
 	Transform(float x, float y, float w, float h);
 	~Transform();
 	void Move(std::pair<float, float> pos);
+
+	void Move(float x, float y);
+
 	SDL_Rect* getRect() const;
 	void update();
 	void render() const;

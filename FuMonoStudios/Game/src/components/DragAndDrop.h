@@ -20,6 +20,6 @@ private:
 
 	Transform* tr_;
 
-
+	bool dragging = false;
 
 };

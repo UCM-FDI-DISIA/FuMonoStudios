@@ -13,6 +13,7 @@ namespace ecs {
 			IMAGE,
 			CTRL,
 			CLICKEABLE,
+			DRAGANDDROP,
 			// do not remove this
 			_LAST_CMP_ID
 		};

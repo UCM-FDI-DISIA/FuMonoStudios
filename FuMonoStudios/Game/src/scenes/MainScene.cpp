@@ -5,6 +5,7 @@
 #include "../components/Transform.h"
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
+#include "../components/DragAndDrop.h"
 
 
 ecs::MainScene::MainScene()
@@ -34,7 +35,7 @@ void ecs::MainScene::init()
 	Transform* e = Prueba2->addComponent<Transform>(ecs::cmp::TRANSFORM, 200.0f, 100.0f, sujetaplazas->width(), sujetaplazas->height());
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(ecs::cmp::IMAGE, sujetaplazas);
 
-	Prueba2->addComponent<Clickeable>(ecs::cmp::CLICKEABLE);
+	Prueba2->addComponent<DragAndDrop>(ecs::cmp::DRAGANDDROP);
 }
 
 

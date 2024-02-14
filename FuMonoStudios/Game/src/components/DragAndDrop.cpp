@@ -29,17 +29,32 @@ void DragAndDrop::update() {
 
 	auto& ihdlr = ih();
 
+	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
+
 	if (ihdlr.mouseButtonDownEvent()) {
 
-		SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
 		if (SDL_PointInRect(&point, tr_->getRect())) {
 
-			
+			dragging = true;
 
 		}
 
 	}
+	else if (ihdlr.mouseButtonUpEvent()) {
+
+		dragging = false;
+
+	}
+
+	if (dragging) {
+
+		tr_->Move(point.x, point.y);
+
+		std::cout << point.x << " " << point.y << std::endl;
+
+	}
+	
 
 
 }
