@@ -81,6 +81,9 @@
     <ClCompile Include="src\components\Clickeable.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\DragAndDrop.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSON.h">
@@ -171,6 +174,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\components\Clickeable.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\DragAndDrop.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
