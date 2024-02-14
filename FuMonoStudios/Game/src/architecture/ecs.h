@@ -12,6 +12,7 @@ namespace ecs {
 			TRANSFORM = 0,
 			IMAGE,
 			CTRL,
+			CLICKEABLE,
 			// do not remove this
 			_LAST_CMP_ID
 		};
