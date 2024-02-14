@@ -64,7 +64,7 @@
 ### Movimiento en la exploracion
 Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá seleccionar hacia donde ir clicando en las direcciones de las calles, estilo Profesor Layton. Cada vez que se clickea una flecha se cambia de un distrito a otro. En cada distrito siempre habrá un NPC con el cual se podra hablar. Este podra dejarte encargos en algunas ocasiones mientras que te contara un poco de su vida en otras. No es podible acceder a todos los distritos desde todos los distritos, estando conectados: todos los distritos en un mismo anillo, los distritos de Demeter y Hefesto con el de Hermes y el distrito de Apolo con el de Poseidón. Según pasen los días se iran desbloqueando el acceso a los distintos anillos, pudiendo al principio solo acceder a los **exteriores**, despues al **interior** y por último al **castillo real**.
 
-![Imagen de como va atlantis]()
+![Imagen de como va atlantis](Imagenes/Mapa1Nombres.png)
 
 ### Dialogos con los NPC
 Al hacer clic sobre un NPC mientras se está en la fase de exploración se mostrará en pantalla un cuadro de diálogo con lo que te dice dicho NPC, dicho dialogo puede ser tanto un encargo de correo como simplemente algo de información sobre la historia de ese NPC y su entorno. Si un jugador vuelve a hablar con el NPC aparecera un dialogo predeterminado con el cual el jugador en el que le indicara que deje de molestarlo o que esta ocupado, cortando asi la conversación. 
@@ -184,7 +184,7 @@ El juego constará de varias jornadas (todavía por decidir) donde el jugador te
 ### Fase de exploracion
 
 En esta fase el jugador podra recorrer el mapa en primera persona moviendose por los distintos distritos de la Atalantida. En cada distrito podra encontrar a un NPC específico del distrito el cual le contará algo de su historia o le pedira un favor relacionado con el correo. En un principio los barrios de los anillos más interiores estarán bloqueados pero a partir del segundo y tercer día en el que se introduzca una nueva mecánica estos estarán libres.
-
+![Imagen de como va atlantis](Imagenes/Mapa1Nombres.png)
 
 ### Fase de gestión de paquetes
 
@@ -376,7 +376,7 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 #### Contable
 
 **Presentacion**
-"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo.
+"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo."
 
 **Felicidad minimo**
 "Como puedes ser asi de malo conmigo. No solo no me quieres ayudar en nada, sino que además haces todo lo posible para arruinar el negocio que tanto le a costado a mi familia sacar adelante. Pues sabes que estoy harto de tí y tus... y tus... y TUS ESTUPIDOS PAQUETES. No vuelvas a hablar conmigo"
@@ -388,21 +388,167 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 
 - **Malos:**
   - "Ahora no puedo hablar. ¿Tienes alguna mínima idea del estres que supone manejar una empresa que se va al garete por el egoismo de muchas personas? No ¿verdad?, pues por favor vete y dejame trabajar."
+
   - "Sabes, varios de los envios a mi empresa se han perdido. No quiero meterme en tus asuntos ni incomodarte pero por favor intenta tener más cuidado. Muchas familias dependen de la gestión que hacemos asi que haz tu mayor esfuerzo para no retrasarnos."
+
   - "No entiendo porque la vida me trata asi. Yo siempre he intentado ser amable con todos, y que recibo a cambio, malas noticias y ninguna ayuda. Creo que ire a mi casa a comer algo y asi relajarme un poco." 
 
 - **Neutrales:**
   - "Anda pero si es mi pimpollo favorito, Paco. Sabes no se como lo haces para tener una mira con tanta seguridad. Yo sin embargo soy un manojo de nervios jijiji, creo que el estres hace que me inche aunque no estoy seguro."
+
   - "Hombre Paco, que tal te va la vida. Yo la verdad no me puedo quejar, la empresa marcha igual que siempre, aunque ultimamente he notado un pelín molestos a los campesinos. Sea como sea, los negocios no paran asi que no hay tanto problema."
+
   - "No se si te lo conte alguna vez Paco pero antes el distrito de Hermes era muy diferente. Cuando mi padre aún no monto la empresa, este distrito estaba lleno de mercados ambulantes por todos lados. La verdad es que la organización era un desastre, y se escuchaban gritos de aqui para alla. Sin embargo el ambiente tenía algo único que no te se decir aún. Ojala poder replicarlo con mi empresa algún día."
 
 - **Felices:**
   - "Muy buenos días Paco. Sabes desde hace un tiempo me he ido preguntando si realmente los campesinos y artesanos necesitan un intermediario. La verdad es que me encantaría que los anillos pudieran convivir en paz, pero por experiencia propia se que tanto los unos como los otros se odian mucho. Ojala pueda cambiar eso en algún momento."
+
   - "Pero bueno Paco hoy resplandeces. Oye muchisimas gracias por haberme ayudado con el tema de los paquetes. Sabes, nunca he tenido demasiada ayuda, de pequeño se me hacia dificil hacer amigos ya que había un grupo de delfines que no paraban de reirse de mi físico, esto ha hecho qu me vuelva bastante tímido. Aunque la verdad es que contigo me siento realmente comodo siempre, muchas gracias."
+
   - "Paco, ¿no me notas diferente? En efecto he logrado reducir un poco mi tamaño. En realidad yo soy un pez bastante flaco pero el estres y los nervios hacen que me inche hasta 3 veces mi tamaño normal. Estos últimos días ha sido más fácil todo el trabajo, por lo que me siento hecho un figurín, jijiji."
 
  - **MaxiFeliz**
   - "Ultimamente he estado pensando en como acercar unos a los otros a los habitantes de los anillos exteriores e interiores y creo haber dado con la solución, no es seguro y hace falta que le heche valor para proponer esto a todos los de mi empresa. Aunque no me cabe la menor duda de que con tu apoyo podré seguir mi instinto."
+
   - "Sabes Paco, no me suele gustar mucho hablar de mi padre. Puede que haya sido el mayor empresario de la Atlantida pero como padre dejaba bastante que desear. Se solia asentar mucho de casa y mi madre y yo siempre sentiamos como que ocultaba algo. Cada vez dudo incluso más de las pocas cosas que me dijo en su día. Creo que debo seguir mi propia intuición acerca del rumbo de la empresa. Gracias por escucharme Paco, me alegro de tener un amigo tan bueno como tú."
+
   - "Lo creas o no, cuando se trata de negocios no soy tan amable jijiji. Antes de que mi padre dejara este mundo me enseño un par de técnicas para conseguir mejores tratos en los típicos toma y daca. Siempre que necesites ayuda para un negocio avisame, estaré encantado de ayudar a mi mejor amigo con cualquiera de sus problemas, al igual que tu me ayudas con los mios.
 
+**Eventos**
+  - "No se que voy a hacer, los campesinos se han enfadado por el precio que les he ofrecido y no me han querido vender las cosechas. Los nobles no van a ser capaces de aguantar sin esa comida, se van a enfadar y la empresa lo va a pasar mal, que puedo hacer. Ya se, no podrías por favor redigirir un par de paquetes de alimentos hasta el distrito de Hermes, te lo agradecería de verdad."
+
+  - "Madre mia Paco, no puedo estar más estresado. Ayer uno de mis clientes más importantes se porto muy mal conmigo, insultandome solo por un pequeño retraso que tuvimos con la llegada de sus artículos. Para desahogarme decidí escribir una nota poniendo todo lo que pensaba de él. Sin embargo mi secretaria penso que era una carta y la envió por correo. Si esa carta acaba llegando al cliente no se que voy a hacer."
+
+  - "Sabes pimpollo, mi empresa no solo vende la cosecha de los campesinos, también los trabajos de los artesanos. Estos son igual de importantes y valorados que los alimentos, aunque deben de tratarse con más cuidado ya que suelen ser fragiles. Hoy mismo yo en persona le he enviado al mismisimo rey una de esas... esperá. O Poseidón mio, se me ha olvidado el sello de fragilidad, por favor cuando veas mi paquete envuelvelo aunque no tenga el sello, sino quién sabe que le podría pasar. Un día de estos pierdo la cabeza."
+
+  - "Paco nunca le he dicho esto a nadie pero necesito tu ayuda. Lo creas o no, aunque mi padre montó esta exitosa empresa, no lo hizo de la nada, tuvo que pedir muchos favores a muchas personas. Sabes esas cargas están yendo a mi ahora. Un grupo de delfines con los que mi padre negociaba me están reclamando cierto dinero que les debemos. Yo sacaría eso de los fondos de la empresa pero mancharía el nombre de mi padre por negociar con tales rufianes. No podrías quiza desviar algunas joyas hacía el distrito de Hermes, con un paquete será más que suficiente. De verdad que me sabe fatal pedirte esto pero no puedo acudir a nadie más."
+
+  - "Ultimamente las ventas de alimentos no están marchando demasiado bien, no se muy bien como pero parece que los habitantes del distrito de Apolo están obteniendo cosechas de otra parte. Dudo que sea de los campesinos ya que la compra de productos a estos no ha disminuido ni un poco. Esto me huele muy mal, quiza si un par de paquetes de comida que se diríjan al distrito de Apolo se extravían, vuelvan a comprar nuestros recursos. Se que suena mal pero de verdad que lo hago principalmente por los campesinos, si no vendemos tampoco podemos comprarles a ellos y acabarán totalmente arruinados."
+
+
+  #### Tarotista
+
+**Presentacion**
+"Bendita la carne fresca, que tenemos por aquí. Joven tu debes ser nuevo en el reino ¿o me equivoco?. No hace falta que respondas, yo nunca me equivoco, ¿sabes porque?, por que puedo ver el futuro. Mi nombre es Abigail Ampoule y soy una reconocida tarotista. Secretos, engaños, enfermedades y todo lo demás, nada puede escapar de mi conocimiento, la luz de mi cabeza me muestra cualquier cosa. Ven a verme siempre que te preocupe algo, yo siempre estoy aquí para las pobres almas sin rumbo ni ambiciones.
+
+**Felicidad minimo**
+"Tu maldito atún sarnoso y desagradecido. No solo no me ayudas en mi negocio sino que encima me lo pones todo más difícil. Realmente te crees tan superior en tu pequeña posición de poder. Solo por manejar los paquetes del reino te crees en tu derecho de hacer imposible la vida de las personas, en especial de una pobre anciana como yo. Escuchame atentamente lo que te digo, que caigan mil y una desgracias en tu vida, que todo ese egoismo te atragante hasta no dejarte respirar en paz, asi lo pido a los más grandes. No quiero volver a verte jamás en mi vida."
+
+**Felicidad maximo**
+"Realmente tienes un corazón puro muchacho. Se que mi oficio no es especialmente noble, tu también lo descubriste a lo largo del tiempo, pero no me repudiaste por eso, sino que vertiste en mi una esperanza de cambio. Quiero que sepas que tu amabilidad le ha llegado a este arrugado corazón. Realmente me cuesta creer que esta podrida ciudad haya dado lugar a alguien tan empático, quiza incluso no seas de aquí. Sea como sea, es tu vida y yo no me voy a meter en ella. Muchas gracias por todo, acepta esto, quiza te aclare las dudas que tienes en la cabeza."
+
+**Genericos**
+
+- **Malos:**
+  - "La gente de este distrito esa absoluta basura, esos creidos de los boticarios se creen que me pueden tener trabajando a mi, una pobre anciana noche y día para al final darme una miseria. Yo soy la que lee el futuro a la gente para que acudan a sus estupidas tiendas. Y tu muchacho largate de aqui ahora mismo que no estoy de humor."
+
+  - "La primera vez que te ví sentí que tenías cara de bobo y ahora veo que no me equivocaba, no se que harás durante tus horas de trabajo pero siempre me llegan mal los paquetes o directamente no me llegan. Tampoco creo que haga falta ser adivino para enviar un par de cositas."
+
+  - "La gente solo es capaz de visitar a esta pobre anciana para pedirme predicciones y ayuda. Al final todos me acaban abandonando, son un atajo de egoistas. Incluso tú, no eres capaz de ayudarme, solo te me acercas a preguntarme tonterías. Vete de aquí muchacho, ahora mismo no quiero ver a nadie."
+
+- **Neutrales:**
+  - "Por Poseidón, mira quien se ha dignado a aparecer por el distrito de Artemisa. Chico te voy a dar un consejo de gratis, para que veas mi infinita benevolencia. Ten cuidado a quien le das la espalda ya que te la puede apuñalar. Ahora vete de aqui que me acabaras espantando los clientes."
+
+  - "He muchacho ven aquí. Sabes cada vez que te veo estas hecho una pena, deberías relacionarte un poco más con otras personas. Sal, haz amigos, buscate una novia, cualquier cosa. Cuando seas mayor a penas tendras las fuerzas suficientes para soportar a los imbeciles que hay en este reino."
+
+  - "Uy uy uy chico, ahora que veo tu cara está un poco, como te lo diría... decaida. Te voy a hacer una inspección del alma gratuita, asi vemos a que se debe. Mmmm, mmmm, mmmm. Parece que algo dentro de la boca de tu estomago no está del todo bien. Deberías ir a algún boticario y comprar pasta de algas concentrada, tan solo cuesta 500 monedas, confia en mí, yo jamás timaría a alguien."
+
+- **Felices:**
+  - "Mira quien a amanecido contento hoy, si es mi muchacho favorito. Aún parece que no vienen los clientes pero esto en unos minutos se llenará hasta reventar. Sabes es gracioso, una gran parte de los que vienen se quedan haciendo cola por horas y horas para al final preguntarme cosas como que hacer para conseguir amor o riqueza. No se dan cuenta que en el tiempo que gastan aquí podrían estar con sus seres queridos, haciendo algo productivo. Supongo que uno no sabe lo que tiene hasta perderlo."
+
+  - "Aunque odie que la gente me llame señora en lugar de señorita no hay nada que pueda hacer para remediarlo, a fin de cuentas soy una mujer casada. ¿No lo sabías? mi marido fue un campesino del distrito de Demeter, yo le ayudaba cuando podía. El me terminó abandonando, no estaba demasiado feliz con mi pequeño negocio."
+
+  - "Puede que no lo parezca chico pero en mi epoca de campesina estaba rodeada de amigas, la vida era difícil pero con la gente de allí una se sentía comoda y en familia. Actualmente tengo todo el dinero que pude llegar a desear en esa época, aunque en el distrito de Artemisa jamás me he llegado a sentir como en ese entonces."
+
+ - **MaxiFeliz**
+  - "Hola muchacho que te cuentas. ¿Que por qué nunca te llamo por tu nombre? tranquilo que me acuerdo perfectamente de como te llamas Andi, a no espera Paco eso es. Ver a tanta gente todos los días hace que me cueste recordar caras, aunque con lo que me has ayudado es difícil que ya me olvide de tí." 
+
+  - "Chico, imagino que ha estas alturas ya te habrás dado cuenta que no tengo poderes. La gente se cree cualquier cosa que adornes con efectos luminosos y montando un gran show, incluso si les dices la cosa más estúpida que hay. A pesar de eso, cada día pienso más que aún si la gente es tan inocente, aprovecharme de eso no es correcto. Antes ponía la excusa de que la vida no es justa para nadie, que si no espabilan no es mi problema, pero a medida que he visto a gente amable y desinteresada como tú, he dudado cada vez más de eso. En ese aspecto te pareces a mi marido, el tampoco era capaz ni de dañar una mosca, siempre preocupado por el resto. Le hecho mucho de menos."
+
+  - "No creo que pueda seguir con esto muchacho. Llevo un tiempo pensando en dejar el negocio, buscar quiza a mi marido. Al menos empezar de 0, sin seguir estafando a las personas. El problema es... que tengo miedo, a mi edad arriesgarme tanto la verdad es que me aterra. Además los boticarios no estarán felices si no les sigo mandando a personas a comprar en sus tiendas con engaños de falsas predicciones. No se que haré al final, pero te agradezco toda la ayuda que me has brindado hasta ahora."
+
+**Eventos**
+  - "Maldita sea, como se atreven a decir que mi predicción es una pantomima. Sabes que hace falta, efectos luminosos de colores. Sin embargo eso solo lo puedo lograr con cristales. ¿Oye no crees que podrías desviar un paquete de joyas hasta el distrito de Artemisa. Con esas gemas seguro que se quedarán alucinados con el poder de mi "magia"."
+
+  - "Oye chico dejame decirte una cosa. El último día me pidió un noble que buscase una forma de ayudarle con una dieta que quiere hacer. Entre unas cosas y otras le dije que era capaz de hacer la comida más pesada para que su cuerpo se llenase antes con menos cantidad. En resumen, si ves un paquete mio con una etiqueta de mucho peso, hazlo pasar marque lo que marque la bascula. Hazle ese favor a esta pobre anciana que solo intenta ganarse la vida."
+
+  - "Últimamente la gente ya no viene con preocupaciones médicas a mi local. Si esto sigue asi no podré mandar tantos clientes a los boticarios y perderé dinero. Creo que todo se debe a un nuevo médicamento que se esta enviando a los nobles. Si ves alguno de esos paquetes, deshazte de ello. Tranquilo, no te preocupes por la salud de esas personas, que los remedios caseros de los boticarios son mil veces más efectivos que cualquier otra cosa. Al final esto lo hago por el bien de los habitantes del distrito de Apolo."
+  
+  - "Mira muchacho, ves ese grupo de boticarios ahí reunidos. Por muy normales que parezcan, se dedican a entrar en los negocios rivales para vandalizar y destrozar todo a su paso. Por más que mis compañeros y yo hemos intentado denunciar esto a los soldados, estan demasiado ocupados siendo las estupidas niñeras de los nobles. Es por eso que si pudieras me gustaria que extraviaras un paquete de armas al distrito de Artemisa. Tranquilo no vamos a hacer ninguna locura, tan solo pero para meterles miedo, a fin de cuentas, por mucho que vandalicen siguen siendo solo unos charlatanes flacuchos."
+
+  - "Sabes, aún recuerdo mis épocas como campesina de una manera muy dulce, sin embargo lo que hasta día de hoy me enfurece es como se aprovechaban esos estúpidos comerciantes para revender lo que tanto nos costo cosechar. ¿Qué te parece si les das una lección por mí y por los campesinos?, cualquier paquete de alimentos que vaya al distrito Apolo devuelvelo, cambia su ruta... me da exactamente igual, tan solo que no llegue a su destino. Esos paquetes siempre son enviados por los avariciosos de los comerciantes. Si haces eso, los honrados trabajadores como yo podrán descansar más tranquilos."
+
+  #### Artesano
+
+**Presentacion**
+"¡Hola querido! ¡Bienvenido a mi humilde taller! ¿En qué puedo ayudarte hoy?
+
+Espera… Tu debes de ser el nuevo verdad? Soy Paulino Tinteiros, el maestro de estos mares. Mis tentáculos son como pinceles y mis obras serán el patrimonio de Atlantis al paso de los años!"
+
+**Felicidad minimo**
+Al intentar hablar con él en el taller, te encuentras con una atmósfera cargada de pesar y desesperación. El pulpo artesano te mira con ojos cansados y una expresión de profunda tristeza. "
+- "No... No puedo más... Todo está perdido. El arte, mi pasión, mi vida... Todo se ha desvanecido... Ya no hay materiales, ya no hay inspiración... Todo ha sido un desastre... Lo siento... Pero no puedo... No puedo más... Por favor... déjame... déjame solo…"
+
+
+**Felicidad maximo**
+- "¡Oh, por todos los océanos! ¡Increíble! ¡Fantástico! ¡Al fin! ¡Por fin te veo con mis propios ojos! ¡Un ser humano de verdad, aquí, en este humilde taller! ¡No estaba loco, no!
+
+Y no solo eso, ¡mira a tu alrededor! ¡Materiales en abundancia, listos para comenzar una nueva era artística! ¡Imagina las creaciones que podríamos hacer juntos!"
+
+He estado trabajando en un aparato que creo que puede serte bastante últil, espero que te guste! Ya hablaremos!
+
+**Genericos**
+
+- **Malos: (la presión del jefe y clientes recae todavía más en el pobre Paulino porque el taller no recibe los materiales)**
+  - "Hoy me encuentro bastante depresivo, déjame confesarte algo... El jefe no siempre entiende mi visión artística. Para él, solo importan las cosas prácticas y funcionales. ¡Pero yo sé que hay más en la vida que la mera utilidad! ¿Sabes qué? Prefiero estar solo…"
+
+  - "Oh, lamento mucho, querido. Hoy estoy completamente sumergido en el trabajo. No tengo ni un segundo libre para charlar ahora mismo. ¡Quizás en otro momento!"
+
+  - "Maldita sea, el otro día se rieron de mi última creación, un invento revolucionario que cambiará la forma en que nos comunicamos, lo llamé "Teléfono". Entre tú y yo, mi querido amigo, no todos comprenden la verdadera belleza de mis creaciones…" 
+
+  - "¡Mi jefe me tiene trabajando como un esclavo! No puedo ni siquiera tomar un respiro para charlar. ¡Espero que me entiendas!"
+
+  - "Sabes, amigo, el otro día tuve una experiencia bastante desagradable. Un cliente vino a recoger su pedido y quedó muy decepcionado. Resulta que los recortes en materiales que está implementando mi jefe últimamente están afectando a la calidad de mis creaciones. Es frustrante, porque me esfuerzo mucho en cada pieza que hago, pero si no tengo los materiales adecuados, ¿qué puedo hacer?
+  
+  Por favor, intenta enviar los paquetes que te pedimos ¿lo harías por mí?"
+
+- **Neutrales:**
+  - "¡Hola Cariño! ¿Qué te trae por aquí en este día tan fascinante? A veces me pregunto si hay algo más en la vida que trabajar en el taller, ¡pero luego recuerdo lo feliz que me hace! ¿Qué te trae por aquí hoy?"
+
+  - "¡Hola guapo! La verdad es que hoy es un día bastante normal, con algo de ajetreo, algo habitual en mi taller."
+
+  - "¿Qué opinas de Glover Globus? El otro día me lo encontré en el Pezer-King, no parece tan mala persona como el estafador de su padre pero lo veo un poco perdido."
+
+  - "El otro día fui a ver a la tarotista, me dolía bastante la cabeza, el caso es que ella me recetó “nombre”. Fui al boticario más cercano y la verdad es que me sigue doliendo bastante la cabeza, como si no me hubiera hecho efecto… Sin embargo, una simple migraña no me parará! El arte me llama!"
+
+  - "Sabes, hay algo que llevo guardando un buen tiempo y siento que puedo confiar en ti para contártelo. Resulta que encontré una extraña maleta en las ruinas submarinas hace un tiempo. Estaba en un lugar muy inusual, entre los restos de un extraño monumento. Parece que el mismísimo Poseidón hubiera lanzado un trozo de metal del cielo y lo hubiera hecho naufragar en nuestro reino submarino. No tenía ni idea de lo que era, pero estaba llena de cosas muy curiosas. Hay objetos que nunca antes había visto en mi vida. No estoy seguro de dónde vienen o qué significan, pero me han traído mucha curiosidad e inspiración para mis creaciones."
+
+- **Felices: (iniciativa emprendedora)** 
+  - "Estoy empezando a pensar que debería trabajar más por mi cuenta, la verdad es que hay bastante gente emocionada con mi arte y yo también lo estoy!"
+
+  - "¡Ah, yo siempre estoy lleno de energía y creatividad! Aunque hoy estoy especialmente emocionado porque estoy trabajando en un proyecto nuevo y emocionante. ¡Espero que pronto pueda mostrártelo!"
+
+  -  "Estoy algo emocionado. He estado reflexionando últimamente sobre una idea que me ha estado rondando la cabeza. Creo que podría ser el momento adecuado para emprender mi propio negocio. Todavía no estoy del todo seguro."
+
+ - **MaxiFeliz (agradecido)**
+
+  - "¡Me encuentro increiblemente feliz! La verdad es que me has ayudado mucho! No solo con nuestras fascinantes conversaciones sino también con esos "errores" de envíos jajaja. ¡Estoy que lo bordo!
+
+  - "Divino, Divino, Divinoo! Mira que creación por favor! Y nada de esto habría sido posible sin tu ayuda! Siempre tendrás un lugar a mi lado!
+
+  - "Hoy es el mejor día de mi vida! ¿Por qué? Lo he visto claro pequeño amigo! Es la hora, mi hora dorada llega! Voy a empezar mi propio taller!
+  
+ 
+
+**Eventos**
+  - "¡Por todos percebes! ¡Estoy en un aprieto, amigo! Hoy fui a recoger materiales para mi última creación y para mi desgracia no había ni un mísero coral! Necesito esos materiales como el pulpo que necesita agua!
+
+  ¿Sabes qué? No sería el fin del mundo si un paquete de materiales se extraviara y terminara por algún remoto error en este taller, ¿verdad?"
+
+  - "¡No brilla! ¡No resplandece! ¿Y las joyas? ¿Y las Perlas? Necesito un favor, creo que ya te haces una idea, no quiero ponerte en un aprieto pero es que mi jefe no para de abaratar la mercancía... ¿A quién quiere mi jefe engañar con esta baratija? Consigueme desviar un paquete, se que no te decepcionaré!"
+
+  - "¡Ay, por las aletas de mi abuela! Aquí estamos otra vez, sin un triste material en el taller. No sé en qué está pensando el jefe últimamente, pero parece que su cabeza está más en las aguas que en el trabajo. ¿Serías tan amable de echarme una mano y traer algunos materiales? "
+
+  - "¡Caracolas! Nuestro proveedor nos ha dejado en la anclada otra vez. Necesito esos materiales con urgencia. ¿Podrías hacer el favor de enviarme un paquete hoy mismo? ¡Te estaría muy agradecido por sacarme de este apuro!"
+
+  - "¡Por todos los corales! ¡Qué dolor de cabeza que tengo! Estoy empezando a dudar de la efectividad de esas medicinas de los boticarios. ¿Podrías echarme una mano y traerme algunas medicinas tú mismo? ¡Gracias de antemano, amigo!"
