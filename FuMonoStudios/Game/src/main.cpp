@@ -2,12 +2,19 @@
 #include <stdint.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
+#include <string>
+#include "architecture/Game.h"
+#include "sdlutils/SDLUtils.h"
 
 int main(int argc, char* argv[]) {
-
-    SDL_Init(SDL_INIT_VIDEO);
-
-    // create window and renderer
+	std::cout << "Hola Buenas Tardes";
+	try {
+		Game().run();
+	}
+	catch (std::string e) {
+		std::cout <<"ERROR: " << e << std::endl;
+	}
 
     SDL_Window* Window = SDL_CreateWindow("Text Rendering", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, 0);
     if (Window == NULL) { printf("Window creation failed: %s\n", SDL_GetError()); return 1; }
@@ -23,7 +30,7 @@ int main(int argc, char* argv[]) {
 
     SDL_Color textColor = { 255, 255, 255, 255 };
 
-    const char* textToWrite = "Día 1: El vagabundo estará en su caja de cartón en la calle donde está la oficina. El juego te indicará que puedes hablar con él y te forzará a hablar con él.";
+    const char* textToWrite = "Dï¿½a 1: El vagabundo estarï¿½ en su caja de cartï¿½n en la calle donde estï¿½ la oficina. El juego te indicarï¿½ que puedes hablar con ï¿½l y te forzarï¿½ a hablar con ï¿½l.";
 
     int textLength = 0;
     while (textToWrite[textLength] != '\0') {
