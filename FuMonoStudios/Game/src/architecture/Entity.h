@@ -84,7 +84,7 @@ namespace ecs {
 			for (auto i = 0u; i < n; i++) {
 				currCmps_[i]->update();
 			}
-			std::cout << "Entidad Update" << std::endl;
+			//std::cout << "Entidad Update" << std::endl;
 		}
 
 		inline void render() {
