@@ -20,13 +20,13 @@ public:
 
 	void update() override;
 
-	void addEvent(Callback & const event );
+	void addEvent(Callback& const event );
 
 private:
 
 	Transform* tr_;
 
-	std::list<Callback*> eventsWhenClick;
+	std::list<Callback> eventsWhenClick;
 
 
 };

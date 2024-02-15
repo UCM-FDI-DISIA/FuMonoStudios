@@ -34,8 +34,14 @@ void ecs::MainScene::init()
 	Texture* sujetaplazas = &sdlutils().images().at("placeHolder");
 	Transform* e = Prueba2->addComponent<Transform>(ecs::cmp::TRANSFORM, 200.0f, 100.0f, sujetaplazas->width(), sujetaplazas->height());
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(ecs::cmp::IMAGE, sujetaplazas);
+	auto clicker = Prueba2->addComponent<Clickeable>(ecs::cmp::CLICKEABLE);
+	Callback cosa = []() {std::cout << "Click" << std::endl; };
+	clicker->addEvent(cosa);
 
-	Prueba2->addComponent<DragAndDrop>(ecs::cmp::DRAGANDDROP);
+	Entity* Prueba3 = addEntity(layer::BACKGROUND);
+	auto tr = Prueba3->addComponent<Transform>(ecs::cmp::TRANSFORM, 100.0f, 100.0f, sujetaplazas->width(), sujetaplazas->height());
+	auto rd = Prueba3->addComponent<RenderImage>(ecs::cmp::IMAGE,sujetaplazas);
+	Prueba3->addComponent<DragAndDrop>(ecs::cmp::DRAGANDDROP);
 }
 
 

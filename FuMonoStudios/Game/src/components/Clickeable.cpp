@@ -9,7 +9,7 @@
 
 
 
-Clickeable::Clickeable() {
+Clickeable::Clickeable(): tr_(nullptr), eventsWhenClick() {
 
 }
 
@@ -37,12 +37,12 @@ void Clickeable::update() {
 
 		if (SDL_PointInRect(&point, tr_->getRect())) {
 
-			std::cout << "click" << std::endl;
+			//std::cout << "click" << std::endl;
+			// 
+			//Recorrido por las colbacks a las que está suscrito este objeto
+			for (Callback call:eventsWhenClick) {
 
-			for (auto i = eventsWhenClick.begin(); i != eventsWhenClick.end(); ++i) {
-
-				(**i)();
-
+				call();
 			}
 
 		}
@@ -54,6 +54,6 @@ void Clickeable::update() {
 
 void Clickeable::addEvent(Callback& const event) {
 
-	eventsWhenClick.push_back(&event);
+	eventsWhenClick.push_back(event);
 
 }

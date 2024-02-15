@@ -30,5 +30,18 @@ namespace ecs {
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;
 	}
+
+	using lyId_t = uint8_t;
+	//Namespace de las capas
+	//El orden de las capas es de atrás hacia adelante;
+	namespace layer {
+		enum layerId : lyId_t
+		{
+			BACKGROUND,
+			DEFAULT,
+			_LAST_LAYER
+		};
+		constexpr layerId maxLayerId = _LAST_LAYER;
+	}
 }
 

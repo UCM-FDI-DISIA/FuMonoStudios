@@ -1,6 +1,8 @@
 #pragma once
 #include "../sdlutils/SDLUtils.h"
 #include "ecs.h"
+#include <vector>
+#include <array>
 //#include "Entity.h"
 
 namespace ecs {
@@ -33,12 +35,12 @@ namespace ecs {
 		/// </summary>
 		void render();
 		
-		Entity* addEntity();
+		Entity* addEntity(ecs::layer::layerId lyId = ecs::layer::DEFAULT);
 
-		void removeEntity();
+		void refresh();
 
 	protected:
-		std::vector<Entity*> objs_;
+		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
 	};
 }
 

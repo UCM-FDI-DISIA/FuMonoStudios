@@ -11,7 +11,10 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 	rect->w = w;
 	rect->x = x;
 	rect->y = y;
+#ifdef _DEBUG
 	renderer = sdl.renderer();
+#endif // _DEBUG
+
 }
 
 Transform::~Transform() {
@@ -50,6 +53,16 @@ void Transform::render() const {
 	//std::cout << "Me renderizo\n";
 	SDL_RenderDrawRect(renderer, rect);
 #endif // _DEBUG
+}
+
+void Transform::setPos(Vector2D& pos)
+{
+	position = pos;
+}
+
+void Transform::setPos(float x, float y)
+{
+	position = Vector2D(x, y);
 }
 
 SDL_Rect* Transform::getRect() const {

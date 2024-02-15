@@ -31,6 +31,7 @@ void DragAndDrop::update() {
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
+	//Detección al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
@@ -41,18 +42,19 @@ void DragAndDrop::update() {
 		}
 
 	}
+	//Detección al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
 
 	}
 
+	//Arrastre del objeto
 	if (dragging) {
 
 		tr_->Move(point.x, point.y);
 
-		std::cout << point.x << " " << point.y << std::endl;
-
+		//std::cout << point.x << " " << point.y << std::endl;
 	}
 	
 
