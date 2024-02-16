@@ -19,7 +19,7 @@ DragAndDrop::~DragAndDrop() {
 
 void DragAndDrop::initComponent() {
 
-	tr_ = ent_->getComponent<Transform>(ecs::cmp::TRANSFORM);
+	tr_ = ent_->getComponent<Transform>();
 
 	assert(tr_ != nullptr);
 

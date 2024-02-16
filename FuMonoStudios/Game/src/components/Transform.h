@@ -7,6 +7,7 @@
 class Transform : public ecs::Component 
 {
 public:
+	__CMP_DECL__(ecs::cmp::TRANSFORM)
 	Transform(float x, float y, float w, float h);
 	~Transform();
 	void Move(std::pair<float, float> pos);

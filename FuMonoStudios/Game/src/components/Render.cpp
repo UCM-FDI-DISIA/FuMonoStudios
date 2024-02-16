@@ -11,7 +11,7 @@ RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr) {}
 RenderImage::~RenderImage() {}
 
 void RenderImage::initComponent() {
-	myTransform = ent_->getComponent<Transform>(ecs::cmp::TRANSFORM);
+	myTransform = ent_->getComponent<Transform>();
 }
 
 void RenderImage::render() const {

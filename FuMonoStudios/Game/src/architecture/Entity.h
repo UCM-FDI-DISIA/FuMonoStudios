@@ -43,13 +43,13 @@ namespace ecs {
 		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
 		/// <returns>Puntero al componente creado</returns>
 		template<typename T, typename ...Ts>
-		inline T* addComponent(ecs::cmpId_t cId, Ts&&... args) {
+		inline T* addComponent(Ts&&... args) {
 			T* c = new T(std::forward<Ts>(args)...);
 
-			removeComponent(cId);
+			removeComponent<T>();
 
 			currCmps_.push_back(c);
-			cmps_[cId] = c;
+			cmps_[cmpId<T>] = c;
 
 			c->setContext(this);
 			c->initComponent();
@@ -58,20 +58,26 @@ namespace ecs {
 		}
 
 		//Remueve el componente de Entity marcado por cId
-		inline void removeComponent(ecs::cmpId_t cId) {
-			if (cmps_[cId] != nullptr) {
+		template<typename T>
+		inline void removeComponent() {
+			if (cmps_[cmpId<T>] != nullptr) {
 				auto iter = std::find(currCmps_.begin(),
 					currCmps_.end(),
-					cmps_[cId]);
+					cmps_[cmpId<T>]);
 				currCmps_.erase(iter);
-				delete cmps_[cId];
-				cmps_[cId] = nullptr;
+				delete cmps_[cmpId<T>];
+				cmps_[cmpId<T>] = nullptr;
 			}
 		}
 
 		//Devuelve referencia al componente de Entity marcado por cId
 		template<typename T>
-		inline T* getComponent(ecs::cmpId_t cId) {
+		inline T* getComponent() {
+
+			// the component id
+			constexpr cmpId_t cId = cmpId<T>;
+			static_assert(cId < ecs::cmp::maxComponentId);
+
 			return static_cast<T*>(cmps_[cId]);
 		}
 		//Comprueba si Entity tiene el componente marcado por cId

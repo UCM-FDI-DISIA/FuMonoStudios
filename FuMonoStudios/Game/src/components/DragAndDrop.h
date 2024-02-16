@@ -7,7 +7,7 @@ class Transform;
 class DragAndDrop : public ecs::Component {
 
 public:
-
+	__CMP_DECL__(ecs::cmp::DRAGANDDROP)
 	DragAndDrop();
 
 	~DragAndDrop();
