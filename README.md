@@ -294,6 +294,28 @@ Pancracio Warawa es una tortuga marina de mediana edad que viste con una boina, 
 
 Su caracter es amigable y alegre con todos aquellos de los anillos exteriores y muy hostil con todos los de los anillos más interiores. Es un soñador ambicioso muy amoroso con su familia a la cual sin darse cuenta puede llegar a descuidar por su continuo trabajo y su doble vida en el culto de las lechuzas. A pesar de su amabilidad este siempre propones soluciones violentas frente al problema de la diferencia social entre los diferentes distritos.
 
+##### Finales
+
+**Malo**
+ : Pancracio Warawa acaba harto de las injusticias cometidas hacia él y los campesinos y decide de hablarte ya que cree que trabajas para el secretario del rey y la nobleza y culpa a tu gestión de empeorar la calidad de sus cosechas debido a la ausencia de recursos que sufre.
+ La calidad de sus cultivos ha caído paulatinamente hasta llegar a un punto que prácticamente produce bazofia y su economía ha quedado gravemente afectada, lo que hace que sufra de problemas familiares.
+ Pancracio comienza a descuidarse a sí mismo, a su familia y a sus labores en el grupo de las lechuzas, vuelve a su época depresiva de la que una vez le rescató el grupo de las lechuzas, ahora se le ve borracho a diario en el bar del que una vez fue rescatado, su familia lo ha dejado, y él mismo ya no acepta la ayuda del grupo de las lechuzas.
+
+ **Neutral**
+ : la situación de Pancracio Warawa se mantiene tal y como estaba al principio de la historia, la calidad de sus productos es cuestionable, no llega a ser una bazofia pero no es ni de lejos un buen sabor.
+ La situción con su familia es complicada por los problemas ecónomicos que sufre debido al abusivo precio al que los intermediarios compran sus productos (mucho menos del que tienen al salir al mercado), pero es algo a lo que Pancracio y los suyos ya están acostrumbrados.
+ En las sombras Pancracio sigue trabajan con el grupo de las lechuzas como de costumbre.
+
+ **Feliz**
+ : La buena redistribución de paquetes y las ayudas que le has aportado han hecho que la calidad de las cosechas de Pancracio hayan mejorado bastante, haciendo que Pancracio pueda negorciar mejores precios con los intermediarios, lo que ha mejorado bastante la situación familiar de Pancracio, tanto que él y su mujer han pensado en tener otro hijo pese a su avanzada edad, para ellos fromar una gran familia es una de las mayores maravillas de la vida.
+ Continúa con sus labores con el grupo de las lechuzas con más entusiasmo que antes, debido a que ahora vive algo mejor esto le permite intentar ayudar a más gente que encuentra en una situación parecida a la que él una vez salió, haciendo aumentar en número de lechuzas.
+
+ **MaxiFeliz**
+ : Pancracio está feliz por haber tenido un nuevo hijo, para Pancracio y su mujer tener una gran familia es uno de sus objetivos en la vida, están muy entusiasmados e incluso están empezando a pensar en ampliar aún más la familia en un futuro.
+ La buena redistribución de los recursos y las muchas ayudas otorgadas a Pancracio Warawa han hecho que la calidad de las cosechas de Pancracio hayan mejorado exponencialmente.
+ Poco a poco Pancracio ha ido vendiendo sus cultivos a buen precio hasta el punto de permitirse negociar unos precios muy buenos con los intermediarios debido a la fama que están empezando a obtener sus productos.
+ Debido al aumento de su poder adquisitivo, Pancracio junto al grupo de las lechuzas han decidido abrir un mercado clandestino por el cual lo ciudadanos de los varios exterirores puedan comprar sus productos a un precio muy económico mientra los ciudadanos de los barrios céntrcos siguen comprando los productos a los prescios abusivos que marcan los intermediarios.
+
 
 #### Artesano
  Paulino Tinteiros es un pulpo artesano el cual es capaz de hacer desde vasijas de barro, hasta herramientas de hierro. Sin embargo siempre se ha interesado por las ruinas que se encuentran en la ciudad, viendo en ellas una forma de arte casi divina. Es por ello que siempre intenta hacer creaciones semejantes a dichas obras. Esto provoca que si instructor suela echarle la bronca ya que dedica demasiado tiempo al apartado artístico, cuando para él lo único importante es la utilidad.
@@ -346,6 +368,25 @@ Abakand Istacoz es una langosta con un gran sentido de la justicia, que casi nun
 En cuanto a su apariencia, Abakand tiene un aspecto desgastado y cansado, sus ojos están decaídos. Su piel está desgastada y tiene múltiples percebes pegados a ella. Viste con una cota de malla de oricalco y en la parte del torso usa una confección de algas similar a la tela. Tiene además una espada hecha con huesos de pez envainada. 
 
 Su personalidad es un tanto pesimista aunque tiene un gran sentido de la justicia y se preocupa siempre de que todos se encuentren bien. Odia hacer de recadero para cualquier persona. Siempre intenta ocultar si tristeza en frente de los demás, haciendo bromas para desviar la atención. No le gusta hablar de su pasado debido a la mala relación que mantiene con su madre.
+
+
+##### Finales
+
+**Malo**
+ : Abakand acaba harto de los errores administrativos del jugado y de la escasa ayuda que recibe con los envíos, un día después de una rutinaria y aburrida jornada laboral en el distrito de apolo te cita para beber y aclarar las cosas, Abakand empieza a regañarte por tu gestión, pero en cierto punto de la conversación Abakand se desmorona y admite estar quemado de hacer de niñera de unos nobles que viven holgadamente mientras miran con desprecio a los habitantes de los distritos exteriores.
+ Abakand acaba por abandonar el ejército y volverá al distrto al que pertenece, destrozado por haber sido incapaz de cumplir su objetivo de proteger a los habitantes desfavorecidos de los distritos exteriores.
+
+ **Neutral**
+ : Abakand te cita como amigo para tomar algo poco antes de tu marcha y durante la noche admite no sentirse realizado con las labores que lleva a cabo en el distrito Apolo y que su verdadero deseo sería estar en los distritos exteriores luchando por defender a los más débiles, Abakand no parece haber cambiado mucho desde tu llegada.
+ Abakand se muestra cansado de su trabajo y expresa su repulsión hacía sus jefes y los nobles a los que tiene que cuidar, se le nota malhumorado y sin muchas ganas de continuar con esa desdesperante rutina, pero aún así Abakand continúa trabajando día a día con la esperanza de que alguna vez pueda trabajar en el barrio que deseaba.
+
+ **Feliz**
+ : Abakand te cita como amigo para tomar algo poco antes de tu marcha y durante la noche admite no sentirse realizado con las labores que lleva a cabo en el distrito Apolo y que su verdadero deseo sería estar en los distritos exteriores luchando por defender a los más débiles, pero pese a estar consternado por su situación este se ve con la esperanza de poder acumular logros a base de trabajo duro y con ellos conseguir ese traslado que tanto desea.
+ Al final de la noche te dice que eres un buen amigo y te agradece el apoyo dado, ha decidido que hablará con sus jefes para intentar lograr un traslado cuando realice algún acto de mérito.
+
+ **MaxiFeliz**
+ : Abakand te cita lleno de alegría para ir a beber juntos, este te lleva a  vuestro bar de confianza y comienza a contarte que es la última noche que pasáis juntes en ese bar ¡ha conseguido su traslado!, Abakand había ido poco a poco reuniendo la fuerza y el coraje suficientes como para ir a hablar con sus jefes, les intentó convencer de que sus istio no era ese, que él siempre habría sido mucho más valioso en los distritos exteriores, y lo consiguió, debido al aumento de la criminalidad en los distritos exteriores y el exceso de soldados en el distrito Apolo.
+ Esa noche Abakand y tú celebráis por todo lo alto y os pilláis la mayor borrachera de vuestras vidas con rica tinta de calamar del 92, Abakand te agradece tu amistad y te expresa su deseo de volver a coincidir en algún barv de los distritos exteriores.
 
 
 #### Contable
