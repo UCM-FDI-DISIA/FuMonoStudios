@@ -1,9 +1,8 @@
 #include "Scene.h"
 #include "Entity.h"
 #include <iostream>
-#include "Game.h"
 namespace ecs {
-	Scene::Scene(Game* game):objs_(),game_(game) {
+	Scene::Scene():objs_() {
 		
 	}
 	Scene::~Scene() {

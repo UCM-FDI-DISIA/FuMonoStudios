@@ -15,7 +15,7 @@ namespace ecs {
 	class Scene
 	{
 	public:
-		Scene(Game* game);
+		Scene();
 		virtual ~Scene();
 
 		/// <summary>
@@ -41,7 +41,6 @@ namespace ecs {
 
 	protected:
 		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
-		Game* game_;
 	};
 }
 

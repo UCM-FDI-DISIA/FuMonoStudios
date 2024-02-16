@@ -9,7 +9,7 @@
 #include "../architecture/Game.h"
 
 
-ecs::MainScene::MainScene(Game* game):Scene(game)
+ecs::MainScene::MainScene():Scene()
 {
 	
 }

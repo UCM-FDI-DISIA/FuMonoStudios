@@ -6,7 +6,7 @@ namespace ecs {
     class MainScene :public Scene
     {
     public:
-        MainScene(Game* game);
+        MainScene();
         virtual ~MainScene();
 
         void init() override;

@@ -58,6 +58,8 @@ void Transform::render() const {
 void Transform::setPos(Vector2D& pos)
 {
 	position = pos;
+	// hay que ver como acceder a los métodos de la entidad para usar el getParent y poder obtener la posRelativa
+	//relativePosition = pos + this->ent_
 }
 
 void Transform::setPos(float x, float y)

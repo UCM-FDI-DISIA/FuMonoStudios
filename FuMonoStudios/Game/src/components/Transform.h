@@ -23,11 +23,13 @@ public:
 	void setPos(float x, float y);
 
 	Vector2D getPos() { return position; };
+	Vector2D getRelativePos() { return relativePosition; };
 	float getWidth() { return width; };
 	float getHeith() { return height; };
 
 private:
 	Vector2D position;
+	Vector2D relativePosition; // es la position sumando la relativePosicion del padre
 	float width;
 	float height;
 	/*
