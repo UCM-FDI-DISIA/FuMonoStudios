@@ -12,6 +12,7 @@ RenderImage::~RenderImage() {}
 
 void RenderImage::initComponent() {
 	myTransform = ent_->getComponent<Transform>();
+	assert(myTransform != nullptr);
 }
 
 void RenderImage::render() const {

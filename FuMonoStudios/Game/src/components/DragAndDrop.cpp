@@ -9,7 +9,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() {
+DragAndDrop::DragAndDrop() : tr_(nullptr),dragging(false) {
 
 }
 

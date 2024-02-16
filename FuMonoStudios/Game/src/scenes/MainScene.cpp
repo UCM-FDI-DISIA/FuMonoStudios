@@ -6,9 +6,10 @@
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
 #include "../components/DragAndDrop.h"
+#include "../architecture/Game.h"
 
 
-ecs::MainScene::MainScene()
+ecs::MainScene::MainScene(Game* game):Scene(game)
 {
 	
 }
@@ -23,19 +24,16 @@ void ecs::MainScene::init()
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
 	
-	//Entidad para probar el transform
-	
-
-	/*
-	Entity* Prueba = addEntity();
-	Transform* wakamole = Prueba->addComponent<Transform>(ecs::cmp::TRANSFORM, 200.0f, 25.0f, 300.0f, 500.0f);
-	*/
 	Entity* Prueba2 = addEntity();
 	Texture* sujetaplazas = &sdlutils().images().at("placeHolder");
 	Transform* e = Prueba2->addComponent<Transform>(200.0f, 100.0f, sujetaplazas->width(), sujetaplazas->height());
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Prueba2->addComponent<Clickeable>();
-	Callback cosa = []() {std::cout << "Click" << std::endl; };
+
+	//TODO: probar que con un boton se puedan cargar otras escenas
+	Callback cosa = []() {
+		std::cout << "Click" << std::endl;
+	};
 	clicker->addEvent(cosa);
 
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
