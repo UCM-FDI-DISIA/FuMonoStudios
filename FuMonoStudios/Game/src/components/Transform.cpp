@@ -24,6 +24,7 @@ Transform::~Transform() {
 void Transform::update() {
 #ifdef _DEBUG
 
+	//se actualiza la posición del render del objeto continuamente
 	rect->x = position.getX();
 
 	rect->y = position.getY();
@@ -40,6 +41,7 @@ void Transform::render() const {
 #endif // _DEBUG
 }
 
+//Cambia la posicion del objeto
 void Transform::setPos(Vector2D& pos)
 {
 	position = pos;
@@ -47,6 +49,7 @@ void Transform::setPos(Vector2D& pos)
 	//relativePosition = pos + this->ent_
 }
 
+//Cambia la posicion del objeto
 void Transform::setPos(float x, float y)
 {
 	position = Vector2D(x, y);

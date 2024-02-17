@@ -45,7 +45,6 @@ void DragAndDrop::update() {
 
 			//Para que funcione sin ir al centro, con margen
 			differenceX = point.x - tr_->getPos().getX();;
-
 			differenceY = point.y - tr_->getPos().getY();;
 
 		}
@@ -66,15 +65,11 @@ void DragAndDrop::update() {
 		//Para que vaya en el medio
 		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
 
-		//Para que vaya en la posicion del ratón, sin centrarse el objeto
-		
+
+		//Sin centrarse el objeto
 		tr_->setPos(point.x - differenceX, point.y - differenceY);
 
-		std::cout << point.x + differenceX << " " << point.y + differenceY << std::endl;
 
-
-
-		//std::cout << point.x << " " << point.y << std::endl;
 	}
 	
 
