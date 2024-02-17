@@ -21,28 +21,13 @@ Transform::~Transform() {
 
 }
 
-void Transform::Move(std::pair<float,float> pos) {
-
-	position.set(pos.first, pos.second);
-
-	rect->x = pos.first - (rect->w / 2);
-
-	rect->y = pos.second - (rect->h / 2);
-
-}
-
-void Transform::Move(float x, float y) {
-
-	position.set(x, y);
-
-	rect->x = x - (rect->w / 2);
-
-	rect->y = y - (rect->h / 2);
-
-}
-
 void Transform::update() {
 #ifdef _DEBUG
+
+	rect->x = position.getX();
+
+	rect->y = position.getY();
+
 	//std::cout << "Me transformo\n";
 #endif // _DEBUG
 }

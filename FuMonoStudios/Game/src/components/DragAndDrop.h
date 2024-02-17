@@ -22,4 +22,8 @@ private:
 
 	bool dragging;
 
+	float differenceX;
+
+	float differenceY;
+
 };

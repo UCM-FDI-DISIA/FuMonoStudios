@@ -9,7 +9,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr),dragging(false) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -27,9 +27,13 @@ void DragAndDrop::initComponent() {
 
 void DragAndDrop::update() {
 
+	
+
 	auto& ihdlr = ih();
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
+
+	
 
 	//Detección al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
@@ -39,9 +43,15 @@ void DragAndDrop::update() {
 
 			dragging = true;
 
+			//Para que funcione sin ir al centro, con margen
+			differenceX = point.x - tr_->getPos().getX();;
+
+			differenceY = point.y - tr_->getPos().getY();;
+
 		}
 
 	}
+
 	//Detección al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
@@ -52,7 +62,17 @@ void DragAndDrop::update() {
 	//Arrastre del objeto
 	if (dragging) {
 
-		tr_->Move(point.x, point.y);
+
+		//Para que vaya en el medio
+		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
+
+		//Para que vaya en la posicion del ratón, sin centrarse el objeto
+		
+		tr_->setPos(point.x - differenceX, point.y - differenceY);
+
+		std::cout << point.x + differenceX << " " << point.y + differenceY << std::endl;
+
+
 
 		//std::cout << point.x << " " << point.y << std::endl;
 	}
