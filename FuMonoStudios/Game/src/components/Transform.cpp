@@ -2,8 +2,9 @@
 #include "../architecture/Component.h"
 #include "../utils/Vector2D.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../architecture/Entity.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h){
+Transform::Transform(float x, float y, float w, float h) : Component(), worldPosition(x,y), width(w), height(h){
 	auto& sdl = *SDLUtils::instance();
 
 	rect = new SDL_Rect();
@@ -11,6 +12,8 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 	rect->w = w;
 	rect->x = x;
 	rect->y = y;
+	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+	relativePosition = Vector2D(worldPosition.getX() - parentTransform->getPos().getX(), worldPosition.getY() - parentTransform->getPos().getY());
 #ifdef _DEBUG
 	renderer = sdl.renderer();
 #endif // _DEBUG
@@ -25,9 +28,9 @@ void Transform::update() {
 #ifdef _DEBUG
 
 	//se actualiza la posición del render del objeto continuamente
-	rect->x = position.getX();
+	rect->x = worldPosition.getX();
 
-	rect->y = position.getY();
+	rect->y = worldPosition.getY();
 
 	//std::cout << "Me transformo\n";
 #endif // _DEBUG
@@ -44,15 +47,33 @@ void Transform::render() const {
 //Cambia la posicion del objeto
 void Transform::setPos(Vector2D& pos)
 {
-	position = pos;
-	// hay que ver como acceder a los métodos de la entidad para usar el getParent y poder obtener la posRelativa
-	//relativePosition = pos + this->ent_
+	worldPosition = pos;
+	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+	relativePosition = Vector2D(pos.getX() - parentTransform->getPos().getX(), pos.getY() - parentTransform->getPos().getY());
 }
 
 //Cambia la posicion del objeto
 void Transform::setPos(float x, float y)
 {
-	position = Vector2D(x, y);
+	worldPosition = Vector2D(x, y);
+	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+	relativePosition = Vector2D(x - parentTransform->getPos().getX(), y - parentTransform->getPos().getY());
+}
+
+//Cambia la posicion relativa del objeto
+void Transform::setRelativePos(Vector2D& relativePos)
+{
+	relativePosition = relativePos;
+	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+	worldPosition = parentTransform->getPos() + relativePos;
+}
+
+//Cambia la posicion relativa del objeto
+void Transform::setRelativePos(float x, float y)
+{
+	relativePosition = Vector2D(x,y);
+	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+	worldPosition = parentTransform->getPos() + relativePosition;
 }
 
 SDL_Rect* Transform::getRect() const {
