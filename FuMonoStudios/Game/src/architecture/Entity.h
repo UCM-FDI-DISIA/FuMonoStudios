@@ -110,12 +110,9 @@ namespace ecs {
 
 		// Los objetos solo pueden tener un único padre
 		void setParent(Entity* newParent) {
-			if (parent != nullptr) {
-				parent->removeChild(this);
-			}
-			parent = newParent;
-			if (parent != nullptr) {
-				parent->addChild(this);
+			if (parent != newParent) {
+				parent = newParent;
+				// Update relative pos				
 			}
 		}
 
