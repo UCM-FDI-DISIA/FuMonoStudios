@@ -13,11 +13,8 @@ Transform::Transform(float x, float y, float w, float h) : Component(), worldPos
 	rect->x = x;
 	rect->y = y;
 	// Damos valor a la relativePosition
-	if (ent_ && ent_->getParent()) {
-		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-		if (parentTransform) {
-			relativePosition = Vector2D(worldPosition.getX() - parentTransform->getPos().getX(), worldPosition.getY() - parentTransform->getPos().getY());
-		}
+	if (parent) {
+		relativePosition = Vector2D(worldPosition.getX() - parent->getPos().getX(), worldPosition.getY() - parent->getPos().getY());
 	}
 
 #ifdef _DEBUG
@@ -50,48 +47,65 @@ void Transform::render() const {
 #endif // _DEBUG
 }
 
+std::vector<Transform*> Transform::getChildren() const {
+	return children;
+}
+
+Transform* Transform::getParent() const {
+	return parent;
+}
+
+// Los objetos solo pueden tener un único padre
+void Transform::setParent(Transform* newParent) {
+	if (parent != newParent) {
+		parent = newParent;
+		// Update relative pos				
+	}
+}
+
+void Transform::addChild(Transform* child) {
+	children.push_back(child);
+	child->setParent(this);
+}
+
+void Transform::removeChild(Transform* child) {
+	auto it = std::find(children.begin(), children.end(), child);
+	if (it != children.end()) {
+		children.erase(it);
+		child->setParent(nullptr);
+	}
+}
+
 //Cambia la posicion del objeto
 void Transform::setPos(Vector2D& pos)
 {
 	worldPosition = pos;
-	if (ent_ && ent_->getParent()) {
-		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-		if (parentTransform) {
-			relativePosition = Vector2D(pos.getX() - parentTransform->getPos().getX(), pos.getY() - parentTransform->getPos().getY());
-		}
+	if (parent) {
+		relativePosition = Vector2D(pos.getX() - parent->getPos().getX(), pos.getY() - parent->getPos().getY());
 	}
 }
 
 //Cambia la posicion del objeto
 void Transform::setPos(float x, float y) {
 	worldPosition = Vector2D(x, y);
-	if (ent_ && ent_->getParent()) {
-		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-		if (parentTransform) {
-			relativePosition = Vector2D(x - parentTransform->getPos().getX(), y - parentTransform->getPos().getY());
-		}
+	if (parent) {
+		relativePosition = Vector2D(x - parent->getPos().getX(), y - parent->getPos().getY());
 	}
 }
 
 //Cambia la posicion relativa del objeto
 void Transform::setRelativePos(Vector2D& relativePos) {
 	relativePosition = relativePos;
-	if (ent_ && ent_->getParent()) {
-		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-		if (parentTransform) {
-			worldPosition = parentTransform->getPos() + relativePos;
-		}
+	if (parent) {
+		worldPosition = parent->getPos() + relativePos;
 	}
 }
 
 //Cambia la posicion relativa del objeto
 void Transform::setRelativePos(float x, float y) {
 	relativePosition = Vector2D(x, y);
-	if (ent_ && ent_->getParent()) {
-		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-		if (parentTransform) {
-			worldPosition = parentTransform->getPos() + relativePosition;
-		}
+	if (parent) {
+		worldPosition = parent->getPos() + relativePosition;
 	}
 }
 

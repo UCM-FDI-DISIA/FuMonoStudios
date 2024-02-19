@@ -16,6 +16,11 @@ public:
 	void update();
 	void render() const;
 
+	std::vector<Transform*> getChildren() const;
+	Transform* getParent() const;
+	void setParent(Transform* newParent);
+	void addChild(Transform* child);
+	void removeChild(Transform* child);
 
 	void setPos(Vector2D& pos);
 	void setPos(float x, float y);
@@ -38,6 +43,8 @@ private:
 	actualizar dos datos iguales cuado con accesores podría llegar a ser mucho mas sencillo
 	*/
 	SDL_Rect* rect;
+	Transform* parent;
+	std::vector<Transform*> children;
 #ifdef _DEBUG
 	SDL_Renderer* renderer;
 #endif // _DEBUG

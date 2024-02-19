@@ -100,42 +100,11 @@ namespace ecs {
 			}
 		}
 
-		inline std::vector<Entity*> getChildren() const {
-			return children;
-		}
-
-		Entity* getParent() const {
-			return parent;
-		}
-
-		// Los objetos solo pueden tener un único padre
-		void setParent(Entity* newParent) {
-			if (parent != newParent) {
-				parent = newParent;
-				// Update relative pos				
-			}
-		}
-
-		void addChild(Entity* child) {
-			children.push_back(child);
-			child->setParent(this);
-		}
-
-		void removeChild(Entity* child) {
-			auto it = std::find(children.begin(), children.end(), child);
-			if (it != children.end()) {
-				children.erase(it);
-				child->setParent(nullptr);
-			}
-		}
-
 	private:
 		bool alive_;
 		Scene* scene_;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;
-		Entity* parent;
-		std::vector<Entity*> children;
 	};
 
 }
