@@ -65,7 +65,7 @@ void Dialogo::CreateTextTexture()
         {
             SDL_DestroyTexture(TextTexture);
         }
-        TextTexture = SDL_CreateTextureFromSurface(renderer, TextSurface);
+         TextTexture = SDL_CreateTextureFromSurface(renderer, TextSurface);
     }
 }
 
@@ -116,7 +116,7 @@ void Dialogo::UpdateText()
     }
 }
 
-void Dialogo::render() {
+void Dialogo::render() const {
     SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
     SDL_RenderClear(renderer);
 
@@ -161,6 +161,6 @@ void Dialogo::Run() {
     while (!dialogManager.GetCurrentDialog().empty()) {
         HandleEvents();
         UpdateText();
-        Render();
+        render();
     }
 }

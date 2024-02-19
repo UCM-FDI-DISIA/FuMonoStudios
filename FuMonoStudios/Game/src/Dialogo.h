@@ -43,7 +43,7 @@ private:
     void CreateTextTexture();
     void HandleEvents();
     void UpdateText();
-    void render() override;
+    void render() const override;
     void Clean();
 };
 

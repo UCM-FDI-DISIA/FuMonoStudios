@@ -18,7 +18,7 @@ namespace ecs {
 
 		virtual void initComponent() {};
 		virtual void update() {};
-		virtual void render() {};
+		virtual void render() const {};
 	protected:
 		Entity* ent_;
 	};
