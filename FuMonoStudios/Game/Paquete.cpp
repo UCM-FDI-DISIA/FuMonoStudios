@@ -93,3 +93,10 @@ bool Paquete::Correcto() const{
 	}
 	return resul;
 }
+
+void Paquete::sellarCalle(Calle sello) {
+	if (sello != Erronea) // solo puedes sellar una vez
+	{
+		calleMarcada = sello;
+	}
+}

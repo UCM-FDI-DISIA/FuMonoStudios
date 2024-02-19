@@ -10,6 +10,8 @@ public:
 	~Paquete();
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
+	void sellarCalle(Calle sello);
+
 private:
 	//Variables que se generan automaticamente
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
@@ -21,7 +23,7 @@ private:
 	bool fragil;			//Variable que indica si tiene un sello de frágil puesto
 
 	//Variables que debe modificar el jugador
-	Calle calleMarcada;		//Variable que indica para qué distrito ha sido etiquetado el paquete
+	Calle calleMarcada = Erronea;		//Variable que indica para qué distrito ha sido etiquetado el paquete
 	bool envuelto;			//Variable que indica si está envuelto o no el paquete
 };
 
