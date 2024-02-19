@@ -1,15 +1,17 @@
-// dialogo.h
 
 #ifndef DIALOGO_H
 #define DIALOGO_H
 
+#include "Dialog_Manager.h"
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <memory>
-
-class Dialogo {
+#include <string> 
+#include "architecture/Component.h"
+using namespace std;
+class Dialogo : public ecs::Component{
 public:
-    Dialogo();
+    Dialogo(const std::string& dialogFilePath);
     ~Dialogo();
 
     void Run();
@@ -32,12 +34,16 @@ private:
     int currentCharIndex;
     int delayCounter;
     int delayAmount;
+    int initialTextBoxY;
+
+    DialogManager dialogManager;
+    bool spacePressed;
 
     void InitializeSDL();
     void CreateTextTexture();
     void HandleEvents();
     void UpdateText();
-    void Render();
+    void render() override;
     void Clean();
 };
 

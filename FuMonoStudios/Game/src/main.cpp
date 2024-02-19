@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
 	try {
 		Game().run();
-		Dialogo dialogo;
+		Dialogo dialogo("resources/dialogos/dialogo.txt");
 		dialogo.Run();
 	}
 	catch (std::string e) {
