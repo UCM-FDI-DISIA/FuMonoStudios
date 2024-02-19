@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "../sdlutils/InputHandler.h"
 #include "../scenes/MainScene.h"
+#include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
 /*
 TODO
@@ -18,7 +19,7 @@ Game::Game():exit(false) {
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-	gameScenes = {new ecs::MainScene(),new ecs::ExplorationScene()};
+	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
 	loadScene(ecs::sc::MAIN_SCENE);
 }
 
