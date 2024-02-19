@@ -12,8 +12,14 @@ Transform::Transform(float x, float y, float w, float h) : Component(), worldPos
 	rect->w = w;
 	rect->x = x;
 	rect->y = y;
-	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-	relativePosition = Vector2D(worldPosition.getX() - parentTransform->getPos().getX(), worldPosition.getY() - parentTransform->getPos().getY());
+	// Damos valor a la relativePosition
+	if (ent_ && ent_->getParent()) {
+		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+		if (parentTransform) {
+			relativePosition = Vector2D(worldPosition.getX() - parentTransform->getPos().getX(), worldPosition.getY() - parentTransform->getPos().getY());
+		}
+	}
+
 #ifdef _DEBUG
 	renderer = sdl.renderer();
 #endif // _DEBUG
@@ -48,32 +54,45 @@ void Transform::render() const {
 void Transform::setPos(Vector2D& pos)
 {
 	worldPosition = pos;
-	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-	relativePosition = Vector2D(pos.getX() - parentTransform->getPos().getX(), pos.getY() - parentTransform->getPos().getY());
+	if (ent_ && ent_->getParent()) {
+		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+		if (parentTransform) {
+			relativePosition = Vector2D(pos.getX() - parentTransform->getPos().getX(), pos.getY() - parentTransform->getPos().getY());
+		}
+	}
 }
 
 //Cambia la posicion del objeto
-void Transform::setPos(float x, float y)
-{
+void Transform::setPos(float x, float y) {
 	worldPosition = Vector2D(x, y);
-	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-	relativePosition = Vector2D(x - parentTransform->getPos().getX(), y - parentTransform->getPos().getY());
+	if (ent_ && ent_->getParent()) {
+		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+		if (parentTransform) {
+			relativePosition = Vector2D(x - parentTransform->getPos().getX(), y - parentTransform->getPos().getY());
+		}
+	}
 }
 
 //Cambia la posicion relativa del objeto
-void Transform::setRelativePos(Vector2D& relativePos)
-{
+void Transform::setRelativePos(Vector2D& relativePos) {
 	relativePosition = relativePos;
-	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-	worldPosition = parentTransform->getPos() + relativePos;
+	if (ent_ && ent_->getParent()) {
+		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+		if (parentTransform) {
+			worldPosition = parentTransform->getPos() + relativePos;
+		}
+	}
 }
 
 //Cambia la posicion relativa del objeto
-void Transform::setRelativePos(float x, float y)
-{
-	relativePosition = Vector2D(x,y);
-	Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
-	worldPosition = parentTransform->getPos() + relativePosition;
+void Transform::setRelativePos(float x, float y) {
+	relativePosition = Vector2D(x, y);
+	if (ent_ && ent_->getParent()) {
+		Transform* parentTransform = ent_->getParent()->getComponent<Transform>();
+		if (parentTransform) {
+			worldPosition = parentTransform->getPos() + relativePosition;
+		}
+	}
 }
 
 SDL_Rect* Transform::getRect() const {
