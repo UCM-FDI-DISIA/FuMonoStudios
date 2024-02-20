@@ -15,7 +15,7 @@ public:
 	void initComponent();
 	void render() const;
 private:
-	Texture* myTexture;
-	Transform* myTransform;
+	Texture* myTexture; //Textura que va a ser renderizada
+	Transform* myTransform; //Transform que se usara de de frame para renderizar la textura
 };
 

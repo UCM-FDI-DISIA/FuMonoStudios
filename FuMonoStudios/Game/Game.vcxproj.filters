@@ -88,6 +88,7 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Trigger.cpp">
+    <ClCompile Include="Paquete.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -189,6 +190,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\components\Trigger.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Paquete.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

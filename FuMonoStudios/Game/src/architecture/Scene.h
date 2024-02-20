@@ -34,7 +34,10 @@ namespace ecs {
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
 		void render();
-		
+		/// <summary>
+		/// Añade una entidad vacia a la escena
+		/// </summary>
+		/// <returns>Entidad vacia</returns>
 		Entity* addEntity(ecs::layer::layerId lyId = ecs::layer::DEFAULT);
 
 		void addEntityToColisionList(Entity* e);
@@ -44,8 +47,11 @@ namespace ecs {
 		void refresh();
 
 	protected:
+    /// <summary>
+		/// Vector de los objetos que pertenecen a la escena
+		/// </summary>
 		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
-
+    
 		std::list<Entity* > colisionEntities;
 	};
 }
