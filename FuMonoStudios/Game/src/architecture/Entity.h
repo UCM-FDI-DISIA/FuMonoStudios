@@ -63,9 +63,9 @@ namespace ecs {
 		template<>
 		inline DragAndDrop* addComponent<DragAndDrop>() {
 
-			DragAndDrop* d = addComponent_aux<DragAndDrop>();
-
 			addComponent<Trigger>();
+
+			DragAndDrop* d = addComponent_aux<DragAndDrop>();
 
 			return d;
 

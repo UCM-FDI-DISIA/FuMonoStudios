@@ -2,6 +2,7 @@
 #include "DragAndDrop.h"
 
 #include "Transform.h"
+#include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
@@ -20,6 +21,8 @@ DragAndDrop::~DragAndDrop() {
 void DragAndDrop::initComponent() {
 
 	tr_ = ent_->getComponent<Transform>();
+
+	tri_ = ent_->getComponent<Trigger>();
 
 	assert(tr_ != nullptr);
 
@@ -55,6 +58,9 @@ void DragAndDrop::update() {
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
+
+		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
+		tri_->activateEventsFromEntities();
 
 	}
 

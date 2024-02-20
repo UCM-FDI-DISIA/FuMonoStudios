@@ -4,6 +4,8 @@
 
 class Transform;
 
+class Trigger;
+
 class DragAndDrop : public ecs::Component {
 
 public:
@@ -19,6 +21,8 @@ public:
 private:
 
 	Transform* tr_;
+
+	Trigger* tri_;
 
 	bool dragging;
 

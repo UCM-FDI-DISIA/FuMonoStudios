@@ -42,3 +42,37 @@ void Trigger::touchEntity(ecs::Entity* ent) {
 	entTouching.push_back(ent);
 
 }
+
+//Añade funcionalidad a la entidad si algo se posa sobre ella
+void Trigger::addCallback(Callback event) {
+
+	eventList.push_back(event);
+
+}
+
+//activa los eventos de todas las entidades que tenga asociadas (que este tocando)
+//NOTA: en un futuro será necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
+bool Trigger::activateEventsFromEntities() {
+
+	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {
+
+		(*it)->getComponent<Trigger>()->activateCallbacks();
+
+	}
+
+	return entTouching.empty();
+
+}
+
+//Activa las funciones asociadas a esta entidad
+bool Trigger::activateCallbacks() {
+
+
+	for (Callback call : eventList) {
+
+		call();
+	}
+
+	return eventList.empty();
+
+}

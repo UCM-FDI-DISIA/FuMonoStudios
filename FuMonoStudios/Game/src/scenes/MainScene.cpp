@@ -34,6 +34,12 @@ void ecs::MainScene::init()
 	auto clicker = Prueba2->addComponent<Clickeable>();
 	Prueba2->addComponent<Trigger>();
 
+	Prueba2->getComponent<Trigger>()->addCallback([]() {
+
+		std::cout << "Activar Evento P2" << std::endl;
+
+		});
+
 	//TODO: probar que con un boton se puedan cargar otras escenas
 	Callback cosa = []() {
 		std::cout << "Click" << std::endl;
@@ -45,6 +51,11 @@ void ecs::MainScene::init()
 	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
 	Prueba3->addComponent<DragAndDrop>();
+	Prueba3->getComponent<Trigger>()->addCallback([]() {
+
+		std::cout << "Activar Evento P3" << std::endl;
+
+		});
 
 	// Sello
 	Entity* selloPrueba = addEntity(layer::DEFAULT);
