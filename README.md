@@ -22,6 +22,7 @@
   - [Diseño](#diseño)
     - [Fase de exploracion](#fase-de-exploracion)
     - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
+    - [Fase de dinero](#fase-de-post-minijuego-paquetes)
   - [Arte](#arte)
     - [Paletas de color](#paletas-de-color)
     - [Lugares](#lugares)
@@ -35,7 +36,7 @@
       - [Jefe oficina](#jefe-oficina)
     - [NPC Grandes](#npc-grandes)
       - [Vagabundo](#vagabundo)
-    - [Finales](#finales-1)
+        - [Finales](#finales-1)
       - [Secretario del rey](#secretario-del-rey)
         - [Finales](#finales-2)
     - [NPC Menores](#npc-menores)
@@ -217,7 +218,10 @@ $$X = \frac{N + i + 1}{30} * 100$$
 
 </div>
 
----
+### Fase de dinero
+
+Una vez terminado la fase de trabajo, saldrá una pantalla con texto que explique el dinero actual, el dinero a pagar del alquiler, los fallos y los bonus conseguidos en el minijuego.
+En caso de quedarte sin dinero, saldrá el game over de quedarse sin dinero (te deportan de Atlantis)
 
 ## Arte
 Al irnos moviendo por los diferentes distritos, lo haremos a través de diferentes pantallas con fondos estáticos en primera persona. Los fondos tendrán un estilo artístico simple inspirado e juegos como profesor Layton, con una paleta de colores sencilla estilo acuarela donde los objetos lejanos tendrán menos detalle o estarán más difuminados mientras que los objetos mas cercanos tendrán mas detalle, aunque como es una paleta de colores tirando a acuarela a veces los colores se pueden salir de las líneas como pasa en la película de 101 Dalmatas de Disney (la animación antigua, no el remake live action). En los escenarios de exploración encontraremos algunos personajes con los que poder interactuar teniendo una forma física en su diseño inspirada en juegos como profesor Layton por su estilo caricaturesco. Sin embargo, los personajes con los que interactuaremos tendrán más detalle que el resto dando igual las distancias, es decir, siempre estarán enfocados.
