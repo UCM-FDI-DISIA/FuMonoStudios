@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Entity.h"
+#include "../components/Transform.h"
 #include <iostream>
 namespace ecs {
 	Scene::Scene():objs_() {
@@ -36,6 +37,34 @@ namespace ecs {
 		e->setAlive(true);
 		objs_[lyId].push_back(e);
 		return e;
+	}
+	void Scene::addEntityToColisionList(Entity* e) {
+
+		colisionEntities.push_back(e);
+
+	}
+	bool Scene::checkColisions(Entity* e) {
+
+		bool ret = false;
+
+		for (auto it = colisionEntities.begin(); it != colisionEntities.end(); ++it) {
+
+			if ((*it) != e) {
+
+				if (SDL_HasIntersection(e->getComponent<Transform>()->getRect(), (*it)->getComponent<Transform>()->getRect())) {
+
+					e->getComponent<Trigger>()->touchEntity((*it));
+
+					ret = true;
+
+				}
+
+			}
+
+		}
+
+		return ret;
+
 	}
 	void Scene::refresh()
 	{

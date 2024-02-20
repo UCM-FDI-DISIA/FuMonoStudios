@@ -37,10 +37,16 @@ namespace ecs {
 		
 		Entity* addEntity(ecs::layer::layerId lyId = ecs::layer::DEFAULT);
 
+		void addEntityToColisionList(Entity* e);
+
+		bool checkColisions(Entity* myTrans);
+
 		void refresh();
 
 	protected:
 		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
+
+		std::list<Entity* > colisionEntities;
 	};
 }
 

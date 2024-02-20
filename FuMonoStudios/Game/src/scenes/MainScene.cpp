@@ -6,6 +6,7 @@
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
 #include "../components/DragAndDrop.h"
+#include "../components/Trigger.h"
 #include "../architecture/Game.h"
 
 
@@ -31,6 +32,7 @@ void ecs::MainScene::init()
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Prueba2->addComponent<Clickeable>();
+	Prueba2->addComponent<Trigger>();
 
 	//TODO: probar que con un boton se puedan cargar otras escenas
 	Callback cosa = []() {
@@ -43,6 +45,7 @@ void ecs::MainScene::init()
 	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
 	Prueba3->addComponent<DragAndDrop>();
+	Prueba3->addComponent<Trigger>();
 
 	// Sello
 	Entity* selloPrueba = addEntity(layer::DEFAULT);

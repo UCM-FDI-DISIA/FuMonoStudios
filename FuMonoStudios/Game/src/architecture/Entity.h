@@ -4,6 +4,7 @@
 #include <array>
 #include "Component.h"
 #include "Scene.h"
+#include "../components/Trigger.h"
 //class Manager;
 
 namespace ecs {
@@ -33,29 +34,29 @@ namespace ecs {
 		//ACCESOR AL MANAGER (Luis va a hacer cositas)
 		inline Scene* getMngr() const { return scene_; };
 
-
-		/// <summary>
-		/// Añade un componente a Entity
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <typeparam name="...Ts"></typeparam>
-		/// <param name="cId">Identificador del componente</param>
-		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
-		/// <returns>Puntero al componente creado</returns>
 		template<typename T, typename ...Ts>
 		inline T* addComponent(Ts&&... args) {
-			T* c = new T(std::forward<Ts>(args)...);
 
-			removeComponent<T>();
-
-			currCmps_.push_back(c);
-			cmps_[cmpId<T>] = c;
-
-			c->setContext(this);
-			c->initComponent();
+			T* c = addComponent_aux<T>(args...);
 
 			return c;
+
 		}
+
+		template<>
+		inline Trigger* addComponent<Trigger>() {
+
+			scene_->addEntityToColisionList(this);
+
+			Trigger* t = addComponent_aux<Trigger>();
+
+			std::cout << "Trigger";
+
+			return t;
+
+		}
+
+		
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>
@@ -105,6 +106,30 @@ namespace ecs {
 		Scene* scene_;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;
+
+
+		/// <summary>
+		/// Añade un componente a Entity
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <typeparam name="...Ts"></typeparam>
+		/// <param name="cId">Identificador del componente</param>
+		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
+		/// <returns>Puntero al componente creado</returns>
+		template<typename T, typename ...Ts>
+		inline T* addComponent_aux(Ts&&... args) {
+			T* c = new T(std::forward<Ts>(args)...);
+
+			removeComponent<T>();
+
+			currCmps_.push_back(c);
+			cmps_[cmpId<T>] = c;
+
+			c->setContext(this);
+			c->initComponent();
+
+			return c;
+		}
 	};
 
 }
