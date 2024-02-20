@@ -9,6 +9,7 @@
 class RenderImage : public ecs::Component
 {
 public:
+	__CMP_DECL__(ecs::cmp::IMAGE)
 	RenderImage(Texture*);
 	~RenderImage();
 	void initComponent();
