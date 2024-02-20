@@ -45,7 +45,6 @@ void ecs::MainScene::init()
 	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
 	Prueba3->addComponent<DragAndDrop>();
-	Prueba3->addComponent<Trigger>();
 
 	// Sello
 	Entity* selloPrueba = addEntity(layer::DEFAULT);

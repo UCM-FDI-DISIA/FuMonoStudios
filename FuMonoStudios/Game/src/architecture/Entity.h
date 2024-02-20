@@ -5,6 +5,7 @@
 #include "Component.h"
 #include "Scene.h"
 #include "../components/Trigger.h"
+#include "../components/DragAndDrop.h"
 //class Manager;
 
 namespace ecs {
@@ -34,6 +35,7 @@ namespace ecs {
 		//ACCESOR AL MANAGER (Luis va a hacer cositas)
 		inline Scene* getMngr() const { return scene_; };
 
+		//Modelo predeterminado del add entity al cual se mete pasandole cualquier valor excepto los especificos declarados justo debajo
 		template<typename T, typename ...Ts>
 		inline T* addComponent(Ts&&... args) {
 
@@ -43,6 +45,7 @@ namespace ecs {
 
 		}
 
+		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
 		template<>
 		inline Trigger* addComponent<Trigger>() {
 
@@ -53,6 +56,18 @@ namespace ecs {
 			std::cout << "Trigger";
 
 			return t;
+
+		}
+
+		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
+		template<>
+		inline DragAndDrop* addComponent<DragAndDrop>() {
+
+			DragAndDrop* d = addComponent_aux<DragAndDrop>();
+
+			addComponent<Trigger>();
+
+			return d;
 
 		}
 
