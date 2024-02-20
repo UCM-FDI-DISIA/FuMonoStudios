@@ -10,7 +10,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -74,10 +74,5 @@ void DragAndDrop::update() {
 
 		//Sin centrarse el objeto
 		tr_->setPos(point.x - differenceX, point.y - differenceY);
-
-
 	}
-	
-
-
 }
