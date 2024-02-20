@@ -9,7 +9,7 @@ namespace ecs {
 		for (auto e : objs_) {
 			delete e;
 		}
-		std::cout << "Se Destruyo correctamente la escena"<<std::endl;
+		//std::cout << "Se Destruyo correctamente la escena"<<std::endl;
 	}
 
 	/// <summary>

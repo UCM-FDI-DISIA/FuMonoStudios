@@ -32,12 +32,20 @@ namespace ecs {
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
 		void render();
-		
+		/// <summary>
+		/// Añade una entidad vacia a la escena
+		/// </summary>
+		/// <returns>Entidad vacia</returns>
 		Entity* addEntity();
-
+		/// <summary>
+		/// Elimina una entidad de la escena
+		/// </summary>
 		void removeEntity();
 
 	protected:
+		/// <summary>
+		/// Vector de los objetos que pertenecen a la escena
+		/// </summary>
 		std::vector<Entity*> objs_;
 	};
 }
