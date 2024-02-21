@@ -9,8 +9,8 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f) : miDistrito(dis), miCalle(c), miTipo(Tp), 
-	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), envuelto(false), calleMarcada(Erronea){}
+Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
+	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){}
 
 Paquete::~Paquete() {
 
