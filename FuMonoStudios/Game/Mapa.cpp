@@ -82,16 +82,20 @@ void Mapa::initDirectionsDefaultMap()
 void Mapa::navigate(std::string placeDir)
 {
 	if (actualPlace->navigate(placeDir))
-		actualPlace = &(*actualPlace).directions[placeDir];
+		actualPlace = actualPlace->getDirection(placeDir);
 }
 
-void Lugar::addDirections(std::string placeDir, Lugar place)
+void Mapa::Lugar::addDirections(std::string placeDir, Lugar place)
 {
 	directions[placeDir] = place;
 }
 
-
-bool Lugar::navigate(std::string placeDir)
+bool Mapa::Lugar::navigate(std::string placeDir)
 {
 	return directions.count(placeDir);
+}
+
+Mapa::Lugar* Mapa::Lugar::getDirection(std::string placeDir)
+{
+	return &directions[placeDir];
 }
