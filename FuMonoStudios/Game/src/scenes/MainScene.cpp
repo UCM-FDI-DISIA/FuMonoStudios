@@ -19,12 +19,17 @@ ecs::MainScene::~MainScene()
 {
 }
 
+
+void sellar() {
+	std::cout << "fumas ganja";
+}
+
 void ecs::MainScene::init()
 {
-	std::cout << "Hola Main"<<std::endl;
+	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	
+	/*
 	// Caja CLicker
 	Entity* Prueba2 = addEntity();
 	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
@@ -62,17 +67,25 @@ void ecs::MainScene::init()
 	Texture* selloTexture = &sdlutils().images().at("selloTest");
 	Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
 	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
-	
+
 	// Posición Relativa
 	e->addChild(trSello);
-	trSello->setRelativePos(100.0f, 100.0f);
+	trSello->setRelativePos(100.0f, 100.0f);*/
 
+	float scale = 0.2;
+
+	//Paquete de prueba
+	Entity* Paquete = addEntity(layer::BACKGROUND);
+	Texture* texturaPaquete = &sdlutils().images().at("boxTest");
+	Transform* tr = Paquete->addComponent<Transform>(100.0f, 100.0f, texturaPaquete->width() * scale, texturaPaquete->height() * scale);
+	RenderImage* rd = Paquete->addComponent<RenderImage>(texturaPaquete);
+
+	Paquete->addComponent<Trigger>()->addCallback(sellar);
 
 	// Sellador calle
 	Entity* sellador = addEntity();
 	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
-	Transform* trSellador = sellador->addComponent<Transform>(100, 100, selladorTextura->width() * scale, selladorTextura->height() * scale);
+	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
 	sellador->addComponent<RenderImage>(selladorTextura);
+	sellador->addComponent<DragAndDrop>();
 }
-
-
