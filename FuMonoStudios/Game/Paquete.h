@@ -1,12 +1,13 @@
 #pragma once
 class Paquete
 {
+public:
 	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon};	//enum con todos los distritos posibles que pueden tener los paquetes
 	enum Calle {Erronea, C1,C2,C3};											//enum con todas las calles posibles que pueden tener los paquetes
 	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };		//enum con todoos los tipos de cargamente que pueden tener los paquetes
 	enum NivelPeso { Ninguno, Bajo, Medio,Alto };							//enum con todas los tipos de medición de peso que pueden tener los paquetes
-public:
-	Paquete(int level);
+
+	Paquete(Distrito, Calle, TipoPaquete, bool, NivelPeso, int, bool);
 	~Paquete();
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
@@ -23,7 +24,7 @@ private:
 	bool fragil;			//Variable que indica si tiene un sello de frágil puesto
 
 	//Variables que debe modificar el jugador
-	Calle calleMarcada = Erronea;		//Variable que indica para qué distrito ha sido etiquetado el paquete
+	Calle calleMarcada;		//Variable que indica para qué distrito ha sido etiquetado el paquete
 	bool envuelto;			//Variable que indica si está envuelto o no el paquete
 };
 

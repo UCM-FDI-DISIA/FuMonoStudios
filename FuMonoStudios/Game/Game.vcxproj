@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Paquete.cpp" />
+    <ClCompile Include="PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Paquete.h" />
+    <ClInclude Include="PaqueteBuilder.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />

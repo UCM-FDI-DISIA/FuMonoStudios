@@ -1,5 +1,5 @@
 #include "Paquete.h"
-#include <stdlib.h>
+
 const int nivelFragil = 3;
 const int nivelPeso = 2;
 const int nivelSellos = 1;
@@ -9,63 +9,8 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-
-Paquete::Paquete(int level) {	
-	//El int "level" indica cómo se debe generar un paquete según el progreso del juego, ya que se van introduciendo mecánicas nuevas a medida que progresa la semana
-
-	int probManager1; //Estas dos variables son las que se deberán modificar para cambiar la probabilidad de que los paquetes sean erróneos o correctos
-	int probManager2;
-
-	int rnd; //Variable que se usará para aleatorizar
-
-	//Si es frágil
-	if (level >=nivelFragil) { //Si el nivel es lo suficientemente alto como para que haya el sobre de frágil
-
-		rnd = rand() % 4;	//Genera un número aleatorio entre 0 y 3
-		if (rnd <= 0) fragil = true; //Hay un 25% de probabilidad de que sea un paquete frágil
-		else fragil = false;
-	}
-	else fragil = false;
-
-	//Si hay que pesar
-	if (level >= nivelPeso) { //Si el nivel es lo suficientemente alto como para que el paquete pueda tener peso
-		rnd = rand() % 9;	//Genera un número aleatorio entre 0 y 8
-		if (rnd < 4) miPeso = (NivelPeso)rnd; // Hay 3 posibilidades sobre 9 (33%) de probabilidad de que tenga peso
-		else miPeso = Ninguno;
-
-		//Y aquí se le da un valor al peso, con cierto valor de desviación para que haya alguna probabilidad de que sea erróneo
-		if (miPeso == Bajo) {
-			peso = rand() % (ligeroMax+ desviacionPeso);
-		}
-		else if (miPeso == Medio) {
-			peso = rand() % (medioMax + desviacionPeso - ligeroMax) + ligeroMax - desviacionPeso / 2;
-		}
-		else if (miPeso == Alto) {
-			peso = rand() % (pesadoMax + desviacionPeso - medioMax) + medioMax - desviacionPeso;
-		}
-		else if (miPeso == Ninguno) {
-			peso = rand() % pesadoMax; //Se le da un valor al peso aunque no fuera a tener sello, por si el jugador quiere pesar el paquete de todas formas
-		}
-	}
-	else miPeso = Ninguno;
-
-	rnd = rand() % 5;	//Coloca un tipo de contenido aleatorio
-	miTipo = (TipoPaquete) rnd;
-
-	//Si hay que comprobar los sellos
-	if (level >= nivelSellos) {
-		rnd = rand() % 4;	//Genera un número aleatorio entre 0 y 3
-		if (rnd == 0) selloCorrecto = false; //Hay un 25% de probabilidad de que sea un paquete con un sello falso
-		else selloCorrecto = true;
-	}
-	else selloCorrecto = true;
-
-	rnd = rand() % 7;	//Coloca un tipo de distrito aleatorio
-	miDistrito = (Distrito)rnd;
-	
-	rnd = rand() % 4;	//Coloca un tipo de calle alatorio
-	miCalle = (Calle)rnd; //Hay un 25% de probabilidad de que sea un paquete con una dirección errónea
-}
+Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f) : miDistrito(dis), miCalle(c), miTipo(Tp), 
+	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), envuelto(false), calleMarcada(Erronea){}
 
 Paquete::~Paquete() {
 
