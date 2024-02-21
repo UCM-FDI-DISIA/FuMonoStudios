@@ -9,7 +9,7 @@
 
 class Game: public Singleton<Game> {
 
-	friend Singleton<Game>;
+	friend Singleton<Game> ;
 
 public:
 	Game();
@@ -33,7 +33,7 @@ private:
 
 };
 
-inline Game& game() {
+inline Game& gm() {
 	return *Game::instance();
 }
 

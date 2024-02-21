@@ -14,6 +14,7 @@ Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que car
 
 Game::Game():exit(false){
 	SDLUtils::init("Mail To Atlantis",1600 , 900, "recursos/config/mail.resources.json");
+	
 	auto& sdl = *SDLUtils::instance();
 
 	sdl.showCursor();

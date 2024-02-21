@@ -56,7 +56,7 @@ void ecs::MainMenu::init()
 
 	Callback cosa = []() {
 		std::cout << "Click" << std::endl;
-		game().writeMessage();
+		gm().writeMessage();
 
 	};
 	clicker->addEvent(cosa);
