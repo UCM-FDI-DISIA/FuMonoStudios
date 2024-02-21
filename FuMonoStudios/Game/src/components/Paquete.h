@@ -1,8 +1,11 @@
 #pragma once
-class Paquete
+
+#include "../architecture/Component.h"
+
+class Paquete : public ecs::Component
 {
 public:
-	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon};	//enum con todos los distritos posibles que pueden tener los paquetes
+	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon,Erroneo};	//enum con todos los distritos posibles que pueden tener los paquetes
 	enum Calle {Erronea, C1,C2,C3};											//enum con todas las calles posibles que pueden tener los paquetes
 	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };		//enum con todoos los tipos de cargamente que pueden tener los paquetes
 	enum NivelPeso { Ninguno, Bajo, Medio,Alto };							//enum con todas los tipos de medición de peso que pueden tener los paquetes

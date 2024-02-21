@@ -22,6 +22,9 @@ bool Paquete::Correcto() const{
 	if (miCalle == Erronea) {
 		resul = false;
 	}
+	if (miDistrito == Erroneo) {
+		resul = false;
+	}
 	else if (!selloCorrecto) {
 		resul = false;
 	}
