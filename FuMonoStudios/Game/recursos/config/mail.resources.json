@@ -14,7 +14,9 @@
       "id": "press",
       "file": "recursos/images/press.png"
 
-    }
+    },
+    { "id" : "boxTest", "file" : "recursos/images/Box.png" },
+    { "id" : "selloTest", "file" : "recursos/images/Sello.png" }
 
   ]
 }

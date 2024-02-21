@@ -1,0 +1,83 @@
+
+#include "DragAndDrop.h"
+
+#include "Transform.h"
+#include "Trigger.h"
+#include "../architecture/Entity.h"
+#include "../sdlutils/InputHandler.h"
+
+#include <SDL.h>
+#include <assert.h>
+
+
+DragAndDrop::DragAndDrop() : tr_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+
+}
+
+DragAndDrop::~DragAndDrop() {
+
+}
+
+void DragAndDrop::initComponent() {
+
+	tr_ = ent_->getComponent<Transform>();
+
+	tri_ = ent_->getComponent<Trigger>();
+
+	assert(tr_ != nullptr);
+
+}
+
+void DragAndDrop::update() {
+
+	
+
+	auto& ihdlr = ih();
+
+	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
+
+	
+
+	//Detección al clicar sobre el objeto
+	if (ihdlr.mouseButtonDownEvent()) {
+
+
+		if (SDL_PointInRect(&point, tr_->getRect())) {
+
+			dragging = true;
+
+			//Para que funcione sin ir al centro, con margen
+			differenceX = point.x - tr_->getPos().getX();;
+			differenceY = point.y - tr_->getPos().getY();;
+
+		}
+
+	}
+
+	//Detección al soltar el objeto
+	else if (ihdlr.mouseButtonUpEvent()) {
+
+		dragging = false;
+
+		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
+		tri_->activateEventsFromEntities();
+
+	}
+
+	//Arrastre del objeto
+	if (dragging) {
+
+
+		//Para que vaya en el medio
+		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
+
+
+		//Sin centrarse el objeto
+		tr_->setPos(point.x - differenceX, point.y - differenceY);
+
+
+	}
+	
+
+
+}
