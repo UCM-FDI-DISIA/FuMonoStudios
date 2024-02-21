@@ -66,6 +66,13 @@ void ecs::MainScene::init()
 	// Posición Relativa
 	e->addChild(trSello);
 	trSello->setRelativePos(100.0f, 100.0f);
+
+
+	// Sellador calle
+	Entity* sellador = addEntity();
+	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
+	Transform* trSellador = sellador->addComponent<Transform>(100, 100, selladorTextura->width() * scale, selladorTextura->height() * scale);
+	sellador->addComponent<RenderImage>(selladorTextura);
 }
 
 
