@@ -2,6 +2,8 @@
 #include "../architecture/Scene.h"
 #include "../architecture/ecs.h"
 
+class Game;
+
 namespace ecs {
     class MainMenu :
         public Scene
@@ -11,6 +13,7 @@ namespace ecs {
         virtual ~MainMenu();
 
         void init() override;
+        void changeToMainScene();
     };
 }
 

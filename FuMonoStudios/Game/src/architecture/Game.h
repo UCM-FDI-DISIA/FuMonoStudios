@@ -2,17 +2,24 @@
 #include<list>
 #include <SDL.h>
 #include <array>
+#include "../utils/Singleton.h"
 #include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
-class Game
-{
+
+class Game: public Singleton<Game> {
+
+	friend Singleton<Game>;
+
 public:
 	Game();
 	~Game();
 	void run();
 	void loadScene(ecs::sc::sceneId scene);
 	void killScene(ecs::sc::sceneId scene);
+	inline void writeMessage() {
+		std::cout << "Funcionaaaaaaaaa" << std::endl;
+	};
 private:
 	void update();
 	void render();
@@ -25,4 +32,8 @@ private:
 	SDL_Renderer* renderer;
 
 };
+
+inline Game& game() {
+	return *Game::instance();
+}
 
