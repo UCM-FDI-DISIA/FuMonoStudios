@@ -112,5 +112,6 @@ public:
 		else if (level == 3) {
 			return Nivel3();
 		}
+		else return nullptr;
 	}
 };
