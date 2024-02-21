@@ -24,13 +24,17 @@ public:
 
 	void setPos(Vector2D& pos);
 	void setPos(float x, float y);
+	void setRelativePos(Vector2D& pos);
+	void setRelativePos(float x, float y);
 
-	Vector2D getPos() { return position; };
+	Vector2D getPos() { return worldPosition; };
+	Vector2D getRealtivePos() { return relativePosition; };
 	float getWidth() { return width; };
 	float getHeith() { return height; };
 
 private:
-	Vector2D position; // es la posicion relativa al mundo u al padre si es que lo tiene
+	Vector2D worldPosition; // es la posicion relativa al mundo u al padre si es que lo tiene
+	Vector2D relativePosition;
 	float width;
 	float height;
 	/*

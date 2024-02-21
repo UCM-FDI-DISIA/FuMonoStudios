@@ -4,7 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../architecture/Entity.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h){
+Transform::Transform(float x, float y, float w, float h) : Component(), worldPosition(x,y), width(w), height(h){
 	auto& sdl = *SDLUtils::instance();
 
 	rect = new SDL_Rect();
@@ -27,9 +27,10 @@ void Transform::update() {
 #ifdef _DEBUG
 
 	//se actualiza la posición del render del objeto continuamente
-	rect->x = position.getX();
 
-	rect->y = position.getY();
+	rect->x = worldPosition.getX();
+
+	rect->y = worldPosition.getY();
 
 	//std::cout << "Me transformo\n";
 #endif // _DEBUG
@@ -72,30 +73,54 @@ void Transform::removeChild(Transform* child) {
 	}
 }
 
-//Cambia la posicion del objeto
+//Cambia la posicion del objeto desde una perspectiva global
 void Transform::setPos(Vector2D& pos)
 {
-	// Calculamos el movimiento del padre para añadirselo a todos los hijos
+	Vector2D desplazamiento = pos - worldPosition;
 
+	worldPosition = pos;
 	if (parent) {
-		position = parent->position + pos;
+		relativePosition = Vector2D(pos.getX() - parent->getPos().getX(), pos.getY() - parent->getPos().getY());
 	}
-	else {
-		position = pos;
+	else { // si no tiene padre worldPos y relativePos son iguales
+		relativePosition = pos;
 	}
-
-	//std::cout << "Posicion: " << parent << position << std::endl;
 
 	for (auto& child : children) {
-		child->setPos(child->position);
-		//std::cout << "CHILD";
+		Vector2D childPos = child->worldPosition + desplazamiento;
+		child->setPos(childPos);
 	}
 }
 
-//Cambia la posicion del objeto
+//Cambia la posicion del objeto desde una perspectiva global
 void Transform::setPos(float x, float y) {
 	Vector2D newPos = Vector2D(x, y);
 	setPos(newPos);
+}
+
+// Cambia la posicion desde una perspectiva relativa
+void Transform::setRelativePos(Vector2D& pos)
+{
+	Vector2D desplazamiento = pos - worldPosition;
+
+	relativePosition = pos;
+	if (parent) {
+		worldPosition = parent->getPos() + relativePosition;
+	}
+	else { // si no tiene padre worldPos y relativePos son iguales
+		worldPosition = pos;
+	}
+
+	for (auto& child : children) {
+		Vector2D childPos = child->worldPosition + desplazamiento;
+		child->setPos(childPos);
+	}
+}
+
+//Cambia la posicion desde una perspectiva relativa
+void Transform::setRelativePos(float x, float y) {
+	Vector2D newPos = Vector2D(x, y);
+	setRelativePos(newPos);
 }
 
 SDL_Rect* Transform::getRect() const {

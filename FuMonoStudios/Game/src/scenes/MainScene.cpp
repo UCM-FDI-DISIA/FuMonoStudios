@@ -50,7 +50,7 @@ void ecs::MainScene::init()
 
 	// Dragable Box
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
-	Transform* tr = Prueba3->addComponent<Transform>(0.0f, 0.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
+	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
 	Prueba3->addComponent<DragAndDrop>();
 	Prueba3->getComponent<Trigger>()->addCallback([]() {
@@ -67,7 +67,7 @@ void ecs::MainScene::init()
 	
 	// Posición Relativa
 	tr->addChild(trSello);
-	trSello->setPos(100.0f, 100.0f);
+	trSello->setRelativePos(100.0f, 100.0f);
 	//tr->setPos(100.0f, 400.0f);
 }
 
