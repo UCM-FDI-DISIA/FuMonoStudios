@@ -1,203 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de origen\Json">
-      <UniqueIdentifier>{6cf59af3-de2e-432e-9113-227e83d8850c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Json">
-      <UniqueIdentifier>{a96239a1-06f0-43f3-82a2-0e1ae0fb696c}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="src\components\Gravity.cpp" />
+    <ClCompile Include="src\components\Clickeable.cpp" />
+    <ClCompile Include="src\components\DragAndDrop.cpp" />
+    <ClCompile Include="Paquete.cpp" />
+    <ClCompile Include="src\components\Render.cpp" />
+    <ClCompile Include="src\architecture\Component.cpp" />
+    <ClCompile Include="src\architecture\ecs.cpp" />
+    <ClCompile Include="src\architecture\Entity.cpp" />
+    <ClCompile Include="src\architecture\Game.cpp" />
+    <ClCompile Include="src\architecture\Scene.cpp" />
+    <ClCompile Include="src\components\Trigger.cpp" />
+    <ClCompile Include="src\json\JSON.cpp" />
+    <ClCompile Include="src\json\JSONValue.cpp" />
+    <ClCompile Include="src\json\json_demo.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\scenes\ExplorationScene.cpp" />
+    <ClCompile Include="src\scenes\MainScene.cpp" />
+    <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
+    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
+    <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
+    <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\utils\Collisions.cpp" />
+    <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="src\components\Transform.cpp" />
+    <ClCompile Include="Mapa.cpp" />
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\json\JSON.cpp">
-      <Filter>Archivos de origen\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="src\json\json_demo.cpp">
-      <Filter>Archivos de origen\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="src\json\JSONValue.cpp">
-      <Filter>Archivos de origen\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdlutils\SDLUtils.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdlutils\SoundEffect.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdlutils\Texture.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Scene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Component.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\ecs.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Entity.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\architecture\Game.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\ExplorationScene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\MainScene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\Collisions.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\Vector2D.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Transform.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Render.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Clickeable.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\DragAndDrop.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Gravity.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Trigger.cpp">
-    <ClCompile Include="Paquete.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
+    <ClInclude Include="src\components\Gravity.h" />
+    <ClInclude Include="src\components\Clickeable.h" />
+    <ClInclude Include="src\components\DragAndDrop.h" />
+    <ClInclude Include="Paquete.h" />
+    <ClInclude Include="src\components\Render.h" />
+    <ClInclude Include="src\architecture\Component.h" />
+    <ClInclude Include="src\architecture\ecs.h" />
+    <ClInclude Include="src\architecture\Entity.h" />
+    <ClInclude Include="src\architecture\Game.h" />
+    <ClInclude Include="src\architecture\Scene.h" />
+    <ClInclude Include="src\components\Trigger.h" />
+    <ClInclude Include="src\json\JSON.h" />
+    <ClInclude Include="src\json\JSONValue.h" />
+    <ClInclude Include="src\json\json_demo.h" />
+    <ClInclude Include="src\scenes\ExplorationScene.h" />
+    <ClInclude Include="src\scenes\MainScene.h" />
+    <ClInclude Include="src\sdlutils\Font.h" />
+    <ClInclude Include="src\sdlutils\InputHandler.h" />
+    <ClInclude Include="src\sdlutils\macros.h" />
+    <ClInclude Include="src\sdlutils\Music.h" />
+    <ClInclude Include="src\sdlutils\RandomNumberGenerator.h" />
+    <ClInclude Include="src\sdlutils\SDLNetUtils.h" />
+    <ClInclude Include="src\sdlutils\SDLUtils.h" />
+    <ClInclude Include="src\sdlutils\sdlutils_demo.h" />
+    <ClInclude Include="src\sdlutils\SoundEffect.h" />
+    <ClInclude Include="src\sdlutils\Texture.h" />
+    <ClInclude Include="src\sdlutils\VirtualTimer.h" />
+    <ClInclude Include="src\utils\Collisions.h" />
+    <ClInclude Include="src\utils\DynamicBitSet.h" />
+    <ClInclude Include="src\utils\mpl.h" />
+    <ClInclude Include="src\utils\ptr_iterator.h" />
+    <ClInclude Include="src\utils\Singleton.h" />
+    <ClInclude Include="src\utils\Vector2D.h" />
+    <ClInclude Include="src\components\Transform.h" />
+    <ClInclude Include="Mapa.h" />
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\json\JSON.h">
-      <Filter>Archivos de encabezado\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="src\json\json_demo.h">
-      <Filter>Archivos de encabezado\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="src\json\JSONValue.h">
-      <Filter>Archivos de encabezado\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\InputHandler.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\Music.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\RandomNumberGenerator.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\SDLNetUtils.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\SDLUtils.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\sdlutils_demo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\SoundEffect.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\Texture.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\VirtualTimer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\Font.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sdlutils\macros.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Scene.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Game.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Component.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\ecs.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\architecture\Entity.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\ExplorationScene.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\MainScene.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\Collisions.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\DynamicBitSet.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\mpl.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\ptr_iterator.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\Singleton.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\Vector2D.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\Transform.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\Render.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\Clickeable.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\DragAndDrop.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\Gravity.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\Trigger.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Paquete.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\sdlutils\RAEDME.md" />
     <None Include="Properties.props" />
+    <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>
 </Project>
