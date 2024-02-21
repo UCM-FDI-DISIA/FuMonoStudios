@@ -74,8 +74,6 @@ void DragAndDrop::update() {
 
 		//Sin centrarse el objeto
 		tr_->setPos(point.x - differenceX, point.y - differenceY);
-
-
 	}
 	
 
