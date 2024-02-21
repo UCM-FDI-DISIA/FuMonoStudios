@@ -20,7 +20,7 @@ Game::Game():exit(false) {
 	window = sdl.window();
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
-	loadScene(ecs::sc::MAIN_SCENE);
+	loadScene(ecs::sc::MENU_SCENE);
 }
 
 Game::~Game()

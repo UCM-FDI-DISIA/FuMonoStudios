@@ -1,6 +1,20 @@
 {
-    "images" : [
-        { "id" : "placeHolder", "file" : "recursos/images/SDL_logo.png" }
+  "images": [
+    {
+      "id": "placeHolder",
+      "file": "recursos/images/SDL_logo.png"
 
-      ]
+    },
+    {
+      "id": "title",
+      "file": "recursos/images/titulo.png"
+
+    },
+    {
+      "id": "press",
+      "file": "recursos/images/press.png"
+
+    }
+
+  ]
 }
