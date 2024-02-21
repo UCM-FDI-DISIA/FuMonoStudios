@@ -124,7 +124,6 @@ void Dialogo::render() const {
     SDL_RenderFillRect(renderer, &textBoxRect);
 
     if (TextTexture != nullptr) {
-
         SDL_Rect destRect = { textBoxRect.x + 10, 490, TextSurface->w, TextSurface->h };
         SDL_RenderCopy(renderer, TextTexture, nullptr, &destRect);
     }

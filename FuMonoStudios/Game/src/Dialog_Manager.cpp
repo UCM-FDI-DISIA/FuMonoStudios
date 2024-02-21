@@ -12,7 +12,7 @@ DialogManager::DialogManager(const std::string& filePath) : currentDialogIndex(0
             size_t pos = line.find('$');
 
             if (pos != std::string::npos) {
-                currentDialog += line.substr(0, pos);  // Agrega el contenido antes del $
+                currentDialog += line.substr(0, pos);  // Agrega el contenido antes del $ (Tenemos que buscar el siguiente texto, ahora mismo pilla los espacios de antes del $ también)
                 dialogs.push_back(currentDialog);
                 currentDialog.clear();
 
