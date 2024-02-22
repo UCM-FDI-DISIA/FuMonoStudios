@@ -15,8 +15,13 @@ void ecs::MainScene::createManual()
 	Entity* manual = addEntity();
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	float scale = 0.075;
-	Transform* manualTrnasform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
 	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
+
+	Entity* button = addEntity();
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	Transform* buttonTransform = button->addComponent<Transform>(500.0f, 500.0f, buttonTexture->width() * scale, buttonTexture->height() * scale);
+	manualTransform->addChild(buttonTransform);
 }
 
 ecs::MainScene::MainScene():Scene()
