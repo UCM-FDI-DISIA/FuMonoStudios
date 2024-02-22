@@ -8,7 +8,8 @@
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
 #include "../architecture/Game.h"
-
+#include <string>
+#include "../sdlutils/Texture.h"
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -88,4 +89,15 @@ void ecs::MainScene::init()
 	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
 	sellador->addComponent<RenderImage>(selladorTextura);
 	sellador->addComponent<DragAndDrop>();
+
+
+	//TODO: Pasar a una clase / metodo guapa guapa la generación de las direciones
+	//Direccion
+	auto ent = addEntity();
+	auto font = Font("recursos/fonts/Comic_Sans_MS.ttf", 16);
+	std::string msg = "Tu vieja \n 001 \n Calle Lubina, La Sabia";
+	SDL_Color color = build_sdlcolor(0xffffffff);
+	Texture* text = new Texture(sdlutils().renderer(),msg,font,color,200);
+	auto transorm = ent->addComponent<Transform>(0, 0, 200, 70);
+	ent->addComponent<RenderImage>(text);
 }
