@@ -10,6 +10,15 @@
 #include "../architecture/Game.h"
 
 
+void ecs::MainScene::createManual()
+{
+	Entity* manual = addEntity();
+	Texture* sujetaplazas = &sdlutils().images().at("bookTest");
+	float scale = 0.075;
+	Transform* e = manual->addComponent<Transform>(500.0f, 500.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
+	RenderImage* nachos = manual->addComponent<RenderImage>(sujetaplazas);
+}
+
 ecs::MainScene::MainScene():Scene()
 {
 	
@@ -24,7 +33,9 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main"<<std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	
+
+	createManual();
+
 	// Caja CLicker
 	Entity* Prueba2 = addEntity();
 	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
