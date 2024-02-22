@@ -30,6 +30,13 @@ private:
 	Paquete* Carta() {		
 		return new Paquete(DistritoRND(), CalleRND(35), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesoCartaMax + 1, false, true);
 	}
+
+	Paquete::Distrito DistritoRND();
+	Paquete::TipoPaquete TipoRND();
+	Paquete::Calle CalleRND(int probError);
+	bool BoolRND(int probFalse);
+	Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso);
+
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
 	Paquete* PaqueteRND(int level) {

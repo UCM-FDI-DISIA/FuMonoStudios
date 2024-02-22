@@ -1,15 +1,15 @@
 #include "PaqueteBuilder.h"
 
 
-Paquete::Distrito DistritoRND() {
+Paquete::Distrito PaqueteBuilder::DistritoRND() {
 	int rnd = rand() % 7;
 	return (Paquete::Distrito)rnd;
 }
-Paquete::TipoPaquete TipoRND() {
+Paquete::TipoPaquete PaqueteBuilder::TipoRND() {
 	int rnd = rand() % 5;
 	return (Paquete::TipoPaquete)rnd;
 }
-Paquete::Calle CalleRND(int probError) {
+Paquete::Calle PaqueteBuilder::CalleRND(int probError) {
 	int rnd = rand() % 100;
 	if (rnd > probError) {
 		rnd = rand() % 3 + 1;
@@ -19,7 +19,7 @@ Paquete::Calle CalleRND(int probError) {
 		return Paquete::Calle::Erronea;
 	}
 }
-bool BoolRND(int probFalse) {
+bool PaqueteBuilder::BoolRND(int probFalse) {
 	int rnd = rand() % 100;
 	if (rnd > probFalse) {
 		return true;

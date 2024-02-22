@@ -134,7 +134,7 @@
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
-    <ClCompile Include="Paquete.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
     <ClInclude Include="src\components\DragAndDrop.h" />
-    <ClInclude Include="Paquete.h" />
+    <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
