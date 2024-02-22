@@ -96,8 +96,9 @@ void ecs::MainScene::init()
 	auto ent = addEntity();
 	auto font = Font("recursos/fonts/Comic_Sans_MS.ttf", 16);
 	std::string msg = "Tu vieja \n 001 \n Calle Lubina, La Sabia";
-	SDL_Color color = build_sdlcolor(0xffffffff);
-	Texture* text = new Texture(sdlutils().renderer(),msg,font,color,200);
+	SDL_Color color1 = build_sdlcolor(0xffffffff);
+	SDL_Color color2 = build_sdlcolor(0x000000ff);
+	Texture* text = new Texture(sdlutils().renderer(),msg,font,color2,color1,200);
 	auto transorm = ent->addComponent<Transform>(0, 0, 200, 70);
 	ent->addComponent<RenderImage>(text);
 }

@@ -34,6 +34,8 @@ public:
 
 	Texture(SDL_Renderer* renderer, const std::string& text, const Font& font, const SDL_Color& fgColor, Uint32 warpWidth);
 
+	Texture(SDL_Renderer* renderer, const std::string& text, const Font& font, const SDL_Color& fgColor, const SDL_Color& bgColor, Uint32 warpWidth);
+
 
 	virtual ~Texture() {
 		if (texture_ != nullptr)
@@ -98,9 +100,9 @@ private:
 	void constructFromText(SDL_Renderer *renderer, const std::string &text,
 			const Font &font, const SDL_Color *fgColor,
 			const SDL_Color *bgColor = nullptr);
-	//Construct from text warped
-	void constructFromText(SDL_Renderer* renderer, const std::string& text, const Font& font, const SDL_Color* fgColor, Uint32 warpWidth);
-
+	void constructFromText(SDL_Renderer* renderer, const std::string& text, 
+		const Font& font, const SDL_Color* fgColor, 
+		const SDL_Color* bgColor, Uint32 warpWidth);
 	SDL_Texture *texture_;
 	SDL_Renderer *renderer_;
 	int width_;
