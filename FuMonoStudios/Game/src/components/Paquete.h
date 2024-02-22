@@ -5,6 +5,7 @@
 class Paquete : public ecs::Component
 {
 public:
+	__CMP_DECL__(ecs::cmp::PAQUETE)
 	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon,Erroneo};	//enum con todos los distritos posibles que pueden tener los paquetes
 	enum Calle {Erronea, C1,C2,C3};											//enum con todas las calles posibles que pueden tener los paquetes
 	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };		//enum con todoos los tipos de cargamente que pueden tener los paquetes
@@ -14,6 +15,7 @@ public:
 	~Paquete();
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
+	Distrito getDist() const;
 	void sellarCalle(Calle sello);
 
 private:

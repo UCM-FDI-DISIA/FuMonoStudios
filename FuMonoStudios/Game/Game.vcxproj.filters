@@ -26,6 +26,7 @@
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -63,6 +64,7 @@
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
+    <ClInclude Include="src\components\PackageChecker.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />

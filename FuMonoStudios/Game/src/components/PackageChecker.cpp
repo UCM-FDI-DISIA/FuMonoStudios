@@ -7,6 +7,7 @@
 
 PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis(dis)
 {
+
 }
 
 PackageChecker::~PackageChecker()
@@ -26,7 +27,9 @@ bool PackageChecker::checkPackage(Paquete* package)
 {
 	bool correctPack = false;
 	if (package->Correcto()) {
-		correctPack = checkAdditionalConditions(package);
+		if (toDis == package->getDist()) {
+			correctPack = checkAdditionalConditions(package);
+		}
 	}
 	else {
 		if (toDis == Paquete::Erroneo) {
@@ -39,10 +42,10 @@ bool PackageChecker::checkPackage(Paquete* package)
 bool PackageChecker::checkAdditionalConditions(Paquete* package)
 {
 	bool aditional = true;
-	for (Condition call : extraCond) {
+	/*for (Condition call : extraCond) {
 		if (!call(package)) {
 			aditional = false;
 		}
-	}
-	return false;
+	}*/
+	return aditional;
 }

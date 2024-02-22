@@ -42,6 +42,11 @@ bool Paquete::Correcto() const{
 	return resul;
 }
 
+Paquete::Distrito Paquete::getDist() const
+{
+	return miDistrito;
+}
+
 void Paquete::sellarCalle(Calle sello) {
 	if (sello != Erronea && calleMarcada == Erronea) // solo puedes sellar una vez
 	{

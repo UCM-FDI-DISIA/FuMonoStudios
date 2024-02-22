@@ -10,6 +10,8 @@
 #include "../architecture/Game.h"
 #include <string>
 #include "../sdlutils/Texture.h"
+#include "../components/PackageChecker.h"
+#include "../components/Paquete.h"
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -76,29 +78,60 @@ void ecs::MainScene::init()
 	float scale = 0.2;
 
 	//Paquete de prueba
-	Entity* Paquete = addEntity(layer::BACKGROUND);
-	Texture* texturaPaquete = &sdlutils().images().at("boxTest");
-	Transform* tr = Paquete->addComponent<Transform>(100.0f, 100.0f, texturaPaquete->width() * scale, texturaPaquete->height() * scale);
-	RenderImage* rd = Paquete->addComponent<RenderImage>(texturaPaquete);
-
-	Paquete->addComponent<Trigger>()->addCallback(sellar);
+	Entity* Paquet = addEntity(layer::BACKGROUND);
+	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
+	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
+	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
+	Paquet->addComponent<Trigger>()->addCallback(sellar);
+	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
+		true, Paquete::Bajo, 20, false, false);
+	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
 
 	// Sellador calle
 	Entity* sellador = addEntity();
 	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
 	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
+	Trigger* trgSell = sellador->addComponent<Trigger>();
 	sellador->addComponent<RenderImage>(selladorTextura);
 	sellador->addComponent<DragAndDrop>();
 
 
 	//TODO: Pasar a una clase / metodo guapa guapa la generación de las direciones
 	//Direccion
-	auto ent = addEntity();
+	Entity* ent = addEntity();
 	auto font = Font("recursos/fonts/Comic_Sans_MS.ttf", 16);
 	std::string msg = "Tu vieja \n 001 \n Calle Lubina, La Sabia";
 	SDL_Color color1 = build_sdlcolor(0xffffffff);
 	SDL_Color color2 = build_sdlcolor(0x000000ff);
 	Texture* text = new Texture(sdlutils().renderer(),msg,font,color2,color1,200);
-	auto transorm = ent->addComponent<Transform>(0, 0, 200, 70);
+	Transform* trDir = ent->addComponent<Transform>(0, 0, 200, 70);
 	ent->addComponent<RenderImage>(text);
+
+	//Tubería
+	Entity* tuberia = addEntity();
+	Transform* trTub = tuberia->addComponent<Transform>(500, 100, 50, 50);
+	Trigger* trgTub = tuberia->addComponent<Trigger>();
+	PackageChecker* checker = tuberia->addComponent<PackageChecker>(Paquete::Apolo);
+	trgTub->addCallback([&checker,&pqPq]() {
+		if (checker->checkPackage(pqPq)) {
+			std::cout << "WAA!  YA MADE IT!\n";
+		}
+		else {
+			std::cout << "NUH UH\n";
+		}
+		});
+
+	//Tubería2
+	/*Entity* tuber2 = addEntity();
+	Transform* trTb2 = tuber2->addComponent<Transform>(700, 100, 50, 50);
+	Trigger* trgTb2 = tuber2->addComponent<Trigger>();
+	PackageChecker* che = tuber2->addComponent<PackageChecker>(Paquete::Demeter);
+	trgTb2->addCallback([&che, &pqPq]() {
+		if (che->checkPackage(pqPq)) {
+			std::cout << "WAA!  YA MADE IT!\n";
+		}
+		else {
+			std::cout << "NUH UH\n";
+		}
+		});*/
 }

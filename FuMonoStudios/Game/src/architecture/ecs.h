@@ -15,6 +15,8 @@ namespace ecs {
 			CLICKEABLE,
 			DRAGANDDROP,
 			TRIGGER,
+			PAQUETE,
+			CHECKER,
 			// do not remove this
 			_LAST_CMP_ID
 		};
