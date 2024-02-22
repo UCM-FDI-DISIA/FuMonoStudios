@@ -1,6 +1,9 @@
 #pragma once
 
 #include "../architecture/Component.h"
+#include <unordered_map>
+#include <string>
+#include <vector>
 
 class Paquete : public ecs::Component
 {
@@ -11,14 +14,28 @@ public:
 	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };		//enum con todoos los tipos de cargamente que pueden tener los paquetes
 	enum NivelPeso { Ninguno, Bajo, Medio,Alto };							//enum con todas los tipos de medición de peso que pueden tener los paquetes
 
+
+
 	Paquete(Distrito, Calle, TipoPaquete, bool, NivelPeso, int, bool, bool);
 	~Paquete();
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
 	Distrito getDist() const;
 	void sellarCalle(Calle sello);
+	std::string getDirecction();
 
 private:
+
+	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle = {
+		{Demeter,{"Calle 1", "Calle 2","Calle 3"}},
+		{Hefesto,{"Calle 1", "Calle 2","Calle 3"}},
+		{Hestia,{"Calle 1", "Calle 2","Calle 3"}},
+		{Artemisa,{"Calle 1", "Calle 2","Calle 3"}},
+		{Hermes,{"Calle 1", "Calle 2","Calle 3"}},
+		{Apolo,{"Calle 1", "Calle 2","Calle 3"}},
+		{Poseidon,{"Calle 1", "Calle 2","Calle 3"}}
+	};
+
 	//Variables que se generan automaticamente
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
 	Calle miCalle;			//Variable con la calle a la que es enviada el paquete	

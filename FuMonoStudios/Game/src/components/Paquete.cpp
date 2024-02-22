@@ -53,3 +53,40 @@ void Paquete::sellarCalle(Calle sello) {
 		calleMarcada = sello;
 	}
 }
+
+std::string Paquete::getDirecction()
+{
+
+	std::string dir = "Tu vieja\n";
+
+
+	switch (miDistrito) {
+	case Demeter:
+		dir += "Demeter";
+		break;
+	case Hefesto:
+		dir += "Hefesto";
+		break;
+	case Hestia:
+		dir += "Hestia";
+		break;
+	case Artemisa:
+		dir += "Artemisa";
+		break;
+	case Hermes:
+		dir += "Hermes";
+		break;
+	case Apolo:
+		dir += "Apolo";
+		break;
+	case Poseidon:
+		dir += "Poseidon";
+		break;
+	}
+	dir += "\n";
+
+	//habria que comprobar si la direccion tiene que ser correcta
+	dir += distrito_calle[miDistrito][miCalle];
+
+	return dir;
+}

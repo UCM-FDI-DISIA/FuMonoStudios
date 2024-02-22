@@ -29,7 +29,7 @@ bool PaqueteBuilder::BoolRND(int probFalse) {
 	}
 }
 Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso) {
-	int rnd = rand() % 100;
+	int rnd = rand() % 100; 
 	if (rnd > probPeso) {
 		Paquete::NivelPeso pes;
 		rnd = rand() % 3 + 1;
