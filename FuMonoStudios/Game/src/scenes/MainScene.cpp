@@ -13,10 +13,10 @@
 void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity();
-	Texture* sujetaplazas = &sdlutils().images().at("bookTest");
+	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	float scale = 0.075;
-	Transform* e = manual->addComponent<Transform>(500.0f, 500.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* nachos = manual->addComponent<RenderImage>(sujetaplazas);
+	Transform* manualTrnasform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
 }
 
 ecs::MainScene::MainScene():Scene()
