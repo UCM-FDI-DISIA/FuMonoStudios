@@ -17,11 +17,14 @@ void ecs::MainScene::createManual()
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
 	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
-
-	Entity* button = addEntity();
+	DragAndDrop* aa = manual->addComponent<DragAndDrop>();
+	
+	Entity* button = addEntity(ecs::layer::FOREGROUND);
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
-	Transform* buttonTransform = button->addComponent<Transform>(500.0f, 500.0f, buttonTexture->width() * scale, buttonTexture->height() * scale);
-	manualTransform->addChild(buttonTransform);
+	float buttonScale = 0.15;
+	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	//manualTransform->addChild(buttonTransform);
 }
 
 ecs::MainScene::MainScene():Scene()
