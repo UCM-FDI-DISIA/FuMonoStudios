@@ -16,43 +16,14 @@ Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np,
 	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
 	
 	//TODO: convertir esto a un método que reciba el enum y el string del distrito y el jsonObject
-
 	std::string filename = "recursos/config/mail.direcctions.json";
-	
-	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
-
-	// check it was loaded correctly
-	// the root must be a JSON object
-	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
-		throw "Something went wrong while load/parsing '" + filename + "'";
-	}
-
-	// we know the root is JSONObject
-	JSONObject root = jValueRoot->AsObject();
-	JSONValue* jValue = nullptr;
-
-	jValue = root["Demeter"];
-	if (jValue != nullptr) {
-		if (jValue->IsArray()) {
-			distrito_calle[Demeter].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
-			for (auto v : jValue->AsArray()) {
-				if (v->IsString()) {
-					std::string aux = v->AsString();
-#ifdef _DEBUG
-					std::cout << "Loading distrito with id: " << aux << std::endl;
-#endif
-					distrito_calle[Demeter].emplace_back(aux);
-				}
-				else {
-					throw "'Calles' array in '" + filename
-						+ "' includes and invalid value";
-				}
-			}
-		}
-		else {
-			throw "'Demeter' is not an array in '" + filename + "'";
-		}
-	}
+	getStreetsFromJSON(filename, Demeter, "Demeter");
+	getStreetsFromJSON(filename, Hefesto, "Hefesto");
+	getStreetsFromJSON(filename, Hestia, "Hestia");
+	getStreetsFromJSON(filename, Artemisa, "Artemisa");
+	getStreetsFromJSON(filename, Hermes, "Hermes");
+	getStreetsFromJSON(filename, Apolo, "Apolo");
+	getStreetsFromJSON(filename, Poseidon, "Poseidon");
 
 }
 
@@ -106,25 +77,25 @@ std::string Paquete::getDirecction()
 
 	switch (miDistrito) {
 	case Demeter:
-		dir += "Demeter";
+		dir += "001";
 		break;
 	case Hefesto:
-		dir += "Hefesto";
+		dir += "010";
 		break;
 	case Hestia:
-		dir += "Hestia";
+		dir += "011";
 		break;
 	case Artemisa:
-		dir += "Artemisa";
+		dir += "100";
 		break;
 	case Hermes:
-		dir += "Hermes";
+		dir += "101";
 		break;
 	case Apolo:
-		dir += "Apolo";
+		dir += "110";
 		break;
 	case Poseidon:
-		dir += "Poseidon";
+		dir += "111";
 		break;
 	}
 	dir += "\n";
@@ -133,4 +104,42 @@ std::string Paquete::getDirecction()
 	dir += distrito_calle[miDistrito][miCalle];
 
 	return dir;
+}
+
+void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
+{
+	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
+
+	// check it was loaded correctly
+	// the root must be a JSON object
+	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
+		throw "Something went wrong while load/parsing '" + filename + "'";
+	}
+
+	// we know the root is JSONObject
+	JSONObject root = jValueRoot->AsObject();
+	JSONValue* jValue = nullptr;
+
+	jValue = root[distString];
+	if (jValue != nullptr) {
+		if (jValue->IsArray()) {
+			distrito_calle[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
+			for (auto v : jValue->AsArray()) {
+				if (v->IsString()) {
+					std::string aux = v->AsString();
+#ifdef _DEBUG
+					std::cout << "Loading distrito with id: " << aux << std::endl;
+#endif
+					distrito_calle[dist].emplace_back(aux);
+				}
+				else {
+					throw "'Calles' array in '" + filename
+						+ "' includes and invalid value";
+				}
+			}
+		}
+		else {
+			throw "'Demeter' is not an array in '" + filename + "'";
+		}
+	}
 }

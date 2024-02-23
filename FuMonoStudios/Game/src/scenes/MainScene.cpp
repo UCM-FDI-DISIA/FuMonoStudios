@@ -95,20 +95,6 @@ void ecs::MainScene::init()
 	sellador->addComponent<RenderImage>(selladorTextura);
 	sellador->addComponent<DragAndDrop>();
 
-
-	//TODO: Pasar a una clase / metodo guapa guapa la generación de las direciones
-	//Direccion
-	Entity* ent = addEntity();
-	auto font = Font("recursos/fonts/Comic_Sans_MS.ttf", 16);
-	std::string msg = "Tu vieja \n 001 \n Calle Lubina, La Sabia";
-	SDL_Color color1 = build_sdlcolor(0xffffffff);
-	SDL_Color color2 = build_sdlcolor(0x000000ff);
-	Paquete* pacage = ent->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
-		true, Paquete::Bajo, 20, false, false);
-	Texture* text = new Texture(sdlutils().renderer(),pacage->getDirecction(), font, color2, color1, 200);
-	Transform* trDir = ent->addComponent<Transform>(0, 0, 200, 70);
-	ent->addComponent<RenderImage>(text);
-
 	//Tubería
 	Entity* tuberia = addEntity();
 	Transform* trTub = tuberia->addComponent<Transform>(500, 100, 50, 50);
