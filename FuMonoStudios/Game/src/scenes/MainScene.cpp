@@ -103,7 +103,9 @@ void ecs::MainScene::init()
 	std::string msg = "Tu vieja \n 001 \n Calle Lubina, La Sabia";
 	SDL_Color color1 = build_sdlcolor(0xffffffff);
 	SDL_Color color2 = build_sdlcolor(0x000000ff);
-	Texture* text = new Texture(sdlutils().renderer(),msg,font,color2,color1,200);
+	Paquete* pacage = ent->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
+		true, Paquete::Bajo, 20, false, false);
+	Texture* text = new Texture(sdlutils().renderer(),pacage->getDirecction(), font, color2, color1, 200);
 	Transform* trDir = ent->addComponent<Transform>(0, 0, 200, 70);
 	ent->addComponent<RenderImage>(text);
 
