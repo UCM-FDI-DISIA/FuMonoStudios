@@ -51,7 +51,7 @@ namespace ecs {
 
 			if ((*it) != e) {
 
-				if (SDL_HasIntersection(e->getComponent<Transform>()->getRect(), (*it)->getComponent<Transform>()->getRect())) {
+				if (SDL_HasIntersection(&e->getComponent<Transform>()->getRect(), &(*it)->getComponent<Transform>()->getRect())) {
 
 					e->getComponent<Trigger>()->touchEntity((*it));
 

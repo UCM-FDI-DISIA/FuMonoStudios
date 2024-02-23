@@ -66,8 +66,9 @@ void ecs::MainScene::init()
 	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
 	
 	// Posición Relativa
-	tr->addChild(trSello);
-	trSello->setRelativePos(100.0f, 100.0f);
+	trSello->setParent(tr);
+	//tr->addChild(trSello);
+	//trSello->setRelativePos(100.0f, 100.0f);
 	//tr->setPos(100.0f, 400.0f);
 }
 

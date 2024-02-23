@@ -12,29 +12,23 @@ public:
 	~Transform();
 
 
-	SDL_Rect* getRect() const;
+	SDL_Rect& getRect() const;
 	void update();
 	void render() const;
 
-	std::vector<Transform*> getChildren() const;
 	Transform* getParent() const;
 	void setParent(Transform* newParent);
-	void addChild(Transform* child);
-	void removeChild(Transform* child);
 
 	void setPos(Vector2D& pos);
 	void setPos(float x, float y);
-	void setRelativePos(Vector2D& pos);
-	void setRelativePos(float x, float y);
 
-	Vector2D getPos() { return worldPosition; };
-	Vector2D getRealtivePos() { return relativePosition; };
+	Vector2D getPos() const;
+	Vector2D getRelPos();
 	float getWidth() { return width; };
 	float getHeith() { return height; };
 
 private:
-	Vector2D worldPosition; // es la posicion relativa al mundo u al padre si es que lo tiene
-	Vector2D relativePosition;
+	Vector2D position;
 	float width;
 	float height;
 	/*
@@ -42,12 +36,9 @@ private:
 	puede llegar a ser mucho mas arriesgado hacer que el propio transform tenga que
 	actualizar dos datos iguales cuado con accesores podría llegar a ser mucho mas sencillo
 	*/
-	SDL_Rect* rect;
 	Transform* parent;
-	std::vector<Transform*> children;
 #ifdef _DEBUG
 	SDL_Renderer* renderer;
 #endif // _DEBUG
-
 };
 
