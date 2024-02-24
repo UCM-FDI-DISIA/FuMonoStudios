@@ -60,11 +60,13 @@ void Transform::setPos(float x, float y) {
 	setPos(newPos);
 }
 
-
+//Devuelve la posición en el mundo
 Vector2D Transform::getPos() const
 {
 	Vector2D pos = position;
 	Transform* aux = parent;
+
+	//Bucle que itera hasta llegar al primer padre para tener la posición en el mundo
 	while (aux != nullptr) {
 		pos = pos + aux->position;
 		aux = parent->parent;
@@ -72,10 +74,12 @@ Vector2D Transform::getPos() const
 	return pos;
 }
 
+//Devuelve la posición relativa
 Vector2D Transform::getRelPos() const {
 	return position;
 }
 
+//Devuelve el Rect en el mundo
 SDL_Rect& Transform::getRect()const{
 	Vector2D pos = getPos();
 	SDL_Rect rect = build_sdlrect(pos, width, height);
