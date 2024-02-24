@@ -15,7 +15,6 @@ const int pesadoMax = 75;
 Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
 	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
 	
-	//TODO: convertir esto a un método que reciba el enum y el string del distrito y el jsonObject
 	std::string filename = "recursos/config/mail.direcctions.json";
 	getStreetsFromJSON(filename, Demeter, "Demeter");
 	getStreetsFromJSON(filename, Hefesto, "Hefesto");

@@ -9,10 +9,26 @@ class Paquete : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::PAQUETE)
-	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon,Erroneo};	//enum con todos los distritos posibles que pueden tener los paquetes
-	enum Calle {C1,C2,C3,Erronea};											//enum con todas las calles posibles que pueden tener los paquetes
-	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };		//enum con todoos los tipos de cargamente que pueden tener los paquetes
-	enum NivelPeso { Ninguno, Bajo, Medio,Alto };							//enum con todas los tipos de medición de peso que pueden tener los paquetes
+		/*
+		* Ya que está hecho lo de la carga por Json igual es util hacer que las tags de distrito
+		* sean stirngs que se carguen por el json : LUIS
+		*/
+	/// <summary>
+	/// enum con todos los distritos posibles que pueden tener los paquetes
+	/// </summary>
+	enum Distrito {Demeter,Hefesto,Hestia,Artemisa,Hermes,Apolo,Poseidon,Erroneo};
+	/// <summary>
+	/// enum con todas las calles posibles que pueden tener los paquetes
+	/// </summary>
+	enum Calle { C1, C2, C3, Erronea };
+	/// <summary>
+	/// enum con todoos los tipos de cargamento que pueden tener los paquetes
+	/// </summary>
+	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };
+	/// <summary>
+	/// enum con todas los tipos de medición de peso que pueden tener los paquetes
+	/// </summary>
+	enum NivelPeso { Ninguno, Bajo, Medio, Alto };
 
 
 
@@ -22,13 +38,25 @@ public:
 
 	Distrito getDist() const;
 	void sellarCalle(Calle sello);
+	/// <summary>
+	/// metodo que devuelve el string a implimir en la etiqueta de direccion
+	/// </summary>
+	/// <returns></returns>
 	std::string getDirecction();
 
 private:
-
+	/// <summary>
+	/// Funcion auxiliar para cargar en el mapa las direcciones
+	/// </summary>
+	/// <param name="filename">direccion del fichero json</param>
+	/// <param name="dist">valor enum del distritio al que pertenece</param>
+	/// <param name="distString">valor string del distrito al que pertenece</param>
 	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
 
-	
+	/// <summary>
+	/// mapa que relaciona cada distrito con su calle
+	/// usado para la generacion del string de la direccion
+	/// </summary>
 	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle;
 	//Variables que se generan automaticamente
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
