@@ -7,7 +7,7 @@
 
 class Transform;
 
-using Callback = std::function<void(void)>;
+using Callback = std::function<void(ecs::Entity*)>;
 
 class Trigger : public ecs::Component {
 
@@ -30,7 +30,7 @@ public:
 
 	bool activateEventsFromEntities();
 
-	bool activateCallbacks();
+	bool activateCallbacks(ecs::Entity*);
 
 private:
 

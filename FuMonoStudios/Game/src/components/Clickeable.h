@@ -6,7 +6,7 @@
 
 class Transform;
 
-using Callback = std::function<void(void)>;
+using Callback = std::function<void(ecs::Entity*)>;
 
 class Clickeable : public ecs::Component {
 
