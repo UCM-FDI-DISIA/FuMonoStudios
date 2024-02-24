@@ -14,6 +14,9 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 }
 
 Transform::~Transform() {
+	/// <summary>
+	/// AL destruir un transform padre destruimos los hijos de este
+	/// </summary>
 	for (auto& c : childs) {
 		c->ent_->setAlive(false);
 	}
@@ -69,7 +72,7 @@ Vector2D Transform::getPos() const
 	return pos;
 }
 
-Vector2D Transform::getRelPos() {
+Vector2D Transform::getRelPos() const {
 	return position;
 }
 
