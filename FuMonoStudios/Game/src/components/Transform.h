@@ -37,6 +37,7 @@ private:
 	actualizar dos datos iguales cuado con accesores podría llegar a ser mucho mas sencillo
 	*/
 	Transform* parent;
+	std::list<Transform*> childs;
 #ifdef _DEBUG
 	SDL_Renderer* renderer;
 #endif // _DEBUG

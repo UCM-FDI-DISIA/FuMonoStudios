@@ -14,6 +14,9 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 }
 
 Transform::~Transform() {
+	for (auto& c : childs) {
+		c->ent_->setAlive(false);
+	}
 }
 
 void Transform::update() {
@@ -36,6 +39,7 @@ Transform* Transform::getParent() const {
 void Transform::setParent(Transform* newParent) {
 	if (parent != newParent) {
 		parent = newParent;
+		parent->childs.push_back(this);
 		// Update relative pos				
 	}
 }

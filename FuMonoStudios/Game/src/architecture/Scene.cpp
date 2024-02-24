@@ -30,6 +30,7 @@ namespace ecs {
 		for (auto ly : objs_)
 			for(auto e : ly)
 				e->render();
+		refresh();
 	}
 	Entity* Scene::addEntity(ecs::layer::layerId lyId)
 	{
@@ -38,10 +39,15 @@ namespace ecs {
 		objs_[lyId].push_back(e);
 		return e;
 	}
-	void Scene::addEntityToColisionList(Entity* e) {
+	std::list<Entity*>::iterator Scene::addEntityToColisionList(Entity* e) {
 
 		colisionEntities.push_back(e);
-
+		std::list<Entity*>::iterator it = colisionEntities.end();
+		return --it;
+	}
+	void Scene::removeCollison(std::list<ecs::Entity*>::iterator it)
+	{
+		colisionEntities.erase(it);
 	}
 	bool Scene::checkColisions(Entity* e) {
 
@@ -68,16 +74,20 @@ namespace ecs {
 	}
 	void Scene::refresh()
 	{
-		//objs_.erase(
-		//	std::remove_if(ents_.begin(), ents_.end(), [](Entity* e) {
-		//		if (e->isAlive()) {
-		//			return false;
-		//		}
-		//		else {
-		//			delete e;
-		//			return true;
-		//		}
-		//		}), //
-		//	ents_.end());
+		for (ecs::lyId_t gId = 0; gId < ecs::layer::maxLayerId; gId++) {
+			auto& grpEnts = objs_[gId];
+			grpEnts.erase(
+				std::remove_if(grpEnts.begin(), grpEnts.end(),
+					[gId](Entity* e) {
+						if (e->isAlive()) {
+							return false;
+						}
+						else {
+							delete e;
+							return true;
+						}
+					}), 
+				grpEnts.end());
+		}
 	}
 }

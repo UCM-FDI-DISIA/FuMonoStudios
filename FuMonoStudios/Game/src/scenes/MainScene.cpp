@@ -39,14 +39,8 @@ void ecs::MainScene::init()
 	Prueba2->getComponent<Trigger>()->addCallback([]() {
 
 		std::cout << "Activar Evento P2" << std::endl;
+	});
 
-		});
-
-	//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = []() {
-		std::cout << "Click" << std::endl;
-	};
-	clicker->addEvent(cosa);
 
 	// Dragable Box
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
@@ -70,6 +64,11 @@ void ecs::MainScene::init()
 	//tr->addChild(trSello);
 	//trSello->setRelativePos(100.0f, 100.0f);
 	//tr->setPos(100.0f, 400.0f);
+	//TODO: probar que con un boton se puedan cargar otras escenas
+	Callback cosa = [Prueba3]() {
+		Prueba3->setAlive(false);
+	};
+	clicker->addEvent(cosa);
 }
 
 
