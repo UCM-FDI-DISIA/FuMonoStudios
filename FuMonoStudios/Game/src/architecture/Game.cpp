@@ -5,13 +5,14 @@
 #include "../sdlutils/InputHandler.h"
 #include "../scenes/MainScene.h"
 #include "../scenes/ExplorationScene.h"
+#include "Game.h"
 /*
 TODO
 Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
-Game::Game():exit(false) {
-	SDLUtils::init("Mail To Atlantis",1600 , 900);
+Game::Game():exit(false){
+	SDLUtils::init("Mail To Atlantis",1600 , 900, "recursos/config/mail.resources.json");
 
 	auto& sdl = *SDLUtils::instance();
 
@@ -20,8 +21,6 @@ Game::Game():exit(false) {
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::ExplorationScene()};
 	loadScene(ecs::sc::MAIN_SCENE);
-	loadScene(ecs::sc::EXPLORE_SCENE);
-	killScene(ecs::sc::MAIN_SCENE);
 }
 
 Game::~Game()

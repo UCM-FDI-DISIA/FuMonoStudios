@@ -1,6 +1,8 @@
 #pragma once
 #include "../sdlutils/SDLUtils.h"
 #include "ecs.h"
+#include <vector>
+#include <array>
 //#include "Entity.h"
 
 namespace ecs {
@@ -32,13 +34,25 @@ namespace ecs {
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
 		void render();
-		
-		Entity* addEntity();
+		/// <summary>
+		/// Añade una entidad vacia a la escena
+		/// </summary>
+		/// <returns>Entidad vacia</returns>
+		Entity* addEntity(ecs::layer::layerId lyId = ecs::layer::DEFAULT);
 
-		void removeEntity();
+		void addEntityToColisionList(Entity* e);
+
+		bool checkColisions(Entity* myTrans);
+
+		void refresh();
 
 	protected:
-		std::vector<Entity*> objs_;
+    /// <summary>
+		/// Vector de los objetos que pertenecen a la escena
+		/// </summary>
+		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
+    
+		std::list<Entity* > colisionEntities;
 	};
 }
 
