@@ -8,6 +8,7 @@
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
 #include "../architecture/Game.h"
+#include "../components/MultipleTextures.h"
 
 
 void ecs::MainScene::createManual()
@@ -16,15 +17,18 @@ void ecs::MainScene::createManual()
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
-	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
-	DragAndDrop* aa = manual->addComponent<DragAndDrop>();
-	
+	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
+	patata->addTexture(manualTexture);
+	patata->initComponent(); //preguntar por esto
+	RenderImage* manualRender = manual->addComponent<RenderImage>(patata->getCurrentTexture());
+
+
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float buttonScale = 0.15;
 	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-	//manualTransform->addChild(buttonTransform);
+
 }
 
 ecs::MainScene::MainScene():Scene()

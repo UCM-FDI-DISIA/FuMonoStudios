@@ -15,6 +15,7 @@ namespace ecs {
 			CLICKEABLE,
 			DRAGANDDROP,
 			TRIGGER,
+			MULTIPLETEXTURES,
 			// do not remove this
 			_LAST_CMP_ID
 		};
