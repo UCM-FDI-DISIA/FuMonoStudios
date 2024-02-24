@@ -14,9 +14,6 @@ namespace ecs {
 		//std::cout << "Se Destruyo correctamente la escena"<<std::endl;
 	}
 
-	/// <summary>
-	/// Metodo llamado al cargar una escena (similar al de Phaser)
-	/// </summary>
 	void Scene::init()
 	{
 	}

@@ -1,8 +1,5 @@
 #include "Render.h"
 #include "../architecture/Component.h"
-#include "../utils/Vector2D.h"
-#include <SDL.h>
-#include "../sdlutils/SDLUtils.h"
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
