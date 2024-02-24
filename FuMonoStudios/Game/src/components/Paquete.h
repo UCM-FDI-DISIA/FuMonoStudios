@@ -30,7 +30,7 @@ private:
 
 	
 	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle;
-	//Variables que se generan automaticamente
+	//Variables que se generan automaticamente con información de los paquetes
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
 	Calle miCalle;			//Variable con la calle a la que es enviada el paquete	
 	TipoPaquete miTipo;		//Variable con el tipo de cargamente que lleva el paquete

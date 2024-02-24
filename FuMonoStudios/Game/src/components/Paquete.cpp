@@ -34,16 +34,16 @@ Paquete::~Paquete() {
 bool Paquete::Correcto() const{ 
 	//Método que comprueba si el paquete había sido generado sin errores (AKA: Si da false, eso significa que se tendría que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) {
+	if (miCalle == Erronea) { //Si la calle es errónea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito == Erroneo) {
+	if (miDistrito == Erroneo) { //Si el distrito es erróneo, el paquete no es correcto
 		resul = false;
 	}
-	else if (!selloCorrecto) {
+	else if (!selloCorrecto) {	//Si el sello no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso != Ninguno){
+	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no está entre los valores indicados, el paquete no es correcto
 		if (miPeso == Bajo) {
 			if (peso > ligeroMax) resul = false;
 		}
@@ -54,7 +54,7 @@ bool Paquete::Correcto() const{
 			if (peso < medioMax) resul = false;
 		}		
 	}
-	return resul;
+	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete será correcto y devolverá true. Si en algún momento ha fallado, devolverá false
 }
 
 Paquete::Distrito Paquete::getDist() const
