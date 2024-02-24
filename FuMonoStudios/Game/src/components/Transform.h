@@ -31,6 +31,8 @@ public:
 	Vector2D getRelativePos() { return relativePosition; };
 	float getWidth() { return width; };
 	float getHeith() { return height; };
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
 
 private:
 	Vector2D worldPosition; // es la posicion en el mundo

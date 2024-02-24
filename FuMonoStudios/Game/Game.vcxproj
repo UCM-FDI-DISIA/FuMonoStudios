@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
@@ -143,7 +144,6 @@
     <ClCompile Include="src\architecture\Entity.cpp" />
     <ClCompile Include="src\architecture\Game.cpp" />
     <ClCompile Include="src\architecture\Scene.cpp" />
-
     <ClCompile Include="src\Dialogo.cpp" />
     <ClCompile Include="src\Dialog_Manager.cpp" />
     <ClCompile Include="src\components\Trigger.cpp" />
@@ -162,6 +162,7 @@
     <ClCompile Include="src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="Dialog_Manager.h" />
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />

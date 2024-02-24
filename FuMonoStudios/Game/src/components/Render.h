@@ -12,6 +12,8 @@ public:
 	~RenderImage();
 	void initComponent() override;
 	void render() const;
+
+	void setTexture(Texture* texture);
 private:
 	/// <summary>
 	/// Textura que va a ser renderizada

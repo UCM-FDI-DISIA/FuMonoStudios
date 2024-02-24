@@ -3,7 +3,7 @@
 
 Dialogo::Dialogo(const std::string& dialogFilePath)
     : window(nullptr), renderer(nullptr), font(nullptr),
-    dialogManager(dialogFilePath), spacePressed(false),
+    dialogManager(), spacePressed(false),
     currentCharIndex(0), delayCounter(0), delayAmount(50)
 {
     InitializeSDL();
@@ -32,6 +32,7 @@ Dialogo::Dialogo(const std::string& dialogFilePath)
 
     textBoxRect = { 20, 480, 600, 120 };
     initialTextBoxY = textBoxRect.y;
+    dialogManager.setDialogues("resources/dialogos/dialogo.txt");
 }
 
 Dialogo::~Dialogo()

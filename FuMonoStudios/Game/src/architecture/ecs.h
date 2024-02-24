@@ -17,6 +17,7 @@ namespace ecs {
 			TRIGGER,
 			PAQUETE,
 			CHECKER,
+			DIALOGUE,
 			// do not remove this
 			_LAST_CMP_ID
 		};

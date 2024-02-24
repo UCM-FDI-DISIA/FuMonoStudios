@@ -25,6 +25,7 @@
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\DialogComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\components\Transform.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
+    <ClInclude Include="src\components\DialogComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />

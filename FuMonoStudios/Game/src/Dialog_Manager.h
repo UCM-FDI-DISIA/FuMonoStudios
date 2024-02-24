@@ -9,13 +9,15 @@ using namespace std;
 
 class DialogManager {
 public:
-    DialogManager(const std::string& filePath);
+    DialogManager();
 
     // Obtener el texto del diálogo actual
     std::string GetCurrentDialog();
 
     // Cambiar al siguiente cuadro de diálogo
     void NextDialog();
+
+    void setDialogues(std::string path);
 
 private:
     std::vector<std::string> dialogs;

@@ -12,8 +12,8 @@ int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
 	try {
 		Game().run();
-		Dialogo dialogo("resources/dialogos/dialogo.txt");
-		dialogo.Run();
+		//Dialogo dialogo("resources/dialogos/dialogo.txt");
+		//dialogo.Run();
 	}
 	catch (std::string e) {
 		std::cout <<"ERROR: " << e << std::endl;
