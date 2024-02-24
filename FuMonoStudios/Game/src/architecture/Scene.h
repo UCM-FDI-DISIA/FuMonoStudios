@@ -40,7 +40,8 @@ namespace ecs {
 		/// <returns>Entidad vacia</returns>
 		Entity* addEntity(ecs::layer::layerId lyId = ecs::layer::DEFAULT);
 
-		void addEntityToColisionList(Entity* e);
+		std::list<Entity*>::iterator addEntityToColisionList(Entity* e);
+		void removeCollison(std::list<Entity*>::iterator it);
 
 		bool checkColisions(Entity* myTrans);
 

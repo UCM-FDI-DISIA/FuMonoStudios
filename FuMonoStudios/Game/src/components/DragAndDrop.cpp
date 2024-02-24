@@ -42,7 +42,7 @@ void DragAndDrop::update() {
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (SDL_PointInRect(&point, &tr_->getRect())) {
 
 			dragging = true;
 

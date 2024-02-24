@@ -6,12 +6,14 @@
 
 #include <assert.h>
 
-Trigger::Trigger() : tr_(nullptr){
 
+Trigger::Trigger(std::list<ecs::Entity*>::iterator it) : tr_(nullptr)
+{
+	collisionIterator = it;
 }
 
 Trigger::~Trigger() {
-
+	ent_->getMngr()->removeCollison(collisionIterator);
 }
 
 void Trigger::initComponent() {
