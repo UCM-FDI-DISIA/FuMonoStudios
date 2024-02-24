@@ -23,7 +23,7 @@ ecs::MainScene::~MainScene()
 }
 
 
-void sellar() {
+void sellar(ecs::Entity*) {
 	std::cout << "fumas ganja";
 }
 
@@ -99,13 +99,15 @@ void ecs::MainScene::init()
 	Entity* tuberia = addEntity();
 	Transform* trTub = tuberia->addComponent<Transform>(500, 100, 50, 50);
 	Trigger* trgTub = tuberia->addComponent<Trigger>();
-	PackageChecker* checker = tuberia->addComponent<PackageChecker>(Paquete::Apolo);
-	trgTub->addCallback([&checker,&pqPq]() {
-		if (checker->checkPackage(pqPq)) {
-			std::cout << "WAA!  YA MADE IT!\n";
-		}
-		else {
-			std::cout << "NUH UH\n";
+	PackageChecker* checker = tuberia->addComponent<PackageChecker>(Paquete::Demeter);
+	trgTub->addCallback([checker](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (checker->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "WAA!  YA MADE IT!\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
 		}
 		});
 
