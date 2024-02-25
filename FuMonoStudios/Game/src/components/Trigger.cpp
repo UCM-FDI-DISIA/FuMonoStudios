@@ -6,12 +6,14 @@
 
 #include <assert.h>
 
-Trigger::Trigger() : tr_(nullptr){
 
+Trigger::Trigger(std::list<ecs::Entity*>::iterator it) : tr_(nullptr)
+{
+	collisionIterator = it;
 }
 
 Trigger::~Trigger() {
-
+	ent_->getMngr()->removeCollison(collisionIterator);
 }
 
 void Trigger::initComponent() {
@@ -43,7 +45,7 @@ void Trigger::touchEntity(ecs::Entity* ent) {
 
 }
 
-//Añade funcionalidad a la entidad si algo se posa sobre ella
+//Aï¿½ade funcionalidad a la entidad si algo se posa sobre ella
 void Trigger::addCallback(Callback event) {
 
 	eventList.push_back(event);
@@ -51,7 +53,7 @@ void Trigger::addCallback(Callback event) {
 }
 
 //activa los eventos de todas las entidades que tenga asociadas (que este tocando)
-//NOTA: en un futuro será necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
+//NOTA: en un futuro serï¿½ necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
 bool Trigger::activateEventsFromEntities() {
 
 	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {

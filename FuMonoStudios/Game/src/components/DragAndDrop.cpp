@@ -38,11 +38,11 @@ void DragAndDrop::update() {
 
 	
 
-	//Detección al clicar sobre el objeto
+	//Detecciï¿½n al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (SDL_PointInRect(&point, &tr_->getRect())) {
 
 			dragging = true;
 
@@ -54,7 +54,7 @@ void DragAndDrop::update() {
 
 	}
 
-	//Detección al soltar el objeto
+	//Detecciï¿½n al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;

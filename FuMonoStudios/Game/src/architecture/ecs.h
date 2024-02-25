@@ -41,7 +41,7 @@ namespace ecs {
 
 	using lyId_t = uint8_t;
 	//Namespace de las capas
-	//El orden de las capas es de atrás hacia adelante;
+	//El orden de las capas es de atrï¿½s hacia adelante;
 	namespace layer {
 		enum layerId : lyId_t
 		{

@@ -10,6 +10,7 @@ public:
 	Gravity(float gravityForce);
 	~Gravity();
 
+	void setGravity(float gravityForce);
 	void initComponent() override;
 	void update() override;
 private:

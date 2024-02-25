@@ -8,7 +8,7 @@
 #include "Game.h"
 /*
 TODO
-Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
+Aï¿½adir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
 Game::Game():exit(false){

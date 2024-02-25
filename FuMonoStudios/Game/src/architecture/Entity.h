@@ -124,12 +124,12 @@ namespace ecs {
 
 
 		/// <summary>
-		/// Añade un componente a Entity
+		/// Aï¿½ade un componente a Entity
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <typeparam name="...Ts"></typeparam>
 		/// <param name="cId">Identificador del componente</param>
-		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
+		/// <param name="...args">Argumentos de la constructora del componente a aï¿½adir</param>
 		/// <returns>Puntero al componente creado</returns>
 		template<typename T, typename ...Ts>
 		inline T* addComponent_aux(Ts&&... args) {
