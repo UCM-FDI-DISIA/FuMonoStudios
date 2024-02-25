@@ -10,7 +10,8 @@ Mapa::Mapa()
 
 Mapa::~Mapa()
 {
-	delete actualPlace;
+	//if(actualPlace != nullptr)
+		//delete actualPlace;
 }
 
 
@@ -82,20 +83,25 @@ void Mapa::initDirectionsDefaultMap()
 void Mapa::navigate(std::string placeDir)
 {
 	if (actualPlace->navigate(placeDir))
-		actualPlace = actualPlace->getDirection(placeDir);
+			actualPlace = actualPlace->getDirection(placeDir);
 }
 
-void Mapa::Lugar::addDirections(std::string placeDir, Lugar place)
+void Mapa::render() const
+{
+	actualPlace->getTexture()->render(rect);
+}
+
+void Lugar::addDirections(std::string placeDir, Lugar place)
 {
 	directions[placeDir] = place;
 }
 
-bool Mapa::Lugar::navigate(std::string placeDir)
+bool Lugar::navigate(std::string placeDir)
 {
-	return directions.count(placeDir);
+	return directions.count(placeDir) && directions.at(placeDir).navegable;
 }
 
-Mapa::Lugar* Mapa::Lugar::getDirection(std::string placeDir)
+Lugar* Lugar::getDirection(std::string placeDir)
 {
 	return &directions[placeDir];
 }

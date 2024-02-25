@@ -1,4 +1,7 @@
 #include "ExplorationScene.h"
+#include "../components/Transform.h"
+#include "../components/Render.h"
+#include "../components/Clickeable.h"
 
 ecs::ExplorationScene::ExplorationScene()
 {
@@ -12,4 +15,29 @@ void ecs::ExplorationScene::init()
 {
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
+	// Caja CLicker
+	Entity* Prueba2 = addEntity();
+	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
+	float scale = 0.2;
+	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
+	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
+	auto clicker = Prueba2->addComponent<Clickeable>();
+	Prueba2->addComponent<Trigger>();
+
+	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
+		std::cout << "a" << std::endl;
+		map.navigate("Hermes");
+		sdlutils().clearRenderer();
+		map.render();
+		});*/
+
+		//TODO: probar que con un boton se puedan cargar otras escenas
+	Callback cosa = [this]() {
+		map.navigate("Artemisa");
+		sdlutils().clearRenderer();
+		map.render();
+		};
+	clicker->addEvent(cosa);
+
+	map.render();
 }
