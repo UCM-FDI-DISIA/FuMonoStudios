@@ -16,13 +16,15 @@ class DialogComponent :
 public:
     __CMP_DECL__(ecs::cmp::DIALOGUE)
 
-    //mas adelante hacer que la fuente se inicie sola
+    //mas adelante hacer que la fuente se inicie solaz
     DialogComponent(DialogManager* manager);
     ~DialogComponent();
     void initComponent()override;
     void update()override;
 private:
-
+    /// <summary>
+    /// Metodo para actualizar la textura de diálogo
+    /// </summary>
     void setCurrentDialogue();
 
     Transform* mTr_;
@@ -31,12 +33,14 @@ private:
 
     Font* mFont_;
     Texture* textTexture_;
-
+    /// <summary>
+    /// Ancho maximo al que va a llegar el texto
+    /// </summary>
     int dialogueWidth_;
+    /// <summary>
+    /// Indice de hasta que caracter se va a escribir
+    /// </summary>
     int dialogueIndex;
-
-
-
 
     uint32_t lasTimePaused = 0;
     //Font* dialogueFont_;

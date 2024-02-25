@@ -28,13 +28,15 @@ void DialogComponent::initComponent()
 
 void DialogComponent::update()
 {
+	//Escritura caracter a caracter
 	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) {
-		//mDialogMngr_->NextDialog();
 		setCurrentDialogue();
+		//avance al siguiente caracter
 		if(dialogueIndex < mDialogMngr_->GetCurrentDialog().size())
 			dialogueIndex++;
 		lasTimePaused = sdlutils().virtualTimer().currTime();
 	}
+	//Saltar dialogo pasando al siguiente
 	if (ih().isKeyDown(SDL_SCANCODE_SPACE)&&
 		dialogueIndex == mDialogMngr_->GetCurrentDialog().size()) {
 		mDialogMngr_->NextDialog();
@@ -48,8 +50,9 @@ void DialogComponent::setCurrentDialogue()
 		delete textTexture_;
 		textTexture_ = nullptr;
 	}
-	Texture* muchoTexto = new Texture(sdlutils().renderer(), mDialogMngr_->GetCurrentDialog().substr(0,dialogueIndex), *mFont_, build_sdlcolor(0xffffffffff), dialogueWidth_);
-	mRend_->setTexture(muchoTexto);
-	mTr_->setWidth(muchoTexto->width());
-	mTr_->setHeith(muchoTexto->height());
+	textTexture_ = new Texture(sdlutils().renderer(), mDialogMngr_->GetCurrentDialog().substr(0,dialogueIndex), 
+		*mFont_, build_sdlcolor(0xffffffffff), dialogueWidth_);
+	mRend_->setTexture(textTexture_);
+	mTr_->setWidth(textTexture_->width());
+	mTr_->setHeith(textTexture_->height());
 }

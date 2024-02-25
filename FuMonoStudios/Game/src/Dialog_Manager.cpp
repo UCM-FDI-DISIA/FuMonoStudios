@@ -24,7 +24,9 @@ void DialogManager::NextDialog() {
 }
 
 void DialogManager::setDialogues(std::string path) {
+    //eliminamos los dialogos anteriores
     dialogs.clear();
+    //reseteamos la posicon del indice
     currentDialogIndex = 0;
     std::ifstream file(path);
     if (file.is_open()) {
@@ -33,21 +35,14 @@ void DialogManager::setDialogues(std::string path) {
 
         while (std::getline(file, line)) {
             size_t pos = line.find('$');
-
+            //si hay contenido
             if (pos != std::string::npos) {
-                currentDialog += line.substr(0, pos);  // Agrega el contenido antes del $ (Tenemos que buscar el siguiente texto, ahora mismo pilla los espacios de antes del $ también)
-
-                //currentDialog += line.substr(pos + 1) + "\n";  // Agrega el contenido después del $
+                // Agrega el contenido antes del $
+                currentDialog += line.substr(0, pos);  
+                // añadimos el dialogo
                 dialogs.push_back(currentDialog);
                 currentDialog.clear();
             }
-            else if(line != "") {
-                currentDialog += line + "\n";
-            }
-        }
-
-        if (!currentDialog.empty()) {
-            dialogs.push_back(currentDialog);
         }
 
         file.close();
