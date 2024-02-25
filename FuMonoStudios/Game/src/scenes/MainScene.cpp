@@ -7,6 +7,7 @@
 #include "../components/Clickeable.h"
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
+#include "../components//Gravity.h"
 #include "../architecture/Game.h"
 #include "../components/MultipleTextures.h"
 
@@ -54,20 +55,15 @@ void ecs::MainScene::init()
 	float scale = 0.2;
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
+	//Gravity* gravityComp = Prueba2->addComponent<Gravity>(10);
 	auto clicker = Prueba2->addComponent<Clickeable>();
 	Prueba2->addComponent<Trigger>();
 
 	Prueba2->getComponent<Trigger>()->addCallback([]() {
 
 		std::cout << "Activar Evento P2" << std::endl;
+	});
 
-		});
-
-	//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = []() {
-		std::cout << "Click" << std::endl;
-	};
-	clicker->addEvent(cosa);
 
 	// Dragable Box
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
@@ -83,12 +79,19 @@ void ecs::MainScene::init()
 	// Sello
 	Entity* selloPrueba = addEntity(layer::DEFAULT);
 	Texture* selloTexture = &sdlutils().images().at("selloTest");
-	Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
+	Transform* trSello = selloPrueba->addComponent<Transform>(100.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
 	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
 	
 	// Posición Relativa
-	e->addChild(trSello);
-	trSello->setRelativePos(100.0f, 100.0f);
+	trSello->setParent(tr);
+	//tr->addChild(trSello);
+	//trSello->setRelativePos(100.0f, 100.0f);
+	//tr->setPos(100.0f, 400.0f);
+	//TODO: probar que con un boton se puedan cargar otras escenas
+	Callback cosa = [Prueba3]() {
+		Prueba3->setAlive(false);
+	};
+	clicker->addEvent(cosa);
 }
 
 
