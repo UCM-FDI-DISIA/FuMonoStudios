@@ -21,7 +21,12 @@ Game::Game():exit(false){
 	window = sdl.window();
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
-	loadScene(ecs::sc::MENU_SCENE);
+	loadScene(ecs::sc::MENU_SCENE);/*
+	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+	changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+	changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);*/
 }
 
 Game::~Game()
@@ -44,6 +49,12 @@ void Game::run()
 		}
 		if (ih().isKeyDown(SDL_SCANCODE_F)) {
 			sdlutils().toggleFullScreen();
+		}
+		if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+		}
+		if (ih().isKeyDown(SDL_SCANCODE_W)) {
+			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
 
 		update();
@@ -68,12 +79,22 @@ void Game::run()
 /// se ejecutara la ultima de la cadena de proceso
 /// </summary>
 /// <param name="scene"></param>
+//void Game::loadScene(ecs::sc::sceneId scene)
+//{
+//	//llamar al init de la escena a cargar????
+//	gameScenes[scene]->init();
+//	//cargamos la escena
+//	loadedScenes.push_back(gameScenes[scene]);
+//}
 void Game::loadScene(ecs::sc::sceneId scene)
 {
-	//llamar al init de la escena a cargar????
-	gameScenes[scene]->init();
-	//cargamos la escena
-	loadedScenes.push_back(gameScenes[scene]);
+	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
+	if (it == loadedScenes.end()) {
+		//llamar al init de la escena a cargar????
+		gameScenes[scene]->init();
+		//cargamos la escena
+		loadedScenes.push_back(gameScenes[scene]);
+	}
 }
 
 /// <summary>
@@ -87,6 +108,15 @@ void Game::killScene(ecs::sc::sceneId scene)
 		loadedScenes.erase(it);
 		std::cout << "Scene Killed"<<std::endl;
 	}
+}
+
+void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
+	killScene(scene1);
+	loadScene(scene2);
+	/*if (loadedScenes.size() < 1) {
+		loadScene(scene2);
+	}*/
+	
 }
 
 /// <summary>

@@ -28,17 +28,17 @@ void ecs::MainMenu::init()
 	
 
 	Entity* Titulo = addEntity();
-	Texture* sujetaplazas = &sdlutils().images().at("title");
-	Transform* e = Titulo->addComponent<Transform>(0.0f, 0.0f, sujetaplazas->width(), sujetaplazas->height());
-	RenderImage* nachos = Titulo->addComponent<RenderImage>(sujetaplazas);
+	Texture* texturaTitulo = &sdlutils().images().at("title");
+	Transform* transformTitulo = Titulo->addComponent<Transform>(0.0f, 0.0f, texturaTitulo->width(), texturaTitulo->height());
+	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
 
-	Texture* porros = &sdlutils().images().at("press");
-	Entity* Boton = addEntity();
+	Texture* texturaBoton = &sdlutils().images().at("press");
+	Entity* BotonPress = addEntity();
 	
-	Transform* wakamole = Boton->addComponent<Transform>(960.0f, 480.0f, porros->width(), porros->height());
-	RenderImage* salsa = Boton->addComponent<RenderImage>(porros);
+	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 
-	auto clicker = Boton->addComponent<Clickeable>();
+	auto clickerPress = BotonPress->addComponent<Clickeable>();
 	/*Boton->addComponent<Trigger>();
 	Boton->getComponent<Trigger>()->addCallback([]() {
 
@@ -53,13 +53,10 @@ void ecs::MainMenu::init()
 		(*game).loadScene(ecs::sc::MAIN_SCENE);
 
 	}*/
-
-	Callback cosa = []() {
-		std::cout << "Click" << std::endl;
-		gm().writeMessage();
-
+	Callback funcPress = [this]() {
+		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
 	};
-	clicker->addEvent(cosa);
+	clickerPress->addEvent(funcPress);
 }
 
 void ecs::MainMenu::changeToMainScene() {

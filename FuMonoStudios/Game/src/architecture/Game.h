@@ -17,6 +17,7 @@ public:
 	void run();
 	void loadScene(ecs::sc::sceneId scene);
 	void killScene(ecs::sc::sceneId scene);
+	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 	inline void writeMessage() {
 		std::cout << "Funcionaaaaaaaaa" << std::endl;
 	};
