@@ -25,11 +25,13 @@ void ecs::ExplorationScene::init()
 {
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
-	Font fuente("resources/fonts/ARIAL.ttf", 40);
+	auto boxBg = addEntity();
+	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
+	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
 
-	Texture* muchoTexto = new Texture(sdlutils().renderer(), dialogMngr_.GetCurrentDialog(), fuente, build_sdlcolor(0xffffffffff), sdlutils().width()-200);
 	auto dialogoBox = addEntity();
-	auto textTr = dialogoBox->addComponent<Transform>(100, sdlutils().height()-200, muchoTexto->width(), 100);
-	dialogoBox->addComponent<RenderImage>(muchoTexto);
+	auto textTr = dialogoBox->addComponent<Transform>(20, 20,100,100);
+	textTr->setParent(bgTr);
+	dialogoBox->addComponent<RenderImage>();
 	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
 }

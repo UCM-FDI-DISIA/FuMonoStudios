@@ -70,12 +70,3 @@ void ecs::MainScene::init()
 	};
 	clicker->addEvent(cosa);
 }
-
-void ecs::MainScene::init()
-{
-	std::cout << "Hola Main" << std::endl;
-	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
-
-
-
-}

@@ -62,6 +62,9 @@ public:
 	/// <returns></returns>
 	float getHeith() const { return height; };
 
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
+
 private:
 	/// <summary>
 	/// posicion relativa (al padre) del objeto

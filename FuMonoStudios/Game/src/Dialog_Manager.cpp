@@ -25,6 +25,7 @@ void DialogManager::NextDialog() {
 
 void DialogManager::setDialogues(std::string path) {
     dialogs.clear();
+    currentDialogIndex = 0;
     std::ifstream file(path);
     if (file.is_open()) {
         std::string line;
