@@ -36,7 +36,7 @@ void ecs::MainScene::createManual()
 	button->getComponent<Trigger>()->addCallback([patata]
 		{
 			std::cout << "Sig pag" << std::endl;
-		    patata->nextTexture();
+		    patata->nextTexture(); 
 		});
 }
 
@@ -96,10 +96,10 @@ void ecs::MainScene::init()
 	//trSello->setRelativePos(100.0f, 100.0f);
 	//tr->setPos(100.0f, 400.0f);
 	//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = [Prueba3]() {
+	/*Callback cosa = [Prueba3]() {
 		Prueba3->setAlive(false);
 	};
-	clicker->addEvent(cosa);
+	clicker->addEvent(cosa);*/
 }
 
 
