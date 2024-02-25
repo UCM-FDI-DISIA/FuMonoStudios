@@ -16,12 +16,14 @@ void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity();
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
+	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
 	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
 	patata->addTexture(manualTexture);
-	patata->initComponent(); //preguntar por esto
-	RenderImage* manualRender = manual->addComponent<RenderImage>(patata->getCurrentTexture());
+	patata->addTexture(manualTexture2);
+	patata->initComponent();
 
 
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
@@ -29,7 +31,13 @@ void ecs::MainScene::createManual()
 	float buttonScale = 0.15;
 	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-
+	button->addComponent<Clickeable>();
+	button->addComponent<Trigger>();
+	button->getComponent<Trigger>()->addCallback([patata]
+		{
+			std::cout << "Sig pag" << std::endl;
+		    patata->nextTexture();
+		});
 }
 
 ecs::MainScene::MainScene():Scene()

@@ -23,14 +23,18 @@ void MultipleTextures::addTexture(Texture* texture)
 
 void MultipleTextures::nextTexture()
 {
+    if (currentTexture_ == texturesVector_.end() - 1) //por si acaso, pero lo ideal seria que los botones de siguiente pag no aparecieran si no se puede avanzar mas en el libro en esa direccion
+        return;
     currentTexture_++;
-    //llamada a cambio de textura del render image
+    renderImage_->changeTexture(*currentTexture_);
 }
 
 void MultipleTextures::previousTexture()
 {
+    if(currentTexture_ == texturesVector_.begin()) //por si acaso, pero lo ideal seria que los botones de siguiente pag no aparecieran si no se puede avanzar mas en el libro en esa direccion
+        return;
     currentTexture_--;
-    //llamada a cambio de textura del render image
+    renderImage_->changeTexture(*currentTexture_);
 }
 
 void MultipleTextures::initComponent()
