@@ -52,6 +52,10 @@ public:
 	/// <returns></returns>
 	Vector2D getRelPos() const;
 	/// <summary>
+	/// Devuelve si el ratón esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
+	/// <summary>
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>
@@ -61,6 +65,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	float getHeith() const { return height; };
+
+	
 
 private:
 	/// <summary>

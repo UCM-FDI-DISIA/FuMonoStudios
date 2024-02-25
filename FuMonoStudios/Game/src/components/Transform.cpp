@@ -3,6 +3,7 @@
 #include "../utils/Vector2D.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../architecture/Entity.h"
+#include "../sdlutils/InputHandler.h"
 
 Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h), parent(nullptr) {
 	auto& sdl = *SDLUtils::instance();
@@ -84,4 +85,12 @@ SDL_Rect& Transform::getRect()const{
 	Vector2D pos = getPos();
 	SDL_Rect rect = build_sdlrect(pos, width, height);
 	return rect;
+}
+
+bool Transform::getIfPointerIn() const {
+	auto& ihdlr = ih();
+
+	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
+
+	return SDL_PointInRect(&point, &getRect());
 }

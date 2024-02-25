@@ -30,19 +30,15 @@ void DragAndDrop::initComponent() {
 
 void DragAndDrop::update() {
 
-	
-
 	auto& ihdlr = ih();
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
-
-	
 
 	//Detección al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, &tr_->getRect())) {
+		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
 
@@ -51,6 +47,8 @@ void DragAndDrop::update() {
 			differenceY = point.y - tr_->getPos().getY();;
 
 		}
+
+		
 
 	}
 

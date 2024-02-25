@@ -31,7 +31,7 @@ namespace ecs {
 	}
 	Entity* Scene::addEntity(ecs::layer::layerId lyId)
 	{
-		Entity* e = new Entity(this);
+		Entity* e = new Entity(this, lyId);
 		e->setAlive(true);
 		objs_[lyId].push_back(e);
 		return e;
@@ -46,6 +46,7 @@ namespace ecs {
 	{
 		colisionEntities.erase(it);
 	}
+	//Se pasa una entidad para comprobar si esta choca con el resto de entidades que tienen un trigger
 	bool Scene::checkColisions(Entity* e) {
 
 		bool ret = false;
@@ -54,7 +55,13 @@ namespace ecs {
 
 			if ((*it) != e) {
 
-				if (SDL_HasIntersection(&e->getComponent<Transform>()->getRect(), &(*it)->getComponent<Transform>()->getRect())) {
+				//Se guardan los rect ya que con lo que devuelve getRect() el SDL_HasIntersection falla
+
+				SDL_Rect rect1 = e->getComponent<Transform>()->getRect();
+
+				SDL_Rect rect2 = (*it)->getComponent<Transform>()->getRect();
+
+				if (SDL_HasIntersection(&rect1, &rect2)) {
 
 					e->getComponent<Trigger>()->touchEntity((*it));
 

@@ -31,7 +31,7 @@ void Trigger::update() {
 
 	if (ent_->getMngr()->checkColisions(ent_)) {
 
-		//Algo
+		//std::cout << "Choca << std::endl;
 
 	}
 
@@ -76,5 +76,22 @@ bool Trigger::activateCallbacks() {
 	}
 
 	return eventList.empty();
+
+}
+
+//Se comprueba si la entidad con este trigger esta más cercana a la pantalla que el resto de entidades con las que choca
+bool Trigger::checkIfClosest() {
+
+	auto it = entTouching.begin();
+
+	ecs::layer::layerId myLayer = ent_->getLayer();
+
+	while (it != entTouching.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer > (*it)->getLayer())) {
+
+		++it;
+
+	}
+
+	return it == entTouching.end();
 
 }

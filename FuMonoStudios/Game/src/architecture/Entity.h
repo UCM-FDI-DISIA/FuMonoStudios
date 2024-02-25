@@ -17,7 +17,7 @@ namespace ecs {
 	*/
 	{
 	public:
-		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
+		Entity(Scene* scene, ecs::layer::layerId lyid) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(lyid) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -94,6 +94,11 @@ namespace ecs {
 
 			return static_cast<T*>(cmps_[cId]);
 		}
+
+		inline ecs::layer::layerId getLayer() {
+			return myLayer;
+		}
+
 		//Comprueba si Entity tiene el componente marcado por cId
 		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
@@ -117,6 +122,7 @@ namespace ecs {
 	private:
 		bool alive_;
 		Scene* scene_;
+		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;
 
