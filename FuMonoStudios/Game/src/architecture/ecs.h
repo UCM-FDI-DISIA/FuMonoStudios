@@ -15,6 +15,7 @@ namespace ecs {
 			CLICKEABLE,
 			DRAGANDDROP,
 			TRIGGER,
+			MULTIPLETEXTURES,
 			GRAVITY,
 			PAQUETE,
 			CHECKER,
@@ -48,6 +49,7 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			FOREGROUND,
 			_LAST_LAYER
 		};
 		constexpr layerId maxLayerId = _LAST_LAYER;

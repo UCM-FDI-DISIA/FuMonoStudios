@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MultipleTextures.cpp" />
     <ClCompile Include="Felicidad.cpp" />
     <ClCompile Include="Mapa.cpp" />
     <ClCompile Include="src\components\DialogComponent.cpp" />
@@ -163,7 +164,7 @@
     <ClCompile Include="src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-
+    <ClInclude Include="src\components\MultipleTextures.h" />
     <ClInclude Include="Felicidad.h" />
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="src\components\DialogComponent.h" />

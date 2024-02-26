@@ -52,7 +52,7 @@ void Clickeable::update() {
 
 }
 
-void Clickeable::addEvent(Callback& const event) {
+void Clickeable::addEvent(Callback event) {
 
 	eventsWhenClick.push_back(event);
 

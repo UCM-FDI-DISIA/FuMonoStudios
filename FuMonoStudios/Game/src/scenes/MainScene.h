@@ -5,6 +5,8 @@ namespace ecs {
     class Game;
     class MainScene :public Scene
     {
+    private:
+        void createManual();
     public:
         MainScene();
         virtual ~MainScene();

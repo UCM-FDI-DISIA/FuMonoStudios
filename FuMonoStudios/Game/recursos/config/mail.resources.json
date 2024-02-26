@@ -3,6 +3,8 @@
         { "id" : "placeHolder", "file" : "recursos/images/SDL_logo.png" },
         { "id" : "boxTest", "file" : "recursos/images/Box.png" },
         { "id" : "selloTest", "file" : "recursos/images/Sello.png" },
+        { "id" : "bookTest", "file" : "recursos/images/book.png" },
+        { "id" : "flechaTest", "file" : "recursos/images/flecha.png" }
         { "id" :  "demeter", "file" :  "recursos/images/Demeter.png"},
         { "id" :  "hefesto", "file" :  "recursos/images/Hefesto.png"},
         { "id" :  "hestia", "file" :  "recursos/images/Hestia.png"},
