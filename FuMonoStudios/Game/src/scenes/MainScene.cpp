@@ -29,7 +29,7 @@ void ecs::MainScene::init()
 	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
 	float scale = 0.2;
 
-	/*
+	
 	Entity* Prueba2 = addEntity();
 	
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
@@ -42,7 +42,7 @@ void ecs::MainScene::init()
 
 		std::cout << "Activar Evento P2" << std::endl;
 	});
-	*/
+	
 	// Caja CLicker
 	
 

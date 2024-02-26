@@ -6,7 +6,7 @@
 #include <string>
 #include "architecture/Game.h"
 #include "sdlutils/SDLUtils.h"
-#include "Dialogo.h"
+
 
 int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
