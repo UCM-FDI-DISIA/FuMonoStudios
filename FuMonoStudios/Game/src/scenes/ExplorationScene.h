@@ -1,5 +1,6 @@
 #pragma once
 #include "../architecture/Scene.h"
+#include "../Dialog_Manager.h"
 namespace ecs {
     class ExplorationScene :
         public Scene
@@ -9,6 +10,8 @@ namespace ecs {
         virtual ~ExplorationScene();
 
         void init() override;
+    private:
+        DialogManager dialogMngr_;
     };
 }
 

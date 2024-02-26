@@ -2,6 +2,7 @@
     "images" : [
         { "id" : "placeHolder", "file" : "recursos/images/SDL_logo.png" },
         { "id" : "boxTest", "file" : "recursos/images/Box.png" },
-        { "id" : "selloTest", "file" : "recursos/images/Sello.png" }
+        { "id" : "selloTest", "file" : "recursos/images/Sello.png" },
+        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" }
     ]
 }

@@ -42,7 +42,7 @@ public:
 	void setPos(float x, float y);
 
 	/// <summary>
-	/// Devuelve la posición global del objeto
+	/// Devuelve la posiciï¿½n global del objeto
 	/// </summary>
 	/// <returns></returns>
 	Vector2D getPos() const;
@@ -61,6 +61,9 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	float getHeith() const { return height; };
+
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
 
 private:
 	/// <summary>
