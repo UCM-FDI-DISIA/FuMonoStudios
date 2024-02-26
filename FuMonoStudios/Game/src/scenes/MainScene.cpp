@@ -51,6 +51,7 @@ void ecs::MainScene::init()
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
 	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
+	Gravity* gravityComp3 = Prueba3->addComponent<Gravity>();
 	Prueba3->addComponent<DragAndDrop>();
 	Prueba3->getComponent<Trigger>()->addCallback([]() {
 
@@ -62,12 +63,14 @@ void ecs::MainScene::init()
 	Entity* Prueba4 = addEntity(layer::DEFAULT);
 	Transform* tr4 = Prueba4->addComponent<Transform>(250.0f, 250.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* rd4 = Prueba4->addComponent<RenderImage>(sujetaplazas);
+	Gravity* gravityComp4 = Prueba4->addComponent<Gravity>();
 	Prueba4->addComponent<DragAndDrop>();
 	Prueba4->getComponent<Trigger>()->addCallback([]() {
 
 		std::cout << "Activar Evento P4" << std::endl;
 
 		});
+
 
 	// Sello
 	Entity* selloPrueba = addEntity(layer::BACKGROUND);
