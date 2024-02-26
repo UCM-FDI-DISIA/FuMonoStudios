@@ -32,12 +32,10 @@ void ecs::MainScene::createManual()
 	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	button->addComponent<Clickeable>();
-	button->addComponent<Trigger>();
-	button->getComponent<Trigger>()->addCallback([patata]
-		{
-			std::cout << "Sig pag" << std::endl;
-		    patata->nextTexture(); 
-		});
+	button->getComponent<Clickeable>()->addEvent([]() {
+
+		std::cout << "sig" << std::endl;
+	});
 }
 
 ecs::MainScene::MainScene():Scene()
@@ -65,12 +63,12 @@ void ecs::MainScene::init()
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	//Gravity* gravityComp = Prueba2->addComponent<Gravity>(10);
 	auto clicker = Prueba2->addComponent<Clickeable>();
-	Prueba2->addComponent<Trigger>();
-
-	Prueba2->getComponent<Trigger>()->addCallback([]() {
+	
+	clicker->addEvent([]() {
 
 		std::cout << "Activar Evento P2" << std::endl;
-	});
+
+		});
 
 
 	// Dragable Box

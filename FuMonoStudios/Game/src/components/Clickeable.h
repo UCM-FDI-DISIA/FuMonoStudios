@@ -20,7 +20,7 @@ public:
 
 	void update() override;
 
-	void addEvent(Callback& const event );
+	void addEvent(Callback event );
 
 private:
 
