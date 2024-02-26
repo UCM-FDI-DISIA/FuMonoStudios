@@ -686,43 +686,42 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 **Genericos**
 
 - **Malos: (la presión del jefe y clientes recae todavía más en el pobre Paulino porque el taller no recibe los materiales)**
-  - "Hoy me encuentro bastante depresivo, déjame confesarte algo... El jefe no siempre entiende mi visión artística. Para él, solo importan las cosas prácticas y funcionales. ¡Pero yo sé que hay más en la vida que la mera utilidad! ¿Sabes qué? Prefiero estar solo…"
+  - "Hoy me encuentro bastante depresivo. ¡Mi jefe me tiene trabajando como un esclavo! No puedo ni siquiera tomar un respiro para charlar, déjame confesarte algo... El jefe no siempre entiende mi visión artística. Para él, solo importan las cosas prácticas y funcionales. ¡Pero yo sé que hay más en la vida que la mera utilidad!
+  
+  Te pido por favor que envíes esos paquetes, ya de por sí las cosas  no son fáciles, no las compliques más. Ahora déjame, prefiero estar solo…"
 
-  - "Oh, lamento mucho, querido. Hoy estoy completamente sumergido en el trabajo. No tengo ni un segundo libre para charlar ahora mismo. ¡Quizás en otro momento!"
+  - "Maldita sea, el otro día se rieron de mi última creación, un invento revolucionario que cambiará la forma en que nos comunicamos, lo llamé "Teléfono". Entre tú y yo, mi querido amigo, no todos comprenden la verdadera belleza de mis creaciones…
+  
+  Lo lamento mucho pero hoy estoy completamente sumergido en el trabajo, cada vez que no envías los paquetes la presión del taller recae más sobre mí, por favor, manda los paquetes querido." 
 
-  - "Maldita sea, el otro día se rieron de mi última creación, un invento revolucionario que cambiará la forma en que nos comunicamos, lo llamé "Teléfono". Entre tú y yo, mi querido amigo, no todos comprenden la verdadera belleza de mis creaciones…" 
-
-  - "¡Mi jefe me tiene trabajando como un esclavo! No puedo ni siquiera tomar un respiro para charlar. ¡Espero que me entiendas!"
-
-  - "Sabes, amigo, el otro día tuve una experiencia bastante desagradable. Un cliente vino a recoger su pedido y quedó muy decepcionado. Resulta que los recortes en materiales que está implementando mi jefe últimamente están afectando a la calidad de mis creaciones. Es frustrante, porque me esfuerzo mucho en cada pieza que hago, pero si no tengo los materiales adecuados, ¿qué puedo hacer?
+  - "Sabes, amigo, el otro día tuve una experiencia bastante desagradable. Un cliente vino a recoger su pedido y quedó muy decepcionado. Resulta que los recortes en materiales que está implementando mi jefe últimamente están afectando a la calidad de mis creaciones. Es frustrante, porque me esfuerzo mucho en cada pieza que hago, pero si no tengo los materiales adecuados, ¿qué puedo hacer? Haz el favor de enviarnos los paquetes que te pedimos por favor!
   
   Por favor, intenta enviar los paquetes que te pedimos ¿lo harías por mí?"
 
 - **Neutrales:**
-  - "¡Hola Cariño! ¿Qué te trae por aquí en este día tan fascinante? A veces me pregunto si hay algo más en la vida que trabajar en el taller, ¡pero luego recuerdo lo feliz que me hace! ¿Qué te trae por aquí hoy?"
 
-  - "¡Hola guapo! La verdad es que hoy es un día bastante normal, con algo de ajetreo, algo habitual en mi taller."
+  - "¡Hola, amigo! ¿Qué opinas de Glover Globus? El otro día me lo encontré en el Pezer-King, ¡sí, en el mismísimo Pezer-King! Fue una sorpresa verlo por allí después de tanto tiempo. ¿Quién iba a decir que el campesino que una vez llegó a mi taller buscando un poco de orientación se convertiría en nada menos que el mismísimo secretario del rey? Es increíble cómo la vida nos sorprende a veces."
 
-  - "¿Qué opinas de Glover Globus? El otro día me lo encontré en el Pezer-King, no parece tan mala persona como el estafador de su padre pero lo veo un poco perdido."
+  - "El otro día fui a ver a la tarotista, me dolía bastante la cabeza, el caso es que ella me recetó unas medicinas. Fui al boticario más cercano y la verdad es que me sigue doliendo bastante la cabeza, como si no me hubiera hecho efecto… Sin embargo, una simple migraña no me parará! El arte me llama!"
 
-  - "El otro día fui a ver a la tarotista, me dolía bastante la cabeza, el caso es que ella me recetó “nombre”. Fui al boticario más cercano y la verdad es que me sigue doliendo bastante la cabeza, como si no me hubiera hecho efecto… Sin embargo, una simple migraña no me parará! El arte me llama!"
+  - "Sabes, hay algo que he mantenido en secreto durante mucho tiempo y siento que puedo compartirlo contigo. Hace un tiempo, encontré una maleta muy peculiar en las ruinas submarinas. Estaba escondida entre los restos de un antiguo monumento, como si el mismísimo Poseidón la hubiera dejado allí como un regalo del pasado. Al abrirla, descubrí una serie de objetos extraños y fascinantes. Algunos de ellos me resultaban familiares de las antiguas leyendas que escuchaba de niño, historias sobre seres misteriosos llamados humanos. Aunque no estoy completamente seguro de su origen, estas reliquias han despertado mi curiosidad y han inspirado mi creatividad como nunca antes."
 
-  - "Sabes, hay algo que llevo guardando un buen tiempo y siento que puedo confiar en ti para contártelo. Resulta que encontré una extraña maleta en las ruinas submarinas hace un tiempo. Estaba en un lugar muy inusual, entre los restos de un extraño monumento. Parece que el mismísimo Poseidón hubiera lanzado un trozo de metal del cielo y lo hubiera hecho naufragar en nuestro reino submarino. No tenía ni idea de lo que era, pero estaba llena de cosas muy curiosas. Hay objetos que nunca antes había visto en mi vida. No estoy seguro de dónde vienen o qué significan, pero me han traído mucha curiosidad e inspiración para mis creaciones."
+- **Felices:** 
+  - "Estoy emocionado por el futuro. He estado reflexionando sobre la idea de emprender mi propio negocio. Aunque todavía tengo algunas dudas, siento que podría ser una oportunidad emocionante.
+  
+  Además, quería agradecerte sinceramente por enviarme esos paquetes llenos de inspiración. Cada uno de ellos es como un pequeño tesoro que alimenta mi creatividad!"
 
-- **Felices: (iniciativa emprendedora)** 
-  - "Estoy empezando a pensar que debería trabajar más por mi cuenta, la verdad es que hay bastante gente emocionada con mi arte y yo también lo estoy!"
+  - "¡Hola Cariño! ¿Qué te trae por aquí en este día tan fascinante? ¡Ah, yo siempre estoy lleno de energía y creatividad! Aunque hoy estoy especialmente emocionado porque estoy trabajando en un proyecto nuevo y emocionante. ¡Espero que pronto pueda mostrártelo! Sigue enviándome paquetes y llegaremos lejos!"
 
-  - "¡Ah, yo siempre estoy lleno de energía y creatividad! Aunque hoy estoy especialmente emocionado porque estoy trabajando en un proyecto nuevo y emocionante. ¡Espero que pronto pueda mostrártelo!"
+  -  "¡Hola de nuevo, querido amigo! Hoy estoy lleno de inspiración y energía creativa. Estoy trabajando en una nueva serie de esculturas que exploran la conexión entre el mar y el cielo. ¿Sabías que he estado experimentando con materiales reciclados? Es un desafío emocionante, pero creo que el arte sostenible es el futuro. Y hablando de futuros brillantes, quiero agradecerte sinceramente por seguir enviándome esos paquetes llenos de tesoros. Cada uno de ellos es como un regalo que me impulsa hacia adelante en mi viaje artístico."
 
-  -  "Estoy algo emocionado. He estado reflexionando últimamente sobre una idea que me ha estado rondando la cabeza. Creo que podría ser el momento adecuado para emprender mi propio negocio. Todavía no estoy del todo seguro."
+ - **MaxiFeliz**
 
- - **MaxiFeliz (agradecido)**
+  - "¡Hoy mis tentáculos están a punto de estallar de alegría! Estoy dando los primeros pasos para construir mi propio taller de arte submarino. ¡Finalmente, podré liberar mi creatividad sin restricciones y sin la sombra de mi jefe! ¡Es un sueño hecho realidad! Y todo esto, querido amigo, es gracias a ti!"
 
-  - "¡Me encuentro increiblemente feliz! La verdad es que me has ayudado mucho! No solo con nuestras fascinantes conversaciones sino también con esos "errores" de envíos jajaja. ¡Estoy que lo bordo!
+  - "Divino, Divino, Divinoo! Mira que creación por favor! Y nada de esto habría sido posible sin tu ayuda! Siempre serás bienvenido aquí, cerca de mí y mi arte!"
 
-  - "Divino, Divino, Divinoo! Mira que creación por favor! Y nada de esto habría sido posible sin tu ayuda! Siempre tendrás un lugar a mi lado!
-
-  - "Hoy es el mejor día de mi vida! ¿Por qué? Lo he visto claro pequeño amigo! Es la hora, mi hora dorada llega! Voy a empezar mi propio taller!
+  - "Estoy inmerso en la creación de algo grande, algo que cambiará el curso de la historia del arte submarino. ¿Sabías que estoy dando los primeros pasos para abrir mi propio taller? Es un sueño que ha estado latente en mi corazón durante tanto tiempo, y finalmente siento que está a punto de hacerse realidad. Y todo esto, querido amigo, es gracias a ti. Tu apoyo inquebrantable, tus palabras de ánimo, ¡todo ha sido como una corriente fresca impulsándome hacia aguas desconocidas!"
   
  
 
@@ -733,7 +732,7 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 
   - "¡No brilla! ¡No resplandece! ¿Y las joyas? ¿Y las Perlas? Necesito un favor, creo que ya te haces una idea, no quiero ponerte en un aprieto pero es que mi jefe no para de abaratar la mercancía... ¿A quién quiere mi jefe engañar con esta baratija? Consigueme desviar un paquete, se que no te decepcionaré!"
 
-  - "¡Ay, por las aletas de mi abuela! Aquí estamos otra vez, sin un triste material en el taller. No sé en qué está pensando el jefe últimamente, pero parece que su cabeza está más en las aguas que en el trabajo. ¿Serías tan amable de echarme una mano y traer algunos materiales? "
+  - "¡Ay, por las aletas de mi abuela! Aquí estamos otra vez, sin un triste trozo de queso. No sé en qué está pensando el jefe últimamente, pero parece que su cabeza está más en las aguas que en el trabajo. ¿Serías tan amable de echarme una mano y traer algo de comida? ¡necesitamos nutrir nuestra creatividad para hacerla brillar!"
 
   - "¡Caracolas! Nuestro proveedor nos ha dejado en la anclada otra vez. Necesito esos materiales con urgencia. ¿Podrías hacer el favor de enviarme un paquete hoy mismo? ¡Te estaría muy agradecido por sacarme de este apuro!"
 
