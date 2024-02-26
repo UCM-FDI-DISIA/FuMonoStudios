@@ -90,6 +90,6 @@ void ecs::MainScene::init()
 
 
 
-	clicker->addEvent(cosa);
+	//clicker->addEvent(cosa);
 }
 
