@@ -42,12 +42,12 @@ void ecs::ExplorationScene::init()
 		});*/
 
 		//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = [this]() {
+	/*Callback cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
 		map.render();
 		};
-	clicker->addEvent(cosa);
+	clicker->addEvent(cosa);*/
 
 	map.render();
 	auto boxBg = addEntity();

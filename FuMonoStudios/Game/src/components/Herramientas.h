@@ -10,6 +10,12 @@ enum TipoHerramienta {
 	SelloCalleA, selloCalleB, selloCalleC
 };
 
+// Para usar esta clase, hay que asignarla al entity y luego
+// llamar a setFunctionality para saber qué hará al interactuar con el
+// paquete. 
+// Funciona a la par con una función que está asignada a cada paquete
+// que llama a la funcion interact si detecta que es una herramienta
+
 class Herramientas : public ecs::Component
 {
 public:

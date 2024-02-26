@@ -9,11 +9,6 @@ Herramientas::~Herramientas() {
 
 }
 
-
-void Herramientas::update() {
-
-}
-
 void Herramientas::setFunctionality(TipoHerramienta tipo) {
 	switch (tipo) 
 	{
@@ -21,6 +16,7 @@ void Herramientas::setFunctionality(TipoHerramienta tipo) {
 		funcion = [](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
 			paqComp->sellarCalle(Paquete::C1);
+			std::cout << "BOMBASTIC";
 			};
 		break;
 	case selloCalleB:

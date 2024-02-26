@@ -53,10 +53,10 @@ void ecs::MainMenu::init()
 		(*game).loadScene(ecs::sc::MAIN_SCENE);
 
 	}*/
-	Callback funcPress = [this]() {
+	/*Callback funcPress = [this]() {
 		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
 	};
-	clickerPress->addEvent(funcPress);
+	clickerPress->addEvent(funcPress);*/
 }
 
 void ecs::MainMenu::changeToMainScene() {

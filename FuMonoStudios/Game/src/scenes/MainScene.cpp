@@ -98,13 +98,14 @@ void ecs::MainScene::init()
 		}
 		});
 
-	// Sellador calle
-	Entity* sellador = addEntity(layer::BACKGROUND);
-	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
-	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
-	sellador->addComponent<DragAndDrop>();
-	sellador->addComponent<RenderImage>(selladorTextura);
-	Herramientas* herrSellador = sellador->addComponent<Herramientas>();
+	// Sellador calle A
+	Entity* selloA = addEntity(layer::BACKGROUND);
+	Texture* selloATex = &sdlutils().images().at("selladorA");
+	selloA->addComponent<Transform>(700, 700, selloATex->width() * scale, selloATex->height() * scale);
+	selloA->addComponent<DragAndDrop>();
+	selloA->addComponent<RenderImage>(selloATex);
+	Herramientas* herrSellador = selloA->addComponent<Herramientas>();
+	herrSellador->setFunctionality(SelloCalleA);
 	
 
 	//Tubería

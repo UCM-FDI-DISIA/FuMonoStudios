@@ -21,7 +21,7 @@ Game::Game():exit(false){
 	window = sdl.window();
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
-	loadScene(ecs::sc::MENU_SCENE);/*
+	loadScene(ecs::sc::MAIN_SCENE);/*
 	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
 	changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
