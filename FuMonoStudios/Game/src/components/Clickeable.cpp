@@ -39,7 +39,7 @@ void Clickeable::update() {
 
 			//std::cout << "click" << std::endl;
 			// 
-			//Recorrido por las colbacks a las que está suscrito este objeto
+			//Recorrido por las colbacks a las que estï¿½ suscrito este objeto
 			for (Callback call:eventsWhenClick) {
 
 				call();

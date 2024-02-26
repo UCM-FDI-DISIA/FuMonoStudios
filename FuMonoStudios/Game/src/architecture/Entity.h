@@ -17,7 +17,7 @@ namespace ecs {
 	*/
 	{
 	public:
-		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
+		Entity(Scene* scene, ecs::layer::layerId lyid) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(lyid) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -49,9 +49,11 @@ namespace ecs {
 		template<>
 		inline Trigger* addComponent<Trigger>() {
 
+			//scene_->addEntityToColisionList(this);
+
 			Trigger* t = addComponent_aux<Trigger>(scene_->addEntityToColisionList(this));
 
-			//std::cout << "Trigger";
+			std::cout << "Trigger";
 
 			return t;
 
@@ -94,6 +96,11 @@ namespace ecs {
 
 			return static_cast<T*>(cmps_[cId]);
 		}
+
+		inline ecs::layer::layerId getLayer() {
+			return myLayer;
+		}
+
 		//Comprueba si Entity tiene el componente marcado por cId
 		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
@@ -117,17 +124,18 @@ namespace ecs {
 	private:
 		bool alive_;
 		Scene* scene_;
+		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;
 
 
 		/// <summary>
-		/// Añade un componente a Entity
+		/// Aï¿½ade un componente a Entity
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <typeparam name="...Ts"></typeparam>
 		/// <param name="cId">Identificador del componente</param>
-		/// <param name="...args">Argumentos de la constructora del componente a añadir</param>
+		/// <param name="...args">Argumentos de la constructora del componente a aï¿½adir</param>
 		/// <returns>Puntero al componente creado</returns>
 		template<typename T, typename ...Ts>
 		inline T* addComponent_aux(Ts&&... args) {

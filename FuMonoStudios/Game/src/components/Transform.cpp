@@ -3,6 +3,7 @@
 #include "../utils/Vector2D.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../architecture/Entity.h"
+#include "../sdlutils/InputHandler.h"
 
 Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h), parent(nullptr) {
 	auto& sdl = *SDLUtils::instance();
@@ -33,12 +34,11 @@ void Transform::render() const {
 #endif // _DEBUG
 }
 
-
 Transform* Transform::getParent() const {
 	return parent;
 }
 
-// Los objetos solo pueden tener un único padre
+// Los objetos solo pueden tener un ï¿½nico padre
 void Transform::setParent(Transform* newParent) {
 	if (parent != newParent) {
 		parent = newParent;
@@ -60,13 +60,13 @@ void Transform::setPos(float x, float y) {
 	setPos(newPos);
 }
 
-//Devuelve la posición en el mundo
+//Devuelve la posiciï¿½n en el mundo
 Vector2D Transform::getPos() const
 {
 	Vector2D pos = position;
 	Transform* aux = parent;
 
-	//Bucle que itera hasta llegar al primer padre para tener la posición en el mundo
+	//Bucle que itera hasta llegar al primer padre para tener la posiciï¿½n en el mundo
 	while (aux != nullptr) {
 		pos = pos + aux->position;
 		aux = parent->parent;
@@ -74,7 +74,7 @@ Vector2D Transform::getPos() const
 	return pos;
 }
 
-//Devuelve la posición relativa
+//Devuelve la posiciï¿½n relativa
 Vector2D Transform::getRelPos() const {
 	return position;
 }
@@ -84,4 +84,12 @@ SDL_Rect& Transform::getRect()const{
 	Vector2D pos = getPos();
 	SDL_Rect rect = build_sdlrect(pos, width, height);
 	return rect;
+}
+
+bool Transform::getIfPointerIn() const {
+	auto& ihdlr = ih();
+
+	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
+
+	return SDL_PointInRect(&point, &getRect());
 }

@@ -31,7 +31,7 @@ void Trigger::update() {
 
 	if (ent_->getMngr()->checkColisions(ent_)) {
 
-		//Algo
+		//std::cout << "Choca << std::endl;
 
 	}
 
@@ -45,7 +45,7 @@ void Trigger::touchEntity(ecs::Entity* ent) {
 
 }
 
-//Añade funcionalidad a la entidad si algo se posa sobre ella
+//Aï¿½ade funcionalidad a la entidad si algo se posa sobre ella
 void Trigger::addCallback(Callback event) {
 
 	eventList.push_back(event);
@@ -53,7 +53,7 @@ void Trigger::addCallback(Callback event) {
 }
 
 //activa los eventos de todas las entidades que tenga asociadas (que este tocando)
-//NOTA: en un futuro será necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
+//NOTA: en un futuro serï¿½ necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
 bool Trigger::activateEventsFromEntities() {
 
 	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {
@@ -76,5 +76,22 @@ bool Trigger::activateCallbacks() {
 	}
 
 	return eventList.empty();
+
+}
+
+//Se comprueba si la entidad con este trigger esta más cercana a la pantalla que el resto de entidades con las que choca
+bool Trigger::checkIfClosest() {
+
+	auto it = entTouching.begin();
+
+	ecs::layer::layerId myLayer = ent_->getLayer();
+
+	while (it != entTouching.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer > (*it)->getLayer())) {
+
+		++it;
+
+	}
+
+	return it == entTouching.end();
 
 }

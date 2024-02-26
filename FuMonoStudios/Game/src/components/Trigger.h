@@ -32,6 +32,8 @@ public:
 
 	bool activateCallbacks();
 
+	bool checkIfClosest();
+
 private:
 
 	Transform* tr_;

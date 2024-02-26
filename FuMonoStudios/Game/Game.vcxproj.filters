@@ -26,6 +26,8 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="Mapa.cpp" />
+    <ClCompile Include="Felicidad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -63,8 +65,13 @@
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
+    <ClInclude Include="Mapa.h" />
+    <ClInclude Include="Felicidad.h" />
+     <ClCompile Include="src\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\DialogComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>

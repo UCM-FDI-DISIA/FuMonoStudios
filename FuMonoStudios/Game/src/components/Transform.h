@@ -42,7 +42,7 @@ public:
 	void setPos(float x, float y);
 
 	/// <summary>
-	/// Devuelve la posición global del objeto
+	/// Devuelve la posiciï¿½n global del objeto
 	/// </summary>
 	/// <returns></returns>
 	Vector2D getPos() const;
@@ -51,6 +51,10 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Vector2D getRelPos() const;
+	/// <summary>
+	/// Devuelve si el ratï¿½n esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
 	/// <summary>
 	/// Devuelve el ancho del transform
 	/// </summary>
@@ -61,6 +65,9 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	float getHeith() const { return height; };
+
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
 
 private:
 	/// <summary>
