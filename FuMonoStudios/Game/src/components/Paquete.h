@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+class Scene;
+
 class Paquete : public ecs::Component
 {
 public:

@@ -23,14 +23,6 @@ ecs::MainScene::~MainScene()
 {
 }
 
-void interactPaquetesHerramientas(ecs::Entity* paq, ecs::Entity* ent) {
-	
-}
-
-void sellar(ecs::Entity* ent) {
-	std::cout << "HOLA";
-}
-
 void ecs::MainScene::init()
 {
 	std::cout << "Hola Main" << std::endl;
@@ -96,7 +88,7 @@ void ecs::MainScene::init()
 		if (herrComp != nullptr) {
 			herrComp->interact(Paquet);
 		}
-		});
+	});
 
 	// Sellador calle A
 	Entity* selloA = addEntity(layer::BACKGROUND);
@@ -104,9 +96,26 @@ void ecs::MainScene::init()
 	selloA->addComponent<Transform>(700, 700, selloATex->width() * scale, selloATex->height() * scale);
 	selloA->addComponent<DragAndDrop>();
 	selloA->addComponent<RenderImage>(selloATex);
-	Herramientas* herrSellador = selloA->addComponent<Herramientas>();
-	herrSellador->setFunctionality(SelloCalleA);
+	Herramientas* herrSelladorA = selloA->addComponent<Herramientas>();
+	herrSelladorA->setFunctionality(SelloCalleA);
 	
+	// Sellador calle B
+	Entity* selloB = addEntity(layer::BACKGROUND);
+	Texture* selloBTex = &sdlutils().images().at("selladorB");
+	selloB->addComponent<Transform>(800, 700, selloBTex->width() * scale, selloBTex->height() * scale);
+	selloB->addComponent<DragAndDrop>();
+	selloB->addComponent<RenderImage>(selloBTex);
+	Herramientas* herrSelladorB = selloB->addComponent<Herramientas>();
+	herrSelladorB->setFunctionality(SelloCalleB);
+
+	// Sellador calle C
+	Entity* selloC = addEntity(layer::BACKGROUND);
+	Texture* selloCTex = &sdlutils().images().at("selladorC");
+	selloC->addComponent<Transform>(900, 700, selloCTex->width() * scale, selloCTex->height() * scale);
+	selloC->addComponent<DragAndDrop>();
+	selloC->addComponent<RenderImage>(selloCTex);
+	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
+	herrSelladorC->setFunctionality(SelloCalleC);
 
 	//Tubería
 	Entity* tuberia = addEntity();

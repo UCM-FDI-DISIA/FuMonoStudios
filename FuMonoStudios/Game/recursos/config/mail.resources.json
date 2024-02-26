@@ -15,6 +15,9 @@
         { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
         { "id" : "selladorB", "file" : "recursos/images/selladorAzul.png" },
         { "id" : "selladorC", "file" : "recursos/images/selladorVerde.png" },
+        { "id" : "selloA", "file" : "recursos/images/SelloRojo.png" },
+        { "id" : "selloB", "file" : "recursos/images/SelloAzul.png" },
+        { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
         { "id" : "press", "file": "recursos/images/press.png"}
     ]
 }

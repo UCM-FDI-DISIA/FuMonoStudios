@@ -2,6 +2,10 @@
 #include "../json/JSON.h"
 #include <memory>
 #include <iostream>
+#include "../architecture/Entity.h"
+#include "Transform.h"
+#include "Render.h"
+#include "../architecture/Scene.h"
 
 const int nivelFragil = 3;
 const int nivelPeso = 2;
@@ -62,9 +66,25 @@ Paquete::Distrito Paquete::getDist() const
 }
 
 void Paquete::sellarCalle(Calle sello) {
-	if (sello != Erronea && calleMarcada == Erronea) // solo puedes sellar una vez
+	// solo puedes sellar una vez
+	if (sello != Erronea && calleMarcada == Erronea) 
 	{
 		calleMarcada = sello;
+		Transform* paqTr = ent_->getComponent<Transform>();
+
+		//Creamos la entidad sello
+		ecs::Entity* selloEnt = ent_->getMngr()->addEntity();
+		//Textura en funcion de tipo calle
+		Texture* selloEntTex = &sdlutils().images().at(
+			(std::string)"sello" += 
+			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
+
+		//creamos transform y setParent
+		float scale = 0.2f;
+		Transform* selloEntTr = selloEnt->addComponent<Transform>
+			(0,0,selloEntTex->width()*scale, selloEntTex->height()*scale);
+		selloEnt->addComponent<RenderImage>(selloEntTex);
+		selloEntTr->setParent(paqTr);
 	}
 }
 

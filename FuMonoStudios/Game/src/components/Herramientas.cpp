@@ -16,19 +16,21 @@ void Herramientas::setFunctionality(TipoHerramienta tipo) {
 		funcion = [](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
 			paqComp->sellarCalle(Paquete::C1);
-			std::cout << "BOMBASTIC";
+			std::cout << "A";
 			};
 		break;
-	case selloCalleB:
+	case SelloCalleB:
 		funcion = [](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C1);
+			paqComp->sellarCalle(Paquete::C2);
+			std::cout << "B";
 			};
 		break;
-	case selloCalleC:
+	case SelloCalleC:
 		funcion = [](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C1);
+			paqComp->sellarCalle(Paquete::C3);
+			std::cout << "C";
 			};
 		break;
 	}
