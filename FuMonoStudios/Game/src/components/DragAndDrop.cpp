@@ -10,7 +10,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -42,7 +42,7 @@ void DragAndDrop::update() {
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (SDL_PointInRect(&point, &tr_->getRect())) {
 
 			dragging = true;
 
@@ -74,10 +74,5 @@ void DragAndDrop::update() {
 
 		//Sin centrarse el objeto
 		tr_->setPos(point.x - differenceX, point.y - differenceY);
-
-
 	}
-	
-
-
 }

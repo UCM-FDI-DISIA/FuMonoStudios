@@ -19,6 +19,13 @@ void Gravity::initComponent() {
 
 void Gravity::update() {
 
-	tr_->setPos(tr_->getRelativePos().getX(), tr_->getRelativePos().getY() - force);
-	// falta hacer que deje de caer cuando colisione, borde de la pantalla, coordenada...???
+	
+	tr_->setPos(tr_->getPos().getX(), tr_->getPos().getY() - force);
+	if (tr_->getPos().getY() <= 800) {
+		setGravity(0);
+	}
+}
+
+void Gravity::setGravity(float gravityForce) {
+	force = gravityForce;
 }
