@@ -23,6 +23,9 @@ ecs::MainScene::~MainScene()
 {
 }
 
+void interactPaquetesHerramientas(ecs::Entity* paq, ecs::Entity* ent) {
+	
+}
 
 void sellar(ecs::Entity* ent) {
 	std::cout << "HOLA";
@@ -83,22 +86,26 @@ void ecs::MainScene::init()
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
 	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
-	Trigger* trgPq = Paquet->addComponent<Trigger>();
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
+
+	// funcion que permite interactuar con herramientas
+	Paquet->getComponent<Trigger>()->addCallback([Paquet](ecs::Entity* ent){
+		Herramientas* herrComp = ent->getComponent<Herramientas>();
+		if (herrComp != nullptr) {
+			herrComp->interact(Paquet);
+		}
+		});
 
 	// Sellador calle
 	Entity* sellador = addEntity(layer::BACKGROUND);
 	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
 	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
-	Herramientas* herrSellador = sellador->addComponent<Herramientas>();
-	Trigger* trgSellador = sellador->addComponent<Trigger>();
-	trgSellador->addCallback([](ecs::Entity* entRec) {
-		std::cout << " hola";
-		});
-	sellador->addComponent<RenderImage>(selladorTextura);
 	sellador->addComponent<DragAndDrop>();
+	sellador->addComponent<RenderImage>(selladorTextura);
+	Herramientas* herrSellador = sellador->addComponent<Herramientas>();
+	
 
 	//Tubería
 	Entity* tuberia = addEntity();

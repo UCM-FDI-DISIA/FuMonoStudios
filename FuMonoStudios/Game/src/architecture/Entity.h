@@ -53,8 +53,6 @@ namespace ecs {
 
 			Trigger* t = addComponent_aux<Trigger>();
 
-			std::cout << "Trigger";
-
 			return t;
 
 		}
@@ -62,6 +60,12 @@ namespace ecs {
 		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
 		template<>
 		inline DragAndDrop* addComponent<DragAndDrop>() {
+
+
+			Trigger* trg = getComponent<Trigger>();
+
+			if (trg != nullptr)
+				throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
 
 			addComponent<Trigger>();
 
