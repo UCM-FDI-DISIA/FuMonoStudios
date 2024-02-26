@@ -27,6 +27,7 @@
     <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Herramientas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -65,6 +66,7 @@
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
+    <ClInclude Include="src\components\Herramientas.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />

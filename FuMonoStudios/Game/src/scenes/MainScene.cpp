@@ -12,6 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
 #include "../components/Paquete.h"
+#include "../components/Herramientas.h"
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -23,8 +24,8 @@ ecs::MainScene::~MainScene()
 }
 
 
-void sellar(ecs::Entity*) {
-	std::cout << "fumas ganja";
+void sellar(ecs::Entity* ent) {
+	std::cout << "HOLA";
 }
 
 void ecs::MainScene::init()
@@ -82,16 +83,20 @@ void ecs::MainScene::init()
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
 	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
-	Paquet->addComponent<Trigger>()->addCallback(sellar);
+	Trigger* trgPq = Paquet->addComponent<Trigger>();
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
 
 	// Sellador calle
-	Entity* sellador = addEntity();
+	Entity* sellador = addEntity(layer::BACKGROUND);
 	Texture* selladorTextura = &sdlutils().images().at("selladorTest");
 	Transform* trSellador = sellador->addComponent<Transform>(700, 700, selladorTextura->width() * scale, selladorTextura->height() * scale);
-	Trigger* trgSell = sellador->addComponent<Trigger>();
+	Herramientas* herrSellador = sellador->addComponent<Herramientas>();
+	Trigger* trgSellador = sellador->addComponent<Trigger>();
+	trgSellador->addCallback([](ecs::Entity* entRec) {
+		std::cout << " hola";
+		});
 	sellador->addComponent<RenderImage>(selladorTextura);
 	sellador->addComponent<DragAndDrop>();
 
