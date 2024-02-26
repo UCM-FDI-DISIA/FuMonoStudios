@@ -2,13 +2,15 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-Gravity::Gravity(float gravityForce) : tr_(nullptr), force(gravityForce) {
+const float Gravity::GRAVITY_LIMIT = 400.0f;
+const float Gravity::DEFAUTL_FORCE = 0.5f;
+const float Gravity::MAX_VELOCITY = 30.0f;
 
-}
+Gravity::Gravity() : tr_(nullptr), gravityForce(DEFAUTL_FORCE), velocity(0), active(true) {}
 
-Gravity::~Gravity() {
+Gravity::Gravity(float force) : tr_(nullptr), gravityForce(force), velocity(0), active(true) {}
 
-}
+Gravity::~Gravity() {}
 
 void Gravity::initComponent() {
 
@@ -19,6 +21,25 @@ void Gravity::initComponent() {
 
 void Gravity::update() {
 
-	tr_->setPos(tr_->getRelativePos().getX(), tr_->getRelativePos().getY() - force);
-	// falta hacer que deje de caer cuando colisione, borde de la pantalla, coordenada...???
+    if (active) {
+        bool contactGround = (tr_->getPos().getY() >= GRAVITY_LIMIT);
+
+        if (!contactGround) {
+            velocity += gravityForce;
+            if (velocity > MAX_VELOCITY) {
+                velocity = MAX_VELOCITY; // Limitamos la velocidad
+            }
+            float newY = tr_->getPos().getY() + velocity;
+            if (newY > GRAVITY_LIMIT) {
+                newY = GRAVITY_LIMIT;
+                velocity = 0.0f; // Reseteamos velocidad al tocar el suelo
+            }
+            tr_->setPos(tr_->getPos().getX(), newY);
+        }
+    }
+}
+
+void Gravity::setActive(bool value) {
+    active = value;
+    velocity = 0.0f;
 }

@@ -65,8 +65,11 @@
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="Felicidad.h" />
+     <ClCompile Include="src\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\DialogComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>

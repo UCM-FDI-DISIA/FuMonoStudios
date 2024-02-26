@@ -1,21 +1,27 @@
 #pragma once
 #include "../architecture/Component.h"
-#include "../utils/Vector2D.h"
-#include <SDL.h>
-#include "../sdlutils/SDLUtils.h"
-#include "Transform.h"
-#include "../architecture/Entity.h"
+
+class Transform;
+class Texture;
 
 class RenderImage : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::IMAGE)
-	RenderImage(Texture*);
+	RenderImage(Texture* text = nullptr);
 	~RenderImage();
-	void initComponent();
+	void initComponent() override;
 	void render() const;
+
+	void setTexture(Texture* texture);
 private:
-	Texture* myTexture; //Textura que va a ser renderizada
-	Transform* myTransform; //Transform que se usara de de frame para renderizar la textura
+	/// <summary>
+	/// Textura que va a ser renderizada
+	/// </summary>
+	Texture* myTexture;
+	/// <summary>
+	/// Transform sobre el que se va a renderizar la imagen
+	/// </summary>
+	Transform* myTransform;
 };
 
