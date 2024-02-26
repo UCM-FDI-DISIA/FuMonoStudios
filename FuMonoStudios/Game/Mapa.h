@@ -7,7 +7,7 @@ private:
 	Texture* backGround;
 	bool navegable;
 	//Character* character;
-	std::unordered_map<std::string,Lugar*> directions;
+	std::unordered_map<std::string,Lugar> directions;
 
 public:
 	Lugar() {};

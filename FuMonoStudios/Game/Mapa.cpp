@@ -93,15 +93,15 @@ void Mapa::render() const
 
 void Lugar::addDirections(std::string placeDir, Lugar place)
 {
-	directions[placeDir] = &place;
+	directions[placeDir] = place;
 }
 
 bool Lugar::navigate(std::string placeDir)
 {
-	return directions.count(placeDir) && (*directions.at(placeDir)).navegable;
+	return directions.count(placeDir) && directions.at(placeDir).navegable;
 }
 
 Lugar* Lugar::getDirection(std::string placeDir)
 {
-	return directions[placeDir];
+	return &directions[placeDir];
 }
