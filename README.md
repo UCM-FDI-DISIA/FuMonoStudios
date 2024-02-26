@@ -313,7 +313,7 @@ Su caracter es amigable y alegre con todos aquellos de los anillos exteriores y 
  Continúa con sus labores con el grupo de las lechuzas con más entusiasmo que antes, debido a que ahora vive algo mejor esto le permite intentar ayudar a más gente que encuentra en una situación parecida a la que él una vez salió, haciendo aumentar en número de lechuzas.
 
  **MaxiFeliz**
- : Pancracio está feliz por haber tenido un nuevo hijo, para Pancracio y su mujer tener una gran familia es uno de sus objetivos en la vida, están muy entusiasmados e incluso están empezando a pensar en ampliar aún más la familia en un futuro.
+ : Pancracio está feliz porque va a tener un nuevo hijo, para Pancracio y su mujer tener una gran familia es uno de sus objetivos en la vida, están muy entusiasmados e incluso están empezando a pensar en ampliar aún más la familia en un futuro.
  La buena redistribución de los recursos y las muchas ayudas otorgadas a Pancracio Warawa han hecho que la calidad de las cosechas de Pancracio hayan mejorado exponencialmente.
  Poco a poco Pancracio ha ido vendiendo sus cultivos a buen precio hasta el punto de permitirse negociar unos precios muy buenos con los intermediarios debido a la fama que están empezando a obtener sus productos.
  Debido al aumento de su poder adquisitivo, Pancracio junto al grupo de las lechuzas han decidido abrir un mercado clandestino por el cual lo ciudadanos de los varios exterirores puedan comprar sus productos a un precio muy económico mientra los ciudadanos de los barrios céntrcos siguen comprando los productos a los prescios abusivos que marcan los intermediarios.
@@ -663,57 +663,6 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
   - "Ultimamente las ventas de alimentos no están marchando demasiado bien, no se muy bien como pero parece que los habitantes del distrito de Apolo están obteniendo cosechas de otra parte. Dudo que sea de los campesinos ya que la compra de productos a estos no ha disminuido ni un poco. Esto me huele muy mal, quiza si un par de paquetes de comida que se diríjan al distrito de Apolo se extravían, vuelvan a comprar nuestros recursos. Se que suena mal pero de verdad que lo hago principalmente por los campesinos, si no vendemos tampoco podemos comprarles a ellos y acabarán totalmente arruinados."
 
 
-  #### Tarotista
-
-**Presentacion**
-"Bendita la carne fresca, que tenemos por aquí. Joven tu debes ser nuevo en el reino ¿o me equivoco?. No hace falta que respondas, yo nunca me equivoco, ¿sabes porque?, por que puedo ver el futuro. Mi nombre es Abigail Ampoule y soy una reconocida tarotista. Secretos, engaños, enfermedades y todo lo demás, nada puede escapar de mi conocimiento, la luz de mi cabeza me muestra cualquier cosa. Ven a verme siempre que te preocupe algo, yo siempre estoy aquí para las pobres almas sin rumbo ni ambiciones.
-
-**Felicidad minimo**
-"Tu maldito atún sarnoso y desagradecido. No solo no me ayudas en mi negocio sino que encima me lo pones todo más difícil. Realmente te crees tan superior en tu pequeña posición de poder. Solo por manejar los paquetes del reino te crees en tu derecho de hacer imposible la vida de las personas, en especial de una pobre anciana como yo. Escuchame atentamente lo que te digo, que caigan mil y una desgracias en tu vida, que todo ese egoismo te atragante hasta no dejarte respirar en paz, asi lo pido a los más grandes. No quiero volver a verte jamás en mi vida."
-
-**Felicidad maximo**
-"Realmente tienes un corazón puro muchacho. Se que mi oficio no es especialmente noble, tu también lo descubriste a lo largo del tiempo, pero no me repudiaste por eso, sino que vertiste en mi una esperanza de cambio. Quiero que sepas que tu amabilidad le ha llegado a este arrugado corazón. Realmente me cuesta creer que esta podrida ciudad haya dado lugar a alguien tan empático, quiza incluso no seas de aquí. Sea como sea, es tu vida y yo no me voy a meter en ella. Muchas gracias por todo, acepta esto, quiza te aclare las dudas que tienes en la cabeza."
-
-**Genericos**
-
-- **Malos:**
-  - "La gente de este distrito esa absoluta basura, esos creidos de los boticarios se creen que me pueden tener trabajando a mi, una pobre anciana noche y día para al final darme una miseria. Yo soy la que lee el futuro a la gente para que acudan a sus estupidas tiendas. Y tu muchacho largate de aqui ahora mismo que no estoy de humor."
-
-  - "La primera vez que te ví sentí que tenías cara de bobo y ahora veo que no me equivocaba, no se que harás durante tus horas de trabajo pero siempre me llegan mal los paquetes o directamente no me llegan. Tampoco creo que haga falta ser adivino para enviar un par de cositas."
-
-  - "La gente solo es capaz de visitar a esta pobre anciana para pedirme predicciones y ayuda. Al final todos me acaban abandonando, son un atajo de egoistas. Incluso tú, no eres capaz de ayudarme, solo te me acercas a preguntarme tonterías. Vete de aquí muchacho, ahora mismo no quiero ver a nadie."
-
-- **Neutrales:**
-  - "Por Poseidón, mira quien se ha dignado a aparecer por el distrito de Artemisa. Chico te voy a dar un consejo de gratis, para que veas mi infinita benevolencia. Ten cuidado a quien le das la espalda ya que te la puede apuñalar. Ahora vete de aqui que me acabaras espantando los clientes."
-
-  - "He muchacho ven aquí. Sabes cada vez que te veo estas hecho una pena, deberías relacionarte un poco más con otras personas. Sal, haz amigos, buscate una novia, cualquier cosa. Cuando seas mayor a penas tendras las fuerzas suficientes para soportar a los imbeciles que hay en este reino."
-
-  - "Uy uy uy chico, ahora que veo tu cara está un poco, como te lo diría... decaida. Te voy a hacer una inspección del alma gratuita, asi vemos a que se debe. Mmmm, mmmm, mmmm. Parece que algo dentro de la boca de tu estomago no está del todo bien. Deberías ir a algún boticario y comprar pasta de algas concentrada, tan solo cuesta 500 monedas, confia en mí, yo jamás timaría a alguien."
-
-- **Felices:**
-  - "Mira quien a amanecido contento hoy, si es mi muchacho favorito. Aún parece que no vienen los clientes pero esto en unos minutos se llenará hasta reventar. Sabes es gracioso, una gran parte de los que vienen se quedan haciendo cola por horas y horas para al final preguntarme cosas como que hacer para conseguir amor o riqueza. No se dan cuenta que en el tiempo que gastan aquí podrían estar con sus seres queridos, haciendo algo productivo. Supongo que uno no sabe lo que tiene hasta perderlo."
-
-  - "Aunque odie que la gente me llame señora en lugar de señorita no hay nada que pueda hacer para remediarlo, a fin de cuentas soy una mujer casada. ¿No lo sabías? mi marido fue un campesino del distrito de Demeter, yo le ayudaba cuando podía. El me terminó abandonando, no estaba demasiado feliz con mi pequeño negocio."
-
-  - "Puede que no lo parezca chico pero en mi epoca de campesina estaba rodeada de amigas, la vida era difícil pero con la gente de allí una se sentía comoda y en familia. Actualmente tengo todo el dinero que pude llegar a desear en esa época, aunque en el distrito de Artemisa jamás me he llegado a sentir como en ese entonces."
-
- - **MaxiFeliz**
-  - "Hola muchacho que te cuentas. ¿Que por qué nunca te llamo por tu nombre? tranquilo que me acuerdo perfectamente de como te llamas Andi, a no espera Paco eso es. Ver a tanta gente todos los días hace que me cueste recordar caras, aunque con lo que me has ayudado es difícil que ya me olvide de tí." 
-
-  - "Chico, imagino que ha estas alturas ya te habrás dado cuenta que no tengo poderes. La gente se cree cualquier cosa que adornes con efectos luminosos y montando un gran show, incluso si les dices la cosa más estúpida que hay. A pesar de eso, cada día pienso más que aún si la gente es tan inocente, aprovecharme de eso no es correcto. Antes ponía la excusa de que la vida no es justa para nadie, que si no espabilan no es mi problema, pero a medida que he visto a gente amable y desinteresada como tú, he dudado cada vez más de eso. En ese aspecto te pareces a mi marido, el tampoco era capaz ni de dañar una mosca, siempre preocupado por el resto. Le hecho mucho de menos."
-
-  - "No creo que pueda seguir con esto muchacho. Llevo un tiempo pensando en dejar el negocio, buscar quiza a mi marido. Al menos empezar de 0, sin seguir estafando a las personas. El problema es... que tengo miedo, a mi edad arriesgarme tanto la verdad es que me aterra. Además los boticarios no estarán felices si no les sigo mandando a personas a comprar en sus tiendas con engaños de falsas predicciones. No se que haré al final, pero te agradezco toda la ayuda que me has brindado hasta ahora."
-
-**Eventos**
-  - "Maldita sea, como se atreven a decir que mi predicción es una pantomima. Sabes que hace falta, efectos luminosos de colores. Sin embargo eso solo lo puedo lograr con cristales. ¿Oye no crees que podrías desviar un paquete de joyas hasta el distrito de Artemisa. Con esas gemas seguro que se quedarán alucinados con el poder de mi "magia"."
-
-  - "Oye chico dejame decirte una cosa. El último día me pidió un noble que buscase una forma de ayudarle con una dieta que quiere hacer. Entre unas cosas y otras le dije que era capaz de hacer la comida más pesada para que su cuerpo se llenase antes con menos cantidad. En resumen, si ves un paquete mio con una etiqueta de mucho peso, hazlo pasar marque lo que marque la bascula. Hazle ese favor a esta pobre anciana que solo intenta ganarse la vida."
-
-  - "Últimamente la gente ya no viene con preocupaciones médicas a mi local. Si esto sigue asi no podré mandar tantos clientes a los boticarios y perderé dinero. Creo que todo se debe a un nuevo médicamento que se esta enviando a los nobles. Si ves alguno de esos paquetes, deshazte de ello. Tranquilo, no te preocupes por la salud de esas personas, que los remedios caseros de los boticarios son mil veces más efectivos que cualquier otra cosa. Al final esto lo hago por el bien de los habitantes del distrito de Apolo."
-  
-  - "Mira muchacho, ves ese grupo de boticarios ahí reunidos. Por muy normales que parezcan, se dedican a entrar en los negocios rivales para vandalizar y destrozar todo a su paso. Por más que mis compañeros y yo hemos intentado denunciar esto a los soldados, estan demasiado ocupados siendo las estupidas niñeras de los nobles. Es por eso que si pudieras me gustaria que extraviaras un paquete de armas al distrito de Artemisa. Tranquilo no vamos a hacer ninguna locura, tan solo pero para meterles miedo, a fin de cuentas, por mucho que vandalicen siguen siendo solo unos charlatanes flacuchos."
-
-  - "Sabes, aún recuerdo mis épocas como campesina de una manera muy dulce, sin embargo lo que hasta día de hoy me enfurece es como se aprovechaban esos estúpidos comerciantes para revender lo que tanto nos costo cosechar. ¿Qué te parece si les das una lección por mí y por los campesinos?, cualquier paquete de alimentos que vaya al distrito Apolo devuelvelo, cambia su ruta... me da exactamente igual, tan solo que no llegue a su destino. Esos paquetes siempre son enviados por los avariciosos de los comerciantes. Si haces eso, los honrados trabajadores como yo podrán descansar más tranquilos."
 
   #### Artesano
 
@@ -789,3 +738,134 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
   - "¡Caracolas! Nuestro proveedor nos ha dejado en la anclada otra vez. Necesito esos materiales con urgencia. ¿Podrías hacer el favor de enviarme un paquete hoy mismo? ¡Te estaría muy agradecido por sacarme de este apuro!"
 
   - "¡Por todos los corales! ¡Qué dolor de cabeza que tengo! Estoy empezando a dudar de la efectividad de esas medicinas de los boticarios. ¿Podrías echarme una mano y traerme algunas medicinas tú mismo? ¡Gracias de antemano, amigo!"
+
+
+#### Campesino
+
+- **Presentacion**
+- yyyyyy, pos como es que saliste corriendo el otro dá macho.
+- Buena la has liado, contento tienes a tu jefe.
+- Anda toma esto a ver si te ayuda un poco hoy que tienes cara de muerto, aunque no me extraña después de todo el jaleo del otro día.
+- "Pruebas algo, sabe raro"
+- Venga a pasar buena noche, ¡y espabila que la vida te va ha comer! 
+- ¡últimamente me la lías cada 2 por 3 con mi mercancía!
+
+**Felicidad minimo**
+- "Al llegar a la granja ves a Pancracio consternado, huele a Alcohol, lleva una botella en la mano y no se encuentra su familia en la granja"
+- YYYYYYYY, QuE Tal EStÁs, hyp, yo estoy CONTENTO AHJAJAAJAja.
+- ¿El huerto?, jjiijijiJIJ Blurgh, ahí está.
+- "El huerto no parece estar en muy buen estado, al igual que Prancacio"
+- ¡Que miras! !!¿eh?!! ¿Qué miras?
+- "ves como Pancracio empieza a desmoronarse"
+- Vete, vete y no vuelvas, ya no tengo huerto, no tengo familia, NO TENGO SECTA, no tengo nada.
+- Vete, vete, vete...
+
+- **Felicidad maximo**
+- 
+
+- **Genericos**
+
+- **Malos:**
+  1º
+  - Buenos días a quien los tenga, que no voy a ser yo. Últimamente mis cosechas no están para tirar cohetes, anda prueba un poco de esto que ha crecido vete tú a saber cómo.
+  - "Pruebas algo, sabe bastante mal"
+  - Malo ¿eh? !PUES QUÉ QUIERES QUE HAGA SI NO ME DA PA MÁS!
+  - ay, hijo, perdona, últimamente no duermo demasiado y me cuesta cada vez más mantenerme cuerdo, las cosachas no van demasiado bien y mi mujer me presiona porque cada vez tenemos menos dinero.
+
+  2º
+  - Hay que joderse que llevo 2 semanas sin dormir, esto está cada vez pero, mi mujer está que se tira de los pelos con las cuentas de la casa, mi huerto está que parece el descampao de enfrente ca la pepa, tiene más malas hierbas que buenas, se las quito y vuelven a crecer.
+  - Encima los intermediarios, los puñeteros intermediarios siempre dando por saco, que si les robé la última vez dándoles mercancía en mal estado y ahora tengo que devolverles el dinero, que si a esto le llamo yo comida, que cómo me atrevo a cobrar por esta bazofia.
+  - ¡AAAY  QUE PENA LA MIA!  
+  - como si no fuera suficiente la miseria que pido por lo poco que tengo encima van y se me quejan.
+  - Si esque así no se puede, así no se puede. No se si son los cultivos, la tierra, o si soy yo.
+  - Pero esto no puede no puede seguir asi...
+
+  3º
+  - Ay, hijo, si hubiera tenido tu labor a tu edad, de las que me habría librado.
+  - En el pasado no lo tuve fácil, cometí muchos errores, jorobar si los cometí.
+  - Pero salí de ellos, me rescataron.
+  - Ya me rescataron una vez de una situción horrenda, conseguí este trabajo y conocí a mi mujer, de verdad parecía que la vida me había dado otra oportunidad.
+  - Pero ya lo ves, estas tierras en mal estado no me da para mantenernos a mí y a mi mujer en unas buenas condiciones.
+  - No se cuánto podré aguantar en esta situación, estoy molio.
+
+- **Neutrales:**
+  1º
+  - Buenas tardes hijo, ¿qué tal te va en tu trabajo?.
+  - Espero que ya no tengas tantas ganas de salir huyendo.
+  - A mí me podría ir mejor la verdad, prueba esto.
+  - "Pruebas algo, sabe raro, pero al menos es comestible"
+  - Las cosas ya no son como antes, cuando empecé todo era más sencillo, la tierra era más próspera y fértil y los productos se vendían mejor sin tanto intermediario de por medio.
+  - Pero bueno, se va tirandocon lo que tenemos, a pasar buen día.
+
+  2º
+  - Buenos días a quien los tenga, estos jodidos intermediarios no dejan de joderme a cada rato, cada día más baratos vendo yo mis productos y más caros los compran otros.
+  - Pero bueno mejor dejar de quejarse por lo que no puedes cambiar, , ¿qué tal andamos?.
+  - Por aquí vamos tirando regular, mi mujer ha enfermado y está en la cama, pero bueno con las medicinas que hemos comprado parece ir mejorando poco a poco.
+  - Y bueno, últimamente he estado paseando por los barrios bajos, la situación podría ser mejor en general. Pero bueno, en peores plazas hemos toreado los de estos lares.
+
+  3º
+  - Aaaay hijo, quien tuviera tu edad y trabajo, por aquí las cosas van a pedales.
+  - Mi mujer lleva un tiempecillo algo mosqueada, quiere tener un hijo, pero mira que es difícil querer tener un niño más de lo que lo quiero yo.
+  - Pero vamos a ver, estos campos no dan para alimentar tantas cabezas, casi no nos da para alimentarnos a nosotros.
+  - Traer una vida para no poder atenderla ..., no me lo perdonaría.
+  - Pero bueno, disfruta de la juventud que algunos no tenemos, a tener un buen día.
+
+- **Felices:**
+  1º
+  - Pero bueno, a quién tenemos aquí. ¿qué tal la vida hijo?
+  - Por aquí todo va bastate bien, mira prubeo esto que acabo de cosechar.
+  - "Pruebas algo, sabe bastante bien"
+  - Últimamente lo que cosecho sabe mejor, no se si serán los recursos o la tierra, pero estamos que nos salimos, esos intermediarios que tanto pot saco me dan están empezando a soltar un poco más por mis productos.
+
+  2º
+  - Buenas tardes chavalín, estos intermediarios están cada vez más desesperados por comprarme los productos.
+  - Oye, ¿que te parecería un plan futuro para hacer que los habitantes de los barrios exteriores puedan comprar mis productos a un precio más asquible?
+  - Ahora mismo sería insostenible para mi granja, pero tal vez en un futuro y con ayuda de ... unos amigos, es posible que pueda con la ayuda de esos amigos.
+  - Pero bueno, no te entretengo más, a pasar buena tarde.
+
+  3º
+  - Ay hijo, que alegría y que ilusión.
+  - Mi mujer llevaba un tiempo pidiéndomelo pero yo no lo veía posinle.
+  - Vamos a tener un hijo al fin, ¡qué alegría la nuestra!
+  - Venga, hasta luego que tengo una cenita que montar.
+
+- **MaxiFeliz**
+  1º
+  - Yeeeeeeepa, que tal estamos máquina.
+  - Prueba esto que están los clientes que me los quitan de las manos lo intemediarios, les soplo más de diez veces más de dinero que antes, ¿Que cuánto cuesta?, tú plruebalo.
+  - "Pruebas algo, es una auténtica delicia".
+  - Bueno ¿eh?, tengo unos amigos, el grupo de las palomas se hacen llamar, resulta que junto a ellos estamos llevando un plan ..., digamos que muy discreto.
+  - Consiste en que los menos favorecidos podáis disfrutar de mis productos a un precio menos abusivos de los que ponen los intermediarios, no hables mucho del tema, es un secreto.
+  - Toma, hoy estoy de buen humor, te puedes llevar un poco de esto gratis, ¡A pasar buen día!
+
+  2º
+  - ¡Ese Paco cómo anda!
+  - Por aquí andamos muy ben, no veas cómo han mejorado mis cultivos en poco tiempo, ¡mira que es casualidad, pero joder, si resulta que desde que estás por aquí mi situción a ido de bien a mejor!, traes buena suerte chaval.
+  - Mi economía está mejor que nunca, madre mía cómo va subiendo el precio que están dispuestos a pagar por mis productos esos intermedriarios, se deben vender bien por los distrítos céntricos.
+  - Y bueno, por el exterior la economía anda un poco peor, pero con la ayuda de unos amigos que se hacen llamar el grupo de las lechuzas estamos empezando a ayudar a comer a buen precio a los desfavorecidos.
+  - ¡Venga Paco, que te sea leve el trabajo mañana!, ¡ y recuerda, no has escuchado nada de un grupo de lechuzas!
+
+  3º
+  - Pero bueeeeeno, si es el Paco.
+  - Que alegría la mía, Paco que vamos a tener un hijo, mi mujer está ahí dentro, nos dimos cuenta porque la pobre estaba un poco pochilla.
+  - ¿Y sabes lo mejor?, ¡Qué tal y como nos ván las cosas podemos incluso permitirnos otro en un futuro no muy lejano!
+  - Madre mía Paco, quien me lo iba a decir, que en tan poco tiempo me iba a dar la vida un vuelco tan gordo.
+  - Madre mía Paco, estoy que no me lo creo, espero que junto a mis amigos del grupo de las lechuzas podamos empezar a crear un futuro mejor para mis niños, sin reyes ni amos que subleven a la población y condenen a parte de su población a vivir en la miseria.
+  - Pero bueno, tú no has escuchado nada de un grupo que mira con desdén al rey.
+  - Larga vida y prosperidad amigo, ojalá te trate la vida igual de bien que amí estos últimos tiempos.
+
+- **Eventos**
+  1º
+  - 
+
+  2º
+  - 
+
+  3º
+  - 
+
+  4º
+  - 
+
+  5º
+  - 
