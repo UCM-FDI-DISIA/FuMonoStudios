@@ -49,9 +49,11 @@ namespace ecs {
 		template<>
 		inline Trigger* addComponent<Trigger>() {
 
-			Trigger* t = addComponent_aux<Trigger>(scene_->addEntityToColisionList(this));
+			scene_->addEntityToColisionList(this);
 
-			//std::cout << "Trigger";
+			Trigger* t = addComponent_aux<Trigger>();
+
+			std::cout << "Trigger";
 
 			return t;
 

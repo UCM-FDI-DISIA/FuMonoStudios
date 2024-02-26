@@ -11,26 +11,14 @@ public:
 	Game();
 	~Game();
 	void run();
-	/// <summary>
-	/// Metodo para cargar una escena
-	/// </summary>
-	/// <param name="scene"></param>
 	void loadScene(ecs::sc::sceneId scene);
-	/// <summary>
-	/// Metodo para descargar una escena
-	/// </summary>
-	/// <param name="scene"></param>
 	void killScene(ecs::sc::sceneId scene);
 private:
 	void update();
 	void render();
-	/// <summary>
-	/// lista de escenas a procesar
-	/// </summary>
+	//lista de escenas a procesar
 	std::vector<ecs::Scene*> loadedScenes;
-	/// <summary>
-	/// lista de escenas del juego
-	/// </summary>
+	//lista de todas las escenas del juego
 	std::array<ecs::Scene*,ecs::sc::maxSceneId> gameScenes;
 	bool exit;
 	SDL_Window* window;

@@ -16,7 +16,7 @@ public:
 
 	__CMP_DECL__(ecs::cmp::TRIGGER)
 
-	Trigger(std::list<ecs::Entity*>::iterator it);
+	Trigger();
 
 	~Trigger();
 
@@ -40,7 +40,6 @@ private:
 
 	std::list <Callback> eventList;
 
-	std::list<ecs::Entity*>::iterator collisionIterator;
 
 
 };

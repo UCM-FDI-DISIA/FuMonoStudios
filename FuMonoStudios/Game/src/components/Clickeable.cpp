@@ -35,7 +35,7 @@ void Clickeable::update() {
 
 		SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second};
 
-		if (SDL_PointInRect(&point, &tr_->getRect())) {
+		if (SDL_PointInRect(&point, tr_->getRect())) {
 
 			//std::cout << "click" << std::endl;
 			// 

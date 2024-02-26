@@ -6,25 +6,17 @@ class Manager;
 namespace ecs {
 
 	class Entity;
-	/// <summary>
-	/// Clase abstracta para todos los componentes del juego
-	/// </summary>
+
 	class Component {
 	public:
 		Component() : ent_() {}
 		virtual ~Component() {}
-		/// <summary>
-		/// Establece a que componente pertenece
-		/// </summary>
-		/// <param name="ent">entidad a la que se le asigna el componente</param>
+		//Establece a que componente pertenece
 		inline void setContext(Entity* ent) {
 			ent_ = ent;
 		}
-		/// <summary>
-		/// Metodo llamado para inicializar el componente en cuestion 
-		/// (util para llamar a otros componentes)
-		/// </summary>
-		virtual void initComponent() {};
+
+		virtual void initComponent() {};//Metodo llamado despues de instanciar el componente (util para hacer getters)
 		virtual void update() {};
 		virtual void render() const {};
 	protected:
