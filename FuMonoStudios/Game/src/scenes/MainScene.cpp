@@ -75,6 +75,7 @@ void ecs::MainScene::init()
 		});
 
 
+
 	// Dragable Box
 	Entity* Prueba3 = addEntity(layer::BACKGROUND);
 	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
@@ -83,38 +84,31 @@ void ecs::MainScene::init()
 	Prueba3->addComponent<DragAndDrop>();
 	Prueba3->getComponent<Trigger>()->addCallback([]() {
 
-		std::cout << "Activar Evento P3" << std::endl;
+	//Prueba3->getComponent<Trigger>()->addCallback([]() {
+	//	std::cout << "Activar Evento P3" << std::endl;
+	//	});
 
-		});
-
-	// Dragable Box2
-	Entity* Prueba4 = addEntity(layer::DEFAULT);
-	Transform* tr4 = Prueba4->addComponent<Transform>(250.0f, 250.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* rd4 = Prueba4->addComponent<RenderImage>(sujetaplazas);
-	Gravity* gravityComp4 = Prueba4->addComponent<Gravity>();
-	Prueba4->addComponent<DragAndDrop>();
-	Prueba4->getComponent<Trigger>()->addCallback([]() {
-
-		std::cout << "Activar Evento P4" << std::endl;
-
-		});
-
-
-	// Sello
-	Entity* selloPrueba = addEntity(layer::BACKGROUND);
-	Texture* selloTexture = &sdlutils().images().at("selloTest");
-	Transform* trSello = selloPrueba->addComponent<Transform>(100.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
-	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
-	
-	// Posici�n Relativa
-	trSello->setParent(tr);
-	//tr->addChild(trSello);
+	//// Sello
+	//Entity* selloPrueba = addEntity(layer::DEFAULT);
+	//Texture* selloTexture = &sdlutils().images().at("selloTest");
+	//Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
+	//RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
+	//
+	//// Posici�n Relativa
+	//e->addChild(trSello);
 	//trSello->setRelativePos(100.0f, 100.0f);
-	//tr->setPos(100.0f, 400.0f);
-	//TODO: probar que con un boton se puedan cargar otras escenas
-	/*Callback cosa = [Prueba3]() {
-		Prueba3->setAlive(false);
+
+	Texture* porros = &sdlutils().images().at("press");
+	Entity* Boton = addEntity();
+
+	Transform* wakamole = Boton->addComponent<Transform>(960.0f, 480.0f, porros->width(), porros->height());
+	RenderImage* salsa = Boton->addComponent<RenderImage>(porros);
+
+	auto clickerPress = Boton->addComponent<Clickeable>();
+
+	Callback Press = []() {
+		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	};
-	clicker->addEvent(cosa);*/
+	clickerPress->addEvent(Press);
 }
 

@@ -12,7 +12,8 @@
         { "id" :  "hermes", "file" :  "recursos/images/Hermes.png"},
         { "id" :  "apolo", "file" :  "recursos/images/Apolo.png"},
         { "id" :  "poseidon", "file" :  "recursos/images/Poseidon.png"}
-        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" }
+        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" },
+        { "id" : "press", "file": "recursos/images/press.png"}
 
     ]
 }
