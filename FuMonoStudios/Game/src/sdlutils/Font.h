@@ -56,7 +56,7 @@ public:
 	inline SDL_Surface* renderText(const std::string& text, SDL_Color fgColor, 
 		Uint32 warpWidth) const{
 		assert(font_ != nullptr);
-		return TTF_RenderUTF8_Solid_Wrapped(font_, text.c_str(), fgColor, warpWidth);
+		return TTF_RenderUTF8_Blended_Wrapped(font_, text.c_str(), fgColor, warpWidth);
 	}
 	inline SDL_Surface* renderText(const std::string& text, SDL_Color fgColor,
 		SDL_Color bgColor, Uint32 warpWidth) const {

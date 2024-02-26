@@ -3,6 +3,17 @@
         { "id" : "placeHolder", "file" : "recursos/images/SDL_logo.png" },
         { "id" : "boxTest", "file" : "recursos/images/Box.png" },
         { "id" : "selloTest", "file" : "recursos/images/Sello.png" },
-        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" }
+        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" },
+        { "id" : "bookTest", "file" : "recursos/images/book.png" },
+        { "id" : "flechaTest", "file" : "recursos/images/flecha.png" },
+        { "id" :  "demeter", "file" :  "recursos/images/Demeter.png"},
+        { "id" :  "hefesto", "file" :  "recursos/images/Hefesto.png"},
+        { "id" :  "hestia", "file" :  "recursos/images/Hestia.png"},
+        { "id" :  "artemisa", "file" :  "recursos/images/Artemisa.png"},
+        { "id" :  "hermes", "file" :  "recursos/images/Hermes.png"},
+        { "id" :  "apolo", "file" :  "recursos/images/Apolo.png"},
+        { "id" :  "poseidon", "file" :  "recursos/images/Poseidon.png"},
+        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" },
+        { "id" : "press", "file": "recursos/images/press.png"}
     ]
 }

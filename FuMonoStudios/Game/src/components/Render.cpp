@@ -13,5 +13,10 @@ void RenderImage::initComponent() {
 }
 
 void RenderImage::render() const {
-	myTexture->render(*myTransform->getRect());
+	myTexture->render(myTransform->getRect());
+}
+
+void RenderImage::setTexture(Texture* texture)
+{
+	myTexture = texture;
 }

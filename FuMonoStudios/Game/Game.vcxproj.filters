@@ -4,6 +4,7 @@
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
+    <ClCompile Include="Paquete.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
@@ -28,11 +29,15 @@
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
+    <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="Mapa.cpp" />
+    <ClCompile Include="Felicidad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
     <ClInclude Include="src\components\DragAndDrop.h" />
+    <ClInclude Include="Paquete.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />
@@ -69,6 +74,14 @@
     <ClInclude Include="src\components\Herramientas.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\MultipleTextures.h" />
+    <ClInclude Include="Mapa.h" />
+    <ClInclude Include="Felicidad.h" />
+     <ClCompile Include="src\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\DialogComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>

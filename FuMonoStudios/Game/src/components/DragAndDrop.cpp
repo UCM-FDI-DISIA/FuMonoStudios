@@ -2,6 +2,7 @@
 #include "DragAndDrop.h"
 
 #include "Transform.h"
+#include "Gravity.h"
 #include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -24,27 +25,29 @@ void DragAndDrop::initComponent() {
 
 	tri_ = ent_->getComponent<Trigger>();
 
+	grav_ = ent_->getComponent<Gravity>();
+
 	assert(tr_ != nullptr);
 
 }
 
 void DragAndDrop::update() {
 
-	
-
 	auto& ihdlr = ih();
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
-	
 
-	//Detección al clicar sobre el objeto
+	//Detecciï¿½n al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
+			if (grav_) {
+				grav_->setActive(false);
+			}
 
 			//Para que funcione sin ir al centro, con margen
 			differenceX = point.x - tr_->getPos().getX();;
@@ -52,12 +55,17 @@ void DragAndDrop::update() {
 
 		}
 
+		
+
 	}
 
-	//Detección al soltar el objeto
+	//Detecciï¿½n al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
+		if (grav_) {
+			grav_->setActive(true);
+		}
 
 		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
 		tri_->activateEventsFromEntities();
