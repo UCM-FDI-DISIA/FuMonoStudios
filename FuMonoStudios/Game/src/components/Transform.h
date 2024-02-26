@@ -52,6 +52,10 @@ public:
 	/// <returns></returns>
 	Vector2D getRelPos() const;
 	/// <summary>
+	/// Devuelve si el rat�n esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
+	/// <summary>
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>

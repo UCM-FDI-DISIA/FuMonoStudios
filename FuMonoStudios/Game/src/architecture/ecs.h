@@ -15,6 +15,7 @@ namespace ecs {
 			CLICKEABLE,
 			DRAGANDDROP,
 			TRIGGER,
+			GRAVITY,
 			PAQUETE,
 			CHECKER,
 			DIALOGUE,
