@@ -1,10 +1,12 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdint.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <string>
 #include "architecture/Game.h"
 #include "sdlutils/SDLUtils.h"
+#include "Dialogo.h"
 
 int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
@@ -15,5 +17,7 @@ int main(int argc, char* argv[]) {
 		std::cout <<"ERROR: " << e << std::endl;
 	}
 
-	return 0;
-}
+		return 0;
+	}
+
+

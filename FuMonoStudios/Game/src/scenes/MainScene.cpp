@@ -78,7 +78,7 @@ void ecs::MainScene::init()
 	Transform* trSello = selloPrueba->addComponent<Transform>(100.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
 	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
 	
-	// Posición Relativa
+	// Posiciï¿½n Relativa
 	trSello->setParent(tr);
 	//tr->addChild(trSello);
 	//trSello->setRelativePos(100.0f, 100.0f);
@@ -87,7 +87,9 @@ void ecs::MainScene::init()
 	Callback cosa = [Prueba3]() {
 		Prueba3->setAlive(false);
 	};
-	//clicker->addEvent(cosa);
-}
 
+
+
+	clicker->addEvent(cosa);
+}
 

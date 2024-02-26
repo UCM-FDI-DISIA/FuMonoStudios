@@ -16,6 +16,9 @@ namespace ecs {
 			DRAGANDDROP,
 			TRIGGER,
 			GRAVITY,
+			PAQUETE,
+			CHECKER,
+			DIALOGUE,
 			// do not remove this
 			_LAST_CMP_ID
 		};
@@ -39,7 +42,7 @@ namespace ecs {
 
 	using lyId_t = uint8_t;
 	//Namespace de las capas
-	//El orden de las capas es de atrás hacia adelante;
+	//El orden de las capas es de atrï¿½s hacia adelante;
 	namespace layer {
 		enum layerId : lyId_t
 		{
