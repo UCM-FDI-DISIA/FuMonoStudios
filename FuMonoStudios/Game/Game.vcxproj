@@ -131,17 +131,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
+    <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="Felicidad.cpp" />
+    <ClCompile Include="Mapa.cpp" />
+    <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
-    <ClCompile Include="Paquete.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
     <ClCompile Include="src\architecture\Entity.cpp" />
     <ClCompile Include="src\architecture\Game.cpp" />
     <ClCompile Include="src\architecture\Scene.cpp" />
+    <ClCompile Include="src\Dialog_Manager.cpp" />
     <ClCompile Include="src\components\Trigger.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
     <ClCompile Include="src\json\JSONValue.cpp" />
@@ -159,17 +165,23 @@
     <ClCompile Include="src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-
+    <ClInclude Include="src\components\MultipleTextures.h" />
+    <ClInclude Include="Felicidad.h" />
+    <ClInclude Include="Mapa.h" />
+    <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
     <ClInclude Include="src\components\DragAndDrop.h" />
-    <ClInclude Include="Paquete.h" />
+    <ClInclude Include="src\components\PackageChecker.h" />
+    <ClInclude Include="src\components\Paquete.h" />
+    <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />
     <ClInclude Include="src\architecture\Entity.h" />
     <ClInclude Include="src\architecture\Game.h" />
     <ClInclude Include="src\architecture\Scene.h" />
+    <ClInclude Include="src\Dialog_Manager.h" />
     <ClInclude Include="src\components\Trigger.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
