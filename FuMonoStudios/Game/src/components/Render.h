@@ -22,5 +22,10 @@ private:
 	/// Transform sobre el que se va a renderizar la imagen
 	/// </summary>
 	Transform* myTransform;
+	/// <summary>
+	/// Inica si este render image es responsable de destruir la textura que le
+	/// pasan
+	/// </summary>
+	bool ownsTexture_;
 };
 

@@ -28,7 +28,7 @@ Game::Game():exit(false){
 	changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);*/
 
-	loadScene(ecs::sc::EXPLORE_SCENE);
+	//loadScene(ecs::sc::EXPLORE_SCENE);
 
 }
 

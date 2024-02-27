@@ -58,67 +58,13 @@ ecs::MainScene::~MainScene()
 
 void ecs::MainScene::init()
 {
-	std::cout << "Hola Main"<<std::endl;
+	std::cout << "Iniciando main scene"<<std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	createManual();
-
-	// Caja CLicker
-	Entity* Prueba2 = addEntity();
-
-	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
-	float scale = 0.2;
-
-	/*
-	Entity* Prueba2 = addEntity();
-	
-	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
-	//Gravity* gravityComp = Prueba2->addComponent<Gravity>(10);
-	auto clicker = Prueba2->addComponent<Clickeable>();
-	
-	clicker->addEvent([]() {
-
-		std::cout << "Activar Evento P2" << std::endl;
-
-		});
-
-
-
-	// Dragable Box
-	Entity* Prueba3 = addEntity(layer::BACKGROUND);
-	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
-	Gravity* gravityComp3 = Prueba3->addComponent<Gravity>();
-	Prueba3->addComponent<DragAndDrop>();
-	Prueba3->getComponent<Trigger>()->addCallback([]() {
-
-	//Prueba3->getComponent<Trigger>()->addCallback([]() {
-	//	std::cout << "Activar Evento P3" << std::endl;
-	//	});
-
-	//// Sello
-	//Entity* selloPrueba = addEntity(layer::DEFAULT);
-	//Texture* selloTexture = &sdlutils().images().at("selloTest");
-	//Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
-	//RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
-	//
-	//// Posici�n Relativa
-	//e->addChild(trSello);
-	//trSello->setRelativePos(100.0f, 100.0f);
-
-	Texture* porros = &sdlutils().images().at("press");
-	Entity* Boton = addEntity();
-
-	Transform* wakamole = Boton->addComponent<Transform>(960.0f, 480.0f, porros->width(), porros->height());
-	RenderImage* salsa = Boton->addComponent<RenderImage>(porros);
-
-	auto clickerPress = Boton->addComponent<Clickeable>();
-
-	Callback Press = []() {
-		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
-	};
-	clickerPress->addEvent(Press);
-	*/
+	//createManual();
+	Entity* pacage = addEntity();
+	Transform* tr =pacage->addComponent<Transform>(100, 100, 100, 100);
+	RenderImage* image = pacage->addComponent<RenderImage>(&sdlutils().images().at("boxTest"));
+	pacage->addComponent<DragAndDrop>();
 }
 
