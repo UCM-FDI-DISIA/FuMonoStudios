@@ -32,10 +32,19 @@ void ecs::MainScene::createManual()
 	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([]() {
+	button->getComponent<Clickeable>()->addEvent([patata]() {
 
-		std::cout << "sig" << std::endl;
+		patata->nextTexture();
 	});
+
+	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(600.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	button2->addComponent<Clickeable>();
+	button2->getComponent<Clickeable>()->addEvent([patata]() {
+
+		patata->previousTexture();
+		});
 }
 
 ecs::MainScene::MainScene():Scene()
