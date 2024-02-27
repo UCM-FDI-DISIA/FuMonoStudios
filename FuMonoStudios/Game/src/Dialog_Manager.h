@@ -6,7 +6,10 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
+/*
+Clase que genera los dialogos que se van a escribir
+Carga los dialogos de un fichero te texto que tenemos codificado
+*/
 class DialogManager {
 public:
     DialogManager();

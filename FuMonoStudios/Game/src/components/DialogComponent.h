@@ -10,6 +10,11 @@ class RenderImage;
 class Font;
 class Texture;
 
+/*
+Componente que gestiona el renderizado del texto segun la iformacion que le pasa el dialogManager
+renderiza el texto caracter a caracter y luego se espera a que se pulse el espacio para saltar el dialogo
+Necesita de un transform y de un renderizador
+*/
 class DialogComponent :
     public ecs::Component
 {
