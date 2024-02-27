@@ -110,5 +110,6 @@ void ecs::MainScene::init()
 		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	};
 	clickerPress->addEvent(Press);
+	*/
 }
 
