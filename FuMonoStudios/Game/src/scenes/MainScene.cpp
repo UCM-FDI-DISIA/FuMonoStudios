@@ -20,6 +20,7 @@ void ecs::MainScene::createManual()
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
 	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
+	manual->addComponent<DragAndDrop>();
 	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
 	patata->addTexture(manualTexture);
 	patata->addTexture(manualTexture2);
@@ -29,8 +30,9 @@ void ecs::MainScene::createManual()
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(900.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	Transform* buttonTransform = button->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
 	button->getComponent<Clickeable>()->addEvent([patata]() {
 
@@ -38,8 +40,9 @@ void ecs::MainScene::createManual()
 	});
 
 	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(600.0f, 700.0f, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
 	button2->getComponent<Clickeable>()->addEvent([patata]() {
 
@@ -63,62 +66,9 @@ void ecs::MainScene::init()
 	//crear objetos
 	createManual();
 
-	// Caja CLicker
-	Entity* Prueba2 = addEntity();
-
-	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
-	float scale = 0.2;
-
-	/*
-	Entity* Prueba2 = addEntity();
-	
-	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
-	//Gravity* gravityComp = Prueba2->addComponent<Gravity>(10);
-	auto clicker = Prueba2->addComponent<Clickeable>();
-	
-	clicker->addEvent([]() {
-
-		std::cout << "Activar Evento P2" << std::endl;
-
-		});
-
-
-
-	// Dragable Box
-	Entity* Prueba3 = addEntity(layer::BACKGROUND);
-	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
-	Gravity* gravityComp3 = Prueba3->addComponent<Gravity>();
-	Prueba3->addComponent<DragAndDrop>();
-	Prueba3->getComponent<Trigger>()->addCallback([]() {
-
-	//Prueba3->getComponent<Trigger>()->addCallback([]() {
-	//	std::cout << "Activar Evento P3" << std::endl;
-	//	});
-
-	//// Sello
-	//Entity* selloPrueba = addEntity(layer::DEFAULT);
-	//Texture* selloTexture = &sdlutils().images().at("selloTest");
-	//Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
-	//RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
-	//
-	//// Posici�n Relativa
-	//e->addChild(trSello);
-	//trSello->setRelativePos(100.0f, 100.0f);
-
-	Texture* porros = &sdlutils().images().at("press");
-	Entity* Boton = addEntity();
-
-	Transform* wakamole = Boton->addComponent<Transform>(960.0f, 480.0f, porros->width(), porros->height());
-	RenderImage* salsa = Boton->addComponent<RenderImage>(porros);
-
-	auto clickerPress = Boton->addComponent<Clickeable>();
-
-	Callback Press = []() {
-		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
-	};
-	clickerPress->addEvent(Press);
-	*/
+	// Fondo
+	Entity* Prueba2 = addEntity(ecs::layer::BACKGROUND);
+	Prueba2->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
+	Prueba2->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 }
 
