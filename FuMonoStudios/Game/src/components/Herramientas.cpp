@@ -1,5 +1,5 @@
 #include "Herramientas.h"
-
+#include "Transform.h"
 
 Herramientas::Herramientas() {
 
@@ -10,27 +10,27 @@ Herramientas::~Herramientas() {
 }
 
 void Herramientas::setFunctionality(TipoHerramienta tipo) {
+
+	Transform* selladorTr = ent_->getComponent<Transform>();
+
 	switch (tipo) 
 	{
 	case SelloCalleA:
-		funcion = [](ecs::Entity* paq) {
+		funcion = [selladorTr](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C1);
-			std::cout << "A";
+			paqComp->sellarCalle(Paquete::C1, selladorTr->getCenter());
 			};
 		break;
 	case SelloCalleB:
-		funcion = [](ecs::Entity* paq) {
+		funcion = [selladorTr](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C2);
-			std::cout << "B";
+			paqComp->sellarCalle(Paquete::C2, selladorTr->getPos());
 			};
 		break;
 	case SelloCalleC:
-		funcion = [](ecs::Entity* paq) {
+		funcion = [selladorTr](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C3);
-			std::cout << "C";
+			paqComp->sellarCalle(Paquete::C3, selladorTr->getPos());
 			};
 		break;
 	}

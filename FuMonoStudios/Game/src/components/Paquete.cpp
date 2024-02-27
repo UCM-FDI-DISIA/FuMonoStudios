@@ -65,7 +65,7 @@ Paquete::Distrito Paquete::getDist() const
 	return miDistrito;
 }
 
-void Paquete::sellarCalle(Calle sello) {
+void Paquete::sellarCalle(Calle sello, Vector2D posSellador) {
 	// solo puedes sellar una vez
 	if (sello != Erronea && calleMarcada == Erronea) 
 	{
@@ -79,10 +79,12 @@ void Paquete::sellarCalle(Calle sello) {
 			(std::string)"sello" += 
 			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
 
-		//creamos transform y setParent
+		//creamos transform y colocamos el sello en el centro del sellador
 		float scale = 0.2f;
 		Transform* selloEntTr = selloEnt->addComponent<Transform>
-			(0,0,selloEntTex->width()*scale, selloEntTex->height()*scale);
+			(posSellador.getX() - selloEntTex->width() / 2 * scale, 
+			posSellador.getY() - selloEntTex->height() / 2 * scale,
+			selloEntTex->width() * scale, selloEntTex->height() * scale);
 		selloEnt->addComponent<RenderImage>(selloEntTex);
 		selloEntTr->setParent(paqTr);
 	}

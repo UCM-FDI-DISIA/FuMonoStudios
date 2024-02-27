@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "../utils/Vector2D.h"
 
 class Scene;
 
@@ -39,7 +40,11 @@ public:
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
 	Distrito getDist() const;
-	void sellarCalle(Calle sello);
+
+	/// <summary>
+	/// metodo que sella la calle una única vez en función del sellador
+	/// </summary>
+	void sellarCalle(Calle sello, Vector2D posSellador);
 	/// <summary>
 	/// metodo que devuelve el string a implimir en la etiqueta de direccion
 	/// </summary>
