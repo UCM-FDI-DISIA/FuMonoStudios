@@ -9,7 +9,7 @@ DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(
 	dialogueWidth_(sdlutils().width() - 300),dialogueIndex(1),textTexture_(nullptr)
 {
 	mDialogMngr_ = manager;
-	mFont_ = new Font("resources/fonts/ARIAL.ttf", 40);
+	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
 }
 
 DialogComponent::~DialogComponent()
