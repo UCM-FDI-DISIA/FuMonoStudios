@@ -87,7 +87,7 @@ void ecs::MainScene::init()
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
 	Paquet->addComponent<Gravity>();*/
 
-	createManual();
+	//createManual();
 
 	//Boton que genera Paquetes
 	Texture* texturaBoton = &sdlutils ().images ().at ("press");

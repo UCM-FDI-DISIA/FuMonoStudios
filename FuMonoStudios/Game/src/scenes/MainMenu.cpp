@@ -31,6 +31,7 @@ void ecs::MainMenu::init()
 	Texture* texturaTitulo = &sdlutils().images().at("title");
 	Transform* transformTitulo = Titulo->addComponent<Transform>(0.0f, 0.0f, texturaTitulo->width(), texturaTitulo->height());
 	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
+	Titulo->addComponent<DragAndDrop>();
 
 	Texture* texturaBoton = &sdlutils().images().at("press");
 	Entity* BotonPress = addEntity();

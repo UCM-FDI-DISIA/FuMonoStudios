@@ -6,10 +6,11 @@
 #include "../scenes/MainScene.h"
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
+#include "../Time.h"
 //#include "Game.h"
 /*
 TODO
-A�adir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
+Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
 Game::Game():exit(false){
@@ -38,7 +39,7 @@ void Game::run()
 	while (!exit)
 	{
 		ih().refresh();
-		Uint32 startTime = SDL_GetTicks();
+		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
 		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || ih().closeWindowEvent()) {
 			exit = true;
@@ -58,12 +59,7 @@ void Game::run()
 		render();
 		sdlutils().presentRenderer();
 
-		Uint32 frameTime = SDL_GetTicks() - startTime;
-
-
-		// NO. NO. NO.
-		if (frameTime < 20)
-			SDL_Delay(20 - frameTime);
+		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime)/1000.0;
 	}
 }
 

@@ -36,7 +36,7 @@
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PaqueteBuilder.cpp" />
-
+    <ClCompile Include="src\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -80,6 +80,7 @@
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
+    <ClInclude Include="src\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -91,7 +92,6 @@
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
-    <ClInclude Include="src\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\GameConstants.h" />
   </ItemGroup>

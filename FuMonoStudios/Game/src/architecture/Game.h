@@ -8,7 +8,6 @@
 #include "Scene.h"
 
 
-// cleon: "delta *como tal* no tal
 class Game: public Singleton<Game> {
 
 	friend Singleton<Game> ;
@@ -27,6 +26,11 @@ public:
 	/// </summary>
 	/// <param name="scene"></param>
 	void killScene(ecs::sc::sceneId scene);
+	/// <summary>
+	/// metodo para cambiar de una escena a otra
+	/// </summary>
+	/// <param name="scene1"></param>
+	/// <param name="scene2"></param>
 	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 	inline void writeMessage() {
 		std::cout << "Funcionaaaaaaaaa" << std::endl;
