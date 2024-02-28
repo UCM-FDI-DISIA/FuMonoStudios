@@ -67,12 +67,12 @@ bool Trigger::activateEventsFromEntities() {
 }
 
 //Activa las funciones asociadas a esta entidad
-bool Trigger::activateCallbacks(ecs::Entity* warioEnt) {
+bool Trigger::activateCallbacks(ecs::Entity* Ent) {
 
 
 	for (Callback call : eventList) {
 
-		call(warioEnt);
+		call(Ent);
 	}
 
 	return eventList.empty();

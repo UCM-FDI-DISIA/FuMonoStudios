@@ -70,29 +70,14 @@ void ecs::MainScene::init()
 	//crear objetos
 
 	//Paquete de prueba
-	Entity* Paquet = addEntity(layer::BACKGROUND);
+	Entity* Paquet = addEntity();
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width(), texturaPaquet->height());
+	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
 	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
-	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
+	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
 
-	//Tuber�a
-	/*Entity* tuberia = addEntity();
-	Transform* trTub = tuberia->addComponent<Transform>(500, 100, 50, 50);
-	Trigger* trgTub = tuberia->addComponent<Trigger>();
-	PackageChecker* checker = tuberia->addComponent<PackageChecker>(Paquete::Demeter);
-	trgTub->addCallback([checker](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			if (checker->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "WAA!  YA MADE IT!\n";
-			}
-			else {
-				std::cout << "NUH UH\n";
-			}
-		}
-		});*/
 	createManual();
 
 	// Fondo
@@ -102,7 +87,7 @@ void ecs::MainScene::init()
 
 	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
 	Entity* tubDem = addEntity();
-	tubDem->addComponent<Transform>(90, 0, 100, 150);
+	tubDem->addComponent<Transform>(120, 0, 100, 150);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
 	demTri->addCallback([demCheck](ecs::Entity* entRec) {
@@ -114,20 +99,62 @@ void ecs::MainScene::init()
 				std::cout << "NUH UH\n";
 			}
 		}
+		else {
+			std::cout << "eso no es un paquete gañan\n";
+		}
 		});
 
 	Entity* tubHef = addEntity();
-	tubHef->addComponent<Transform>(280, 0, 100, 150);
-	tubHef->addComponent<Trigger>();
+	tubHef->addComponent<Transform>(340, 0, 100, 150);
+	Trigger* hefTri = tubHef->addComponent<Trigger>();
 	PackageChecker* hefCheck = tubHef->addComponent<PackageChecker>(Paquete::Hefesto);
+	hefTri->addCallback([hefCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (hefCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "the end is a horse\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
+		}
+		else {
+			std::cout << "eso no es un paquete gañan\n";
+		}
+		});
 
 	Entity* tubHes = addEntity();
-	tubHes->addComponent<Transform>(470, 0, 100, 150);
-	tubHes->addComponent<Trigger>();
+	tubHes->addComponent<Transform>(560, 0, 100, 150);
+	Trigger* hesTri = tubHes->addComponent<Trigger>();
 	PackageChecker* hesCheck = tubHes->addComponent<PackageChecker>(Paquete::Hestia);
+	hesTri->addCallback([hesCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (hesCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "egg is nigh\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
+		}
+		else {
+			std::cout << "eso no es un paquete gañan\n";
+		}
+		});
 
 	Entity* tubArt = addEntity();
-	tubArt->addComponent<Transform>(660, 0, 100, 150);
-	tubArt->addComponent<Trigger>();
+	tubArt->addComponent<Transform>(780, 0, 100, 150);
+	Trigger* artTri = tubArt->addComponent<Trigger>();
 	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
+	artTri->addCallback([artCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (artCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "wacamole\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
+		}
+		else {
+			std::cout << "eso no es un paquete gañan\n";
+		}
+		});
 }
