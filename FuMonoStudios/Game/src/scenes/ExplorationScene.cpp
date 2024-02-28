@@ -33,12 +33,22 @@ void ecs::ExplorationScene::init()
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Prueba2->addComponent<Clickeable>();
 	Prueba2->addComponent<Trigger>();
-	Callback cosa = [this]() {
+
+
+	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
+		std::cout << "a" << std::endl;
+		map.navigate("Hermes");
+		sdlutils().clearRenderer();
+		map.render();
+		});*/
+
+		//TODO: probar que con un boton se puedan cargar otras escenas
+	/*Callback cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
 		map.render();
 		};
-	clicker->addEvent(cosa);
+	clicker->addEvent(cosa);*/
 
 	map.render();
 	auto boxBg = addEntity();

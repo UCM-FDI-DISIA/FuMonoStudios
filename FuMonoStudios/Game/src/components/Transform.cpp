@@ -74,6 +74,10 @@ Vector2D Transform::getPos() const
 	return pos;
 }
 
+Vector2D Transform::getCenter() const {
+	return Vector2D(position.getX() - (width / 2), position.getY() - (height / 2));
+}
+
 //Devuelve la posici�n relativa
 Vector2D Transform::getRelPos() const {
 	return position;

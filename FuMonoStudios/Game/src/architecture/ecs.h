@@ -15,11 +15,13 @@ namespace ecs {
 			CLICKEABLE,
 			DRAGANDDROP,
 			TRIGGER,
-			MULTIPLETEXTURES,
-			GRAVITY,
 			PAQUETE,
 			CHECKER,
+			HERRAMIENTAS,
+			MULTIPLETEXTURES,
+			GRAVITY,
 			DIALOGUE,
+			MOVERTRANSFORM,
 			// do not remove this
 			_LAST_CMP_ID
 		};

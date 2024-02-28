@@ -58,7 +58,7 @@ bool Trigger::activateEventsFromEntities() {
 
 	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {
 
-		(*it)->getComponent<Trigger>()->activateCallbacks();
+		(*it)->getComponent<Trigger>()->activateCallbacks(ent_);
 
 	}
 
@@ -67,12 +67,12 @@ bool Trigger::activateEventsFromEntities() {
 }
 
 //Activa las funciones asociadas a esta entidad
-bool Trigger::activateCallbacks() {
+bool Trigger::activateCallbacks(ecs::Entity* warioEnt) {
 
 
 	for (Callback call : eventList) {
 
-		call();
+		call(warioEnt);
 	}
 
 	return eventList.empty();

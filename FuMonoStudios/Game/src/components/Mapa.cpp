@@ -1,5 +1,5 @@
 #include "Mapa.h"
-#include "src/sdlutils/SDLUtils.h"
+#include "../sdlutils/SDLUtils.h"
 
 Mapa::Mapa()
 {

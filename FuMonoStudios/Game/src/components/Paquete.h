@@ -4,6 +4,10 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "../utils/Vector2D.h"
+#include "Transform.h"
+
+class Scene;
 
 class Paquete : public ecs::Component
 {
@@ -37,7 +41,11 @@ public:
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
 	Distrito getDist() const;
-	void sellarCalle(Calle sello);
+
+	/// <summary>
+	/// metodo que sella la calle una única vez en función del sellador
+	/// </summary>
+	void sellarCalle(Calle sello, Transform* trSellador);
 	/// <summary>
 	/// metodo que devuelve el string a implimir en la etiqueta de direccion
 	/// </summary>
@@ -58,7 +66,7 @@ private:
 	/// usado para la generacion del string de la direccion
 	/// </summary>
 	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle;
-	//Variables que se generan automaticamente
+	//Variables que se generan automaticamente con información de los paquetes
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
 	Calle miCalle;			//Variable con la calle a la que es enviada el paquete	
 	TipoPaquete miTipo;		//Variable con el tipo de cargamente que lleva el paquete
