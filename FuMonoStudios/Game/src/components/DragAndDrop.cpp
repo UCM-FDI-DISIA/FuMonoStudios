@@ -80,7 +80,14 @@ void DragAndDrop::update() {
 		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
 
 
-		//Sin centrarse el objeto
-		tr_->setPos(point.x - differenceX, point.y - differenceY);
+		
+		// comprobacion para evitar sacar la entidad de la pantalla
+		if ((point.x - differenceX > -(tr_->getWidth() / 2))
+			&& (point.x - differenceX < sdlutils().width() - (tr_->getWidth() / 2)) 
+			&& (point.y - differenceY < sdlutils().height() - (tr_->getHeigth() / 6)))
+		{
+			//Sin centrarse el objeto
+			tr_->setPos(point.x - differenceX, point.y - differenceY);
+		}
 	}
 }

@@ -14,6 +14,7 @@
 #include "../components/Paquete.h"
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
+#include "../components/Gravity.h"
 
 
 void ecs::MainScene::createManual()
@@ -26,12 +27,12 @@ void ecs::MainScene::createManual()
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
 	RenderImage* manualRender = manual->addComponent<RenderImage>();
 	manual->addComponent<DragAndDrop>();
-	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
-	patata->addTexture(manualTexture);
-	patata->addTexture(manualTexture2);
-	patata->addTexture(buttonTexture);
-	patata->initComponent();
-	manualRender->setTexture(patata->getCurrentTexture());
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
+	multTextures->addTexture(manualTexture);
+	multTextures->addTexture(manualTexture2);
+	multTextures->addTexture(buttonTexture);
+	multTextures->initComponent();
+	manualRender->setTexture(multTextures->getCurrentTexture());
 
 
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
@@ -40,9 +41,9 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([patata](Entity* e) {
+	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
 
-		patata->nextTexture();
+		multTextures->nextTexture();
 	});
 
 	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
@@ -50,9 +51,9 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([patata](Entity* e) {
+	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
 
-		patata->previousTexture();
+		multTextures->previousTexture();
 	});
 }
 
@@ -79,6 +80,7 @@ void ecs::MainScene::init()
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
+	Paquet->addComponent<Gravity>();
 
 	createManual();
 
@@ -87,6 +89,7 @@ void ecs::MainScene::init()
 	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
 	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 
+	/*
 	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
 	Entity* tubDem = addEntity();
 	tubDem->addComponent<Transform>(120, 0, 100, 150);
@@ -159,4 +162,5 @@ void ecs::MainScene::init()
 			std::cout << "eso no es un paquete gañan\n";
 		}
 		});
+	*/
 }
