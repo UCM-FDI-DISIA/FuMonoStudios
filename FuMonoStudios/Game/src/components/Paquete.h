@@ -38,6 +38,8 @@ public:
 
 	Paquete(Distrito, Calle, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, bool fragil = false, bool carta = false);
 	~Paquete();
+
+	void initComponent() override;
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
 
 	Distrito getDist() const;
@@ -60,6 +62,7 @@ private:
 	/// <param name="dist">valor enum del distritio al que pertenece</param>
 	/// <param name="distString">valor string del distrito al que pertenece</param>
 	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
+	void crearSello(std::string texKey, int x, int y, int width, int height);
 
 	/// <summary>
 	/// mapa que relaciona cada distrito con su calle

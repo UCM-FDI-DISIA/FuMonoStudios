@@ -21,6 +21,16 @@
         { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
         { "id" : "press", "file": "recursos/images/press.png"},
 
+        { "id" : "selloAlimento", "file" : "recursos/images/Alimentos.png" },
+        { "id" : "selloArmas", "file" : "recursos/images/Armas.png" },
+        { "id" : "selloFragil", "file" : "recursos/images/Fragil.png" },
+        { "id" : "selloJoyas", "file" : "recursos/images/Joyas.png" },
+        { "id" : "selloMateriales", "file" : "recursos/images/Materiales.png" },
+        { "id" : "selloMedicina", "file" : "recursos/images/Medicina.png" },
+        { "id" : "selloPesoAlto", "file": "recursos/images/PesoAlto.png"},
+        { "id" : "selloPesoBajo", "file" : "recursos/images/PesoBajo.png" },
+        { "id" : "selloPesoMedio", "file": "recursos/images/PesoMedio.png"},
+
         { "id" : "title", "file": "recursos/images/titulo.png"},
         { "id" : "fondoOficina", "file": "recursos/images/OficinaProyectosDesenfocada.png"},
 

@@ -217,6 +217,17 @@
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="recursos\images\Alimentos.png" />
+    <Image Include="recursos\images\Armas.png" />
+    <Image Include="recursos\images\Fragil.png" />
+    <Image Include="recursos\images\Joyas.png" />
+    <Image Include="recursos\images\Materiales.png" />
+    <Image Include="recursos\images\Medicina.png" />
+    <Image Include="recursos\images\PesoAlto.png" />
+    <Image Include="recursos\images\PesoBajo.png" />
+    <Image Include="recursos\images\PesoMedio.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

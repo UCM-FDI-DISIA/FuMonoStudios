@@ -74,7 +74,7 @@ void ecs::MainScene::init()
 	//Paquete de prueba
 	Entity* Paquet = addEntity();
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
+	Transform* trPq = Paquet->addComponent<Transform>(200.0f, 500.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
 	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
 		true, Paquete::Bajo, 20, false, false);
@@ -86,7 +86,7 @@ void ecs::MainScene::init()
 		if (herrComp != nullptr) {
 			herrComp->interact(Paquet);
 		}
-		});
+	});
 
 	// Sellador calle A
 	Entity* selloA = addEntity();

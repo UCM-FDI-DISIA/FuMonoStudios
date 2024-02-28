@@ -16,6 +16,16 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
+// posicion y tamaño Tipo sellos
+const int tipoSelloPos = 100;
+const int tipoSelloSize = 80;
+// posicion y tamaño Fragil sellos
+const int fragilSelloPos = 150;
+const int fragilSelloSize = 80;
+// posicion y tamaño Peso sellos
+const int pesoSelloPos = 200;
+const int pesoSelloSize = 80;
+
 Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
 	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
 	
@@ -31,6 +41,29 @@ Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np,
 }
 
 Paquete::~Paquete() {
+
+}
+
+void Paquete::initComponent() {
+	//Creamos la entidad Tipo sello 
+	std::string tipoString = (miTipo == Alimento ? "selloAlimento" :
+		miTipo == Medicinas ? "selloMedicinas" :
+		miTipo == Joyas ? "selloJoyas" :
+		miTipo == Materiales ? "selloMateriales" :
+		miTipo == Armamento ? "selloArmamento" : "Desconocido");
+	crearSello(tipoString, tipoSelloPos, tipoSelloPos, tipoSelloSize, tipoSelloSize);
+
+	//Creamos la entidad Peso sello 
+	if (miPeso != Ninguno) {
+		tipoString = (miTipo == Bajo ? "selloPesoBajo" :
+			miTipo == Medio ? "selloPesoMedio" :
+			miTipo == Alto ? "selloPesoAlto" : "selloPesoBajo");
+		crearSello(tipoString, pesoSelloPos, pesoSelloPos, pesoSelloSize, pesoSelloSize);
+	}
+	//Creamos la entidad Fragil sello 
+	if (fragil) {
+		crearSello("selloFragil", fragilSelloPos, fragilSelloPos, fragilSelloSize, fragilSelloSize);
+	}
 
 }
 
@@ -165,4 +198,12 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 			throw "'Demeter' is not an array in '" + filename + "'";
 		}
 	}
+}
+
+void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
+	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity();
+	Texture* SelloTex = &sdlutils().images().at(texKey);
+	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
+	SelloEnt->addComponent<RenderImage>(SelloTex);
+	SelloTr->setParent(ent_->getComponent<Transform>());
 }

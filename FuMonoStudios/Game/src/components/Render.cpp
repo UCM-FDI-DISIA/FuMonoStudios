@@ -20,3 +20,7 @@ void RenderImage::setTexture(Texture* texture)
 {
 	myTexture = texture;
 }
+
+const Texture* RenderImage::getTexture() {
+	return myTexture;
+}
