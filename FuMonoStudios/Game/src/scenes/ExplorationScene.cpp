@@ -69,7 +69,7 @@ void ecs::ExplorationScene::init()
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
-	Callback funcPress = []() {
+	Callback funcPress = [](Entity* e) {
 		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
 	clickerPress->addEvent(funcPress);

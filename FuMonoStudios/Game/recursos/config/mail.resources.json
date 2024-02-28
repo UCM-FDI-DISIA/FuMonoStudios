@@ -19,7 +19,6 @@
         { "id" : "selloA", "file" : "recursos/images/SelloRojo.png" },
         { "id" : "selloB", "file" : "recursos/images/SelloAzul.png" },
         { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
-        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" },
         { "id" : "press", "file": "recursos/images/press.png"},
 
         { "id" : "title", "file": "recursos/images/titulo.png"},
