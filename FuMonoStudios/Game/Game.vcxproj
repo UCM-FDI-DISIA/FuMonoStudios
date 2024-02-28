@@ -187,6 +187,7 @@
     <ClInclude Include="src\architecture\Scene.h" />
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\components\Trigger.h" />
+    <ClInclude Include="src\GameConstants.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />

@@ -13,6 +13,46 @@
 #include "../components/PackageChecker.h"
 #include "../components/Paquete.h"
 #include "../components/Herramientas.h"
+#include "../components/MultipleTextures.h"
+
+
+void ecs::MainScene::createManual()
+{
+	Entity* manual = addEntity();
+	Texture* manualTexture = &sdlutils().images().at("bookTest");
+	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	float scale = 0.075;
+	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
+	manual->addComponent<DragAndDrop>();
+	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
+	patata->addTexture(manualTexture);
+	patata->addTexture(manualTexture2);
+	patata->initComponent();
+
+
+	Entity* button = addEntity(ecs::layer::FOREGROUND);
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	float buttonScale = 0.15;
+	Transform* buttonTransform = button->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	buttonTransform->setParent(manualTransform);
+	button->addComponent<Clickeable>();
+	button->getComponent<Clickeable>()->addEvent([patata]() {
+
+		patata->nextTexture();
+	});
+
+	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	buttonTransform2->setParent(manualTransform);
+	button2->addComponent<Clickeable>();
+	button2->getComponent<Clickeable>()->addEvent([patata]() {
+
+		patata->previousTexture();
+		});
+}
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -28,50 +68,6 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	/*
-	// Caja CLicker
-	Entity* Prueba2 = addEntity();
-	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
-	float scale = 0.2;
-	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
-	auto clicker = Prueba2->addComponent<Clickeable>();
-	Prueba2->addComponent<Trigger>();
-
-	Prueba2->getComponent<Trigger>()->addCallback([]() {
-
-		std::cout << "Activar Evento P2" << std::endl;
-
-		});
-
-	//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = []() {
-		std::cout << "Click" << std::endl;
-	};
-	clicker->addEvent(cosa);
-
-	// Dragable Box
-	Entity* Prueba3 = addEntity(layer::BACKGROUND);
-	Transform* tr = Prueba3->addComponent<Transform>(100.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* rd = Prueba3->addComponent<RenderImage>(sujetaplazas);
-	Prueba3->addComponent<DragAndDrop>();
-	Prueba3->getComponent<Trigger>()->addCallback([]() {
-
-		std::cout << "Activar Evento P3" << std::endl;
-
-		});
-
-	// Sello
-	Entity* selloPrueba = addEntity(layer::DEFAULT);
-	Texture* selloTexture = &sdlutils().images().at("selloTest");
-	Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
-	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
-
-	// Posición Relativa
-	e->addChild(trSello);
-	trSello->setRelativePos(100.0f, 100.0f);*/
-
-	float scale = 0.2;
 
 	//Paquete de prueba
 	Entity* Paquet = addEntity(layer::BACKGROUND);
@@ -82,43 +78,8 @@ void ecs::MainScene::init()
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
 
-	// funcion que permite interactuar con herramientas
-	Paquet->getComponent<Trigger>()->addCallback([Paquet](ecs::Entity* ent){
-		Herramientas* herrComp = ent->getComponent<Herramientas>();
-		if (herrComp != nullptr) {
-			herrComp->interact(Paquet);
-		}
-	});
-
-	// Sellador calle A
-	Entity* selloA = addEntity(layer::BACKGROUND);
-	Texture* selloATex = &sdlutils().images().at("selladorA");
-	selloA->addComponent<Transform>(1200, 200, selloATex->width() * scale, selloATex->height() * scale);
-	selloA->addComponent<DragAndDrop>();
-	selloA->addComponent<RenderImage>(selloATex);
-	Herramientas* herrSelladorA = selloA->addComponent<Herramientas>();
-	herrSelladorA->setFunctionality(SelloCalleA);
-	
-	// Sellador calle B
-	Entity* selloB = addEntity(layer::BACKGROUND);
-	Texture* selloBTex = &sdlutils().images().at("selladorB");
-	selloB->addComponent<Transform>(1200, 300, selloBTex->width() * scale, selloBTex->height() * scale);
-	selloB->addComponent<DragAndDrop>();
-	selloB->addComponent<RenderImage>(selloBTex);
-	Herramientas* herrSelladorB = selloB->addComponent<Herramientas>();
-	herrSelladorB->setFunctionality(SelloCalleB);
-
-	// Sellador calle C
-	Entity* selloC = addEntity(layer::BACKGROUND);
-	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	selloC->addComponent<Transform>(1200, 400, selloCTex->width() * scale, selloCTex->height() * scale);
-	selloC->addComponent<DragAndDrop>();
-	selloC->addComponent<RenderImage>(selloCTex);
-	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
-	herrSelladorC->setFunctionality(SelloCalleC);
-
-	//Tubería
-	Entity* tuberia = addEntity();
+	//Tuberï¿½a
+	/*Entity* tuberia = addEntity();
 	Transform* trTub = tuberia->addComponent<Transform>(500, 100, 50, 50);
 	Trigger* trgTub = tuberia->addComponent<Trigger>();
 	PackageChecker* checker = tuberia->addComponent<PackageChecker>(Paquete::Demeter);
@@ -131,9 +92,47 @@ void ecs::MainScene::init()
 				std::cout << "NUH UH\n";
 			}
 		}
+		});*/
+	createManual();
+
+	// Fondo
+	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
+	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
+	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
+
+	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
+	Entity* tubDem = addEntity();
+	tubDem->addComponent<Transform>(90, 0, 100, 150);
+	Trigger* demTri = tubDem->addComponent<Trigger>();
+	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+	demTri->addCallback([demCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "WAA!  YA MADE IT!\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
+		}
 		});
 
-	//Tubería2
+	Entity* tubHef = addEntity();
+	tubHef->addComponent<Transform>(280, 0, 100, 150);
+	tubHef->addComponent<Trigger>();
+	PackageChecker* hefCheck = tubHef->addComponent<PackageChecker>(Paquete::Hefesto);
+
+	Entity* tubHes = addEntity();
+	tubHes->addComponent<Transform>(470, 0, 100, 150);
+	tubHes->addComponent<Trigger>();
+	PackageChecker* hesCheck = tubHes->addComponent<PackageChecker>(Paquete::Hestia);
+
+	Entity* tubArt = addEntity();
+	tubArt->addComponent<Transform>(660, 0, 100, 150);
+	tubArt->addComponent<Trigger>();
+	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
+}
+
+	//Tuberï¿½a2
 	/*Entity* tuber2 = addEntity();
 	Transform* trTb2 = tuber2->addComponent<Transform>(700, 100, 50, 50);
 	Trigger* trgTb2 = tuber2->addComponent<Trigger>();

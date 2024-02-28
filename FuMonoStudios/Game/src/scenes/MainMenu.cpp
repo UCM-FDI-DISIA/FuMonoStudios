@@ -39,6 +39,7 @@ void ecs::MainMenu::init()
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
+
 	/*Boton->addComponent<Trigger>();
 	Boton->getComponent<Trigger>()->addCallback([]() {
 
@@ -53,8 +54,10 @@ void ecs::MainMenu::init()
 		(*game).loadScene(ecs::sc::MAIN_SCENE);
 
 	}*/
-	/*Callback funcPress = [this]() {
-		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+	/*
+	Callback funcPress = [this]() {
+		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
+
 	};
 	clickerPress->addEvent(funcPress);*/
 }
