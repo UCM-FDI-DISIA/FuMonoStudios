@@ -2,11 +2,16 @@
 #include<list>
 #include <SDL.h>
 #include <array>
+#include "../utils/Singleton.h"
 #include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
-class Game
-{
+
+
+class Game: public Singleton<Game> {
+
+	friend Singleton<Game> ;
+
 public:
 	Game();
 	~Game();
@@ -21,6 +26,15 @@ public:
 	/// </summary>
 	/// <param name="scene"></param>
 	void killScene(ecs::sc::sceneId scene);
+	/// <summary>
+	/// metodo para cambiar de una escena a otra
+	/// </summary>
+	/// <param name="scene1"></param>
+	/// <param name="scene2"></param>
+	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
+	inline void writeMessage() {
+		std::cout << "Funcionaaaaaaaaa" << std::endl;
+	};
 private:
 	void update();
 	void render();
@@ -37,4 +51,8 @@ private:
 	SDL_Renderer* renderer;
 
 };
+
+inline Game& gm() {
+	return *Game::instance();
+}
 

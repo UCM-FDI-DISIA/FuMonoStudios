@@ -17,7 +17,11 @@ namespace ecs {
 			TRIGGER,
 			PAQUETE,
 			CHECKER,
+			HERRAMIENTAS,
+			MULTIPLETEXTURES,
+			GRAVITY,
 			DIALOGUE,
+			MOVERTRANSFORM,
 			// do not remove this
 			_LAST_CMP_ID
 		};
@@ -33,6 +37,7 @@ namespace ecs {
 	namespace sc {
 		enum sceneId : scId_t {
 			MAIN_SCENE,
+			MENU_SCENE,
 			EXPLORE_SCENE,
 			_LAST_SCENE
 		};
@@ -47,6 +52,7 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			FOREGROUND,
 			_LAST_LAYER
 		};
 		constexpr layerId maxLayerId = _LAST_LAYER;

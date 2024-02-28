@@ -2,7 +2,11 @@
 #include "../json/JSON.h"
 #include <memory>
 #include <iostream>
+#include "../architecture/Entity.h"
+#include "Render.h"
+#include "../architecture/Scene.h"
 
+// cleon: 962 gatitos acaban de morir. con dolor.
 const int nivelFragil = 3;
 const int nivelPeso = 2;
 const int nivelSellos = 1;
@@ -33,16 +37,16 @@ Paquete::~Paquete() {
 bool Paquete::Correcto() const{ 
 	//Método que comprueba si el paquete había sido generado sin errores (AKA: Si da false, eso significa que se tendría que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) {
+	if (miCalle == Erronea) { //Si la calle es errónea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito == Erroneo) {
+	if (miDistrito == Erroneo) { //Si el distrito es erróneo, el paquete no es correcto
 		resul = false;
 	}
-	else if (!selloCorrecto) {
+	else if (!selloCorrecto) {	//Si el sello no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso != Ninguno){
+	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no está entre los valores indicados, el paquete no es correcto
 		if (miPeso == Bajo) {
 			if (peso > ligeroMax) resul = false;
 		}
@@ -53,7 +57,7 @@ bool Paquete::Correcto() const{
 			if (peso < medioMax) resul = false;
 		}		
 	}
-	return resul;
+	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete será correcto y devolverá true. Si en algún momento ha fallado, devolverá false
 }
 
 Paquete::Distrito Paquete::getDist() const
@@ -61,10 +65,30 @@ Paquete::Distrito Paquete::getDist() const
 	return miDistrito;
 }
 
-void Paquete::sellarCalle(Calle sello) {
-	if (sello != Erronea && calleMarcada == Erronea) // solo puedes sellar una vez
+void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
+
+	Vector2D posSellador = trSellador->getPos();
+	// solo puedes sellar una vez 
+	if (sello != Erronea && calleMarcada == Erronea)
 	{
 		calleMarcada = sello;
+		Transform* paqTr = ent_->getComponent<Transform>();
+
+		//Creamos la entidad sello
+		ecs::Entity* selloEnt = ent_->getMngr()->addEntity();
+		//Textura en funcion de tipo calle
+		Texture* selloEntTex = &sdlutils().images().at(
+			(std::string)"sello" += 
+			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
+
+		//creamos transform y colocamos el sello en el centro del sellador
+		float scale = 0.2f;
+		Transform* selloEntTr = selloEnt->addComponent<Transform>
+			(posSellador.getX() + selloEntTex->width() / 2 * scale - paqTr->getPos().getX(),
+			posSellador.getY() + selloEntTex->height() / 2 * scale - paqTr->getPos().getY(),
+			selloEntTex->width() * scale, selloEntTex->height() * scale);
+		selloEnt->addComponent<RenderImage>(selloEntTex);
+		selloEntTr->setParent(paqTr);
 	}
 }
 
@@ -74,7 +98,7 @@ std::string Paquete::getDirecction()
 	std::string dir = "Tu vieja\n";
 
 
-	switch (miDistrito) {
+	switch (miDistrito) { // cleon: los pocos gatitos que habían sobrevivido antes acaban de morir.
 	case Demeter:
 		dir += "001";
 		break;

@@ -9,7 +9,7 @@ DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(
 	dialogueWidth_(sdlutils().width() - 300),dialogueIndex(1),textTexture_(nullptr)
 {
 	mDialogMngr_ = manager;
-	mFont_ = new Font("resources/fonts/ARIAL.ttf", 40);
+	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
 }
 
 DialogComponent::~DialogComponent()
@@ -29,7 +29,7 @@ void DialogComponent::initComponent()
 void DialogComponent::update()
 {
 	//Escritura caracter a caracter
-	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) {
+	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) { // este 40 en mejor sitio
 		setCurrentDialogue();
 		//avance al siguiente caracter
 		if(dialogueIndex < mDialogMngr_->GetCurrentDialog().size())

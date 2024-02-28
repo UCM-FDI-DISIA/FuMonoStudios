@@ -51,6 +51,17 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Vector2D getRelPos() const;
+
+	/// <summary>
+	/// Devuelve posicion del objeto en su centro en
+	/// vez de su punta abajo derecha
+	/// </summary>
+	Vector2D getCenter() const;
+
+	/// <summary>
+	/// Devuelve si el rat�n esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
 	/// <summary>
 	/// Devuelve el ancho del transform
 	/// </summary>
@@ -60,7 +71,7 @@ public:
 	/// Devuelve la altura del transform
 	/// </summary>
 	/// <returns></returns>
-	float getHeith() const { return height; };
+	float getHeigth() const { return height; };
 
 	void setWidth(float newWidth) { width = newWidth; }
 	void setHeith(float newHeith) { height = newHeith; }

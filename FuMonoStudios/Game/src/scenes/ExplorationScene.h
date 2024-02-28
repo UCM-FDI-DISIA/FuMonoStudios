@@ -1,6 +1,7 @@
 #pragma once
 #include "../architecture/Scene.h"
-#include "../Dialog_Manager.h"
+#include "../components/Mapa.h"
+#include "../components/Dialog_Manager.h"
 namespace ecs {
     class ExplorationScene :
         public Scene
@@ -8,10 +9,13 @@ namespace ecs {
     public:
         ExplorationScene();
         virtual ~ExplorationScene();
-
         void init() override;
+
+
+
     private:
         DialogManager dialogMngr_;
+         Mapa map = Mapa();
     };
 }
 

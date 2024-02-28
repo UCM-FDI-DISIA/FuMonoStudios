@@ -131,6 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MoverTransform.cpp" />
+    <ClCompile Include="src\components\Herramientas.cpp" />
+    <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="src\components\Felicidad.cpp" />
+    <ClCompile Include="src\components\Mapa.cpp" />
     <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
@@ -144,13 +149,14 @@
     <ClCompile Include="src\architecture\Entity.cpp" />
     <ClCompile Include="src\architecture\Game.cpp" />
     <ClCompile Include="src\architecture\Scene.cpp" />
-    <ClCompile Include="src\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\Dialog_Manager.cpp" />
     <ClCompile Include="src\components\Trigger.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
     <ClCompile Include="src\json\JSONValue.cpp" />
     <ClCompile Include="src\json\json_demo.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\scenes\ExplorationScene.cpp" />
+    <ClCompile Include="src\scenes\MainMenu.cpp" />
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -159,8 +165,14 @@
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
+    <ClCompile Include="src\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\MoverTransform.h" />
+    <ClInclude Include="src\components\Herramientas.h" />
+    <ClInclude Include="src\components\MultipleTextures.h" />
+    <ClInclude Include="src\components\Felicidad.h" />
+    <ClInclude Include="src\components\Mapa.h" />
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
@@ -174,12 +186,14 @@
     <ClInclude Include="src\architecture\Entity.h" />
     <ClInclude Include="src\architecture\Game.h" />
     <ClInclude Include="src\architecture\Scene.h" />
-    <ClInclude Include="src\Dialog_Manager.h" />
+    <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\components\Trigger.h" />
+    <ClInclude Include="src\GameConstants.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\scenes\ExplorationScene.h" />
+    <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
@@ -199,6 +213,7 @@
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
+    <ClInclude Include="src\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />

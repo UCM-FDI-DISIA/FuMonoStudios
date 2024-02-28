@@ -3,18 +3,29 @@
 
 class Transform;
 
+// Aplica gravedad al Transform. ¡Importante!
+// si el entity tiene draganddrop, aplicar el componente
+// gravity antes de aplicar el de draganddrop
+// Para evitar fallos, añadir este componente justo después del Transform
 class Gravity : public ecs::Component
 {
 public:
-	__CMP_DECL__(ecs::cmp::TRANSFORM)
+	__CMP_DECL__(ecs::cmp::GRAVITY)
+	Gravity();
 	Gravity(float gravityForce);
 	~Gravity();
 
-	void setGravity(float gravityForce);
 	void initComponent() override;
 	void update() override;
+	void setActive(bool value);
 private:
+	static const float GRAVITY_LIMIT; // Limite de gravedad (donde tenemos el suelo)
+	static const float DEFAUTL_FORCE; // Fuerza de gravedad por deferto
+	static const float MAX_VELOCITY; // Limite de aceleracion
+
 	Transform* tr_;
-	float force;
+	float gravityForce;
+	float velocity;
+	bool active;
 };
 
