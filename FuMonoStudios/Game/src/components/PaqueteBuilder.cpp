@@ -28,7 +28,7 @@ bool PaqueteBuilder::BoolRND(int probFalse) { //Este método devuelve una valor a
 		return false;
 	}
 }
-Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
+Paquete::NivelPeso PaqueteBuilder::PesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = rand() % 100;												//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
 	if (rnd > probPeso) {
 		Paquete::NivelPeso pes;
