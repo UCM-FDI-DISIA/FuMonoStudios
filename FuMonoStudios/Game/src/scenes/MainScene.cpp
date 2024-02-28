@@ -75,8 +75,18 @@ void ecs::MainScene::init()
 	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
 	Entity* tubDem = addEntity();
 	tubDem->addComponent<Transform>(90, 0, 100, 150);
-	tubDem->addComponent<Trigger>();
+	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+	demTri->addCallback([demCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "WAA!  YA MADE IT!\n";
+			}
+			else {
+				std::cout << "NUH UH\n";
+			}
+		}
+		});
 
 	Entity* tubHef = addEntity();
 	tubHef->addComponent<Transform>(280, 0, 100, 150);
