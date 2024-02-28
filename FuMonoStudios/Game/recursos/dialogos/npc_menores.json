@@ -1,18 +1,30 @@
 {
-    "presentacion":{
+    "npc1":{
+        "presentacion":{
 
-    },
-    "odio":{
-
-    },
-    "recompensa":{
-
-    },
-    "genericos":{
-
-    },
-    "evento":{
-        
+        },
+        "odio":{
+    
+        },
+        "recompensa":{
+    
+        },
+        "malo":{
+    
+        },
+        "neutral":{
+    
+        },
+        "feliz":{
+    
+        },
+        "maxiFeliz":{
+    
+        },
+        "evento":{
+    
+        }
     }
+    
 
 }
