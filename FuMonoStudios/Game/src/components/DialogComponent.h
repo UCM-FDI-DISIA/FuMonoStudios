@@ -3,7 +3,12 @@
 #include "Dialog_Manager.h"
 #include "../sdlutils/Font.h"
 #include <string>
-
+/*
+TODO:
+Reestructurar toda la gestion de los dialogos
+Crear las estructuras de datos para no tener que cargar los datos constantemente
+Hacer un sistema de como relizar las solicitudes de un dialogo en funcion de las estructuras creadas
+*/
 
 class Transform;
 class RenderImage;

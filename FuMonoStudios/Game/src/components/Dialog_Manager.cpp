@@ -1,6 +1,7 @@
 // dialog_manager.cpp
 #include "dialog_manager.h"
 #include <fstream>
+#include "../json/JSON.h"
 
 DialogManager::DialogManager() : currentDialogIndex(0) {
 }
@@ -21,9 +22,12 @@ void DialogManager::NextDialog() {
     if (currentDialogIndex < dialogs.size() - 1) {
         currentDialogIndex++;
     }
+    else {
+        currentDialogIndex = resetDialogueIndex;
+    }
 }
 // un string sin referencia es como un día sin sol: const string&
-void DialogManager::setDialogues(std::string path) {
+void DialogManager::setDialogues(const std::string& path) {
     //eliminamos los dialogos anteriores
     dialogs.clear();
     //reseteamos la posicon del indice
@@ -51,4 +55,6 @@ void DialogManager::setDialogues(std::string path) {
         std::cerr << "Error al abrir el archivo: " << path << std::endl;
         throw std::runtime_error("No se pudo abrir el archivo de diálogo");
     }
+
+
 }
