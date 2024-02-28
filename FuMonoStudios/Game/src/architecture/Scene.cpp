@@ -36,6 +36,7 @@ namespace ecs {
 		objs_[lyId].push_back(e);
 		return e;
 	}
+
 	std::list<Entity*>::iterator Scene::addEntityToColisionList(Entity* e) {
 
 		colisionEntities.push_back(e);
@@ -51,15 +52,16 @@ namespace ecs {
 
 		bool ret = false;
 
+		// cleon: iterador moderno. Es 2024.
 		for (auto it = colisionEntities.begin(); it != colisionEntities.end(); ++it) {
 
 			if ((*it) != e) {
 
 				//Se guardan los rect ya que con lo que devuelve getRect() el SDL_HasIntersection falla
 
-				SDL_Rect rect1 = e->getComponent<Transform>()->getRect();
+				SDL_Rect &rect1 = e->getComponent<Transform>()->getRect();
 
-				SDL_Rect rect2 = (*it)->getComponent<Transform>()->getRect();
+				SDL_Rect &rect2 = (*it)->getComponent<Transform>()->getRect();
 
 				if (SDL_HasIntersection(&rect1, &rect2)) {
 

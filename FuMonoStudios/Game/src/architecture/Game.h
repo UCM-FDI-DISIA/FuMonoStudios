@@ -7,6 +7,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
 
+
+// cleon: "delta *como tal* no tal
 class Game: public Singleton<Game> {
 
 	friend Singleton<Game> ;

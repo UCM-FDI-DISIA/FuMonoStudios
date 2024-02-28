@@ -26,7 +26,7 @@ void Clickeable::initComponent() {
 }
 	
 
-
+// cleon: "de hecho, no tenemos delta"
 void Clickeable::update() {
 
 	auto& ihdlr = ih();
