@@ -40,20 +40,14 @@ void Clickeable::update() {
 			//std::cout << "click" << std::endl;
 			// 
 			//Recorrido por las colbacks a las que est� suscrito este objeto
-			for (Callback call:eventsWhenClick) {
+			for (CallbackClickeable call:eventsWhenClick) {
 
-				call(ent_);
+				call();
 			}
-
 		}
-
 	}
-
-
 }
 
-void Clickeable::addEvent(Callback event) {
-
+void Clickeable::addEvent(CallbackClickeable event) {
 	eventsWhenClick.push_back(event);
-
 }

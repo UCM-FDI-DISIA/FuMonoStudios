@@ -3,11 +3,11 @@
 Felicidad::Felicidad()
 {
 	for (int i = 0; i <= 6; i++) {
-		felicidades[(Personajes) i] = 0;
+		felicidades[(pers::Personajes) i] = 0;
 	}
 }
 
-void Felicidad::aumentaFel(Personajes p, uint f)
+void Felicidad::aumentaFel(pers::Personajes p, uint f)
 {
 	if (felicidades.at(p) + f <= 99)
 		felicidades[p] += f;
@@ -15,27 +15,27 @@ void Felicidad::aumentaFel(Personajes p, uint f)
 		felicidades[p] = 99;
 }
 
-void Felicidad::decrementaFel(Personajes p, uint f)
+void Felicidad::decrementaFel(pers::Personajes p, uint f)
 {
 	felicidades[p] -= f;
 }
 
-EstadosDeFelicidad Felicidad::interpretaFel(Personajes p) const
+pers::EstadosDeFelicidad Felicidad::interpretaFel(pers::Personajes p) const
 {
 	int s = felicidades.at(p);
 	if (s <= 0){
-		return MÍNIMA;
+		return pers::MINIMA;
 	}
 	else if(s > 0 && s <= 33){
-		return BAJA;
+		return pers::BAJA;
 	}
 	else if (s > 33 && s <= 66){
-		return INTERMEDIA;
+		return pers::INTERMEDIA;
 	}
 	else if (s > 33 && s <= 66) {
-		return FELIZ;
+		return pers::FELIZ;
 	}
 	else{
-		return MAXIFELIZ;
+		return pers::MAXIFELIZ;
 	}
 }

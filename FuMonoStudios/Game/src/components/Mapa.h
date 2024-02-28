@@ -3,13 +3,12 @@
 #include <unordered_map>
 
 struct Lugar {
-private:
+public:
+	
 	Texture* backGround;
 	bool navegable;
 	//Character* character;
 	std::unordered_map<std::string,Lugar> directions;
-
-public:
 	Lugar() {};
 	Lugar(Texture* t, bool n /*Character* c*/) : backGround(t), navegable(n) /*character(c)*/ {};
 	//~Lugar() { if(backGround != nullptr) delete backGround; };
@@ -42,6 +41,6 @@ public:
 	Mapa();
 	~Mapa();
 	void navigate(std::string placeDir);
-	void render() const;
+	//TODO: hacer lugares activables de forma dinámica
+	void renderBackGround() const;
 };
-

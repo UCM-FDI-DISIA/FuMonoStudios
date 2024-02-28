@@ -10,7 +10,7 @@ namespace ecs {
         ExplorationScene();
         virtual ~ExplorationScene();
         void init() override;
-
+        virtual void render();
 
 
     private:

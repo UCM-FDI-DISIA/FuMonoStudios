@@ -43,14 +43,13 @@ void ecs::ExplorationScene::init()
 		});*/
 
 		//TODO: probar que con un boton se puedan cargar otras escenas
-	/*Callback cosa = [this]() {
+	CallbackClickeable cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
-		map.render();
+		map.renderBackGround();
 		};
-	clicker->addEvent(cosa);*/
-
-	map.render();
+	clicker->addEvent(cosa);
+	/*
 	auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
@@ -62,7 +61,7 @@ void ecs::ExplorationScene::init()
 	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
 
 
-	Texture* texturaBoton = &sdlutils().images().at("press");
+	/*Texture* texturaBoton = &sdlutils().images().at("press");
 	Entity* BotonPress = addEntity();
 
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
@@ -72,6 +71,12 @@ void ecs::ExplorationScene::init()
 	Callback funcPress = [](Entity* a) {
 		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
-	clickerPress->addEvent(funcPress);
+	clickerPress->add*ent(funcPress);*/
 
+}
+
+void ecs::ExplorationScene::render()
+{
+	map.renderBackGround();
+	Scene::render();
 }

@@ -10,8 +10,6 @@ Mapa::Mapa()
 
 Mapa::~Mapa()
 {
-	//if(actualPlace != nullptr)
-		//delete actualPlace;
 }
 
 
@@ -25,7 +23,6 @@ void Mapa::initPlacesDefaultMap()
 	Texture* hefestoTexture = &sdlutils().images().at("hefesto");
 	hefesto = Lugar(hefestoTexture, true);
 
-
 	//Hestia
 	Texture* hestiaTexture = &sdlutils().images().at("hestia");
 	hestia = Lugar(hestiaTexture, true);
@@ -36,7 +33,7 @@ void Mapa::initPlacesDefaultMap()
 
 	//Hermes
 	Texture* hermesTexture = &sdlutils().images().at("hermes");
-	hermes = Lugar(hermesTexture, false /*hermesCharacter*/);
+	hermes = Lugar(hermesTexture, false);
 
 	//Apolo
 	Texture* apoloTexture = &sdlutils().images().at("apolo");
@@ -86,7 +83,7 @@ void Mapa::navigate(std::string placeDir)
 			actualPlace = actualPlace->getDirection(placeDir);
 }
 
-void Mapa::render() const
+void Mapa::renderBackGround() const
 {
 	actualPlace->getTexture()->render(rect);
 }
