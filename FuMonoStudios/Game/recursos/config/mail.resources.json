@@ -21,6 +21,14 @@
         { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
         { "id" : "press", "file": "recursos/images/press.png"},
 
+        { "id" : "tubo1", "file" : "recursos/images/tubo1.png" },
+        { "id" : "tubo2", "file" : "recursos/images/tubo2.png" },
+        { "id" : "tubo3", "file" : "recursos/images/tubo3.png" },
+        { "id" : "tubo4", "file" : "recursos/images/tubo4.png" },
+        { "id" : "tubo5", "file" : "recursos/images/tubo5.png" },
+        { "id" : "tubo6", "file" : "recursos/images/tubo6.png" },
+        { "id" : "tubo7", "file" : "recursos/images/tubo7.png" },
+
         { "id" : "title", "file": "recursos/images/titulo.png"},
         { "id" : "fondoOficina", "file": "recursos/images/OficinaProyectosDesenfocada.png"},
 

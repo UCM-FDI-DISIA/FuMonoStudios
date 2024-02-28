@@ -25,6 +25,7 @@ void ecs::MainScene::createManual()
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	manual->addComponent<Gravity>();
 	RenderImage* manualRender = manual->addComponent<RenderImage>();
 	manual->addComponent<DragAndDrop>();
 	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
@@ -55,6 +56,8 @@ void ecs::MainScene::createManual()
 
 		multTextures->previousTexture();
 	});
+
+	
 }
 
 ecs::MainScene::MainScene():Scene()
@@ -72,27 +75,36 @@ void ecs::MainScene::init()
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
 
-	//Paquete de prueba
-	Entity* Paquet = addEntity();
-	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
-	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
-	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
-		true, Paquete::Bajo, 20, false, false);
-	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
-	Paquet->addComponent<Gravity>();
-
-	createManual();
-
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
 	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
 	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 
-	/*
-	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
-	Entity* tubDem = addEntity();
-	tubDem->addComponent<Transform>(120, 0, 100, 150);
+	createManual();
+
+	//Paquete de prueba
+	Entity* Paquet = addEntity();
+	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
+	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
+	Paquet->addComponent<Gravity>();
+	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
+	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
+		true, Paquete::Bajo, 20, false, false);
+	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
+	
+
+	
+
+	
+
+	
+	//TUBOS Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
+
+	float scaleTubos = 0.3f;
+	Entity* tubDem = addEntity(ecs::layer::BACKGROUND);
+	Texture* texturaDem = &sdlutils().images().at("tubo1");
+	tubDem->addComponent<Transform>(120, -40, texturaDem->width() *scaleTubos, texturaDem->height()*scaleTubos);
+	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
 	demTri->addCallback([demCheck](ecs::Entity* entRec) {
@@ -162,5 +174,5 @@ void ecs::MainScene::init()
 			std::cout << "eso no es un paquete gañan\n";
 		}
 		});
-	*/
+	
 }

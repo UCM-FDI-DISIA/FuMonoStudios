@@ -11,7 +11,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -45,7 +45,7 @@ void DragAndDrop::update() {
 		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
-			if (grav_) {
+			if (grav_ != nullptr) {
 				grav_->setActive(false);
 			}
 
@@ -63,7 +63,7 @@ void DragAndDrop::update() {
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
-		if (grav_) {
+		if (grav_ != nullptr) {
 			grav_->setActive(true);
 		}
 
