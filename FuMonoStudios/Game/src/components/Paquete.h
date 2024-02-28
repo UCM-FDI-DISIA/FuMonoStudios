@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "../utils/Vector2D.h"
+#include "Transform.h"
 
 class Scene;
 
@@ -44,7 +45,7 @@ public:
 	/// <summary>
 	/// metodo que sella la calle una única vez en función del sellador
 	/// </summary>
-	void sellarCalle(Calle sello, Vector2D posSellador);
+	void sellarCalle(Calle sello, Transform* trSellador);
 	/// <summary>
 	/// metodo que devuelve el string a implimir en la etiqueta de direccion
 	/// </summary>

@@ -10,8 +10,11 @@
 // Para entender los easings https://easings.net
 // 
 // El movTime se mete en segundos 
+// 
+// El easing EaseOutBack recomendado para la entrada
+// del paquete por la derecha 
 
-enum Easing {Linear, EaseOutCubic};
+enum Easing {Linear, EaseOutCubic, EaseOutBack};
 
 class MoverTransform : public ecs::Component
 {

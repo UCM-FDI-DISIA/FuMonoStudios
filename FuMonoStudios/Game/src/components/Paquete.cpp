@@ -3,9 +3,9 @@
 #include <memory>
 #include <iostream>
 #include "../architecture/Entity.h"
-#include "Transform.h"
 #include "Render.h"
 #include "../architecture/Scene.h"
+
 
 const int nivelFragil = 3;
 const int nivelPeso = 2;
@@ -65,9 +65,11 @@ Paquete::Distrito Paquete::getDist() const
 	return miDistrito;
 }
 
-void Paquete::sellarCalle(Calle sello, Vector2D posSellador) {
-	// solo puedes sellar una vez
-	if (sello != Erronea && calleMarcada == Erronea) 
+void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
+
+	Vector2D posSellador = trSellador->getPos();
+	// solo puedes sellar una vez 
+	if (sello != Erronea && calleMarcada == Erronea)
 	{
 		calleMarcada = sello;
 		Transform* paqTr = ent_->getComponent<Transform>();
@@ -82,8 +84,8 @@ void Paquete::sellarCalle(Calle sello, Vector2D posSellador) {
 		//creamos transform y colocamos el sello en el centro del sellador
 		float scale = 0.2f;
 		Transform* selloEntTr = selloEnt->addComponent<Transform>
-			(posSellador.getX() - selloEntTex->width() / 2 * scale, 
-			posSellador.getY() - selloEntTex->height() / 2 * scale,
+			(posSellador.getX() + selloEntTex->width() / 2 * scale - paqTr->getPos().getX(),
+			posSellador.getY() + selloEntTex->height() / 2 * scale - paqTr->getPos().getY(),
 			selloEntTex->width() * scale, selloEntTex->height() * scale);
 		selloEnt->addComponent<RenderImage>(selloEntTex);
 		selloEntTr->setParent(paqTr);

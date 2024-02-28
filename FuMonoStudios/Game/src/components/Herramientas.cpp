@@ -12,28 +12,30 @@ Herramientas::~Herramientas() {
 
 void Herramientas::setFunctionality(TipoHerramienta tipo) {
 
-	Transform* selladorTr = ent_->getComponent<Transform>();
-
 	switch (tipo) 
 	{
 	case SelloCalleA:
-		funcion = [this,selladorTr](ecs::Entity* paq) {
+		funcion = [this](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C1, selladorTr->getCenter());
+			paqComp->sellarCalle(Paquete::C1, ent_->getComponent<Transform>());
 			ent_->addComponent<MoverTransform>(
-				Vector2D(0,0),1,Easing::EaseOutCubic);
+				Vector2D(1200,200),1,Easing::EaseOutBack);
 			};
 		break;
 	case SelloCalleB:
-		funcion = [selladorTr](ecs::Entity* paq) {
+		funcion = [this](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C2, selladorTr->getCenter());
+			paqComp->sellarCalle(Paquete::C2, ent_->getComponent<Transform>());
+			ent_->addComponent<MoverTransform>(
+				Vector2D(1200, 300), 1, Easing::EaseOutCubic);
 			};
 		break;
 	case SelloCalleC:
-		funcion = [selladorTr](ecs::Entity* paq) {
+		funcion = [this](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C3, selladorTr->getCenter());
+			paqComp->sellarCalle(Paquete::C3, ent_->getComponent<Transform>());
+			ent_->addComponent<MoverTransform>(
+				Vector2D(1200, 400), 1, Easing::Linear);
 			};
 		break;
 	}

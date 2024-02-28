@@ -21,7 +21,8 @@ void MoverTransform::update() {
 
 	float porcentajeRecorrido = (timer - startTimer) / movTime;
 
-	float newX, newY;
+	float newX = 0;
+	float newY = 0;
 	switch (easing) {
 		case Linear:
 			newX = initPos.getX() +
@@ -35,6 +36,12 @@ void MoverTransform::update() {
 			newY = finalPos.getY() - 
 				((float)pow(1 - porcentajeRecorrido, 3) * (finalPos.getY() - initPos.getY()));
 			break;
+		case EaseOutBack:
+			float t = porcentajeRecorrido;
+			float constante = 1.70158f;
+			newX = initPos.getX() + (finalPos.getX() - initPos.getX()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
+			newY = initPos.getY() + (finalPos.getY() - initPos.getY()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
+			break;
 	}
 	
 
@@ -42,6 +49,7 @@ void MoverTransform::update() {
 
 	if (timer > (startTimer + movTime)) 
 	{
+		tr->setPos(finalPos);
 		ent_->removeComponent<MoverTransform>();
 	}
 }
