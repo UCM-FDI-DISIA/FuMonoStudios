@@ -10,6 +10,7 @@
 #include "../components//Gravity.h"
 #include "../architecture/Game.h"
 #include "../components/MultipleTextures.h"
+#include "../components/PackageChecker.h"
 
 
 void ecs::MainScene::createManual()
@@ -67,8 +68,29 @@ void ecs::MainScene::init()
 	createManual();
 
 	// Fondo
-	Entity* Prueba2 = addEntity(ecs::layer::BACKGROUND);
-	Prueba2->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
-	Prueba2->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
+	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
+	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
+	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
+
+	//Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
+	Entity* tubDem = addEntity();
+	tubDem->addComponent<Transform>(90, 0, 100, 150);
+	tubDem->addComponent<Trigger>();
+	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+
+	Entity* tubHef = addEntity();
+	tubHef->addComponent<Transform>(280, 0, 100, 150);
+	tubHef->addComponent<Trigger>();
+	PackageChecker* hefCheck = tubHef->addComponent<PackageChecker>(Paquete::Hefesto);
+
+	Entity* tubHes = addEntity();
+	tubHes->addComponent<Transform>(470, 0, 100, 150);
+	tubHes->addComponent<Trigger>();
+	PackageChecker* hesCheck = tubHes->addComponent<PackageChecker>(Paquete::Hestia);
+
+	Entity* tubArt = addEntity();
+	tubArt->addComponent<Transform>(660, 0, 100, 150);
+	tubArt->addComponent<Trigger>();
+	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
 }
 
