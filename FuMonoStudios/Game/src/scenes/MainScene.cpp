@@ -38,7 +38,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([patata]() {
+	button->getComponent<Clickeable>()->addEvent([patata](Entity* e) {
 
 		patata->nextTexture();
 	});
@@ -48,7 +48,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([patata]() {
+	button2->getComponent<Clickeable>()->addEvent([patata](Entity* e) {
 
 		patata->previousTexture();
 		});
@@ -72,7 +72,7 @@ void ecs::MainScene::init()
 	//Paquete de prueba
 	Entity* Paquet = addEntity(layer::BACKGROUND);
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width() * scale, texturaPaquet->height() * scale);
+	Transform* trPq = Paquet->addComponent<Transform>(100.0f, 100.0f, texturaPaquet->width(), texturaPaquet->height());
 	RenderImage* rd = Paquet->addComponent<RenderImage>(texturaPaquet);
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento, 
 		true, Paquete::Bajo, 20, false, false);
@@ -108,7 +108,7 @@ void ecs::MainScene::init()
 	demTri->addCallback([demCheck](ecs::Entity* entRec) {
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "WAA!  YA MADE IT!\n";
+				std::cout << "the end is nigh\n";
 			}
 			else {
 				std::cout << "NUH UH\n";
@@ -130,19 +130,4 @@ void ecs::MainScene::init()
 	tubArt->addComponent<Transform>(660, 0, 100, 150);
 	tubArt->addComponent<Trigger>();
 	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
-}
-
-	//Tuber�a2
-	/*Entity* tuber2 = addEntity();
-	Transform* trTb2 = tuber2->addComponent<Transform>(700, 100, 50, 50);
-	Trigger* trgTb2 = tuber2->addComponent<Trigger>();
-	PackageChecker* che = tuber2->addComponent<PackageChecker>(Paquete::Demeter);
-	trgTb2->addCallback([&che, &pqPq]() {
-		if (che->checkPackage(pqPq)) {
-			std::cout << "WAA!  YA MADE IT!\n";
-		}
-		else {
-			std::cout << "NUH UH\n";
-		}
-		});*/
 }
