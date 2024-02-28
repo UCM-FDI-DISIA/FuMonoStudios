@@ -16,10 +16,10 @@ public:
 	void updateMoney(int writePacages, int wrongPacages);
 
 private:
-	void addMoney(int cant) { dinero += cant; }
-	void reduceMoney(int cant) { dinero -= cant; }
+	void addMoney(int cant) { dinero_ += cant; }
+	void reduceMoney(int cant) { dinero_ -= cant; }
 
-	int dinero_
+	int dinero_;
 };
 
 inline GeneralData& generalData() {
