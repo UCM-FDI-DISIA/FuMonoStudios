@@ -34,7 +34,7 @@ void ecs::MainScene::createManual()
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
@@ -44,14 +44,14 @@ void ecs::MainScene::createManual()
 	});
 
 	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
 	button2->getComponent<Clickeable>()->addEvent([patata](Entity* e) {
 
 		patata->previousTexture();
-		});
+	});
 }
 
 ecs::MainScene::MainScene():Scene()
