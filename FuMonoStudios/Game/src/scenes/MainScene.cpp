@@ -21,18 +21,20 @@ void ecs::MainScene::createManual()
 	Entity* manual = addEntity();
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
-	RenderImage* manualRender = manual->addComponent<RenderImage>(manualTexture);
+	RenderImage* manualRender = manual->addComponent<RenderImage>();
 	manual->addComponent<DragAndDrop>();
 	MultipleTextures* patata = manual->addComponent<MultipleTextures>();
 	patata->addTexture(manualTexture);
 	patata->addTexture(manualTexture2);
+	patata->addTexture(buttonTexture);
 	patata->initComponent();
+	manualRender->setTexture(patata->getCurrentTexture());
 
 
 	Entity* button = addEntity(ecs::layer::FOREGROUND);
-	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float buttonScale = 0.15;
 	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
