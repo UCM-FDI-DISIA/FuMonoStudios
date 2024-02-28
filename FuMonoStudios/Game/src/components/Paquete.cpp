@@ -6,7 +6,7 @@
 #include "Render.h"
 #include "../architecture/Scene.h"
 
-
+// cleon: 962 gatitos acaban de morir. con dolor.
 const int nivelFragil = 3;
 const int nivelPeso = 2;
 const int nivelSellos = 1;
@@ -98,7 +98,7 @@ std::string Paquete::getDirecction()
 	std::string dir = "Tu vieja\n";
 
 
-	switch (miDistrito) {
+	switch (miDistrito) { // cleon: los pocos gatitos que habían sobrevivido antes acaban de morir.
 	case Demeter:
 		dir += "001";
 		break;

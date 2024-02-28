@@ -60,6 +60,8 @@ void Game::run()
 
 		Uint32 frameTime = SDL_GetTicks() - startTime;
 
+
+		// NO. NO. NO.
 		if (frameTime < 20)
 			SDL_Delay(20 - frameTime);
 	}

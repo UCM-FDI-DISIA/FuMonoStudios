@@ -29,7 +29,7 @@ void DialogComponent::initComponent()
 void DialogComponent::update()
 {
 	//Escritura caracter a caracter
-	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) {
+	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) { // este 40 en mejor sitio
 		setCurrentDialogue();
 		//avance al siguiente caracter
 		if(dialogueIndex < mDialogMngr_->GetCurrentDialog().size())

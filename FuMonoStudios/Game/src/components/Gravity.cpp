@@ -25,7 +25,7 @@ void Gravity::update() {
         bool contactGround = (tr_->getPos().getY() >= GRAVITY_LIMIT);
 
         if (!contactGround) {
-            velocity += gravityForce;
+            velocity += gravityForce; // cleon: velocidad + fuerza y sin el tiempo. Toma esto, Newton!
             if (velocity > MAX_VELOCITY) {
                 velocity = MAX_VELOCITY; // Limitamos la velocidad
             }
