@@ -7,6 +7,7 @@
 #include "../utils/Vector2D.h"
 #include "Transform.h"
 
+
 class Scene;
 
 class Paquete : public ecs::Component

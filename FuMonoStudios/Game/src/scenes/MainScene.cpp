@@ -12,6 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
 #include "../components/Paquete.h"
+#include "../components/PaqueteBuilder.h"
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
@@ -72,7 +73,8 @@ void ecs::MainScene::init()
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
 
-	//Paquete de prueba
+	//Paquete de prueba (comentado, porque ahora hay un constructor de paquetes)
+	/*
 	Entity* Paquet = addEntity();
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
@@ -80,10 +82,21 @@ void ecs::MainScene::init()
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
-	Paquet->addComponent<Gravity>();
+	Paquet->addComponent<Gravity>();*/
 
 	createManual();
 
+	//Boton que genera Paquetes
+	Texture* texturaBoton = &sdlutils ().images ().at ("press");
+	Entity* BotonPress = addEntity ();
+	Transform* transformBoton = BotonPress->addComponent<Transform> (200.0f, 400.0f, texturaBoton->width (), texturaBoton->height ());
+	RenderImage* renderBoton = BotonPress->addComponent<RenderImage> (texturaBoton);
+	auto clickerPress = BotonPress->addComponent<Clickeable> ();
+	Callback funcPress = [this](Entity* e) {
+		createPaquete (0);
+		};
+	clickerPress->addEvent (funcPress);
+	
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
 	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
@@ -163,4 +176,14 @@ void ecs::MainScene::init()
 		}
 		});
 	*/
+}
+void ecs::MainScene::createPaquete (int lv) {
+	Entity* Paquet = addEntity ();
+	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
+	Transform* trPq = Paquet->addComponent<Transform> (700.0f, 700.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
+	RenderImage* rd = Paquet->addComponent<RenderImage> (texturaPaquet);
+	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop> ();
+	Paquet->addComponent<Gravity> ();
+	PaqueteBuilder a;
+	a.PaqueteRND (lv, Paquet);
 }

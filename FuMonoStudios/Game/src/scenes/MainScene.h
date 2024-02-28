@@ -7,6 +7,7 @@ namespace ecs {
     {
     private:
         void createManual();
+        void createPaquete(int lv);
     public:
         MainScene();
         virtual ~MainScene();
