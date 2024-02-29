@@ -105,6 +105,14 @@ namespace ecs {
 			return myLayer;
 		}
 
+		inline void addIterator(std::vector<Entity*>::iterator it) {
+			mIt_ = it;
+		}
+
+		inline std::vector<Entity*>::iterator getIterator() {
+			return mIt_;
+		}
+
 		//Comprueba si Entity tiene el componente marcado por cId
 		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
@@ -128,6 +136,7 @@ namespace ecs {
 	private:
 		bool alive_;
 		Scene* scene_;
+		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;

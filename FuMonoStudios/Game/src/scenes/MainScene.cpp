@@ -140,6 +140,7 @@ void ecs::MainScene::init()
 			else {
 				std::cout << "NUH UH\n";
 			}
+
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
