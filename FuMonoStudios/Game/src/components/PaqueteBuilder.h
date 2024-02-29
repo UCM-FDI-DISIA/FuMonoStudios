@@ -36,6 +36,11 @@ private:
 	Paquete::Calle CalleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
 	bool BoolRND(int probFalse);		//Método que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
 	Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
+	/// <summary>
+	/// mapa que relaciona cada distrito con su calle
+	/// usado para la generacion del string de la direccion
+	/// </summary>
+	std::unordered_map<Paquete::Distrito, std::vector<std::string>> distrito_calle;
 
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 

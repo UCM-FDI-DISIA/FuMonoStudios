@@ -13,10 +13,11 @@ class Paquete : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::PAQUETE)
-		/*
-		* Ya que está hecho lo de la carga por Json igual es util hacer que las tags de distrito
-		* sean stirngs que se carguen por el json : LUIS
-		*/
+		
+
+	/*
+	De locos pero y si lo metemos en un espacio de nombres
+	*/
 	/// <summary>
 	/// enum con todos los distritos posibles que pueden tener los paquetes
 	/// </summary>
@@ -64,6 +65,9 @@ private:
 	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
 	void crearSello(std::string texKey, int x, int y, int width, int height);
 
+	/*
+	*TODO: Meter estos datos en el paquete builder
+	*/
 	/// <summary>
 	/// mapa que relaciona cada distrito con su calle
 	/// usado para la generacion del string de la direccion
