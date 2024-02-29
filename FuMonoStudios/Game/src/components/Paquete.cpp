@@ -5,6 +5,7 @@
 #include "../architecture/Entity.h"
 #include "Render.h"
 #include "../architecture/Scene.h"
+#include <bitset>
 
 
 const int nivelFragil = 3;
@@ -130,31 +131,8 @@ std::string Paquete::getDirecction()
 
 	std::string dir = "Tu vieja\n";
 
-
-	switch (miDistrito) {
-	case Demeter:
-		dir += "001";
-		break;
-	case Hefesto:
-		dir += "010";
-		break;
-	case Hestia:
-		dir += "011";
-		break;
-	case Artemisa:
-		dir += "100";
-		break;
-	case Hermes:
-		dir += "101";
-		break;
-	case Apolo:
-		dir += "110";
-		break;
-	case Poseidon:
-		dir += "111";
-		break;
-	}
-	dir += "\n";
+	//creacion de codigo postal
+	dir += std::bitset<3>(miDistrito).to_string() + "\n";
 
 	//habria que comprobar si la direccion tiene que ser correcta
 	dir += distrito_calle[miDistrito][miCalle];
@@ -199,7 +177,9 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 		}
 	}
 }
-
+/*
+Luis: ta de lokos, pero igual mejor que esto lo haga el paquete builder no?
+*/
 void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
 	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity();
 	Texture* SelloTex = &sdlutils().images().at(texKey);
