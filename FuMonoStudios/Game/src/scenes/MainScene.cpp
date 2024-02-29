@@ -61,7 +61,7 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene()
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0)
 {
 	
 }
@@ -132,13 +132,15 @@ void ecs::MainScene::init()
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
-	demTri->addCallback([demCheck](ecs::Entity* entRec) {
+	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
 				std::cout << "the end is nigh\n";
+				correct++;
 			}
 			else {
 				std::cout << "NUH UH\n";
+				fails++;
 			}
 
 		}
