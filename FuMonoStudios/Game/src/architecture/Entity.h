@@ -53,8 +53,6 @@ namespace ecs {
 
 			Trigger* t = addComponent_aux<Trigger>(scene_->addEntityToColisionList(this));
 
-			std::cout << "Trigger";
-
 			return t;
 
 		}
@@ -62,6 +60,12 @@ namespace ecs {
 		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
 		template<>
 		inline DragAndDrop* addComponent<DragAndDrop>() {
+
+
+			Trigger* trg = getComponent<Trigger>();
+
+			if (trg != nullptr)
+				throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
 
 			addComponent<Trigger>();
 
@@ -101,6 +105,14 @@ namespace ecs {
 			return myLayer;
 		}
 
+		inline void addIterator(std::vector<Entity*>::iterator it) {
+			mIt_ = it;
+		}
+
+		inline std::vector<Entity*>::iterator getIterator() {
+			return mIt_;
+		}
+
 		//Comprueba si Entity tiene el componente marcado por cId
 		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
@@ -124,6 +136,7 @@ namespace ecs {
 	private:
 		bool alive_;
 		Scene* scene_;
+		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;

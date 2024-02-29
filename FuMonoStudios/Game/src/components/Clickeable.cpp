@@ -26,7 +26,7 @@ void Clickeable::initComponent() {
 }
 	
 
-
+// cleon: "de hecho, no tenemos delta"
 void Clickeable::update() {
 
 	auto& ihdlr = ih();
@@ -42,7 +42,7 @@ void Clickeable::update() {
 			//Recorrido por las colbacks a las que est� suscrito este objeto
 			for (Callback call:eventsWhenClick) {
 
-				call();
+				call(ent_);
 			}
 
 		}

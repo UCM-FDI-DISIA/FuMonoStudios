@@ -1,5 +1,5 @@
 #include "Mapa.h"
-#include "src/sdlutils/SDLUtils.h"
+#include "../sdlutils/SDLUtils.h"
 
 Mapa::Mapa()
 {
@@ -80,7 +80,7 @@ void Mapa::initDirectionsDefaultMap()
 	poseidon.addDirections("Apolo", apolo);
 }
 
-void Mapa::navigate(std::string placeDir)
+void Mapa::navigate(std::string placeDir) // otro string sin const
 {
 	if (actualPlace->navigate(placeDir))
 			actualPlace = actualPlace->getDirection(placeDir);

@@ -11,7 +11,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -45,7 +45,7 @@ void DragAndDrop::update() {
 		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
-			if (grav_) {
+			if (grav_ != nullptr) {
 				grav_->setActive(false);
 			}
 
@@ -63,7 +63,7 @@ void DragAndDrop::update() {
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
-		if (grav_) {
+		if (grav_ != nullptr) {
 			grav_->setActive(true);
 		}
 
@@ -80,7 +80,14 @@ void DragAndDrop::update() {
 		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
 
 
-		//Sin centrarse el objeto
-		tr_->setPos(point.x - differenceX, point.y - differenceY);
+		
+		// comprobacion para evitar sacar la entidad de la pantalla
+		if ((point.x - differenceX > -(tr_->getWidth() / 2))
+			&& (point.x - differenceX < sdlutils().width() - (tr_->getWidth() / 2)) 
+			&& (point.y - differenceY < sdlutils().height() - (tr_->getHeigth() / 6)))
+		{
+			//Sin centrarse el objeto
+			tr_->setPos(point.x - differenceX, point.y - differenceY);
+		}
 	}
 }

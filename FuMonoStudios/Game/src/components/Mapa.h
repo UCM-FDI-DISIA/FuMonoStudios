@@ -1,5 +1,5 @@
 #pragma once
-#include "src/sdlutils/Texture.h"
+#include "../sdlutils/Texture.h"
 #include <unordered_map>
 
 struct Lugar {

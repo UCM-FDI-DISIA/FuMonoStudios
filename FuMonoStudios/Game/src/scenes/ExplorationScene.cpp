@@ -14,7 +14,7 @@
 
 ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
 {
-	dialogMngr_.setDialogues("resources/dialogos/dialogo.txt");
+	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 }
 
 ecs::ExplorationScene::~ExplorationScene()
@@ -34,6 +34,7 @@ void ecs::ExplorationScene::init()
 	auto clicker = Prueba2->addComponent<Clickeable>();
 	Prueba2->addComponent<Trigger>();
 
+
 	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
 		std::cout << "a" << std::endl;
 		map.navigate("Hermes");
@@ -42,12 +43,12 @@ void ecs::ExplorationScene::init()
 		});*/
 
 		//TODO: probar que con un boton se puedan cargar otras escenas
-	Callback cosa = [this]() {
+	/*Callback cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
 		map.render();
 		};
-	clicker->addEvent(cosa);
+	clicker->addEvent(cosa);*/
 
 	map.render();
 	auto boxBg = addEntity();
@@ -59,4 +60,18 @@ void ecs::ExplorationScene::init()
 	textTr->setParent(bgTr);
 	dialogoBox->addComponent<RenderImage>();
 	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
+
+
+	Texture* texturaBoton = &sdlutils().images().at("press");
+	Entity* BotonPress = addEntity();
+
+	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
+
+	auto clickerPress = BotonPress->addComponent<Clickeable>();
+	Callback funcPress = [](Entity* a) {
+		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
+	};
+	clickerPress->addEvent(funcPress);
+
 }

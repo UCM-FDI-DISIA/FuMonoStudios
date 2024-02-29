@@ -5,7 +5,7 @@
 #include <list>
 #include <functional>
 
-PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis(dis)
+PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis(dis), extraCond()
 {
 
 }

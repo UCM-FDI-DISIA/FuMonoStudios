@@ -7,12 +7,12 @@ Felicidad::Felicidad()
 	}
 }
 
-void Felicidad::aumentaFel(Personajes p, uint f)
+void Felicidad::aumentaFel(Personajes p, uint f) // cleon: no seáis salvajes de C++. Personajes por referencia (constante?)
 {
 	if (felicidades.at(p) + f <= 99)
 		felicidades[p] += f;
 	else
-		felicidades[p] = 99;
+		felicidades[p] = 99; // Toma 99.
 }
 
 void Felicidad::decrementaFel(Personajes p, uint f)
@@ -24,7 +24,7 @@ EstadosDeFelicidad Felicidad::interpretaFel(Personajes p) const
 {
 	int s = felicidades.at(p);
 	if (s <= 0){
-		return MÍNIMA;
+		return MÍNIMA; // cleon: OLÉ. Esa tilde.
 	}
 	else if(s > 0 && s <= 33){
 		return BAJA;

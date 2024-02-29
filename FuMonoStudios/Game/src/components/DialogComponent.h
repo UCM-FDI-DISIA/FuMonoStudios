@@ -1,6 +1,6 @@
 #pragma once
 #include "../architecture/Component.h"
-#include "../Dialog_Manager.h"
+#include "Dialog_Manager.h"
 #include "../sdlutils/Font.h"
 #include <string>
 

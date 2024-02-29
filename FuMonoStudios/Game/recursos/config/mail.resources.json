@@ -12,9 +12,32 @@
         { "id" :  "hermes", "file" :  "recursos/images/Hermes.png"},
         { "id" :  "apolo", "file" :  "recursos/images/Apolo.png"},
         { "id" :  "poseidon", "file" :  "recursos/images/Poseidon.png"},
-        { "id" : "selladorTest", "file" : "recursos/images/sellador.png" },
-        { "id" : "press", "file": "recursos/images/press.png"},
-        { "id" : "title", "file": "recursos/images/titulo.png"}
 
+        { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
+        { "id" : "selladorB", "file" : "recursos/images/selladorAzul.png" },
+        { "id" : "selladorC", "file" : "recursos/images/selladorVerde.png" },
+        { "id" : "selloA", "file" : "recursos/images/SelloRojo.png" },
+        { "id" : "selloB", "file" : "recursos/images/SelloAzul.png" },
+        { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
+        { "id" : "press", "file": "recursos/images/press.png"},
+
+        { "id" : "tubo1", "file" : "recursos/images/tubo1.png" },
+        { "id" : "tubo2", "file" : "recursos/images/tubo2.png" },
+        { "id" : "tubo3", "file" : "recursos/images/tubo3.png" },
+        { "id" : "tubo4", "file" : "recursos/images/tubo4.png" },
+        { "id" : "tubo5", "file" : "recursos/images/tubo5.png" },
+        { "id" : "tubo6", "file" : "recursos/images/tubo6.png" },
+        { "id" : "tubo7", "file" : "recursos/images/tubo7.png" },
+
+        { "id" : "title", "file": "recursos/images/titulo.png"},
+        { "id" : "fondoOficina", "file": "recursos/images/OficinaProyectosDesenfocada.png"},
+
+        { "id" : "tarotisa", "file": "recursos/images/Abigail Ampoure.png"},
+        { "id" : "secretario", "file": "recursos/images/Gargafiel Mustaki.png"},
+        { "id" : "contable", "file": "recursos/images/Glover Globus.png"},
+        { "id" : "campesino", "file": "recursos/images/Pancracio Warawa.png"},
+        { "id" : "artesano", "file": "recursos/images/Paulino Tinteiros.png"},
+        { "id" : "soldado", "file": "recursos/images/soldado (1).png"},
+        { "id" : "vagabundo", "file": "recursos/images/Vagabundo.png"}
     ]
 }
