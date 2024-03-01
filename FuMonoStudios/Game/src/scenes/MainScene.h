@@ -8,7 +8,7 @@ namespace ecs {
     private:
         void createManual();
         void createPaquete(int lv);
-        float timer = 10.0; 
+        float timer; 
         bool timerPaused;
     public:
         MainScene();
@@ -17,7 +17,7 @@ namespace ecs {
         void update() override;
         void init() override;
 
-        void controlTimer(bool onOff) { timerPaused = onOff; }
+        void switchTimer() { timerPaused = !timerPaused; }
         void setTimer(float time) { timer = time; }
     };
 }

@@ -34,7 +34,7 @@ void ecs::MainScene::update()
 	{
 		if (timer > 0) {
 			timer -= Time::getDeltaTime();
-			std::cout << timer << std::endl;
+			//std::cout << timer << std::endl;
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
@@ -44,7 +44,7 @@ void ecs::MainScene::update()
 void ecs::MainScene::init()
 {
 	setTimer(10.0);
-	controlTimer(false);
+	timerPaused = false;
 
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
