@@ -2,6 +2,7 @@
 #include "DragAndDrop.h"
 
 #include "Transform.h"
+#include "Gravity.h"
 #include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -10,7 +11,7 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0) {
 
 }
 
@@ -24,27 +25,29 @@ void DragAndDrop::initComponent() {
 
 	tri_ = ent_->getComponent<Trigger>();
 
+	grav_ = ent_->getComponent<Gravity>();
+
 	assert(tr_ != nullptr);
 
 }
 
 void DragAndDrop::update() {
 
-	
-
 	auto& ihdlr = ih();
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
-	
 
-	//Detección al clicar sobre el objeto
+	//Detecciï¿½n al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
+			if (grav_ != nullptr) {
+				grav_->setActive(false);
+			}
 
 			//Para que funcione sin ir al centro, con margen
 			differenceX = point.x - tr_->getPos().getX();;
@@ -52,12 +55,17 @@ void DragAndDrop::update() {
 
 		}
 
+		
+
 	}
 
-	//Detección al soltar el objeto
+	//Detecciï¿½n al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
 		dragging = false;
+		if (grav_ != nullptr) {
+			grav_->setActive(true);
+		}
 
 		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
 		tri_->activateEventsFromEntities();
@@ -72,7 +80,14 @@ void DragAndDrop::update() {
 		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
 
 
-		//Sin centrarse el objeto
-		tr_->setPos(point.x - differenceX, point.y - differenceY);
+		
+		// comprobacion para evitar sacar la entidad de la pantalla
+		if ((point.x - differenceX > -(tr_->getWidth() / 2))
+			&& (point.x - differenceX < sdlutils().width() - (tr_->getWidth() / 2)) 
+			&& (point.y - differenceY < sdlutils().height() - (tr_->getHeigth() / 6)))
+		{
+			//Sin centrarse el objeto
+			tr_->setPos(point.x - differenceX, point.y - differenceY);
+		}
 	}
 }

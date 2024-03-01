@@ -11,43 +11,95 @@ public:
 	Transform(float x, float y, float w, float h);
 	~Transform();
 
-
-	SDL_Rect* getRect() const;
+	/// <summary>
+	/// Devuelve un rectangulo correspondiente al espacio del transform
+	/// </summary>
+	/// <returns></returns>
+	SDL_Rect& getRect() const;
 	void update();
 	void render() const;
 
-	std::vector<Transform*> getChildren() const;
+	/// <summary>
+	/// Devuelve un puntero al padre de este transform
+	/// </summary>
+	/// <returns></returns>
 	Transform* getParent() const;
+	/// <summary>
+	/// Establece el padre de este transform
+	/// </summary>
+	/// <param name="newParent">puntero al padre</param>
 	void setParent(Transform* newParent);
-	void addChild(Transform* child);
-	void removeChild(Transform* child);
 
+	/// <summary>
+	/// Determina la posicion relativa del objeto
+	/// </summary>
+	/// <param name="pos"></param>
 	void setPos(Vector2D& pos);
+	/// <summary>
+	/// Determina la posicion relativa del objeto
+	/// </summary>
+	/// <param name="pos"></param>
 	void setPos(float x, float y);
-	void setRelativePos(Vector2D& pos);
-	void setRelativePos(float x, float y);
 
-	Vector2D getPos() { return worldPosition; };
-	Vector2D getRelativePos() { return relativePosition; };
-	float getWidth() { return width; };
-	float getHeith() { return height; };
+	/// <summary>
+	/// Devuelve la posiciï¿½n global del objeto
+	/// </summary>
+	/// <returns></returns>
+	Vector2D getPos() const;
+	/// <summary>
+	/// Devuelve la posicon relativa del objeto
+	/// </summary>
+	/// <returns></returns>
+	Vector2D getRelPos() const;
+
+	/// <summary>
+	/// Devuelve posicion del objeto en su centro en
+	/// vez de su punta abajo derecha
+	/// </summary>
+	Vector2D getCenter() const;
+
+	/// <summary>
+	/// Devuelve si el ratï¿½n esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
+	/// <summary>
+	/// Devuelve el ancho del transform
+	/// </summary>
+	/// <returns></returns>
+	float getWidth() const { return width; };
+	/// <summary>
+	/// Devuelve la altura del transform
+	/// </summary>
+	/// <returns></returns>
+	float getHeigth() const { return height; };
+
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
 
 private:
-	Vector2D worldPosition; // es la posicion en el mundo
-	Vector2D relativePosition; // es la posicion con respecto a la position del padre
+	/// <summary>
+	/// posicion relativa (al padre) del objeto
+	/// en el caso de no tener padre es la posicion global
+	/// </summary>
+	Vector2D position;
+	/// <summary>
+	/// ancho del objeto
+	/// </summary>
 	float width;
+	/// <summary>
+	/// altura del objeto
+	/// </summary>
 	float height;
-	/*
-	Segun tengo entendido no sale tan caro crear y destruir un sdl rect y
-	puede llegar a ser mucho mas arriesgado hacer que el propio transform tenga que
-	actualizar dos datos iguales cuado con accesores podría llegar a ser mucho mas sencillo
-	*/
-	SDL_Rect* rect;
+	/// <summary>
+	/// padre del objeto
+	/// </summary>
 	Transform* parent;
-	std::vector<Transform*> children;
+	/// <summary>
+	/// lista de los hijos del transform
+	/// </summary>
+	std::list<Transform*> childs;
 #ifdef _DEBUG
 	SDL_Renderer* renderer;
 #endif // _DEBUG
-
 };
 

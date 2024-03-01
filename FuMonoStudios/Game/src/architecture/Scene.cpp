@@ -2,6 +2,9 @@
 #include "Entity.h"
 #include "../components/Transform.h"
 #include <iostream>
+
+using objListIt = std::array<std::vector<Entity*>, ecs::layer::maxLayerId>::iterator;
+
 namespace ecs {
 	Scene::Scene():objs_() {
 		
@@ -27,28 +30,70 @@ namespace ecs {
 		for (auto ly : objs_)
 			for(auto e : ly)
 				e->render();
+		refresh();
 	}
+
+	//Método de borrado auxiliar que Pablo hizo ya que no sabía sobre el refresh
+	//Aún así me gustaría discutirlo porque puede que sea más eficiente que el que nos dió samir? Al menos para el contexto que queremos
+	//Sigue siendo algo especialito así que a lo mejor falla, no tuve tiempo de probarlo
+	//Y en el peor de los casos lo podemos usar para practicar EDA sksksskjskj
+	/*void Scene::deleteQueueEntities()
+	{
+		while (!del_.empty()) {
+			delete* del_.front().second;
+			objs_[del_.front().first].erase(del_.front().second);
+			del_.pop();
+		}
+	}*/
+
 	Entity* Scene::addEntity(ecs::layer::layerId lyId)
 	{
-		Entity* e = new Entity(this);
+		Entity* e = new Entity(this, lyId);
 		e->setAlive(true);
 		objs_[lyId].push_back(e);
+		auto it = --objs_[lyId].end();
+		e->addIterator(it);
 		return e;
 	}
-	void Scene::addEntityToColisionList(Entity* e) {
+
+	std::list<Entity*>::iterator Scene::addEntityToColisionList(Entity* e) {
 
 		colisionEntities.push_back(e);
-
+		std::list<Entity*>::iterator it = colisionEntities.end();
+		return --it;
 	}
+
+	//Parte del borrado de entidades hecho por Pablo. Ver comentarios linea 36 
+	/*void Scene::removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId lyId)
+	{
+		std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator> e;
+		e.first = lyId;
+		e.second = it;
+		del_.push(e);
+	}*/
+
+	void Scene::removeCollison(std::list<ecs::Entity*>::iterator it)
+	{
+		colisionEntities.erase(it);
+	}
+
+	//Se pasa una entidad para comprobar si esta choca con el resto de entidades que tienen un trigger
 	bool Scene::checkColisions(Entity* e) {
 
 		bool ret = false;
 
+		// cleon: iterador moderno. Es 2024.
 		for (auto it = colisionEntities.begin(); it != colisionEntities.end(); ++it) {
 
 			if ((*it) != e) {
 
-				if (SDL_HasIntersection(e->getComponent<Transform>()->getRect(), (*it)->getComponent<Transform>()->getRect())) {
+				//Se guardan los rect ya que con lo que devuelve getRect() el SDL_HasIntersection falla
+
+				SDL_Rect &rect1 = e->getComponent<Transform>()->getRect();
+
+				SDL_Rect &rect2 = (*it)->getComponent<Transform>()->getRect();
+
+				if (SDL_HasIntersection(&rect1, &rect2)) {
 
 					e->getComponent<Trigger>()->touchEntity((*it));
 
@@ -65,16 +110,20 @@ namespace ecs {
 	}
 	void Scene::refresh()
 	{
-		//objs_.erase(
-		//	std::remove_if(ents_.begin(), ents_.end(), [](Entity* e) {
-		//		if (e->isAlive()) {
-		//			return false;
-		//		}
-		//		else {
-		//			delete e;
-		//			return true;
-		//		}
-		//		}), //
-		//	ents_.end());
+		for (ecs::lyId_t gId = 0; gId < ecs::layer::maxLayerId; gId++) {
+			auto& grpEnts = objs_[gId];
+			grpEnts.erase(
+				std::remove_if(grpEnts.begin(), grpEnts.end(),
+					[gId](Entity* e) {
+						if (e->isAlive()) {
+							return false;
+						}
+						else {
+							delete e;
+							return true;
+						}
+					}), 
+				grpEnts.end());
+		}
 	}
 }
