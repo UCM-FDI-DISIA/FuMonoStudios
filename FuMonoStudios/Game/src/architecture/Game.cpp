@@ -23,6 +23,8 @@ Game::Game():exit(false){
 	renderer = sdl.renderer();
 	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
 
+	sceneChange = false;
+
 	loadScene(ecs::sc::MENU_SCENE);
 }
 
@@ -38,6 +40,12 @@ void Game::run()
 {
 	while (!exit)
 	{
+		if (sceneChange)
+		{
+			changeScene(scene1_, scene2_);
+			sceneChange = false;
+		}
+
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
@@ -48,10 +56,10 @@ void Game::run()
 			sdlutils().toggleFullScreen();
 		}
 		if (ih().isKeyDown(SDL_SCANCODE_E)) {
-			changeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+			requestChangeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
 		}
 		if (ih().isKeyDown(SDL_SCANCODE_W)) {
-			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+			requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
 
 		update();
@@ -102,6 +110,13 @@ void Game::killScene(ecs::sc::sceneId scene)
 		loadedScenes.erase(it);
 		std::cout << "Scene Killed"<<std::endl;
 	}
+}
+
+void Game::requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2)
+{
+	sceneChange = true;
+	scene1_ = scene1;
+	scene2_ = scene2;
 }
 
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {

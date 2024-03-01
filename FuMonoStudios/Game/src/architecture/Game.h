@@ -31,13 +31,14 @@ public:
 	/// </summary>
 	/// <param name="scene1"></param>
 	/// <param name="scene2"></param>
-	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
+	void requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 	inline void writeMessage() {
 		std::cout << "Funcionaaaaaaaaa" << std::endl;
 	};
 private:
 	void update();
 	void render();
+	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 	/// <summary>
 	/// lista de escenas a procesar
 	/// </summary>
@@ -50,6 +51,8 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
+	bool sceneChange;
+	ecs::sc::sceneId scene1_, scene2_;
 };
 
 inline Game& gm() {

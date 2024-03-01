@@ -70,7 +70,7 @@ void ecs::ExplorationScene::init()
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
 	Callback funcPress = [](Entity* a) {
-		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
+		gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
 	clickerPress->addEvent(funcPress);
 

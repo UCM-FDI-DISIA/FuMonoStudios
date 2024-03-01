@@ -37,7 +37,7 @@ void ecs::MainScene::update()
 			std::cout << timer << std::endl;
 		}
 		else
-			gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	}
 }
 
