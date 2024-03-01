@@ -56,7 +56,7 @@ void ecs::MainMenu::init()
 
 	}*/
 	Callback funcPress = [this](Entity* e) {
-		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
+		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE); //nuke
 
 	};
 	clickerPress->addEvent(funcPress);
