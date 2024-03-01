@@ -30,7 +30,7 @@ namespace ecs {
 		/// funcion llamada cada tic del juego
 		/// se encarga de la logica basica
 		/// </summary>
-		void update();
+		virtual void update();
 		/// <summary>
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>

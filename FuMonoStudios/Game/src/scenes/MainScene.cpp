@@ -16,50 +16,7 @@
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
-
-
-void ecs::MainScene::createManual()
-{
-	Entity* manual = addEntity();
-	Texture* manualTexture = &sdlutils().images().at("bookTest");
-	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
-	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
-	float scale = 0.075;
-	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
-	manual->addComponent<Gravity>();
-	RenderImage* manualRender = manual->addComponent<RenderImage>();
-	manual->addComponent<DragAndDrop>();
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
-	multTextures->addTexture(manualTexture);
-	multTextures->addTexture(manualTexture2);
-	multTextures->addTexture(buttonTexture);
-	multTextures->initComponent();
-	manualRender->setTexture(multTextures->getCurrentTexture());
-
-
-	Entity* button = addEntity(ecs::layer::FOREGROUND);
-	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-	buttonTransform->setParent(manualTransform);
-	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
-
-		multTextures->nextTexture();
-	});
-
-	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
-	buttonTransform2->setParent(manualTransform);
-	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
-
-		multTextures->previousTexture();
-	});
-
-	
-}
+#include "../Time.h"
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -68,6 +25,15 @@ ecs::MainScene::MainScene():Scene()
 
 ecs::MainScene::~MainScene()
 {
+}
+
+void ecs::MainScene::update()
+{
+	Scene::update();
+	if (timer > 0) {
+		timer -= Time::getDeltaTime();
+		std::cout << timer << std::endl;
+	}
 }
 
 void ecs::MainScene::init()
@@ -202,6 +168,48 @@ void ecs::MainScene::init()
 		});
 	
 }
+
+void ecs::MainScene::createManual()
+{
+	Entity* manual = addEntity();
+	Texture* manualTexture = &sdlutils().images().at("bookTest");
+	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	float scale = 0.075;
+	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	manual->addComponent<Gravity>();
+	RenderImage* manualRender = manual->addComponent<RenderImage>();
+	manual->addComponent<DragAndDrop>();
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
+	multTextures->addTexture(manualTexture);
+	multTextures->addTexture(manualTexture2);
+	multTextures->addTexture(buttonTexture);
+	multTextures->initComponent();
+	manualRender->setTexture(multTextures->getCurrentTexture());
+
+
+	Entity* button = addEntity(ecs::layer::FOREGROUND);
+	float buttonScale = 0.15;
+	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	buttonTransform->setParent(manualTransform);
+	button->addComponent<Clickeable>();
+	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+
+		multTextures->nextTexture();
+		});
+
+	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	buttonTransform2->setParent(manualTransform);
+	button2->addComponent<Clickeable>();
+	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+
+		multTextures->previousTexture();
+		});
+}
+
 void ecs::MainScene::createPaquete (int lv) {
 	Entity* Paquet = addEntity ();
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");

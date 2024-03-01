@@ -8,10 +8,12 @@ namespace ecs {
     private:
         void createManual();
         void createPaquete(int lv);
+        float timer = 10.0; 
     public:
         MainScene();
         virtual ~MainScene();
 
+        void update() override;
         void init() override;
     };
 }
