@@ -34,10 +34,14 @@ void ecs::MainScene::update()
 		timer -= Time::getDeltaTime();
 		std::cout << timer << std::endl;
 	}
+	else
+		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 }
 
 void ecs::MainScene::init()
 {
+	timer = 10.0;
+
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos

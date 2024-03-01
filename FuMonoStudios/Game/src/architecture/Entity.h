@@ -25,7 +25,7 @@ namespace ecs {
 			for (auto c : currCmps_) {
 				delete c;
 			}
-			std::cout << "Entidad destruida"<<std::endl;
+			//std::cout << "Entidad destruida"<<std::endl;
 		};
 
 		inline bool isAlive() const { return alive_; };

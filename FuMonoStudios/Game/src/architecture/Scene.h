@@ -56,6 +56,7 @@ namespace ecs {
 
 		void refresh();
 
+		void deleteAllEntities();
 	protected:
     /// <summary>
 		/// Vector de los objetos que pertenecen a la escena

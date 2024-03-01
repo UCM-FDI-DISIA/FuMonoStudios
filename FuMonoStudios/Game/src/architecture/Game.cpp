@@ -105,6 +105,8 @@ void Game::killScene(ecs::sc::sceneId scene)
 }
 
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
+	auto it = std::find(gameScenes.begin(), gameScenes.end(), gameScenes[scene1]);
+	(*it)->deleteAllEntities();
 	killScene(scene1);
 	loadScene(scene2);
 	/*if (loadedScenes.size() < 1) {
