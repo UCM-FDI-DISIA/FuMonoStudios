@@ -6,7 +6,7 @@
 
 class Transform;
 
-using Callback = std::function<void(ecs::Entity*)>;
+using Callback = std::function<void(void)>;
 
 class Clickeable : public ecs::Component {
 
@@ -20,7 +20,7 @@ public:
 
 	void update() override;
 
-	void addEvent(Callback event );
+	void addEvent(Callback& const event );
 
 private:
 

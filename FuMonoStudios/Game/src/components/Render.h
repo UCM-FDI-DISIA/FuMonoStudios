@@ -8,11 +8,10 @@ class RenderImage : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::IMAGE)
-	RenderImage(Texture* text = nullptr);
+	RenderImage(Texture*);
 	~RenderImage();
 	void initComponent() override;
 	void render() const;
-	void setTexture(Texture* texture);
 private:
 	/// <summary>
 	/// Textura que va a ser renderizada
