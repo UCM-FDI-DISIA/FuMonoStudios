@@ -37,8 +37,9 @@ namespace ecs {
 		void render();
 		/// <summary>
 		///	Borrar las entidades en la lista de borrado
+		/// No activo (ver comentarios de la línea 36 en Scene.cpp)
 		/// </summary>
-		void deleteQueueEntities();
+		//void deleteQueueEntities();
 
 		/// <summary>
 		/// Añade una entidad vacia a la escena
@@ -48,7 +49,8 @@ namespace ecs {
 
 		std::list<Entity*>::iterator addEntityToColisionList(Entity* e);
 
-		void removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId);
+		/// No activo (ver comentarios de la línea 36 en Scene.cpp)
+		//void removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId);
 
 		void removeCollison(std::list<Entity*>::iterator it);
 
@@ -64,7 +66,8 @@ namespace ecs {
     
 		std::list<Entity* > colisionEntities;
 
-		std::queue<std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator>> del_;
+		//Queue de borrado hecha por Pablo. Ver somentarios en Scene.cpp linea 36
+		//std::queue<std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator>> del_;
 	};
 }
 

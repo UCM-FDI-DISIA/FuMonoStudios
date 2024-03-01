@@ -33,14 +33,18 @@ namespace ecs {
 		refresh();
 	}
 
-	void Scene::deleteQueueEntities()
+	//Método de borrado auxiliar que Pablo hizo ya que no sabía sobre el refresh
+	//Aún así me gustaría discutirlo porque puede que sea más eficiente que el que nos dió samir? Al menos para el contexto que queremos
+	//Sigue siendo algo especialito así que a lo mejor falla, no tuve tiempo de probarlo
+	//Y en el peor de los casos lo podemos usar para practicar EDA sksksskjskj
+	/*void Scene::deleteQueueEntities()
 	{
 		while (!del_.empty()) {
 			delete* del_.front().second;
 			objs_[del_.front().first].erase(del_.front().second);
 			del_.pop();
 		}
-	}
+	}*/
 
 	Entity* Scene::addEntity(ecs::layer::layerId lyId)
 	{
@@ -59,13 +63,14 @@ namespace ecs {
 		return --it;
 	}
 
-	void Scene::removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId lyId)
+	//Parte del borrado de entidades hecho por Pablo. Ver comentarios linea 36 
+	/*void Scene::removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId lyId)
 	{
 		std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator> e;
 		e.first = lyId;
 		e.second = it;
 		del_.push(e);
-	}
+	}*/
 
 	void Scene::removeCollison(std::list<ecs::Entity*>::iterator it)
 	{

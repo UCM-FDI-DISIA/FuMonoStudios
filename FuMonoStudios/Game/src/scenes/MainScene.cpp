@@ -140,7 +140,7 @@ void ecs::MainScene::init()
 			else {
 				std::cout << "NUH UH\n";
 			}
-
+			entRec->setAlive(false);
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
@@ -159,6 +159,7 @@ void ecs::MainScene::init()
 			else {
 				std::cout << "NUH UH\n";
 			}
+			entRec->setAlive(false);
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
@@ -177,6 +178,7 @@ void ecs::MainScene::init()
 			else {
 				std::cout << "NUH UH\n";
 			}
+			entRec->setAlive(false);
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
@@ -195,6 +197,7 @@ void ecs::MainScene::init()
 			else {
 				std::cout << "NUH UH\n";
 			}
+			entRec->setAlive(false);
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
