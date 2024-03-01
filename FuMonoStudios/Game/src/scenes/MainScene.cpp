@@ -30,17 +30,21 @@ ecs::MainScene::~MainScene()
 void ecs::MainScene::update()
 {
 	Scene::update();
-	if (timer > 0) {
-		timer -= Time::getDeltaTime();
-		std::cout << timer << std::endl;
+	if(!timerPaused)
+	{
+		if (timer > 0) {
+			timer -= Time::getDeltaTime();
+			std::cout << timer << std::endl;
+		}
+		else
+			gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 	}
-	else
-		gm().changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 }
 
 void ecs::MainScene::init()
 {
-	timer = 10.0;
+	setTimer(10.0);
+	controlTimer(false);
 
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
