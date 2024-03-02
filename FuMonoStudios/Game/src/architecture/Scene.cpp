@@ -84,9 +84,9 @@ namespace ecs {
 
 				//Se guardan los rect ya que con lo que devuelve getRect() el SDL_HasIntersection falla
 
-				SDL_Rect &rect1 = e->getComponent<Transform>()->getRect();
+				SDL_Rect rect1 = e->getComponent<Transform>()->getRect();
 
-				SDL_Rect &rect2 = (*it)->getComponent<Transform>()->getRect();
+				SDL_Rect rect2 = (*it)->getComponent<Transform>()->getRect();
 
 				if (SDL_HasIntersection(&rect1, &rect2)) {
 

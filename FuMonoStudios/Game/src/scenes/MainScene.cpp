@@ -20,7 +20,7 @@
 
 void ecs::MainScene::createManual()
 {
-	Entity* manual = addEntity();
+	Entity* manual = addEntity(ecs::layer::MANUAL);
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
@@ -108,7 +108,7 @@ void ecs::MainScene::init()
 	createManual();
 
 	//Paquete de prueba
-	Entity* Paquet = addEntity();
+	Entity* Paquet = addEntity(ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
 	Paquet->addComponent<Gravity>();
@@ -205,7 +205,7 @@ void ecs::MainScene::init()
 	
 }
 void ecs::MainScene::createPaquete (int lv) {
-	Entity* Paquet = addEntity ();
+	Entity* Paquet = addEntity (ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform> (700.0f, 700.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
 	RenderImage* rd = Paquet->addComponent<RenderImage> (texturaPaquet);

@@ -52,6 +52,10 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			PACKAGE,
+			STAMP,
+			OFFICEELEMENTS,
+			MANUAL,
 			FOREGROUND,
 			_LAST_LAYER
 		};

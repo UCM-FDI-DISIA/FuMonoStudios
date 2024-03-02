@@ -86,7 +86,7 @@ bool Trigger::checkIfClosest() {
 
 	ecs::layer::layerId myLayer = ent_->getLayer();
 
-	while (it != entTouching.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer > (*it)->getLayer())) {
+	while (it != entTouching.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer >= (*it)->getLayer())) {
 
 		++it;
 
