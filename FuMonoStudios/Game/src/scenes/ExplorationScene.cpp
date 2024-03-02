@@ -11,6 +11,7 @@
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
+#include "../../GeneralData.h"
 
 ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
 {
@@ -23,6 +24,7 @@ ecs::ExplorationScene::~ExplorationScene()
 
 void ecs::ExplorationScene::init()
 {
+	generalData().GetEventoID();
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
 	// Caja CLicker

@@ -7,6 +7,7 @@
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
 #include "../Time.h"
+#include "../../GeneralData.h"
 //#include "Game.h"
 /*
 TODO
@@ -105,6 +106,22 @@ void Game::killScene(ecs::sc::sceneId scene)
 }
 
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
+	//Más adelante el changeScene deberá de tener más parámetros correspondientes a lo que se va a guardar en
+	//el GeneralData para compartir información entre escenas, pero por ahora nos bastamos con esto
+
+	//Estas comprobaciones van a ser una prueba de que se puede modificar la clase GeneralData, no estará así en la versión final
+	if (scene1 == ecs::sc::MENU_SCENE) {
+		generalData().SetFinalID(1);
+		generalData().SetEventoID(1);
+	}
+	else if (scene1 == ecs::sc::EXPLORE_SCENE) {
+		generalData().SetFinalID(2);
+		generalData().SetEventoID(2);
+	}
+	else if (scene1 == ecs::sc::MAIN_SCENE) {
+		generalData().SetFinalID(3);
+		generalData().SetEventoID(3);
+	}
 	killScene(scene1);
 	loadScene(scene2);
 	/*if (loadedScenes.size() < 1) {
