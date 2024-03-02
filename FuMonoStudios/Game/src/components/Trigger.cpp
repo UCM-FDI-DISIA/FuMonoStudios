@@ -2,6 +2,7 @@
 #include "Trigger.h"
 
 #include "Transform.h"
+#include "Clickeable.h"
 #include "../architecture/Entity.h"
 
 #include <assert.h>
@@ -20,7 +21,11 @@ void Trigger::initComponent() {
 
 	tr_ = ent_->getComponent<Transform>();
 
+	//asegurarse que si hay un trigger no hay un trigger clickeable
+	Clickeable* cl_ = ent_->getComponent<Clickeable>();
+
 	assert(tr_ != nullptr);
+	assert(cl_ == nullptr);
 
 }
 
