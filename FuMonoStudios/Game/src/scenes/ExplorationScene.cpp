@@ -11,9 +11,9 @@
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
-#include "../../GeneralData.h"
+#include "../GeneralData.h"
 
-ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_(), map()
+ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
 {
 	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 }
@@ -45,14 +45,15 @@ void ecs::ExplorationScene::init()
 		});*/
 
 		//TODO: probar que con un boton se puedan cargar otras escenas
-	CallbackClickeable cosa = [this]() {
+	/*Callback cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
-		map.renderBackGround();
+		map.render();
 		};
-	clicker->addEvent(cosa);
-	
-	/*auto boxBg = addEntity();
+	clicker->addEvent(cosa);*/
+
+	map.renderBackGround();
+	auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
 
@@ -60,55 +61,20 @@ void ecs::ExplorationScene::init()
 	auto textTr = dialogoBox->addComponent<Transform>(20, 20,100,100);
 	textTr->setParent(bgTr);
 	dialogoBox->addComponent<RenderImage>();
-	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);*/
+	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
 
 
-	/*Texture* texturaBoton = &sdlutils().images().at("press");
-	Entity* BotonPress = addEntity();
-
-	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
-	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
-
-	auto clickerPress = BotonPress->addComponent<Clickeable>();
-	Callback funcPress = [](Entity* a) {
-		gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
-	};
-	clickerPress->add*ent(funcPress);*/
-
-
-
-
-
-	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
-// la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
-// solucionar sacando las entidades de box al h y comprobando si punteros a entidad son null o con un booleano que
-// haga de flag)
-
-// Para Dani: Aqu� le hacemos clickable y le ponemos como callback el m�todo funcPress
-	Entity* BotonPress = addEntity();
 	Texture* texturaBoton = &sdlutils().images().at("press");
+	Entity* BotonPress = addEntity();
+
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
-	auto clickerPress = BotonPress->addComponent<Clickeable>();
-	CallbackClickeable funcPress = [this]() {
-		//Esto ser�a la caja del fondo (lo de SDL que se ve)
-		auto boxBg = addEntity();
-		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
-		boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
 
-		//Aqu� pillar�a el di�logo con el manager y crear�a la entidad que lo renderiza
-		auto dialogoBox = addEntity();
-		auto textTr = dialogoBox->addComponent<Transform>(20, 20, 100, 100);
-		textTr->setParent(bgTr);
-		dialogoBox->addComponent<RenderImage>();
-		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
-		};
+	auto clickerPress = BotonPress->addComponent<Clickeable>();
+
+	Callback funcPress = [](Entity* a) {
+		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
+	};
 	clickerPress->addEvent(funcPress);
 
-}
-
-void ecs::ExplorationScene::render()
-{
-	map.renderBackGround();
-	Scene::render();
 }

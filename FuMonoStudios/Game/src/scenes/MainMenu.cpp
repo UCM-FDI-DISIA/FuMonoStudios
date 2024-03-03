@@ -33,7 +33,7 @@ void ecs::MainMenu::init()
 	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
 	Titulo->addComponent<DragAndDrop>();
 
-	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Botï¿½n", *fuente, build_sdlcolor(0x000000ff));
+	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Botón", *fuente, build_sdlcolor(0x000000ff));
 	Entity* BotonPress = addEntity();
 	
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());

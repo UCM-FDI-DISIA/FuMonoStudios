@@ -9,14 +9,13 @@ namespace ecs {
     public:
         ExplorationScene();
         virtual ~ExplorationScene();
-
         void init() override;
-        virtual void render();
+
 
 
     private:
         DialogManager dialogMngr_;
-         Mapa map;
+         Mapa map = Mapa();
     };
 }
 

@@ -38,6 +38,7 @@ namespace ecs {
 		enum sceneId : scId_t {
 			MAIN_SCENE,
 			EXPLORE_SCENE,
+			MENU_SCENE,
 			_LAST_SCENE
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;
