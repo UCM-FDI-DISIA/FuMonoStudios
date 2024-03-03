@@ -2,16 +2,11 @@
 #include<list>
 #include <SDL.h>
 #include <array>
-#include "../utils/Singleton.h"
 #include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
-
-
-class Game: public Singleton<Game> {
-
-	friend Singleton<Game> ;
-
+class Game
+{
 public:
 	Game();
 	~Game();
@@ -59,8 +54,4 @@ private:
 	bool sceneChange;
 	ecs::sc::sceneId scene1_, scene2_; //una guarrada lo se, pero ahora mismo quiero que el juego no explote, ya se hara bonito
 };
-
-inline Game& gm() {
-	return *Game::instance();
-}
 

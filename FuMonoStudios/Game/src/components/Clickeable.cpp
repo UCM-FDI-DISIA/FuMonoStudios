@@ -26,7 +26,7 @@ void Clickeable::initComponent() {
 }
 	
 
-// cleon: "de hecho, no tenemos delta"
+
 void Clickeable::update() {
 
 	auto& ihdlr = ih();
@@ -35,14 +35,14 @@ void Clickeable::update() {
 
 		SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second};
 
-		if (SDL_PointInRect(&point, &tr_->getRect())) {
+		if (SDL_PointInRect(&point, tr_->getRect())) {
 
 			std::cout << "click" << std::endl;
 			// 
 			//Recorrido por las callbacks a las que esta suscrito este objeto
 			for (Callback call:eventsWhenClick) {
 
-				call(ent_);
+				call();
 			}
 
 		}
@@ -52,7 +52,7 @@ void Clickeable::update() {
 
 }
 
-void Clickeable::addEvent(Callback event) {
+void Clickeable::addEvent(Callback& const event) {
 
 	eventsWhenClick.push_back(event);
 

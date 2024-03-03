@@ -4,18 +4,16 @@
 #include <algorithm>
 #include "../sdlutils/InputHandler.h"
 #include "../scenes/MainScene.h"
-#include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
-#include "../Time.h"
-//#include "Game.h"
+#include "Game.h"
 /*
 TODO
-Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
+A�adir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
 Game::Game():exit(false){
 	SDLUtils::init("Mail To Atlantis",1600 , 900, "recursos/config/mail.resources.json");
-	
+
 	auto& sdl = *SDLUtils::instance();
 
 	sdl.showCursor();
@@ -47,7 +45,7 @@ void Game::run()
 		}
 
 		ih().refresh();
-		Uint32 startTime = sdlutils().virtualTimer().currTime();
+		Uint32 startTime = SDL_GetTicks();
 
 		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || ih().closeWindowEvent()) {
 			exit = true;
@@ -67,36 +65,24 @@ void Game::run()
 		render();
 		sdlutils().presentRenderer();
 
-		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime)/1000.0;
+		Uint32 frameTime = SDL_GetTicks() - startTime;
+
+		if (frameTime < 20)
+			SDL_Delay(20 - frameTime);
 	}
 }
-
-//void Game::writeMessage() {
-//
-//	
-//}
 
 /// <summary>
 /// carga la escena indicada por el Id
 /// se ejecutara la ultima de la cadena de proceso
 /// </summary>
 /// <param name="scene"></param>
-//void Game::loadScene(ecs::sc::sceneId scene)
-//{
-//	//llamar al init de la escena a cargar????
-//	gameScenes[scene]->init();
-//	//cargamos la escena
-//	loadedScenes.push_back(gameScenes[scene]);
-//}
 void Game::loadScene(ecs::sc::sceneId scene)
 {
-	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
-	if (it == loadedScenes.end()) {
-		//llamar al init de la escena a cargar????
-		gameScenes[scene]->init();
-		//cargamos la escena
-		loadedScenes.push_back(gameScenes[scene]);
-	}
+	//llamar al init de la escena a cargar????
+	gameScenes[scene]->init();
+	//cargamos la escena
+	loadedScenes.push_back(gameScenes[scene]);
 }
 
 /// <summary>

@@ -1,20 +1,7 @@
 #include "ExplorationScene.h"
-#include "../architecture/Entity.h"
-#include <iostream>
-#include "../sdlutils/SDLUtils.h"
-#include "../components/Transform.h"
-#include "../components/Render.h"
-#include "../components/Clickeable.h"
-#include "../components/DragAndDrop.h"
-#include "../components/Trigger.h"
-#include "../architecture/Game.h"
-#include <string>
-#include "../sdlutils/Texture.h"
-#include "../components/DialogComponent.h"
 
-ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
+ecs::ExplorationScene::ExplorationScene()
 {
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 }
 
 ecs::ExplorationScene::~ExplorationScene()

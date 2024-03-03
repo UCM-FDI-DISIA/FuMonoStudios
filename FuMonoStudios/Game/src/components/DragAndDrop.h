@@ -3,7 +3,7 @@
 #include "../architecture/Component.h"
 
 class Transform;
-class Gravity;
+
 class Trigger;
 
 class DragAndDrop : public ecs::Component {
@@ -21,8 +21,6 @@ public:
 private:
 
 	Transform* tr_;
-	
-	Gravity* grav_;
 
 	Trigger* tri_;
 
