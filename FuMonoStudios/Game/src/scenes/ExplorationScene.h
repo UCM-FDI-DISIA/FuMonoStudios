@@ -9,6 +9,12 @@ namespace ecs {
         virtual ~ExplorationScene();
 
         void init() override;
+        virtual void render();
+
+
+    private:
+        DialogManager dialogMngr_;
+         Mapa map;
     };
 }
 

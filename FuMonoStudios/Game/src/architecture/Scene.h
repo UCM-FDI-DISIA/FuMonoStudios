@@ -33,7 +33,7 @@ namespace ecs {
 		/// <summary>
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
-		void render();
+		virtual void render();
 		/// <summary>
 		/// Añade una entidad vacia a la escena
 		/// </summary>

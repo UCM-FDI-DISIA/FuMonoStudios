@@ -54,7 +54,7 @@ void ecs::MainMenu::init()
 		(*game).loadScene(ecs::sc::MAIN_SCENE);
 
 	}*/
-	Callback funcPress = [this](Entity* e) {
+	CallbackClickeable funcPress = [this]() {
 		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
 
 	};

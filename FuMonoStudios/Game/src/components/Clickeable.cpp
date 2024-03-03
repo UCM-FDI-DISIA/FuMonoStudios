@@ -39,21 +39,15 @@ void Clickeable::update() {
 
 			std::cout << "click" << std::endl;
 			// 
-			//Recorrido por las callbacks a las que esta suscrito este objeto
-			for (Callback call:eventsWhenClick) {
+			//Recorrido por las colbacks a las que est� suscrito este objeto
+			for (CallbackClickeable call:eventsWhenClick) {
 
 				call();
 			}
-
 		}
-
 	}
-
-
 }
 
-void Clickeable::addEvent(Callback& const event) {
-
+void Clickeable::addEvent(CallbackClickeable event) {
 	eventsWhenClick.push_back(event);
-
 }

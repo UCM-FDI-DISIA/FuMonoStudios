@@ -60,9 +60,9 @@ void ecs::MainScene::createManual()
 		});
 }
 
-ecs::MainScene::MainScene():Scene()
+ecs::MainScene::MainScene() :Scene()
 {
-	
+
 }
 
 ecs::MainScene::~MainScene()
