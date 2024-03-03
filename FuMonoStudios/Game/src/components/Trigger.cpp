@@ -7,12 +7,14 @@
 
 #include <assert.h>
 
-Trigger::Trigger() : tr_(nullptr){
 
+Trigger::Trigger(std::list<ecs::Entity*>::iterator it) : tr_(nullptr)
+{
+	collisionIterator = it;
 }
 
 Trigger::~Trigger() {
-
+	ent_->getMngr()->removeCollison(collisionIterator);
 }
 
 void Trigger::initComponent() {
@@ -34,7 +36,7 @@ void Trigger::update() {
 
 	if (ent_->getMngr()->checkColisions(ent_)) {
 
-		//Algo
+		//std::cout << "Choca << std::endl;
 
 	}
 
@@ -48,7 +50,7 @@ void Trigger::touchEntity(ecs::Entity* ent) {
 
 }
 
-//A�ade funcionalidad a la entidad si algo se posa sobre ella
+//Aï¿½ade funcionalidad a la entidad si algo se posa sobre ella
 void Trigger::addCallback(Callback event) {
 
 	eventList.push_back(event);
@@ -56,7 +58,7 @@ void Trigger::addCallback(Callback event) {
 }
 
 //activa los eventos de todas las entidades que tenga asociadas (que este tocando)
-//NOTA: en un futuro ser� necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
+//NOTA: en un futuro serï¿½ necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
 bool Trigger::activateEventsFromEntities() {
 
 	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {
@@ -82,7 +84,7 @@ bool Trigger::activateCallbacks(ecs::Entity* Ent) {
 
 }
 
-//Se comprueba si la entidad con este trigger esta m�s cercana a la pantalla que el resto de entidades con las que choca
+//Se comprueba si la entidad con este trigger esta más cercana a la pantalla que el resto de entidades con las que choca
 bool Trigger::checkIfClosest() {
 
 	auto it = entTouching.begin();

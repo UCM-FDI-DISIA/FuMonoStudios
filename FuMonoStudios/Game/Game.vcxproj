@@ -131,7 +131,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GeneralData.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
+    <ClCompile Include="src\GeneralData.cpp" />
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
@@ -141,7 +144,6 @@
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
-    <ClCompile Include="Paquete.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
@@ -166,7 +168,9 @@
     <ClCompile Include="src\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneralData.h" />
+    <ClInclude Include="src\components\Paquete.h" />
+    <ClInclude Include="src\components\PaqueteBuilder.h" />
+    <ClInclude Include="src\GeneralData.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
     <ClInclude Include="src\components\Herramientas.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -176,7 +180,6 @@
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
     <ClInclude Include="src\components\DragAndDrop.h" />
-    <ClInclude Include="Paquete.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />

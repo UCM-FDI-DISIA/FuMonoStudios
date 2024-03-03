@@ -1,6 +1,6 @@
 #pragma once
-#include "src/utils/Singleton.h"
-#include "src/GameConstants.h"
+#include "utils/Singleton.h"
+#include "GameConstants.h"
 
 class GeneralData : public Singleton<GeneralData>
 {

@@ -6,7 +6,7 @@
 #include "../scenes/MainScene.h"
 #include "../scenes/ExplorationScene.h"
 #include "../Time.h"
-#include "../../GeneralData.h"
+#include "../GeneralData.h"
 //#include "Game.h"
 /*
 TODO

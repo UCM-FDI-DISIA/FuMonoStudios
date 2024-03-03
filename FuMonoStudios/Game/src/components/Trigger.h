@@ -21,7 +21,7 @@ public:
 
 	__CMP_DECL__(ecs::cmp::TRIGGER)
 
-	Trigger();
+		Trigger(std::list<ecs::Entity*>::iterator it);
 
 	~Trigger();
 
@@ -37,6 +37,8 @@ public:
 
 	bool activateCallbacks(ecs::Entity*);
 
+	bool checkIfClosest();
+
 private:
 
 	Transform* tr_;
@@ -45,7 +47,7 @@ private:
 
 	std::list <Callback> eventList;
 
+	std::list<ecs::Entity*>::iterator collisionIterator;
 
 
 };
-
