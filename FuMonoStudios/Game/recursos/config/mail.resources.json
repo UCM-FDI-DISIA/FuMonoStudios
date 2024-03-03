@@ -2,6 +2,44 @@
     "images" : [
         { "id" : "placeHolder", "file" : "recursos/images/SDL_logo.png" },
         { "id" : "boxTest", "file" : "recursos/images/Box.png" },
-        { "id" : "selloTest", "file" : "recursos/images/Sello.png" }
+        { "id" : "selloTest", "file" : "recursos/images/Sello.png" },
+        { "id" : "bookTest", "file" : "recursos/images/book.png" },
+        { "id" : "flechaTest", "file" : "recursos/images/flecha.png" },
+        { "id" :  "demeter", "file" :  "recursos/images/Demeter.png"},
+        { "id" :  "hefesto", "file" :  "recursos/images/Hefesto.png"},
+        { "id" :  "hestia", "file" :  "recursos/images/Hestia.png"},
+        { "id" :  "artemisa", "file" :  "recursos/images/Artemisa.png"},
+        { "id" :  "hermes", "file" :  "recursos/images/Hermes.png"},
+        { "id" :  "apolo", "file" :  "recursos/images/Apolo.png"},
+        { "id" :  "poseidon", "file" :  "recursos/images/Poseidon.png"},
+
+        { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
+        { "id" : "selladorB", "file" : "recursos/images/selladorAzul.png" },
+        { "id" : "selladorC", "file" : "recursos/images/selladorVerde.png" },
+        { "id" : "selloA", "file" : "recursos/images/SelloRojo.png" },
+        { "id" : "selloB", "file" : "recursos/images/SelloAzul.png" },
+        { "id" : "selloC", "file" : "recursos/images/SelloVerde.png" },
+        { "id" : "press", "file": "recursos/images/press.png"},
+
+        { "id" : "selloAlimento", "file" : "recursos/images/Alimentos.png" },
+        { "id" : "selloArmas", "file" : "recursos/images/Armas.png" },
+        { "id" : "selloFragil", "file" : "recursos/images/Fragil.png" },
+        { "id" : "selloJoyas", "file" : "recursos/images/Joyas.png" },
+        { "id" : "selloMateriales", "file" : "recursos/images/Materiales.png" },
+        { "id" : "selloMedicina", "file" : "recursos/images/Medicina.png" },
+        { "id" : "selloPesoAlto", "file": "recursos/images/PesoAlto.png"},
+        { "id" : "selloPesoBajo", "file" : "recursos/images/PesoBajo.png" },
+        { "id" : "selloPesoMedio", "file": "recursos/images/PesoMedio.png"},
+
+        { "id" : "title", "file": "recursos/images/titulo.png"},
+        { "id" : "fondoOficina", "file": "recursos/images/OficinaProyectosDesenfocada.png"},
+
+        { "id" : "tarotisa", "file": "recursos/images/Abigail Ampoure.png"},
+        { "id" : "secretario", "file": "recursos/images/Gargafiel Mustaki.png"},
+        { "id" : "contable", "file": "recursos/images/Glover Globus.png"},
+        { "id" : "campesino", "file": "recursos/images/Pancracio Warawa.png"},
+        { "id" : "artesano", "file": "recursos/images/Paulino Tinteiros.png"},
+        { "id" : "soldado", "file": "recursos/images/soldado (1).png"},
+        { "id" : "vagabundo", "file": "recursos/images/Vagabundo.png"}
     ]
 }

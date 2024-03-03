@@ -1,24 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de origen\Json">
-      <UniqueIdentifier>{6cf59af3-de2e-432e-9113-227e83d8850c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Json">
-      <UniqueIdentifier>{a96239a1-06f0-43f3-82a2-0e1ae0fb696c}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="src\components\Gravity.cpp" />
+    <ClCompile Include="src\components\Clickeable.cpp" />
+    <ClCompile Include="src\components\DragAndDrop.cpp" />
+    <ClCompile Include="src\components\Render.cpp" />
+    <ClCompile Include="src\architecture\Component.cpp" />
+    <ClCompile Include="src\architecture\ecs.cpp" />
+    <ClCompile Include="src\architecture\Entity.cpp" />
+    <ClCompile Include="src\architecture\Game.cpp" />
+    <ClCompile Include="src\architecture\Scene.cpp" />
+    <ClCompile Include="src\components\Trigger.cpp" />
+    <ClCompile Include="src\json\JSON.cpp" />
+    <ClCompile Include="src\json\JSONValue.cpp" />
+    <ClCompile Include="src\json\json_demo.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\scenes\ExplorationScene.cpp" />
+    <ClCompile Include="src\scenes\MainScene.cpp" />
+    <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
+    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
+    <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
+    <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\utils\Collisions.cpp" />
+    <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="src\components\Transform.cpp" />
+    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Herramientas.cpp" />
+    <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="src\components\Mapa.cpp" />
+    <ClCompile Include="src\components\Felicidad.cpp" />
+    <ClCompile Include="src\scenes\MainMenu.cpp" />
+    <ClCompile Include="src\components\MoverTransform.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -199,5 +216,16 @@
   <ItemGroup>
     <None Include="src\sdlutils\RAEDME.md" />
     <None Include="Properties.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="recursos\images\Alimentos.png" />
+    <Image Include="recursos\images\PesoAlto.png" />
+    <Image Include="recursos\images\PesoMedio.png" />
+    <Image Include="recursos\images\PesoBajo.png" />
+    <Image Include="recursos\images\Fragil.png" />
+    <Image Include="recursos\images\Medicina.png" />
+    <Image Include="recursos\images\Armas.png" />
+    <Image Include="recursos\images\Materiales.png" />
+    <Image Include="recursos\images\Joyas.png" />
   </ItemGroup>
 </Project>
