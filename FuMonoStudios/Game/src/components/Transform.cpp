@@ -16,10 +16,16 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 
 Transform::~Transform() {
 	/// <summary>
+	/// destruimos la referencia que esta en su padre
+	/// </summary>
+	if(parent) parent->childs.erase(parentListIt);
+	/// <summary>
 	/// AL destruir un transform padre destruimos los hijos de este
 	/// </summary>
 	for (auto& c : childs) {
 		c->ent_->setAlive(false);
+		//puntero a nulo por seguridad
+		c->parent = nullptr;
 	}
 }
 
@@ -43,6 +49,8 @@ void Transform::setParent(Transform* newParent) {
 	if (parent != newParent) {
 		parent = newParent;
 		parent->childs.push_back(this);
+		parentListIt = parent->childs.end();
+		parentListIt--;
 		// Update relative pos				
 	}
 }

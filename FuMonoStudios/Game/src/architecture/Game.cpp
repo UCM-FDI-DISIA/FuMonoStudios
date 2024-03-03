@@ -22,7 +22,7 @@ Game::Game() :exit(false) {
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-	gameScenes = { new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
+	gameScenes = { new ecs::MainScene(),new ecs::ExplorationScene(),new ecs::MainMenu() };
 
 	loadScene(ecs::sc::MENU_SCENE);
 }
