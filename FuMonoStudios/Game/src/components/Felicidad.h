@@ -3,7 +3,6 @@
 
 //enums globales
 namespace pers{
-
 	enum Personajes { SECRETARIO_REAL, VAGABUNDO, CONTABLE, ARTESANO, TAROTISTA, SOLDADO, CAMPESINO };
 	enum EstadosDeFelicidad { MINIMA, BAJA, INTERMEDIA, FELIZ, MAXIFELIZ };
 }

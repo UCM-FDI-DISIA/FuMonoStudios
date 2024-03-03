@@ -12,7 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
 
-ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
+ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_(), map()
 {
 	dialogMngr_.setDialogues("resources/dialogos/dialogo.txt");
 }
@@ -49,7 +49,7 @@ void ecs::ExplorationScene::init()
 		map.renderBackGround();
 		};
 	clicker->addEvent(cosa);
-	/*
+	
 	auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
