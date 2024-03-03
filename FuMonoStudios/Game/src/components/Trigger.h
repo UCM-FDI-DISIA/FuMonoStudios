@@ -21,7 +21,7 @@ public:
 
 	__CMP_DECL__(ecs::cmp::TRIGGER)
 
-		Trigger(std::list<ecs::Entity*>::iterator it);
+	Trigger(std::list<ecs::Entity*>::iterator it);
 
 	~Trigger();
 
@@ -51,3 +51,4 @@ private:
 
 
 };
+

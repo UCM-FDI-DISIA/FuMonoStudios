@@ -43,7 +43,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+	button->getComponent<Clickeable>()->addEvent([multTextures]() {
 
 		multTextures->nextTexture();
 	});
@@ -53,7 +53,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
 
 		multTextures->previousTexture();
 	});
@@ -95,10 +95,10 @@ void ecs::MainScene::init()
 	Transform* transformBoton = BotonPress->addComponent<Transform> (200.0f, 400.0f, texturaBoton->width (), texturaBoton->height ());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage> (texturaBoton);
 	auto clickerPress = BotonPress->addComponent<Clickeable> ();
-	Callback funcPress = [this](Entity* e) {
+	CallbackClickeable funcPress = [this]() {
 		createPaquete (0);
 		};
-	clickerPress->addEvent (funcPress);
+	clickerPress->addEvent(funcPress);
 	
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);

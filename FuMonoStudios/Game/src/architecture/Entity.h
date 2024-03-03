@@ -10,14 +10,18 @@
 
 namespace ecs {
 	class Entity
-	/*
-	TODO:
-	Hacer metodos:
-		handleInput(SDL_Event& event)???
-	*/
+		/*
+		TODO:
+		Hacer metodos:
+			handleInput(SDL_Event& event)???
+		*/
 	{
 	public:
 		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
+			currCmps_.reserve(cmp::maxComponentId);
+		};
+
+		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -49,9 +53,7 @@ namespace ecs {
 		template<>
 		inline Trigger* addComponent<Trigger>() {
 
-			scene_->addEntityToColisionList(this);
-
-			Trigger* t = addComponent_aux<Trigger>();
+			Trigger* t = addComponent_aux<Trigger>(scene_->addEntityToColisionList(this));
 
 			return t;
 
@@ -75,7 +77,7 @@ namespace ecs {
 
 		}
 
-		
+
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>

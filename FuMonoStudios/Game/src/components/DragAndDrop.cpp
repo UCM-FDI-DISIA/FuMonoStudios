@@ -5,6 +5,7 @@
 #include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "Gravity.h"
 
 #include <SDL.h>
 #include <assert.h>
@@ -42,7 +43,7 @@ void DragAndDrop::update() {
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, tr_->getRect())) {
+		if (SDL_PointInRect(&point, &tr_->getRect())) {
 
 			dragging = true;
 			if (grav_ != nullptr) {

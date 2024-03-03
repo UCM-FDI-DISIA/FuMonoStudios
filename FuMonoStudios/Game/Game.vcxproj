@@ -157,6 +157,7 @@
     <ClCompile Include="src\json\json_demo.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\scenes\ExplorationScene.cpp" />
+    <ClCompile Include="src\scenes\MainMenu.cpp" />
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\scenes\ExplorationScene.h" />
+    <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
