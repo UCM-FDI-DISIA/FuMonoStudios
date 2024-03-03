@@ -7,12 +7,12 @@ Felicidad::Felicidad()
 	}
 }
 
-void Felicidad::aumentaFel(pers::Personajes p, uint f)
+void Felicidad::aumentaFel(pers::Personajes p, uint f) // cleon: no se�is salvajes de C++. Personajes por referencia (constante?)
 {
 	if (felicidades.at(p) + f <= 99)
 		felicidades[p] += f;
 	else
-		felicidades[p] = 99;
+		felicidades[p] = 99; // Toma 99.
 }
 
 void Felicidad::decrementaFel(pers::Personajes p, uint f)

@@ -31,7 +31,7 @@ public:
 	/// </summary>
 	enum TipoPaquete { Alimento,Medicinas,Joyas,Materiales,Armamento };
 	/// <summary>
-	/// enum con todas los tipos de medición de peso que pueden tener los paquetes
+	/// enum con todas los tipos de mediciï¿½n de peso que pueden tener los paquetes
 	/// </summary>
 	enum NivelPeso { Ninguno, Bajo, Medio, Alto };
 
@@ -46,7 +46,7 @@ public:
 	Distrito getDist() const;
 
 	/// <summary>
-	/// metodo que sella la calle una única vez en función del sellador
+	/// metodo que sella la calle una ï¿½nica vez en funciï¿½n del sellador
 	/// </summary>
 	void sellarCalle(Calle sello, Transform* trSellador);
 	/// <summary>
@@ -73,20 +73,20 @@ private:
 	/// usado para la generacion del string de la direccion
 	/// </summary>
 	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle;
-	//Variables que se generan automaticamente con información de los paquetes
+	//Variables que se generan automaticamente con informaciï¿½n de los paquetes
 	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
 	Calle miCalle;			//Variable con la calle a la que es enviada el paquete	
 	TipoPaquete miTipo;		//Variable con el tipo de cargamente que lleva el paquete
 	bool selloCorrecto;		//Variable que indica si el sello que contiene el paquete es correcto o no
-	NivelPeso miPeso;		//Variable que indica qué peso esta marcado en el paquete, o si este peso ni siquera está marcado
+	NivelPeso miPeso;		//Variable que indica quï¿½ peso esta marcado en el paquete, o si este peso ni siquera estï¿½ marcado
 	int peso;				//Variable que indica cuanto pesa el paquete para mostrar en la balanza
-	bool fragil;			//Variable que indica si tiene un sello de frágil puesto
+	bool fragil;			//Variable que indica si tiene un sello de frï¿½gil puesto
 
 	//Bool que indica si el paquete es en realidad una carta, y si debe ser representado como tal en el renderizado
 	bool carta;
 
 	//Variables que debe modificar el jugador
-	Calle calleMarcada;		//Variable que indica para qué distrito ha sido etiquetado el paquete
-	bool envuelto;			//Variable que indica si está envuelto o no el paquete
+	Calle calleMarcada;		//Variable que indica para quï¿½ distrito ha sido etiquetado el paquete
+	bool envuelto;			//Variable que indica si estï¿½ envuelto o no el paquete
 };
 

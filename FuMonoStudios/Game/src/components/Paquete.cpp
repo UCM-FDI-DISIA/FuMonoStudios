@@ -8,6 +8,7 @@
 #include <bitset>
 
 
+// cleon: 962 gatitos acaban de morir. con dolor.
 const int nivelFragil = 3;
 const int nivelPeso = 2;
 const int nivelSellos = 1;
@@ -17,13 +18,13 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-// posicion y tamaño Tipo sellos
+// posicion y tamaï¿½o Tipo sellos
 const int tipoSelloPos = 100;
 const int tipoSelloSize = 80;
-// posicion y tamaño Fragil sellos
+// posicion y tamaï¿½o Fragil sellos
 const int fragilSelloPos = 150;
 const int fragilSelloSize = 80;
-// posicion y tamaño Peso sellos
+// posicion y tamaï¿½o Peso sellos
 const int pesoSelloPos = 200;
 const int pesoSelloSize = 80;
 
@@ -69,18 +70,18 @@ void Paquete::initComponent() {
 }
 
 bool Paquete::Correcto() const{ 
-	//Método que comprueba si el paquete había sido generado sin errores (AKA: Si da false, eso significa que se tendría que devolver al remitente)
+	//Mï¿½todo que comprueba si el paquete habï¿½a sido generado sin errores (AKA: Si da false, eso significa que se tendrï¿½a que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) { //Si la calle es errónea, el paquete no es correcto
+	if (miCalle == Erronea) { //Si la calle es errï¿½nea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito == Erroneo) { //Si el distrito es erróneo, el paquete no es correcto
+	if (miDistrito == Erroneo) { //Si el distrito es errï¿½neo, el paquete no es correcto
 		resul = false;
 	}
 	else if (!selloCorrecto) {	//Si el sello no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no está entre los valores indicados, el paquete no es correcto
+	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no estï¿½ entre los valores indicados, el paquete no es correcto
 		if (miPeso == Bajo) {
 			if (peso > ligeroMax) resul = false;
 		}
@@ -91,7 +92,7 @@ bool Paquete::Correcto() const{
 			if (peso < medioMax) resul = false;
 		}		
 	}
-	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete será correcto y devolverá true. Si en algún momento ha fallado, devolverá false
+	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete serï¿½ correcto y devolverï¿½ true. Si en algï¿½n momento ha fallado, devolverï¿½ false
 }
 
 Paquete::Distrito Paquete::getDist() const

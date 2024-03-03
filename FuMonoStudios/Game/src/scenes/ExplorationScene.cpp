@@ -1,7 +1,21 @@
 #include "ExplorationScene.h"
+#include "../architecture/Entity.h"
+#include <iostream>
+#include "../sdlutils/SDLUtils.h"
+#include "../components/Transform.h"
+#include "../components/Render.h"
+#include "../components/Clickeable.h"
+#include "../components/DragAndDrop.h"
+#include "../components/Trigger.h"
+#include "../architecture/Game.h"
+#include <string>
+#include "../sdlutils/Texture.h"
+#include "../components/DialogComponent.h"
+#include "../../GeneralData.h"
 
 ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_(), map()
 {
+	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 }
 
 ecs::ExplorationScene::~ExplorationScene()
@@ -10,6 +24,7 @@ ecs::ExplorationScene::~ExplorationScene()
 
 void ecs::ExplorationScene::init()
 {
+	generalData().GetEventoID();
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
 	// Caja CLicker

@@ -5,10 +5,12 @@
 #include "../sdlutils/InputHandler.h"
 #include "../scenes/MainScene.h"
 #include "../scenes/ExplorationScene.h"
-#include "Game.h"
+#include "../Time.h"
+#include "../../GeneralData.h"
+//#include "Game.h"
 /*
 TODO
-A�adir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
+Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
 Game::Game():exit(false){
@@ -45,7 +47,7 @@ void Game::run()
 		}
 
 		ih().refresh();
-		Uint32 startTime = SDL_GetTicks();
+		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
 		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || ih().closeWindowEvent()) {
 			exit = true;
@@ -65,10 +67,7 @@ void Game::run()
 		render();
 		sdlutils().presentRenderer();
 
-		Uint32 frameTime = SDL_GetTicks() - startTime;
-
-		if (frameTime < 20)
-			SDL_Delay(20 - frameTime);
+		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime)/1000.0;
 	}
 }
 
@@ -108,6 +107,22 @@ void Game::requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2)
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 	auto it = std::find(gameScenes.begin(), gameScenes.end(), gameScenes[scene1]);
 	(*it)->deleteAllEntities();
+	//M�s adelante el changeScene deber� de tener m�s par�metros correspondientes a lo que se va a guardar en
+	//el GeneralData para compartir informaci�n entre escenas, pero por ahora nos bastamos con esto
+
+	//Estas comprobaciones van a ser una prueba de que se puede modificar la clase GeneralData, no estar� as� en la versi�n final
+	if (scene1 == ecs::sc::MENU_SCENE) {
+		generalData().SetFinalID(1);
+		generalData().SetEventoID(1);
+	}
+	else if (scene1 == ecs::sc::EXPLORE_SCENE) {
+		generalData().SetFinalID(2);
+		generalData().SetEventoID(2);
+	}
+	else if (scene1 == ecs::sc::MAIN_SCENE) {
+		generalData().SetFinalID(3);
+		generalData().SetEventoID(3);
+	}
 	killScene(scene1);
 	loadScene(scene2);
 	/*if (loadedScenes.size() < 1) {

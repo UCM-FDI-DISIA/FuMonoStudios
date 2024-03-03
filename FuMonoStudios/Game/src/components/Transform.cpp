@@ -30,7 +30,7 @@ Transform::~Transform() {
 void Transform::update() {
 #ifdef _DEBUG
 
-	//se actualiza la posición del render del objeto continuamente
+	//se actualiza la posiciï¿½n del render del objeto continuamente
 	rect->x = worldPosition.getX();
 
 	rect->y = worldPosition.getY();
@@ -55,7 +55,7 @@ Transform* Transform::getParent() const {
 	return parent;
 }
 
-// Los objetos solo pueden tener un único padre
+// Los objetos solo pueden tener un ï¿½nico padre
 void Transform::setParent(Transform* newParent) {
 	if (parent != newParent) {
 		parent = newParent;
@@ -85,12 +85,13 @@ void Transform::setPos(Vector2D& pos)
 	}
 }
 
-//Cambia la posicion del objeto
-void Transform::setPos(float x, float y) {
-	worldPosition = Vector2D(x, y);
-	if (parent) {
-		relativePosition = Vector2D(x - parent->getPos().getX(), y - parent->getPos().getY());
-	}
+Vector2D Transform::getCenter() const {
+	return Vector2D(position.getX() - (width / 2), position.getY() - (height / 2));
+}
+
+//Devuelve la posiciï¿½n relativa
+Vector2D Transform::getRelPos() const {
+	return position;
 }
 
 //Cambia la posicion relativa del objeto

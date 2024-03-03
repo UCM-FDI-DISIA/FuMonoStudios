@@ -3,9 +3,10 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr) {}
+RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr),ownsTexture_() {}
 
-RenderImage::~RenderImage() {}
+RenderImage::~RenderImage() {
+}
 
 void RenderImage::initComponent() {
 	myTransform = ent_->getComponent<Transform>();

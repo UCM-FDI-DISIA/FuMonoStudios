@@ -6,6 +6,9 @@ namespace ecs {
     class MainScene :public Scene
     {
     private:
+        int fails;
+        int correct;
+
         void createManual();
         void createPaquete(int lv);
         float timer; 

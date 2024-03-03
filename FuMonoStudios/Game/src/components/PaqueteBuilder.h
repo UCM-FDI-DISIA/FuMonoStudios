@@ -1,41 +1,42 @@
 #pragma once
 #include "Paquete.h"
+#include "../architecture/Entity.h"
 #include <stdlib.h>
 
 
-const int pesadoMax = 75;	//Límite del peso máximo de paquetes pesados 
-const int medioMax = 50;	//Límite del peso máximo de paquetes de peso medio 
-const int ligeroMax = 25;	//Límite del peso máximo de paquetes ligeros
-const int pesoCartaMax = 2;	//Límite del peso máximo de cartas
+const int pesadoMax = 75;	//Lï¿½mite del peso mï¿½ximo de paquetes pesados 
+const int medioMax = 50;	//Lï¿½mite del peso mï¿½ximo de paquetes de peso medio 
+const int ligeroMax = 25;	//Lï¿½mite del peso mï¿½ximo de paquetes ligeros
+const int pesoCartaMax = 2;	//Lï¿½mite del peso mï¿½ximo de cartas
 
 class PaqueteBuilder
 {
 private:
-	Paquete* Nivel0() {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles erróneas
+	Paquete* Nivel0() {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles errï¿½neas
 		return new Paquete(DistritoRND(),CalleRND(35), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false,false);
 	}
-	Paquete* Nivel1() {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
+	Paquete* Nivel1() {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo errï¿½neos
 		return new Paquete(DistritoRND(), CalleRND(20), TipoRND(), BoolRND(35), Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
 	}
-	Paquete* Nivel2() { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, así como calles erróneas y sellos de tipo erróneos
+	Paquete* Nivel2() { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, asï¿½ como calles errï¿½neas y sellos de tipo errï¿½neos
 		int peso;
-		Paquete::NivelPeso Nv = PesoRND(25, 30, peso);
-		return new Paquete(DistritoRND(), CalleRND(15), TipoRND(), BoolRND(20), Nv, peso, false, false);
+		Paquete::NivelPeso Nv = PesoRND (25, 30, peso);
+		Paquete* pq = ent->addComponent<Paquete> (DistritoRND (), CalleRND (15), TipoRND (), BoolRND (20), Nv, peso, false, false);
 	}
-	Paquete* Nivel3() { //Un paquete que puede tener peso, sellos de frágil, calles erróneas y sellos de tipo erróneos
+	Paquete* Nivel3() { //Un paquete que puede tener peso, sellos de frï¿½gil, calles errï¿½neas y sellos de tipo errï¿½neos
 		int peso;
 		Paquete::NivelPeso Nv = PesoRND(20, 25, peso);
-		return new Paquete(DistritoRND(), CalleRND(15), TipoRND(), BoolRND(20), Nv, peso, BoolRND(80), false);
+		Paquete* pq = ent->addComponent<Paquete> (DistritoRND (), CalleRND (15), TipoRND (), BoolRND (20), Nv, peso, BoolRND (80), false);		
 	}
 	Paquete* Carta() {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
 		return new Paquete(DistritoRND(), CalleRND(35), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesoCartaMax + 1, false, true);
 	}
 
-	Paquete::Distrito DistritoRND();	//Método que elige un distrito aleatorio de los que hay
-	Paquete::TipoPaquete TipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
-	Paquete::Calle CalleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
-	bool BoolRND(int probFalse);		//Método que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
-	Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
+	Paquete::Distrito DistritoRND();	//Mï¿½todo que elige un distrito aleatorio de los que hay
+	Paquete::TipoPaquete TipoRND();		//Mï¿½todo que elige un tipo de paquete aleatorio entre los que hay
+	Paquete::Calle CalleRND(int probError);	//Mï¿½todo que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
+	bool BoolRND(int probFalse);		//Mï¿½todo que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
+	Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso);	//Mï¿½todo que elige si un paquete tiene peso, y si es errï¿½neo, devolviendo un peso para el paquete con la variable "peso"
 	/// <summary>
 	/// mapa que relaciona cada distrito con su calle
 	/// usado para la generacion del string de la direccion
@@ -43,24 +44,23 @@ private:
 	std::unordered_map<Paquete::Distrito, std::vector<std::string>> distrito_calle;
 
 public:
-	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
-	Paquete* PaqueteRND(int level) {
+	//Mï¿½todo al que se llama que devuelve un Paquete generado aleatoriamente 
+	void PaqueteRND(int level, ecs::Entity *ent) {
 		
 		if (level == 0) {
-			return Nivel0();
+			Nivel0(ent);
 		}
 		else if (level == 1) {
-			return Nivel1();
+			Nivel1(ent);
 		}
 		else if (level == 2) {
-			return Nivel2();
+			Nivel2(ent);
 		}
 		else if (level == 3) {
-			return Nivel3();
-		}
-		else return nullptr;
+			Nivel3(ent);
+		}				
 	}
-	//Método al que se llama que devuelve una Carta generada aleatoriamente 
+	//Mï¿½todo al que se llama que devuelve una Carta generada aleatoriamente 
 	Paquete* CartaRND() {
 		return Carta();
 	}

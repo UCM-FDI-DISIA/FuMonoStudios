@@ -21,7 +21,7 @@
 
 void ecs::MainScene::createManual()
 {
-	Entity* manual = addEntity();
+	Entity* manual = addEntity(ecs::layer::MANUAL);
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
@@ -47,7 +47,7 @@ void ecs::MainScene::createManual()
 	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
 
 		multTextures->nextTexture();
-		});
+	});
 
 	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
 	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
@@ -57,10 +57,12 @@ void ecs::MainScene::createManual()
 	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
 
 		multTextures->previousTexture();
-		});
+	});
+
+	
 }
 
-ecs::MainScene::MainScene() :Scene()
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0)
 {
 
 }
@@ -152,6 +154,31 @@ void ecs::MainScene::init()
 
 	createManual();
 
+	
+	//TUBOS Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
+
+	float scaleTubos = 0.3f;
+	Entity* tubDem = addEntity(ecs::layer::BACKGROUND);
+	Texture* texturaDem = &sdlutils().images().at("tubo1");
+	tubDem->addComponent<Transform>(120, -40, texturaDem->width() *scaleTubos, texturaDem->height()*scaleTubos);
+	tubDem->addComponent<RenderImage>(texturaDem);
+	Trigger* demTri = tubDem->addComponent<Trigger>();
+	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>() != nullptr) {
+			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
+				std::cout << "the end is nigh\n";
+				correct++;
+			}
+			else {
+				std::cout << "NUH UH\n";
+				fails++;
+			}
+
+		}
+		else {
+			std::cout << "eso no es un paquete gañan\n";
+		}
 		});
 
 	//TODO: probar que con un boton se puedan cargar otras escenas

@@ -27,10 +27,40 @@ public:
 	void setRelativePos(Vector2D& pos);
 	void setRelativePos(float x, float y);
 
-	Vector2D getPos() { return worldPosition; };
-	Vector2D getRelativePos() { return relativePosition; };
-	float getWidth() { return width; };
-	float getHeith() { return height; };
+	/// <summary>
+	/// Devuelve la posiciï¿½n global del objeto
+	/// </summary>
+	/// <returns></returns>
+	Vector2D getPos() const;
+	/// <summary>
+	/// Devuelve la posicon relativa del objeto
+	/// </summary>
+	/// <returns></returns>
+	Vector2D getRelPos() const;
+
+	/// <summary>
+	/// Devuelve posicion del objeto en su centro en
+	/// vez de su punta abajo derecha
+	/// </summary>
+	Vector2D getCenter() const;
+
+	/// <summary>
+	/// Devuelve si el ratï¿½n esta encima de la entidad
+	/// </summary>
+	bool getIfPointerIn() const;
+	/// <summary>
+	/// Devuelve el ancho del transform
+	/// </summary>
+	/// <returns></returns>
+	float getWidth() const { return width; };
+	/// <summary>
+	/// Devuelve la altura del transform
+	/// </summary>
+	/// <returns></returns>
+	float getHeigth() const { return height; };
+
+	void setWidth(float newWidth) { width = newWidth; }
+	void setHeith(float newHeith) { height = newHeith; }
 
 private:
 	Vector2D worldPosition; // es la posicion en el mundo
@@ -40,7 +70,7 @@ private:
 	/*
 	Segun tengo entendido no sale tan caro crear y destruir un sdl rect y
 	puede llegar a ser mucho mas arriesgado hacer que el propio transform tenga que
-	actualizar dos datos iguales cuado con accesores podría llegar a ser mucho mas sencillo
+	actualizar dos datos iguales cuado con accesores podrï¿½a llegar a ser mucho mas sencillo
 	*/
 	SDL_Rect* rect;
 	Transform* parent;
