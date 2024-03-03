@@ -7,7 +7,7 @@ namespace ecs {
 		
 	}
 	Scene::~Scene() {
-		for (auto ly : objs_) {
+		for (auto& ly : objs_) {
 			for(auto e : ly)
 				delete e;
 		}
@@ -19,12 +19,12 @@ namespace ecs {
 	}
 	void Scene::update() {
 		//std::cout << "Hola" << std::endl;
-		for (auto ly : objs_)
+		for (auto& ly : objs_)
 			for(auto e : ly)
 				e->update();
 	}
 	void Scene::render() {
-		for (auto ly : objs_)
+		for (auto& ly : objs_)
 			for(auto e : ly)
 				e->render();
 	}
@@ -76,5 +76,13 @@ namespace ecs {
 		//		}
 		//		}), //
 		//	ents_.end());
+	}
+	void Scene::deleteAllEntities()
+	{
+		for (auto& ly : objs_) {
+			for (auto e : ly)
+				delete e;
+			ly.clear();
+		}
 	}
 }

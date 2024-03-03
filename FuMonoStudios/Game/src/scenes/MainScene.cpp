@@ -8,7 +8,15 @@
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
 #include "../architecture/Game.h"
-
+#include <string>
+#include "../sdlutils/Texture.h"
+#include "../components/PackageChecker.h"
+#include "../components/Paquete.h"
+#include "../components/PaqueteBuilder.h"
+#include "../components/Herramientas.h"
+#include "../components/MultipleTextures.h"
+#include "../components/Gravity.h"
+#include "../Time.h"
 
 ecs::MainScene::MainScene():Scene()
 {
@@ -19,9 +27,26 @@ ecs::MainScene::~MainScene()
 {
 }
 
+void ecs::MainScene::update()
+{
+	Scene::update();
+	if(!timerPaused)
+	{
+		if (timer > 0) {
+			timer -= Time::getDeltaTime();
+			//std::cout << timer << std::endl;
+		}
+		else
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+	}
+}
+
 void ecs::MainScene::init()
 {
-	std::cout << "Hola Main"<<std::endl;
+	setTimer(10.0);
+	timerPaused = false;
+
+	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
 	
@@ -63,9 +88,59 @@ void ecs::MainScene::init()
 	Transform* trSello = selloPrueba->addComponent<Transform>(700.0f, 100.0f, selloTexture->width() * scale, selloTexture->height() * scale);
 	RenderImage* rd1 = selloPrueba->addComponent<RenderImage>(selloTexture);
 	
-	// Posición Relativa
+	// Posiciï¿½n Relativa
 	e->addChild(trSello);
 	trSello->setRelativePos(100.0f, 100.0f);
 }
 
+void ecs::MainScene::createManual()
+{
+	Entity* manual = addEntity();
+	Texture* manualTexture = &sdlutils().images().at("bookTest");
+	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	float scale = 0.075;
+	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	manual->addComponent<Gravity>();
+	RenderImage* manualRender = manual->addComponent<RenderImage>();
+	manual->addComponent<DragAndDrop>();
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
+	multTextures->addTexture(manualTexture);
+	multTextures->addTexture(manualTexture2);
+	multTextures->addTexture(buttonTexture);
+	multTextures->initComponent();
+	manualRender->setTexture(multTextures->getCurrentTexture());
 
+
+	Entity* button = addEntity(ecs::layer::FOREGROUND);
+	float buttonScale = 0.15;
+	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	buttonTransform->setParent(manualTransform);
+	button->addComponent<Clickeable>();
+	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+
+		multTextures->nextTexture();
+		});
+
+	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	buttonTransform2->setParent(manualTransform);
+	button2->addComponent<Clickeable>();
+	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+
+		multTextures->previousTexture();
+		});
+}
+
+void ecs::MainScene::createPaquete (int lv) {
+	Entity* Paquet = addEntity ();
+	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
+	Transform* trPq = Paquet->addComponent<Transform> (700.0f, 700.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
+	RenderImage* rd = Paquet->addComponent<RenderImage> (texturaPaquet);
+	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop> ();
+	Paquet->addComponent<Gravity> ();
+	PaqueteBuilder a;
+	a.PaqueteRND (lv, Paquet);
+}

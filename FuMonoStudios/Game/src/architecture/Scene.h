@@ -29,7 +29,7 @@ namespace ecs {
 		/// funcion llamada cada tic del juego
 		/// se encarga de la logica basica
 		/// </summary>
-		void update();
+		virtual void update();
 		/// <summary>
 		/// funcion dedicada a pintar las entidades en pantalla
 		/// </summary>
@@ -46,6 +46,7 @@ namespace ecs {
 
 		void refresh();
 
+		void deleteAllEntities();
 	protected:
     /// <summary>
 		/// Vector de los objetos que pertenecen a la escena

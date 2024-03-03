@@ -37,9 +37,9 @@ void Clickeable::update() {
 
 		if (SDL_PointInRect(&point, tr_->getRect())) {
 
-			//std::cout << "click" << std::endl;
+			std::cout << "click" << std::endl;
 			// 
-			//Recorrido por las colbacks a las que está suscrito este objeto
+			//Recorrido por las callbacks a las que esta suscrito este objeto
 			for (Callback call:eventsWhenClick) {
 
 				call();

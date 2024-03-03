@@ -8,7 +8,7 @@
 #include "Game.h"
 /*
 TODO
-Añadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
+Aï¿½adir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
 */
 
 Game::Game():exit(false){
@@ -19,8 +19,11 @@ Game::Game():exit(false){
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-	gameScenes = {new ecs::MainScene(),new ecs::ExplorationScene()};
-	loadScene(ecs::sc::MAIN_SCENE);
+	gameScenes = {new ecs::MainScene(),new ecs::MainMenu(),new ecs::ExplorationScene() };
+
+	sceneChange = false;
+
+	loadScene(ecs::sc::MENU_SCENE);
 }
 
 Game::~Game()
@@ -35,6 +38,12 @@ void Game::run()
 {
 	while (!exit)
 	{
+		if (sceneChange)
+		{
+			changeScene(scene1_, scene2_);
+			sceneChange = false;
+		}
+
 		ih().refresh();
 		Uint32 startTime = SDL_GetTicks();
 
@@ -43,6 +52,12 @@ void Game::run()
 		}
 		if (ih().isKeyDown(SDL_SCANCODE_F)) {
 			sdlutils().toggleFullScreen();
+		}
+		if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			requestChangeScene(ecs::sc::MENU_SCENE, ecs::sc::MAIN_SCENE);
+		}
+		if (ih().isKeyDown(SDL_SCANCODE_W)) {
+			requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
 
 		update();
@@ -81,6 +96,24 @@ void Game::killScene(ecs::sc::sceneId scene)
 		loadedScenes.erase(it);
 		std::cout << "Scene Killed"<<std::endl;
 	}
+}
+
+void Game::requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2)
+{
+	sceneChange = true;
+	scene1_ = scene1;
+	scene2_ = scene2;
+}
+
+void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
+	auto it = std::find(gameScenes.begin(), gameScenes.end(), gameScenes[scene1]);
+	(*it)->deleteAllEntities();
+	killScene(scene1);
+	loadScene(scene2);
+	/*if (loadedScenes.size() < 1) {
+		loadScene(scene2);
+	}*/
+	
 }
 
 /// <summary>
