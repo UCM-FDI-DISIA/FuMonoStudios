@@ -12,7 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
 
-ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_(), map()
+ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_(), map(this)
 {
 	dialogMngr_.setDialogues("resources/dialogos/dialogo.txt");
 }
@@ -26,7 +26,7 @@ void ecs::ExplorationScene::init()
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
 	// Caja CLicker
-	Entity* Prueba2 = addEntity();
+	/*Entity* Prueba2 = addEntity();
 	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
 	float scale = 0.2;
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
@@ -34,22 +34,18 @@ void ecs::ExplorationScene::init()
 	auto clicker = Prueba2->addComponent<Clickeable>();
 	Prueba2->addComponent<Trigger>();
 
-
-	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
-		std::cout << "a" << std::endl;
-		map.navigate("Hermes");
-		sdlutils().clearRenderer();
-		map.render();
-		});*/
-
 		//TODO: probar que con un boton se puedan cargar otras escenas
 	CallbackClickeable cosa = [this]() {
 		map.navigate("Artemisa");
 		sdlutils().clearRenderer();
 		map.renderBackGround();
 		};
-	clicker->addEvent(cosa);
+	clicker->addEvent(cosa);*/
 	
+
+
+
+
 	/*auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));

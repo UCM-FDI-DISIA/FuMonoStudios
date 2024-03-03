@@ -1,11 +1,12 @@
 #pragma once
 #include "../sdlutils/Texture.h"
+#include "../architecture/ecs.h";
+#include "../architecture/Entity.h"
+#include "../architecture/Scene.h"
 #include <unordered_map>
 #include <vector>
 #include <array>
 
-
-class Entity;
 /// <summary>
 /// Struct que guarda la información de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
 /// puedenavegar a él, un mapa con las direcciones que conectan a él (a las que no tiene por qué poder navegarse),
@@ -17,7 +18,7 @@ class Entity;
 /// No hay destructora porque no se genera nueva memoria dinámica.
 /// </summary>
 struct Lugar {
-public:
+private:
 	//Puntero a la textura del fondo
 	Texture* backGround;
 
@@ -25,21 +26,22 @@ public:
 	bool navegable;
 
 	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por qué poderse navegar)
-	std::unordered_map<std::string,Lugar> directions;
+	std::unordered_map<std::string,Lugar*> directions;
 
-	//vector de entidades del lugar
-	//std::array<std::vector<Entity*>, ecs::layer::maxLayerId> ents;
+	// Las entidades del lugar se almacenan como las de la escena, en vectores de objetos organizados en layouts
+	std::vector<ecs::Entity*> ents;
 
+public:
 	//constructoras
-	Lugar() /*ents()*/ {};
-	Lugar(Texture* t, bool n /*Character* c*/) : /*ents()*/backGround(t), navegable(n) /*character(c)*/ {};
+	Lugar(): ents(){};
+	Lugar(Texture* t, bool n) : ents(), backGround(t), navegable(n) /*character(c)*/ {};
 
 	/// <summary>
 	/// Método para añadir direcciones al mapa del lugar
 	/// </summary>
 	/// <param name="placeDir"></param>
 	/// <param name="place"></param>
-	void addDirections(std::string placeDir, Lugar place);
+	void addDirections(std::string placeDir, Lugar* place);
 
 	/// <summary>
 	/// Método para comprobar la navegabilidad a ciero lugar
@@ -69,7 +71,7 @@ public:
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
 	/// USAR DESPUÉS DE HABER NAVEGADO
 	/// </summary>
-	void createObjects();
+	void addObjects(ecs::Entity* e);
 };
 
 /// <summary>
@@ -87,6 +89,8 @@ public:
 class Mapa
 {
 private:
+	ecs::Scene* mScene;
+
 	//Puntero al lugar actual
 	Lugar* actualPlace;
 
@@ -122,11 +126,16 @@ private:
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
 	/// USAR DESPUÉS DE HABER NAVEGADO
 	/// </summary>
-	void createObjects();
+	void createObjects(std::string place);
+
+	/// <summary>
+	/// Método factoría para las flechas de navegación
+	/// </summary>
+	ecs::Entity* createNavegationsArrows(int x, int y, std::string placeDir);
 
 public:
 	//constructora
-	Mapa();
+	Mapa(ecs::Scene* e);
 	/// <summary>
 	/// Método para navegar a cierto lugar
 	/// </summary>
