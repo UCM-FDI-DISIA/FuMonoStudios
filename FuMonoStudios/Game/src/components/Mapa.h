@@ -1,9 +1,15 @@
 #pragma once
 #include "../sdlutils/Texture.h"
 #include <unordered_map>
+#include <vector>
+#include <array>
+
+
+class Entity;
 /// <summary>
 /// Struct que guarda la información de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
-/// puedenavegar a él, un mapa con las direcciones que conectan a él (a las que no tiene por qué poder navegarse)
+/// puedenavegar a él, un mapa con las direcciones que conectan a él (a las que no tiene por qué poder navegarse),
+/// y una lista de punteros a las entidades propias del lugar (perosonajes y flechas de movimiento) 
 /// Tiene métodos para añadir direcciones al lugar (necesita un string y una instancia de lugar), un booleano
 /// que indica si cierto lugar (indicado con el string del mapa) es navegable, un getPlaceFromDirection 
 /// que devuelve un puntero apuntando la posición de memoria de un lugar del mapa de direcciones (se usa para 
@@ -21,9 +27,12 @@ public:
 	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por qué poderse navegar)
 	std::unordered_map<std::string,Lugar> directions;
 
+	//vector de entidades del lugar
+	//std::array<std::vector<Entity*>, ecs::layer::maxLayerId> ents;
+
 	//constructoras
-	Lugar() {};
-	Lugar(Texture* t, bool n /*Character* c*/) : backGround(t), navegable(n) /*character(c)*/ {};
+	Lugar() /*ents()*/ {};
+	Lugar(Texture* t, bool n /*Character* c*/) : /*ents()*/backGround(t), navegable(n) /*character(c)*/ {};
 
 	/// <summary>
 	/// Método para añadir direcciones al mapa del lugar
@@ -48,14 +57,28 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Texture* getTexture() const { return backGround; };
+
+	/// <summary>
+	/// Mata (setAlive(false) los objetos del lugar para que se borren de la escena y los borra del vector
+	/// del lugar.
+	/// USAR ANTES DE NAVEGAR SI ES QUE SE PUEDE NAVEGAR
+	/// </summary>
+	void killObjects();
+
+	/// <summary>
+	/// Crea los objetos del lugar acatual al que te acabas de mover.
+	/// USAR DESPUÉS DE HABER NAVEGADO
+	/// </summary>
+	void createObjects();
 };
 
 /// <summary>
 /// Clase que encapsula los lugares y se usa como sistema de navegación.
 /// La parte privada de la clase incluye un rect para el BackGround,
 /// todos los lugares cargados en variables junto a un puntero apuntando a la posición de memoria del lugar
-///	actual, y dos métodos para inicializar los lugares y sus direcciones (podiciones adyacentes a las que no 
-/// necesariamente se puede navegar).
+///	actual, dos métodos para inicializar los lugares y sus direcciones (podiciones adyacentes a las que no 
+/// necesariamente se puede navegar) y otros dos métodos para gestionar las entidades del lugar en el que 
+/// te encuentras.
 /// Como métodos públicos tenemos la constructora que inicializa toda la información del mapa, un método 
 /// navigate que comprueba si se puede navegar desde el lugar actual al indicado con el string que le pasas, si 
 /// es posible la navgación navegas al lugar, por último está el método renderBackGround que renderiza el fondo,
@@ -87,6 +110,19 @@ private:
 
 	//rect para renderizar el BackGround
 	SDL_Rect rect;
+
+	/// <summary>
+	/// Mata (setAlive(false) los objetos del lugar para que se borren de la escena y los borra del vector
+	/// del lugar.
+	/// USAR ANTES DE NAVEGAR SI ES QUE SE PUEDE NAVEGAR
+	/// </summary>
+	void killObjects();
+
+	/// <summary>
+	/// Crea los objetos del lugar acatual al que te acabas de mover.
+	/// USAR DESPUÉS DE HABER NAVEGADO
+	/// </summary>
+	void createObjects();
 
 public:
 	//constructora

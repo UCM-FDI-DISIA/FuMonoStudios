@@ -1,5 +1,6 @@
 #include "Mapa.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../architecture/Entity.h"
 
 Mapa::Mapa()
 {
@@ -77,6 +78,16 @@ void Mapa::renderBackGround() const
 	actualPlace->getTexture()->render(rect);
 }
 
+void Mapa::killObjects()
+{
+	
+}
+
+void Mapa::createObjects()
+{
+
+}
+
 void Lugar::addDirections(std::string placeDir, Lugar place)
 {
 	directions[placeDir] = place;
@@ -90,4 +101,16 @@ bool Lugar::navigate(std::string placeDir)
 Lugar* Lugar::getPlaceFromDirection(std::string placeDir)
 {
 	return &directions[placeDir];
+}
+
+void Lugar::killObjects()
+{
+	/*for (auto ent : ents)
+		for(auto e:ent)
+			e->setAlive(false);*/
+}
+
+void Lugar::createObjects()
+{
+
 }

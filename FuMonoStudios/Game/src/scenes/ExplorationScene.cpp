@@ -50,7 +50,7 @@ void ecs::ExplorationScene::init()
 		};
 	clicker->addEvent(cosa);
 	
-	auto boxBg = addEntity();
+	/*auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
 
@@ -58,7 +58,7 @@ void ecs::ExplorationScene::init()
 	auto textTr = dialogoBox->addComponent<Transform>(20, 20,100,100);
 	textTr->setParent(bgTr);
 	dialogoBox->addComponent<RenderImage>();
-	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
+	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);*/
 
 
 	/*Texture* texturaBoton = &sdlutils().images().at("press");
@@ -72,6 +72,36 @@ void ecs::ExplorationScene::init()
 		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
 	clickerPress->add*ent(funcPress);*/
+
+
+
+
+
+	// Para Dani: El Personaje PlaceHolder que te he creado se compone del botón de press que al pulsarse te crea
+// la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
+// solucionar sacando las entidades de box al h y comprobando si punteros a entidad son null o con un booleano que
+// haga de flag)
+
+// Para Dani: Aquí le hacemos clickable y le ponemos como callback el método funcPress
+	Entity* BotonPress = addEntity();
+	Texture* texturaBoton = &sdlutils().images().at("press");
+	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
+	auto clickerPress = BotonPress->addComponent<Clickeable>();
+	CallbackClickeable funcPress = [this]() {
+		//Esto sería la caja del fondo (lo de SDL que se ve)
+		auto boxBg = addEntity();
+		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
+		boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
+
+		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
+		auto dialogoBox = addEntity();
+		auto textTr = dialogoBox->addComponent<Transform>(20, 20, 100, 100);
+		textTr->setParent(bgTr);
+		dialogoBox->addComponent<RenderImage>();
+		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
+		};
+	clickerPress->addEvent(funcPress);
 
 }
 
