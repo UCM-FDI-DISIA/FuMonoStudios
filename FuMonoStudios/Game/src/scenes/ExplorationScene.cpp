@@ -34,7 +34,7 @@ void ecs::ExplorationScene::init()
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Prueba2->addComponent<Clickeable>();
-	Prueba2->addComponent<Trigger>();
+	//Prueba2->addComponent<Trigger>();
 
 
 	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
