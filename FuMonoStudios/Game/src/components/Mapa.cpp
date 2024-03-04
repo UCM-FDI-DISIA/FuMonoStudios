@@ -9,7 +9,7 @@
 
 Mapa::Mapa(ecs::Scene* e) : mScene(e), dialogMngr_()
 {
-	dialogMngr_.setDialogues("resources/dialogos/dialogo.txt");
+	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace = &demeter;

@@ -13,9 +13,7 @@ namespace ecs {
         ExplorationScene();
         virtual ~ExplorationScene();
         void init() override;
-
-
-
+        void render();
     private:
          Mapa map;
     };
