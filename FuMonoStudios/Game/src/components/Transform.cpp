@@ -5,7 +5,7 @@
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position(x,y), width(w), height(h), parent(nullptr) {
+Transform::Transform(float x, float y, float w, float h) : Component(), position(x, y), width(w), height(h), parent(nullptr) {
 	auto& sdl = *SDLUtils::instance();
 
 #ifdef _DEBUG
@@ -16,10 +16,16 @@ Transform::Transform(float x, float y, float w, float h) : Component(), position
 
 Transform::~Transform() {
 	/// <summary>
+	/// destruimos la referencia que esta en su padre
+	/// </summary>
+	if(parent) parent->childs.erase(parentListIt);
+	/// <summary>
 	/// AL destruir un transform padre destruimos los hijos de este
 	/// </summary>
 	for (auto& c : childs) {
 		c->ent_->setAlive(false);
+		//puntero a nulo por seguridad
+		c->parent = nullptr;
 	}
 }
 
@@ -43,6 +49,8 @@ void Transform::setParent(Transform* newParent) {
 	if (parent != newParent) {
 		parent = newParent;
 		parent->childs.push_back(this);
+		parentListIt = parent->childs.end();
+		parentListIt--;
 		// Update relative pos				
 	}
 }
@@ -84,7 +92,7 @@ Vector2D Transform::getRelPos() const {
 }
 
 //Devuelve el Rect en el mundo
-SDL_Rect& Transform::getRect()const{
+SDL_Rect& Transform::getRect()const {
 	Vector2D pos = getPos();
 	SDL_Rect rect = build_sdlrect(pos, width, height);
 	return rect;

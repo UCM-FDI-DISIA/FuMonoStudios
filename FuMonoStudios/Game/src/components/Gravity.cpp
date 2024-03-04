@@ -1,9 +1,10 @@
 #include "Gravity.h"
 #include "Transform.h"
 #include "../architecture/Entity.h"
+#include "Time.h"
 
 const float Gravity::GRAVITY_LIMIT = 400.0f;
-const float Gravity::DEFAUTL_FORCE = 0.5f;
+const float Gravity::DEFAUTL_FORCE = 9.8f;
 const float Gravity::MAX_VELOCITY = 30.0f;
 
 Gravity::Gravity() : tr_(nullptr), gravityForce(DEFAUTL_FORCE), velocity(0), active(true) {}
@@ -14,9 +15,9 @@ Gravity::~Gravity() {}
 
 void Gravity::initComponent() {
 
-	tr_ = ent_->getComponent<Transform>();
+    tr_ = ent_->getComponent<Transform>();
 
-	assert(tr_ != nullptr);
+    assert(tr_ != nullptr);
 }
 
 void Gravity::update() {
@@ -25,7 +26,7 @@ void Gravity::update() {
         bool contactGround = (tr_->getPos().getY() >= GRAVITY_LIMIT);
 
         if (!contactGround) {
-            velocity += gravityForce;
+            velocity += gravityForce * Time::getDeltaTime(); // cleon: velocidad + fuerza y sin el tiempo. Toma esto, Newton!
             if (velocity > MAX_VELOCITY) {
                 velocity = MAX_VELOCITY; // Limitamos la velocidad
             }

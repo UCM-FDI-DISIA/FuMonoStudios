@@ -10,7 +10,7 @@ Paquete::TipoPaquete PaqueteBuilder::TipoRND() {	//Este método devuelve un Tipo 
 	return (Paquete::TipoPaquete)rnd;
 }
 Paquete::Calle PaqueteBuilder::CalleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
-	int rnd = rand() % 100;
+	int rnd = rand() % 100; // cleon: en C++ hay maneras mejores de hacer números aleatorios
 	if (rnd > probError) {
 		rnd = rand() % 3 + 1;
 		return (Paquete::Calle)rnd;
@@ -28,7 +28,7 @@ bool PaqueteBuilder::BoolRND(int probFalse) { //Este método devuelve una valor a
 		return false;
 	}
 }
-Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
+Paquete::NivelPeso PaqueteBuilder::PesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = rand() % 100;												//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
 	if (rnd > probPeso) {
 		Paquete::NivelPeso pes;

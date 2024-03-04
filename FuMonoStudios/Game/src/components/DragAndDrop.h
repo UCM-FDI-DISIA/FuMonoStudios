@@ -10,7 +10,7 @@ class DragAndDrop : public ecs::Component {
 
 public:
 	__CMP_DECL__(ecs::cmp::DRAGANDDROP)
-	DragAndDrop();
+		DragAndDrop();
 
 	~DragAndDrop();
 
@@ -21,7 +21,7 @@ public:
 private:
 
 	Transform* tr_;
-	
+
 	Gravity* grav_;
 
 	Trigger* tri_;
