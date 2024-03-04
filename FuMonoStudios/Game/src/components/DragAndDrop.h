@@ -26,6 +26,8 @@ private:
 
 	Gravity* grav_;
 
+	Gravity* grav_;
+
 	Trigger* tri_;
 
 	bool dragging;

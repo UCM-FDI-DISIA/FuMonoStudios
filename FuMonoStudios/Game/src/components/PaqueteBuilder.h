@@ -12,10 +12,9 @@ const int pesoCartaMax = 2;	//Límite del peso máximo de cartas
 class PaqueteBuilder
 {
 private:
-	void Nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles erróneas
-
+	void Nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
+		
 		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(35), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
-		std::cout << pq->getDist();
 	}
 	void Nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
 		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), TipoRND(), BoolRND(35), Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);

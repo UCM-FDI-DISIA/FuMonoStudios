@@ -8,6 +8,8 @@ namespace ecs {
     private:
         int fails;
         int correct;
+        float timer;
+        bool timerPaused;
 
         void createManual();
         void createPaquete(int lv);
@@ -16,7 +18,10 @@ namespace ecs {
         MainScene();
         virtual ~MainScene();
 
+        virtual void update() override;
         void init() override;
+        void switchTimer() { timerPaused = !timerPaused; }
+        void setTimer(float time) { timer = time; }
     };
 }
 

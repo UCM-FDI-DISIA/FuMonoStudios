@@ -3,10 +3,9 @@
 Felicidad::Felicidad()
 {
 	for (int i = 0; i <= 6; i++) {
-		felicidades[(Personajes) i] = 0;
+		felicidades[(pers::Personajes) i] = 0;
 	}
 }
-
 
 void Felicidad::aumentaFel(pers::Personajes p, uint f) // cleon: no se�is salvajes de C++. Personajes por referencia (constante?)
 {

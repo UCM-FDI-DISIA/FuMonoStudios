@@ -105,6 +105,13 @@ void Game::killScene(ecs::sc::sceneId scene)
 	}
 }
 
+void Game::requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2)
+{
+	sceneChange = true;
+	scene1_ = scene1;
+	scene2_ = scene2;
+}
+
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 	//Más adelante el changeScene deberá de tener más parámetros correspondientes a lo que se va a guardar en
 	//el GeneralData para compartir información entre escenas, pero por ahora nos bastamos con esto

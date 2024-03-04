@@ -16,6 +16,7 @@
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
+#include "../Time.h"
 
 
 void ecs::MainScene::createManual()
@@ -61,13 +62,28 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0)
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false),timer(10)
 {
 	
 }
 
 ecs::MainScene::~MainScene()
 {
+}
+
+
+void ecs::MainScene::update()
+{
+	Scene::update();
+	if (!timerPaused)
+	{
+		if (timer > 0) {
+			timer -= Time::getDeltaTime();
+			//std::cout << timer << std::endl;
+		}
+		else
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+	}
 }
 
 void ecs::MainScene::init()
@@ -92,7 +108,7 @@ void ecs::MainScene::init()
 	//Boton que genera Paquetes
 	Texture* texturaBoton = &sdlutils ().images ().at ("press");
 	Entity* BotonPress = addEntity ();
-	Transform* transformBoton = BotonPress->addComponent<Transform> (200.0f, 400.0f, texturaBoton->width (), texturaBoton->height ());
+	Transform* transformBoton = BotonPress->addComponent<Transform> (0.0f, 500.0f, texturaBoton->width (), texturaBoton->height ());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage> (texturaBoton);
 	auto clickerPress = BotonPress->addComponent<Clickeable> ();
 	CallbackClickeable funcPress = [this]() {
@@ -108,6 +124,8 @@ void ecs::MainScene::init()
 	createManual();
 
 	//Paquete de prueba
+
+	/*
 	Entity* Paquet = addEntity(ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
@@ -116,6 +134,7 @@ void ecs::MainScene::init()
 	Paquete* pqPq = Paquet->addComponent<Paquete>(Paquete::Demeter, Paquete::C1, Paquete::Alimento,
 		true, Paquete::Bajo, 20, false, false);
 	DragAndDrop* drgPq = Paquet->addComponent<DragAndDrop>();
+	*/
 	
 
 	
@@ -139,13 +158,13 @@ void ecs::MainScene::init()
 				correct++;
 			}
 			else {
-				std::cout << "NUH UH\n";
+				std::cout << "NUH UH1\n";
 				fails++;
 			}
 
 		}
 		else {
-			std::cout << "eso no es un paquete gañan\n";
+			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
@@ -159,11 +178,11 @@ void ecs::MainScene::init()
 				std::cout << "the end is a horse\n";
 			}
 			else {
-				std::cout << "NUH UH\n";
+				std::cout << "NUH UH2\n";
 			}
 		}
 		else {
-			std::cout << "eso no es un paquete gañan\n";
+			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
@@ -177,11 +196,11 @@ void ecs::MainScene::init()
 				std::cout << "egg is nigh\n";
 			}
 			else {
-				std::cout << "NUH UH\n";
+				std::cout << "NUH UH3\n";
 			}
 		}
 		else {
-			std::cout << "eso no es un paquete gañan\n";
+			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
@@ -195,11 +214,11 @@ void ecs::MainScene::init()
 				std::cout << "wacamole\n";
 			}
 			else {
-				std::cout << "NUH UH\n";
+				std::cout << "NUH UH4\n";
 			}
 		}
 		else {
-			std::cout << "eso no es un paquete gañan\n";
+			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 	

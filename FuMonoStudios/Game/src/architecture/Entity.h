@@ -25,6 +25,10 @@ namespace ecs {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
+		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
+			currCmps_.reserve(cmp::maxComponentId);
+		};
+
 		virtual ~Entity() {
 			for (auto c : currCmps_) {
 				delete c;
