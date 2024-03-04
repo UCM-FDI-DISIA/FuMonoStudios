@@ -18,7 +18,7 @@ namespace ecs {
 	{
 	public:
 
-		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
+		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly),enable_(true),active_(true) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -31,7 +31,15 @@ namespace ecs {
 
 		inline bool isAlive() const { return alive_; };
 
+		inline bool isActive() const { return active_; };
+
+		inline bool isEnable() const { return enable_; };
+
 		inline void setAlive(bool alive) { alive_ = alive; };
+
+		inline void setActive(bool active) { active_ = active; };
+
+		inline void setEnable(bool enable) { enable_ =enable; };
 
 		//ACCESOR AL MANAGER (Luis va a hacer cositas)
 		inline Scene* getMngr() const { return scene_; };
@@ -134,6 +142,8 @@ namespace ecs {
 
 	private:
 		bool alive_;
+		bool active_;
+		bool enable_;
 		Scene* scene_;
 		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;

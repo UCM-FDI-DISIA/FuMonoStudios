@@ -24,12 +24,14 @@ namespace ecs {
 		//std::cout << "Hola" << std::endl;
 		for (auto ly : objs_)
 			for (auto e : ly)
-				e->update();
+				if(e->isActive() && e->isEnable())
+					e->update();
 	}
 	void Scene::render() {
 		for (auto ly : objs_)
 			for (auto e : ly)
-				e->render();
+				if(e->isActive())
+					e->render();
 		refresh();
 	}
 

@@ -67,11 +67,6 @@ void ecs::ExplorationScene::init()
 		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
 	clickerPress->add*ent(funcPress);*/
-
-
-
-
-
 }
 
 void ecs::ExplorationScene::render()
