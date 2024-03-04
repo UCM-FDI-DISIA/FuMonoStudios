@@ -48,7 +48,7 @@ void Clickeable::update() {
 			//Recorrido por las colbacks a las que est� suscrito este objeto
 			for (CallbackClickeable call : eventsWhenClick) {
 
-				call(ent_);
+				call();
 			}
 		}
 	}
