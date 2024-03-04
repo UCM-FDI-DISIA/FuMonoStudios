@@ -34,16 +34,18 @@ public:
 	/// <param name="scene2"></param>
 	void requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 
+	inline void writeMessage() {
+		std::cout << "Funcionaaaaaaaaa" << std::endl;
+	};
+
+private:
 	/// <summary>
 	/// metodo para cambiar de una escena a otra
 	/// </summary>
 	/// <param name="scene1"></param>
 	/// <param name="scene2"></param>
 	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
-	inline void writeMessage() {
-		std::cout << "Funcionaaaaaaaaa" << std::endl;
-	};
-private:
+
 	void update();
 	void render();
 	/// <summary>

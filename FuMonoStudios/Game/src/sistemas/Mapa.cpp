@@ -4,6 +4,7 @@
 #include "../components/Clickeable.h"
 #include "../components/DialogComponent.h"
 #include "../components/Transform.h"
+#include "../architecture/Game.h"
 
 
 
@@ -149,6 +150,18 @@ void Mapa::createObjects(std::string place) {
 		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes"));
 		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa"));
 		demeter.addObjects(createCharacter(300, 300, "Campesino"));
+
+
+		//boton ir a trabajar
+		ecs::Entity* botonTrabajar = mScene->addEntity();
+		botonTrabajar->addComponent<Transform>(500, 500, 200, 100);
+		botonTrabajar->addComponent<RenderImage>(&sdlutils().images().at("botonTrabajar"));
+		auto clickableBotonTrabajar = botonTrabajar->addComponent<Clickeable>();
+		CallbackClickeable funcPress = [this]() {
+			gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
+			};
+		clickableBotonTrabajar->addEvent(funcPress);
+		demeter.addObjects(botonTrabajar);
 	}
 	else if(place == "Hefesto")
 	{

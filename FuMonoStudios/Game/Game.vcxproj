@@ -233,6 +233,7 @@
     <Image Include="recursos\images\PesoAlto.png" />
     <Image Include="recursos\images\PesoBajo.png" />
     <Image Include="recursos\images\PesoMedio.png" />
+    <Image Include="recursos\images\placeholderTrabajar.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

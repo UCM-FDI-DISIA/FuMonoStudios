@@ -56,7 +56,7 @@ void ecs::MainMenu::init()
 
 	}*/
 	CallbackClickeable funcPress = [this]() {
-		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
+		gm().requestChangeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
 
 	};
 	clickerPress->addEvent(funcPress);

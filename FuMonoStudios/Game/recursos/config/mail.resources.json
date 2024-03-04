@@ -21,6 +21,10 @@
       "file": "recursos/images/flecha.png"
     },
     {
+      "id": "botonTrabajar",
+      "file":  "recursos/images/placeholderTrabajar.png"
+    },
+    {
       "id": "demeter",
       "file": "recursos/images/Demeter.png"
     },
