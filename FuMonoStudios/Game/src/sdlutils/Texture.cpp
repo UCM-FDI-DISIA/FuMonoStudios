@@ -52,12 +52,12 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 }
 
 Texture::Texture(SDL_Renderer* renderer, const std::string& text,
-	const Font& font, const SDL_Color& fgColor, Uint32 warpWidth ) {
+	const Font& font, const SDL_Color& fgColor, Uint32 warpWidth) {
 	constructFromText(renderer, text, font, &fgColor, nullptr, warpWidth);
 }
 
 Texture::Texture(SDL_Renderer* renderer, const std::string& text,
-	const Font& font, const SDL_Color& fgColor, const SDL_Color& bgColor, Uint32 warpWidth ) {
+	const Font& font, const SDL_Color& fgColor, const SDL_Color& bgColor, Uint32 warpWidth) {
 	constructFromText(renderer, text, font, &fgColor, &bgColor, warpWidth);
 }
 
@@ -91,11 +91,11 @@ void Texture::constructFromText(SDL_Renderer* renderer, const std::string& text,
 	assert(renderer != nullptr);
 	renderer_ = renderer;
 
-	SDL_Surface* textSurface = 
+	SDL_Surface* textSurface =
 		bgColor == nullptr ?
-			font.renderText(text, *fgColor, warpWidth) :
-			font.renderText(text, *fgColor, *bgColor, warpWidth);
-		;
+		font.renderText(text, *fgColor, warpWidth) :
+		font.renderText(text, *fgColor, *bgColor, warpWidth);
+	;
 
 	if (textSurface == nullptr)
 		throw "Couldn't create surface for text: " + text;

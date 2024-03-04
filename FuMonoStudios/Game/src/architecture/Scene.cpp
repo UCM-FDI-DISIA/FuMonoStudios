@@ -2,13 +2,16 @@
 #include "Entity.h"
 #include "../components/Transform.h"
 #include <iostream>
+
+using objListIt = std::array<std::vector<Entity*>, ecs::layer::maxLayerId>::iterator;
+
 namespace ecs {
-	Scene::Scene():objs_() {
-		
+	Scene::Scene() :objs_() {
+
 	}
 	Scene::~Scene() {
 		for (auto ly : objs_) {
-			for(auto e : ly)
+			for (auto e : ly)
 				delete e;
 		}
 		//std::cout << "Se Destruyo correctamente la escena"<<std::endl;
@@ -20,20 +23,32 @@ namespace ecs {
 	void Scene::update() {
 		//std::cout << "Hola" << std::endl;
 		for (auto ly : objs_)
-			for(auto e : ly)
+			for (auto e : ly)
 				e->update();
 	}
 	void Scene::render() {
 		for (auto ly : objs_)
-			for(auto e : ly)
+			for (auto e : ly)
 				e->render();
 		refresh();
 	}
+
+	void Scene::deleteQueueEntities()
+	{
+		while (!del_.empty()) {
+			delete* del_.front().second;
+			objs_[del_.front().first].erase(del_.front().second);
+			del_.pop();
+		}
+	}
+
 	Entity* Scene::addEntity(ecs::layer::layerId lyId)
 	{
 		Entity* e = new Entity(this, lyId);
 		e->setAlive(true);
 		objs_[lyId].push_back(e);
+		auto it = --objs_[lyId].end();
+		e->addIterator(it);
 		return e;
 	}
 
@@ -43,6 +58,15 @@ namespace ecs {
 		std::list<Entity*>::iterator it = colisionEntities.end();
 		return --it;
 	}
+
+	void Scene::removeEntity(std::vector<Entity*>::iterator it, ecs::layer::layerId lyId)
+	{
+		std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator> e;
+		e.first = lyId;
+		e.second = it;
+		del_.push(e);
+	}
+
 	void Scene::removeCollison(std::list<ecs::Entity*>::iterator it)
 	{
 		colisionEntities.erase(it);
@@ -59,9 +83,9 @@ namespace ecs {
 
 				//Se guardan los rect ya que con lo que devuelve getRect() el SDL_HasIntersection falla
 
-				SDL_Rect &rect1 = e->getComponent<Transform>()->getRect();
+				SDL_Rect rect1 = e->getComponent<Transform>()->getRect();
 
-				SDL_Rect &rect2 = (*it)->getComponent<Transform>()->getRect();
+				SDL_Rect rect2 = (*it)->getComponent<Transform>()->getRect();
 
 				if (SDL_HasIntersection(&rect1, &rect2)) {
 
@@ -92,7 +116,7 @@ namespace ecs {
 							delete e;
 							return true;
 						}
-					}), 
+					}),
 				grpEnts.end());
 		}
 	}

@@ -6,6 +6,7 @@
 #include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "Gravity.h"
 
 #include <SDL.h>
 #include <assert.h>

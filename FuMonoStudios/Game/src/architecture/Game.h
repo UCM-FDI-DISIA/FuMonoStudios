@@ -8,9 +8,9 @@
 #include "Scene.h"
 
 
-class Game: public Singleton<Game> {
+class Game : public Singleton<Game> {
 
-	friend Singleton<Game> ;
+	friend Singleton<Game>;
 
 public:
 	Game();
@@ -45,7 +45,7 @@ private:
 	/// <summary>
 	/// lista de escenas del juego
 	/// </summary>
-	std::array<ecs::Scene*,ecs::sc::maxSceneId> gameScenes;
+	std::array<ecs::Scene*, ecs::sc::maxSceneId> gameScenes;
 	bool exit;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
@@ -55,4 +55,3 @@ private:
 inline Game& gm() {
 	return *Game::instance();
 }
-

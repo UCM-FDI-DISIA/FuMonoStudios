@@ -11,6 +11,7 @@
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
+#include "../GeneralData.h"
 
 ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
 {
@@ -23,6 +24,7 @@ ecs::ExplorationScene::~ExplorationScene()
 
 void ecs::ExplorationScene::init()
 {
+	generalData().GetEventoID();
 	std::cout << "Hola Exploracion"<<std::endl;
 	sdlutils().clearRenderer();
 	// Caja CLicker
@@ -32,7 +34,7 @@ void ecs::ExplorationScene::init()
 	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Prueba2->addComponent<Clickeable>();
-	Prueba2->addComponent<Trigger>();
+	//Prueba2->addComponent<Trigger>();
 
 
 	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
@@ -50,7 +52,7 @@ void ecs::ExplorationScene::init()
 		};
 	clicker->addEvent(cosa);*/
 
-	map.render();
+	map.renderBackGround();
 	auto boxBg = addEntity();
 	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
 	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
@@ -69,7 +71,9 @@ void ecs::ExplorationScene::init()
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
-	Callback funcPress = [](Entity* a) {
+
+
+	CallbackClickeable funcPress = []() {
 		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
 	};
 	clickerPress->addEvent(funcPress);

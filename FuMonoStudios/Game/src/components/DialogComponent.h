@@ -13,6 +13,7 @@ Hacer un sistema de como relizar las solicitudes de un dialogo en funcion de las
 class Transform;
 class RenderImage;
 class Font;
+class DialogManager;
 class Texture;
 
 /*
@@ -33,7 +34,7 @@ public:
     void update()override;
 private:
     /// <summary>
-    /// Metodo para actualizar la textura de diálogo
+    /// Metodo para actualizar la textura de diï¿½logo
     /// </summary>
     void setCurrentDialogue();
 

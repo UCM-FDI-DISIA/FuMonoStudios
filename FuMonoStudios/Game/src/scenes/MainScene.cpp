@@ -20,7 +20,7 @@
 
 void ecs::MainScene::createManual()
 {
-	Entity* manual = addEntity();
+	Entity* manual = addEntity(ecs::layer::MANUAL);
 	Texture* manualTexture = &sdlutils().images().at("bookTest");
 	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
@@ -43,7 +43,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
 	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+	button->getComponent<Clickeable>()->addEvent([multTextures]() {
 
 		multTextures->nextTexture();
 	});
@@ -53,7 +53,7 @@ void ecs::MainScene::createManual()
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures](Entity* e) {
+	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
 
 		multTextures->previousTexture();
 	});
@@ -61,7 +61,7 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene()
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0)
 {
 	
 }
@@ -95,10 +95,10 @@ void ecs::MainScene::init()
 	Transform* transformBoton = BotonPress->addComponent<Transform> (200.0f, 400.0f, texturaBoton->width (), texturaBoton->height ());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage> (texturaBoton);
 	auto clickerPress = BotonPress->addComponent<Clickeable> ();
-	Callback funcPress = [this](Entity* e) {
+	CallbackClickeable funcPress = [this]() {
 		createPaquete (0);
 		};
-	clickerPress->addEvent (funcPress);
+	clickerPress->addEvent(funcPress);
 	
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -108,7 +108,7 @@ void ecs::MainScene::init()
 	createManual();
 
 	//Paquete de prueba
-	Entity* Paquet = addEntity();
+	Entity* Paquet = addEntity(ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform>(500.0f, 500.0f, texturaPaquet->width() * 0.1, texturaPaquet->height() * 0.1);
 	Paquet->addComponent<Gravity>();
@@ -132,14 +132,17 @@ void ecs::MainScene::init()
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
-	demTri->addCallback([demCheck](ecs::Entity* entRec) {
+	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
 				std::cout << "the end is nigh\n";
+				correct++;
 			}
 			else {
 				std::cout << "NUH UH\n";
+				fails++;
 			}
+
 		}
 		else {
 			std::cout << "eso no es un paquete gañan\n";
@@ -202,7 +205,7 @@ void ecs::MainScene::init()
 	
 }
 void ecs::MainScene::createPaquete (int lv) {
-	Entity* Paquet = addEntity ();
+	Entity* Paquet = addEntity (ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
 	Transform* trPq = Paquet->addComponent<Transform> (700.0f, 700.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
 	RenderImage* rd = Paquet->addComponent<RenderImage> (texturaPaquet);

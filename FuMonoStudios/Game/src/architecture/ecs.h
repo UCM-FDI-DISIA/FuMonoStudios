@@ -39,6 +39,7 @@ namespace ecs {
 			MAIN_SCENE,
 			MENU_SCENE,
 			EXPLORE_SCENE,
+			MENU_SCENE,
 			_LAST_SCENE
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;
@@ -52,6 +53,10 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			PACKAGE,
+			STAMP,
+			OFFICEELEMENTS,
+			MANUAL,
 			FOREGROUND,
 			_LAST_LAYER
 		};

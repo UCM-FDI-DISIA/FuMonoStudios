@@ -4,11 +4,11 @@
 #include <SDL.h>
 #include "../sdlutils/SDLUtils.h"
 
-class Transform : public ecs::Component 
+class Transform : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::TRANSFORM)
-	Transform(float x, float y, float w, float h);
+		Transform(float x, float y, float w, float h);
 	~Transform();
 
 	/// <summary>
@@ -98,6 +98,10 @@ private:
 	/// lista de los hijos del transform
 	/// </summary>
 	std::list<Transform*> childs;
+	/// <summary>
+	/// iterador para borrarse de la lista de trasnforms del padre al destruirse
+	/// </summary>
+	std::list<Transform*>::iterator parentListIt;
 #ifdef _DEBUG
 	SDL_Renderer* renderer;
 #endif // _DEBUG

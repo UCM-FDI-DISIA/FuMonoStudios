@@ -7,7 +7,8 @@ Felicidad::Felicidad()
 	}
 }
 
-void Felicidad::aumentaFel(Personajes p, uint f) // cleon: no seáis salvajes de C++. Personajes por referencia (constante?)
+
+void Felicidad::aumentaFel(pers::Personajes p, uint f) // cleon: no seï¿½is salvajes de C++. Personajes por referencia (constante?)
 {
 	if (felicidades.at(p) + f <= 99)
 		felicidades[p] += f;
@@ -15,27 +16,27 @@ void Felicidad::aumentaFel(Personajes p, uint f) // cleon: no seáis salvajes de 
 		felicidades[p] = 99; // Toma 99.
 }
 
-void Felicidad::decrementaFel(Personajes p, uint f)
+void Felicidad::decrementaFel(pers::Personajes p, uint f)
 {
 	felicidades[p] -= f;
 }
 
-EstadosDeFelicidad Felicidad::interpretaFel(Personajes p) const
+pers::EstadosDeFelicidad Felicidad::interpretaFel(pers::Personajes p) const
 {
 	int s = felicidades.at(p);
 	if (s <= 0){
-		return MÍNIMA; // cleon: OLÉ. Esa tilde.
+		return pers::MINIMA;
 	}
 	else if(s > 0 && s <= 33){
-		return BAJA;
+		return pers::BAJA;
 	}
 	else if (s > 33 && s <= 66){
-		return INTERMEDIA;
+		return pers::INTERMEDIA;
 	}
 	else if (s > 33 && s <= 66) {
-		return FELIZ;
+		return pers::FELIZ;
 	}
 	else{
-		return MAXIFELIZ;
+		return pers::MAXIFELIZ;
 	}
 }

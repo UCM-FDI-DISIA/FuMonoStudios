@@ -25,7 +25,7 @@ void ecs::MainMenu::init()
 	std::cout << "Hola Menu" << std::endl;
 	sdlutils().clearRenderer();
 
-	
+	Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 50);
 
 	Entity* Titulo = addEntity();
 	Texture* texturaTitulo = &sdlutils().images().at("title");
@@ -33,7 +33,7 @@ void ecs::MainMenu::init()
 	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
 	Titulo->addComponent<DragAndDrop>();
 
-	Texture* texturaBoton = &sdlutils().images().at("press");
+	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Bot�n", *fuente, build_sdlcolor(0x000000ff));
 	Entity* BotonPress = addEntity();
 	
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
@@ -55,7 +55,7 @@ void ecs::MainMenu::init()
 		(*game).loadScene(ecs::sc::MAIN_SCENE);
 
 	}*/
-	Callback funcPress = [this](Entity* e) {
+	CallbackClickeable funcPress = [this]() {
 		gm().changeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
 
 	};

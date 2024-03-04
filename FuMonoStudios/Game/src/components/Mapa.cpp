@@ -1,50 +1,37 @@
 #include "Mapa.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../architecture/Entity.h"
 
 Mapa::Mapa()
 {
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace = &demeter;
+	rect = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
 }
-
-Mapa::~Mapa()
-{
-	//if(actualPlace != nullptr)
-		//delete actualPlace;
-}
-
 
 void Mapa::initPlacesDefaultMap()
 {
 	//Demeter
-	Texture* demeterTexture = &sdlutils().images().at("demeter");
-	demeter = Lugar(demeterTexture, true);
+	demeter = Lugar(&sdlutils().images().at("demeter"), true);
 
 	//Hefesto
-	Texture* hefestoTexture = &sdlutils().images().at("hefesto");
-	hefesto = Lugar(hefestoTexture, true);
-
+	hefesto = Lugar(&sdlutils().images().at("hefesto"), true);
 
 	//Hestia
-	Texture* hestiaTexture = &sdlutils().images().at("hestia");
-	hestia = Lugar(hestiaTexture, true);
+	hestia = Lugar(&sdlutils().images().at("hestia"), true);
 
 	//Artemisa
-	Texture* artemisaTexture = &sdlutils().images().at("artemisa");
-	artemisa = Lugar(artemisaTexture, true);
+	artemisa = Lugar(&sdlutils().images().at("artemisa"), true);
 
 	//Hermes
-	Texture* hermesTexture = &sdlutils().images().at("hermes");
-	hermes = Lugar(hermesTexture, false /*hermesCharacter*/);
+	hermes = Lugar(&sdlutils().images().at("hermes"), false);
 
 	//Apolo
-	Texture* apoloTexture = &sdlutils().images().at("apolo");
-	apolo = Lugar(apoloTexture, false);
+	apolo = Lugar(&sdlutils().images().at("apolo"), false);
 
 	//Posidon
-	Texture* poseidonTexture = &sdlutils().images().at("poseidon");
-	poseidon = Lugar(poseidonTexture, false);
+	poseidon = Lugar(&sdlutils().images().at("poseidon"), false);
 }
 
 void Mapa::initDirectionsDefaultMap()
@@ -83,12 +70,22 @@ void Mapa::initDirectionsDefaultMap()
 void Mapa::navigate(std::string placeDir) // otro string sin const
 {
 	if (actualPlace->navigate(placeDir))
-			actualPlace = actualPlace->getDirection(placeDir);
+			actualPlace = actualPlace->getPlaceFromDirection(placeDir);
 }
 
-void Mapa::render() const
+void Mapa::renderBackGround() const
 {
 	actualPlace->getTexture()->render(rect);
+}
+
+void Mapa::killObjects()
+{
+	
+}
+
+void Mapa::createObjects()
+{
+
 }
 
 void Lugar::addDirections(std::string placeDir, Lugar place)
@@ -101,7 +98,19 @@ bool Lugar::navigate(std::string placeDir)
 	return directions.count(placeDir) && directions.at(placeDir).navegable;
 }
 
-Lugar* Lugar::getDirection(std::string placeDir)
+Lugar* Lugar::getPlaceFromDirection(std::string placeDir)
 {
 	return &directions[placeDir];
+}
+
+void Lugar::killObjects()
+{
+	/*for (auto ent : ents)
+		for(auto e:ent)
+			e->setAlive(false);*/
+}
+
+void Lugar::createObjects()
+{
+
 }

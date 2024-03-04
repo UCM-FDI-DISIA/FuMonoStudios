@@ -29,6 +29,7 @@
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
+    <ClCompile Include="GeneralData.cpp" />
     <ClCompile Include="src\components\Mapa.cpp" />
     <ClCompile Include="src\components\Felicidad.cpp" />
     <ClCompile Include="src\scenes\MainMenu.cpp" />
@@ -72,6 +73,10 @@
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
+    <ClInclude Include="src\components\MultipleTextures.h" />
+    <ClInclude Include="Mapa.h" />
+    <ClInclude Include="Felicidad.h" />
+    <ClCompile Include="src\Dialog_Manager.cpp" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
@@ -92,11 +97,26 @@
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
+    <ClInclude Include="src\Dialog_Manager.h" />
+    <ClInclude Include="src\scenes\MainMenu.h" />
+    <ClInclude Include="GeneralData.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\GameConstants.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
+    <None Include="Properties.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="recursos\images\Alimentos.png" />
+    <Image Include="recursos\images\PesoAlto.png" />
+    <Image Include="recursos\images\PesoMedio.png" />
+    <Image Include="recursos\images\PesoBajo.png" />
+    <Image Include="recursos\images\Fragil.png" />
+    <Image Include="recursos\images\Medicina.png" />
+    <Image Include="recursos\images\Armas.png" />
+    <Image Include="recursos\images\Materiales.png" />
+    <Image Include="recursos\images\Joyas.png" />
   </ItemGroup>
 </Project>

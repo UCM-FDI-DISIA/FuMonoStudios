@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdint.h>
+#include <iostream>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -11,13 +10,11 @@ int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
 	try {
 		auto& game = *Game::instance();
-		game.run();
+		game.run(); 
 	}
 	catch (std::string e) {
 		std::cout <<"ERROR: " << e << std::endl;
 	}
 
-		return 0;
-	}
-
-
+	return 0;
+}

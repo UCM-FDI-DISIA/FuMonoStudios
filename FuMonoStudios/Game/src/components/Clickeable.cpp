@@ -1,6 +1,7 @@
 #include "Clickeable.h"
 
 #include "Transform.h"
+#include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
@@ -21,7 +22,12 @@ void Clickeable::initComponent() {
 
 	tr_ = ent_->getComponent<Transform>();
 
+	//Evitar poner clickeable si ya hay trigger
+	Trigger* tri_ = ent_->getComponent<Trigger>();
+
 	assert(tr_ != nullptr);
+
+	assert(tri_ == nullptr);
 
 }
 	
@@ -37,23 +43,17 @@ void Clickeable::update() {
 
 		if (SDL_PointInRect(&point, &tr_->getRect())) {
 
-			//std::cout << "click" << std::endl;
+			std::cout << "click" << std::endl;
 			// 
 			//Recorrido por las colbacks a las que est� suscrito este objeto
-			for (Callback call:eventsWhenClick) {
+			for (CallbackClickeable call : eventsWhenClick) {
 
 				call(ent_);
 			}
-
 		}
-
 	}
-
-
 }
 
-void Clickeable::addEvent(Callback event) {
-
+void Clickeable::addEvent(CallbackClickeable event) {
 	eventsWhenClick.push_back(event);
-
 }

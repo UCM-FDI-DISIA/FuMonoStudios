@@ -5,6 +5,8 @@
 #include "../architecture/Entity.h"
 #include "Render.h"
 #include "../architecture/Scene.h"
+#include <bitset>
+
 
 // cleon: 962 gatitos acaban de morir. con dolor.
 const int nivelFragil = 3;
@@ -15,6 +17,16 @@ const int desviacionPeso = 15;
 const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
+
+// posicion y tamaï¿½o Tipo sellos
+const int tipoSelloPos = 100;
+const int tipoSelloSize = 80;
+// posicion y tamaï¿½o Fragil sellos
+const int fragilSelloPos = 150;
+const int fragilSelloSize = 80;
+// posicion y tamaï¿½o Peso sellos
+const int pesoSelloPos = 200;
+const int pesoSelloSize = 80;
 
 Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
 	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
@@ -34,19 +46,42 @@ Paquete::~Paquete() {
 
 }
 
+void Paquete::initComponent() {
+	//Creamos la entidad Tipo sello 
+	std::string tipoString = (miTipo == Alimento ? "selloAlimento" :
+		miTipo == Medicinas ? "selloMedicinas" :
+		miTipo == Joyas ? "selloJoyas" :
+		miTipo == Materiales ? "selloMateriales" :
+		miTipo == Armamento ? "selloArmamento" : "Desconocido");
+	crearSello(tipoString, tipoSelloPos, tipoSelloPos, tipoSelloSize, tipoSelloSize);
+
+	//Creamos la entidad Peso sello 
+	if (miPeso != Ninguno) {
+		tipoString = (miTipo == Bajo ? "selloPesoBajo" :
+			miTipo == Medio ? "selloPesoMedio" :
+			miTipo == Alto ? "selloPesoAlto" : "selloPesoBajo");
+		crearSello(tipoString, pesoSelloPos, pesoSelloPos, pesoSelloSize, pesoSelloSize);
+	}
+	//Creamos la entidad Fragil sello 
+	if (fragil) {
+		crearSello("selloFragil", fragilSelloPos, fragilSelloPos, fragilSelloSize, fragilSelloSize);
+	}
+
+}
+
 bool Paquete::Correcto() const{ 
-	//Método que comprueba si el paquete había sido generado sin errores (AKA: Si da false, eso significa que se tendría que devolver al remitente)
+	//Mï¿½todo que comprueba si el paquete habï¿½a sido generado sin errores (AKA: Si da false, eso significa que se tendrï¿½a que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) { //Si la calle es errónea, el paquete no es correcto
+	if (miCalle == Erronea) { //Si la calle es errï¿½nea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito == Erroneo) { //Si el distrito es erróneo, el paquete no es correcto
+	if (miDistrito == Erroneo) { //Si el distrito es errï¿½neo, el paquete no es correcto
 		resul = false;
 	}
 	else if (!selloCorrecto) {	//Si el sello no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no está entre los valores indicados, el paquete no es correcto
+	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no estï¿½ entre los valores indicados, el paquete no es correcto
 		if (miPeso == Bajo) {
 			if (peso > ligeroMax) resul = false;
 		}
@@ -57,7 +92,7 @@ bool Paquete::Correcto() const{
 			if (peso < medioMax) resul = false;
 		}		
 	}
-	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete será correcto y devolverá true. Si en algún momento ha fallado, devolverá false
+	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete serï¿½ correcto y devolverï¿½ true. Si en algï¿½n momento ha fallado, devolverï¿½ false
 }
 
 Paquete::Distrito Paquete::getDist() const
@@ -97,31 +132,8 @@ std::string Paquete::getDirecction()
 
 	std::string dir = "Tu vieja\n";
 
-
-	switch (miDistrito) { // cleon: los pocos gatitos que habían sobrevivido antes acaban de morir.
-	case Demeter:
-		dir += "001";
-		break;
-	case Hefesto:
-		dir += "010";
-		break;
-	case Hestia:
-		dir += "011";
-		break;
-	case Artemisa:
-		dir += "100";
-		break;
-	case Hermes:
-		dir += "101";
-		break;
-	case Apolo:
-		dir += "110";
-		break;
-	case Poseidon:
-		dir += "111";
-		break;
-	}
-	dir += "\n";
+	//creacion de codigo postal
+	dir += std::bitset<3>(miDistrito).to_string() + "\n";
 
 	//habria que comprobar si la direccion tiene que ser correcta
 	dir += distrito_calle[miDistrito][miCalle];
@@ -165,4 +177,14 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 			throw "'Demeter' is not an array in '" + filename + "'";
 		}
 	}
+}
+/*
+Luis: ta de lokos, pero igual mejor que esto lo haga el paquete builder no?
+*/
+void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
+	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity();
+	Texture* SelloTex = &sdlutils().images().at(texKey);
+	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
+	SelloEnt->addComponent<RenderImage>(SelloTex);
+	SelloTr->setParent(ent_->getComponent<Transform>());
 }

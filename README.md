@@ -22,6 +22,7 @@
   - [Diseño](#diseño)
     - [Fase de exploracion](#fase-de-exploracion)
     - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
+    - [Fase de dinero](#fase-de-dinero)
   - [Arte](#arte)
     - [Paletas de color](#paletas-de-color)
     - [Lugares](#lugares)
@@ -40,15 +41,25 @@
         - [Finales](#finales-2)
     - [NPC Menores](#npc-menores)
       - [Campesino](#campesino)
-      - [Artesano](#artesano)
         - [Finales](#finales-3)
-      - [Tarotisa](#tarotisa)
+      - [Artesano](#artesano)
         - [Finales](#finales-4)
+      - [Tarotisa](#tarotisa)
+        - [Finales](#finales-5)
       - [Soldado](#soldado)
       - [Contable](#contable)
-        - [Finales](#finales-5)
+        - [Finales](#finales-6)
     - [Dialogos](#dialogos)
       - [Contable](#contable-1)
+      - [Tarotista](#tarotista)
+      - [Artesano](#artesano-1)
+      - [Campesino](#campesino-1)
+  - [1º](#1º)
+  - [2º](#2º)
+  - [3º](#3º)
+  - [4º](#4º)
+  - [5º](#5º)
+      - [Tarotista](#tarotista-1)
 
 ---
 
@@ -217,7 +228,10 @@ $$X = \frac{N + i + 1}{30} * 100$$
 
 </div>
 
----
+### Fase de dinero
+
+Una vez terminado la fase de trabajo, saldrá una pantalla con texto que explique el dinero actual, el dinero a pagar del alquiler, los fallos y los bonus conseguidos en el minijuego.
+En caso de quedarte sin dinero, saldrá el game over de quedarse sin dinero (te deportan de Atlantis)
 
 ## Arte
 Al irnos moviendo por los diferentes distritos, lo haremos a través de diferentes pantallas con fondos estáticos en primera persona. Los fondos tendrán un estilo artístico simple inspirado e juegos como profesor Layton, con una paleta de colores sencilla estilo acuarela donde los objetos lejanos tendrán menos detalle o estarán más difuminados mientras que los objetos mas cercanos tendrán mas detalle, aunque como es una paleta de colores tirando a acuarela a veces los colores se pueden salir de las líneas como pasa en la película de 101 Dalmatas de Disney (la animación antigua, no el remake live action). En los escenarios de exploración encontraremos algunos personajes con los que poder interactuar teniendo una forma física en su diseño inspirada en juegos como profesor Layton por su estilo caricaturesco. Sin embargo, los personajes con los que interactuaremos tendrán más detalle que el resto dando igual las distancias, es decir, siempre estarán enfocados.
@@ -372,25 +386,6 @@ En cuanto a su apariencia, Abakand tiene un aspecto desgastado y cansado, sus oj
 Su personalidad es un tanto pesimista aunque tiene un gran sentido de la justicia y se preocupa siempre de que todos se encuentren bien. Odia hacer de recadero para cualquier persona. Siempre intenta ocultar si tristeza en frente de los demás, haciendo bromas para desviar la atención. No le gusta hablar de su pasado debido a la mala relación que mantiene con su madre.
 
 
-##### Finales
-
-**Malo**
- : Abakand acaba harto de los errores administrativos del jugado y de la escasa ayuda que recibe con los envíos, un día después de una rutinaria y aburrida jornada laboral en el distrito de apolo te cita para beber y aclarar las cosas, Abakand empieza a regañarte por tu gestión, pero en cierto punto de la conversación Abakand se desmorona y admite estar quemado de hacer de niñera de unos nobles que viven holgadamente mientras miran con desprecio a los habitantes de los distritos exteriores.
- Abakand acaba por abandonar el ejército y volverá al distrto al que pertenece, destrozado por haber sido incapaz de cumplir su objetivo de proteger a los habitantes desfavorecidos de los distritos exteriores.
-
- **Neutral**
- : Abakand te cita como amigo para tomar algo poco antes de tu marcha y durante la noche admite no sentirse realizado con las labores que lleva a cabo en el distrito Apolo y que su verdadero deseo sería estar en los distritos exteriores luchando por defender a los más débiles, Abakand no parece haber cambiado mucho desde tu llegada.
- Abakand se muestra cansado de su trabajo y expresa su repulsión hacía sus jefes y los nobles a los que tiene que cuidar, se le nota malhumorado y sin muchas ganas de continuar con esa desdesperante rutina, pero aún así Abakand continúa trabajando día a día con la esperanza de que alguna vez pueda trabajar en el barrio que deseaba.
-
- **Feliz**
- : Abakand te cita como amigo para tomar algo poco antes de tu marcha y durante la noche admite no sentirse realizado con las labores que lleva a cabo en el distrito Apolo y que su verdadero deseo sería estar en los distritos exteriores luchando por defender a los más débiles, pero pese a estar consternado por su situación este se ve con la esperanza de poder acumular logros a base de trabajo duro y con ellos conseguir ese traslado que tanto desea.
- Al final de la noche te dice que eres un buen amigo y te agradece el apoyo dado, ha decidido que hablará con sus jefes para intentar lograr un traslado cuando realice algún acto de mérito.
-
- **MaxiFeliz**
- : Abakand te cita lleno de alegría para ir a beber juntos, este te lleva a  vuestro bar de confianza y comienza a contarte que es la última noche que pasáis juntes en ese bar ¡ha conseguido su traslado!, Abakand había ido poco a poco reuniendo la fuerza y el coraje suficientes como para ir a hablar con sus jefes, les intentó convencer de que sus istio no era ese, que él siempre habría sido mucho más valioso en los distritos exteriores, y lo consiguió, debido al aumento de la criminalidad en los distritos exteriores y el exceso de soldados en el distrito Apolo.
- Esa noche Abakand y tú celebráis por todo lo alto y os pilláis la mayor borrachera de vuestras vidas con rica tinta de calamar del 92, Abakand te agradece tu amistad y te expresa su deseo de volver a coincidir en algún barv de los distritos exteriores.
-
-
 #### Contable
 
 Glover Globus es un pez globo que controla todo el comercio en el distrito de hermes. Su empresa se encarga de comprar los articulos hechos o cosechados por los campesinos a bajo precio y se lo vende a los nobles por un alto coste. A pesar de hacer esto Glover no es malo, sino que esta confuso. Desde pequeño vio como su padre realizaba estas estafas a los campesinos y artesanos, pero cuando se lo reclamo, el padre de Glover le mintió, diciendole que en realidad ellos le hacian un favor a los campesinos ya que si estos negociaran directamente con los nobles, estos les humillarían, maltratarían e incluso robarían al carecer de menos derechos que ellos. Le convenció de que al hacer de intermediarios les estaban ayudando y que la diferencia de dinero entre lo que ganaban vendiendo a los nobles y lo que les pagaban a ellos por sus productos se debe a una pequeña comisión que les debía cobrar, para asi sacar adelante la empresa. Glover se acabo convenciendo de esto por lo que paso sus días siguiendo con las estafas que realizaba su padre.
@@ -419,7 +414,6 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
 #### Contable
 
 **Presentacion**
-"Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. La verdad que no nos podemos quejar jiji. Bueno espero verte por aqui más de seguido, un placer pimpollo."
 - "Anda hola, debes ser nuevo por aqui, mi nombre es Glover Globus, CEO principal de la empresa Globinterprise. 
 - Principalmente nos encargamos de mediar entre la compra y venta de los anillos exteriores e interiores a cambio de una comisión. 
 - Basicamente les compramos los productos a los campesinos y los artesanos y se los vendemos a los nobles. 
