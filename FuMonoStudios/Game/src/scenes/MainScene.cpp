@@ -56,11 +56,8 @@ void ecs::MainScene::createManual()
 	buttonTransform2->setParent(manualTransform);
 	button2->addComponent<Clickeable>();
 	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
-
 		multTextures->previousTexture();
 	});
-
-	
 }
 
 ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)

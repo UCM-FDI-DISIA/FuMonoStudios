@@ -52,7 +52,7 @@ void Paquete::initComponent() {
 		miTipo == Medicinas ? "selloMedicinas" :
 		miTipo == Joyas ? "selloJoyas" :
 		miTipo == Materiales ? "selloMateriales" :
-		miTipo == Armamento ? "selloArmamento" : "Desconocido");
+		miTipo == Armamento ? "selloArmas" : "Desconocido");
 	crearSello(tipoString, tipoSelloPos, tipoSelloPos, tipoSelloSize, tipoSelloSize);
 
 	//Creamos la entidad Peso sello 
@@ -182,7 +182,7 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 Luis: ta de lokos, pero igual mejor que esto lo haga el paquete builder no?
 */
 void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
-	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity();
+	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity(ecs::layer::STAMP);
 	Texture* SelloTex = &sdlutils().images().at(texKey);
 	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
 	SelloEnt->addComponent<RenderImage>(SelloTex);
