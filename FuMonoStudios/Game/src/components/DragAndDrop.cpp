@@ -25,6 +25,8 @@ void DragAndDrop::initComponent() {
 
 	tri_ = ent_->getComponent<Trigger>();
 
+	grav_ = ent_->getComponent<Gravity>();
+
 	assert(tr_ != nullptr);
 
 }
