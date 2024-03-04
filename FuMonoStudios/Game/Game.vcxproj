@@ -219,6 +219,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
+    <None Include="recursos\config\mail.direcctions.json" />
+    <None Include="recursos\config\mail.resources.json" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>
   <ItemGroup>

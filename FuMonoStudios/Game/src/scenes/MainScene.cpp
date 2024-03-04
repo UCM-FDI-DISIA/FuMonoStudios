@@ -18,7 +18,7 @@
 #include "../components/Gravity.h"
 #include "../components/MoverTransform.h"
 #include "../Time.h"
-
+#include "../GameConstants.h"
 
 void ecs::MainScene::createManual()
 {
@@ -63,9 +63,10 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false),timer(10)
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)
 {
-	
+	timeFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	timer = MINIGAME_TIME;
 }
 
 ecs::MainScene::~MainScene()
@@ -80,7 +81,7 @@ void ecs::MainScene::update()
 	{
 		if (timer > 0) {
 			timer -= Time::getDeltaTime();
-			//std::cout << timer << std::endl;
+			updateTimer();
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
@@ -99,6 +100,12 @@ void ecs::MainScene::init()
 	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 
 	createManual();
+
+	// inicializamos el timer
+	timerEnt = addEntity(ecs::layer::UI);
+	timerEnt->addComponent<Transform>(1250, 50,200,200);
+	RenderImage* renderTextTiempo = timerEnt->addComponent<RenderImage>();
+	updateTimer();
 
 	//Boton que genera Paquetes
 	Texture* texturaBoton = &sdlutils ().images ().at ("press");
@@ -192,6 +199,17 @@ void ecs::MainScene::init()
 		}
 		});
 	
+}
+
+void ecs::MainScene::updateTimer() {
+	if (timerTexture != nullptr)
+	{
+		delete timerTexture;
+		timerTexture = nullptr;
+	}
+		
+	timerTexture = new Texture(sdlutils().renderer(), "gitanoo" + std::to_string((int)(timer)), *timeFont, build_sdlcolor(0x005500ff), 200);
+	timerEnt->getComponent<RenderImage>()->setTexture(timerTexture);
 }
 
 void ecs::MainScene::createPaquete (int lv) {

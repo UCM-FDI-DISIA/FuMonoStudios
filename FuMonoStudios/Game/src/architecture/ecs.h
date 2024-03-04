@@ -57,6 +57,7 @@ namespace ecs {
 			OFFICEELEMENTS,
 			MANUAL,
 			FOREGROUND,
+			UI,
 			_LAST_LAYER
 		};
 		constexpr layerId maxLayerId = _LAST_LAYER;

@@ -5,15 +5,6 @@ namespace ecs {
     class Game;
     class MainScene :public Scene
     {
-    private:
-        int fails;
-        int correct;
-        float timer;
-        bool timerPaused;
-
-        void createManual();
-        void createPaquete(int lv);
-        
     public:
         MainScene();
         virtual ~MainScene();
@@ -22,6 +13,21 @@ namespace ecs {
         void init() override;
         void switchTimer() { timerPaused = !timerPaused; }
         void setTimer(float time) { timer = time; }
+
+    private:
+        void createManual();
+        void createPaquete(int lv);
+        
+        int fails;
+        int correct;
+        float timer;
+        bool timerPaused;
+        Font* timeFont;
+
+        // objects
+        Entity* timerEnt;
+        Texture* timerTexture = nullptr;
+        void updateTimer();
     };
 }
 
