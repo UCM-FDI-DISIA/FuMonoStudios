@@ -39,6 +39,12 @@ void Game::run()
 {
 	while (!exit)
 	{
+		if (sceneChange)
+		{
+			changeScene(scene1_, scene2_);
+			sceneChange = false;
+		}
+
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
