@@ -1,5 +1,5 @@
 #pragma once
-#include "Paquete.h"
+#include "../components/Paquete.h"
 #include "../architecture/Entity.h"
 #include <stdlib.h>
 

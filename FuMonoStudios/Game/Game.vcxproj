@@ -133,13 +133,13 @@
   <ItemGroup>
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
+    <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
-    <ClCompile Include="src\components\Felicidad.cpp" />
-    <ClCompile Include="src\components\Mapa.cpp" />
+    <ClCompile Include="src\sistemas\Felicidad.cpp" />
+    <ClCompile Include="src\sistemas\Mapa.cpp" />
     <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
@@ -171,13 +171,13 @@
   <ItemGroup>
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
+    <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
     <ClInclude Include="src\architecture\GeneralData.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
     <ClInclude Include="src\components\Herramientas.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
-    <ClInclude Include="src\components\Felicidad.h" />
-    <ClInclude Include="src\components\Mapa.h" />
+    <ClInclude Include="src\sistemas\Felicidad.h" />
+    <ClInclude Include="src\sistemas\Mapa.h" />
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />

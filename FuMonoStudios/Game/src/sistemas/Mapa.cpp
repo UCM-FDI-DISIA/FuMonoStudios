@@ -2,8 +2,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
-#include "DialogComponent.h"
-#include "Transform.h"
+#include "../components/DialogComponent.h"
+#include "../components/Transform.h"
 
 
 

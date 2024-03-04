@@ -1,6 +1,6 @@
 #pragma once
 #include "../architecture/Scene.h"
-#include "../components/Mapa.h"
+#include "../sistemas/Mapa.h"
 #include "../components/Dialog_Manager.h"
 
 
