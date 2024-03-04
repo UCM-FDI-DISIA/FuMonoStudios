@@ -6,7 +6,10 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
+/*
+Clase que genera los dialogos que se van a escribir
+Carga los dialogos de un fichero te texto que tenemos codificado
+*/
 class DialogManager {
 public:
     DialogManager();
@@ -27,7 +30,7 @@ public:
     /// Vacia el vector de dialogos anterior y resetea el indice de dialogos
     /// </summary>
     /// <param name="path"></param>
-    void setDialogues(std::string path);
+    void setDialogues(const std::string& path);
 
 private:
     /// <summary>
@@ -38,6 +41,10 @@ private:
     /// Indice que indica en que diálogo nos encontramos
     /// </summary>
     size_t currentDialogIndex;
+    /// <summary>
+    /// Indice al que se vuelve cuando se termia la hilera de diálogos
+    /// </summary>
+    int resetDialogueIndex;
 };
 
 #endif // DIALOG_MANAGER_H

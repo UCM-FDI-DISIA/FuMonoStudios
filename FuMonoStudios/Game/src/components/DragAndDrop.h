@@ -21,7 +21,7 @@ public:
 private:
 
 	Transform* tr_;
-
+	
 	Gravity* grav_;
 
 	Trigger* tri_;
