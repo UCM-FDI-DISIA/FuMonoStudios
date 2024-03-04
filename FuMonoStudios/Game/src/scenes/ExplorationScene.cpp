@@ -11,7 +11,7 @@
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
-#include "../GeneralData.h"
+#include "../architecture/GeneralData.h"
 
 ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
 {

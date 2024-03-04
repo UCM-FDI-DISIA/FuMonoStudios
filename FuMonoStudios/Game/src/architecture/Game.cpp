@@ -6,8 +6,8 @@
 #include "../scenes/MainScene.h"
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
-#include "../Time.h"
-#include "../GeneralData.h"
+#include "../components/Time.h"
+#include "GeneralData.h"
 //#include "Game.h"
 /*
 TODO

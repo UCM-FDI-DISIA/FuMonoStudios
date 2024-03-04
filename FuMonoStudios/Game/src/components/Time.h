@@ -1,6 +1,6 @@
 #pragma once
-#include "sdlutils/SDLUtils.h"
-#include "architecture/Game.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../architecture/Game.h"
 class Time
 {
 public:

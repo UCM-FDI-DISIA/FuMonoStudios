@@ -29,7 +29,6 @@
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
-    <ClCompile Include="GeneralData.cpp" />
     <ClCompile Include="src\components\Mapa.cpp" />
     <ClCompile Include="src\components\Felicidad.cpp" />
     <ClCompile Include="src\scenes\MainMenu.cpp" />
@@ -37,7 +36,8 @@
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PaqueteBuilder.cpp" />
-    <ClCompile Include="src\Time.cpp" />
+    <ClCompile Include="src\components\Time.cpp" />
+    <ClCompile Include="src\architecture\GeneralData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -74,9 +74,6 @@
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
-    <ClInclude Include="Mapa.h" />
-    <ClInclude Include="Felicidad.h" />
-    <ClCompile Include="src\Dialog_Manager.cpp" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
@@ -85,7 +82,8 @@
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
-    <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\components\Time.h" />
+    <ClInclude Include="src\architecture\GeneralData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -97,16 +95,16 @@
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PaqueteBuilder.h" />
-    <ClInclude Include="src\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
-    <ClInclude Include="GeneralData.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
-    <ClInclude Include="src\GameConstants.h" />
+    <ClInclude Include="src\architecture\GameConstants.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
     <None Include="Properties.props" />
+    <None Include="recursos\config\mail.direcctions.json" />
+    <None Include="recursos\config\mail.resources.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="recursos\images\Alimentos.png" />

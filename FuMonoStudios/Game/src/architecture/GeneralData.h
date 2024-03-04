@@ -1,5 +1,5 @@
 #pragma once
-#include "utils/Singleton.h"
+#include "../utils/Singleton.h"
 #include "GameConstants.h"
 
 class GeneralData : public Singleton<GeneralData>
@@ -10,7 +10,7 @@ public:
 	~GeneralData(){};
 
 	/// <summary>
-	/// metodo que acutaliza cuanto dinero tienes en funcion de los fallos y aciertos que realices
+	/// Metodo que acutaliza cuanto dinero tienes en funcion de los fallos y aciertos que realices
 	/// </summary>
 	/// <param name="writePacages"></param>
 	/// <param name="wrongPacages"></param>

@@ -17,8 +17,8 @@
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
 #include "../components/MoverTransform.h"
-#include "../Time.h"
-#include "../GameConstants.h"
+#include "../components/Time.h"
+#include "../architecture/GameConstants.h"
 
 void ecs::MainScene::createManual()
 {
