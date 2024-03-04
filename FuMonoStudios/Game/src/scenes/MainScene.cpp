@@ -12,7 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
 #include "../components/Paquete.h"
-#include "../components/PaqueteBuilder.h"
+#include "../sistemas/PaqueteBuilder.h"
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"

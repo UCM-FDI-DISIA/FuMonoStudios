@@ -2,6 +2,7 @@
 #include "DragAndDrop.h"
 
 #include "Transform.h"
+#include "Gravity.h"
 #include "Trigger.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -33,19 +34,16 @@ void DragAndDrop::initComponent() {
 
 void DragAndDrop::update() {
 
-	
-
 	auto& ihdlr = ih();
 
 	SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
-	
 
 	//Detecci�n al clicar sobre el objeto
 	if (ihdlr.mouseButtonDownEvent()) {
 
 
-		if (SDL_PointInRect(&point, &tr_->getRect())) {
+		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
 			dragging = true;
 			if (grav_ != nullptr) {
@@ -57,6 +55,8 @@ void DragAndDrop::update() {
 			differenceY = point.y - tr_->getPos().getY();;
 
 		}
+
+		
 
 	}
 

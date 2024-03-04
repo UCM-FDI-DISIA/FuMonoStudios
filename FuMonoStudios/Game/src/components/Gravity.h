@@ -3,15 +3,15 @@
 
 class Transform;
 
-// Aplica gravedad al Transform. ¡Importante!
+// Aplica gravedad al Transform. ï¿½Importante!
 // si el entity tiene draganddrop, aplicar el componente
 // gravity antes de aplicar el de draganddrop
-// Para evitar fallos, añadir este componente justo después del Transform
+// Para evitar fallos, aï¿½adir este componente justo despuï¿½s del Transform
 class Gravity : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::GRAVITY)
-		Gravity();
+	Gravity();
 	Gravity(float gravityForce);
 	~Gravity();
 

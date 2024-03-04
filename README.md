@@ -22,7 +22,7 @@
   - [Diseño](#diseño)
     - [Fase de exploracion](#fase-de-exploracion)
     - [Fase de gestión de paquetes](#fase-de-gestión-de-paquetes)
-    - [Fase de dinero](#fase-de-post-minijuego-paquetes)
+    - [Fase de dinero](#fase-de-dinero)
   - [Arte](#arte)
     - [Paletas de color](#paletas-de-color)
     - [Lugares](#lugares)
@@ -36,20 +36,30 @@
       - [Jefe oficina](#jefe-oficina)
     - [NPC Grandes](#npc-grandes)
       - [Vagabundo](#vagabundo)
-        - [Finales](#finales-1)
+    - [Finales](#finales-1)
       - [Secretario del rey](#secretario-del-rey)
         - [Finales](#finales-2)
     - [NPC Menores](#npc-menores)
       - [Campesino](#campesino)
-      - [Artesano](#artesano)
         - [Finales](#finales-3)
-      - [Tarotisa](#tarotisa)
+      - [Artesano](#artesano)
         - [Finales](#finales-4)
+      - [Tarotisa](#tarotisa)
+        - [Finales](#finales-5)
       - [Soldado](#soldado)
       - [Contable](#contable)
-        - [Finales](#finales-5)
+        - [Finales](#finales-6)
     - [Dialogos](#dialogos)
       - [Contable](#contable-1)
+      - [Tarotista](#tarotista)
+      - [Artesano](#artesano-1)
+      - [Campesino](#campesino-1)
+  - [1º](#1º)
+  - [2º](#2º)
+  - [3º](#3º)
+  - [4º](#4º)
+  - [5º](#5º)
+      - [Tarotista](#tarotista-1)
 
 ---
 
@@ -299,6 +309,28 @@ Pancracio Warawa es un campesino que desde pequeño ha carecido de los recursos 
 Pancracio Warawa es una tortuga marina de mediana edad que viste con una boina, una pajita de plástico que usa como si fuera una pipa y una capa de algas que le sirve como abrigo. Por dentro lleva unos harapos viejos y mugrientos cubiertos de barro. Este tiene una posición encorvada con la cual suele caminar.
 
 Su caracter es amigable y alegre con todos aquellos de los anillos exteriores y muy hostil con todos los de los anillos más interiores. Es un soñador ambicioso muy amoroso con su familia a la cual sin darse cuenta puede llegar a descuidar por su continuo trabajo y su doble vida en el culto de las lechuzas. A pesar de su amabilidad este siempre propones soluciones violentas frente al problema de la diferencia social entre los diferentes distritos.
+
+##### Finales
+
+**Malo**
+ : Pancracio Warawa acaba harto de las injusticias cometidas hacia él y los campesinos y decide de hablarte ya que cree que trabajas para el secretario del rey y la nobleza y culpa a tu gestión de empeorar la calidad de sus cosechas debido a la ausencia de recursos que sufre.
+ La calidad de sus cultivos ha caído paulatinamente hasta llegar a un punto que prácticamente produce bazofia y su economía ha quedado gravemente afectada, lo que hace que sufra de problemas familiares.
+ Pancracio comienza a descuidarse a sí mismo, a su familia y a sus labores en el grupo de las lechuzas, vuelve a su época depresiva de la que una vez le rescató el grupo de las lechuzas, ahora se le ve borracho a diario en el bar del que una vez fue rescatado, su familia lo ha dejado, y él mismo ya no acepta la ayuda del grupo de las lechuzas.
+
+ **Neutral**
+ : la situación de Pancracio Warawa se mantiene tal y como estaba al principio de la historia, la calidad de sus productos es cuestionable, no llega a ser una bazofia pero no es ni de lejos un buen sabor.
+ La situción con su familia es complicada por los problemas ecónomicos que sufre debido al abusivo precio al que los intermediarios compran sus productos (mucho menos del que tienen al salir al mercado), pero es algo a lo que Pancracio y los suyos ya están acostrumbrados.
+ En las sombras Pancracio sigue trabajan con el grupo de las lechuzas como de costumbre.
+
+ **Feliz**
+ : La buena redistribución de paquetes y las ayudas que le has aportado han hecho que la calidad de las cosechas de Pancracio hayan mejorado bastante, haciendo que Pancracio pueda negorciar mejores precios con los intermediarios, lo que ha mejorado bastante la situación familiar de Pancracio, tanto que él y su mujer han pensado en tener otro hijo pese a su avanzada edad, para ellos fromar una gran familia es una de las mayores maravillas de la vida.
+ Continúa con sus labores con el grupo de las lechuzas con más entusiasmo que antes, debido a que ahora vive algo mejor esto le permite intentar ayudar a más gente que encuentra en una situación parecida a la que él una vez salió, haciendo aumentar en número de lechuzas.
+
+ **MaxiFeliz**
+ : Pancracio está feliz porque va a tener un nuevo hijo, para Pancracio y su mujer tener una gran familia es uno de sus objetivos en la vida, están muy entusiasmados e incluso están empezando a pensar en ampliar aún más la familia en un futuro.
+ La buena redistribución de los recursos y las muchas ayudas otorgadas a Pancracio Warawa han hecho que la calidad de las cosechas de Pancracio hayan mejorado exponencialmente.
+ Poco a poco Pancracio ha ido vendiendo sus cultivos a buen precio hasta el punto de permitirse negociar unos precios muy buenos con los intermediarios debido a la fama que están empezando a obtener sus productos.
+ Debido al aumento de su poder adquisitivo, Pancracio junto al grupo de las lechuzas han decidido abrir un mercado clandestino por el cual lo ciudadanos de los varios exterirores puedan comprar sus productos a un precio muy económico mientra los ciudadanos de los barrios céntrcos siguen comprando los productos a los prescios abusivos que marcan los intermediarios.
 
 
 #### Artesano
@@ -611,5 +643,341 @@ Sobre su pasado, a parte de lo de su padre se sabe que en su colegio le hacian b
   - "Sabes, aún recuerdo mis épocas como campesina de una manera muy dulce, sin embargo lo que hasta día de hoy me enfurece es como se aprovechaban esos estúpidos comerciantes para revender lo que tanto nos costo cosechar. 
   - ¿Qué te parece si les das una lección por mí y por los campesinos?, cualquier paquete de alimentos que vaya al distrito Apolo devuelvelo, cambia su ruta... me da exactamente igual, tan solo que no llegue a su destino. 
   - Esos paquetes siempre son enviados por los avariciosos de los comerciantes. Si haces eso, los honrados trabajadores como yo podrán descansar más tranquilos."
+
+
+**Eventos**
+  - "No se que voy a hacer, los campesinos se han enfadado por el precio que les he ofrecido y no me han querido vender las cosechas. Los nobles no van a ser capaces de aguantar sin esa comida, se van a enfadar y la empresa lo va a pasar mal, que puedo hacer. Ya se, no podrías por favor redigirir un par de paquetes de alimentos hasta el distrito de Hermes, te lo agradecería de verdad."
+
+  - "Madre mia Paco, no puedo estar más estresado. Ayer uno de mis clientes más importantes se porto muy mal conmigo, insultandome solo por un pequeño retraso que tuvimos con la llegada de sus artículos. Para desahogarme decidí escribir una nota poniendo todo lo que pensaba de él. Sin embargo mi secretaria penso que era una carta y la envió por correo. Si esa carta acaba llegando al cliente no se que voy a hacer."
+
+  - "Sabes pimpollo, mi empresa no solo vende la cosecha de los campesinos, también los trabajos de los artesanos. Estos son igual de importantes y valorados que los alimentos, aunque deben de tratarse con más cuidado ya que suelen ser fragiles. Hoy mismo yo en persona le he enviado al mismisimo rey una de esas... esperá. O Poseidón mio, se me ha olvidado el sello de fragilidad, por favor cuando veas mi paquete envuelvelo aunque no tenga el sello, sino quién sabe que le podría pasar. Un día de estos pierdo la cabeza."
+
+  - "Paco nunca le he dicho esto a nadie pero necesito tu ayuda. Lo creas o no, aunque mi padre montó esta exitosa empresa, no lo hizo de la nada, tuvo que pedir muchos favores a muchas personas. Sabes esas cargas están yendo a mi ahora. Un grupo de delfines con los que mi padre negociaba me están reclamando cierto dinero que les debemos. Yo sacaría eso de los fondos de la empresa pero mancharía el nombre de mi padre por negociar con tales rufianes. No podrías quiza desviar algunas joyas hacía el distrito de Hermes, con un paquete será más que suficiente. De verdad que me sabe fatal pedirte esto pero no puedo acudir a nadie más."
+
+  - "Ultimamente las ventas de alimentos no están marchando demasiado bien, no se muy bien como pero parece que los habitantes del distrito de Apolo están obteniendo cosechas de otra parte. Dudo que sea de los campesinos ya que la compra de productos a estos no ha disminuido ni un poco. Esto me huele muy mal, quiza si un par de paquetes de comida que se diríjan al distrito de Apolo se extravían, vuelvan a comprar nuestros recursos. Se que suena mal pero de verdad que lo hago principalmente por los campesinos, si no vendemos tampoco podemos comprarles a ellos y acabarán totalmente arruinados."
+
+
+
+  #### Artesano
+
+**Presentacion**
+"¡Hola querido! ¡Bienvenido a mi humilde taller! ¿En qué puedo ayudarte hoy?
+
+Espera… Tu debes de ser el nuevo verdad? Soy Paulino Tinteiros, el maestro de estos mares. Mis tentáculos son como pinceles y mis obras serán el patrimonio de Atlantis al paso de los años!"
+
+**Felicidad minimo**
+Al intentar hablar con él en el taller, te encuentras con una atmósfera cargada de pesar y desesperación. El pulpo artesano te mira con ojos cansados y una expresión de profunda tristeza. "
+- "No... No puedo más... Todo está perdido. El arte, mi pasión, mi vida... Todo se ha desvanecido... Ya no hay materiales, ya no hay inspiración... Todo ha sido un desastre... Lo siento... Pero no puedo... No puedo más... Por favor... déjame... déjame solo…"
+
+
+**Felicidad maximo**
+- "¡Oh, por todos los océanos! ¡Increíble! ¡Fantástico! ¡Al fin! ¡Por fin te veo con mis propios ojos! ¡Un ser humano de verdad, aquí, en este humilde taller! ¡No estaba loco, no!
+
+Y no solo eso, ¡mira a tu alrededor! ¡Materiales en abundancia, listos para comenzar una nueva era artística! ¡Imagina las creaciones que podríamos hacer juntos!"
+
+He estado trabajando en un aparato que creo que puede serte bastante últil, espero que te guste! Ya hablaremos!
+
+**Genericos**
+
+- **Malos: (la presión del jefe y clientes recae todavía más en el pobre Paulino porque el taller no recibe los materiales)**
+  - "Hoy me encuentro bastante depresivo. ¡Mi jefe me tiene trabajando como un esclavo! No puedo ni siquiera tomar un respiro para charlar, déjame confesarte algo... El jefe no siempre entiende mi visión artística. Para él, solo importan las cosas prácticas y funcionales. ¡Pero yo sé que hay más en la vida que la mera utilidad!
+  
+  Te pido por favor que envíes esos paquetes, ya de por sí las cosas  no son fáciles, no las compliques más. Ahora déjame, prefiero estar solo…"
+
+  - "Maldita sea, el otro día se rieron de mi última creación, un invento revolucionario que cambiará la forma en que nos comunicamos, lo llamé "Teléfono". Entre tú y yo, mi querido amigo, no todos comprenden la verdadera belleza de mis creaciones…
+  
+  Lo lamento mucho pero hoy estoy completamente sumergido en el trabajo, cada vez que no envías los paquetes la presión del taller recae más sobre mí, por favor, manda los paquetes querido." 
+
+  - "Sabes, amigo, el otro día tuve una experiencia bastante desagradable. Un cliente vino a recoger su pedido y quedó muy decepcionado. Resulta que los recortes en materiales que está implementando mi jefe últimamente están afectando a la calidad de mis creaciones. Es frustrante, porque me esfuerzo mucho en cada pieza que hago, pero si no tengo los materiales adecuados, ¿qué puedo hacer? Haz el favor de enviarnos los paquetes que te pedimos por favor!
+  
+  Por favor, intenta enviar los paquetes que te pedimos ¿lo harías por mí?"
+
+- **Neutrales:**
+
+  - "¡Hola, amigo! ¿Qué opinas de Glover Globus? El otro día me lo encontré en el Pezer-King, ¡sí, en el mismísimo Pezer-King! Fue una sorpresa verlo por allí después de tanto tiempo. ¿Quién iba a decir que el campesino que una vez llegó a mi taller buscando un poco de orientación se convertiría en nada menos que el mismísimo secretario del rey? Es increíble cómo la vida nos sorprende a veces."
+
+  - "El otro día fui a ver a la tarotista, me dolía bastante la cabeza, el caso es que ella me recetó unas medicinas. Fui al boticario más cercano y la verdad es que me sigue doliendo bastante la cabeza, como si no me hubiera hecho efecto… Sin embargo, una simple migraña no me parará! El arte me llama!"
+
+  - "Sabes, hay algo que he mantenido en secreto durante mucho tiempo y siento que puedo compartirlo contigo. Hace un tiempo, encontré una maleta muy peculiar en las ruinas submarinas. Estaba escondida entre los restos de un antiguo monumento, como si el mismísimo Poseidón la hubiera dejado allí como un regalo del pasado. Al abrirla, descubrí una serie de objetos extraños y fascinantes. Algunos de ellos me resultaban familiares de las antiguas leyendas que escuchaba de niño, historias sobre seres misteriosos llamados humanos. Aunque no estoy completamente seguro de su origen, estas reliquias han despertado mi curiosidad y han inspirado mi creatividad como nunca antes."
+
+- **Felices:** 
+  - "Estoy emocionado por el futuro. He estado reflexionando sobre la idea de emprender mi propio negocio. Aunque todavía tengo algunas dudas, siento que podría ser una oportunidad emocionante.
+  
+  Además, quería agradecerte sinceramente por enviarme esos paquetes llenos de inspiración. Cada uno de ellos es como un pequeño tesoro que alimenta mi creatividad!"
+
+  - "¡Hola Cariño! ¿Qué te trae por aquí en este día tan fascinante? ¡Ah, yo siempre estoy lleno de energía y creatividad! Aunque hoy estoy especialmente emocionado porque estoy trabajando en un proyecto nuevo y emocionante. ¡Espero que pronto pueda mostrártelo! Sigue enviándome paquetes y llegaremos lejos!"
+
+  -  "¡Hola de nuevo, querido amigo! Hoy estoy lleno de inspiración y energía creativa. Estoy trabajando en una nueva serie de esculturas que exploran la conexión entre el mar y el cielo. ¿Sabías que he estado experimentando con materiales reciclados? Es un desafío emocionante, pero creo que el arte sostenible es el futuro. Y hablando de futuros brillantes, quiero agradecerte sinceramente por seguir enviándome esos paquetes llenos de tesoros. Cada uno de ellos es como un regalo que me impulsa hacia adelante en mi viaje artístico."
+
+ - **MaxiFeliz**
+
+  - "¡Hoy mis tentáculos están a punto de estallar de alegría! Estoy dando los primeros pasos para construir mi propio taller de arte submarino. ¡Finalmente, podré liberar mi creatividad sin restricciones y sin la sombra de mi jefe! ¡Es un sueño hecho realidad! Y todo esto, querido amigo, es gracias a ti!"
+
+  - "Divino, Divino, Divinoo! Mira que creación por favor! Y nada de esto habría sido posible sin tu ayuda! Siempre serás bienvenido aquí, cerca de mí y mi arte!"
+
+  - "Estoy inmerso en la creación de algo grande, algo que cambiará el curso de la historia del arte submarino. ¿Sabías que estoy dando los primeros pasos para abrir mi propio taller? Es un sueño que ha estado latente en mi corazón durante tanto tiempo, y finalmente siento que está a punto de hacerse realidad. Y todo esto, querido amigo, es gracias a ti. Tu apoyo inquebrantable, tus palabras de ánimo, ¡todo ha sido como una corriente fresca impulsándome hacia aguas desconocidas!"
+  
+ 
+
+**Eventos**
+  - "¡Por todos percebes! ¡Estoy en un aprieto, amigo! Hoy fui a recoger materiales para mi última creación y para mi desgracia no había ni un mísero coral! Necesito esos materiales como el pulpo que necesita agua!
+
+  ¿Sabes qué? No sería el fin del mundo si un paquete de materiales se extraviara y terminara por algún remoto error en este taller, ¿verdad?"
+
+  - "¡No brilla! ¡No resplandece! ¿Y las joyas? ¿Y las Perlas? Necesito un favor, creo que ya te haces una idea, no quiero ponerte en un aprieto pero es que mi jefe no para de abaratar la mercancía... ¿A quién quiere mi jefe engañar con esta baratija? Consigueme desviar un paquete, se que no te decepcionaré!"
+
+  - "¡Ay, por las aletas de mi abuela! Aquí estamos otra vez, sin un triste trozo de queso. No sé en qué está pensando el jefe últimamente, pero parece que su cabeza está más en las aguas que en el trabajo. ¿Serías tan amable de echarme una mano y traer algo de comida? ¡necesitamos nutrir nuestra creatividad para hacerla brillar!"
+
+  - "¡Caracolas! Nuestro proveedor nos ha dejado en la anclada otra vez. Necesito esos materiales con urgencia. ¿Podrías hacer el favor de enviarme un paquete hoy mismo? ¡Te estaría muy agradecido por sacarme de este apuro!"
+
+  - "¡Por todos los corales! ¡Qué dolor de cabeza que tengo! Estoy empezando a dudar de la efectividad de esas medicinas de los boticarios. ¿Podrías echarme una mano y traerme algunas medicinas tú mismo? ¡Gracias de antemano, amigo!"
+
+
+#### Campesino
+
+- **Presentacion**
+- yyyyyy, pos como es que saliste corriendo el otro dá macho.
+- Buena la has liado, contento tienes a tu jefe.
+- Anda toma esto a ver si te ayuda un poco hoy que tienes cara de muerto, aunque no me extraña después de todo el jaleo del otro día.
+- "Pruebas algo, sabe raro"
+- Venga a pasar buena noche, ¡y espabila que la vida te va ha comer! 
+- ¡últimamente me la lías cada 2 por 3 con mi mercancía!
+
+**Felicidad minimo**
+- "Al llegar a la granja ves a Pancracio consternado, huele a Alcohol, lleva una botella en la mano y no se encuentra su familia en la granja"
+- YYYYYYYY, QuE Tal EStÁs, hyp, yo estoy CONTENTO AHJAJAAJAja.
+- ¿El huerto?, jjiijijiJIJ Blurgh, ahí está.
+- "El huerto no parece estar en muy buen estado, al igual que Prancacio"
+- ¡Que miras! !!¿eh?!! ¿Qué miras?
+- "ves como Pancracio empieza a desmoronarse"
+- Vete, vete y no vuelvas, ya no tengo huerto, no tengo familia, NO TENGO SECTA, no tengo nada.
+- Vete, vete, vete...
+
+- **Felicidad maximo**
+- 
+
+- **Genericos**
+
+- **Malos:**
+  1º
+  - Buenos días a quien los tenga, que no voy a ser yo. Últimamente mis cosechas no están para tirar cohetes, anda prueba un poco de esto que ha crecido vete tú a saber cómo.
+  - "Pruebas algo, sabe bastante mal"
+  - Malo ¿eh? !PUES QUÉ QUIERES QUE HAGA SI NO ME DA PA MÁS!
+  - ay, hijo, perdona, últimamente no duermo demasiado y me cuesta cada vez más mantenerme cuerdo, las cosachas no van demasiado bien y mi mujer me presiona porque cada vez tenemos menos dinero.
+
+  2º
+  - Hay que joderse que llevo 2 semanas sin dormir, esto está cada vez pero, mi mujer está que se tira de los pelos con las cuentas de la casa, mi huerto está que parece el descampao de enfrente ca la pepa, tiene más malas hierbas que buenas, se las quito y vuelven a crecer.
+  - Encima los intermediarios, los puñeteros intermediarios siempre dando por saco, que si les robé la última vez dándoles mercancía en mal estado y ahora tengo que devolverles el dinero, que si a esto le llamo yo comida, que cómo me atrevo a cobrar por esta bazofia.
+  - ¡AAAY  QUE PENA LA MIA!  
+  - como si no fuera suficiente la miseria que pido por lo poco que tengo encima van y se me quejan.
+  - Si esque así no se puede, así no se puede. No se si son los cultivos, la tierra, o si soy yo.
+  - Pero esto no puede no puede seguir asi...
+
+  3º
+  - Ay, hijo, si hubiera tenido tu labor a tu edad, de las que me habría librado.
+  - En el pasado no lo tuve fácil, cometí muchos errores, jorobar si los cometí.
+  - Pero salí de ellos, me rescataron.
+  - Ya me rescataron una vez de una situción horrenda, conseguí este trabajo y conocí a mi mujer, de verdad parecía que la vida me había dado otra oportunidad.
+  - Pero ya lo ves, estas tierras en mal estado no me da para mantenernos a mí y a mi mujer en unas buenas condiciones.
+  - No se cuánto podré aguantar en esta situación, estoy molio.
+
+- **Neutrales:**
+  1º
+  - Buenas tardes hijo, ¿qué tal te va en tu trabajo?.
+  - Espero que ya no tengas tantas ganas de salir huyendo.
+  - A mí me podría ir mejor la verdad, prueba esto.
+  - "Pruebas algo, sabe raro, pero al menos es comestible"
+  - Las cosas ya no son como antes, cuando empecé todo era más sencillo, la tierra era más próspera y fértil y los productos se vendían mejor sin tanto intermediario de por medio.
+  - Pero bueno, se va tirandocon lo que tenemos, a pasar buen día.
+
+  2º
+  - Buenos días a quien los tenga, estos jodidos intermediarios no dejan de joderme a cada rato, cada día más baratos vendo yo mis productos y más caros los compran otros.
+  - Pero bueno mejor dejar de quejarse por lo que no puedes cambiar, , ¿qué tal andamos?.
+  - Por aquí vamos tirando regular, mi mujer ha enfermado y está en la cama, pero bueno con las medicinas que hemos comprado parece ir mejorando poco a poco.
+  - Y bueno, últimamente he estado paseando por los barrios bajos, la situación podría ser mejor en general. Pero bueno, en peores plazas hemos toreado los de estos lares.
+
+  3º
+  - Aaaay hijo, quien tuviera tu edad y trabajo, por aquí las cosas van a pedales.
+  - Mi mujer lleva un tiempecillo algo mosqueada, quiere tener un hijo, pero mira que es difícil querer tener un niño más de lo que lo quiero yo.
+  - Pero vamos a ver, estos campos no dan para alimentar tantas cabezas, casi no nos da para alimentarnos a nosotros.
+  - Traer una vida para no poder atenderla ..., no me lo perdonaría.
+  - Pero bueno, disfruta de la juventud que algunos no tenemos, a tener un buen día.
+
+- **Felices:**
+  1º
+  - Pero bueno, a quién tenemos aquí. ¿qué tal la vida hijo?
+  - Por aquí todo va bastate bien, mira prubeo esto que acabo de cosechar.
+  - "Pruebas algo, sabe bastante bien"
+  - Últimamente lo que cosecho sabe mejor, no se si serán los recursos o la tierra, pero estamos que nos salimos, esos intermediarios que tanto pot saco me dan están empezando a soltar un poco más por mis productos.
+
+  2º
+  - Buenas tardes chavalín, estos intermediarios están cada vez más desesperados por comprarme los productos.
+  - Oye, ¿que te parecería un plan futuro para hacer que los habitantes de los barrios exteriores puedan comprar mis productos a un precio más asquible?
+  - Ahora mismo sería insostenible para mi granja, pero tal vez en un futuro y con ayuda de ... unos amigos, es posible que pueda con la ayuda de esos amigos.
+  - Pero bueno, no te entretengo más, a pasar buena tarde.
+
+  3º
+  - Ay hijo, que alegría y que ilusión.
+  - Mi mujer llevaba un tiempo pidiéndomelo pero yo no lo veía posinle.
+  - Vamos a tener un hijo al fin, ¡qué alegría la nuestra!
+  - Venga, hasta luego que tengo una cenita que montar.
+
+- **MaxiFeliz**
+  1º
+  - Yeeeeeeepa, que tal estamos máquina.
+  - Prueba esto que están los clientes que me los quitan de las manos lo intemediarios, les soplo más de diez veces más de dinero que antes, ¿Que cuánto cuesta?, tú plruebalo.
+  - "Pruebas algo, es una auténtica delicia".
+  - Bueno ¿eh?, tengo unos amigos, el grupo de las palomas se hacen llamar, resulta que junto a ellos estamos llevando un plan ..., digamos que muy discreto.
+  - Consiste en que los menos favorecidos podáis disfrutar de mis productos a un precio menos abusivos de los que ponen los intermediarios, no hables mucho del tema, es un secreto.
+  - Toma, hoy estoy de buen humor, te puedes llevar un poco de esto gratis, ¡A pasar buen día!
+
+  2º
+  - ¡Ese Paco cómo anda!
+  - Por aquí andamos muy ben, no veas cómo han mejorado mis cultivos en poco tiempo, ¡mira que es casualidad, pero joder, si resulta que desde que estás por aquí mi situción a ido de bien a mejor!, traes buena suerte chaval.
+  - Mi economía está mejor que nunca, madre mía cómo va subiendo el precio que están dispuestos a pagar por mis productos esos intermedriarios, se deben vender bien por los distrítos céntricos.
+  - Y bueno, por el exterior la economía anda un poco peor, pero con la ayuda de unos amigos que se hacen llamar el grupo de las lechuzas estamos empezando a ayudar a comer a buen precio a los desfavorecidos.
+  - ¡Venga Paco, que te sea leve el trabajo mañana!, ¡ y recuerda, no has escuchado nada de un grupo de lechuzas!
+
+  3º
+  - Pero bueeeeeno, si es el Paco.
+  - Que alegría la mía, Paco que vamos a tener un hijo, mi mujer está ahí dentro, nos dimos cuenta porque la pobre estaba un poco pochilla.
+  - ¿Y sabes lo mejor?, ¡Qué tal y como nos ván las cosas podemos incluso permitirnos otro en un futuro no muy lejano!
+  - Madre mía Paco, quien me lo iba a decir, que en tan poco tiempo me iba a dar la vida un vuelco tan gordo.
+  - Madre mía Paco, estoy que no me lo creo, espero que junto a mis amigos del grupo de las lechuzas podamos empezar a crear un futuro mejor para mis niños, sin reyes ni amos que subleven a la población y condenen a parte de su población a vivir en la miseria.
+  - Pero bueno, tú no has escuchado nada de un grupo que mira con desdén al rey.
+  - Larga vida y prosperidad amigo, ojalá te trate la vida igual de bien que amí estos últimos tiempos.
+
+- **Eventos**
+  1º
+  - 
+
+  2º
+  - 
+
+  3º
+  - 
+
+  4º
+  - 
+
+  5º
+  - 
+
+#### Tarotista
+
+**Presentacion**
+- ¡Saludos! Me llamo Abakand Istacoz, soldado del glorioso ejército de Atlantis. 
+- ¿Eres nuevo por aquí? Debo decirte que el deber me ha llevado a servir en el distrito de Apolo, aunque mi corazón anhelaba proteger los distritos exteriores, como Hestia, donde crecí.
+- Mi pasado es tan resistente como mi armadura, y mi deber es velar por la paz, incluso cuando la tarea me resulta desalentadora.
+
+**Felicidad minimo**
+- Hoy... hoy no es un buen día. La carga de trabajo, los informes interminables, la presión de cuidar de los nobles que ni siquiera agradecen mi presencia.
+- A veces me pregunto si todo esto tiene algún sentido...
+- ¿De verdad estoy protegiendo a alguien aquí?
+- La frustración se acumula, y cada día es un recordatorio de que mi sueño de defender los distritos exteriores sigue siendo inalcanzable."
+
+**Felicidad maximo**
+- ¡Increíble! No puedo creerlo, ¿de verdad has venido a visitarme? 
+- Este es un día que no olvidaré. Mi corazón late con emoción al ver que alguien valora mi servicio.
+- Imagina, ¡trabajar en los distritos exteriores! Esa siempre ha sido mi verdadera aspiración, y estoy lleno de esperanza gracias a tu amistad y apoyo. 
+- Juntos, quizás podamos cambiar el rumbo de las cosas.
+
+**Genericos**
+
+- **Malos:**
+
+  1º
+  -  Estoy harto de este trabajo ingrato. Mi jefe no entiende la importancia de proteger a los más vulnerables. 
+  - ¡Y para colmo, los paquetes que debes enviar a veces nunca llegan! ¿Es tan difícil seguir instrucciones básicas? 
+  - Estoy agotado de ser un peón en este juego sin sentido.
+
+  2º
+  - Otra vez más, los nobles se burlan de mis esfuerzos. ¿Te das cuenta de lo absurdo que es tener que cuidar de ellos como si fueran niños pequeños?
+  - La próxima vez, piensa antes de perder o extraviar esos paquetes.
+  - Mi paciencia tiene un límite, y cada vez estoy más cerca de alcanzarlo.
+
+  3º
+  - Mis compañeros soldados me miran con desprecio. ¿Sabes por qué? 
+  - Porque no puedo cumplir con las expectativas de mis superiores. Con cada paquete perdido los nobles se quejan con nosotros por no garantizar la “seguridad” de sus paquetes.
+  - No sé a qué juego estás jugando, pero no puedo tolerar más errores.
+
+- **Neutrales:**
+
+  1º
+  - Los distritos exteriores son duros, y la vida aquí no es más que una guardería de nobles. Al menos contigo puedo ser honesto y expresar mi descontento.
+  - ¿Has notado cómo algunos nobles tratan de aprovecharse de su posición? Es insoportable. 
+  - Pero bueno, así es la vida en Apolo, ¿verdad?
+
+  2º
+  - He visto cosas extrañas últimamente. Rumores de antiguas reliquias encontradas en las ruinas submarinas. No sé qué pensar al respecto. 
+  - Tal vez sea solo un cuento de viejos pescadores, pero si es verdad, podría cambiar muchas cosas. 
+  - ¿Tú qué opinas al respecto?
+
+  3º
+  - ¿Viste a Glover Globus en el Pezer-King? Es sorprendente cómo la vida da vueltas. 
+  - De campesino a secretario del rey. A veces, los sueños pueden hacerse realidad.
+  -  Pero, claro, no todos tienen esa suerte. ¿Tú tienes tus propios sueños?
+
+- **Felices:**
+
+  1º
+  - Hoy fue un día decente. Aunque los nobles siguen siendo una molestia, al menos algunos habitantes de Apolo expresaron su agradecimiento.
+  - Un gesto amable puede hacer que todo valga la pena.
+  - A veces, es bueno recordar la razón por la que decidí unirme al ejército en primer lugar.
+
+  2º
+  - ¡Mira quién está aquí! Me alegra verte. Hay algo refrescante en la camaradería.
+  - A pesar de todo, sigo manteniendo la esperanza de que las cosas mejoren. 
+  - Tal vez algún día pueda hacer una diferencia real y proteger a los que realmente lo necesitan.
+
+  3º
+  - ¡Hoy fue un día exitoso! Cumplí con mi deber, no ha habido quejas por retrasos o pérdidas de paquetes y, lo más importante, pude hacer frente a algunas injusticias que presencié.
+  - Cuando veo resultados como estos, siento que estoy en el camino correcto. 
+  - A veces, solo se necesita un pequeño cambio para marcar la diferencia.
+
+- **MaxiFeliz**
+
+  1º
+  - ¡Estoy emocionado! Logré convencer después de tanto tiempo a mis superiores de asignarme a los distritos exteriores. 
+  - ¡Es un paso gigante hacia mi sueño! A partir de ahora, podré dedicar mi tiempo y energía a proteger a quienes realmente lo necesitan.
+  - ¡Gracias por ayudarme a conseguir este cambio!
+
+  2º
+  - ¡Hoy se hizo realidad! ¡Me dieron el traslado a los distritos exteriores!
+  - No puedo expresar lo agradecido que estoy por tu apoyo constante. Esto no habría sido posible sin ti. Ahora, podré luchar por la justicia donde realmente importa.
+  - ¡Brindemos por un nuevo capítulo en mi vida y en la tuya!
+
+  3º
+  - ¡Es increíble! Después de tanto esfuerzo y perseverancia, ¡mi sueño se ha hecho realidad! 
+  - Gracias a tu amistad y apoyo, ahora estoy destinado a los distritos exteriores. 
+  - Poder proteger a los necesitados, sentiré que mi servicio tiene un propósito real. ¡Estoy lleno de gratitud y entusiasmo por el futuro!
+
+**Eventos**
+
+  1º
+  - Hoy cuando recogía los suministros, encontré una extraña nota en la que se mencionaba que hoy iban a pasar sustancias ilegales a través de paquetes. 
+  - Parece que hay un aumento en el tráfico de objetos extraños y sustancias ilegales en el mercado negro. 
+  - Podrías hacerme un favor y descartar cualquier paquete sospechoso que encuentres hoy, sobre todo en paquetes que tengan un peso excesivo.
+
+  2º
+  - El otro día recibí una carta de mi familia y al parecer los suministros médicos en los distritos exteriores escasean mucho. 
+  - La situación sigue empeorando y los boticarios necesitan ayuda. Asegúrate de que los distritos exteriores reciban los paquetes con los recursos médicos a tiempo y en buenas condiciones.
+  - La salud de la gente depende de ello.
+
+  3º
+  - Un rumor inquietante está circulando entre los habitantes del distrito de Apolo. Dicen que hay disturbios en los distritos exteriores. 
+  - Necesito que verifiques la situación y, si es necesario, sería de mucha ayuda si pudieses redirigir algún paquete hacia los distritos exteriores ya sean comida o medicina.
+  - No podemos permitir que la situación se salga de control.
+
+  4º
+  - Hoy encontré a un joven talentoso de los distritos exteriores que sueña con unirse al ejército. 
+  - Me recordaba a mí mismo cuando era joven y tenía grandes aspiraciones. ¿Serías tan amable de enviar materiales y armamentos al distrito de Hestia?
+  - Quién sabe, tal vez estemos forjando al próximo protector de Atlantis.
+
+  5º
+  - Buenas Paco, recuerdas al joven talentoso del que te hablé el otro día que quería unirse al ejército. 
+  - Pues me ha dicho que mucha más gente de los distritos exteriores también quería unirse al ejército. Podrías hacerme un favor y enviar más materiales y armamentos tanto al distrito de Hestia como al de Artemisa. 
+  - Te lo agradecería de todo corazón.
+
 
 

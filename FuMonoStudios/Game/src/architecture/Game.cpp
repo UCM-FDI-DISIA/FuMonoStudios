@@ -140,7 +140,6 @@ void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 	/*if (loadedScenes.size() < 1) {
 		loadScene(scene2);
 	}*/
-
 }
 
 /// <summary>

@@ -17,9 +17,6 @@ namespace ecs {
 		*/
 	{
 	public:
-		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
-			currCmps_.reserve(cmp::maxComponentId);
-		};
 
 		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
 			currCmps_.reserve(cmp::maxComponentId);

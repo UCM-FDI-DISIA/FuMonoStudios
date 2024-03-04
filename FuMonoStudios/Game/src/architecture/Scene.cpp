@@ -71,7 +71,6 @@ namespace ecs {
 	{
 		colisionEntities.erase(it);
 	}
-
 	//Se pasa una entidad para comprobar si esta choca con el resto de entidades que tienen un trigger
 	bool Scene::checkColisions(Entity* e) {
 
