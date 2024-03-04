@@ -2,12 +2,14 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
+#include "DialogComponent.h"
 #include "Transform.h"
 
 
 
-Mapa::Mapa(ecs::Scene* e) : mScene(e)
+Mapa::Mapa(ecs::Scene* e) : mScene(e), dialogMngr_()
 {
+	dialogMngr_.setDialogues("resources/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace = &demeter;
@@ -29,11 +31,42 @@ ecs::Entity* Mapa::createNavegationsArrows(int x, int y, std::string placeDir)
 			actualPlace->killObjects();
 			navigate(placeDir);
 			createObjects(placeDir);
-			sdlutils().clearRenderer();
 		}
 	};
 	clicker->addEvent(cosa);
 	return Arrow;
+}
+
+ecs::Entity* Mapa::createCharacter(int x, int y,std::string character) {
+
+	// Para Dani: El Personaje PlaceHolder que te he creado se compone del botón de press que al pulsarse te crea
+// la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
+// solucionar sacando las entidades de box al h y comprobando si punteros a entidad son null o con un booleano que
+// haga de flag)
+
+// Para Dani: Aquí le hacemos clickable y le ponemos como callback el método funcPress
+	ecs::Entity* BotonPress = mScene->addEntity();
+	Texture* texturaBoton = &sdlutils().images().at("press");
+	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
+	auto clickerPress = BotonPress->addComponent<Clickeable>();
+	CallbackClickeable funcPress = [this]() {
+		//Esto sería la caja del fondo (lo de SDL que se ve)
+		ecs::Entity* boxBg = mScene->addEntity();
+		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
+		boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
+		actualPlace->addObjects(boxBg);
+
+		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
+		ecs::Entity* dialogoBox = mScene->addEntity();
+		auto textTr = dialogoBox->addComponent<Transform>(20, 20, 100, 100);
+		textTr->setParent(bgTr);
+		dialogoBox->addComponent<RenderImage>();
+		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
+		actualPlace->addObjects(dialogoBox);
+		};
+	clickerPress->addEvent(funcPress);
+	return BotonPress;
 }
 
 void Mapa::initPlacesDefaultMap()
@@ -115,19 +148,23 @@ void Mapa::createObjects(std::string place) {
 		demeter.addObjects(createNavegationsArrows(100,100,"Hefesto"));
 		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes"));
 		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa"));
+		demeter.addObjects(createCharacter(300, 300, "Campesino"));
 	}
 	else if(place == "Hefesto")
 	{
 		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia"));
 		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter"));
+		hefesto.addObjects(createCharacter(300, 300, "Artesano"));
 	}
 	else if (place == "Hestia") {
 		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa"));
 		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto"));
+		hestia.addObjects(createCharacter(300, 300, "Tarotista"));
 	}
 	else if (place == "Artemisa") {
 		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter"));
 		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia"));
+		artemisa.addObjects(createCharacter(300, 300, "Vagabundo"));
 	}
 	else if (place == "Hermes") {
 		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto"));
@@ -137,9 +174,11 @@ void Mapa::createObjects(std::string place) {
 	else if (place == "Apolo") {
 		apolo.addObjects(createNavegationsArrows(100, 100, "Poseidon"));
 		apolo.addObjects(createNavegationsArrows(1300, 100, "Hermes"));
+		apolo.addObjects(createCharacter(300, 300, "Soldado"));
 	}
 	else if (place == "Poseidon") {
 		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo"));
+		poseidon.addObjects(createCharacter(300, 300, "Secretario"));
 	}
 }
 

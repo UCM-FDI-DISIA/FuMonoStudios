@@ -14,7 +14,6 @@ namespace ecs {
 
 
     private:
-        DialogManager dialogMngr_;
          Mapa map;
     };
 }

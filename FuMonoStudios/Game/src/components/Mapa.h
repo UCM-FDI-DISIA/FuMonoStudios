@@ -3,10 +3,11 @@
 #include "../architecture/ecs.h";
 #include "../architecture/Entity.h"
 #include "../architecture/Scene.h"
+#include "Dialog_Manager.h"
 #include <unordered_map>
 #include <vector>
 #include <array>
-
+class DialogManager;
 /// <summary>
 /// Struct que guarda la información de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
 /// puedenavegar a él, un mapa con las direcciones que conectan a él (a las que no tiene por qué poder navegarse),
@@ -115,6 +116,8 @@ private:
 	//rect para renderizar el BackGround
 	SDL_Rect rect;
 
+	DialogManager dialogMngr_;
+
 	/// <summary>
 	/// Mata (setAlive(false) los objetos del lugar para que se borren de la escena y los borra del vector
 	/// del lugar.
@@ -133,6 +136,10 @@ private:
 	/// </summary>
 	ecs::Entity* createNavegationsArrows(int x, int y, std::string placeDir);
 
+	/// <summary>
+	/// Método factiría para characters
+	/// </summary>
+	ecs::Entity* createCharacter(int x, int y, std::string character);
 public:
 	//constructora
 	Mapa(ecs::Scene* e);
