@@ -26,6 +26,14 @@ public:
 	/// </summary>
 	/// <param name="scene"></param>
 	void killScene(ecs::sc::sceneId scene);
+
+	/// <summary>
+	/// metodo para solicitar cambio de una escena a otra
+	/// </summary>
+	/// <param name="scene1"></param>
+	/// <param name="scene2"></param>
+	void requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
+
 	/// <summary>
 	/// metodo para cambiar de una escena a otra
 	/// </summary>
@@ -49,6 +57,9 @@ private:
 	bool exit;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	bool sceneChange;
+	ecs::sc::sceneId scene1_, scene2_; //una guarrada lo se, pero ahora mismo quiero que el juego no explote, ya se hara bonito
 
 };
 

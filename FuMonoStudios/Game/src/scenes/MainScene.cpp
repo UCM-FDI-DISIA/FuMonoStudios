@@ -16,6 +16,7 @@
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
+#include "../Time.h"
 
 
 void ecs::MainScene::createManual()
@@ -61,13 +62,28 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0)
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false),timer(10)
 {
 	
 }
 
 ecs::MainScene::~MainScene()
 {
+}
+
+
+void ecs::MainScene::update()
+{
+	Scene::update();
+	if (!timerPaused)
+	{
+		if (timer > 0) {
+			timer -= Time::getDeltaTime();
+			//std::cout << timer << std::endl;
+		}
+		else
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+	}
 }
 
 void ecs::MainScene::init()
