@@ -49,7 +49,7 @@ Paquete::~Paquete() {
 void Paquete::initComponent() {
 	//Creamos la entidad Tipo sello 
 	std::string tipoString = (miTipo == Alimento ? "selloAlimento" :
-		miTipo == Medicinas ? "selloMedicinas" :
+		miTipo == Medicinas ? "selloMedicina" :
 		miTipo == Joyas ? "selloJoyas" :
 		miTipo == Materiales ? "selloMateriales" :
 		miTipo == Armamento ? "selloArmamento" : "Desconocido");

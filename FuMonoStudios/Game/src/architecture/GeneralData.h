@@ -19,6 +19,7 @@ public:
 	int GetFinalID(); //Devuelve el id del final del juego
 	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
 	int GetEventoID(); //Devuelve el id del evento que ocurrirá en el juego
+	int getMoney() { return dinero_; }
 
 private:
 	void addMoney(int cant) { dinero_ += cant; }

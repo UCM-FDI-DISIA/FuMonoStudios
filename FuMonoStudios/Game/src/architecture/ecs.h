@@ -38,6 +38,7 @@ namespace ecs {
 		enum sceneId : scId_t {
 			MAIN_SCENE,
 			EXPLORE_SCENE,
+			END_WORK_SCENE,
 			MENU_SCENE,
 			_LAST_SCENE
 		};

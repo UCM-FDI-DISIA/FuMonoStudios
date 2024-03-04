@@ -63,7 +63,7 @@ void ecs::MainScene::createManual()
 	
 }
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false), timerTexture(nullptr),timerEnt(nullptr)
 {
 	timeFont = new Font("recursos/fonts/ARIAL.ttf", 40);
 	timer = MINIGAME_TIME;
@@ -84,7 +84,7 @@ void ecs::MainScene::update()
 			updateTimer();
 		}
 		else
-			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
 	}
 }
 

@@ -26,7 +26,7 @@ namespace ecs {
 
         // objects
         Entity* timerEnt;
-        Texture* timerTexture = nullptr;
+        Texture* timerTexture;
         void updateTimer();
     };
 }

@@ -6,6 +6,7 @@
 #include "../scenes/MainScene.h"
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
+#include "../scenes/EndWorkScene.h"
 #include "../components/Time.h"
 #include "GeneralData.h"
 //#include "Game.h"
@@ -22,7 +23,7 @@ Game::Game() :exit(false) {
 	sdl.showCursor();
 	window = sdl.window();
 	renderer = sdl.renderer();
-	gameScenes = { new ecs::MainScene(),new ecs::ExplorationScene(),new ecs::MainMenu() };
+	gameScenes = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
 	loadScene(ecs::sc::MENU_SCENE);
 }
