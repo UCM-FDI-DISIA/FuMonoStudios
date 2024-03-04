@@ -70,9 +70,9 @@ void Paquete::initComponent() {
 }
 
 bool Paquete::Correcto() const{ 
-	//M�todo que comprueba si el paquete hab�a sido generado sin errores (AKA: Si da false, eso significa que se tendr�a que devolver al remitente)
+	//M�todo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendr�a que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) { //Si la calle es err�nea, el paquete no es correcto
+	if (miCalle == Erronea) { //Si la calle es err0nea, el paquete no es correcto
 		resul = false;
 	}
 	if (miDistrito == Erroneo) { //Si el distrito es err�neo, el paquete no es correcto
