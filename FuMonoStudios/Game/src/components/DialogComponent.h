@@ -1,11 +1,13 @@
 #pragma once
-#include <string>
 #include "../architecture/Component.h"
+#include "Dialog_Manager.h"
+#include "../sdlutils/Font.h"
+#include <string>
+
 
 class Transform;
 class RenderImage;
 class Font;
-class DialogManager;
 class Texture;
 
 class DialogComponent :

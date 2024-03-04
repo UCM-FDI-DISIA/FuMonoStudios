@@ -37,8 +37,8 @@ namespace ecs {
 	namespace sc {
 		enum sceneId : scId_t {
 			MAIN_SCENE,
-			EXPLORE_SCENE,
 			MENU_SCENE,
+			EXPLORE_SCENE,
 			_LAST_SCENE
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;
@@ -52,12 +52,7 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
-			PACKAGE,
-			STAMP,
-			OFFICEELEMENTS,
-			MANUAL,
 			FOREGROUND,
-			UI,
 			_LAST_LAYER
 		};
 		constexpr layerId maxLayerId = _LAST_LAYER;

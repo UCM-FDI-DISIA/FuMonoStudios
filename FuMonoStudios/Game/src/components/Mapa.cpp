@@ -126,7 +126,7 @@ void Mapa::initDirectionsDefaultMap()
 	poseidon.addDirections("Apolo", &apolo);
 }
 
-void Mapa::navigate(std::string placeDir) // otro string sin const
+void Mapa::navigate(std::string placeDir)
 {
 	if (actualPlace->navigate(placeDir))
 		actualPlace = actualPlace->getPlaceFromDirection(placeDir);

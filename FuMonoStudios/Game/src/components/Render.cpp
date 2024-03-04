@@ -3,12 +3,9 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-RenderImage::RenderImage() : myTexture(nullptr), myTransform(nullptr), ownsTexture_() {}
+RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr) {}
 
-RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr),ownsTexture_() {}
-
-RenderImage::~RenderImage() {
-}
+RenderImage::~RenderImage() {}
 
 void RenderImage::initComponent() {
 	myTransform = ent_->getComponent<Transform>();
@@ -22,8 +19,4 @@ void RenderImage::render() const {
 void RenderImage::setTexture(Texture* texture)
 {
 	myTexture = texture;
-}
-
-const Texture* RenderImage::getTexture() {
-	return myTexture;
 }

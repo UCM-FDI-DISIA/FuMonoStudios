@@ -131,10 +131,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\components\PackageChecker.cpp" />
-    <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
-    <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
@@ -144,6 +140,9 @@
     <ClCompile Include="src\components\Gravity.cpp" />
     <ClCompile Include="src\components\Clickeable.cpp" />
     <ClCompile Include="src\components\DragAndDrop.cpp" />
+    <ClCompile Include="src\components\PackageChecker.cpp" />
+    <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\architecture\Component.cpp" />
     <ClCompile Include="src\architecture\ecs.cpp" />
@@ -166,13 +165,8 @@
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
-    <ClCompile Include="src\components\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\components\PackageChecker.h" />
-    <ClInclude Include="src\components\Paquete.h" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
-    <ClInclude Include="src\architecture\GeneralData.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
     <ClInclude Include="src\components\Herramientas.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -182,6 +176,9 @@
     <ClInclude Include="src\components\Gravity.h" />
     <ClInclude Include="src\components\Clickeable.h" />
     <ClInclude Include="src\components\DragAndDrop.h" />
+    <ClInclude Include="src\components\PackageChecker.h" />
+    <ClInclude Include="src\components\Paquete.h" />
+    <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />
@@ -190,7 +187,7 @@
     <ClInclude Include="src\architecture\Scene.h" />
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\components\Trigger.h" />
-    <ClInclude Include="src\architecture\GameConstants.h" />
+    <ClInclude Include="src\GameConstants.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
@@ -215,24 +212,10 @@
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
-    <ClInclude Include="src\components\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
-    <None Include="recursos\config\mail.direcctions.json" />
-    <None Include="recursos\config\mail.resources.json" />
     <None Include="src\sdlutils\RAEDME.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="recursos\images\Alimentos.png" />
-    <Image Include="recursos\images\Armas.png" />
-    <Image Include="recursos\images\Fragil.png" />
-    <Image Include="recursos\images\Joyas.png" />
-    <Image Include="recursos\images\Materiales.png" />
-    <Image Include="recursos\images\Medicina.png" />
-    <Image Include="recursos\images\PesoAlto.png" />
-    <Image Include="recursos\images\PesoBajo.png" />
-    <Image Include="recursos\images\PesoMedio.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

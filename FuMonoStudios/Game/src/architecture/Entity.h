@@ -10,18 +10,14 @@
 
 namespace ecs {
 	class Entity
-		/*
-		TODO:
-		Hacer metodos:
-			handleInput(SDL_Event& event)???
-		*/
+	/*
+	TODO:
+	Hacer metodos:
+		handleInput(SDL_Event& event)???
+	*/
 	{
 	public:
-		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
-			currCmps_.reserve(cmp::maxComponentId);
-		};
-
-		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
+		Entity(Scene* scene, ecs::layer::layerId lyid) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(lyid) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -29,7 +25,7 @@ namespace ecs {
 			for (auto c : currCmps_) {
 				delete c;
 			}
-			//std::cout << "Entidad destruida"<<std::endl;
+			std::cout << "Entidad destruida"<<std::endl;
 		};
 
 		inline bool isAlive() const { return alive_; };
@@ -52,6 +48,8 @@ namespace ecs {
 		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
 		template<>
 		inline Trigger* addComponent<Trigger>() {
+
+			//scene_->addEntityToColisionList(this);
 
 			Trigger* t = addComponent_aux<Trigger>(scene_->addEntityToColisionList(this));
 
@@ -77,7 +75,7 @@ namespace ecs {
 
 		}
 
-
+		
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>
@@ -107,14 +105,6 @@ namespace ecs {
 			return myLayer;
 		}
 
-		inline void addIterator(std::vector<Entity*>::iterator it) {
-			mIt_ = it;
-		}
-
-		inline std::vector<Entity*>::iterator getIterator() {
-			return mIt_;
-		}
-
 		//Comprueba si Entity tiene el componente marcado por cId
 		inline bool hasComponent(ecs::cmpId_t cId) {
 			return cmps_[cId] != nullptr;
@@ -138,7 +128,6 @@ namespace ecs {
 	private:
 		bool alive_;
 		Scene* scene_;
-		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;
 		std::array<Component*, cmp::maxComponentId> cmps_;

@@ -12,7 +12,7 @@ std::string DialogManager::GetCurrentDialog() {
         return dialogs[currentDialogIndex];
     }
     else {
-        return ""; // No hay más diálogos. cleon: ultramegamaxi MAL
+        return ""; // No hay más diálogos
     }
 }
 
@@ -22,14 +22,14 @@ void DialogManager::NextDialog() {
         currentDialogIndex++;
     }
 }
-// un string sin referencia es como un día sin sol: const string&
+
 void DialogManager::setDialogues(std::string path) {
     //eliminamos los dialogos anteriores
     dialogs.clear();
     //reseteamos la posicon del indice
     currentDialogIndex = 0;
     std::ifstream file(path);
-    if (file.is_open()) { // estamos en 2º. is_open es para bebés programadores. usad librería de carga
+    if (file.is_open()) {
         std::string line;
         std::string currentDialog;
 

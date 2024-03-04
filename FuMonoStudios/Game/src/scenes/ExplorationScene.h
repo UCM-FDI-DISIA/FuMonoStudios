@@ -2,10 +2,7 @@
 #include "../architecture/Scene.h"
 #include "../components/Mapa.h"
 #include "../components/Dialog_Manager.h"
-
-
 namespace ecs {
-
     class ExplorationScene :
         public Scene
     {
@@ -13,7 +10,7 @@ namespace ecs {
         ExplorationScene();
         virtual ~ExplorationScene();
         void init() override;
-
+        virtual void render();
 
 
     private:

@@ -9,24 +9,24 @@
 #include <array>
 class DialogManager;
 /// <summary>
-/// Struct que guarda la informaciï¿½n de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
-/// puedenavegar a ï¿½l, un mapa con las direcciones que conectan a ï¿½l (a las que no tiene por quï¿½ poder navegarse),
+/// Struct que guarda la información de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
+/// puedenavegar a él, un mapa con las direcciones que conectan a él (a las que no tiene por qué poder navegarse),
 /// y una lista de punteros a las entidades propias del lugar (perosonajes y flechas de movimiento) 
-/// Tiene mï¿½todos para aï¿½adir direcciones al lugar (necesita un string y una instancia de lugar), un booleano
+/// Tiene métodos para añadir direcciones al lugar (necesita un string y una instancia de lugar), un booleano
 /// que indica si cierto lugar (indicado con el string del mapa) es navegable, un getPlaceFromDirection 
-/// que devuelve un puntero apuntando la posiciï¿½n de memoria de un lugar del mapa de direcciones (se usa para 
+/// que devuelve un puntero apuntando la posición de memoria de un lugar del mapa de direcciones (se usa para 
 /// moverte por el mapa) y un getTexture (se usa para renderizar el background en el mapa).
-/// No hay destructora porque no se genera nueva memoria dinï¿½mica.
+/// No hay destructora porque no se genera nueva memoria dinámica.
 /// </summary>
 struct Lugar {
 private:
 	//Puntero a la textura del fondo
 	Texture* backGround;
 
-	//Bool que permite la navegaciï¿½n
+	//Bool que permite la navegación
 	bool navegable;
 
-	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por quï¿½ poderse navegar)
+	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por qué poderse navegar)
 	std::unordered_map<std::string,Lugar*> directions;
 
 	// Las entidades del lugar se almacenan como las de la escena, en vectores de objetos organizados en layouts
@@ -38,25 +38,25 @@ public:
 	Lugar(Texture* t, bool n) : ents(), backGround(t), navegable(n) /*character(c)*/ {};
 
 	/// <summary>
-	/// Mï¿½todo para aï¿½adir direcciones al mapa del lugar
+	/// Método para añadir direcciones al mapa del lugar
 	/// </summary>
 	/// <param name="placeDir"></param>
 	/// <param name="place"></param>
 	void addDirections(std::string placeDir, Lugar* place);
 
 	/// <summary>
-	/// Mï¿½todo para comprobar la navegabilidad a ciero lugar
+	/// Método para comprobar la navegabilidad a ciero lugar
 	/// </summary>
 	/// <param name="placeDir"></param>
 	/// <returns></returns>
 	bool navigate(std::string placeDir);
 
 	/// <summary>
-	/// Mï¿½todo para obtener la direcciï¿½n de memoria de un lugar del mapa de direcciones (se usa para navegar)
+	/// Método para obtener la dirección de memoria de un lugar del mapa de direcciones (se usa para navegar)
 	/// </summary>
 	Lugar* getPlaceFromDirection(std::string placeDir);
 	/// <summary>
-	/// Mï¿½todo que devuelve la textura del fondo para poder renderizarla
+	/// Método que devuelve la textura del fondo para poder renderizarla
 	/// </summary>
 	/// <returns></returns>
 	Texture* getTexture() const { return backGround; };
@@ -70,22 +70,22 @@ public:
 
 	/// <summary>
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
-	/// USAR DESPUï¿½S DE HABER NAVEGADO
+	/// USAR DESPUÉS DE HABER NAVEGADO
 	/// </summary>
 	void addObjects(ecs::Entity* e);
 };
 
 /// <summary>
-/// Clase que encapsula los lugares y se usa como sistema de navegaciï¿½n.
+/// Clase que encapsula los lugares y se usa como sistema de navegación.
 /// La parte privada de la clase incluye un rect para el BackGround,
-/// todos los lugares cargados en variables junto a un puntero apuntando a la posiciï¿½n de memoria del lugar
-///	actual, dos mï¿½todos para inicializar los lugares y sus direcciones (podiciones adyacentes a las que no 
-/// necesariamente se puede navegar) y otros dos mï¿½todos para gestionar las entidades del lugar en el que 
+/// todos los lugares cargados en variables junto a un puntero apuntando a la posición de memoria del lugar
+///	actual, dos métodos para inicializar los lugares y sus direcciones (podiciones adyacentes a las que no 
+/// necesariamente se puede navegar) y otros dos métodos para gestionar las entidades del lugar en el que 
 /// te encuentras.
-/// Como mï¿½todos pï¿½blicos tenemos la constructora que inicializa toda la informaciï¿½n del mapa, un mï¿½todo 
+/// Como métodos públicos tenemos la constructora que inicializa toda la información del mapa, un método 
 /// navigate que comprueba si se puede navegar desde el lugar actual al indicado con el string que le pasas, si 
-/// es posible la navgaciï¿½n navegas al lugar, por ï¿½ltimo estï¿½ el mï¿½todo renderBackGround que renderiza el fondo,
-/// No hay destructora porque no se genera nueva memoria dinï¿½mica.
+/// es posible la navgación navegas al lugar, por último está el método renderBackGround que renderiza el fondo,
+/// No hay destructora porque no se genera nueva memoria dinámica.
 /// </summary>
 class Mapa
 {
@@ -95,7 +95,7 @@ private:
 	//Puntero al lugar actual
 	Lugar* actualPlace;
 
-	//Luego harï¿½ un vector y un enum, son los lugares
+	//Luego haré un vector y un enum, son los lugares
 	Lugar demeter;
 	Lugar hefesto;
 	Lugar hestia;
@@ -105,11 +105,11 @@ private:
 	Lugar poseidon;
 	
 	/// <summary>
-	/// Mï¿½todo para inicializar los lugares del mapa
+	/// Método para inicializar los lugares del mapa
 	/// </summary>
 	void initPlacesDefaultMap();
 	/// <summary>
-	/// Mï¿½todo para incializar las direcciones adyacentes a cada lugar del mapa
+	/// Método para incializar las direcciones adyacentes a cada lugar del mapa
 	/// </summary>
 	void initDirectionsDefaultMap();
 
@@ -127,31 +127,31 @@ private:
 
 	/// <summary>
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
-	/// USAR DESPUï¿½S DE HABER NAVEGADO
+	/// USAR DESPUÉS DE HABER NAVEGADO
 	/// </summary>
 	void createObjects(std::string place);
 
 	/// <summary>
-	/// Mï¿½todo factorï¿½a para las flechas de navegaciï¿½n
+	/// Método factoría para las flechas de navegación
 	/// </summary>
 	ecs::Entity* createNavegationsArrows(int x, int y, std::string placeDir);
 
 	/// <summary>
-	/// Mï¿½todo factirï¿½a para characters
+	/// Método factiría para characters
 	/// </summary>
 	ecs::Entity* createCharacter(int x, int y, std::string character);
 public:
 	//constructora
 	Mapa(ecs::Scene* e);
 	/// <summary>
-	/// Mï¿½todo para navegar a cierto lugar
+	/// Método para navegar a cierto lugar
 	/// </summary>
 	void navigate(std::string placeDir);
 
 	/// <summary>
-	/// Mï¿½todo para renderizar el backGround
+	/// Método para renderizar el backGround
 	/// </summary>
 	void renderBackGround() const;
 
-	//TODO: hacer lugares activables de forma dinï¿½mica
+	//TODO: hacer lugares activables de forma dinámica
 };

@@ -15,6 +15,7 @@ enum TipoHerramienta {
 // paquete. 
 // Funciona a la par con una función que está asignada a cada paquete
 // que llama a la funcion interact si detecta que es una herramienta
+
 class Herramientas : public ecs::Component
 {
 public:
