@@ -14,9 +14,9 @@ EndWorkScene::~EndWorkScene() {
 
 
 void EndWorkScene::init() {
-	Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 50);
+	Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 70);
 	std::string msg = "Money: ";
-	msg += GeneralData::instance()->getMoney();
+	msg += std::to_string(GeneralData::instance()->getMoney());
 	Texture* text = new Texture(sdlutils().renderer(), msg, *fuente, build_sdlcolor(0x000000ffff));
 	auto dineros = addEntity();
 	auto tr = dineros->addComponent<Transform>(0,0,text->width(),text->height());
