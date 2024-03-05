@@ -30,7 +30,7 @@ namespace ecs {
         // objects
         void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt;
-        Texture* timerTexture = nullptr;
+        Texture* timerTexture;
         void updateTimer();
 
         Entity* failsEnt;

@@ -25,7 +25,7 @@ void ecs::MainMenu::init()
 	std::cout << "Hola Menu" << std::endl;
 	sdlutils().clearRenderer();
 
-	Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 50);
+	//Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 50);
 
 	Entity* Titulo = addEntity();
 	Texture* texturaTitulo = &sdlutils().images().at("title");
@@ -33,7 +33,7 @@ void ecs::MainMenu::init()
 	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
 	Titulo->addComponent<DragAndDrop>();
 
-	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Bot�n", *fuente, build_sdlcolor(0x000000ff));
+	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Bot�n", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
 	Entity* BotonPress = addEntity();
 	
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());

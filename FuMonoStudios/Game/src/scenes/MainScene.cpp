@@ -22,7 +22,7 @@
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)
+ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false), timerTexture(nullptr),timerEnt(nullptr)
 {
 	timeFont = new Font("recursos/fonts/ARIAL.ttf", 40);
 	timer = MINIGAME_TIME;
@@ -43,7 +43,7 @@ void ecs::MainScene::update()
 			updateTimer();
 		}
 		else
-			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
+			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
 	}
 }
 
@@ -52,7 +52,7 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	
+	timer = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
 	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
@@ -161,6 +161,11 @@ void ecs::MainScene::createTubos() {
 					createPaquete(0);
 					});
 			}
+			GeneralData::instance()->updateMoney(correct,fails);
+			entRec->setAlive(false);
+		}
+		else {
+			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
