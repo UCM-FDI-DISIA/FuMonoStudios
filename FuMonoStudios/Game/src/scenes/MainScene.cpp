@@ -208,14 +208,15 @@ void ecs::MainScene::updateTimer() {
 		timerTexture = nullptr;
 	}
 		
-	timerTexture = new Texture(sdlutils().renderer(), "gitanoo" + std::to_string((int)(timer)), *timeFont, build_sdlcolor(0x005500ff), 200);
+	timerTexture = new Texture(sdlutils().renderer(), std::to_string((int)(timer)), *timeFont, build_sdlcolor(0x000000ff), 200);
 	timerEnt->getComponent<RenderImage>()->setTexture(timerTexture);
 }
 
 void ecs::MainScene::createPaquete (int lv) {
+	float paqueteScale = 0.25f;
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
-	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
+	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width () * paqueteScale, texturaPaquet->height () * paqueteScale);
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();

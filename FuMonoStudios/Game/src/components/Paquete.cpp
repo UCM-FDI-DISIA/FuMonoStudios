@@ -18,14 +18,20 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
+
+// Miguel: En el futuro haremos que salgan un poco desviados de su
+// posición original para que parezcan más orgánicos los paquetes
 // posicion y tama�o Tipo sellos
-const int tipoSelloPos = 100;
+const int tipoSelloPosX = 20;
+const int tipoSelloPosY = 80;
 const int tipoSelloSize = 80;
 // posicion y tama�o Fragil sellos
-const int fragilSelloPos = 150;
+const int fragilSelloPosX = 150;
+const int fragilSelloPosY = 150;
 const int fragilSelloSize = 80;
 // posicion y tama�o Peso sellos
-const int pesoSelloPos = 200;
+const int pesoSelloPosX = 200;
+const int pesoSelloPosY = 200;
 const int pesoSelloSize = 80;
 
 Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
@@ -53,18 +59,18 @@ void Paquete::initComponent() {
 		miTipo == Joyas ? "selloJoyas" :
 		miTipo == Materiales ? "selloMateriales" :
 		miTipo == Armamento ? "selloArmamento" : "Desconocido");
-	crearSello(tipoString, tipoSelloPos, tipoSelloPos, tipoSelloSize, tipoSelloSize);
+	crearSello(tipoString, tipoSelloPosX, tipoSelloPosY, tipoSelloSize, tipoSelloSize);
 
 	//Creamos la entidad Peso sello 
 	if (miPeso != Ninguno) {
 		tipoString = (miTipo == Bajo ? "selloPesoBajo" :
 			miTipo == Medio ? "selloPesoMedio" :
 			miTipo == Alto ? "selloPesoAlto" : "selloPesoBajo");
-		crearSello(tipoString, pesoSelloPos, pesoSelloPos, pesoSelloSize, pesoSelloSize);
+		crearSello(tipoString, pesoSelloPosX, pesoSelloPosY, pesoSelloSize, pesoSelloSize);
 	}
 	//Creamos la entidad Fragil sello 
 	if (fragil) {
-		crearSello("selloFragil", fragilSelloPos, fragilSelloPos, fragilSelloSize, fragilSelloSize);
+		crearSello("selloFragil", fragilSelloPosX, fragilSelloPosY, fragilSelloSize, fragilSelloSize);
 	}
 
 }
@@ -182,7 +188,7 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 Luis: ta de lokos, pero igual mejor que esto lo haga el paquete builder no?
 */
 void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
-	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity();
+	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity(ecs::layer::STAMP);
 	Texture* SelloTex = &sdlutils().images().at(texKey);
 	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
 	SelloEnt->addComponent<RenderImage>(SelloTex);

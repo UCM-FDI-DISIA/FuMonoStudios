@@ -87,7 +87,7 @@
       "file": "recursos/images/Alimentos.png"
     },
     {
-      "id": "selloArmas",
+      "id": "selloArmamento",
       "file": "recursos/images/Armas.png"
     },
     {
@@ -103,7 +103,7 @@
       "file": "recursos/images/Materiales.png"
     },
     {
-      "id": "selloMedicina",
+      "id": "selloMedicinas",
       "file": "recursos/images/Medicina.png"
     },
     {
