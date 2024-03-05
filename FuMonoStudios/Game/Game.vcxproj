@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
+    <ClCompile Include="src\components\Wrap.cpp" />
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\components\MoverTransform.cpp" />
@@ -171,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
+    <ClInclude Include="src\components\Wrap.h" />
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
     <ClInclude Include="src\architecture\GeneralData.h" />
     <ClInclude Include="src\components\MoverTransform.h" />

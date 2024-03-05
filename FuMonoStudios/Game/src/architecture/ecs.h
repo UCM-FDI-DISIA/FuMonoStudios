@@ -22,6 +22,7 @@ namespace ecs {
 			GRAVITY,
 			DIALOGUE,
 			MOVERTRANSFORM,
+			WRAP,
 			// do not remove this
 			_LAST_CMP_ID
 		};

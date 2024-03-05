@@ -7,6 +7,7 @@
 #include "../components/Clickeable.h"
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
+#include "../components/Wrap.h"
 #include "../architecture/Game.h"
 #include <string>
 #include "../sdlutils/Texture.h"
@@ -219,6 +220,7 @@ void ecs::MainScene::createPaquete (int lv) {
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
+	paqEnt->addComponent<Wrap>(5);
 	PaqueteBuilder a;
 	a.PaqueteRND (lv, paqEnt);
 
