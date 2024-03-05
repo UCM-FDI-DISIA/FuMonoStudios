@@ -2,6 +2,13 @@
 #include <string>
 #include "../architecture/Scene.h"
 #include "../architecture/Entity.h"
+
+/*
+Clase a la que llamar para crear objetos que se crean frecuentemente (para no andar copiando y pegando codigo
+a lo tonto)
+
+Los metodos devuelven un puntero a la entidad por si se le quiere aplicar mas operaciones en tras crearlo
+*/
 class ComonObjectsFactory
 {
 public:
