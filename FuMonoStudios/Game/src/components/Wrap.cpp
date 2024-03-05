@@ -11,6 +11,23 @@
 
 Wrap::Wrap(float spaceAux) : space(spaceAux){
 
+	route.push_back(pointRoute::LeftUp);
+
+	route.push_back(pointRoute::LeftDown);
+
+	route.push_back(pointRoute::RightDown);
+
+	route.push_back(pointRoute::RightUp);
+
+	restartRoute();
+
+}
+
+Wrap::Wrap(float spaceAux, std::list<int> routeAux) : space(spaceAux) {
+
+	route = routeAux;
+
+	restartRoute();
 
 }
 
@@ -47,46 +64,95 @@ void Wrap::update() {
 
 		std::cout << "Esquina superior izquierda" << std::endl;
 
+		if ((*lastPoint) == pointRoute::LeftUp) {
+			++lastPoint;
+		}
+
 	}
 	else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - posYTR) < space)){
 
 		std::cout << "Esquina superior media" << std::endl;
+
+		if ((*lastPoint) == pointRoute::MiddleUp) {
+			++lastPoint;
+		}
 
 	}
 	else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - posYTR) < space)) {
 
 		std::cout << "Esquina superior derecha" << std::endl;
 
+		if ((*lastPoint) == pointRoute::RightUp) {
+			++lastPoint;
+		}
+
 	}
 	else if (abs(point.x - (posXTR) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
 
 		std::cout << "Esquina media izquierda" << std::endl;
 
-	}
-	else if (abs(point.x - (posXTR) < space && abs(point.y - (posYTR + heightTR)) < space)) {
-
-		std::cout << "Esquina inferior izquierda" << std::endl;
+		if ((*lastPoint) == pointRoute::LeftMid) {
+			++lastPoint;
+		}
 
 	}
 	else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
 
 		std::cout << "Esquina media media" << std::endl;
 
+		if ((*lastPoint) == pointRoute::MiddleMid) {
+			++lastPoint;
+		}
+
 	}
 	else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
 
 		std::cout << "Esquina media derecha" << std::endl;
+
+		if ((*lastPoint) == pointRoute::RightMid) {
+			++lastPoint;
+		}
+
+	}
+	else if (abs(point.x - (posXTR) < space && abs(point.y - (posYTR + heightTR)) < space)) {
+
+		std::cout << "Esquina inferior izquierda" << std::endl;
+
+		if ((*lastPoint) == pointRoute::LeftDown) {
+			++lastPoint;
+		}
 
 	}
 	else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - (posYTR + heightTR)) < space)) {
 
 		std::cout << "Esquina inferior media" << std::endl;
 
+		if ((*lastPoint) == pointRoute::MiddleDown) {
+			++lastPoint;
+		}
+
 	}
 	else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - (posYTR + heightTR)) < space)) {
 
 		std::cout << "Esquina inferior derecha" << std::endl;
 
+		if ((*lastPoint) == pointRoute::RightDown) {
+			++lastPoint;
+		}
+
 	}
+
+	if (lastPoint == route.end()) {
+
+		std::cout << "Embalado" << std::endl;
+
+		restartRoute();
+	}
+
+}
+
+void Wrap::restartRoute() {
+
+	lastPoint = route.begin();
 
 }
