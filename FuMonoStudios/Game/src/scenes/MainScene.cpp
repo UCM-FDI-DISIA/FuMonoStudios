@@ -220,7 +220,7 @@ void ecs::MainScene::createPaquete (int lv) {
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
-	paqEnt->addComponent<Wrap>(5);
+	paqEnt->addComponent<Wrap>(10);
 	PaqueteBuilder a;
 	a.PaqueteRND (lv, paqEnt);
 

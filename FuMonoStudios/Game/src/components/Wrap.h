@@ -25,7 +25,9 @@ public:
 
 	};
 
-	Wrap(float spaceAux, std::list<int> routeAux);
+	Wrap(float spaceAux, int repTimesAux, std::list<int> routeAux);
+
+	Wrap(float spaceAux, int repTimesAux);
 
 	Wrap(float spaceAux);
 
@@ -46,5 +48,9 @@ private:
 	std::list<int>::iterator lastPoint;
 
 	float space = 5;
+
+	int repTimes = 0;
+
+	bool wrapped = false;
 
 };
