@@ -19,7 +19,7 @@ class MoverTransform : public ecs::Component
 public:
 	__CMP_DECL__(ecs::cmp::MOVERTRANSFORM)
 
-	MoverTransform(Vector2D newPos, float MovTime, Easing Easing);
+	MoverTransform(Vector2D& newPos, float MovTime, Easing Easing);
 
 	~MoverTransform();
 

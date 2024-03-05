@@ -18,6 +18,8 @@ public:
 	void addCondition(Condition);
 
 	bool checkPackage(Paquete*);
+
+	void checkEntity(ecs::Entity* ent);
 private:
 	Paquete::Distrito toDis;
 	std::list<Condition> extraCond;

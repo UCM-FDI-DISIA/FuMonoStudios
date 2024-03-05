@@ -136,7 +136,7 @@ void ecs::MainScene::createTubos() {
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
-	// CALLBACK TUBO DEMETER
+	 //CALLBACK TUBO DEMETER
 	demTri->addCallback([this, demCheck](ecs::Entity* entRec) {
 		//comprobamos si es un paquete
 		Transform* entTr = entRec->getComponent<Transform>();
@@ -162,7 +162,7 @@ void ecs::MainScene::createTubos() {
 					});
 			}
 			GeneralData::instance()->updateMoney(correct,fails);
-			entRec->setAlive(false);
+			//entRec->setAlive(false);
 		}
 		else {
 			//std::cout << "eso no es un paquete gañan\n";

@@ -1,7 +1,7 @@
 #include "MoverTransform.h"
 #include "../architecture/Entity.h"
 
-MoverTransform::MoverTransform(Vector2D newPos, float MovTime, Easing Easing) 
+MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing) 
 	: finalPos(newPos), movTime(MovTime * 1000), easing(Easing), timer(0), tr(nullptr){
 
 }

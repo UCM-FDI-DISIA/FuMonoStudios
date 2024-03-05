@@ -6,7 +6,8 @@ class GeneralData : public Singleton<GeneralData>
 {
 	friend Singleton<GeneralData>;
 public:
-	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT),failsMargin_(INITIAL_FAILS_MARGIN) { };
+	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT),failsMargin_(INITIAL_FAILS_MARGIN),
+		corrects(0),fails(0), dia(1) { };
 	~GeneralData(){};
 
 	/// <summary>
@@ -20,12 +21,16 @@ public:
 	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
 	int GetEventoID(); //Devuelve el id del evento que ocurrir� en el juego
 	int getMoney() { return dinero_; }
+	void writePacage() { corrects++; }
+	void wrongPacage() { fails++; }
 
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }
 
+	int fails;
+	int corrects;
 	int dinero_;
 	int failsMargin_;
 	int finalID_; //Variable int que define en la �ltima escena cu�l final se va a reproducir
