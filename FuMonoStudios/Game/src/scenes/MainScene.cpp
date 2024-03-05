@@ -20,6 +20,7 @@
 #include "../components/Time.h"
 #include "../architecture/GameConstants.h"
 #include "../components/SelfDestruct.h"
+#include "../architecture/GeneralData.h"
 
 ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)
 {
@@ -61,40 +62,36 @@ void ecs::MainScene::init()
 
 	initTexts();
 
-	//Boton que genera Paquetes
-	Texture* texturaBoton = &sdlutils ().images ().at ("press");
-	Entity* BotonPress = addEntity ();
-	Transform* transformBoton = BotonPress->addComponent<Transform> (0.0f, 500.0f, texturaBoton->width (), texturaBoton->height ());
-	RenderImage* renderBoton = BotonPress->addComponent<RenderImage> (texturaBoton);
-	auto clickerPress = BotonPress->addComponent<Clickeable> ();
-	CallbackClickeable funcPress = [this]() {
-		createPaquete(0);
-		};
-	clickerPress->addEvent(funcPress);
-	
-	
+	createPaquete(generalData().getPaqueteLevel());
+
+	createTubos();
+}
+
+void ecs::MainScene::createTubos() {
 	//TUBOS Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
 	float scaleTubos = 0.3f;
 
 	//TUBO DEMETER
 	Entity* tubDem = addEntity(ecs::layer::BACKGROUND);
 	Texture* texturaDem = &sdlutils().images().at("tubo1");
-	tubDem->addComponent<Transform>(120, -40, texturaDem->width() *scaleTubos, texturaDem->height()*scaleTubos);
+	tubDem->addComponent<Transform>(120, -40, texturaDem->width() * scaleTubos, texturaDem->height() * scaleTubos);
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
 	// CALLBACK TUBO DEMETER
-	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
+	demTri->addCallback([this, demCheck](ecs::Entity* entRec) {
 		//comprobamos si es un paquete
 		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				entRec->removeComponent<DragAndDrop>();
-				entRec->removeComponent<Trigger>();
 				entRec->removeComponent<Gravity>();
 				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() + 300), 1, Easing::EaseOutCubic);
-				correct++;
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					correct++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
 			else {
 				entRec->removeComponent<Gravity>();
@@ -103,67 +100,111 @@ void ecs::MainScene::init()
 				entRec->addComponent<SelfDestruct>(1, [this]() {
 					fails++;
 					updateFailsText();
+					createPaquete(0);
 					});
-				
 			}
-
 		}
 		});
 
-	Entity* tubHef = addEntity();
-	tubHef->addComponent<Transform>(340, 0, 100, 150);
+	Entity* tubHef = addEntity(ecs::layer::BACKGROUND);
+	Texture* texturaHef = &sdlutils().images().at("tubo2");
+	tubHef->addComponent<Transform>(420, -40, texturaHef->width() * scaleTubos, texturaHef->height() * scaleTubos);
+	tubHef->addComponent<RenderImage>(texturaHef);
 	Trigger* hefTri = tubHef->addComponent<Trigger>();
 	PackageChecker* hefCheck = tubHef->addComponent<PackageChecker>(Paquete::Hefesto);
-	hefTri->addCallback([hefCheck](ecs::Entity* entRec) {
+	hefTri->addCallback([this, hefCheck](ecs::Entity* entRec) {
+		//comprobamos si es un paquete
+		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (hefCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "the end is a horse\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					correct++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
 			else {
-				std::cout << "NUH UH2\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					fails++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
-		}
-		else {
-			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
-	Entity* tubHes = addEntity();
-	tubHes->addComponent<Transform>(560, 0, 100, 150);
+	Entity* tubHes = addEntity(ecs::layer::BACKGROUND);
+	Texture* texturaHes = &sdlutils().images().at("tubo3");
+	tubHes->addComponent<Transform>(720, -40, texturaHes->width() * scaleTubos, texturaHes->height() * scaleTubos);
+	tubHes->addComponent<RenderImage>(texturaHes);
 	Trigger* hesTri = tubHes->addComponent<Trigger>();
 	PackageChecker* hesCheck = tubHes->addComponent<PackageChecker>(Paquete::Hestia);
-	hesTri->addCallback([hesCheck](ecs::Entity* entRec) {
+	hesTri->addCallback([this, hesCheck](ecs::Entity* entRec) {
+		//comprobamos si es un paquete
+		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (hesCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "egg is nigh\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					correct++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
 			else {
-				std::cout << "NUH UH3\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					fails++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
-		}
-		else {
-			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
-	Entity* tubArt = addEntity();
-	tubArt->addComponent<Transform>(780, 0, 100, 150);
+	Entity* tubArt = addEntity(ecs::layer::BACKGROUND);
+	Texture* texturaArt = &sdlutils().images().at("tubo4");
+	tubArt->addComponent<Transform>(1020, -40, texturaArt->width()* scaleTubos, texturaArt->height()* scaleTubos);
+	tubArt->addComponent<RenderImage>(texturaArt);
 	Trigger* artTri = tubArt->addComponent<Trigger>();
 	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
-	artTri->addCallback([artCheck](ecs::Entity* entRec) {
+	artTri->addCallback([this, artCheck](ecs::Entity* entRec) {
+		//comprobamos si es un paquete
+		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (artCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "wacamole\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					correct++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
 			else {
-				std::cout << "NUH UH4\n";
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					fails++;
+					updateFailsText();
+					createPaquete(0);
+					});
 			}
 		}
-		else {
-			//std::cout << "eso no es un paquete gañan\n";
-		}
 		});
-	
+
 }
 void ecs::MainScene::createManual()
 {
