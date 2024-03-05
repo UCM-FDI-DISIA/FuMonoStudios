@@ -25,9 +25,16 @@ namespace ecs {
         Font* timeFont;
 
         // objects
+        void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt;
         Texture* timerTexture = nullptr;
         void updateTimer();
+
+        Entity* failsEnt;
+        Texture* failsTexture = nullptr;
+        Entity* successEnt;
+        Texture* successTexture = nullptr;
+        void updateFailsText();
     };
 }
 

@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\SelfDestruct.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="src\components\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\SelfDestruct.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />

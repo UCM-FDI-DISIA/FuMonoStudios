@@ -19,49 +19,7 @@
 #include "../components/MoverTransform.h"
 #include "../components/Time.h"
 #include "../architecture/GameConstants.h"
-
-void ecs::MainScene::createManual()
-{
-	Entity* manual = addEntity(ecs::layer::MANUAL);
-	Texture* manualTexture = &sdlutils().images().at("bookTest");
-	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
-	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
-	float scale = 0.075;
-	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
-	manual->addComponent<Gravity>();
-	RenderImage* manualRender = manual->addComponent<RenderImage>();
-	manual->addComponent<DragAndDrop>();
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
-	multTextures->addTexture(manualTexture);
-	multTextures->addTexture(manualTexture2);
-	multTextures->addTexture(buttonTexture);
-	multTextures->initComponent();
-	manualRender->setTexture(multTextures->getCurrentTexture());
-
-
-	Entity* button = addEntity(ecs::layer::FOREGROUND);
-	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-	buttonTransform->setParent(manualTransform);
-	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures]() {
-
-		multTextures->nextTexture();
-	});
-
-	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
-	buttonTransform2->setParent(manualTransform);
-	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
-
-		multTextures->previousTexture();
-	});
-
-	
-}
+#include "../components/SelfDestruct.h"
 
 ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false)
 {
@@ -101,11 +59,7 @@ void ecs::MainScene::init()
 
 	createManual();
 
-	// inicializamos el timer
-	timerEnt = addEntity(ecs::layer::UI);
-	timerEnt->addComponent<Transform>(1250, 50,200,200);
-	RenderImage* renderTextTiempo = timerEnt->addComponent<RenderImage>();
-	updateTimer();
+	initTexts();
 
 	//Boton que genera Paquetes
 	Texture* texturaBoton = &sdlutils ().images ().at ("press");
@@ -120,28 +74,39 @@ void ecs::MainScene::init()
 	
 	
 	//TUBOS Demeter, Hefesto, Hestia, Artemisa, Hermes, Apolo, Poseidon, Erroneo
-
 	float scaleTubos = 0.3f;
+
+	//TUBO DEMETER
 	Entity* tubDem = addEntity(ecs::layer::BACKGROUND);
 	Texture* texturaDem = &sdlutils().images().at("tubo1");
 	tubDem->addComponent<Transform>(120, -40, texturaDem->width() *scaleTubos, texturaDem->height()*scaleTubos);
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+	// CALLBACK TUBO DEMETER
 	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
+		//comprobamos si es un paquete
+		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "the end is nigh\n";
+				entRec->removeComponent<DragAndDrop>();
+				entRec->removeComponent<Trigger>();
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() + 300), 1, Easing::EaseOutCubic);
 				correct++;
 			}
 			else {
-				std::cout << "NUH UH1\n";
-				fails++;
+				entRec->removeComponent<Gravity>();
+				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
+				entRec->addComponent<SelfDestruct>(1, [this]() {
+					fails++;
+					updateFailsText();
+					});
+				
 			}
 
-		}
-		else {
-			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
 
@@ -200,6 +165,65 @@ void ecs::MainScene::init()
 		});
 	
 }
+void ecs::MainScene::createManual()
+{
+	Entity* manual = addEntity(ecs::layer::MANUAL);
+	Texture* manualTexture = &sdlutils().images().at("bookTest");
+	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	float scale = 0.075;
+	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
+	manual->addComponent<Gravity>();
+	RenderImage* manualRender = manual->addComponent<RenderImage>();
+	manual->addComponent<DragAndDrop>();
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
+	multTextures->addTexture(manualTexture);
+	multTextures->addTexture(manualTexture2);
+	multTextures->addTexture(buttonTexture);
+	multTextures->initComponent();
+	manualRender->setTexture(multTextures->getCurrentTexture());
+
+
+	Entity* button = addEntity(ecs::layer::FOREGROUND);
+	float buttonScale = 0.15;
+	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
+	buttonTransform->setParent(manualTransform);
+	button->addComponent<Clickeable>();
+	button->getComponent<Clickeable>()->addEvent([multTextures]() {
+
+		multTextures->nextTexture();
+		});
+
+	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
+	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
+	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
+	buttonTransform2->setParent(manualTransform);
+	button2->addComponent<Clickeable>();
+	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
+
+		multTextures->previousTexture();
+		});
+}
+
+void ecs::MainScene::initTexts() {
+	// inicializamos el timer
+	timerEnt = addEntity(ecs::layer::UI);
+	timerEnt->addComponent<Transform>(1250, 50, 200, 200);
+	timerEnt->addComponent<RenderImage>();
+	updateTimer();
+
+	// creamos contador fallos y aciertos
+	successEnt = addEntity(ecs::layer::UI);
+	successEnt->addComponent<Transform>(1350, 250, 100, 100);
+	successEnt->addComponent<RenderImage>();
+
+	failsEnt = addEntity(ecs::layer::UI);
+	failsEnt->addComponent<Transform>(1350, 350, 100, 100);
+	failsEnt->addComponent<RenderImage>();
+
+	updateFailsText();
+}
 
 void ecs::MainScene::updateTimer() {
 	if (timerTexture != nullptr)
@@ -210,6 +234,22 @@ void ecs::MainScene::updateTimer() {
 		
 	timerTexture = new Texture(sdlutils().renderer(), std::to_string((int)(timer)), *timeFont, build_sdlcolor(0x000000ff), 200);
 	timerEnt->getComponent<RenderImage>()->setTexture(timerTexture);
+}
+
+void ecs::MainScene::updateFailsText() {
+	if (successTexture != nullptr) {
+		delete successTexture;
+		successTexture = nullptr;
+	}
+	successTexture = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct), *timeFont, build_sdlcolor(0x00ff00ff), 200);
+	successEnt->getComponent<RenderImage>()->setTexture(successTexture);
+
+	if (failsTexture != nullptr) {
+		delete failsTexture;
+		failsTexture = nullptr;
+	}
+	failsTexture = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails), *timeFont, build_sdlcolor(0xff0000ff), 200);
+	failsEnt->getComponent<RenderImage>()->setTexture(failsTexture);
 }
 
 void ecs::MainScene::createPaquete (int lv) {
