@@ -18,17 +18,20 @@ public:
 	void SetFinalID(int final); //Cambia el ID del final
 	int GetFinalID(); //Devuelve el id del final del juego
 	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
-	int GetEventoID(); //Devuelve el id del evento que ocurrirá en el juego
+	int GetEventoID(); //Devuelve el id del evento que ocurrirï¿½ en el juego
 	int getMoney() { return dinero_; }
 
+	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al dï¿½a
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }
 
 	int dinero_;
 	int failsMargin_;
-	int finalID_; //Variable int que define en la última escena cuál final se va a reproducir
-	int eventoID_; //Variable int que define cual evento especial de la historia deberá de ejecutarse
+	int finalID_; //Variable int que define en la ï¿½ltima escena cuï¿½l final se va a reproducir
+	int eventoID_; //Variable int que define cual evento especial de la historia deberï¿½ de ejecutarse
+	int dia;
+	int paqueteLvl = 0; // de momento es 0
 };
 
 inline GeneralData& generalData() {

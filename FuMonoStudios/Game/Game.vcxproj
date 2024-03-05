@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
+    <ClCompile Include="src\components\SelfDestruct.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
@@ -173,6 +174,7 @@
   <ItemGroup>
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
+    <ClInclude Include="src\components\SelfDestruct.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />

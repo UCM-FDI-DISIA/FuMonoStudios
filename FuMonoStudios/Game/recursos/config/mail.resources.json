@@ -17,12 +17,32 @@
       "file": "recursos/images/Book.png"
     },
     {
+      "id": "book1",
+      "file": "recursos/images/Book1.png"
+    },
+    {
+      "id": "book2",
+      "file": "recursos/images/Book2.png"
+    },
+    {
+      "id": "book3",
+      "file": "recursos/images/Book3.png"
+    },
+    {
+      "id": "book4",
+      "file": "recursos/images/Book4.png"
+    },
+    {
+      "id": "book5",
+      "file": "recursos/images/Book5.png"
+    },
+    {
       "id": "flechaTest",
       "file": "recursos/images/flecha.png"
     },
     {
       "id": "botonTrabajar",
-      "file":  "recursos/images/placeholderTrabajar.png"
+      "file": "recursos/images/placeholderTrabajar.png"
     },
     {
       "id": "demeter",
@@ -103,7 +123,7 @@
       "file": "recursos/images/Materiales.png"
     },
     {
-      "id": "selloMedicina",
+      "id": "selloMedicinas",
       "file": "recursos/images/Medicina.png"
     },
     {
@@ -154,6 +174,10 @@
     {
       "id": "fondoOficina",
       "file": "recursos/images/OficinaProyectosDesenfocada.png"
+    },
+    {
+      "id": "papelera",
+      "file": "recursos/images/papelera.png"
     }
   ],
   "fonts":[

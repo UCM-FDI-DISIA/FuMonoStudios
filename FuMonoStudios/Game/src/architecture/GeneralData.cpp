@@ -35,3 +35,8 @@ int GeneralData::GetEventoID() {
 	std::cout << "El ID del evento que quieres obtener es: " << eventoID_ << std::endl;
 	return eventoID_;
 }
+
+int GeneralData::getPaqueteLevel() {
+	//Aqui habra que decidir el paquete level en función del día
+	return paqueteLvl;
+}

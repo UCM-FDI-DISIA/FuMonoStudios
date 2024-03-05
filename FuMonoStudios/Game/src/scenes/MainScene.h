@@ -14,8 +14,10 @@ namespace ecs {
         void switchTimer() { timerPaused = !timerPaused; }
         void setTimer(float time) { timer = time; }
 
+        Font* getFont() { return timeFont; }
     private:
         void createManual();
+        void createTubos();
         void createPaquete(int lv);
         
         int fails;
@@ -25,9 +27,16 @@ namespace ecs {
         Font* timeFont;
 
         // objects
+        void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt;
         Texture* timerTexture;
         void updateTimer();
+
+        Entity* failsEnt;
+        Texture* failsTexture = nullptr;
+        Entity* successEnt;
+        Texture* successTexture = nullptr;
+        void updateFailsText();
     };
 }
 
