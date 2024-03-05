@@ -66,20 +66,63 @@ void ecs::MainScene::init()
 
 	createTubos();
 
+	createSelladores();
+
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
-	papelera->addComponent<Transform>(50, 550, 100, 150);
+	papelera->addComponent<Transform>(50, 650, 100, 150);
 	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
 	Trigger* papTrig = papelera->addComponent<Trigger>();
 	papTrig->addCallback([this](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>()->Correcto())
-			fails++;
-		else
-			correct++;
-		updateFailsText();
-		entRec->setAlive(false);
-		createPaquete(generalData().getPaqueteLevel());
+		Paquete* paqComp = entRec->getComponent<Paquete>();
+		if (paqComp != nullptr)
+		{
+			if (paqComp->Correcto())
+				fails++;
+			else
+				correct++;
+			updateFailsText();
+			entRec->setAlive(false);
+			createPaquete(generalData().getPaqueteLevel());
+		}
 		});
+}
+
+void ecs::MainScene::createSelladores() {
+	float scaleSelladores = 0.2f;
+
+	// Sellador rojo (1)
+	Entity* selloA = addEntity(layer::OFFICEELEMENTS);
+	Texture* selloATex = &sdlutils().images().at("selladorA");
+	selloA->addComponent<Transform>(100, 300, selloATex->width() * scaleSelladores, selloATex->height() * scaleSelladores);
+	selloA->addComponent<DragAndDrop>([selloA]() {
+		selloA->addComponent<MoverTransform>(Vector2D(100,300), 0.5, Easing::EaseOutCubic);
+		});
+	selloA->addComponent<RenderImage>(selloATex);
+	Herramientas* herrSelladorA = selloA->addComponent<Herramientas>();
+	herrSelladorA->setFunctionality(SelloCalleA);
+	
+	// Sellador azul (2)
+	Entity* selloB = addEntity(layer::OFFICEELEMENTS);
+	Texture* selloBTex = &sdlutils().images().at("selladorB");
+	selloB->addComponent<Transform>(100, 410, selloBTex->width() * scaleSelladores, selloBTex->height() * scaleSelladores);
+	selloB->addComponent<DragAndDrop>([selloB]() {
+		selloB->addComponent<MoverTransform>(Vector2D(100, 410), 0.5, Easing::EaseOutCubic);
+		});
+	selloB->addComponent<RenderImage>(selloBTex);
+	Herramientas* herrSelladorB = selloB->addComponent<Herramientas>();
+	herrSelladorB->setFunctionality(SelloCalleB);
+
+	// Sellador verde (3)
+	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
+	Texture* selloCTex = &sdlutils().images().at("selladorC");
+	selloC->addComponent<Transform>(100, 520, selloCTex->width() * scaleSelladores, selloCTex->height() * scaleSelladores);
+	selloC->addComponent<DragAndDrop>([selloC]() {
+		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
+		});
+	selloC->addComponent<RenderImage>(selloCTex);
+	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
+	herrSelladorC->setFunctionality(SelloCalleC);
 }
 
 void ecs::MainScene::createTubos() {
@@ -221,6 +264,7 @@ void ecs::MainScene::createTubos() {
 		});
 
 }
+
 void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity(ecs::layer::MANUAL);
@@ -323,6 +367,15 @@ void ecs::MainScene::createPaquete (int lv) {
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
 	PaqueteBuilder a;
 	a.PaqueteRND (lv, paqEnt);
+
+	// añadimos que pueda ser interactuado por selladores
+	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {
+		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
+		if (herrEnt != nullptr)
+		{
+			herrEnt->interact(paqEnt);
+		}
+		});
 
 	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack);
 }

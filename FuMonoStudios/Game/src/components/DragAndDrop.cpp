@@ -12,8 +12,14 @@
 #include <assert.h>
 
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0), usingCallback(false) {
 
+}
+
+DragAndDrop::DragAndDrop(SimpleCallback Func) : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0) 
+{
+	usingCallback = true;
+	func = Func;
 }
 
 DragAndDrop::~DragAndDrop() {
@@ -21,10 +27,14 @@ DragAndDrop::~DragAndDrop() {
 }
 
 void DragAndDrop::initComponent() {
+	tri_ = ent_->getComponent<Trigger>();
+
+	if (tri_ != nullptr)
+		throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
+
+	tri_ = ent_->addComponent<Trigger>();
 
 	tr_ = ent_->getComponent<Transform>();
-
-	tri_ = ent_->getComponent<Trigger>();
 
 	grav_ = ent_->getComponent<Gravity>();
 
@@ -70,6 +80,10 @@ void DragAndDrop::update() {
 
 		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
 		tri_->activateEventsFromEntities();
+
+		// si has asignado callback se activa
+		if (usingCallback)
+			func();
 
 	}
 

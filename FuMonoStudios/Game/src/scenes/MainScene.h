@@ -18,6 +18,7 @@ namespace ecs {
     private:
         void createManual();
         void createTubos();
+        void createSelladores();
         void createPaquete(int lv);
         
         int fails;
