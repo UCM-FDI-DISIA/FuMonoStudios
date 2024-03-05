@@ -66,6 +66,20 @@ void ecs::MainScene::init()
 
 	createTubos();
 
+	// papelera
+	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
+	papelera->addComponent<Transform>(50, 550, 100, 150);
+	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
+	Trigger* papTrig = papelera->addComponent<Trigger>();
+	papTrig->addCallback([this](ecs::Entity* entRec) {
+		if (entRec->getComponent<Paquete>()->Correcto())
+			fails++;
+		else
+			correct++;
+		updateFailsText();
+		entRec->setAlive(false);
+		createPaquete(generalData().getPaqueteLevel());
+		});
 }
 
 void ecs::MainScene::createTubos() {
@@ -210,8 +224,11 @@ void ecs::MainScene::createTubos() {
 void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity(ecs::layer::MANUAL);
-	Texture* manualTexture = &sdlutils().images().at("bookTest");
-	Texture* manualTexture2 = &sdlutils().images().at("placeHolder");
+	Texture* manualTexture = &sdlutils().images().at("book1");
+	Texture* manualTexture2 = &sdlutils().images().at("book2");
+	Texture* manualTexture3 = &sdlutils().images().at("book3");
+	Texture* manualTexture4 = &sdlutils().images().at("book4");
+	Texture* manualTexture5 = &sdlutils().images().at("book5");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	float scale = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width() * scale, manualTexture->height() * scale);
@@ -221,7 +238,9 @@ void ecs::MainScene::createManual()
 	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
 	multTextures->addTexture(manualTexture);
 	multTextures->addTexture(manualTexture2);
-	multTextures->addTexture(buttonTexture);
+	multTextures->addTexture(manualTexture3);
+	multTextures->addTexture(manualTexture4);
+	multTextures->addTexture(manualTexture5);
 	multTextures->initComponent();
 	manualRender->setTexture(multTextures->getCurrentTexture());
 
