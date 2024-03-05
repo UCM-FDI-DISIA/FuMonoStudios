@@ -18,24 +18,9 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-
-// Miguel: En el futuro haremos que salgan un poco desviados de su
-// posición original para que parezcan más orgánicos los paquetes
-// posicion y tama�o Tipo sellos
-const int tipoSelloPosX = 20;
-const int tipoSelloPosY = 80;
-const int tipoSelloSize = 80;
-// posicion y tama�o Fragil sellos
-const int fragilSelloPosX = 150;
-const int fragilSelloPosY = 150;
-const int fragilSelloSize = 80;
-// posicion y tama�o Peso sellos
-const int pesoSelloPosX = 200;
-const int pesoSelloPosY = 200;
-const int pesoSelloSize = 80;
-
-Paquete::Paquete(Distrito dis, Calle c, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : miDistrito(dis), miCalle(c), miTipo(Tp), 
-	selloCorrecto(corr), miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
+Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : 
+	miDistrito(dis), miCalle(c), miRemitente(remitente),miTipo(Tp),selloCorrecto(corr), 
+	miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
 	
 	std::string filename = "recursos/config/mail.direcctions.json";
 	getStreetsFromJSON(filename, Demeter, "Demeter");
@@ -53,25 +38,6 @@ Paquete::~Paquete() {
 }
 
 void Paquete::initComponent() {
-	//Creamos la entidad Tipo sello 
-	std::string tipoString = (miTipo == Alimento ? "selloAlimento" :
-		miTipo == Medicinas ? "selloMedicinas" :
-		miTipo == Joyas ? "selloJoyas" :
-		miTipo == Materiales ? "selloMateriales" :
-		miTipo == Armamento ? "selloArmamento" : "Desconocido");
-	crearSello(tipoString, tipoSelloPosX, tipoSelloPosY, tipoSelloSize, tipoSelloSize);
-
-	//Creamos la entidad Peso sello 
-	if (miPeso != Ninguno) {
-		tipoString = (miTipo == Bajo ? "selloPesoBajo" :
-			miTipo == Medio ? "selloPesoMedio" :
-			miTipo == Alto ? "selloPesoAlto" : "selloPesoBajo");
-		crearSello(tipoString, pesoSelloPosX, pesoSelloPosY, pesoSelloSize, pesoSelloSize);
-	}
-	//Creamos la entidad Fragil sello 
-	if (fragil) {
-		crearSello("selloFragil", fragilSelloPosX, fragilSelloPosY, fragilSelloSize, fragilSelloSize);
-	}
 
 }
 
@@ -99,11 +65,6 @@ bool Paquete::Correcto() const{
 		}		
 	}
 	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete ser� correcto y devolver� true. Si en alg�n momento ha fallado, devolver� false
-}
-
-Paquete::Distrito Paquete::getDist() const
-{
-	return miDistrito;
 }
 
 void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
@@ -135,14 +96,17 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 
 std::string Paquete::getDirecction()
 {
-
-	std::string dir = "Tu vieja\n";
+	// vamos a hacer que ponga exterior / interior y luego codigo postal
+	std::string dir = "Exterior - ";
 
 	//creacion de codigo postal
 	dir += std::bitset<3>(miDistrito).to_string() + "\n";
 
 	//habria que comprobar si la direccion tiene que ser correcta
-	dir += distrito_calle[miDistrito][miCalle];
+	if (miCalle == Erronea)
+		dir += "(CALLE ERRONEA)";
+	else
+		dir += distrito_calle[miDistrito][miCalle];
 
 	return dir;
 }
@@ -183,14 +147,4 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 			throw "'Demeter' is not an array in '" + filename + "'";
 		}
 	}
-}
-/*
-Luis: ta de lokos, pero igual mejor que esto lo haga el paquete builder no?
-*/
-void Paquete::crearSello(std::string texKey, int x, int y, int width, int height) {
-	ecs::Entity* SelloEnt = ent_->getMngr()->addEntity(ecs::layer::STAMP);
-	Texture* SelloTex = &sdlutils().images().at(texKey);
-	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
-	SelloEnt->addComponent<RenderImage>(SelloTex);
-	SelloTr->setParent(ent_->getComponent<Transform>());
 }

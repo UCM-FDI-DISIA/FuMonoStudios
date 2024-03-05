@@ -65,6 +65,7 @@ void ecs::MainScene::init()
 	createPaquete(generalData().getPaqueteLevel());
 
 	createTubos();
+
 }
 
 void ecs::MainScene::createTubos() {

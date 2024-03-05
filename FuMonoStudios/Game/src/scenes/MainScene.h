@@ -14,6 +14,7 @@ namespace ecs {
         void switchTimer() { timerPaused = !timerPaused; }
         void setTimer(float time) { timer = time; }
 
+        Font* getFont() { return timeFont; }
     private:
         void createManual();
         void createTubos();

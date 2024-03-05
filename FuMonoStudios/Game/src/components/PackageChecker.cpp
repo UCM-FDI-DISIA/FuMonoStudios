@@ -27,7 +27,7 @@ bool PackageChecker::checkPackage(Paquete* package)
 {
 	bool correctPack = false;
 	if (package->Correcto()) {
-		if (toDis == package->getDist()) {
+		if (toDis == package->getDistrito()) {
 			correctPack = checkAdditionalConditions(package);
 		}
 	}
