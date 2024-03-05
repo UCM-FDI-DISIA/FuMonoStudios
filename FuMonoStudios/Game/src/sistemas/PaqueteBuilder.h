@@ -2,6 +2,7 @@
 #include "../components/Paquete.h"
 #include "../architecture/Entity.h"
 #include <stdlib.h>
+#include "../sdlutils/VirtualTimer.h"
 
 
 const int pesadoMax = 75;	//Límite del peso máximo de paquetes pesados 
@@ -60,5 +61,5 @@ public:
 	Paquete* CartaRND(ecs::Entity* ent) {
 		Carta(ent);
 	}
-
+	PaqueteBuilder() { srand(sdlutils().currRealTime()); };
 };
