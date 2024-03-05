@@ -4,6 +4,8 @@
 #include <string>
 #include "../components/Transform.h"
 #include "../components/Render.h"
+#include "../sistemas/ComonObjectsFactory.h"
+#include "../components/Paquete.h"
 EndWorkScene::EndWorkScene():Scene() {
 
 }
@@ -14,11 +16,12 @@ EndWorkScene::~EndWorkScene() {
 
 
 void EndWorkScene::init() {
-	Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 70);
+	ComonObjectsFactory objs;
 	std::string msg = "Money: ";
 	msg += std::to_string(GeneralData::instance()->getMoney());
-	Texture* text = new Texture(sdlutils().renderer(), msg, *fuente, build_sdlcolor(0x000000ffff));
-	auto dineros = addEntity();
-	auto tr = dineros->addComponent<Transform>(0,0,text->width(),text->height());
-	auto rend = dineros->addComponent<RenderImage>(text);
+	Vector2D pos(sdlutils().width()/2, sdlutils().height()-100);
+	Vector2D dist(0, -300);
+	objs.createLabel(this,pos, msg, 50);
+	objs.createLabel(this, pos + dist, "Fails:", 50);
+	objs.createLabel(this, pos + dist*2, "Corrects:", 50);
 }

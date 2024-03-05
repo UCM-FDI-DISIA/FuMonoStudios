@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="src\components\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />

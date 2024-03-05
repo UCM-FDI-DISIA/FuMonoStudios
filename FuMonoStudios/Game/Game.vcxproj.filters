@@ -32,13 +32,13 @@
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Time.cpp" />
     <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\sistemas\Felicidad.cpp" />
     <ClCompile Include="src\sistemas\Mapa.cpp" />
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
+    <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -88,6 +88,7 @@
     <ClInclude Include="src\sistemas\Felicidad.h" />
     <ClInclude Include="src\sistemas\Mapa.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
+    <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -96,7 +97,6 @@
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\architecture\GameConstants.h" />

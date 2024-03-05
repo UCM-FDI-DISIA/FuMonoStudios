@@ -6,7 +6,7 @@ class GeneralData : public Singleton<GeneralData>
 {
 	friend Singleton<GeneralData>;
 public:
-	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT) { };
+	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT),failsMargin_(INITIAL_FAILS_MARGIN) { };
 	~GeneralData(){};
 
 	/// <summary>
@@ -26,6 +26,7 @@ private:
 	void reduceMoney(int cant) { dinero_ -= cant; }
 
 	int dinero_;
+	int failsMargin_;
 	int finalID_; //Variable int que define en la última escena cuál final se va a reproducir
 	int eventoID_; //Variable int que define cual evento especial de la historia deberá de ejecutarse
 };

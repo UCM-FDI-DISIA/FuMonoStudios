@@ -19,7 +19,7 @@
 #include "../components/MoverTransform.h"
 #include "../components/Time.h"
 #include "../architecture/GameConstants.h"
-
+#include "../architecture/GeneralData.h"
 void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity(ecs::layer::MANUAL);
@@ -128,6 +128,7 @@ void ecs::MainScene::init()
 	tubDem->addComponent<RenderImage>(texturaDem);
 	Trigger* demTri = tubDem->addComponent<Trigger>();
 	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
+	//esto se puede meter en el init del pacage cheker
 	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
@@ -138,7 +139,8 @@ void ecs::MainScene::init()
 				std::cout << "NUH UH1\n";
 				fails++;
 			}
-
+			GeneralData::instance()->updateMoney(correct,fails);
+			entRec->setAlive(false);
 		}
 		else {
 			//std::cout << "eso no es un paquete gañan\n";

@@ -5,7 +5,7 @@
 void GeneralData::updateMoney(int writePacages, int wrongPacages)
 {
 	//funcion de ejemplo seguramente haya que cambiarlo
-	if (wrongPacages < 0) {
+	if (wrongPacages < failsMargin_) {
 		wrongPacages = 0;
 	}
 	if (writePacages < 0) {
