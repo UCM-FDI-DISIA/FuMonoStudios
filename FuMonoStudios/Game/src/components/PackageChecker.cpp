@@ -57,10 +57,10 @@ void PackageChecker::checkEntity(ecs::Entity* ent)
 		ent->addComponent<SelfDestruct>(1);
 		if (checkPackage(ent->getComponent<Paquete>())) {
 
-			GeneralData::instance()->writePacage();
+			GeneralData::instance()->correctPackage();
 		}
 		else {
-			GeneralData::instance()->wrongPacage();
+			GeneralData::instance()->wrongPackage();
 		}
 	}
 }

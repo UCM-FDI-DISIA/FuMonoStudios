@@ -21,8 +21,8 @@ public:
 	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
 	int GetEventoID(); //Devuelve el id del evento que ocurrir� en el juego
 	int getMoney() { return dinero_; }
-	void writePacage() { corrects++; }
-	void wrongPacage() { fails++; }
+	void correctPackage() { corrects++; }
+	void wrongPackage() { fails++; }
 
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
 private:

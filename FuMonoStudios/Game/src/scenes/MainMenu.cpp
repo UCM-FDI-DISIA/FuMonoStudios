@@ -31,12 +31,11 @@ void ecs::MainMenu::init()
 	Texture* texturaTitulo = &sdlutils().images().at("title");
 	Transform* transformTitulo = Titulo->addComponent<Transform>(0.0f, 0.0f, texturaTitulo->width(), texturaTitulo->height());
 	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
-	Titulo->addComponent<DragAndDrop>();
 
-	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulse El Bot�n", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
+	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulsa para empezar", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
 	Entity* BotonPress = addEntity();
 	
-	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	Transform* transformBoton = BotonPress->addComponent<Transform>(400, 600, texturaBoton->width(), texturaBoton->height());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();

@@ -5,7 +5,7 @@
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position(x, y), width(w), height(h), parent(nullptr) {
+Transform::Transform(float x, float y, float w, float h) : Component(), position(x, y), width(w), height(h), scale(1),parent(nullptr) {
 	auto& sdl = *SDLUtils::instance();
 
 #ifdef _DEBUG
@@ -83,7 +83,7 @@ Vector2D Transform::getPos() const
 }
 
 Vector2D Transform::getCenter() const {
-	return Vector2D(position.getX() - (width / 2), position.getY() - (height / 2));
+	return Vector2D(position.getX() + ((width * scale) / 2), position.getY() + ((height * scale) / 2));
 }
 
 //Devuelve la posici�n relativa
@@ -94,7 +94,7 @@ Vector2D Transform::getRelPos() const {
 //Devuelve el Rect en el mundo
 SDL_Rect& Transform::getRect()const {
 	Vector2D pos = getPos();
-	SDL_Rect rect = build_sdlrect(pos, width, height);
+	SDL_Rect rect = build_sdlrect(pos, width * scale, height * scale);
 	return rect;
 }
 

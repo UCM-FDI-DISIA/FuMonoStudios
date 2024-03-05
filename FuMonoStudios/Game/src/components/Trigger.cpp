@@ -71,6 +71,30 @@ bool Trigger::activateEventsFromEntities() {
 
 }
 
+bool Trigger::activateEventFromClosestEntity() {
+	Trigger* closestEnt = nullptr;
+	float shortestDistance = 9999999;
+	Vector2D entPos = ent_->getComponent<Transform>()->getCenter();
+
+	for (auto it = entTouching.begin(); it != entTouching.end(); ++it)
+	{
+		Vector2D otherPos = (*it)->getComponent<Transform>()->getCenter();
+		float distance = sqrt(pow(otherPos.getX() - entPos.getX(), 2) + pow(otherPos.getY() - entPos.getY(), 2));
+		if (distance < shortestDistance)
+		{
+			shortestDistance = distance;
+			closestEnt = (*it)->getComponent<Trigger>();
+		}
+	}
+
+	// si ha encontrado una entidad al menos, despues de haber ciclado
+	// por todas tenemos la mas cercana y llamamos solo a esa
+	if (closestEnt != nullptr)
+		closestEnt->activateCallbacks(ent_);
+
+	return closestEnt != nullptr;
+}
+
 //Activa las funciones asociadas a esta entidad
 bool Trigger::activateCallbacks(ecs::Entity* Ent) {
 

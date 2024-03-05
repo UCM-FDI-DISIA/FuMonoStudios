@@ -8,7 +8,8 @@
 const int pesadoMax = 75;	//Límite del peso máximo de paquetes pesados 
 const int medioMax = 50;	//Límite del peso máximo de paquetes de peso medio 
 const int ligeroMax = 25;	//Límite del peso máximo de paquetes ligeros
-const int pesoCartaMax = 2;	//Límite del peso máximo de cartas
+const int paqueteMin = 10;	//Límite del peso mínimo de paquetes ligeros
+const int pesoCarta = 2;	//Peso carta
 
 // Miguel: En el futuro haremos que salgan un poco desviados de su
 // posición original para que parezcan más orgánicos los paquetes
@@ -29,7 +30,7 @@ class PaqueteBuilder
 {
 private:
 	void Nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(35), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
+		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
 		addVisualElements(ent);
 	}
 	void Nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
@@ -49,7 +50,7 @@ private:
 		addVisualElements(ent);
 	}
 	void Carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(35), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesoCartaMax + 1, false, true);
+		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, pesoCarta, false, true);
 		//addVisualElementsCarta(ent);
 	}
 

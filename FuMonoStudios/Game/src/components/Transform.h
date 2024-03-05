@@ -66,12 +66,14 @@ public:
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>
-	float getWidth() const { return width; };
+	float getWidth() const { return width * scale; };
 	/// <summary>
 	/// Devuelve la altura del transform
 	/// </summary>
 	/// <returns></returns>
-	float getHeigth() const { return height; };
+	float getHeigth() const { return height * scale; };
+
+	void setScale(float Scale) { scale = Scale; }
 
 	void setWidth(float newWidth) { width = newWidth; }
 	void setHeith(float newHeith) { height = newHeith; }
@@ -90,6 +92,9 @@ private:
 	/// altura del objeto
 	/// </summary>
 	float height;
+
+	float scale;
+
 	/// <summary>
 	/// padre del objeto
 	/// </summary>

@@ -50,7 +50,10 @@ bool Paquete::Correcto() const{
 	if (miDistrito == Erroneo) { //Si el distrito es err�neo, el paquete no es correcto
 		resul = false;
 	}
-	else if (!selloCorrecto) {	//Si el sello no es correcto, el paquete no es correcto
+	else if (!selloCorrecto) {	//Si el sello de tipo no es correcto, el paquete no es correcto
+		resul = false;
+	}
+	else if (calleMarcada != miCalle) {
 		resul = false;
 	}
 	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
@@ -97,14 +100,23 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 std::string Paquete::getDirecction()
 {
 	// vamos a hacer que ponga exterior / interior y luego codigo postal
-	std::string dir = "Exterior - ";
+	std::string dir;
+	if (miDistrito < 4)
+		dir = "Exterior - ";
+	else
+		dir = "Interior - ";
 
 	//creacion de codigo postal
-	dir += std::bitset<3>(miDistrito).to_string() + "\n";
+	if (miDistrito == Erroneo)
+		dir += "000\n";
+	else
+		dir += std::bitset<3>(miDistrito + 1).to_string() + "\n";
 
 	//habria que comprobar si la direccion tiene que ser correcta
 	if (miCalle == Erronea)
-		dir += "(CALLE ERRONEA)";
+		dir += "(CALLE INVENTADA)";
+	else if (miDistrito == Erroneo)
+		dir += "(CALLE INVENTADA)";
 	else
 		dir += distrito_calle[miDistrito][miCalle];
 

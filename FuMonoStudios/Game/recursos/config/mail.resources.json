@@ -166,10 +166,9 @@
       "id": "tubo7",
       "file": "recursos/images/tubo7.png"
     },
-
     {
       "id": "title",
-      "file": "recursos/images/PesoAlto.png"
+      "file": "recursos/images/titulo.png"
     },
     {
       "id": "fondoOficina",

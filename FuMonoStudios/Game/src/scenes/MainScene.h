@@ -1,6 +1,8 @@
 #pragma once
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
+#include "../components/Paquete.h"
+
 namespace ecs {
     class Game;
     class MainScene :public Scene
@@ -17,7 +19,7 @@ namespace ecs {
         Font* getFont() { return timeFont; }
     private:
         void createManual();
-        void createTubos();
+        void createTubo(Paquete::Distrito dist);
         void createSelladores();
         void createPaquete(int lv);
         

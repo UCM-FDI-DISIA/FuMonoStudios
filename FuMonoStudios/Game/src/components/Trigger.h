@@ -35,6 +35,8 @@ public:
 
 	bool activateEventsFromEntities();
 
+	bool activateEventFromClosestEntity();
+
 	bool activateCallbacks(ecs::Entity*);
 
 	bool checkIfClosest();
