@@ -95,7 +95,7 @@ void Wrap::update() {
 			if (SDL_PointInRect(&point, &tapeRect)) {
 
 				//Se comprueba punto a punto si el ratón esta en un radio especifico de los nueve puntos que forman la entidad 
-				if (abs(point.x - posXTR) < space && abs(point.y - posYTR) < space) {
+				if (abs(tapeRect.x - posXTR) < space && abs(tapeRect.y - posYTR) < space) {
 					if (debug) {
 						std::cout << "Esquina superior izquierda" << std::endl;
 					}
@@ -106,7 +106,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - posYTR) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - posYTR) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina superior media" << std::endl;
@@ -117,7 +117,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - posYTR) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - posYTR) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina superior derecha" << std::endl;
@@ -128,7 +128,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina media izquierda" << std::endl;
@@ -139,7 +139,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina media media" << std::endl;
@@ -150,7 +150,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina media derecha" << std::endl;
@@ -161,7 +161,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR) < space && abs(point.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina inferior izquierda" << std::endl;
@@ -172,7 +172,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR / 2) < space && abs(point.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina inferior media" << std::endl;
@@ -183,7 +183,7 @@ void Wrap::update() {
 					}
 
 				}
-				else if (abs(point.x - (posXTR + widthTR) < space && abs(point.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
 
 					if (debug) {
 						std::cout << "Esquina inferior derecha" << std::endl;

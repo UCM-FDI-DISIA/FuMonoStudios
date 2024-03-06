@@ -10,6 +10,7 @@
 #include "../components/Wrap.h"
 #include "../architecture/Game.h"
 #include <string>
+#include <list>
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
 #include "../components/Paquete.h"
@@ -227,7 +228,8 @@ void ecs::MainScene::createPaquete (int lv) {
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
-	paqEnt->addComponent<Wrap>(10);
+	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
+	paqEnt->addComponent<Wrap>(20, 0, route);
 	PaqueteBuilder a;
 	a.PaqueteRND (lv, paqEnt);
 

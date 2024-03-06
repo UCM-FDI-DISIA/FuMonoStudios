@@ -103,19 +103,24 @@ bool Trigger::checkIfClosest() {
 
 ecs::Entity* Trigger::getSpecificEntity(ecs::layer::layerId lay) {
 
-	auto it = entTouching.begin();
+	if (!entTouching.empty()) {
 
-	while (it != entTouching.end() || (*it)->getLayer() != lay) {
+		auto it = entTouching.begin();
 
-		++it;
+		while (it != entTouching.end() && (*it)->getLayer() != lay) {
 
+			++it;
+
+		}
+
+		if (it != entTouching.end()) {
+			return (*it);
+		}
+		else {
+			return nullptr;
+		}
 	}
-
-	if (it != entTouching.end()) {
-		return (*it);
-	}
-	else {
-		return nullptr;
-	}
+	
+	return nullptr;
 
 }

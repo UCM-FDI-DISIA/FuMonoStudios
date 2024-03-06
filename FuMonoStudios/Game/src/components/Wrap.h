@@ -8,25 +8,25 @@ class Transform;
 
 class Trigger;
 
+//posibles puntos en los que se puede detectar el raton
+enum pointRoute {
+
+	LeftUp,
+	MiddleUp,
+	RightUp,
+	LeftMid,
+	MiddleMid,
+	RightMid,
+	LeftDown,
+	MiddleDown,
+	RightDown
+
+};
+
 class Wrap : public ecs::Component {
 
 public:
 	__CMP_DECL__(ecs::cmp::WRAP);
-
-	//posibles puntos en los que se puede detectar el raton
-	enum pointRoute {
-
-		LeftUp,
-		MiddleUp,
-		RightUp,
-		LeftMid,
-		MiddleMid,
-		RightMid,
-		LeftDown,
-		MiddleDown,
-		RightDown
-
-	};
 
 	Wrap(float spaceAux, int repTimesAux, std::list<int> routeAux);
 
