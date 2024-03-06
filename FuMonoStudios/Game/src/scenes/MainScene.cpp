@@ -83,9 +83,17 @@ void ecs::MainScene::init()
 		if (paqComp != nullptr)
 		{
 			if (paqComp->Correcto())
+			{
+				generalData().wrongPackage();
 				fails++;
+			}
+				
 			else
+			{ 
+				generalData().correctPackage();
 				correct++;
+			}
+				
 			updateFailsText();
 			entRec->setAlive(false);
 			createPaquete(generalData().getPaqueteLevel());
@@ -153,6 +161,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
 				entRec->addComponent<SelfDestruct>(1, [this]() {
 					correct++;
+					generalData().correctPackage();
 					updateFailsText();
 					createPaquete(0);
 					});
@@ -163,12 +172,12 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
 				entRec->addComponent<SelfDestruct>(1, [this]() {
 					fails++;
+					generalData().wrongPackage();
 					updateFailsText();
 					createPaquete(0);
 					});
 			}
-			std::cout << "NASHE! " << dist << std::endl;
-			GeneralData::instance()->updateMoney(correct, fails);
+			std::cout << "crazy! " << dist << std::endl;
 		}
 		});
 }

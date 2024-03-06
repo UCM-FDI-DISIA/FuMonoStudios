@@ -15,14 +15,18 @@ public:
 	/// </summary>
 	/// <param name="writePacages"></param>
 	/// <param name="wrongPacages"></param>
-	void updateMoney(int writePacages, int wrongPacages);
+	void updateMoney();
 	void SetFinalID(int final); //Cambia el ID del final
 	int GetFinalID(); //Devuelve el id del final del juego
 	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
 	int GetEventoID(); //Devuelve el id del evento que ocurrir� en el juego
 	int getMoney() { return dinero_; }
+
 	void correctPackage() { corrects++; }
 	void wrongPackage() { fails++; }
+	int getFails() { return fails; }
+	int getCorrects() { return corrects; }
+	void resetFailsCorrects() { fails = 0; corrects = 0; }
 
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
 private:

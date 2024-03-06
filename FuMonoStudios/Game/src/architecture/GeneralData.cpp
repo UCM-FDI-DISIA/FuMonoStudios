@@ -2,16 +2,18 @@
 #include <iostream>
 #include <string>
 
-void GeneralData::updateMoney(int writePacages, int wrongPacages)
+void GeneralData::updateMoney()
 {
+	int rightPackages = corrects;
+	int wrongPackages = fails;
 	//funcion de ejemplo seguramente haya que cambiarlo
-	if (wrongPacages < failsMargin_) {
-		wrongPacages = 0;
+	if (fails < failsMargin_) {
+		wrongPackages = 0;
 	}
-	if (writePacages < 0) {
-		writePacages = 0;
+	if (corrects < 0) {
+		rightPackages = 0;
 	}
-	dinero_ += writePacages * WRITE_PACAGES_VALUE - wrongPacages * WRONG_PACAGES_VALUE;
+	dinero_ += rightPackages * WRITE_PACAGES_VALUE - wrongPackages * WRONG_PACAGES_VALUE;
 }
 
 //A medida que el proyecto avance, la lista de variables deberá de ampliarse, pero por ahora tenemos esto:

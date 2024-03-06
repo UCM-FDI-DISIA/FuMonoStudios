@@ -33,7 +33,7 @@ void PackageChecker::addCondition(Condition newCond)
 bool PackageChecker::checkPackage(Paquete* package)
 {
 	bool correctPack = false;
-	if (package->Correcto()) {
+	if (package->Correcto() && package->BienSellado()) {
 		if (toDis == package->getDistrito()) {
 			correctPack = checkAdditionalConditions(package);
 		}

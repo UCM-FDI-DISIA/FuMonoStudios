@@ -42,6 +42,7 @@ public:
 
 	void initComponent() override;
 	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
+	bool BienSellado() const;
 
 	// Sella la calle una única vez con el sellador
 	void sellarCalle(Calle sello, Transform* trSellador);
