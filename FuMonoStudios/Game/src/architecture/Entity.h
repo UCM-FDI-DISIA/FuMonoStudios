@@ -137,10 +137,23 @@ namespace ecs {
 		}
 
 	private:
+		/// <summary>
+		/// determina si la entidad va a destruirse si esta a false
+		/// </summary>
 		bool alive_;
+		/// <summary>
+		/// determina si un objeto se tiene que renderizar
+		/// </summary>
 		bool active_;
+		/// <summary>
+		/// determina si un objeto se tiene que actualizar
+		/// </summary>
 		bool enable_;
+		/// <summary>
+		/// puntero a la escena a la que pertenece al entidad
+		/// </summary>
 		Scene* scene_;
+
 		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;

@@ -46,6 +46,7 @@ void Game::run()
 			sceneChange = false;
 		}
 
+		refresh();
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
@@ -66,7 +67,6 @@ void Game::run()
 		sdlutils().clearRenderer();
 		render();
 		sdlutils().presentRenderer();
-
 		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
 	}
 }
@@ -107,6 +107,7 @@ void Game::killScene(ecs::sc::sceneId scene)
 {
 	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
 	if (it != loadedScenes.end()) {
+		(*it)->close();
 		loadedScenes.erase(it);
 		std::cout << "Scene Killed" << std::endl;
 	}
@@ -160,5 +161,12 @@ void Game::render()
 {
 	for (auto scene : loadedScenes) {
 		scene->render();
+	}
+}
+
+void Game::refresh()
+{
+	for (auto scene : loadedScenes) {
+		scene->refresh();
 	}
 }

@@ -48,6 +48,7 @@ private:
 
 	void update();
 	void render();
+	void refresh();
 	/// <summary>
 	/// lista de escenas a procesar
 	/// </summary>
