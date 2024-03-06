@@ -113,7 +113,6 @@ std::string Paquete::getDirecction()
 	else
 		dir += std::bitset<3>(miDistrito + 1).to_string() + "\n";
 
-	//habria que comprobar si la direccion tiene que ser correcta
 	if (miCalle == Erronea)
 		dir += "(CALLE INVENTADA)";
 	else if (miDistrito == Erroneo)

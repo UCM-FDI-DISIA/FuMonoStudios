@@ -9,11 +9,6 @@
 #include "../scenes/EndWorkScene.h"
 #include "../components/Time.h"
 #include "GeneralData.h"
-//#include "Game.h"
-/*
-TODO
-Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
-*/
 
 Game::Game() :exit(false) {
 	SDLUtils::init("Mail To Atlantis", 1600, 900, "recursos/config/mail.resources.json");

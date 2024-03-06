@@ -75,7 +75,7 @@
 ## Mecanicas
 
 ### Movimiento en la exploracion
-Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá seleccionar hacia donde ir clicando en las direcciones de las calles, estilo Profesor Layton. Cada vez que se clickea una flecha se cambia de un distrito a otro. En cada distrito siempre habrá un NPC con el cual se podra hablar. Este podra dejarte encargos en algunas ocasiones mientras que te contara un poco de su vida en otras. No es podible acceder a todos los distritos desde todos los distritos, estando conectados: todos los distritos en un mismo anillo, los distritos de Demeter y Hefesto con el de Hermes y el distrito de Apolo con el de Poseidón. Según pasen los días se iran desbloqueando el acceso a los distintos anillos, pudiendo al principio solo acceder a los **exteriores**, despues al **interior** y por último al **castillo real**.
+Para explorar la Atlántida se mostrarán imágenes de las calles donde podrá seleccionar hacia donde ir clicando en las direcciones de las calles, estilo *Profesor Layton*. Cada vez que se clickea una flecha se cambia de un distrito a otro. En cada distrito siempre habrá un **NPC** con el cual se podra hablar. Este podra dejarte **encargos** en algunas ocasiones mientras que te contara un poco de su vida en otras. No es podible acceder a todos los distritos desde todos los distritos, estando conectados: todos los distritos en un mismo anillo, los distritos de Demeter y Hefesto con el de Hermes y el distrito de Apolo con el de Poseidón. Según pasen los días se iran desbloqueando el acceso a los distintos anillos, pudiendo al principio solo acceder a los **exteriores**, despues al **interior** y por último al **castillo real**.
 
 ![Imagen de como va atlantis](Imagenes/Mapa1Nombres.png)
 
@@ -99,13 +99,13 @@ El jugador deberá comprobar que el **código postal** y el barrio son validos. 
 
 |Codigo|Distrito|Calles|
 |---|---|---|
-|001|Distrito 1|C/1 <br> C/2 <br>C/3|
-|010|Distrito 2|C/1 <br> C/2 <br>C/3|
-|011|Distrito 3|C/1 <br> C/2 <br>C/3|
-|101|Distrito 4|C/1 <br> C/2 <br>C/3|
-|101|Distrito 5|C/1 <br> C/2 <br>C/3|
-|110|Distrito 6|C/1 <br> C/2 <br>C/3|
-|111|Distrito 7|C/1 <br> C/2 <br>C/3|
+|001|Hestia|"Avenida del Besugo real"<br>"Calle Medusia la santa"<br>"Calle Gambon III"|
+|010|Hefesto|"Calle Caballito de tierra"<br>"Calle Lubina, La Sabia"<br>"Calle de la trucha dorada"|
+|011|Demeter|"Gran ruta de las algas"<br> "Camino del calamar"<br> "Camino de la morena"|
+|101|Artemisa|"Avenida Mantarraya"<br>"Calle de la ballena tiburona"<br>"Calle Rodaballo"|
+|101|Hermes|"Gran Avenida del Arrecife"<br>"Calle del Coral"<br>"Calle Boqueronio XXVIII"|
+|110|Apolo|"Calle Ajolote"<br>"Calle Arlequin"<br>"Avenida del Anfiteatro"|
+|111|Poseidon|"Calle de los nobles"<br>"Calle del trono"<br>"Calle de los Jardines"|
 
 
 ##### Manual de trabajo
@@ -116,6 +116,11 @@ El jugador contará con una libreta que podrá abrir (situada en la zona inferio
  - [Explicación de envoltura](#envoltura)
  - Anotaciones sobre la historia (nice to have).
 
+|Ejemplos|a|
+|-|-|
+|![alt text](Imagenes/Book2.png)|![alt text](Imagenes/Book3.png)|
+![alt text](Imagenes/Book4.png)|![alt text](Imagenes/Book5.png)|
+
 #### Etiquetado por barrio
 En el caso de que la **dirección** sea correcta el jugador deberá emplear un sello del color correspondiente al barrio (ver en el **manual de trabajo**). Poner el color incorrecto o envíar el paquete teniendo la dirección incorrecta conllevará a una **amonestación**
 
@@ -123,11 +128,9 @@ En el caso de que la **dirección** sea correcta el jugador deberá emplear un s
 Llegado cierto punto se exigirá al jugador detectar la falsificación de **sellos**. En el **manual de trabajo** se añadirá una entrada para ver los **sellos** auténticos. 
 
 Existen 5 tipos de sellos:
-- **Alimento** ![Imagen Sello]()
-- **Medicinas** 
-- **Joyas**
-- **Materiales**
-- **Armamento**
+|Alimento|Medicinas|Joyas|Materiales|Armamento
+|-|-|-|-|-|
+|<img src=Imagenes/Alimentos.png alt="a" width="90">|<img src=Imagenes/Medicina.png alt="a" width="90">|<img src=Imagenes/Joyas.png alt="a" width="90">|<img src=Imagenes/Materiales.png alt="a" width="90">|<img src=Imagenes/Armas.png alt="a" width="90">|
 
 Enviar un paquete con un **sello** falso implica una **amonestación**
 
@@ -135,7 +138,11 @@ Enviar un paquete con un **sello** falso implica una **amonestación**
 Un paquete con un **sello de pesado** deberá ser pesado y comprobado respecto a el peso que le asigna el **sello** por tanto un paquete con este **sello** solo debe ser enviado si su **peso** medido en la **balanza** coincide con las métricas que indica el **sello** (referirse al **manual de trabajo**). Una vez presentada esta mecánica aparecerá una balanza en la oficina de trabajao donde se podrán pesar los **paquetes** colocándolos encima de estos.
 
 #### Envoltura
+<img src=Imagenes/Fragil.png width=200>
+
 Un paquete con un **sello de fragil** deberá ser envuelto con **cinta de embalaje**. Para ello el jugador deberá realizar un movimiento de *arriba abajo* sobre el **paquete** mientras sostiene el objeto de cinta de embalaje.
+
+
 
 #### Cálculo del dinero al final de la jornada
 Al final de la jornada se abonará al jugador cierta cantidad de dinero siguiendo el siguiente cálculo
@@ -244,8 +251,13 @@ Los fondos de la ciudad de la Atlántida tendrán una paleta de colores similar 
 ### Lugares
 
 #### Oficina de trabajo
-
+![alt text](Imagenes/OficinaProyectosDesenfocada.png)
+Tubos donde se envían los paquetes
+|a|b|c|d|e|f|g|
+|-|-|-|-|-|-|-|
+|![alt text](Imagenes/TuboPoseidon.png)| ![alt text](Imagenes/TuboApolo.png) |![alt text](Imagenes/TuboArtemisa.png)| ![alt text](Imagenes/TuboDemeter.png)| ![alt text](Imagenes/TuboHefesto.png)| ![alt text](Imagenes/TuboHermes.png) |![alt text](Imagenes/TuboHestia.png)|
 #### Distritos
+
 
 ---
 
