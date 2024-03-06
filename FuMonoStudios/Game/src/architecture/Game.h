@@ -6,7 +6,7 @@
 #include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
-
+#include <functional>
 
 class Game : public Singleton<Game> {
 
@@ -49,6 +49,7 @@ private:
 	void update();
 	void render();
 	void refresh();
+
 	/// <summary>
 	/// lista de escenas a procesar
 	/// </summary>
@@ -64,6 +65,8 @@ private:
 	bool sceneChange;
 	ecs::sc::sceneId scene1_, scene2_; //una guarrada lo se, pero ahora mismo quiero que el juego no explote, ya se hara bonito
 
+
+	std::list<std::function<void(void)>> requets;
 };
 
 inline Game& gm() {

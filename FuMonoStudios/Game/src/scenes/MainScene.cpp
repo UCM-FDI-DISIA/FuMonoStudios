@@ -23,7 +23,7 @@
 
 ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false), timerTexture(nullptr),timerEnt(nullptr)
 {
-	timeFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	timeFont = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer = MINIGAME_TIME;
 }
 
@@ -63,13 +63,9 @@ void ecs::MainScene::init()
 
 	createPaquete(generalData().getPaqueteLevel());
 
-	createTubo(Paquete::Hestia);
-	createTubo(Paquete::Hefesto);
-	createTubo(Paquete::Demeter);
-	createTubo(Paquete::Artemisa);
-	createTubo(Paquete::Hermes);
-	createTubo(Paquete::Apolo);
-	createTubo(Paquete::Poseidon);
+	for (int i = 0; i < 7; i++) {
+		createTubo((Paquete::Distrito)i);
+	}
 
 	createSelladores();
 
@@ -99,6 +95,11 @@ void ecs::MainScene::init()
 			createPaquete(generalData().getPaqueteLevel());
 		}
 		});
+}
+
+void ecs::MainScene::close() {
+	ecs::Scene::close();
+	generalData().updateMoney(correct,fails);
 }
 
 void ecs::MainScene::createSelladores() {
@@ -146,37 +147,34 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 	
 	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);
 	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(dist + 1));
+
 	Transform* tuboTr = tuboEnt->addComponent<Transform>(75 + (220 * dist), -40, texTubo->width(), texTubo->height());
 	tuboTr->setScale(scaleTubos);
 	tuboEnt->addComponent<RenderImage>(texTubo);
+
 	Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
 	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist);
 	tuboTri->addCallback([this, dist,tuboCheck](ecs::Entity* entRec) {
 		//comprobamos si es un paquete
 		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
+			entRec->removeComponent<Gravity>();
+			entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+				entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			entRec->addComponent<SelfDestruct>(1, [this]() {
+				generalData().correctPackage();
+				createPaquete(generalData().getPaqueteLevel());
+				});
 			if (tuboCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				entRec->removeComponent<Gravity>();
-				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
-				entRec->addComponent<SelfDestruct>(1, [this]() {
-					correct++;
-					generalData().correctPackage();
-					updateFailsText();
-					createPaquete(0);
-					});
+				correct++;
 			}
 			else {
-				entRec->removeComponent<Gravity>();
-				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
-				entRec->addComponent<SelfDestruct>(1, [this]() {
-					fails++;
-					generalData().wrongPackage();
-					updateFailsText();
-					createPaquete(0);
-					});
+				fails++;
 			}
+#ifdef _DEBUG
+			updateFailsText();
+#endif // _DEBUG
+
 			std::cout << "crazy! " << dist << std::endl;
 		}
 		});
@@ -185,6 +183,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 void ecs::MainScene::createManual()
 {
 	Entity* manual = addEntity(ecs::layer::MANUAL);
+	//se puede hacer un for
 	Texture* manualTexture = &sdlutils().images().at("book1");
 	Texture* manualTexture2 = &sdlutils().images().at("book2");
 	Texture* manualTexture3 = &sdlutils().images().at("book3");
@@ -213,9 +212,7 @@ void ecs::MainScene::createManual()
 	buttonTransform->setScale(buttonScale);
 	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
 	buttonTransform->setParent(manualTransform);
-	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures]() {
-
+	button->addComponent<Clickeable>()->addEvent([multTextures]() {
 		multTextures->nextTexture();
 		});
 
@@ -223,9 +220,7 @@ void ecs::MainScene::createManual()
 	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
 	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
 	buttonTransform2->setParent(manualTransform);
-	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
-
+	button2->addComponent<Clickeable>()->addEvent([multTextures]() {
 		multTextures->previousTexture();
 		});
 }
@@ -236,17 +231,20 @@ void ecs::MainScene::initTexts() {
 	timerEnt->addComponent<Transform>(1250, 50, 200, 200);
 	timerEnt->addComponent<RenderImage>();
 	updateTimer();
+#ifdef _DEBUG
+
 
 	// creamos contador fallos y aciertos
 	successEnt = addEntity(ecs::layer::UI);
-	successEnt->addComponent<Transform>(1350, 250, 100, 100);
+	successEnt->addComponent<Transform>(1350, 250, 100, 50);
 	successEnt->addComponent<RenderImage>();
 
 	failsEnt = addEntity(ecs::layer::UI);
-	failsEnt->addComponent<Transform>(1350, 350, 100, 100);
+	failsEnt->addComponent<Transform>(1350, 350, 100, 50);
 	failsEnt->addComponent<RenderImage>();
 
 	updateFailsText();
+#endif // _DEBUG
 }
 
 void ecs::MainScene::updateTimer() {
@@ -260,6 +258,7 @@ void ecs::MainScene::updateTimer() {
 	timerEnt->getComponent<RenderImage>()->setTexture(timerTexture);
 }
 
+#ifdef _DEBUG
 void ecs::MainScene::updateFailsText() {
 	if (successTexture != nullptr) {
 		delete successTexture;
@@ -275,6 +274,7 @@ void ecs::MainScene::updateFailsText() {
 	failsTexture = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails), *timeFont, build_sdlcolor(0xff0000ff), 200);
 	failsEnt->getComponent<RenderImage>()->setTexture(failsTexture);
 }
+#endif // _DEBUG
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;

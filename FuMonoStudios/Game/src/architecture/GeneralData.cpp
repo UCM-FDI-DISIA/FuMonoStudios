@@ -2,15 +2,17 @@
 #include <iostream>
 #include <string>
 
-void GeneralData::updateMoney()
+void GeneralData::updateMoney(int correct, int wrong)
 {
-	int rightPackages = corrects;
-	int wrongPackages = fails;
+	int rightPackages = correct;
+	corrects = correct;
+	int wrongPackages = wrong;
+	fails = wrong;
 	//funcion de ejemplo seguramente haya que cambiarlo
-	if (fails < failsMargin_) {
+	if (wrong < failsMargin_) {
 		wrongPackages = 0;
 	}
-	if (corrects < 0) {
+	if (correct < 0) {
 		rightPackages = 0;
 	}
 	dinero_ += rightPackages * WRITE_PACAGES_VALUE - wrongPackages * WRONG_PACAGES_VALUE;

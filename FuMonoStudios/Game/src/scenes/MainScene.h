@@ -15,6 +15,7 @@ namespace ecs {
         void init() override;
         void switchTimer() { timerPaused = !timerPaused; }
         void setTimer(float time) { timer = time; }
+        virtual void close() override;
 
         Font* getFont() { return timeFont; }
     private:
@@ -39,7 +40,10 @@ namespace ecs {
         Texture* failsTexture = nullptr;
         Entity* successEnt;
         Texture* successTexture = nullptr;
+#ifdef _DEBUG
         void updateFailsText();
+#endif // _DEBUG
+
     };
 }
 

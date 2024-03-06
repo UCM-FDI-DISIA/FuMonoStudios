@@ -62,6 +62,7 @@ void Game::run()
 		sdlutils().clearRenderer();
 		render();
 		sdlutils().presentRenderer();
+
 		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
 	}
 }
@@ -144,7 +145,7 @@ void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 /// </summary>
 void Game::update()
 {
-	for (auto scene : loadedScenes) {
+	for (auto& scene : loadedScenes) {
 		scene->update();
 	}
 }
@@ -154,14 +155,14 @@ void Game::update()
 /// </summary>
 void Game::render()
 {
-	for (auto scene : loadedScenes) {
+	for (auto& scene : loadedScenes) {
 		scene->render();
 	}
 }
 
 void Game::refresh()
 {
-	for (auto scene : loadedScenes) {
+	for (auto& scene : loadedScenes) {
 		scene->refresh();
 	}
 }
