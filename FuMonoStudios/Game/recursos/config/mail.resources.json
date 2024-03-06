@@ -154,6 +154,11 @@
     {
       "id": "fondoOficina",
       "file": "recursos/images/OficinaProyectosDesenfocada.png"
+    },
+    {
+      "id":"cinta",
+      "file": "recursos/images/Cinta.png"
+
     }
   ]
 }

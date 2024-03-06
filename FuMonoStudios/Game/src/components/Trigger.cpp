@@ -100,3 +100,22 @@ bool Trigger::checkIfClosest() {
 	return it == entTouching.end();
 
 }
+
+ecs::Entity* Trigger::getSpecificEntity(ecs::layer::layerId lay) {
+
+	auto it = entTouching.begin();
+
+	while (it != entTouching.end() || (*it)->getLayer() != lay) {
+
+		++it;
+
+	}
+
+	if (it != entTouching.end()) {
+		return (*it);
+	}
+	else {
+		return nullptr;
+	}
+
+}

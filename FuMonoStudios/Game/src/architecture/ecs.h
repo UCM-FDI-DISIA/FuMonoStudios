@@ -56,6 +56,7 @@ namespace ecs {
 			PACKAGE,
 			STAMP,
 			OFFICEELEMENTS,
+			TAPE,
 			MANUAL,
 			FOREGROUND,
 			UI,

@@ -198,8 +198,15 @@ void ecs::MainScene::init()
 		else {
 			//std::cout << "eso no es un paquete gañan\n";
 		}
-		});
-	
+	});
+
+	//cinta envolver
+	Entity* cinta = addEntity(ecs::layer::TAPE);
+	cinta->addComponent<Transform>(560, 500, 100, 150);
+	Texture* texturaCin = &sdlutils().images().at("cinta");
+	RenderImage* rd = cinta->addComponent<RenderImage>(texturaCin);
+	cinta->addComponent<Gravity>();
+	cinta->addComponent<DragAndDrop>();
 }
 
 void ecs::MainScene::updateTimer() {
@@ -216,7 +223,7 @@ void ecs::MainScene::updateTimer() {
 void ecs::MainScene::createPaquete (int lv) {
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
-	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width () * 0.1, texturaPaquet->height () * 0.1);
+	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width () * 0.2, texturaPaquet->height () * 0.2);
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
