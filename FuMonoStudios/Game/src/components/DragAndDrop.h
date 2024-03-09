@@ -21,8 +21,8 @@ class DragAndDrop : public ecs::Component {
 public:
 	__CMP_DECL__(ecs::cmp::DRAGANDDROP)
 	DragAndDrop();
-	DragAndDrop(bool UsingOnlyClosestEnt);
-	DragAndDrop(bool UsingOnlyClosestEnt, SimpleCallback Func);
+	DragAndDrop(bool usingClosestEnt);
+	DragAndDrop(bool usingClosestEnt, SimpleCallback func);
 
 	~DragAndDrop();
 
@@ -38,14 +38,15 @@ private:
 
 	Trigger* tri_;
 
-	bool dragging;
+	bool dragging_;
 
-	float differenceX;
+	float differenceX_;
 
-	float differenceY;
+	float differenceY_;
 
-	bool usingOnlyClosestEnt = false;
+	bool usingOnlyClosestEnt_ = false;
 
-	bool usingCallback = false;
-	SimpleCallback func;
+	bool usingCallback_ = false;
+
+	SimpleCallback func_;
 };

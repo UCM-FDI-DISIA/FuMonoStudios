@@ -11,21 +11,21 @@
 #include <SDL.h>
 #include <assert.h>
 
-DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0),
-usingCallback(false), usingOnlyClosestEnt(false) {
+DragAndDrop::DragAndDrop() : tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging_(false), differenceX_(0), differenceY_(0),
+usingCallback_(false), usingOnlyClosestEnt_(false) {
 }
 
 
 DragAndDrop::DragAndDrop(bool UsingOnlyClosestEnt) : 
-	tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0), 
-	usingCallback(false), usingOnlyClosestEnt(UsingOnlyClosestEnt) {
+	tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging_(false), differenceX_(0), differenceY_(0), 
+	usingCallback_(false), usingOnlyClosestEnt_(UsingOnlyClosestEnt) {
 }
 
 DragAndDrop::DragAndDrop(bool UsingOnlyClosestEnt, SimpleCallback Func) : 
-	tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging(false), differenceX(0), differenceY(0),
-	usingCallback(true), usingOnlyClosestEnt(UsingOnlyClosestEnt)
+	tr_(nullptr), tri_(nullptr), grav_(nullptr), dragging_(false), differenceX_(0), differenceY_(0),
+	usingCallback_(true), usingOnlyClosestEnt_(UsingOnlyClosestEnt)
 {
-	func = Func;
+	func_ = Func;
 }
 
 DragAndDrop::~DragAndDrop() {
@@ -57,21 +57,21 @@ void DragAndDrop::update() {
 	if (ihdlr.mouseButtonDownEvent()) {
 		if (tr_->getIfPointerIn() && tri_->checkIfClosest()) {
 
-			dragging = true;
+			dragging_ = true;
 			// desactivamos gravedad al draggear
 			if (grav_ != nullptr) {
 				grav_->setActive(false);
 			}
 
 			//Para que funcione sin ir al centro, con margen
-			differenceX = point.x - tr_->getPos().getX();;
-			differenceY = point.y - tr_->getPos().getY();;
+			differenceX_ = point.x - tr_->getPos().getX();;
+			differenceY_ = point.y - tr_->getPos().getY();;
 		}
 	}
 	//Deteccion al soltar el objeto
 	else if (ihdlr.mouseButtonUpEvent()) {
 
-		dragging = false;
+		dragging_ = false;
 		// reactivamos la gravedad
 		if (grav_ != nullptr) {
 			grav_->setActive(true);
@@ -79,28 +79,28 @@ void DragAndDrop::update() {
 
 		//Al soltar el objeto activa los callback de todas las entidades que este tocando el objeto
 		// si no tenemos activado el activar solo al mas cercano
-		if (!usingOnlyClosestEnt)
+		if (!usingOnlyClosestEnt_)
 			tri_->activateEventsFromEntities();
 		else
 			tri_->activateEventFromClosestEntity();
 
 		// si has asignado callback se activa
-		if (usingCallback)
-			func();
+		if (usingCallback_)
+			func_();
 	}
 
 	//Arrastre del objeto
-	if (dragging) {
+	if (dragging_) {
 		//Para que vaya en el medio
 		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
 		
 		// comprobacion para evitar sacar la entidad de la pantalla
-		if ((point.x - differenceX > -(tr_->getWidth() / 2))
-			&& (point.x - differenceX < sdlutils().width() - (tr_->getWidth() / 2)) 
-			&& (point.y - differenceY < sdlutils().height() - (tr_->getHeigth() / 6)))
+		if ((point.x - differenceX_ > -(tr_->getWidth() / 2))
+			&& (point.x - differenceX_ < sdlutils().width() - (tr_->getWidth() / 2)) 
+			&& (point.y - differenceY_ < sdlutils().height() - (tr_->getHeigth() / 6)))
 		{
 			//Sin centrarse el objeto
-			tr_->setPos(point.x - differenceX, point.y - differenceY);
+			tr_->setPos(point.x - differenceX_, point.y - differenceY_);
 		}
 	}
 }
