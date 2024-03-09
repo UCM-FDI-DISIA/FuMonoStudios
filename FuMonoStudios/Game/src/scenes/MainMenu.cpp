@@ -27,10 +27,10 @@ void ecs::MainMenu::init()
 
 	//Font* fuente = new Font("recursos/fonts/ARIAL.ttf", 50);
 
-	Entity* Titulo = addEntity();
+	Entity* titulo = addEntity();
 	Texture* texturaTitulo = &sdlutils().images().at("title");
-	Transform* transformTitulo = Titulo->addComponent<Transform>(0.0f, 0.0f, texturaTitulo->width(), texturaTitulo->height());
-	RenderImage* renderTitulo = Titulo->addComponent<RenderImage>(texturaTitulo);
+	Transform* transformTitulo = titulo->addComponent<Transform>(0.0f, 0.0f, texturaTitulo->width(), texturaTitulo->height());
+	RenderImage* renderTitulo = titulo->addComponent<RenderImage>(texturaTitulo);
 
 	Texture* texturaBoton = new Texture(sdlutils().renderer(), "Pulsa para empezar", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
 	Entity* BotonPress = addEntity();

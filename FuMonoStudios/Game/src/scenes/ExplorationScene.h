@@ -15,7 +15,7 @@ namespace ecs {
         void init() override;
         void render();
     private:
-         Mapa map;
+         Mapa map_;
     };
 }
 

@@ -13,33 +13,35 @@ namespace ecs {
 
         virtual void update() override;
         void init() override;
-        void switchTimer() { timerPaused = !timerPaused; }
-        void setTimer(float time) { timer = time; }
+        void switchTimer() { timerPaused_ = !timerPaused_; }
+        void setTimer(float time) { timer_ = time; }
 
-        Font* getFont() { return timeFont; }
+        Font* getFont() { return timeFont_; }
     private:
         void createManual();
         void createTubo(Paquete::Distrito dist);
         void createSelladores();
         void createPaquete(int lv);
         
-        int fails;
-        int correct;
-        float timer;
-        bool timerPaused;
-        Font* timeFont;
+        void updateTimer();
+
+        void updateFailsText();
+
+        int fails_;
+        int correct_;
+        float timer_;
+        bool timerPaused_;
+        Font* timeFont_;
 
         // objects
         void initTexts(); // metodo auxiliar para limpio
-        Entity* timerEnt;
-        Texture* timerTexture;
-        void updateTimer();
+        Entity* timerEnt_;
+        Texture* timerTexture_;
 
-        Entity* failsEnt;
-        Texture* failsTexture = nullptr;
-        Entity* successEnt;
-        Texture* successTexture = nullptr;
-        void updateFailsText();
+        Entity* failsEnt_;
+        Texture* failsTexture_ = nullptr;
+        Entity* successEnt_;
+        Texture* successTexture_ = nullptr;
     };
 }
 

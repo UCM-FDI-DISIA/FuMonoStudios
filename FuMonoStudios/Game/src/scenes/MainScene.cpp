@@ -21,10 +21,10 @@
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
 
-ecs::MainScene::MainScene():Scene(),fails(0),correct(0), timerPaused(false), timerTexture(nullptr),timerEnt(nullptr)
+ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
-	timeFont = new Font("recursos/fonts/ARIAL.ttf", 40);
-	timer = MINIGAME_TIME;
+	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
+	timer_ = MINIGAME_TIME;
 }
 
 ecs::MainScene::~MainScene()
@@ -35,10 +35,10 @@ ecs::MainScene::~MainScene()
 void ecs::MainScene::update()
 {
 	Scene::update();
-	if (!timerPaused)
+	if (!timerPaused_)
 	{
-		if (timer > 0) {
-			timer -= Time::getDeltaTime();
+		if (timer_ > 0) {
+			timer_ -= Time::getDeltaTime();
 			updateTimer();
 		}
 		else
@@ -51,7 +51,7 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	timer = MINIGAME_TIME;
+	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
 	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
@@ -85,13 +85,13 @@ void ecs::MainScene::init()
 			if (paqComp->correcto())
 			{
 				generalData().wrongPackage();
-				fails++;
+				fails_++;
 			}
 				
 			else
 			{ 
 				generalData().correctPackage();
-				correct++;
+				correct_++;
 			}
 				
 			updateFailsText();
@@ -160,7 +160,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
 					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
 				entRec->addComponent<SelfDestruct>(1, [this]() {
-					correct++;
+					correct_++;
 					generalData().correctPackage();
 					updateFailsText();
 					createPaquete(0);
@@ -171,7 +171,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
 					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
 				entRec->addComponent<SelfDestruct>(1, [this]() {
-					fails++;
+					fails_++;
 					generalData().wrongPackage();
 					updateFailsText();
 					createPaquete(0);
@@ -232,48 +232,48 @@ void ecs::MainScene::createManual()
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
-	timerEnt = addEntity(ecs::layer::UI);
-	timerEnt->addComponent<Transform>(1250, 50, 200, 200);
-	timerEnt->addComponent<RenderImage>();
+	timerEnt_ = addEntity(ecs::layer::UI);
+	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
+	timerEnt_->addComponent<RenderImage>();
 	updateTimer();
 
 	// creamos contador fallos y aciertos
-	successEnt = addEntity(ecs::layer::UI);
-	successEnt->addComponent<Transform>(1350, 250, 100, 100);
-	successEnt->addComponent<RenderImage>();
+	successEnt_ = addEntity(ecs::layer::UI);
+	successEnt_->addComponent<Transform>(1350, 250, 100, 100);
+	successEnt_->addComponent<RenderImage>();
 
-	failsEnt = addEntity(ecs::layer::UI);
-	failsEnt->addComponent<Transform>(1350, 350, 100, 100);
-	failsEnt->addComponent<RenderImage>();
+	failsEnt_ = addEntity(ecs::layer::UI);
+	failsEnt_->addComponent<Transform>(1350, 350, 100, 100);
+	failsEnt_->addComponent<RenderImage>();
 
 	updateFailsText();
 }
 
 void ecs::MainScene::updateTimer() {
-	if (timerTexture != nullptr)
+	if (timerTexture_ != nullptr)
 	{
-		delete timerTexture;
-		timerTexture = nullptr;
+		delete timerTexture_;
+		timerTexture_ = nullptr;
 	}
 		
-	timerTexture = new Texture(sdlutils().renderer(), std::to_string((int)(timer)), *timeFont, build_sdlcolor(0x000000ff), 200);
-	timerEnt->getComponent<RenderImage>()->setTexture(timerTexture);
+	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
+	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
 }
 
 void ecs::MainScene::updateFailsText() {
-	if (successTexture != nullptr) {
-		delete successTexture;
-		successTexture = nullptr;
+	if (successTexture_ != nullptr) {
+		delete successTexture_;
+		successTexture_ = nullptr;
 	}
-	successTexture = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct), *timeFont, build_sdlcolor(0x00ff00ff), 200);
-	successEnt->getComponent<RenderImage>()->setTexture(successTexture);
+	successTexture_ = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct_), *timeFont_, build_sdlcolor(0x00ff00ff), 200);
+	successEnt_->getComponent<RenderImage>()->setTexture(successTexture_);
 
-	if (failsTexture != nullptr) {
-		delete failsTexture;
-		failsTexture = nullptr;
+	if (failsTexture_ != nullptr) {
+		delete failsTexture_;
+		failsTexture_ = nullptr;
 	}
-	failsTexture = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails), *timeFont, build_sdlcolor(0xff0000ff), 200);
-	failsEnt->getComponent<RenderImage>()->setTexture(failsTexture);
+	failsTexture_ = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails_), *timeFont_, build_sdlcolor(0xff0000ff), 200);
+	failsEnt_->getComponent<RenderImage>()->setTexture(failsTexture_);
 }
 
 void ecs::MainScene::createPaquete (int lv) {
