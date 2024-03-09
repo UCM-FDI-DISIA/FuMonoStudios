@@ -64,10 +64,9 @@ namespace ecs {
 
 		}
 
-		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
+		/*//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
 		template<>
 		inline DragAndDrop* addComponent<DragAndDrop>() {
-
 
 			Trigger* trg = getComponent<Trigger>();
 
@@ -79,10 +78,7 @@ namespace ecs {
 			DragAndDrop* d = addComponent_aux<DragAndDrop>();
 
 			return d;
-
-		}
-
-
+		}*/ // movido a dentro del init que así se puede sobrecargar la constructora y permite expandir el dragndrop
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>

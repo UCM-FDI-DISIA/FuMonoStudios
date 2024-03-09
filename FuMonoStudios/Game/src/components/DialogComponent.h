@@ -43,7 +43,7 @@ private:
     DialogManager* mDialogMngr_;
 
     Font* mFont_;
-    Texture* textTexture_;
+    Texture* mTexture_;
     /// <summary>
     /// Ancho maximo al que va a llegar el texto
     /// </summary>
@@ -51,9 +51,9 @@ private:
     /// <summary>
     /// Indice de hasta que caracter se va a escribir
     /// </summary>
-    int dialogueIndex;
+    int dialogueIndex_;
 
-    uint32_t lasTimePaused = 0;
+    uint32_t lastTimePaused_ = 0;
     //Font* dialogueFont_;
 };
 

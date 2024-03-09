@@ -18,10 +18,12 @@ public:
 	void addCondition(Condition);
 
 	bool checkPackage(Paquete*);
-private:
-	Paquete::Distrito toDis;
-	std::list<Condition> extraCond;
 
+	void checkEntity(ecs::Entity* ent);
+private:
 	bool checkAdditionalConditions(Paquete*);
+
+	Paquete::Distrito toDis_;
+	std::list<Condition> extraCond_;
 };
 

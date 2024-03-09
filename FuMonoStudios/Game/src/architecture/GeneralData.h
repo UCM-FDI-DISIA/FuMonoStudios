@@ -6,7 +6,8 @@ class GeneralData : public Singleton<GeneralData>
 {
 	friend Singleton<GeneralData>;
 public:
-	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT) { };
+	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT),failsMargin_(INITIAL_FAILS_MARGIN),
+		corrects_(0),fails_(0), dia_(1) { };
 	~GeneralData(){};
 
 	/// <summary>
@@ -14,19 +15,32 @@ public:
 	/// </summary>
 	/// <param name="writePacages"></param>
 	/// <param name="wrongPacages"></param>
-	void updateMoney(int writePacages, int wrongPacages);
-	void SetFinalID(int final); //Cambia el ID del final
-	int GetFinalID(); //Devuelve el id del final del juego
-	void SetEventoID(int evento); //Cambia el ID del evento a ocurrir
-	int GetEventoID(); //Devuelve el id del evento que ocurrirá en el juego
+	void updateMoney();
+	void setFinalID(int final); //Cambia el ID del final
+	int getFinalID(); //Devuelve el id del final del juego
+	void setEventoID(int evento); //Cambia el ID del evento a ocurrir
+	int getEventoID(); //Devuelve el id del evento que ocurrirï¿½ en el juego
+	int getMoney() { return dinero_; }
 
+	void correctPackage() { corrects_++; }
+	void wrongPackage() { fails_++; }
+	int getFails() { return fails_; }
+	int getCorrects() { return corrects_; }
+	void resetFailsCorrects() { fails_ = 0; corrects_ = 0; }
+
+	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al dï¿½a
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }
 
+	int fails_;
+	int corrects_;
 	int dinero_;
-	int finalID_; //Variable int que define en la última escena cuál final se va a reproducir
-	int eventoID_; //Variable int que define cual evento especial de la historia deberá de ejecutarse
+	int failsMargin_;
+	int finalID_; //Variable int que define en la ï¿½ltima escena cuï¿½l final se va a reproducir
+	int eventoID_; //Variable int que define cual evento especial de la historia deberï¿½ de ejecutarse
+	int dia_;
+	int paqueteLvl_ = 0; // de momento es 0
 };
 
 inline GeneralData& generalData() {

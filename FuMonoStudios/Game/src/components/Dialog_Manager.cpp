@@ -3,14 +3,14 @@
 #include <fstream>
 #include "../json/JSON.h"
 
-DialogManager::DialogManager() : currentDialogIndex(0) {
+DialogManager::DialogManager() : currentDialogIndex_(0) {
 }
 
 
 
-std::string DialogManager::GetCurrentDialog() {
-    if (currentDialogIndex < dialogs.size()) {
-        return dialogs[currentDialogIndex];
+std::string DialogManager::getCurrentDialog() {
+    if (currentDialogIndex_ < dialogs_.size()) {
+        return dialogs_[currentDialogIndex_];
     }
     else {
         return ""; // No hay m�s di�logos. cleon: ultramegamaxi MAL
@@ -18,20 +18,20 @@ std::string DialogManager::GetCurrentDialog() {
 }
 
 
-void DialogManager::NextDialog() {
-    if (currentDialogIndex < dialogs.size() - 1) {
-        currentDialogIndex++;
+void DialogManager::nextDialog() {
+    if (currentDialogIndex_ < dialogs_.size() - 1) {
+        currentDialogIndex_++;
     }
     else {
-        currentDialogIndex = resetDialogueIndex;
+        currentDialogIndex_ = resetDialogueIndex_;
     }
 }
 // un string sin referencia es como un d�a sin sol: const string&
 void DialogManager::setDialogues(const std::string& path) {
     //eliminamos los dialogos anteriores
-    dialogs.clear();
+    dialogs_.clear();
     //reseteamos la posicon del indice
-    currentDialogIndex = 0;
+    currentDialogIndex_ = 0;
     std::ifstream file(path);
     if (file.is_open()) { // estamos en 2�. is_open es para beb�s programadores. usad librer�a de carga
         std::string line;
@@ -44,7 +44,7 @@ void DialogManager::setDialogues(const std::string& path) {
                 // Agrega el contenido antes del $
                 currentDialog += line.substr(0, pos);  
                 // a�adimos el dialogo
-                dialogs.push_back(currentDialog);
+                dialogs_.push_back(currentDialog);
                 currentDialog.clear();
             }
         }

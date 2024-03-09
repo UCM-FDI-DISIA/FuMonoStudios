@@ -56,8 +56,8 @@ namespace ecs {
 
 	std::list<Entity*>::iterator Scene::addEntityToColisionList(Entity* e) {
 
-		colisionEntities.push_back(e);
-		std::list<Entity*>::iterator it = colisionEntities.end();
+		colisionEntities_.push_back(e);
+		std::list<Entity*>::iterator it = colisionEntities_.end();
 		return --it;
 	}
 
@@ -71,7 +71,7 @@ namespace ecs {
 
 	void Scene::removeCollison(std::list<ecs::Entity*>::iterator it)
 	{
-		colisionEntities.erase(it);
+		colisionEntities_.erase(it);
 	}
 	//Se pasa una entidad para comprobar si esta choca con el resto de entidades que tienen un trigger
 	bool Scene::checkColisions(Entity* e) {
@@ -79,7 +79,7 @@ namespace ecs {
 		bool ret = false;
 
 		// cleon: iterador moderno. Es 2024.
-		for (auto it = colisionEntities.begin(); it != colisionEntities.end(); ++it) {
+		for (auto it = colisionEntities_.begin(); it != colisionEntities_.end(); ++it) {
 
 			if ((*it) != e) {
 

@@ -31,6 +31,6 @@ public:
 
 	void interact(ecs::Entity* paquete);
 private:
-	Callback funcion;
+	Callback funcion_;
 };
 

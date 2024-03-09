@@ -19,11 +19,11 @@ private:
 	/// <summary>
 	/// Textura que va a ser renderizada
 	/// </summary>
-	Texture* myTexture;
+	Texture* mTexture_;
 	/// <summary>
 	/// Transform sobre el que se va a renderizar la imagen
 	/// </summary>
-	Transform* myTransform;
+	Transform* mTr_;
 	/// <summary>
 	/// Inica si este render image es responsable de destruir la textura que le
 	/// pasan

@@ -23,6 +23,7 @@ namespace ecs {
 			DIALOGUE,
 			MOVERTRANSFORM,
 			WRAP,
+			SELFDESTRUCT,
 			// do not remove this
 			_LAST_CMP_ID
 		};
@@ -39,6 +40,7 @@ namespace ecs {
 		enum sceneId : scId_t {
 			MAIN_SCENE,
 			EXPLORE_SCENE,
+			END_WORK_SCENE,
 			MENU_SCENE,
 			_LAST_SCENE
 		};

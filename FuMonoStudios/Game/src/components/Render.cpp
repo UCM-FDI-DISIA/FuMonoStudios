@@ -3,27 +3,27 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-RenderImage::RenderImage() : myTexture(nullptr), myTransform(nullptr), ownsTexture_() {}
+RenderImage::RenderImage() : mTexture_(nullptr), mTr_(nullptr), ownsTexture_() {}
 
-RenderImage::RenderImage(Texture* img) : myTexture(img),myTransform(nullptr),ownsTexture_() {}
+RenderImage::RenderImage(Texture* img) : mTexture_(img),mTr_(nullptr),ownsTexture_() {}
 
 RenderImage::~RenderImage() {
 }
 
 void RenderImage::initComponent() {
-	myTransform = ent_->getComponent<Transform>();
-	assert(myTransform != nullptr);
+	mTr_ = ent_->getComponent<Transform>();
+	assert(mTr_ != nullptr);
 }
 
 void RenderImage::render() const {
-	myTexture->render(myTransform->getRect());
+	mTexture_->render(mTr_->getRect());
 }
 
 void RenderImage::setTexture(Texture* texture)
 {
-	myTexture = texture;
+	mTexture_ = texture;
 }
 
 const Texture* RenderImage::getTexture() {
-	return myTexture;
+	return mTexture_;
 }

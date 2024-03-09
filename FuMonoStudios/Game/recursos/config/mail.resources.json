@@ -17,12 +17,32 @@
       "file": "recursos/images/Book.png"
     },
     {
+      "id": "book1",
+      "file": "recursos/images/Book1.png"
+    },
+    {
+      "id": "book2",
+      "file": "recursos/images/Book2.png"
+    },
+    {
+      "id": "book3",
+      "file": "recursos/images/Book3.png"
+    },
+    {
+      "id": "book4",
+      "file": "recursos/images/Book4.png"
+    },
+    {
+      "id": "book5",
+      "file": "recursos/images/Book5.png"
+    },
+    {
       "id": "flechaTest",
       "file": "recursos/images/flecha.png"
     },
     {
       "id": "botonTrabajar",
-      "file":  "recursos/images/placeholderTrabajar.png"
+      "file": "recursos/images/placeholderTrabajar.png"
     },
     {
       "id": "demeter",
@@ -38,7 +58,7 @@
     },
     {
       "id": "artemisa",
-      "file": "recursos/images/Artemisa.png"
+      "file": "recursos/images/Artemisa2.png"
     },
     {
       "id": "hermes",
@@ -87,7 +107,7 @@
       "file": "recursos/images/Alimentos.png"
     },
     {
-      "id": "selloArmas",
+      "id": "selloArmamento",
       "file": "recursos/images/Armas.png"
     },
     {
@@ -103,7 +123,7 @@
       "file": "recursos/images/Materiales.png"
     },
     {
-      "id": "selloMedicina",
+      "id": "selloMedicinas",
       "file": "recursos/images/Medicina.png"
     },
     {
@@ -146,10 +166,9 @@
       "id": "tubo7",
       "file": "recursos/images/tubo7.png"
     },
-
     {
       "id": "title",
-      "file": "recursos/images/PesoAlto.png"
+      "file": "recursos/images/titulo.png"
     },
     {
       "id": "fondoOficina",
@@ -158,7 +177,6 @@
     {
       "id":"cinta",
       "file": "recursos/images/Cinta.png"
-
     },
     {
       "id":"caja25",
@@ -178,7 +196,16 @@
     {
       "id":"caja100",
       "file": "recursos/images/Caja_Envuelta_100.png"
-
+    },
+    {
+      "id": "papelera",
+      "file": "recursos/images/papelera.png"
     }
+  ],
+  "fonts":[
+    {"id": "arial50","file": "recursos/fonts/ARIAL.ttf", "size": 50 },
+    {"id": "capture_it50","file": "recursos/fonts/Capture_it.ttf", "size": 50 },
+    {"id": "NES50","file": "recursos/fonts/NES-Chimera.ttf", "size": 50 },
+    {"id": "roboto50","file": "recursos/fonts/Roboto-Thin.ttf", "size": 50 }
   ]
 }

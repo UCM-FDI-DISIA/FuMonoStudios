@@ -63,7 +63,7 @@ namespace ecs {
 		/// </summary>
 		std::array<std::vector<Entity*>,ecs::layer::maxLayerId> objs_;
     
-		std::list<Entity* > colisionEntities;
+		std::list<Entity* > colisionEntities_;
 
 		std::queue<std::pair<ecs::layer::layerId, std::vector<Entity*>::iterator>> del_;
 	};

@@ -18,13 +18,13 @@ public:
     /// Devuelve el dialogo acutal segun el indice de dialogo
     /// </summary>
     /// <returns></returns>
-    std::string GetCurrentDialog();
+    std::string getCurrentDialog();
 
     /// <summary>
     /// Avanza al siguente dialogo. 
     /// Si ya está en el ultimo diálogo no avanza y se queda en ese
     /// </summary>
-    void NextDialog();
+    void nextDialog();
     /// <summary>
     /// Toma una ruta del fichero de donde actualizar el vector de diálogos
     /// Vacia el vector de dialogos anterior y resetea el indice de dialogos
@@ -36,15 +36,15 @@ private:
     /// <summary>
     /// Vector donde se almacenan todos los diálogos que se van a soltar
     /// </summary>
-    std::vector<std::string> dialogs;
+    std::vector<std::string> dialogs_;
     /// <summary>
     /// Indice que indica en que diálogo nos encontramos
     /// </summary>
-    size_t currentDialogIndex;
+    size_t currentDialogIndex_;
     /// <summary>
     /// Indice al que se vuelve cuando se termia la hilera de diálogos
     /// </summary>
-    int resetDialogueIndex;
+    int resetDialogueIndex_;
 };
 
 #endif // DIALOG_MANAGER_H

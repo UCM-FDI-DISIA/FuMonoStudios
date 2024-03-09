@@ -24,8 +24,8 @@ private:
 	static const float MAX_VELOCITY; // Limite de aceleracion
 
 	Transform* tr_;
-	float gravityForce;
-	float velocity;
-	bool active;
+	float gravityForce_;
+	float velocity_;
+	bool active_;
 };
 

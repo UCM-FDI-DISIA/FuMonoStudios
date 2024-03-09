@@ -32,13 +32,15 @@
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
-    <ClCompile Include="src\components\Time.cpp" />
+    <ClCompile Include="src\architecture\Time.cpp" />
     <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\sistemas\Felicidad.cpp" />
     <ClCompile Include="src\sistemas\Mapa.cpp" />
     <ClCompile Include="src\components\Wrap.cpp" />
+    <ClCompile Include="src\scenes\EndWorkScene.cpp" />
+    <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
+    <ClCompile Include="src\components\SelfDestruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -82,12 +84,15 @@
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
-    <ClInclude Include="src\components\Time.h" />
+    <ClInclude Include="src\architecture\Time.h" />
     <ClInclude Include="src\architecture\GeneralData.h" />
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
     <ClInclude Include="src\sistemas\Felicidad.h" />
     <ClInclude Include="src\sistemas\Mapa.h" />
     <ClInclude Include="src\components\Wrap.h" />
+    <ClInclude Include="src\scenes\EndWorkScene.h" />
+    <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
+    <ClInclude Include="src\components\SelfDestruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -96,7 +101,6 @@
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\architecture\GameConstants.h" />

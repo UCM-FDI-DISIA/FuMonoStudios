@@ -12,7 +12,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
 
-ecs::ExplorationScene::ExplorationScene() :Scene(), map(this)
+ecs::ExplorationScene::ExplorationScene() :Scene(), map_(this)
 {
 }
 
@@ -71,6 +71,6 @@ void ecs::ExplorationScene::init()
 
 void ecs::ExplorationScene::render()
 {
-	map.renderBackGround();
+	map_.renderBackGround();
 	Scene::render();
 }
