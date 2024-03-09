@@ -16,6 +16,9 @@ Variables
     : comenzando en minúscula y siguiendo camel case. Se teminará el nombre con barra baja.
 : - Referencias a componentes de la misma entidad
     : m[nombre acortado]_ siguiendo camel case después de la 'm'
+    : Aclaraciones y ejemplos
+        : mTr_ para Transform y mTrg_ para trigger
+        : mRend_ para RenderImage
 : - Variables de ambito de una función
     : Comenzando en minuscula y siguiendo camel case.
 

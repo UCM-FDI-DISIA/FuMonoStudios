@@ -27,12 +27,12 @@ public:
 
 	void update() override;
 private:
-	float timer;
-	float startTimer;
-	float movTime;
-	Easing easing;
-	Vector2D finalPos;
-	Vector2D initPos;
-	Transform* tr;
+	float timer_;
+	float startTimer_;
+	float movTime_;
+	Easing easing_;
+	Vector2D finalPos_;
+	Vector2D initPos_;
+	Transform* mTr_;
 };
 

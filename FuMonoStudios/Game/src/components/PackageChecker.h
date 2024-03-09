@@ -21,9 +21,9 @@ public:
 
 	void checkEntity(ecs::Entity* ent);
 private:
-	Paquete::Distrito toDis;
-	std::list<Condition> extraCond;
-
 	bool checkAdditionalConditions(Paquete*);
+
+	Paquete::Distrito toDis_;
+	std::list<Condition> extraCond_;
 };
 

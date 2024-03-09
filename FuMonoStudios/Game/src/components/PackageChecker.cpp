@@ -10,7 +10,7 @@
 #include <list>
 #include <functional>
 
-PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis(dis), extraCond()
+PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis_(dis), extraCond_()
 {
 
 }
@@ -27,19 +27,19 @@ void PackageChecker::initComponent()
 
 void PackageChecker::addCondition(Condition newCond)
 {
-	extraCond.push_back(newCond);
+	extraCond_.push_back(newCond);
 }
 
 bool PackageChecker::checkPackage(Paquete* package)
 {
 	bool correctPack = false;
 	if (package->Correcto() && package->BienSellado()) {
-		if (toDis == package->getDistrito()) {
+		if (toDis_ == package->getDistrito()) {
 			correctPack = checkAdditionalConditions(package);
 		}
 	}
 	else {
-		if (toDis == Paquete::Erroneo) {
+		if (toDis_ == Paquete::Erroneo) {
 			correctPack = checkAdditionalConditions(package);
 		}
 	}
