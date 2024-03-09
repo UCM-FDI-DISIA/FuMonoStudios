@@ -8,28 +8,28 @@
 
 
 
-Mapa::Mapa(ecs::Scene* e) : mScene(e), dialogMngr_()
+Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 {
 	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
-	actualPlace = &demeter;
+	actualPlace_ = &demeter;
 	createObjects("Demeter");
-	rect = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
+	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
 }
 
 ecs::Entity* Mapa::createNavegationsArrows(int x, int y, std::string placeDir)
 {
 	//para crear la flecha a hefesto
-	ecs::Entity* Arrow = mScene->addEntity();
+	ecs::Entity* Arrow = mScene_->addEntity();
 	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
 	float scale = 0.2;
 	Transform* e = Arrow->addComponent<Transform>(x,y, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Arrow->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Arrow->addComponent<Clickeable>();
 	CallbackClickeable cosa = [this, placeDir]() {
-		if (actualPlace->navigate(placeDir)) {
-			actualPlace->killObjects();
+		if (actualPlace_->navigate(placeDir)) {
+			actualPlace_->killObjects();
 			navigate(placeDir);
 			createObjects(placeDir);
 		}
@@ -46,25 +46,25 @@ ecs::Entity* Mapa::createCharacter(int x, int y,std::string character) {
 // haga de flag)
 
 // Para Dani: Aquí le hacemos clickable y le ponemos como callback el método funcPress
-	ecs::Entity* BotonPress = mScene->addEntity();
+	ecs::Entity* BotonPress = mScene_->addEntity();
 	Texture* texturaBoton = &sdlutils().images().at("press");
 	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
 	CallbackClickeable funcPress = [this]() {
 		//Esto sería la caja del fondo (lo de SDL que se ve)
-		ecs::Entity* boxBg = mScene->addEntity();
+		ecs::Entity* boxBg = mScene_->addEntity();
 		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
 		boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
-		actualPlace->addObjects(boxBg);
+		actualPlace_->addObjects(boxBg);
 
 		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
-		ecs::Entity* dialogoBox = mScene->addEntity();
+		ecs::Entity* dialogoBox = mScene_->addEntity();
 		auto textTr = dialogoBox->addComponent<Transform>(20, 20, 100, 100);
 		textTr->setParent(bgTr);
 		dialogoBox->addComponent<RenderImage>();
 		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
-		actualPlace->addObjects(dialogoBox);
+		actualPlace_->addObjects(dialogoBox);
 		};
 	clickerPress->addEvent(funcPress);
 	return BotonPress;
@@ -129,13 +129,13 @@ void Mapa::initDirectionsDefaultMap()
 
 void Mapa::navigate(std::string placeDir) // otro string sin const
 {
-	if (actualPlace->navigate(placeDir))
-		actualPlace = actualPlace->getPlaceFromDirection(placeDir);
+	if (actualPlace_->navigate(placeDir))
+		actualPlace_ = actualPlace_->getPlaceFromDirection(placeDir);
 }
 
 void Mapa::renderBackGround() const
 {
-	actualPlace->getTexture()->render(rect);
+	actualPlace_->getTexture()->render(rect_);
 }
 
 void Mapa::killObjects()
@@ -153,7 +153,7 @@ void Mapa::createObjects(std::string place) {
 
 
 		//boton ir a trabajar
-		ecs::Entity* botonTrabajar = mScene->addEntity();
+		ecs::Entity* botonTrabajar = mScene_->addEntity();
 		botonTrabajar->addComponent<Transform>(500, 500, 200, 100);
 		botonTrabajar->addComponent<RenderImage>(&sdlutils().images().at("botonTrabajar"));
 		auto clickableBotonTrabajar = botonTrabajar->addComponent<Clickeable>();
@@ -197,28 +197,28 @@ void Mapa::createObjects(std::string place) {
 
 void Lugar::addDirections(std::string placeDir, Lugar* place)
 {
-	directions[placeDir] = place;
+	directions_[placeDir] = place;
 }
 
 bool Lugar::navigate(std::string placeDir)
 {
-	return directions.count(placeDir) && directions.at(placeDir)->navegable;
+	return directions_.count(placeDir) && directions_.at(placeDir)->navegable_;
 }
 
 Lugar* Lugar::getPlaceFromDirection(std::string placeDir)
 {
-	return directions[placeDir];
+	return directions_[placeDir];
 }
 
 void Lugar::killObjects()
 {
-	for (auto e : ents) {
+	for (auto e : ents_) {
 		e->setAlive(false);
 	}
-	ents.clear();
+	ents_.clear();
 }
 
 void Lugar::addObjects(ecs::Entity* e)
 {
-	ents.push_back(e);
+	ents_.push_back(e);
 }

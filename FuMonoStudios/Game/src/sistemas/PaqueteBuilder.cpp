@@ -4,15 +4,15 @@
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
 
-Paquete::Distrito PaqueteBuilder::DistritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
+Paquete::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
 	int rnd = sdlutils().rand().nextInt(0, 8);
 	return (Paquete::Distrito)rnd;
 }
-Paquete::TipoPaquete PaqueteBuilder::TipoRND() {	//Este método devuelve un Tipo de paquete aleatorio entre todas las posibilidades
+Paquete::TipoPaquete PaqueteBuilder::tipoRND() {	//Este método devuelve un Tipo de paquete aleatorio entre todas las posibilidades
 	int rnd = sdlutils().rand().nextInt(0, 5);
 	return (Paquete::TipoPaquete)rnd;
 }
-Paquete::Calle PaqueteBuilder::CalleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
+Paquete::Calle PaqueteBuilder::calleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
 	int rnd = sdlutils().rand().nextInt(0, 101);
 	if (rnd > probError) {
 		rnd = sdlutils().rand().nextInt(0, 3);
@@ -22,7 +22,7 @@ Paquete::Calle PaqueteBuilder::CalleRND(int probError) {	//Este método devuelve 
 		return Paquete::Calle::Erronea;
 	}
 }
-bool PaqueteBuilder::BoolRND(int probFalse) { //Este método devuelve una valor aleatorio entre treu y false para un bool según una probabilidad
+bool PaqueteBuilder::boolRND(int probFalse) { //Este método devuelve una valor aleatorio entre treu y false para un bool según una probabilidad
 	int rnd = sdlutils().rand().nextInt(0, 101);
 	if (rnd > probFalse) {
 		return true;
@@ -31,7 +31,7 @@ bool PaqueteBuilder::BoolRND(int probFalse) { //Este método devuelve una valor a
 		return false;
 	}
 }
-Paquete::NivelPeso PaqueteBuilder::PesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
+Paquete::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = sdlutils().rand().nextInt(0, 101);										//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
 	if (rnd > probPeso) {
 		Paquete::NivelPeso pes;
@@ -41,41 +41,41 @@ Paquete::NivelPeso PaqueteBuilder::PesoRND(int probPeso, int probError, int& pes
 		rnd = sdlutils().rand().nextInt(0, 101);
 		if (rnd > probError) {
 			if (pes == Paquete::NivelPeso::Alto) {
-				peso = sdlutils().rand().nextInt(medioMax, pesadoMax + 1);
+				peso = sdlutils().rand().nextInt(MEDIO_MAX, PESADO_MAX + 1);
 			}
 			else if (pes == Paquete::NivelPeso::Medio) {
-				peso = sdlutils().rand().nextInt(ligeroMax, medioMax);
+				peso = sdlutils().rand().nextInt(LIGERO_MAX, MEDIO_MAX);
 			}
 			else if (pes == Paquete::NivelPeso::Bajo) {
-				peso = sdlutils().rand().nextInt(paqueteMin, ligeroMax);
+				peso = sdlutils().rand().nextInt(PAQUETE_MIN, LIGERO_MAX);
 			}
 		}
 		else {
 			if (pes == Paquete::NivelPeso::Alto) {
-				peso = sdlutils().rand().nextInt(paqueteMin, medioMax); // o bajo o medio
+				peso = sdlutils().rand().nextInt(PAQUETE_MIN, MEDIO_MAX); // o bajo o medio
 			}
 			else if (pes == Paquete::NivelPeso::Medio) {
 				rnd = sdlutils().rand().nextInt(0, 2);
 				if (rnd == 0) {
-					peso = sdlutils().rand().nextInt(paqueteMin, ligeroMax); // bajo
+					peso = sdlutils().rand().nextInt(PAQUETE_MIN, LIGERO_MAX); // bajo
 				}
 				else {
-					peso = sdlutils().rand().nextInt(medioMax, pesadoMax + 1); // alto
+					peso = sdlutils().rand().nextInt(MEDIO_MAX, PESADO_MAX + 1); // alto
 				}
 			}
 			else if (pes == Paquete::NivelPeso::Bajo) {
-				peso = sdlutils().rand().nextInt(ligeroMax, pesadoMax + 1); // o medio o alto
+				peso = sdlutils().rand().nextInt(LIGERO_MAX, PESADO_MAX + 1); // o medio o alto
 			}
 		}
 		return pes;
 	}
 	else {
-		peso = sdlutils().rand().nextInt(paqueteMin, pesadoMax + 1);
+		peso = sdlutils().rand().nextInt(PAQUETE_MIN, PESADO_MAX + 1);
 		return Paquete::NivelPeso::Ninguno;
 	}
 }
 
-std::string PaqueteBuilder::RemitenteRND() {
+std::string PaqueteBuilder::remitenteRND() {
 	
 	// Falta crear un json/txt con todos los posibles nombres random
 	// y asignar uno random
@@ -96,7 +96,7 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 		miTipo == Paquete::Joyas ? "selloJoyas" :
 		miTipo == Paquete::Materiales ? "selloMateriales" :
 		miTipo == Paquete::Armamento ? "selloArmamento" : "Desconocido");
-	crearSello(paq, tipoString, tipoSelloPosX, tipoSelloPosY, tipoSelloSize, tipoSelloSize);
+	crearSello(paq, tipoString, TIPO_SELLO_POS_X, TIPO_SELLO_POS_Y, TIPO_SELLO_SIZE, TIPO_SELLO_SIZE);
 
 	//Creamos la entidad Peso sello 
 	Paquete::NivelPeso miPeso = paqComp->getPeso();
@@ -104,12 +104,12 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 		tipoString = (miTipo == Paquete::Bajo ? "selloPesoBajo" :
 			miTipo == Paquete::Medio ? "selloPesoMedio" :
 			miTipo == Paquete::Alto ? "selloPesoAlto" : "selloPesoBajo");
-		crearSello(paq, tipoString, pesoSelloPosX, pesoSelloPosY, pesoSelloSize, pesoSelloSize);
+		crearSello(paq, tipoString, PESO_SELLO_POS_X, PESO_SELLO_POS_Y, PESO_SELLO_SIZE, PESO_SELLO_SIZE);
 	}
 	//Creamos la entidad Fragil sello 
 	bool fragil = paqComp->getFragil();
 	if (fragil) {
-		crearSello(paq, "selloFragil", fragilSelloPosX, fragilSelloPosY, fragilSelloSize, fragilSelloSize);
+		crearSello(paq, "selloFragil", FRAGIL_SELLO_POS_X, FRAGIL_SELLO_POS_Y, FRAGIL_SELLO_SIZE, FRAGIL_SELLO_SIZE);
 	}
 }
 

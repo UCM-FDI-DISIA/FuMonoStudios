@@ -5,61 +5,86 @@
 #include "../sdlutils/VirtualTimer.h"
 
 
-const int pesadoMax = 75;	//Límite del peso máximo de paquetes pesados 
-const int medioMax = 50;	//Límite del peso máximo de paquetes de peso medio 
-const int ligeroMax = 25;	//Límite del peso máximo de paquetes ligeros
-const int paqueteMin = 10;	//Límite del peso mínimo de paquetes ligeros
-const int pesoCarta = 2;	//Peso carta
+const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
+const int MEDIO_MAX = 50;	//Límite del peso máximo de paquetes de peso medio 
+const int LIGERO_MAX = 25;	//Límite del peso máximo de paquetes ligeros
+const int PAQUETE_MIN = 10;	//Límite del peso mínimo de paquetes ligeros
+const int PESO_CARTA = 2;	//Peso carta
 
 // Miguel: En el futuro haremos que salgan un poco desviados de su
 // posición original para que parezcan más orgánicos los paquetes
 // posicion y tama�o Tipo sellos
-const int tipoSelloPosX = 20;
-const int tipoSelloPosY = 80;
-const int tipoSelloSize = 80;
+const int TIPO_SELLO_POS_X = 20;
+const int TIPO_SELLO_POS_Y = 80;
+const int TIPO_SELLO_SIZE = 80;
 // posicion y tama�o Fragil sellos
-const int fragilSelloPosX = 150;
-const int fragilSelloPosY = 150;
-const int fragilSelloSize = 80;
+const int FRAGIL_SELLO_POS_X = 150;
+const int FRAGIL_SELLO_POS_Y = 150;
+const int FRAGIL_SELLO_SIZE = 80;
 // posicion y tama�o Peso sellos
-const int pesoSelloPosX = 200;
-const int pesoSelloPosY = 200;
-const int pesoSelloSize = 80;
+const int PESO_SELLO_POS_X = 200;
+const int PESO_SELLO_POS_Y = 200;
+const int PESO_SELLO_SIZE = 80;
 
 class PaqueteBuilder
 {
+public:
+	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
+	void paqueteRND(int level, ecs::Entity* ent) {
+
+		if (level == 0) {
+			nivel0(ent);
+		}
+		else if (level == 1) {
+			nivel1(ent);
+		}
+		else if (level == 2) {
+			nivel2(ent);
+		}
+		else if (level == 3) {
+			nivel3(ent);
+		}
+	}
+	//Método al que se llama que devuelve una Carta generada aleatoriamente 
+	Paquete* cartaRND(ecs::Entity* ent) {
+		carta(ent);
+	}
+	PaqueteBuilder() { 
+		srand(sdlutils().currRealTime()); 
+		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	};
 private:
-	void Nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
+	void nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
+		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
 		addVisualElements(ent);
 	}
-	void Nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), RemitenteRND(), TipoRND(), BoolRND(35), Paquete::NivelPeso::Ninguno, rand() % pesadoMax + 1, false, false);
+	void nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
+		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), boolRND(35), Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
 		addVisualElements(ent);
 	}
-	void Nivel2(ecs::Entity* ent) { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, así como calles erróneas y sellos de tipo erróneos
+	void nivel2(ecs::Entity* ent) { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, así como calles erróneas y sellos de tipo erróneos
 		int peso;
-		Paquete::NivelPeso Nv = PesoRND(25, 30, peso);
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(15), RemitenteRND(), TipoRND(), BoolRND(20), Nv, peso, false, false);
+		Paquete::NivelPeso Nv = pesoRND(25, 30, peso);
+		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, false, false);
 		addVisualElements(ent);
 	}
-	void Nivel3(ecs::Entity* ent) { //Un paquete que puede tener peso, sellos de frágil, calles erróneas y sellos de tipo erróneos
+	void nivel3(ecs::Entity* ent) { //Un paquete que puede tener peso, sellos de frágil, calles erróneas y sellos de tipo erróneos
 		int peso;
-		Paquete::NivelPeso Nv = PesoRND(20, 25, peso);
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(15), RemitenteRND(), TipoRND(), BoolRND(20), Nv, peso, BoolRND(80), false);
+		Paquete::NivelPeso Nv = pesoRND(20, 25, peso);
+		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, boolRND(80), false);
 		addVisualElements(ent);
 	}
-	void Carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete* pq = ent->addComponent<Paquete>(DistritoRND(), CalleRND(20), RemitenteRND(), TipoRND(), true, Paquete::NivelPeso::Ninguno, pesoCarta, false, true);
+	void carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
+		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, PESO_CARTA, false, true);
 		//addVisualElementsCarta(ent);
 	}
 
-	Paquete::Distrito DistritoRND();	//Método que elige un distrito aleatorio de los que hay
-	Paquete::TipoPaquete TipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
-	Paquete::Calle CalleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
-	bool BoolRND(int probFalse);		//Método que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
-	Paquete::NivelPeso PesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
-	std::string RemitenteRND();			//Método que elige un nombre random de Remitente
+	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
+	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
+	Paquete::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
+	bool boolRND(int probFalse);		//Método que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
+	Paquete::NivelPeso pesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
+	std::string remitenteRND();			//Método que elige un nombre random de Remitente
 
 	// Se llama a este después de crear el paquete
 	void addVisualElements(ecs::Entity* paq);
@@ -70,29 +95,5 @@ private:
 
 	// esto hay que cambiarlo de sitio, al scene o algo
 	Font* directionsFont;
-public:
-	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
-	void PaqueteRND(int level, ecs::Entity* ent) {
 
-		if (level == 0) {
-			Nivel0(ent);
-		}
-		else if (level == 1) {
-			Nivel1(ent);
-		}
-		else if (level == 2) {
-			Nivel2(ent);
-		}
-		else if (level == 3) {
-			Nivel3(ent);
-		}
-	}
-	//Método al que se llama que devuelve una Carta generada aleatoriamente 
-	Paquete* CartaRND(ecs::Entity* ent) {
-		Carta(ent);
-	}
-	PaqueteBuilder() { 
-		srand(sdlutils().currRealTime()); 
-		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
-	};
 };

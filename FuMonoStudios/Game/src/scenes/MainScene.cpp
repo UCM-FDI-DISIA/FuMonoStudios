@@ -286,7 +286,7 @@ void ecs::MainScene::createPaquete (int lv) {
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
 	PaqueteBuilder a;
-	a.PaqueteRND (lv, paqEnt);
+	a.paqueteRND (lv, paqEnt);
 
 	// añadimos que pueda ser interactuado por selladores
 	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {
