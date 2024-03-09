@@ -7,7 +7,7 @@
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
 #include "../scenes/EndWorkScene.h"
-#include "../components/Time.h"
+#include "Time.h"
 #include "GeneralData.h"
 //#include "Game.h"
 /*

@@ -32,7 +32,7 @@
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\Time.cpp" />
+    <ClCompile Include="src\architecture\Time.cpp" />
     <ClCompile Include="src\architecture\GeneralData.cpp" />
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\sistemas\Felicidad.cpp" />
@@ -83,7 +83,7 @@
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
-    <ClInclude Include="src\components\Time.h" />
+    <ClInclude Include="src\architecture\Time.h" />
     <ClInclude Include="src\architecture\GeneralData.h" />
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
     <ClInclude Include="src\sistemas\Felicidad.h" />

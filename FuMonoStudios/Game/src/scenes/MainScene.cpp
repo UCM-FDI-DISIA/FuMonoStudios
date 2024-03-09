@@ -16,7 +16,7 @@
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
 #include "../components/MoverTransform.h"
-#include "../components/Time.h"
+#include "../architecture/Time.h"
 #include "../architecture/GameConstants.h"
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"

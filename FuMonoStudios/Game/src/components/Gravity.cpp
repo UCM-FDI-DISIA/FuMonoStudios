@@ -1,7 +1,7 @@
 #include "Gravity.h"
 #include "Transform.h"
 #include "../architecture/Entity.h"
-#include "Time.h"
+#include "../architecture/Time.h"
 
 const float Gravity::GRAVITY_LIMIT = 400.0f;
 const float Gravity::DEFAUTL_FORCE = 9.8f;
