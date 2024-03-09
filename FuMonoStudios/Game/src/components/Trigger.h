@@ -41,6 +41,8 @@ public:
 
 	bool checkIfClosest();
 
+	ecs::Entity* getSpecificEntity(ecs::layer::layerId lay);
+
 private:
 
 	Transform* mTr_;

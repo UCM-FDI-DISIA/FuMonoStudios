@@ -175,6 +175,29 @@
       "file": "recursos/images/OficinaProyectosDesenfocada.png"
     },
     {
+      "id":"cinta",
+      "file": "recursos/images/Cinta.png"
+    },
+    {
+      "id":"caja25",
+      "file": "recursos/images/Caja_Envuelta_25.png"
+
+    },
+    {
+      "id":"caja50",
+      "file": "recursos/images/Caja_Envuelta_50.png"
+
+    },
+    {
+      "id":"caja75",
+      "file": "recursos/images/Caja_Envuelta_75.png"
+
+    },
+    {
+      "id":"caja100",
+      "file": "recursos/images/Caja_Envuelta_100.png"
+    },
+    {
       "id": "papelera",
       "file": "recursos/images/papelera.png"
     }

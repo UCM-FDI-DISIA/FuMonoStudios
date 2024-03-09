@@ -37,6 +37,7 @@
     <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
     <ClCompile Include="src\sistemas\Felicidad.cpp" />
     <ClCompile Include="src\sistemas\Mapa.cpp" />
+    <ClCompile Include="src\components\Wrap.cpp" />
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
     <ClInclude Include="src\sistemas\Felicidad.h" />
     <ClInclude Include="src\sistemas\Mapa.h" />
+    <ClInclude Include="src\components\Wrap.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\components\SelfDestruct.h" />

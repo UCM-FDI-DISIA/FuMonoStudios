@@ -22,6 +22,7 @@ namespace ecs {
 			GRAVITY,
 			DIALOGUE,
 			MOVERTRANSFORM,
+			WRAP,
 			SELFDESTRUCT,
 			// do not remove this
 			_LAST_CMP_ID
@@ -57,6 +58,7 @@ namespace ecs {
 			PACKAGE,
 			STAMP,
 			OFFICEELEMENTS,
+			TAPE,
 			MANUAL,
 			FOREGROUND,
 			UI,
