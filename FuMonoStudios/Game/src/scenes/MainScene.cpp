@@ -224,12 +224,33 @@ void ecs::MainScene::updateTimer() {
 void ecs::MainScene::createPaquete (int lv) {
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
+
+	Texture* texturaPaquet25 = &sdlutils().images().at("caja25");
+
+	Texture* texturaPaquet50 = &sdlutils().images().at("caja50");
+
+	Texture* texturaPaquet75 = &sdlutils().images().at("caja75");
+
+	Texture* texturaPaquet100 = &sdlutils().images().at("caja100");
+
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width () * 0.2, texturaPaquet->height () * 0.2);
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>();
 	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
+
+	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>();
+
+	multTexturesPaq->addTexture(texturaPaquet);
+	multTexturesPaq->addTexture(texturaPaquet25);
+	multTexturesPaq->addTexture(texturaPaquet50);
+	multTexturesPaq->addTexture(texturaPaquet75);
+	multTexturesPaq->addTexture(texturaPaquet100);
+
+	multTexturesPaq->initComponent();
+
 	paqEnt->addComponent<Wrap>(20, 0, route);
+
 	PaqueteBuilder a;
 	a.PaqueteRND (lv, paqEnt);
 

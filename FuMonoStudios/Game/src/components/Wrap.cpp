@@ -1,6 +1,7 @@
 
 #include "Wrap.h"
 #include "Transform.h"
+#include "MultipleTextures.h"
 
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -13,6 +14,8 @@
 Wrap::Wrap(float spaceAux, int repTimesAux, std::list<int> routeAux) : space(spaceAux), repTimes(repTimesAux) {
 
 	route = routeAux;
+
+	totalPointsRoute = route.size() * (repTimes + 1);
 
 	restartRoute();
 
@@ -29,6 +32,8 @@ Wrap::Wrap(float spaceAux, int repTimesAux) : space(spaceAux), repTimes(repTimes
 
 	route.push_back(pointRoute::RightUp);
 
+	totalPointsRoute = route.size() * (repTimes + 1);
+
 	restartRoute();
 
 }
@@ -44,6 +49,8 @@ Wrap::Wrap(float spaceAux) : space(spaceAux) {
 
 	route.push_back(pointRoute::RightUp);
 
+	totalPointsRoute = route.size() * (repTimes + 1);
+
 	restartRoute();
 }
 
@@ -58,9 +65,13 @@ void Wrap::initComponent() {
 
 	tri_ = ent_->getComponent<Trigger>();
 
+	mul_ = ent_->getComponent<MultipleTextures>();
+
 	assert(tr_ != nullptr);
 
 	assert(tri_ != nullptr);
+
+	assert(mul_ != nullptr);
 
 }
 
@@ -100,98 +111,79 @@ void Wrap::update() {
 						std::cout << "Esquina superior izquierda" << std::endl;
 					}
 
-
-					if ((*lastPoint) == pointRoute::LeftUp) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::LeftUp);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - posYTR) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2)) < space && abs(tapeRect.y - posYTR) < space) {
 
 					if (debug) {
 						std::cout << "Esquina superior media" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::MiddleUp) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::MiddleUp);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - posYTR) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR)) < space && abs(tapeRect.y - posYTR) < space) {
 
 					if (debug) {
 						std::cout << "Esquina superior derecha" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::RightUp) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::RightUp);
 
 				}
-				else if (abs(tapeRect.x - (posXTR) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR)) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina media izquierda" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::LeftMid) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::LeftMid);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2)) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina media media" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::MiddleMid) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::MiddleMid);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR)) < space && abs(tapeRect.y - (posYTR + heightTR / 2)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina media derecha" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::RightMid) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::RightMid);
 
 				}
-				else if (abs(tapeRect.x - (posXTR) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR)) < space && abs(tapeRect.y - (posYTR + heightTR)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina inferior izquierda" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::LeftDown) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::LeftDown);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR / 2) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR / 2)) < space && abs(tapeRect.y - (posYTR + heightTR)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina inferior media" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::MiddleDown) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::MiddleDown);
 
 				}
-				else if (abs(tapeRect.x - (posXTR + widthTR) < space && abs(tapeRect.y - (posYTR + heightTR)) < space)) {
+				else if (abs(tapeRect.x - (posXTR + widthTR)) < space && abs(tapeRect.y - (posYTR + heightTR)) < space) {
 
 					if (debug) {
 						std::cout << "Esquina inferior derecha" << std::endl;
 					}
 
-					if ((*lastPoint) == pointRoute::RightDown) {
-						++lastPoint;
-					}
+					checkPointTouch(pointRoute::RightDown);
 
 				}
 
@@ -213,13 +205,19 @@ void Wrap::update() {
 					restartRoute();
 				}
 
+				if ((routePointsDone == totalPointsRoute / 4 && wrapFase < 1)
+					|| (routePointsDone == totalPointsRoute / 2 && wrapFase < 2)
+					|| (routePointsDone == (totalPointsRoute * 3) / 4 && wrapFase < 3)
+					|| (routePointsDone == totalPointsRoute && wrapFase < 4)) {
+
+					mul_->nextTexture();
+					wrapFase++;
+
+				}
 
 			}
 
 		}
-
-		
-
 		
 	}
 	
@@ -230,5 +228,14 @@ void Wrap::update() {
 void Wrap::restartRoute() {
 
 	lastPoint = route.begin();
+
+}
+
+void Wrap::checkPointTouch(pointRoute point) {
+
+	if ((*lastPoint) == point) {
+		++lastPoint;
+		routePointsDone++;
+	}
 
 }

@@ -8,6 +8,8 @@ class Transform;
 
 class Trigger;
 
+class MultipleTextures;
+
 //posibles puntos en los que se puede detectar el raton
 enum pointRoute {
 
@@ -44,9 +46,13 @@ private:
 
 	void restartRoute();
 
+	void checkPointTouch(pointRoute point);
+
 	Transform* tr_ = nullptr;
 
 	Trigger* tri_ = nullptr;
+
+	MultipleTextures* mul_ = nullptr;
 
 	//Ruta con los distintos puntos por los que debe pasar el ratón
 	std::list<int> route;
@@ -62,6 +68,12 @@ private:
 
 	//si esta envuelto
 	bool wrapped = false;
+
+	int routePointsDone = 0;
+
+	int wrapFase = 0;
+
+	int totalPointsRoute = 4;
 
 	//debug para futuras implementaciones
 	bool debug = true;
