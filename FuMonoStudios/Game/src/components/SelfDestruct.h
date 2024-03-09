@@ -22,12 +22,12 @@ public:
 	void initComponent() override;
 	void update() override;
 private:
-	Callback func;
-	bool usingCallback = false;
-	SimpleCallback funcSimple;
-	bool usingSimpleCallback = false;
-	float timer;
-	float startTime;
-	float timeToDestroy;
+	Callback func_;
+	bool usingCallback_ = false;
+	SimpleCallback funcSimple_;
+	bool usingSimpleCallback_ = false;
+	float timer_;
+	float startTime_;
+	float timeToDestroy_;
 };
 

@@ -43,13 +43,13 @@ public:
 
 private:
 
-	Transform* tr_;
+	Transform* mTr_;
 
-	std::list <ecs::Entity*> entTouching;
+	std::list <ecs::Entity*> entTouching_;
 
-	std::list <Callback> eventList;
+	std::list <Callback> eventList_;
 
-	std::list<ecs::Entity*>::iterator collisionIterator;
+	std::list<ecs::Entity*>::iterator collisionIterator_;
 
 
 };

@@ -67,7 +67,7 @@ void Game::run()
 		render();
 		sdlutils().presentRenderer();
 
-		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
+		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
 	}
 }
 

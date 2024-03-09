@@ -4,9 +4,9 @@
 class Time
 {
 public:
-	static float getDeltaTime() { return deltaTime; }
+	static float getDeltaTime() { return deltaTime_; }
 private:
 	friend class Game;
-	static float deltaTime;
+	static float deltaTime_;
 };
 

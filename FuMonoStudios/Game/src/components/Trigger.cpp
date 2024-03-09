@@ -8,23 +8,23 @@
 #include <assert.h>
 
 
-Trigger::Trigger(std::list<ecs::Entity*>::iterator it) : tr_(nullptr)
+Trigger::Trigger(std::list<ecs::Entity*>::iterator it) : mTr_(nullptr)
 {
-	collisionIterator = it;
+	collisionIterator_ = it;
 }
 
 Trigger::~Trigger() {
-	ent_->getMngr()->removeCollison(collisionIterator);
+	ent_->getMngr()->removeCollison(collisionIterator_);
 }
 
 void Trigger::initComponent() {
 
-	tr_ = ent_->getComponent<Transform>();
+	mTr_ = ent_->getComponent<Transform>();
 
 	//asegurarse que si hay un trigger no hay un trigger clickeable
 	Clickeable* cl_ = ent_->getComponent<Clickeable>();
 
-	assert(tr_ != nullptr);
+	assert(mTr_ != nullptr);
 	assert(cl_ == nullptr);
 
 }
@@ -32,7 +32,7 @@ void Trigger::initComponent() {
 //se limpia la lista de colisiones y se comprueba en ese frame si se esta tocando con algo
 void Trigger::update() {
 
-	entTouching.clear();
+	entTouching_.clear();
 
 	if (ent_->getMngr()->checkColisions(ent_)) {
 
@@ -46,14 +46,14 @@ void Trigger::update() {
 //Se registra cuando se ha tocado a una entidad y se hace un push back en la lista de entidades en contacto
 void Trigger::touchEntity(ecs::Entity* ent) {
 
-	entTouching.push_back(ent);
+	entTouching_.push_back(ent);
 
 }
 
 //Aï¿½ade funcionalidad a la entidad si algo se posa sobre ella
 void Trigger::addCallback(Callback event) {
 
-	eventList.push_back(event);
+	eventList_.push_back(event);
 
 }
 
@@ -61,13 +61,13 @@ void Trigger::addCallback(Callback event) {
 //NOTA: en un futuro serï¿½ necesario implementar un sistema de layers para diferenciar que cosa puede tocar a que cosa
 bool Trigger::activateEventsFromEntities() {
 
-	for (auto it = entTouching.begin(); it != entTouching.end(); ++it) {
+	for (auto it = entTouching_.begin(); it != entTouching_.end(); ++it) {
 
 		(*it)->getComponent<Trigger>()->activateCallbacks(ent_);
 
 	}
 
-	return entTouching.empty();
+	return entTouching_.empty();
 
 }
 
@@ -76,7 +76,7 @@ bool Trigger::activateEventFromClosestEntity() {
 	float shortestDistance = 9999999;
 	Vector2D entPos = ent_->getComponent<Transform>()->getCenter();
 
-	for (auto it = entTouching.begin(); it != entTouching.end(); ++it)
+	for (auto it = entTouching_.begin(); it != entTouching_.end(); ++it)
 	{
 		Vector2D otherPos = (*it)->getComponent<Transform>()->getCenter();
 		float distance = sqrt(pow(otherPos.getX() - entPos.getX(), 2) + pow(otherPos.getY() - entPos.getY(), 2));
@@ -99,28 +99,28 @@ bool Trigger::activateEventFromClosestEntity() {
 bool Trigger::activateCallbacks(ecs::Entity* Ent) {
 
 
-	for (Callback call : eventList) {
+	for (Callback call : eventList_) {
 
 		call(Ent);
 	}
 
-	return eventList.empty();
+	return eventList_.empty();
 
 }
 
 //Se comprueba si la entidad con este trigger esta más cercana a la pantalla que el resto de entidades con las que choca
 bool Trigger::checkIfClosest() {
 
-	auto it = entTouching.begin();
+	auto it = entTouching_.begin();
 
 	ecs::layer::layerId myLayer = ent_->getLayer();
 
-	while (it != entTouching.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer >= (*it)->getLayer())) {
+	while (it != entTouching_.end() && (!(*it)->getComponent<Transform>()->getIfPointerIn() || myLayer >= (*it)->getLayer())) {
 
 		++it;
 
 	}
 
-	return it == entTouching.end();
+	return it == entTouching_.end();
 
 }

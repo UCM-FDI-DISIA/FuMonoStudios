@@ -41,8 +41,8 @@ public:
 	~Paquete();
 
 	void initComponent() override;
-	bool Correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
-	bool BienSellado() const;
+	bool correcto() const;		//Bool que comprueba si el paquete tiene errores (falsificaciones, calles incorrectas...)
+	bool bienSellado() const;
 
 	// Sella la calle una única vez con el sellador
 	void sellarCalle(Calle sello, Transform* trSellador);
@@ -51,12 +51,12 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	std::string getDirecction();
-	TipoPaquete getTipo() const { return miTipo; }
-	Distrito getDistrito() const { return miDistrito; }
-	Calle getCalle() const { return miCalle; }
-	std::string getRemitente() const { return miRemitente; }
-	NivelPeso getPeso() const { return miPeso; }
-	bool getFragil() const { return fragil; }
+	TipoPaquete getTipo() const { return miTipo_; }
+	Distrito getDistrito() const { return miDistrito_; }
+	Calle getCalle() const { return miCalle_; }
+	std::string getRemitente() const { return miRemitente_; }
+	NivelPeso getPeso() const { return miPeso_; }
+	bool getFragil() const { return fragil_; }
 
 private:
 	/// <summary>
@@ -75,22 +75,22 @@ private:
 	/// mapa que relaciona cada distrito con su calle
 	/// usado para la generacion del string de la direccion
 	/// </summary>
-	std::unordered_map<Distrito, std::vector<std::string>> distrito_calle;
+	std::unordered_map<Distrito, std::vector<std::string>> distritoCalle_;
 	//Variables que se generan automaticamente con informaci�n de los paquetes
-	Distrito miDistrito;	//Variable con el distrito al que es enviado el paquete	
-	std::string miRemitente;  //Variable con el nombre del remitente
-	Calle miCalle;			//Variable con la calle a la que es enviada el paquete	
-	TipoPaquete miTipo;		//Variable con el tipo de cargamente que lleva el paquete
-	bool selloCorrecto;		//Variable que indica si el sello que contiene el paquete es correcto o no
-	NivelPeso miPeso;		//Variable que indica qu� peso esta marcado en el paquete, o si este peso ni siquera est� marcado
-	int peso;				//Variable que indica cuanto pesa el paquete para mostrar en la balanza
-	bool fragil;			//Variable que indica si tiene un sello de fr�gil puesto
+	Distrito miDistrito_;	//Variable con el distrito al que es enviado el paquete	
+	std::string miRemitente_;  //Variable con el nombre del remitente
+	Calle miCalle_;			//Variable con la calle a la que es enviada el paquete	
+	TipoPaquete miTipo_;		//Variable con el tipo de cargamente que lleva el paquete
+	bool selloCorrecto_;		//Variable que indica si el sello que contiene el paquete es correcto o no
+	NivelPeso miPeso_;		//Variable que indica qu� peso esta marcado en el paquete, o si este peso ni siquera est� marcado
+	int peso_;				//Variable que indica cuanto pesa el paquete para mostrar en la balanza
+	bool fragil_;			//Variable que indica si tiene un sello de fr�gil puesto
 
 	//Bool que indica si el paquete es en realidad una carta, y si debe ser representado como tal en el renderizado
-	bool carta;
+	bool carta_;
 
 	//Variables que debe modificar el jugador
-	Calle calleMarcada;		//Variable que indica para qu� distrito ha sido etiquetado el paquete
-	bool envuelto;			//Variable que indica si est� envuelto o no el paquete
+	Calle calleMarcada_;		//Variable que indica para qu� distrito ha sido etiquetado el paquete
+	bool envuelto_;			//Variable que indica si est� envuelto o no el paquete
 };
 

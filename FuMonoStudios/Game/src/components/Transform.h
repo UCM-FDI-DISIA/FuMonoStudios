@@ -66,49 +66,49 @@ public:
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>
-	float getWidth() const { return width * scale; };
+	float getWidth() const { return width_ * scale_; };
 	/// <summary>
 	/// Devuelve la altura del transform
 	/// </summary>
 	/// <returns></returns>
-	float getHeigth() const { return height * scale; };
+	float getHeigth() const { return height_ * scale_; };
 
-	void setScale(float Scale) { scale = Scale; }
+	void setScale(float Scale) { scale_ = Scale; }
 
-	void setWidth(float newWidth) { width = newWidth; }
-	void setHeith(float newHeith) { height = newHeith; }
+	void setWidth(float newWidth) { width_ = newWidth; }
+	void setHeith(float newHeith) { height_ = newHeith; }
 
 private:
 	/// <summary>
-	/// posicion relativa (al padre) del objeto
-	/// en el caso de no tener padre es la posicion global
+	/// Posicion relativa (al padre) del objeto
+	/// En el caso de no tener padre es la posicion global
 	/// </summary>
-	Vector2D position;
+	Vector2D position_;
 	/// <summary>
-	/// ancho del objeto
+	/// Ancho del objeto
 	/// </summary>
-	float width;
+	float width_;
 	/// <summary>
-	/// altura del objeto
+	/// Altura del objeto
 	/// </summary>
-	float height;
+	float height_;
 
-	float scale;
+	float scale_;
 
 	/// <summary>
-	/// padre del objeto
+	/// Padre del objeto
 	/// </summary>
-	Transform* parent;
+	Transform* parentTr_;
 	/// <summary>
-	/// lista de los hijos del transform
+	/// Lista de los hijos del transform
 	/// </summary>
-	std::list<Transform*> childs;
+	std::list<Transform*> childsTr_;
 	/// <summary>
-	/// iterador para borrarse de la lista de trasnforms del padre al destruirse
+	/// Iterador para borrarse de la lista de trasnforms del padre al destruirse
 	/// </summary>
-	std::list<Transform*>::iterator parentListIt;
+	std::list<Transform*>::iterator parentListIt_;
 #ifdef _DEBUG
-	SDL_Renderer* renderer;
+	SDL_Renderer* renderer_;
 #endif // _DEBUG
 };
 

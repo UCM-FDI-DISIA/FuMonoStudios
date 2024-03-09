@@ -19,8 +19,8 @@ const int medioMax = 50;
 const int pesadoMax = 75;
 
 Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : 
-	miDistrito(dis), miCalle(c), miRemitente(remitente),miTipo(Tp),selloCorrecto(corr), 
-	miPeso(Np), peso(p), fragil(f), carta(cart),envuelto(false), calleMarcada(Erronea){
+	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
+	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
 	
 	std::string filename = "recursos/config/mail.direcctions.json";
 	getStreetsFromJSON(filename, Demeter, "Demeter");
@@ -41,31 +41,31 @@ void Paquete::initComponent() {
 
 }
 
-bool Paquete::BienSellado() const{
-	return calleMarcada == miCalle;
+bool Paquete::bienSellado() const{
+	return calleMarcada_ == miCalle_;
 }
 
-bool Paquete::Correcto() const{ 
+bool Paquete::correcto() const{ 
 	//M�todo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendr�a que devolver al remitente)
 	bool resul = true;
-	if (miCalle == Erronea) { //Si la calle es err0nea, el paquete no es correcto
+	if (miCalle_ == Erronea) { //Si la calle es err0nea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito == Erroneo) { //Si el distrito es err�neo, el paquete no es correcto
+	if (miDistrito_ == Erroneo) { //Si el distrito es err�neo, el paquete no es correcto
 		resul = false;
 	}
-	else if (!selloCorrecto) {	//Si el sello de tipo no es correcto, el paquete no es correcto
+	else if (!selloCorrecto_) {	//Si el sello de tipo no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso != Ninguno){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
-		if (miPeso == Bajo) {
-			if (peso > ligeroMax) resul = false;
+	else if (miPeso_ != Ninguno){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
+		if (miPeso_ == Bajo) {
+			if (peso_ > ligeroMax) resul = false;
 		}
-		else if (miPeso == Medio) {
-			if (peso < ligeroMax || peso > medioMax) resul = false;
+		else if (miPeso_ == Medio) {
+			if (peso_ < ligeroMax || peso_ > medioMax) resul = false;
 		}
-		else if (miPeso == Alto) {
-			if (peso < medioMax) resul = false;
+		else if (miPeso_ == Alto) {
+			if (peso_ < medioMax) resul = false;
 		}		
 	}
 	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete ser� correcto y devolver� true. Si en alg�n momento ha fallado, devolver� false
@@ -75,9 +75,9 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 
 	Vector2D posSellador = trSellador->getPos();
 	// solo puedes sellar una vez 
-	if (sello != Erronea && calleMarcada == Erronea)
+	if (sello != Erronea && calleMarcada_ == Erronea)
 	{
-		calleMarcada = sello;
+		calleMarcada_ = sello;
 		Transform* paqTr = ent_->getComponent<Transform>();
 
 		//Creamos la entidad sello
@@ -102,24 +102,24 @@ std::string Paquete::getDirecction()
 {
 	// vamos a hacer que ponga exterior / interior y luego codigo postal
 	std::string dir;
-	if (miDistrito < 4)
+	if (miDistrito_ < 4)
 		dir = "Exterior - ";
 	else
 		dir = "Interior - ";
 
 	//creacion de codigo postal
-	if (miDistrito == Erroneo)
+	if (miDistrito_ == Erroneo)
 		dir += "000\n";
 	else
-		dir += std::bitset<3>(miDistrito + 1).to_string() + "\n";
+		dir += std::bitset<3>(miDistrito_ + 1).to_string() + "\n";
 
 	//habria que comprobar si la direccion tiene que ser correcta
-	if (miCalle == Erronea)
+	if (miCalle_ == Erronea)
 		dir += "(CALLE INVENTADA)";
-	else if (miDistrito == Erroneo)
+	else if (miDistrito_ == Erroneo)
 		dir += "(CALLE INVENTADA)";
 	else
-		dir += distrito_calle[miDistrito][miCalle];
+		dir += distritoCalle_[miDistrito_][miCalle_];
 
 	return dir;
 }
@@ -141,14 +141,14 @@ void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::strin
 	jValue = root[distString];
 	if (jValue != nullptr) {
 		if (jValue->IsArray()) {
-			distrito_calle[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
+			distritoCalle_[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
 			for (auto v : jValue->AsArray()) {
 				if (v->IsString()) {
 					std::string aux = v->AsString();
 #ifdef _DEBUG
 					std::cout << "Loading distrito with id: " << aux << std::endl;
 #endif
-					distrito_calle[dist].emplace_back(aux);
+					distritoCalle_[dist].emplace_back(aux);
 				}
 				else {
 					throw "'Calles' array in '" + filename

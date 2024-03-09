@@ -82,7 +82,7 @@ void ecs::MainScene::init()
 		Paquete* paqComp = entRec->getComponent<Paquete>();
 		if (paqComp != nullptr)
 		{
-			if (paqComp->Correcto())
+			if (paqComp->correcto())
 			{
 				generalData().wrongPackage();
 				fails++;

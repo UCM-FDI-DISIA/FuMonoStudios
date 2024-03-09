@@ -3,19 +3,19 @@
 #include "../architecture/Entity.h";
 
 SelfDestruct::SelfDestruct(float TimeToDestroy) {
-	timeToDestroy = TimeToDestroy * 1000;
+	timeToDestroy_ = TimeToDestroy * 1000;
 }
 
 SelfDestruct::SelfDestruct(float TimeToDestroy, Callback Func) {
-	timeToDestroy = TimeToDestroy * 1000;
-	func = Func;
-	usingCallback = true;
+	timeToDestroy_ = TimeToDestroy * 1000;
+	func_ = Func;
+	usingCallback_ = true;
 }
 
 SelfDestruct::SelfDestruct(float TimeToDestroy, SimpleCallback Func) {
-	timeToDestroy = TimeToDestroy * 1000;
-	funcSimple = Func;
-	usingSimpleCallback = true;
+	timeToDestroy_ = TimeToDestroy * 1000;
+	funcSimple_ = Func;
+	usingSimpleCallback_ = true;
 }
 
 SelfDestruct::~SelfDestruct() {
@@ -23,19 +23,19 @@ SelfDestruct::~SelfDestruct() {
 }
 
 void SelfDestruct::initComponent() {
-	startTime = sdlutils().currRealTime();
+	startTime_ = sdlutils().currRealTime();
 	
 }
 
 void SelfDestruct::update() {
-	timer = sdlutils().currRealTime();
+	timer_ = sdlutils().currRealTime();
 
-	if (timer > (startTime + timeToDestroy))
+	if (timer_ > (startTime_ + timeToDestroy_))
 	{
-		if (usingCallback)
-			func(ent_);
-		else if (usingSimpleCallback)
-			funcSimple();
+		if (usingCallback_)
+			func_(ent_);
+		else if (usingSimpleCallback_)
+			funcSimple_();
 
 		ent_->setAlive(false);
 	}
