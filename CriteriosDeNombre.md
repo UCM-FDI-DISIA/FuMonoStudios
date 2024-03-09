@@ -20,7 +20,7 @@ Variables
     : Comenzando en minuscula y siguiendo camel case.
 
 Constantes
-: Se escribem en mayusculas y con la barra baja como separador entre palabras
+: Se escribe en mayusculas y con la barra baja como separador entre palabras
 
 Métodos
 : Comenzando en minuscula y siguiendo con camel case siempre con un nombre descriptivo de la tarea que van a realizar
@@ -40,7 +40,7 @@ Métodos
 
 ## Uso del código
 
-Las clases tendrán primero sus atributos y métodos públicos y luego sus atributos protegidos y por último los privados.
+Las clases tendrán primero sus atributos y métodos públicos y luego sus atributos protegidos y por último los privados. En cada una de esos apartados se escribirán primero los métodos y luego las variables.
 
 Intentar mantener los tipos enumerados en un espacio de nombres para mayor facilidad de uso si va a tener un uso mayor que el de la propia clase.
 
