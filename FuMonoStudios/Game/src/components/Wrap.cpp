@@ -205,6 +205,7 @@ void Wrap::update() {
 					restartRoute();
 				}
 
+				//Se comprueba el % de paquete empaquetado para hacer el cambio de sprites
 				if ((routePointsDone == totalPointsRoute / 4 && wrapFase < 1)
 					|| (routePointsDone == totalPointsRoute / 2 && wrapFase < 2)
 					|| (routePointsDone == (totalPointsRoute * 3) / 4 && wrapFase < 3)

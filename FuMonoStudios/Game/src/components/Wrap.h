@@ -42,10 +42,15 @@ public:
 
 	void update() override;
 
+	//devuelve si el paquete esta envuelto
+	bool isWrapped() { return totalPointsRoute == routePointsDone; }
+
 private:
 
+	//Reinicia la ruta para cuando se deba repetir un patron x veces
 	void restartRoute();
 
+	//Comprueba si ha chocado con el punto especificado por última vez
 	void checkPointTouch(pointRoute point);
 
 	Transform* tr_ = nullptr;
@@ -69,10 +74,13 @@ private:
 	//si esta envuelto
 	bool wrapped = false;
 
+	//Cuantos puntos de ruta lleva hechos el jugador
 	int routePointsDone = 0;
 
+	//por que fase de los sprites de envalado va
 	int wrapFase = 0;
 
+	//Numero total de puntos de ruta que hay que hacer para envalarlo del todo
 	int totalPointsRoute = 4;
 
 	//debug para futuras implementaciones

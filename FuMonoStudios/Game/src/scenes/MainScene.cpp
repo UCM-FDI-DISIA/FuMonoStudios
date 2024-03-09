@@ -249,6 +249,7 @@ void ecs::MainScene::createPaquete (int lv) {
 
 	multTexturesPaq->initComponent();
 
+	//Wrap debe ir despues del Transform, Trigger y Multitextures
 	paqEnt->addComponent<Wrap>(20, 0, route);
 
 	PaqueteBuilder a;
