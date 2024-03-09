@@ -38,7 +38,7 @@ Game::~Game()
 
 void Game::run()
 {
-	while (!exit)
+	while (!exit_)
 	{
 		if (sceneChange_)
 		{
