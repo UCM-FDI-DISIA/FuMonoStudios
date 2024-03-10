@@ -56,7 +56,10 @@ public:
 	Calle getCalle() const { return miCalle_; }
 	std::string getRemitente() const { return miRemitente_; }
 	NivelPeso getPeso() const { return miPeso_; }
+	int getCantidadPeso() const { return peso_; }
 	bool getFragil() const { return fragil_; }
+	bool getSelloCorrecto() const { return selloCorrecto_; }
+	bool isCarta() const { return carta_; }
 
 private:
 	/// <summary>
