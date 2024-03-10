@@ -10,7 +10,7 @@
 
 Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 {
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
+	dialogMngr_.setDialogues("recursos/dialogos/hola.JSON");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &demeter;
