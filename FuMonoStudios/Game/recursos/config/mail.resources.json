@@ -13,6 +13,11 @@
         { "id" :  "apolo", "file" :  "recursos/images/tubo6.png"},
         { "id" :  "poseidon", "file" :  "recursos/images/tubo7.png"},
 
+        { "id" : "balanza", "file" : "recursos/images/balanza1.png" },
+        { "id" : "cinta", "file" : "recursos/images/cinta.png" },
+        { "id" : "sellador", "file" : "recursos/images/sellador.png" },
+        { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
+        { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
         { "id" : "selladorA", "file" : "recursos/images/selladorRojo.png" },
         { "id" : "selladorB", "file" : "recursos/images/selladorAzul.png" },
         { "id" : "selladorC", "file" : "recursos/images/selladorVerde.png" },

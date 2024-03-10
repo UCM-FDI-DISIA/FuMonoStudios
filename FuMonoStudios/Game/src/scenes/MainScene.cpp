@@ -19,6 +19,7 @@
 #include "../components/MoverTransform.h"
 #include "../Time.h"
 #include "../GameConstants.h"
+#include "../GeneralData.h"
 
 void ecs::MainScene::createManual()
 {
@@ -195,6 +196,61 @@ void ecs::MainScene::init()
 			//std::cout << "eso no es un paquete gañan\n";
 		}
 		});
+
+	// A medida que se vaya avanzando en el desarrollo, se tendra que expandir esto de apajo para que en X dia suceda algo o aparezcan nuevas herramientas
+	// Me gustaría que todo lo relacionado con los eventos de los dias y los paquetes y herramientas correspondientes estuviera documentado
+	// En el miro había un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
+	int dia = generalData().GetDiaID();
+	if (dia > 0 && dia < 2) {
+		Texture* texturaSellador = &sdlutils().images().at("sellador");
+		Entity* sellador = addEntity();
+		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width() / 2, texturaSellador->height() / 2);
+		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
+		sellador->addComponent<Gravity>();
+		sellador->addComponent<DragAndDrop>();
+		sellador->addComponent<Herramientas>();
+		sellador->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+	}
+	else if (dia >= 2 && dia < 4) {
+		Texture* texturaCinta = &sdlutils().images().at("cinta");
+		Entity* cinta = addEntity();
+		Transform* transformCinta = cinta->addComponent<Transform>(560, 0, texturaCinta->width() / 2, texturaCinta->height() / 2);
+		RenderImage* renderCinta = cinta->addComponent<RenderImage>(texturaCinta);
+		cinta->addComponent<Gravity>();
+		cinta->addComponent<DragAndDrop>();
+	}
+	else if (dia >= 4 && dia < 6) {
+
+	}
+	else if (dia >= 6 && dia < 8) {
+
+	}
+	else if (dia >= 8 && dia < 10) {
+
+	}
+
+	/*switch (dia) {
+	case 1: {
+		Texture* texturaSellador1 = &sdlutils().images().at("sellador");
+		Entity* sellador1 = addEntity();
+		Transform* transformSellador1 = sellador1->addComponent<Transform>(460, 0, texturaSellador1->width() / 2, texturaSellador1->height() / 2);
+		RenderImage* renderSellador1 = sellador1->addComponent<RenderImage>(texturaSellador1);
+		sellador1->addComponent<Gravity>();
+		sellador1->addComponent<DragAndDrop>();
+		sellador1->addComponent<Herramientas>();
+		sellador1->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+		break;
+		}
+	case 2: {
+		Texture* texturaCinta1 = &sdlutils().images().at("cinta");
+		Entity* cinta1 = addEntity();
+		Transform* transformCinta1 = cinta1->addComponent<Transform>(460, 0, texturaCinta1->width() / 2, texturaCinta1->height() / 2);
+		RenderImage* renderCinta1 = cinta1->addComponent<RenderImage>(texturaCinta1);
+		cinta1->addComponent<Gravity>();
+		cinta1->addComponent<DragAndDrop>();
+		break;
+		}
+	}*/
 	
 }
 

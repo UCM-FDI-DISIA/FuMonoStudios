@@ -39,6 +39,7 @@ void Herramientas::setFunctionality(TipoHerramienta tipo) {
 			};
 		break;
 	}
+	std::cout << "El tipo de herramienta es: " << tipo << std::endl;
 }
 void Herramientas::interact(ecs::Entity* paquete) {
 	funcion(paquete);

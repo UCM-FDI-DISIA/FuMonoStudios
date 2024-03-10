@@ -35,3 +35,13 @@ int GeneralData::GetEventoID() {
 	std::cout << "El ID del evento que quieres obtener es: " << eventoID_ << std::endl;
 	return eventoID_;
 }
+
+void GeneralData::SetDiaID(int dia) {
+	diaID_ = dia;
+	std::cout << "El ID del dia es: " << diaID_ << std::endl;
+}
+
+int GeneralData::GetDiaID() {
+	std::cout << "El ID del dia en el que estas es: " << diaID_ << std::endl;
+	return diaID_;
+}
