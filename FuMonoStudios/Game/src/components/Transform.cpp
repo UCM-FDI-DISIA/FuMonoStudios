@@ -5,7 +5,8 @@
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position_(x, y), width_(w), height_(h), scale_(1),parentTr_(nullptr) {
+Transform::Transform(float x, float y, float w, float h) : Component(), 
+position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1),parentTr_(nullptr) {
 	auto& sdl = *SDLUtils::instance();
 
 #ifdef _DEBUG
@@ -56,10 +57,46 @@ void Transform::setParent(Transform* newParent) {
 }
 
 
+void Transform::setScale(float Scale) {
+	scale_ = Scale;
+	if (!usingDepth_)
+		trueScale_ = scale_;
+}
+
+void Transform::activateDepth() {
+		usingDepth_ = true;
+		updateDepth();
+}
+
+void Transform::updateDepth() {
+	Vector2D oldCenter = getCenter();
+	//función que calcula el depth
+	depth_ = (getCenter().getY() * 0.07) + 40;
+	if (depth_ > 100)
+		depth_ = 100;
+	depth_ = depth_ / 100; // para que quede como porcentaje
+	trueScale_ = scale_ * depth_;
+	Vector2D newCenter = getCenter();
+
+	position_ = position_ 
+		+ Vector2D((oldCenter.getX() - newCenter.getX()), 0);
+	
+	std::cout << oldCenter.getX() - newCenter.getX() << std::endl;
+	
+	//std::cout << "OLD: " << oldCenter.getX() << " " << oldCenter.getY() <<
+	//" NEW: " << newCenter.getX() << " " << newCenter.getY() << std::endl;
+}
+
 //Cambia la posicion del objeto desde una perspectiva global
 void Transform::setPos(Vector2D& pos)
 {
 	position_ = pos;
+
+	if (usingDepth_)
+	{
+		updateDepth();
+	}
+		
 }
 
 //Cambia la posicion del objeto desde una perspectiva global
@@ -83,7 +120,7 @@ Vector2D Transform::getPos() const
 }
 
 Vector2D Transform::getCenter() const {
-	return Vector2D(position_.getX() + ((width_ * scale_) / 2), position_.getY() + ((height_ * scale_) / 2));
+	return Vector2D(position_.getX() + ((width_ * trueScale_) / 2), position_.getY() + ((height_ * scale_) / 2));
 }
 
 //Devuelve la posici�n relativa
@@ -94,7 +131,7 @@ Vector2D Transform::getRelPos() const {
 //Devuelve el Rect en el mundo
 SDL_Rect& Transform::getRect()const {
 	Vector2D pos = getPos();
-	SDL_Rect rect = build_sdlrect(pos, width_ * scale_, height_ * scale_);
+	SDL_Rect rect = build_sdlrect(pos, width_ * trueScale_, height_ * trueScale_);
 	return rect;
 }
 

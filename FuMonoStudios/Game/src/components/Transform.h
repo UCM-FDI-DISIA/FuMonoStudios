@@ -73,10 +73,12 @@ public:
 	/// <returns></returns>
 	float getHeigth() const { return height_ * scale_; };
 
-	void setScale(float Scale) { scale_ = Scale; }
+	void setScale(float Scale);
 
 	void setWidth(float newWidth) { width_ = newWidth; }
 	void setHeith(float newHeith) { height_ = newHeith; }
+
+	void activateDepth();
 
 private:
 	/// <summary>
@@ -94,6 +96,12 @@ private:
 	float height_;
 
 	float scale_;
+
+	void updateDepth();
+	bool usingDepth_ = false; // bool a activar si quieres usar depth
+	// escala aplicada después del depth
+	float trueScale_; 
+	float depth_;
 
 	/// <summary>
 	/// Padre del objeto

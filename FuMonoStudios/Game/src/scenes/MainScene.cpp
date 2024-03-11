@@ -231,6 +231,8 @@ void ecs::MainScene::createManual()
 	auto previous = [multTextures]() {multTextures->previousTexture();};
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
+
+	manualTransform->activateDepth();
 }
 
 void ecs::MainScene::initTexts() {
