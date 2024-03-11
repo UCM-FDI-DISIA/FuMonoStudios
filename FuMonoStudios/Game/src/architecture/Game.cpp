@@ -9,11 +9,6 @@
 #include "../scenes/EndWorkScene.h"
 #include "Time.h"
 #include "GeneralData.h"
-//#include "Game.h"
-/*
-TO DO
-Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
-*/
 
 Game::Game() :exit_(false) {
 	SDLUtils::init("Mail To Atlantis", 1600, 900, "recursos/config/mail.resources.json");
@@ -46,6 +41,7 @@ void Game::run()
 			sceneChange_ = false;
 		}
 
+		refresh();
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
@@ -109,6 +105,7 @@ void Game::killScene(ecs::sc::sceneId scene)
 {
 	auto it = std::find(loadedScenes_.begin(), loadedScenes_.end(), gameScenes_[scene]);
 	if (it != loadedScenes_.end()) {
+		(*it)->close();
 		loadedScenes_.erase(it);
 		std::cout << "Scene Killed" << std::endl;
 	}
@@ -150,7 +147,7 @@ void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 /// </summary>
 void Game::update()
 {
-	for (auto scene : loadedScenes_) {
+	for (auto& scene : loadedScenes_) {
 		scene->update();
 	}
 }
@@ -160,7 +157,14 @@ void Game::update()
 /// </summary>
 void Game::render()
 {
-	for (auto scene : loadedScenes_) {
+	for (auto& scene : loadedScenes_) {
 		scene->render();
+	}
+}
+
+void Game::refresh()
+{
+	for (auto& scene : loadedScenes_) {
+		scene->refresh();
 	}
 }

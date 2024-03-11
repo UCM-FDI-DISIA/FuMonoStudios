@@ -12,6 +12,7 @@ namespace ecs {
         virtual ~MainScene();
 
         virtual void update() override;
+        void close() override;
         void init() override;
         void switchTimer() { timerPaused_ = !timerPaused_; }
         void setTimer(float time) { timer_ = time; }
@@ -25,7 +26,6 @@ namespace ecs {
         
         void updateTimer();
 
-        void updateFailsText();
 
         int fails_;
         int correct_;
@@ -42,6 +42,9 @@ namespace ecs {
         Texture* failsTexture_ = nullptr;
         Entity* successEnt_;
         Texture* successTexture_ = nullptr;
+#ifdef _DEBUG
+        void updateFailsText();
+#endif // _DEBUG
     };
 }
 

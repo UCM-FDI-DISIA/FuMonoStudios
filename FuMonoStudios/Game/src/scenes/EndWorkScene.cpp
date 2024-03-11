@@ -18,7 +18,7 @@ EndWorkScene::~EndWorkScene() {
 
 
 void EndWorkScene::init() {
-	generalData().updateMoney();
+	//generalData().updateMoney();
 	ComonObjectsFactory objs;
 	std::string msg = "Money: ";
 	msg += std::to_string(generalData().getMoney());

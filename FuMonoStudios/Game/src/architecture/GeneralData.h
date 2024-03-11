@@ -17,7 +17,7 @@ public:
 	/// </summary>
 	/// <param name="writePacages"></param>
 	/// <param name="wrongPacages"></param>
-	void updateMoney();
+	void updateMoney(int correct, int wrong);
 	void setFinalID(int final); //Cambia el ID del final
 	int getFinalID(); //Devuelve el id del final del juego
 	void setEventoID(int evento); //Cambia el ID del evento a ocurrir

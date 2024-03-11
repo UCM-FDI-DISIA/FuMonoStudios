@@ -10,11 +10,6 @@
 
 namespace ecs {
 	class Entity
-		/*
-		TODO:
-		Hacer metodos:
-			handleInput(SDL_Event& event)???
-		*/
 	{
 	public:
 
@@ -63,22 +58,6 @@ namespace ecs {
 			return t;
 
 		}
-
-		/*//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
-		template<>
-		inline DragAndDrop* addComponent<DragAndDrop>() {
-
-			Trigger* trg = getComponent<Trigger>();
-
-			if (trg != nullptr)
-				throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
-
-			addComponent<Trigger>();
-
-			DragAndDrop* d = addComponent_aux<DragAndDrop>();
-
-			return d;
-		}*/ // movido a dentro del init que así se puede sobrecargar la constructora y permite expandir el dragndrop
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>
@@ -137,10 +116,23 @@ namespace ecs {
 		}
 
 	private:
+		/// <summary>
+		/// determina si la entidad va a destruirse si esta a false
+		/// </summary>
 		bool alive_;
+		/// <summary>
+		/// determina si un objeto se tiene que renderizar
+		/// </summary>
 		bool active_;
+		/// <summary>
+		/// determina si un objeto se tiene que actualizar
+		/// </summary>
 		bool enable_;
+		/// <summary>
+		/// puntero a la escena a la que pertenece al entidad
+		/// </summary>
 		Scene* scene_;
+
 		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;

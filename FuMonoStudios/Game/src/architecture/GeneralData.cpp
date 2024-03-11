@@ -2,21 +2,23 @@
 #include <iostream>
 #include <string>
 
-void GeneralData::updateMoney()
+void GeneralData::updateMoney(int correct, int wrong)
 {
-	int rightPackages = corrects_;
-	int wrongPackages = fails_;
+	int rightPackages = correct;
+	corrects_ = correct;
+	int wrongPackages = wrong;
+	fails_ = wrong;
 	//funcion de ejemplo seguramente haya que cambiarlo
-	if (fails_ < failsMargin_) {
+	if (wrong < failsMargin_) {
 		wrongPackages = 0;
 	}
-	if (corrects_ < 0) {
+	if (correct < 0) {
 		rightPackages = 0;
 	}
 	dinero_ += rightPackages * WRITE_PACAGES_VALUE - wrongPackages * WRONG_PACAGES_VALUE;
 }
 
-//A medida que el proyecto avance, la lista de variables deberá de ampliarse, pero por ahora tenemos esto:
+//A medida que el proyecto avance, la lista de variables deberï¿½ de ampliarse, pero por ahora tenemos esto:
 
 void GeneralData::setFinalID(int final) {
 	finalID_ = final;
@@ -39,6 +41,6 @@ int GeneralData::getEventoID() {
 }
 
 int GeneralData::getPaqueteLevel() {
-	//Aqui habra que decidir el paquete level en función del día
+	//Aqui habra que decidir el paquete level en funciï¿½n del dï¿½a
 	return paqueteLvl_;
 }
