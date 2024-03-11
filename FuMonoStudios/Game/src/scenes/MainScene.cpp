@@ -142,7 +142,8 @@ void ecs::MainScene::createSelladores() {
 	// Sellador verde (3)
 	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
 	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width(), selloCTex->height());
+	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
+, selloCTex->height());
 	selloCTR->setScale(scaleSelladores);
 	selloC->addComponent<DragAndDrop>(true, [selloC]() {
 		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);

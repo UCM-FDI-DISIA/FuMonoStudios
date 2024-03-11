@@ -32,10 +32,7 @@ DragAndDrop::~DragAndDrop() {
 }
 
 void DragAndDrop::initComponent() {
-	tri_ = ent_->getComponent<Trigger>();
-
-	if (tri_ != nullptr)
-		throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
+	assert(ent_->getComponent<Trigger>() == nullptr);
 
 	tri_ = ent_->addComponent<Trigger>();
 

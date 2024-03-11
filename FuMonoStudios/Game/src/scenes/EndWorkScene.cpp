@@ -19,15 +19,16 @@ EndWorkScene::~EndWorkScene() {
 
 void EndWorkScene::init() {
 	//generalData().updateMoney();
-	ComonObjectsFactory objs;
+	ComonObjectsFactory objs(this);
 	std::string msg = "Money: ";
 	msg += std::to_string(generalData().getMoney());
 	Vector2D pos(sdlutils().width()/2, sdlutils().height()-400);
 	Vector2D dist(0, -300);
-	objs.createLabel(this,pos, msg, 50);
-	objs.createLabel(this, pos + dist, "Fails: " + std::to_string(generalData().getFails()), 50);
-	objs.createLabel(this, pos + Vector2D(0, -400), "Corrects: " + std::to_string(generalData().getFails()), 50);
+	objs.setLayer(ecs::layer::UI); 
+	objs.createLabel(pos, msg, 50);
+	objs.createLabel(pos + dist, "Fails: " + std::to_string(generalData().getFails()), 50);
+	objs.createLabel(pos + Vector2D(0, -400), "Corrects: " + std::to_string(generalData().getFails()), 50);
+	auto call = []() {gm().requestChangeScene(ecs::sc::END_WORK_SCENE, ecs::sc::MENU_SCENE); };
+	objs.createTextuButton(pos + Vector2D(0, 70), "Return To menu", 50,call);
 	generalData().resetFailsCorrects();
-	auto click = objs.createLabel(this, pos + Vector2D(0, 70), "Return To menu", 50)->addComponent<Clickeable>();
-	click->addEvent([]() {gm().requestChangeScene(ecs::sc::END_WORK_SCENE, ecs::sc::MENU_SCENE); });
 }
