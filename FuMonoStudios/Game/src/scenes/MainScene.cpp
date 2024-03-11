@@ -22,7 +22,7 @@
 #include "../architecture/GameConstants.h"
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
-
+#include "../sistemas/ComonObjectsFactory.h"
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
@@ -194,6 +194,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 
 void ecs::MainScene::createManual()
 {
+	ComonObjectsFactory fact(this);
 	Entity* manual = addEntity(ecs::layer::MANUAL);
 	//se puede hacer un for
 	Texture* manualTexture = &sdlutils().images().at("book1");
@@ -202,39 +203,34 @@ void ecs::MainScene::createManual()
 	Texture* manualTexture4 = &sdlutils().images().at("book4");
 	Texture* manualTexture5 = &sdlutils().images().at("book5");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+
+	std::vector<Texture*> bookTextures = {
+		manualTexture,
+		manualTexture2,
+		manualTexture3,
+		manualTexture4,
+		manualTexture5
+	};
 	float scaleManual = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width(), manualTexture->height());
 	manualTransform->setScale(scaleManual);
-	manual->addComponent<Gravity>();
 	RenderImage* manualRender = manual->addComponent<RenderImage>();
+	manual->addComponent<Gravity>();
 	manual->addComponent<DragAndDrop>(true);
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
-	multTextures->addTexture(manualTexture);
-	multTextures->addTexture(manualTexture2);
-	multTextures->addTexture(manualTexture3);
-	multTextures->addTexture(manualTexture4);
-	multTextures->addTexture(manualTexture5);
-	multTextures->initComponent();
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>(bookTextures);
 	manualRender->setTexture(multTextures->getCurrentTexture());
 
 
-	Entity* button = addEntity(ecs::layer::FOREGROUND);
-	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width(), buttonTexture->height());
-	buttonTransform->setScale(buttonScale);
-	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-	buttonTransform->setParent(manualTransform);
-	button->addComponent<Clickeable>()->addEvent([multTextures]() {
-		multTextures->nextTexture();
-		});
+	Vector2D buttonSize(100, 40);
+	fact.setLayer(ecs::layer::FOREGROUND);
 
-	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
-	buttonTransform2->setParent(manualTransform);
-	button2->addComponent<Clickeable>()->addEvent([multTextures]() {
-		multTextures->previousTexture();
-		});
+	auto next = [multTextures]() {multTextures->nextTexture();};
+	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
+	right->getComponent<Transform>()->setParent(manualTransform);
+
+	auto previous = [multTextures]() {multTextures->previousTexture();};
+	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
+	left->getComponent<Transform>()->setParent(manualTransform);
 }
 
 void ecs::MainScene::initTexts() {

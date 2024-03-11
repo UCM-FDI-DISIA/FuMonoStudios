@@ -6,7 +6,7 @@
 ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const std::string& text, int fontSize, SDL_Color textColor)
 {
 #ifdef _DEBUG
-	std::cout << "Entidad de texto creada en la capa " << destLayer_ << std::endl;
+	std::cout << "Entidad de texto creada en la capa " << (int)destLayer_ << std::endl;
 #endif // _DEBUG
 	auto entity = scene_->addEntity(destLayer_);
 	Texture* labelText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("arial"+std::to_string(fontSize)), textColor);
@@ -18,7 +18,7 @@ ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const std::st
 ecs::Entity* ComonObjectsFactory::createImage(const Vector2D& pos, const Vector2D& size, Texture* texture)
 {
 #ifdef _DEBUG
-	std::cout << "Entidad creada en la capa " << destLayer_ << std::endl;
+	std::cout << "Entidad creada en la capa " << (int)destLayer_ << std::endl;
 #endif // _DEBUG
 
 	auto entity = scene_->addEntity(destLayer_);
