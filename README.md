@@ -863,7 +863,7 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
   5º
   - 
 
-#### Tarotista
+#### Soldado
 
 **Presentacion**
 - ¡Saludos! Me llamo Abakand Istacoz, soldado del glorioso ejército de Atlantis. 
@@ -874,7 +874,8 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 - Hoy... hoy no es un buen día. La carga de trabajo, los informes interminables, la presión de cuidar de los nobles que ni siquiera agradecen mi presencia.
 - A veces me pregunto si todo esto tiene algún sentido...
 - ¿De verdad estoy protegiendo a alguien aquí?
-- La frustración se acumula, y cada día es un recordatorio de que mi sueño de defender los distritos exteriores sigue siendo inalcanzable."
+- La frustración se acumula, y cada día es un recordatorio de que mi sueño de defender los distritos exteriores sigue siendo inalcanzable.
+- Creo que va siendo hora de dejar este oficio y volver con mi familia, estoy harto de este estilo de vida...
 
 **Felicidad maximo**
 - ¡Increíble! No puedo creerlo, ¿de verdad has venido a visitarme? 
@@ -914,7 +915,7 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
   - ¿Tú qué opinas al respecto?
 
   3º
-  - ¿Viste a Glover Globus en el Pezer-King? Es sorprendente cómo la vida da vueltas. 
+  - ¿Viste a Gargafiel Mustaki en el Pezer-King? Es sorprendente cómo la vida da vueltas. 
   - De campesino a secretario del rey. A veces, los sueños pueden hacerse realidad.
   -  Pero, claro, no todos tienen esa suerte. ¿Tú tienes tus propios sueños?
 
@@ -938,9 +939,9 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 - **MaxiFeliz**
 
   1º
-  - ¡Estoy emocionado! Logré convencer después de tanto tiempo a mis superiores de asignarme a los distritos exteriores. 
-  - ¡Es un paso gigante hacia mi sueño! A partir de ahora, podré dedicar mi tiempo y energía a proteger a quienes realmente lo necesitan.
-  - ¡Gracias por ayudarme a conseguir este cambio!
+  - Ayer mismo conseguí resolver un caso que realmente considero un logro para toda mi carrera laboral y me ha hecho sentir lleno y orgulloso de mi mismo por primera vez en mucho tiempo.
+  - ¡Estoy emocionado! ¡Es un paso gigante hacia mi sueño!
+  - Venga por qué no me acompañas y te invit a unos tragos.
 
   2º
   - ¡Hoy se hizo realidad! ¡Me dieron el traslado a los distritos exteriores!
@@ -948,9 +949,9 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
   - ¡Brindemos por un nuevo capítulo en mi vida y en la tuya!
 
   3º
-  - ¡Es increíble! Después de tanto esfuerzo y perseverancia, ¡mi sueño se ha hecho realidad! 
-  - Gracias a tu amistad y apoyo, ahora estoy destinado a los distritos exteriores. 
-  - Poder proteger a los necesitados, sentiré que mi servicio tiene un propósito real. ¡Estoy lleno de gratitud y entusiasmo por el futuro!
+  - A partir de ahora, podré dedicar mi tiempo y energía a proteger a quienes realmente lo necesitan.
+  - ¡Qué alegría! Ultimamente los nobles se están quejando menos gracias a tu ayuda.
+  - Mañana mismo me pondré a idear medidas para poder mejorar la seguridad en los distritos exteriores.
 
 **Eventos**
 
@@ -961,22 +962,23 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 
   2º
   - El otro día recibí una carta de mi familia y al parecer los suministros médicos en los distritos exteriores escasean mucho. 
-  - La situación sigue empeorando y los boticarios necesitan ayuda. Asegúrate de que los distritos exteriores reciban los paquetes con los recursos médicos a tiempo y en buenas condiciones.
+  - La situación sigue empeorando y los boticarios necesitan ayuda. Asegúrate de que los distritos exteriores reciban al menos 3 paquetes con los recursos médicos a tiempo y en buenas condiciones.
   - La salud de la gente depende de ello.
 
   3º
   - Un rumor inquietante está circulando entre los habitantes del distrito de Apolo. Dicen que hay disturbios en los distritos exteriores. 
-  - Necesito que verifiques la situación y, si es necesario, sería de mucha ayuda si pudieses redirigir algún paquete hacia los distritos exteriores ya sean comida o medicina.
+  - Necesito que verifiques la situación y, si es necesario, sería de mucha ayuda si pudieses redirigir 2 paquetes tanto de comida y medicina hacia los distritos exteriores.
   - No podemos permitir que la situación se salga de control.
 
   4º
   - Hoy encontré a un joven talentoso de los distritos exteriores que sueña con unirse al ejército. 
-  - Me recordaba a mí mismo cuando era joven y tenía grandes aspiraciones. ¿Serías tan amable de enviar materiales y armamentos al distrito de Hestia?
+  - Me recordaba a mí mismo cuando era joven y tenía grandes aspiraciones. ¿Serías tan amable de enviar 1 paquete de armamento al distrito de Hestia?
   - Quién sabe, tal vez estemos forjando al próximo protector de Atlantis.
 
   5º
   - Buenas Paco, recuerdas al joven talentoso del que te hablé el otro día que quería unirse al ejército. 
-  - Pues me ha dicho que mucha más gente de los distritos exteriores también quería unirse al ejército. Podrías hacerme un favor y enviar más materiales y armamentos tanto al distrito de Hestia como al de Artemisa. 
+  - Pues me ha dicho que mucha más gente de los distritos exteriores también quería unirse al ejército.
+  - Podrías hacerme un favor y enviar 2 paquetes de materiales al distrito de Hestia y 2 de armamentos al de Artemisa. 
   - Te lo agradecería de todo corazón.
 
 
