@@ -849,19 +849,35 @@ He estado trabajando en un aparato que creo que puede serte bastante últil, esp
 
 - **Eventos**
   1º
-  - 
+  - Hoy esos idiotas de los intermediarios han subido el precio de mis productos, en los mercados de los barrios bajos ya no es solo que no lo puedan comprar los habitantes, 
+  - es que hasta a los propios puestos se les hace el precio excesivo, si se desviase algún paquete de comida Hermes o Apolo hacía fuera tampoco creo que se muriese nadie.
+  - guiño guiño codo codo.
 
   2º
-  - 
+  - Ultimamente mi rastrillo está empezando a chochear.
+  - Los años les pesan tanto a las cosas como a las personas.
+  - A los soldados les van a llegar unos paquetes de materiales, entre los que se encuentran una buena cantidad de rastrillos.
+  - Esos lameculos de los soldados no echarían un rastrillo extraviado en falta.
+  - Tú ya me entiendes
+
 
   3º
-  - 
+  - Mis amigos alados del grupo de las lechuzas me han dicho que por los barrios más bajos andan bajos de fondos de  medicinas.
+  - Ya estmaos con las mismas tonterías de siempre, a Hermes van a llegar una cantidad de medicinas absurda solamente porque hay un brote de gripe gambil.
+  - Y mientras tanto aquí abajo con enfermedades mucho peores muriendonos del asco.
+  - Esos nobles no se merecen ni la décima parte de lo que les llega.
 
   4º
-  - 
+  - Últimamente hay mucho ajetreo de con el movimiento de unas joyas luminiscentes muy bonitas que se extraen del fondo marino.
+  - La verdad es que mi mujer y yo somos muy amantes de llevar joyas, en su mayoría de baja calidad, pero tenemos bastante arte haciendo que ornamentos de baja calidad luzcan bastante bien.
+  - Si se extraviase un paquete de joyas de mejor calidad hacia nuestra granja la verdad es que no nos molestaría.
 
   5º
-  - 
+  - ¡Paco, Paco, Paco!
+  - ¡Menos mal que estás aquí! 
+  - Me he confundido, madre mía que cagada.
+  - Mira te va a llegar un paquete mío de comda, algo pesado, lo he enviado sin querer a Hestia, pero mi intención era mandarselo a mis amigas las palomas del distrito de Artemisa.
+  - Confio en tí para hacerselo llegar.
 
 #### Soldado
 
