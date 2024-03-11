@@ -35,6 +35,19 @@ void DialogManager::setDialogues(const std::string& path) {
     currentDialogIndex_ = 0;
     std::ifstream file(path);
     if (file.is_open()) { // estamos en 2�. is_open es para beb�s programadores. usad librer�a de carga
+        //std::string line;
+        //std::string currentDialog;
+
+        //while (std::getline(file, line)) {
+        //    size_t pos = line.find('$');
+        //    //si hay contenido
+        //    if (pos != std::string::npos) {
+        //        // Agrega el contenido antes del $
+        //        currentDialog += line.substr(0, pos);
+        //        // a�adimos el dialogo
+        //        dialogs_.push_back(currentDialog);
+        //        currentDialog.clear();
+        //file.close();
         std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
         file.close();
 
