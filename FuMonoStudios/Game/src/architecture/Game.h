@@ -8,6 +8,8 @@
 #include "Scene.h"
 #include <functional>
 
+#define DEV_TOOLS
+
 class Game : public Singleton<Game> {
 
 	friend Singleton<Game>;

@@ -1,4 +1,5 @@
 #pragma once
+#include "../architecture/Game.h"
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
@@ -12,6 +13,7 @@ namespace ecs {
         virtual ~MainScene();
 
         virtual void update() override;
+        virtual void render() override;
         void close() override;
         void init() override;
         void switchTimer() { timerPaused_ = !timerPaused_; }
@@ -33,18 +35,14 @@ namespace ecs {
         bool timerPaused_;
         Font* timeFont_;
 
+#ifdef DEV_TOOLS
+        bool nextPacageCorrect_;
+#endif // DEV_TOOLS
+
         // objects
         void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt_;
         Texture* timerTexture_;
-
-        Entity* failsEnt_;
-        Texture* failsTexture_ = nullptr;
-        Entity* successEnt_;
-        Texture* successTexture_ = nullptr;
-#ifdef _DEBUG
-        void updateFailsText();
-#endif // _DEBUG
     };
 }
 

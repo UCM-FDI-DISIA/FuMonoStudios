@@ -1,6 +1,9 @@
 #include "MainScene.h"
 #include "../architecture/Entity.h"
 #include <iostream>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdlrenderer2.h>
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Transform.h"
 #include "../components/Render.h"
@@ -23,6 +26,8 @@
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
 #include "../sistemas/ComonObjectsFactory.h"
+
+
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
@@ -48,11 +53,37 @@ void ecs::MainScene::update()
 	}
 }
 
+void ecs::MainScene::render()
+{
+	Scene::render();
+#ifdef DEV_TOOLS
+	ImGui::NewFrame();
+	ImGui::Begin("Paquetes Scene Data");
+	std::string time = "Current Game Time: " + std::to_string(timer_);
+	ImGui::Text(time.c_str());
+	std::string data = "Aciertos: " + std::to_string(correct_);
+	ImGui::Text(data.c_str());
+	data = "Fallos: " + std::to_string(fails_);
+	ImGui::Text(data.c_str());
+	ImGui::End();
+	ImGui::Begin("Controls");
+	ImGui::Text("Botones");
+	ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
+	ImGui::End();
+
+	ImGui::Render();
+
+	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+#endif // DEV_TOOLS
+
+}
+
 void ecs::MainScene::init()
 {
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
+	ComonObjectsFactory factory(this);
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -72,12 +103,11 @@ void ecs::MainScene::init()
 	createSelladores();
   
   	//cinta envolver
-	Entity* cinta = addEntity(ecs::layer::TAPE);
-	cinta->addComponent<Transform>(560, 500, 100, 150);
-	Texture* texturaCin = &sdlutils().images().at("cinta");
-	RenderImage* rd = cinta->addComponent<RenderImage>(texturaCin);
+	factory.setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory.createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
+	factory.setLayer(ecs::layer::DEFAULT);
 
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
@@ -99,8 +129,7 @@ void ecs::MainScene::init()
 				generalData().correctPackage();
 				correct_++;
 			}
-				
-			updateFailsText();
+			
 			entRec->setAlive(false);
 			createPaquete(generalData().getPaqueteLevel());
 		}
@@ -182,9 +211,6 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 			else {
 				fails_++;
 			}
-#ifdef _DEBUG
-			updateFailsText();
-#endif // _DEBUG
 
 			std::cout << "crazy! " << dist << std::endl;
 		}
@@ -231,16 +257,17 @@ void ecs::MainScene::createManual()
 	auto previous = [multTextures]() {multTextures->previousTexture();};
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
+
+	fact.setLayer(ecs::layer::DEFAULT);
 }
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
-	timerEnt_ = addEntity(ecs::layer::UI);
+	/*timerEnt_ = addEntity(ecs::layer::UI);
 	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
 	timerEnt_->addComponent<RenderImage>();
-	updateTimer();
-#ifdef _DEBUG
-
+	updateTimer();*/
+#ifndef DEV_TOOLS
 
 	// creamos contador fallos y aciertos
 	successEnt_ = addEntity(ecs::layer::UI);
@@ -256,33 +283,18 @@ void ecs::MainScene::initTexts() {
 }
 
 void ecs::MainScene::updateTimer() {
+#ifndef DEV_TOOLS
 	if (timerTexture_ != nullptr)
 	{
 		delete timerTexture_;
 		timerTexture_ = nullptr;
 	}
-		
+
 	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
 	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
+#endif // !DEV_TOOLS
 }
 
-#ifdef _DEBUG
-void ecs::MainScene::updateFailsText() {
-	if (successTexture_ != nullptr) {
-		delete successTexture_;
-		successTexture_ = nullptr;
-	}
-	successTexture_ = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct_), *timeFont_, build_sdlcolor(0x00ff00ff), 200);
-	successEnt_->getComponent<RenderImage>()->setTexture(successTexture_);
-
-	if (failsTexture_ != nullptr) {
-		delete failsTexture_;
-		failsTexture_ = nullptr;
-	}
-	failsTexture_ = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails_), *timeFont_, build_sdlcolor(0xff0000ff), 200);
-	failsEnt_->getComponent<RenderImage>()->setTexture(failsTexture_);
-}
-#endif // _DEBUG
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;

@@ -79,21 +79,7 @@ void Game::run()
 
 		ImGui_ImplSDLRenderer2_NewFrame();
 		ImGui_ImplSDL2_NewFrame();
-		ImGui::NewFrame();
-		ImGui::Begin("test");
-		std::string time = "Current Game Time: " + std::to_string(sdlutils().virtualTimer().currTime()/1000.0);
-		ImGui::Text(time.c_str());
-		if (ImGui::Button("Botón")) {
-			std::cout << "Hola botón" << std::endl;
-		}
-		static int dia = 0;
-		ImGui::InputInt("Nº Día", &dia);
-		ImGui::End();
-
-
-		ImGui::Render();
-
-		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+		/**/
 
 		sdlutils().presentRenderer();
 
