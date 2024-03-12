@@ -70,7 +70,11 @@ void ecs::MainScene::render()
 	ImGui::Text(data.c_str());
 	data = "Fallos: " + std::to_string(fails_);
 	ImGui::Text(data.c_str());
+	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
+	ImGui::Text(data.c_str());
 	ImGui::End();
+
+
 	ImGui::Begin("Controls");
 	if (ImGui::CollapsingHeader("Paquetes"))
 	{
@@ -79,20 +83,25 @@ void ecs::MainScene::render()
 			createPaquete(generalData().getPaqueteLevel());
 		}
 	}
+	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
 	if (ImGui::CollapsingHeader("Mecánicas"))
 	{
-		ImGui::Checkbox("Sellos",&stampsUnloked_);
-		ImGui::Checkbox("Peso",&weightUnloked_);
-		ImGui::Checkbox("Cinta", &cintaUnloked_);
+		int lvl = generalData().getPaqueteLevel();
+		ImGui::InputInt("Nivel del Paquete", &lvl);
+		generalData().setPaqueteLevel(lvl);
+		//ImGui::Checkbox("Sellos",&stampsUnloked_);
+		//ImGui::Checkbox("Peso",&weightUnloked_);
+		//ImGui::Checkbox("Cinta", &cintaUnloked_);
 	}
+	if (ImGui::CollapsingHeader("Tiempo")) {
+		if (ImGui::Button("Reset Timer")) {
+			timer_ = MINIGAME_TIME;
+		}
 
-	if (ImGui::Button("Reset Timer")) {
-		timer_ = MINIGAME_TIME;
-	}
-
-	ImGui::InputInt("Aditional Seconds",&timeToAdd_);
-	if (ImGui::Button("Add Time")) {
-		timer_ += timeToAdd_;
+		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
+		if (ImGui::Button("Add Time")) {
+			timer_ += timeToAdd_;
+		}
 	}
 
 	ImGui::End();
@@ -313,30 +322,25 @@ void ecs::MainScene::updateTimer() {
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
+
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
 
-	Texture* texturaPaquet25 = &sdlutils().images().at("caja25");
-
-	Texture* texturaPaquet50 = &sdlutils().images().at("caja50");
-
-	Texture* texturaPaquet75 = &sdlutils().images().at("caja75");
-
-	Texture* texturaPaquet100 = &sdlutils().images().at("caja100");
+	std::vector<Texture*> textures = {
+		texturaPaquet,
+		&sdlutils().images().at("caja25"),
+		&sdlutils().images().at("caja50"),
+		&sdlutils().images().at("caja75"),
+		&sdlutils().images().at("caja100")
+	};
 
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-  trPq->setScale(paqueteScale);
+	trPq->setScale(paqueteScale);
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
 	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
 
-	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>();
-
-	multTexturesPaq->addTexture(texturaPaquet);
-	multTexturesPaq->addTexture(texturaPaquet25);
-	multTexturesPaq->addTexture(texturaPaquet50);
-	multTexturesPaq->addTexture(texturaPaquet75);
-	multTexturesPaq->addTexture(texturaPaquet100);
+	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
 
 	multTexturesPaq->initComponent();
 

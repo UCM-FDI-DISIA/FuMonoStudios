@@ -75,16 +75,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
