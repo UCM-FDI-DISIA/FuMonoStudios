@@ -21,9 +21,9 @@ Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 ecs::Entity* Mapa::createNavegationsArrows(int x, int y, std::string placeDir)
 {
 	//para crear la flecha a hefesto
-	ecs::Entity* Arrow = mScene_->addEntity();
-	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
-	float scale = 0.2;
+	ecs::Entity* Arrow = mScene_->addEntity(ecs::layer::FOREGROUND);
+	Texture* sujetaplazas = &sdlutils().images().at("cartel");
+	float scale = 0.5;
 	Transform* e = Arrow->addComponent<Transform>(x,y, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
 	RenderImage* nachos = Arrow->addComponent<RenderImage>(sujetaplazas);
 	auto clicker = Arrow->addComponent<Clickeable>();
@@ -55,7 +55,7 @@ ecs::Entity* Mapa::createCharacter(int x, int y,std::string character) {
 		//Esto sería la caja del fondo (lo de SDL que se ve)
 		ecs::Entity* boxBg = mScene_->addEntity();
 		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
-		boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
+		boxBg->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
 		actualPlace_->addObjects(boxBg);
 
 		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
