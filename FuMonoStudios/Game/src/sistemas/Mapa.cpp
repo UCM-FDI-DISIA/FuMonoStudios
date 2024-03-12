@@ -213,7 +213,7 @@ Lugar* Lugar::getPlaceFromDirection(std::string placeDir)
 
 void Lugar::killObjects()
 {
-	for (auto e : ents_) {
+	for (auto& e : ents_) {
 		e->setAlive(false);
 	}
 	ents_.clear();
