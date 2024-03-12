@@ -32,6 +32,11 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
+#ifdef DEV_TOOLS
+	stampsUnloked_= true;
+	timeToAdd_ = 5;
+#endif // DEV_TOOLS
+
 }
 
 ecs::MainScene::~MainScene()
@@ -67,10 +72,30 @@ void ecs::MainScene::render()
 	ImGui::Text(data.c_str());
 	ImGui::End();
 	ImGui::Begin("Controls");
-	ImGui::Text("Botones");
-	ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
-	ImGui::End();
+	if (ImGui::CollapsingHeader("Paquetes"))
+	{
+		ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
+		if (ImGui::Button("Create pacage")) {
+			createPaquete(generalData().getPaqueteLevel());
+		}
+	}
+	if (ImGui::CollapsingHeader("Mecánicas"))
+	{
+		ImGui::Checkbox("Sellos",&stampsUnloked_);
+		ImGui::Checkbox("Peso",&weightUnloked_);
+		ImGui::Checkbox("Cinta", &cintaUnloked_);
+	}
 
+	if (ImGui::Button("Reset Timer")) {
+		timer_ = MINIGAME_TIME;
+	}
+
+	ImGui::InputInt("Aditional Seconds",&timeToAdd_);
+	if (ImGui::Button("Add Time")) {
+		timer_ += timeToAdd_;
+	}
+
+	ImGui::End();
 	ImGui::Render();
 
 	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
@@ -263,23 +288,12 @@ void ecs::MainScene::createManual()
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
-	/*timerEnt_ = addEntity(ecs::layer::UI);
+#ifndef DEV_TOOLS
+	timerEnt_ = addEntity(ecs::layer::UI);
 	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
 	timerEnt_->addComponent<RenderImage>();
-	updateTimer();*/
-#ifndef DEV_TOOLS
-
-	// creamos contador fallos y aciertos
-	successEnt_ = addEntity(ecs::layer::UI);
-	successEnt_->addComponent<Transform>(1350, 250, 100, 100);
-	successEnt_->addComponent<RenderImage>();
-
-	failsEnt_ = addEntity(ecs::layer::UI);
-	failsEnt_->addComponent<Transform>(1350, 350, 100, 100);
-	failsEnt_->addComponent<RenderImage>();
-
-	updateFailsText();
-#endif // _DEBUG
+	updateTimer();
+#endif // DEV_TOOLS
 }
 
 void ecs::MainScene::updateTimer() {

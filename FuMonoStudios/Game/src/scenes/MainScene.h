@@ -37,6 +37,10 @@ namespace ecs {
 
 #ifdef DEV_TOOLS
         bool nextPacageCorrect_;
+        bool stampsUnloked_;
+        bool weightUnloked_;
+        bool cintaUnloked_;
+        int timeToAdd_;
 #endif // DEV_TOOLS
 
         // objects
