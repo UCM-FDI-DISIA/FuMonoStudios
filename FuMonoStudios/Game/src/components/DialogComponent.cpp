@@ -8,7 +8,7 @@
 #include "Render.h"
 
 DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(nullptr),
-	dialogueWidth_(sdlutils().width() - 300),dialogueIndex_(1),mTexture_(nullptr)
+	dialogueWidth_(sdlutils().width() - 335),dialogueIndex_(1),mTexture_(nullptr)
 {
 	mDialogMngr_ = manager;
 	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);

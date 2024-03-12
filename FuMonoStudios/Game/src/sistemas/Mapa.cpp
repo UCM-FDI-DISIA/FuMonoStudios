@@ -14,6 +14,7 @@ Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &demeter;
+	navigate("Demeter");
 	createObjects("Demeter");
 	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
 }
@@ -47,20 +48,20 @@ ecs::Entity* Mapa::createCharacter(int x, int y,std::string character) {
 
 // Para Dani: Aquí le hacemos clickable y le ponemos como callback el método funcPress
 	ecs::Entity* BotonPress = mScene_->addEntity();
-	Texture* texturaBoton = &sdlutils().images().at("press");
-	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
+	Texture* texturaBoton = &sdlutils().images().at(character);
+	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 400.0f, texturaBoton->width() * 0.25, texturaBoton->height() * 0.25);
 	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
 	CallbackClickeable funcPress = [this]() {
 		//Esto sería la caja del fondo (lo de SDL que se ve)
 		ecs::Entity* boxBg = mScene_->addEntity();
-		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width() - 200, 200);
+		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 250, sdlutils().width() - 200, 200);
 		boxBg->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
 		actualPlace_->addObjects(boxBg);
 
 		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
 		ecs::Entity* dialogoBox = mScene_->addEntity();
-		auto textTr = dialogoBox->addComponent<Transform>(20, 20, 100, 100);
+		auto textTr = dialogoBox->addComponent<Transform>(80, 55, 100, 100);
 		textTr->setParent(bgTr);
 		dialogoBox->addComponent<RenderImage>();
 		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
@@ -149,7 +150,7 @@ void Mapa::createObjects(std::string place) {
 		demeter.addObjects(createNavegationsArrows(100,100,"Hefesto"));
 		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes"));
 		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa"));
-		demeter.addObjects(createCharacter(300, 300, "Campesino"));
+		demeter.addObjects(createCharacter(300, 300, "pancracio"));
 
 
 		//boton ir a trabajar
@@ -167,17 +168,17 @@ void Mapa::createObjects(std::string place) {
 	{
 		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia"));
 		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter"));
-		hefesto.addObjects(createCharacter(300, 300, "Artesano"));
+		hefesto.addObjects(createCharacter(300, 300, "paulino"));
 	}
 	else if (place == "Hestia") {
 		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa"));
 		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto"));
-		hestia.addObjects(createCharacter(300, 300, "Tarotista"));
+		hestia.addObjects(createCharacter(300, 300, "anemos"));
 	}
 	else if (place == "Artemisa") {
 		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter"));
 		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia"));
-		artemisa.addObjects(createCharacter(300, 300, "Vagabundo"));
+		artemisa.addObjects(createCharacter(300, 300, "abigail"));
 	}
 	else if (place == "Hermes") {
 		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto"));
@@ -191,7 +192,7 @@ void Mapa::createObjects(std::string place) {
 	}
 	else if (place == "Poseidon") {
 		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo"));
-		poseidon.addObjects(createCharacter(300, 300, "Secretario"));
+		poseidon.addObjects(createCharacter(300, 300, "gargafiel"));
 	}
 }
 

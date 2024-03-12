@@ -212,6 +212,34 @@
     {
       "id": "miniManual",
       "file": "recursos/images/ManualMini.png"
+    },
+    {
+      "id": "abigail",
+      "file": "recursos/images/Abigail Ampoure.png"
+    },
+    {
+      "id": "gargafiel",
+      "file": "recursos/images/Gargafiel Mustaki.png"
+    },
+    {
+      "id": "glover",
+      "file": "recursos/images/Glover Globus.png"
+    },
+    {
+      "id": "pancracio",
+      "file": "recursos/images/Pancracio Warawa.png"
+    },
+    {
+      "id": "paulino",
+      "file": "recursos/images/Paulino Tinteiros.png"
+    },
+    {
+      "id": "anemos",
+      "file": "recursos/images/Anemos Tokugawa.png"
+    },
+    {
+      "id": "abakand",
+      "file": "recursos/images/Abakand Istacoz.png"
     }
   ],
   "fonts":[

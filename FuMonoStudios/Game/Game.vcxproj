@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\architecture\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\ExplorationScene2.h" />
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
     <ClInclude Include="src\components\SelfDestruct.h" />
