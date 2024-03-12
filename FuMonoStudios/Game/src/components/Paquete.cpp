@@ -6,6 +6,7 @@
 #include "Render.h"
 #include "../architecture/Scene.h"
 #include <bitset>
+#include "../sistemas/PaqueteBuilder.h"
 
 
 // cleon: 962 gatitos acaban de morir. con dolor.
@@ -78,24 +79,13 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 	if (sello != Erronea && calleMarcada_ == Erronea)
 	{
 		calleMarcada_ = sello;
-		Transform* paqTr = ent_->getComponent<Transform>();
-
-		//Creamos la entidad sello
-		ecs::Entity* selloEnt = ent_->getMngr()->addEntity(ecs::layer::STAMP);
-		//Textura en funcion de tipo calle
-		Texture* selloEntTex = &sdlutils().images().at(
-			(std::string)"sello" += 
-			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
-
-		//creamos transform y colocamos el sello en el centro del sellador
-		float scale = 0.2f;
-		Transform* selloEntTr = selloEnt->addComponent<Transform>
-			(posSellador.getX() + selloEntTex->width() / 2 * scale - paqTr->getPos().getX(),
-			posSellador.getY() + selloEntTex->height() / 2 * scale - paqTr->getPos().getY(),
-			selloEntTex->width() * scale, selloEntTex->height() * scale);
-		selloEnt->addComponent<RenderImage>(selloEntTex);
-		selloEntTr->setParent(paqTr);
+		PaqueteBuilder::getInstance()->crearSelloCalle(ent_, miCalle_, posSellador);
 	}
+}
+
+void Paquete::sellarPeso(NivelPeso peso) {
+
+	
 }
 
 std::string Paquete::getDirecction()

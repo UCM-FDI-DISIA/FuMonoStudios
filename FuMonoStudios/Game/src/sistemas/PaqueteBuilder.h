@@ -15,17 +15,14 @@ const int PESO_CARTA = 2;	//Peso carta
 // Miguel: En el futuro haremos que salgan un poco desviados de su
 // posición original para que parezcan más orgánicos los paquetes
 // posicion y tama�o Tipo sellos
-const int TIPO_SELLO_POS_X = 20;
-const int TIPO_SELLO_POS_Y = 80;
-const int TIPO_SELLO_SIZE = 80;
+const Vector2D TIPO_SELLO_POS = Vector2D(20, 80);
+const double TIPO_SELLO_SIZE = 0.2;
 // posicion y tama�o Fragil sellos
-const int FRAGIL_SELLO_POS_X = 150;
-const int FRAGIL_SELLO_POS_Y = 150;
-const int FRAGIL_SELLO_SIZE = 80;
+const Vector2D FRAGIL_SELLO_POS = Vector2D(150, 150);
+const double FRAGIL_SELLO_SIZE = 0.2;
 // posicion y tama�o Peso sellos
-const int PESO_SELLO_POS_X = 200;
-const int PESO_SELLO_POS_Y = 200;
-const int PESO_SELLO_SIZE = 80;
+const Vector2D PESO_SELLO_POS = Vector2D(100, 20);
+const double PESO_SELLO_SIZE = 0.2;
 
 class PaqueteBuilder
 {
@@ -60,11 +57,40 @@ public:
 	Paquete* cartaRND(ecs::Entity* ent) {
 		carta(ent);
 	}
-	PaqueteBuilder() { 
-		srand(sdlutils().currRealTime()); 
+	//Añade sello de calle, comprueba si es paquete
+	void crearSelloCalle(ecs::Entity* ent, enum Paquete::Calle nuestraCalle, Vector2D pos) {
+		if (ent->getComponent<Paquete>() != nullptr) {
+
+			//Textura en funcion de tipo calle
+			Texture* selloTex = &sdlutils().images().at(
+				(std::string)"sello" +=
+				(std::string)(nuestraCalle == Paquete::C1 ? "A" : nuestraCalle == Paquete::C2 ? "B" : "C"));
+
+			//Creamos sello
+			crearSello(ent, selloTex, pos, PESO_SELLO_SIZE);
+		}
+	}
+	//Añade sello de peso
+	void crearSelloPesado(ecs::Entity* ent, enum Paquete::NivelPeso nuestroPeso) {
+		if (ent->getComponent<Paquete>() != nullptr) {
+
+		}
+	}
+
+	static PaqueteBuilder* getInstance() {
+		if (!instance) {
+			instance = new PaqueteBuilder();
+		}
+		return instance;
+	}
+
+private:
+	static PaqueteBuilder* instance;
+
+	PaqueteBuilder() {
+		srand(sdlutils().currRealTime());
 		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
 	};
-private:
 	void nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
 		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
 		addVisualElements(ent);
@@ -109,7 +135,7 @@ private:
 	// coge el paquete recien creado y le añade el componente visual de dirección
 	void createVisualDirections(ecs::Entity* paq, Paquete* paqComp);
 	// coge el paquete recien creado y le añade el componente visual de sello
-	void crearSello(ecs::Entity* paq, std::string texKey, int x, int y, int width, int height);
+	void crearSello(ecs::Entity* paq, Texture* tex, Vector2D pos, double scaleFactor);
 
 	// esto hay que cambiarlo de sitio, al scene o algo
 	Font* directionsFont;

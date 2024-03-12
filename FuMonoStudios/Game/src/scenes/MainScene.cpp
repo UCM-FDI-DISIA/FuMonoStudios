@@ -318,8 +318,8 @@ void ecs::MainScene::createPaquete (int lv) {
 	paqEnt->addComponent<Wrap>(20, 0, route);
 
 
-	PaqueteBuilder a;
-	a.paqueteRND (lv, paqEnt);
+	PaqueteBuilder* paqBuildInstance = PaqueteBuilder::getInstance();
+	paqBuildInstance->paqueteRND(lv, paqEnt);
 
 	// añadimos que pueda ser interactuado por selladores
 	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {

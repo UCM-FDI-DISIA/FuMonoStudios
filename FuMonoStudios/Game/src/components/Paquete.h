@@ -46,6 +46,8 @@ public:
 
 	// Sella la calle una única vez con el sellador
 	void sellarCalle(Calle sello, Transform* trSellador);
+	// Sella el peso
+	void sellarPeso(NivelPeso peso);
 	/// <summary>
 	/// metodo que devuelve el string a implimir en la etiqueta de direccion
 	/// </summary>
