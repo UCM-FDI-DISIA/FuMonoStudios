@@ -99,6 +99,23 @@ void ecs::ExplorationScene::render()
 	Scene::render();
 }
 
+void ecs::ExplorationScene::update() {
+	Scene::update();
+
+	if (!placeToGo.empty()) {
+
+		int size = placeToGo.size();
+
+		for (int i = 0; i < size; ++i) {
+			navigate(placeToGo[i]);
+			createObjects(placeToGo[i]);
+			placeToGo.clear();
+		}
+		
+	}
+	
+}
+
 void ecs::ExplorationScene::navigate(std::string placeDir) // otro string sin const
 {
 	if (actualPlace_->navigate(placeDir))
@@ -119,8 +136,8 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 	CallbackClickeable cosa = [this, placeDir]() {
 		if (actualPlace_->navigate(placeDir)) {
 			actualPlace_->killObjects();
-			navigate(placeDir);
-			createObjects(placeDir);
+			placeToGo.push_back(placeDir);
+			
 		}
 	};
 

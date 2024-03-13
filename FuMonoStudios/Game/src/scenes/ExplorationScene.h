@@ -2,6 +2,7 @@
 #include "../architecture/Scene.h"
 #include "../components/Dialog_Manager.h"
 #include "../sistemas/ComonObjectsFactory.h"
+#include <list>
 
 namespace ecs {
 
@@ -87,6 +88,7 @@ namespace ecs {
         void init() override;
         virtual void close() override {}
         void render();
+		void update();
 
 		/// <summary>
 		/// Metodo para navegar a cierto lugar
@@ -150,7 +152,7 @@ namespace ecs {
 
 		DialogManager dialogMngr_;
 
-		
+		std::vector<std::string> placeToGo;
 
     };
 }
