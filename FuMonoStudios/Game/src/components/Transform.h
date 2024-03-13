@@ -66,26 +66,34 @@ public:
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>
-	float getWidth() const { return width_ * scale_; };
+	float getWidth() const { return width_ * trueScale_; };
 	/// <summary>
 	/// Devuelve la altura del transform
 	/// </summary>
 	/// <returns></returns>
-	float getHeigth() const { return height_ * scale_; };
+	float getHeigth() const { return height_ * trueScale_; };
+
+	void setPosDragging(Vector2D cursorPos, float differenceX, float differenceY);
 
 	void setScale(float Scale);
-
+	
 	void setWidth(float newWidth) { width_ = newWidth; }
 	void setHeith(float newHeith) { height_ = newHeith; }
 
 	void activateDepth();
+	float getDepth() { return depth_; }
 
 private:
+	float getTrueScale() { return trueScale_; }
+	float getOriginalScale() { return scale_; }
+	void setTrueScale(float newScale) { trueScale_ = newScale; }
 	/// <summary>
 	/// Posicion relativa (al padre) del objeto
 	/// En el caso de no tener padre es la posicion global
 	/// </summary>
 	Vector2D position_;
+
+	Vector2D relPos_;
 	/// <summary>
 	/// Ancho del objeto
 	/// </summary>
@@ -106,7 +114,7 @@ private:
 	/// <summary>
 	/// Padre del objeto
 	/// </summary>
-	Transform* parentTr_;
+	Transform* parentTr_ = nullptr;
 	/// <summary>
 	/// Lista de los hijos del transform
 	/// </summary>

@@ -52,10 +52,34 @@ void Transform::setParent(Transform* newParent) {
 		parentTr_->childsTr_.push_back(this);
 		parentListIt_ = parentTr_->childsTr_.end();
 		parentListIt_--;
-		// Update relative pos				
+		// Update relative pos	
+		relPos_ = position_;
 	}
 }
 
+void Transform::setPosDragging(Vector2D cursorPos, float differenceX, float differenceY) 
+{
+	float porcentaje = ((trueScale_ * 100) / scale_) / 100;
+
+	Vector2D pos = Vector2D(cursorPos.getX() - (differenceX * porcentaje),
+					cursorPos.getY() - (differenceY * porcentaje));
+
+
+	std::cout << trueScale_ << std::endl;
+	position_ = pos;
+
+	// mueve las posiciones relativas de los hijos al cambiar de escala
+	for (Transform* trCh : childsTr_)
+	{
+		trCh->setPos((trCh->getRelPos() * depth_).getX(),
+			(trCh->getRelPos() * depth_).getY());
+	}
+
+	if (usingDepth_)
+	{
+		updateDepth();
+	}
+}
 
 void Transform::setScale(float Scale) {
 	scale_ = Scale;
@@ -69,22 +93,19 @@ void Transform::activateDepth() {
 }
 
 void Transform::updateDepth() {
-	Vector2D oldCenter = getCenter();
 	//función que calcula el depth
 	depth_ = (getCenter().getY() * 0.07) + 40;
 	if (depth_ > 100)
 		depth_ = 100;
 	depth_ = depth_ / 100; // para que quede como porcentaje
 	trueScale_ = scale_ * depth_;
-	Vector2D newCenter = getCenter();
 
-	position_ = position_ 
-		+ Vector2D((oldCenter.getX() - newCenter.getX()), 0);
-	
-	std::cout << oldCenter.getX() - newCenter.getX() << std::endl;
-	
-	//std::cout << "OLD: " << oldCenter.getX() << " " << oldCenter.getY() <<
-	//" NEW: " << newCenter.getX() << " " << newCenter.getY() << std::endl;
+	// esto actualiza el scale de cada transform
+	for (Transform* chTr : childsTr_)
+	{
+		float porcentaje = ((trueScale_ * 100) / scale_) / 100;
+		chTr->setTrueScale(porcentaje * chTr->getOriginalScale());
+	}
 }
 
 //Cambia la posicion del objeto desde una perspectiva global
@@ -92,11 +113,17 @@ void Transform::setPos(Vector2D& pos)
 {
 	position_ = pos;
 
+	// mueve las posiciones relativas de los hijos al cambiar de escala
+	for (Transform* trCh : childsTr_)
+	{
+		trCh->setPos((trCh->getRelPos() * depth_).getX(), 
+			(trCh->getRelPos() * depth_).getY());
+	}
+
 	if (usingDepth_)
 	{
 		updateDepth();
 	}
-		
 }
 
 //Cambia la posicion del objeto desde una perspectiva global
@@ -125,7 +152,7 @@ Vector2D Transform::getCenter() const {
 
 //Devuelve la posici�n relativa
 Vector2D Transform::getRelPos() const {
-	return position_;
+	return relPos_;
 }
 
 //Devuelve el Rect en el mundo

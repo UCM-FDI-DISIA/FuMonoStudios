@@ -88,15 +88,18 @@ void DragAndDrop::update() {
 	//Arrastre del objeto
 	if (dragging_) {
 		//Para que vaya en el medio
-		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeith() / 2));
-		
+		//tr_->setPos(point.x - (tr_->getWidth() / 2), point.y - (tr_->getHeigth() / 2));
+
 		// comprobacion para evitar sacar la entidad de la pantalla
 		if ((point.x - differenceX_ > -(tr_->getWidth() / 2))
 			&& (point.x - differenceX_ < sdlutils().width() - (tr_->getWidth() / 2)) 
 			&& (point.y - differenceY_ < sdlutils().height() - (tr_->getHeigth() / 6)))
 		{
+
 			//Sin centrarse el objeto
-			tr_->setPos(point.x - differenceX_, point.y - differenceY_);
+			//tr_->setPos((point.x - differenceX_), (point.y - differenceY_));
+			tr_->setPosDragging(Vector2D(point.x, point.y), differenceX_, differenceY_);
+
 		}
 	}
 }
