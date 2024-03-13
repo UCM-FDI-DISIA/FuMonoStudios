@@ -156,139 +156,6 @@ void ecs::MainScene::createSelladores() {
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 	float scaleTubos = 0.3f;
- /*
-	Entity* tubDem = addEntity(ecs::layer::BACKGROUND);
-	Texture* texturaDem = &sdlutils().images().at("tubo1");
-	tubDem->addComponent<Transform>(120, -40, texturaDem->width() *scaleTubos, texturaDem->height()*scaleTubos);
-	tubDem->addComponent<RenderImage>(texturaDem);
-	Trigger* demTri = tubDem->addComponent<Trigger>();
-	PackageChecker* demCheck = tubDem->addComponent<PackageChecker>(Paquete::Demeter);
-	demTri->addCallback([this,demCheck](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			if (demCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "the end is nigh\n";
-				correct++;
-			}
-			else {
-				std::cout << "NUH UH1\n";
-				fails++;
-			}
-
-		}
-		else {
-			//std::cout << "eso no es un paquete gaan\n";
-		}
-		});
-
-	Entity* tubHef = addEntity();
-	tubHef->addComponent<Transform>(340, 0, 100, 150);
-	Trigger* hefTri = tubHef->addComponent<Trigger>();
-	PackageChecker* hefCheck = tubHef->addComponent<PackageChecker>(Paquete::Hefesto);
-	hefTri->addCallback([hefCheck](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			if (hefCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "the end is a horse\n";
-			}
-			else {
-				std::cout << "NUH UH2\n";
-			}
-		}
-		else {
-			//std::cout << "eso no es un paquete gaan\n";
-		}
-		});
-
-	Entity* tubHes = addEntity();
-	tubHes->addComponent<Transform>(560, 0, 100, 150);
-	Trigger* hesTri = tubHes->addComponent<Trigger>();
-	PackageChecker* hesCheck = tubHes->addComponent<PackageChecker>(Paquete::Hestia);
-	hesTri->addCallback([hesCheck](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			if (hesCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "egg is nigh\n";
-			}
-			else {
-				std::cout << "NUH UH3\n";
-			}
-		}
-		else {
-			//std::cout << "eso no es un paquete gaan\n";
-		}
-		});
-
-	Entity* tubArt = addEntity();
-	tubArt->addComponent<Transform>(780, 0, 100, 150);
-	Trigger* artTri = tubArt->addComponent<Trigger>();
-	PackageChecker* artCheck = tubArt->addComponent<PackageChecker>(Paquete::Artemisa);
-	artTri->addCallback([artCheck](ecs::Entity* entRec) {
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			if (artCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				std::cout << "wacamole\n";
-			}
-			else {
-				std::cout << "NUH UH4\n";
-			}
-		}
-		else {
-			//std::cout << "eso no es un paquete gaan\n";
-		}
-		});
-
-	// A medida que se vaya avanzando en el desarrollo, se tendra que expandir esto de apajo para que en X dia suceda algo o aparezcan nuevas herramientas
-	// Me gustaria que todo lo relacionado con los eventos de los dias y los paquetes y herramientas correspondientes estuviera documentado
-	// En el miro habia un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
-	int dia = generalData().GetDiaID();
-	if (dia > 0 && dia < 2) {
-		Texture* texturaSellador = &sdlutils().images().at("sellador");
-		Entity* sellador = addEntity();
-		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width() / 2, texturaSellador->height() / 2);
-		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
-		sellador->addComponent<Gravity>();
-		sellador->addComponent<DragAndDrop>();
-		sellador->addComponent<Herramientas>();
-		sellador->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
-	}
-	else if (dia >= 2 && dia < 4) {
-		Texture* texturaCinta = &sdlutils().images().at("cinta");
-		Entity* cinta = addEntity();
-		Transform* transformCinta = cinta->addComponent<Transform>(560, 0, texturaCinta->width() / 2, texturaCinta->height() / 2);
-		RenderImage* renderCinta = cinta->addComponent<RenderImage>(texturaCinta);
-		cinta->addComponent<Gravity>();
-		cinta->addComponent<DragAndDrop>();
-	}
-	else if (dia >= 4 && dia < 6) {
-
-	}
-	else if (dia >= 6 && dia < 8) {
-
-	}
-	else if (dia >= 8 && dia < 10) {
-
-	}
-
-	/*switch (dia) {
-	case 1: {
-		Texture* texturaSellador1 = &sdlutils().images().at("sellador");
-		Entity* sellador1 = addEntity();
-		Transform* transformSellador1 = sellador1->addComponent<Transform>(460, 0, texturaSellador1->width() / 2, texturaSellador1->height() / 2);
-		RenderImage* renderSellador1 = sellador1->addComponent<RenderImage>(texturaSellador1);
-		sellador1->addComponent<Gravity>();
-		sellador1->addComponent<DragAndDrop>();
-		sellador1->addComponent<Herramientas>();
-		sellador1->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
-		break;
-		}
-	case 2: {
-		Texture* texturaCinta1 = &sdlutils().images().at("cinta");
-		Entity* cinta1 = addEntity();
-		Transform* transformCinta1 = cinta1->addComponent<Transform>(460, 0, texturaCinta1->width() / 2, texturaCinta1->height() / 2);
-		RenderImage* renderCinta1 = cinta1->addComponent<RenderImage>(texturaCinta1);
-		cinta1->addComponent<Gravity>();
-		cinta1->addComponent<DragAndDrop>();
-		break;
-		}
-	}
-	*/
 	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);
 	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(dist + 1));
 
@@ -297,7 +164,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 	tuboEnt->addComponent<RenderImage>(texTubo);
 
 	Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist);
+	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>();
 	tuboTri->addCallback([this, dist,tuboCheck](ecs::Entity* entRec) {
 		//comprobamos si es un paquete
 		Transform* entTr = entRec->getComponent<Transform>();
@@ -322,6 +189,9 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 			std::cout << "crazy! " << dist << std::endl;
 		}
 
+		});
+	tuboCheck->addCondition([dist](Paquete* paqRec) -> bool {
+			return paqRec->getDistrito() == dist;
 		});
 }
 
