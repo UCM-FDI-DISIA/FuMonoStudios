@@ -11,11 +11,9 @@
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
-#include "../GeneralData.h"
 
-ecs::ExplorationScene::ExplorationScene():Scene(), dialogMngr_()
+ecs::ExplorationScene::ExplorationScene() :Scene(), map_(this)
 {
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 }
 
 ecs::ExplorationScene::~ExplorationScene()
@@ -24,58 +22,11 @@ ecs::ExplorationScene::~ExplorationScene()
 
 void ecs::ExplorationScene::init()
 {
-	generalData().GetEventoID();
-	std::cout << "Hola Exploracion"<<std::endl;
-	sdlutils().clearRenderer();
-	// Caja CLicker
-	Entity* Prueba2 = addEntity();
-	Texture* sujetaplazas = &sdlutils().images().at("boxTest");
-	float scale = 0.2;
-	Transform* e = Prueba2->addComponent<Transform>(700.0f, 100.0f, sujetaplazas->width() * scale, sujetaplazas->height() * scale);
-	RenderImage* nachos = Prueba2->addComponent<RenderImage>(sujetaplazas);
-	auto clicker = Prueba2->addComponent<Clickeable>();
-	//Prueba2->addComponent<Trigger>();
+	std::cout << "Hola Exploracion" << std::endl;
+}
 
-
-	/*Prueba2->getComponent<Trigger>()->addCallback([this]() {
-		std::cout << "a" << std::endl;
-		map.navigate("Hermes");
-		sdlutils().clearRenderer();
-		map.render();
-		});*/
-
-		//TODO: probar que con un boton se puedan cargar otras escenas
-	/*Callback cosa = [this]() {
-		map.navigate("Artemisa");
-		sdlutils().clearRenderer();
-		map.render();
-		};
-	clicker->addEvent(cosa);*/
-
-	map.renderBackGround();
-	auto boxBg = addEntity();
-	auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 200, sdlutils().width()-200, 200);
-	boxBg->addComponent<RenderImage>(&sdlutils().images().at("placeHolder"));
-
-	auto dialogoBox = addEntity();
-	auto textTr = dialogoBox->addComponent<Transform>(20, 20,100,100);
-	textTr->setParent(bgTr);
-	dialogoBox->addComponent<RenderImage>();
-	dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
-
-
-	Texture* texturaBoton = &sdlutils().images().at("press");
-	Entity* BotonPress = addEntity();
-
-	Transform* transformBoton = BotonPress->addComponent<Transform>(260.0f, 480.0f, texturaBoton->width(), texturaBoton->height());
-	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
-
-	auto clickerPress = BotonPress->addComponent<Clickeable>();
-
-
-	CallbackClickeable funcPress = []() {
-		gm().changeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
-	};
-	clickerPress->addEvent(funcPress);
-
+void ecs::ExplorationScene::render()
+{
+	map_.renderBackGround();
+	Scene::render();
 }

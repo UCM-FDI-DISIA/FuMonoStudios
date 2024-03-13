@@ -1,11 +1,13 @@
 #pragma once
 #include "../sdlutils/Texture.h"
+#include "../architecture/ecs.h";
+#include "../architecture/Entity.h"
+#include "../architecture/Scene.h"
+#include "../components/Dialog_Manager.h"
 #include <unordered_map>
 #include <vector>
 #include <array>
-
-
-class Entity;
+class DialogManager;
 /// <summary>
 /// Struct que guarda la informaci�n de cada lugar, tiene el fondo a renderizar, un booleano para saber si se 
 /// puedenavegar a �l, un mapa con las direcciones que conectan a �l (a las que no tiene por qu� poder navegarse),
@@ -18,28 +20,16 @@ class Entity;
 /// </summary>
 struct Lugar {
 public:
-	//Puntero a la textura del fondo
-	Texture* backGround;
-
-	//Bool que permite la navegaci�n
-	bool navegable;
-
-	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por qu� poderse navegar)
-	std::unordered_map<std::string,Lugar> directions;
-
-	//vector de entidades del lugar
-	//std::array<std::vector<Entity*>, ecs::layer::maxLayerId> ents;
-
 	//constructoras
-	Lugar() /*ents()*/ {};
-	Lugar(Texture* t, bool n /*Character* c*/) : /*ents()*/backGround(t), navegable(n) /*character(c)*/ {};
+	Lugar(): ents_(){};
+	Lugar(Texture* t, bool n) : ents_(), backGround_(t), navegable_(n) /*character(c)*/ {};
 
 	/// <summary>
 	/// M�todo para a�adir direcciones al mapa del lugar
 	/// </summary>
 	/// <param name="placeDir"></param>
 	/// <param name="place"></param>
-	void addDirections(std::string placeDir, Lugar place);
+	void addDirections(std::string placeDir, Lugar* place);
 
 	/// <summary>
 	/// M�todo para comprobar la navegabilidad a ciero lugar
@@ -56,7 +46,7 @@ public:
 	/// M�todo que devuelve la textura del fondo para poder renderizarla
 	/// </summary>
 	/// <returns></returns>
-	Texture* getTexture() const { return backGround; };
+	Texture* getTexture() const { return backGround_; };
 
 	/// <summary>
 	/// Mata (setAlive(false) los objetos del lugar para que se borren de la escena y los borra del vector
@@ -69,7 +59,21 @@ public:
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
 	/// USAR DESPU�S DE HABER NAVEGADO
 	/// </summary>
-	void createObjects();
+	void addObjects(ecs::Entity* e);
+
+private:
+	//Puntero a la textura del fondo
+	Texture* backGround_;
+
+	//Bool que permite la navegaci�n
+	bool navegable_;
+
+	//Mapa con las direcciones adyacentes al lugar (a las que no tiene por qu� poderse navegar)
+	std::unordered_map<std::string, Lugar*> directions_;
+
+	// Las entidades del lugar se almacenan como las de la escena, en vectores de objetos organizados en layouts
+	std::vector<ecs::Entity*> ents_;
+
 };
 
 /// <summary>
@@ -86,9 +90,25 @@ public:
 /// </summary>
 class Mapa
 {
+public:
+	//constructora
+	Mapa(ecs::Scene* e);
+	/// <summary>
+	/// M�todo para navegar a cierto lugar
+	/// </summary>
+	void navigate(std::string placeDir);
+
+	/// <summary>
+	/// M�todo para renderizar el backGround
+	/// </summary>
+	void renderBackGround() const;
+
+	//TODO: hacer lugares activables de forma din�mica
 private:
+	ecs::Scene* mScene_;
+
 	//Puntero al lugar actual
-	Lugar* actualPlace;
+	Lugar* actualPlace_;
 
 	//Luego har� un vector y un enum, son los lugares
 	Lugar demeter;
@@ -98,7 +118,7 @@ private:
 	Lugar hermes;
 	Lugar apolo;
 	Lugar poseidon;
-	
+
 	/// <summary>
 	/// M�todo para inicializar los lugares del mapa
 	/// </summary>
@@ -109,7 +129,9 @@ private:
 	void initDirectionsDefaultMap();
 
 	//rect para renderizar el BackGround
-	SDL_Rect rect;
+	SDL_Rect rect_;
+
+	DialogManager dialogMngr_;
 
 	/// <summary>
 	/// Mata (setAlive(false) los objetos del lugar para que se borren de la escena y los borra del vector
@@ -122,20 +144,15 @@ private:
 	/// Crea los objetos del lugar acatual al que te acabas de mover.
 	/// USAR DESPU�S DE HABER NAVEGADO
 	/// </summary>
-	void createObjects();
-
-public:
-	//constructora
-	Mapa();
-	/// <summary>
-	/// M�todo para navegar a cierto lugar
-	/// </summary>
-	void navigate(std::string placeDir);
+	void createObjects(std::string place);
 
 	/// <summary>
-	/// M�todo para renderizar el backGround
+	/// M�todo factor�a para las flechas de navegaci�n
 	/// </summary>
-	void renderBackGround() const;
+	ecs::Entity* createNavegationsArrows(int x, int y, std::string placeDir);
 
-	//TODO: hacer lugares activables de forma din�mica
+	/// <summary>
+	/// M�todo factir�a para characters
+	/// </summary>
+	ecs::Entity* createCharacter(int x, int y, std::string character);
 };

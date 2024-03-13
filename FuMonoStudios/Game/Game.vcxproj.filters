@@ -24,20 +24,23 @@
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Herramientas.cpp" />
     <ClCompile Include="src\components\MultipleTextures.cpp" />
-    <ClCompile Include="GeneralData.cpp" />
-    <ClCompile Include="src\components\Mapa.cpp" />
-    <ClCompile Include="src\components\Felicidad.cpp" />
     <ClCompile Include="src\scenes\MainMenu.cpp" />
     <ClCompile Include="src\components\MoverTransform.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
-    <ClCompile Include="src\components\PaqueteBuilder.cpp" />
-    <ClCompile Include="src\Time.cpp" />
+    <ClCompile Include="src\architecture\Time.cpp" />
+    <ClCompile Include="src\architecture\GeneralData.cpp" />
+    <ClCompile Include="src\sistemas\PaqueteBuilder.cpp" />
+    <ClCompile Include="src\sistemas\Felicidad.cpp" />
+    <ClCompile Include="src\sistemas\Mapa.cpp" />
+    <ClCompile Include="src\components\Wrap.cpp" />
+    <ClCompile Include="src\scenes\EndWorkScene.cpp" />
+    <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
+    <ClCompile Include="src\components\SelfDestruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -74,10 +77,6 @@
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
-    <ClInclude Include="Mapa.h" />
-    <ClInclude Include="Felicidad.h" />
-    <ClCompile Include="src\Dialog_Manager.cpp" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Herramientas.h" />
@@ -85,28 +84,34 @@
     <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
-    <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\architecture\Time.h" />
+    <ClInclude Include="src\architecture\GeneralData.h" />
+    <ClInclude Include="src\sistemas\PaqueteBuilder.h" />
+    <ClInclude Include="src\sistemas\Felicidad.h" />
+    <ClInclude Include="src\sistemas\Mapa.h" />
+    <ClInclude Include="src\components\Wrap.h" />
+    <ClInclude Include="src\scenes\EndWorkScene.h" />
+    <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
+    <ClInclude Include="src\components\SelfDestruct.h" />
+    <ClInclude Include="src\utils\checkML.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
-    <ClInclude Include="src\components\Mapa.h" />
-    <ClInclude Include="src\components\Felicidad.h" />
     <ClCompile Include="src\components\Dialog_Manager.cpp" />
     <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Paquete.h" />
-    <ClInclude Include="src\components\PaqueteBuilder.h" />
-    <ClInclude Include="src\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
-    <ClInclude Include="GeneralData.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
-    <ClInclude Include="src\GameConstants.h" />
+    <ClInclude Include="src\architecture\GameConstants.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties.props" />
     <None Include="src\sdlutils\RAEDME.md" />
     <None Include="Properties.props" />
+    <None Include="recursos\config\mail.direcctions.json" />
+    <None Include="recursos\config\mail.resources.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="recursos\images\Alimentos.png" />
@@ -118,5 +123,6 @@
     <Image Include="recursos\images\Armas.png" />
     <Image Include="recursos\images\Materiales.png" />
     <Image Include="recursos\images\Joyas.png" />
+    <Image Include="recursos\images\placeholderTrabajar.png" />
   </ItemGroup>
 </Project>

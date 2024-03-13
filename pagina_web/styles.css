@@ -1,0 +1,261 @@
+/* ------------ ESTILOS DE ETIQUETAS HTML ------------ */
+header {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+body {
+    background-size: 100%;
+    font-family: Silkscreen;
+    background-color: #7a65db;
+    overflow-x: hidden;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+
+p {
+    color: white;
+    font-size: 20px;
+}
+
+footer {
+    width: 100%;
+    background-color: #3d67dda7;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding: 20px;
+}
+
+    footer img {
+        width: 80px;
+        border-radius: 1em;
+    }
+
+        footer img:hover {
+            filter: brightness(75%);
+            -webkit-filter: brightness(75%);
+        }
+
+/* ------------ ESTILOS PROPIOS ------------ */
+.cuadro {
+    display: block;
+    position: relative;
+    background-color: #515a8f;
+    color: #fff;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 90px;
+    background-image: url('cuadro.png');
+}
+
+.descripcion {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.descripcion-txt {
+    font-size: 25px;
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 10px;
+}
+
+
+.descarga {
+    display: block;
+    position: relative;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+.descarga-boton {
+    background-color: greenyellow;
+    border-color: rgb(19, 0, 128);
+    width: 75%;
+    height: 75px;
+    font-size: 25px;
+    font-family: Silkscreen;
+    border-radius: 30px;
+}
+
+.boton-descarga {
+    display: inline-block;
+    padding: 1.5rem 2.375rem 1.5rem 2.375rem;
+    border: 0.125rem solid rgb(144, 233, 11);
+    border-radius: 2rem;
+    background-color: rgb(144, 233, 11);
+    color: #fff;
+    font: 600px "Silkscreen", Silkscreen;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 30px;
+}
+
+    .boton-descarga:hover {
+        border: 0.125rem solid rgb(144, 233, 11);
+        background-color: rgb(144, 233, 11, 0.5);
+        color: rgb(144, 233, 11);
+    }
+
+.row {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.capturas {
+    width: auto;
+    height: auto;
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 0;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: #200747;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    .prev:hover, .next:hover {
+        background-color: #894e18;
+    }
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #2656d8;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .active, .dot:hover {
+        background-color: #150b4d;
+    }
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.lista-miembros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.miembro {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.info-miembro {
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.textito {
+    font-size: 25px;
+}
+
+
+.video {
+    display: block;
+    margin: 30px auto;
+}
+
+.footer {
+    line-height: 40%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.footer-content {
+    margin: 30px 30px 30px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #13cccc;
+    background-image: url('barra-lateral.png');
+    background-repeat: repeat repeat;
+}

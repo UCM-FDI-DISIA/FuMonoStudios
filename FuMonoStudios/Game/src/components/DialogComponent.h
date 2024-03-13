@@ -1,6 +1,14 @@
 #pragma once
-#include <string>
 #include "../architecture/Component.h"
+#include "Dialog_Manager.h"
+#include "../sdlutils/Font.h"
+#include <string>
+/*
+TODO:
+Reestructurar toda la gestion de los dialogos
+Crear las estructuras de datos para no tener que cargar los datos constantemente
+Hacer un sistema de como relizar las solicitudes de un dialogo en funcion de las estructuras creadas
+*/
 
 class Transform;
 class RenderImage;
@@ -8,6 +16,11 @@ class Font;
 class DialogManager;
 class Texture;
 
+/*
+Componente que gestiona el renderizado del texto segun la iformacion que le pasa el dialogManager
+renderiza el texto caracter a caracter y luego se espera a que se pulse el espacio para saltar el dialogo
+Necesita de un transform y de un renderizador
+*/
 class DialogComponent :
     public ecs::Component
 {
@@ -21,7 +34,7 @@ public:
     void update()override;
 private:
     /// <summary>
-    /// Metodo para actualizar la textura de diálogo
+    /// Metodo para actualizar la textura de diï¿½logo
     /// </summary>
     void setCurrentDialogue();
 
@@ -30,7 +43,7 @@ private:
     DialogManager* mDialogMngr_;
 
     Font* mFont_;
-    Texture* textTexture_;
+    Texture* mTexture_;
     /// <summary>
     /// Ancho maximo al que va a llegar el texto
     /// </summary>
@@ -38,9 +51,9 @@ private:
     /// <summary>
     /// Indice de hasta que caracter se va a escribir
     /// </summary>
-    int dialogueIndex;
+    int dialogueIndex_;
 
-    uint32_t lasTimePaused = 0;
+    uint32_t lastTimePaused_ = 0;
     //Font* dialogueFont_;
 };
 

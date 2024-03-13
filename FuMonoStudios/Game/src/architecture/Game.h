@@ -6,7 +6,7 @@
 #include "../architecture/ecs.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Scene.h"
-
+#include <functional>
 
 class Game : public Singleton<Game> {
 
@@ -19,48 +19,54 @@ public:
 	/// <summary>
 	/// Metodo para cargar una escena
 	/// </summary>
-	/// <param name="scene"></param>
+	/// <param name="scene">Id de la escena a cargar</param>
 	void loadScene(ecs::sc::sceneId scene);
 	/// <summary>
 	/// Metodo para descargar una escena
 	/// </summary>
-	/// <param name="scene"></param>
+	/// <param name="scene">Id de la escena a matar</param>
 	void killScene(ecs::sc::sceneId scene);
 
 	/// <summary>
-	/// metodo para solicitar cambio de una escena a otra
+	/// Metodo para solicitar cambio de una escena a otra
 	/// </summary>
 	/// <param name="scene1"></param>
 	/// <param name="scene2"></param>
 	void requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
 
+	inline void writeMessage() {
+		std::cout << "Funcionaaaaaaaaa" << std::endl;
+	};
+
+private:
 	/// <summary>
-	/// metodo para cambiar de una escena a otra
+	/// Metodo para cambiar de una escena a otra
 	/// </summary>
 	/// <param name="scene1"></param>
 	/// <param name="scene2"></param>
 	void changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2);
-	inline void writeMessage() {
-		std::cout << "Funcionaaaaaaaaa" << std::endl;
-	};
-private:
+
 	void update();
 	void render();
-	/// <summary>
-	/// lista de escenas a procesar
-	/// </summary>
-	std::vector<ecs::Scene*> loadedScenes;
-	/// <summary>
-	/// lista de escenas del juego
-	/// </summary>
-	std::array<ecs::Scene*, ecs::sc::maxSceneId> gameScenes;
-	bool exit;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
+	void refresh();
 
-	bool sceneChange;
+	/// <summary>
+	/// Lista de escenas a procesar
+	/// </summary>
+	std::vector<ecs::Scene*> loadedScenes_;
+	/// <summary>
+	/// Lista de escenas del juego
+	/// </summary>
+	std::array<ecs::Scene*, ecs::sc::maxSceneId> gameScenes_;
+	bool exit_;
+	SDL_Window* window_;
+	SDL_Renderer* renderer_;
+
+	bool sceneChange_;
 	ecs::sc::sceneId scene1_, scene2_; //una guarrada lo se, pero ahora mismo quiero que el juego no explote, ya se hara bonito
 
+
+	std::list<std::function<void(void)>> requets;
 };
 
 inline Game& gm() {

@@ -10,18 +10,10 @@
 
 namespace ecs {
 	class Entity
-		/*
-		TODO:
-		Hacer metodos:
-			handleInput(SDL_Event& event)???
-		*/
 	{
 	public:
-		Entity(Scene* scene) : scene_(scene), cmps_(), currCmps_(), alive_() {
-			currCmps_.reserve(cmp::maxComponentId);
-		};
 
-		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly) {
+		Entity(Scene* scene, ecs::layer::layerId ly) : scene_(scene), cmps_(), currCmps_(), alive_(), myLayer(ly),enable_(true),active_(true) {
 			currCmps_.reserve(cmp::maxComponentId);
 		};
 
@@ -34,7 +26,15 @@ namespace ecs {
 
 		inline bool isAlive() const { return alive_; };
 
+		inline bool isActive() const { return active_; };
+
+		inline bool isEnable() const { return enable_; };
+
 		inline void setAlive(bool alive) { alive_ = alive; };
+
+		inline void setActive(bool active) { active_ = active; };
+
+		inline void setEnable(bool enable) { enable_ =enable; };
 
 		//ACCESOR AL MANAGER (Luis va a hacer cositas)
 		inline Scene* getMngr() const { return scene_; };
@@ -58,26 +58,6 @@ namespace ecs {
 			return t;
 
 		}
-
-		//sobreescritura del add component especificando funcionalidad extra necesaria para el Trigger
-		template<>
-		inline DragAndDrop* addComponent<DragAndDrop>() {
-
-
-			Trigger* trg = getComponent<Trigger>();
-
-			if (trg != nullptr)
-				throw std::runtime_error("Entidad con trigger asignado DragAndDrop (el dragnDrop lo asigna automaticamente))");
-
-			addComponent<Trigger>();
-
-			DragAndDrop* d = addComponent_aux<DragAndDrop>();
-
-			return d;
-
-		}
-
-
 
 		//Remueve el componente de Entity marcado por cId
 		template<typename T>
@@ -136,8 +116,23 @@ namespace ecs {
 		}
 
 	private:
+		/// <summary>
+		/// determina si la entidad va a destruirse si esta a false
+		/// </summary>
 		bool alive_;
+		/// <summary>
+		/// determina si un objeto se tiene que renderizar
+		/// </summary>
+		bool active_;
+		/// <summary>
+		/// determina si un objeto se tiene que actualizar
+		/// </summary>
+		bool enable_;
+		/// <summary>
+		/// puntero a la escena a la que pertenece al entidad
+		/// </summary>
 		Scene* scene_;
+
 		std::vector<Entity*>::iterator mIt_;
 		ecs::layer::layerId myLayer = ecs::layer::DEFAULT;
 		std::vector<Component*> currCmps_;

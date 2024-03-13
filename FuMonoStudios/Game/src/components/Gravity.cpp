@@ -1,15 +1,15 @@
 #include "Gravity.h"
 #include "Transform.h"
 #include "../architecture/Entity.h"
-#include "../Time.h"
+#include "../architecture/Time.h"
 
 const float Gravity::GRAVITY_LIMIT = 400.0f;
 const float Gravity::DEFAUTL_FORCE = 9.8f;
 const float Gravity::MAX_VELOCITY = 30.0f;
 
-Gravity::Gravity() : tr_(nullptr), gravityForce(DEFAUTL_FORCE), velocity(0), active(true) {}
+Gravity::Gravity() : tr_(nullptr), gravityForce_(DEFAUTL_FORCE), velocity_(0), active_(true) {}
 
-Gravity::Gravity(float force) : tr_(nullptr), gravityForce(force), velocity(0), active(true) {}
+Gravity::Gravity(float force) : tr_(nullptr), gravityForce_(force), velocity_(0), active_(true) {}
 
 Gravity::~Gravity() {}
 
@@ -22,18 +22,18 @@ void Gravity::initComponent() {
 
 void Gravity::update() {
 
-    if (active) {
+    if (active_) {
         bool contactGround = (tr_->getPos().getY() >= GRAVITY_LIMIT);
 
         if (!contactGround) {
-            velocity += gravityForce * Time::getDeltaTime(); // cleon: velocidad + fuerza y sin el tiempo. Toma esto, Newton!
-            if (velocity > MAX_VELOCITY) {
-                velocity = MAX_VELOCITY; // Limitamos la velocidad
+            velocity_ += gravityForce_ * Time::getDeltaTime();
+            if (velocity_ > MAX_VELOCITY) {
+                velocity_ = MAX_VELOCITY; // Limitamos la velocidad
             }
-            float newY = tr_->getPos().getY() + velocity;
+            float newY = tr_->getPos().getY() + velocity_;
             if (newY > GRAVITY_LIMIT) {
                 newY = GRAVITY_LIMIT;
-                velocity = 0.0f; // Reseteamos velocidad al tocar el suelo
+                velocity_ = 0.0f; // Reseteamos velocidad al tocar el suelo
             }
             tr_->setPos(tr_->getPos().getX(), newY);
         }
@@ -41,6 +41,6 @@ void Gravity::update() {
 }
 
 void Gravity::setActive(bool value) {
-    active = value;
-    velocity = 0.0f;
+    active_ = value;
+    velocity_ = 0.0f;
 }

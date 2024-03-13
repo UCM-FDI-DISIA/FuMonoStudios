@@ -1,8 +1,8 @@
 #include "MoverTransform.h"
 #include "../architecture/Entity.h"
 
-MoverTransform::MoverTransform(Vector2D newPos, float MovTime, Easing Easing) 
-	: finalPos(newPos), movTime(MovTime * 1000), easing(Easing), timer(0), tr(nullptr){
+MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing) 
+	: finalPos_(newPos), movTime_(MovTime * 1000), easing_(Easing), timer_(0), mTr_(nullptr){
 
 }
 
@@ -11,45 +11,45 @@ MoverTransform::~MoverTransform() {
 }
 
 void MoverTransform::initComponent() {
-	tr = ent_->getComponent<Transform>();
-	initPos = tr->getPos();
-	startTimer = sdlutils().currRealTime();
+	mTr_ = ent_->getComponent<Transform>();
+	initPos_ = mTr_->getPos();
+	startTimer_ = sdlutils().currRealTime();
 }
 
 void MoverTransform::update() {
-	timer = sdlutils().currRealTime();
+	timer_ = sdlutils().currRealTime();
 
-	float porcentajeRecorrido = (timer - startTimer) / movTime;
+	float porcentajeRecorrido = (timer_ - startTimer_) / movTime_;
 
 	float newX = 0;
 	float newY = 0;
-	switch (easing) {
+	switch (easing_) {
 		case Linear:
-			newX = initPos.getX() +
-				((finalPos.getX() - initPos.getX()) * porcentajeRecorrido);
-			newY = initPos.getY() +
-				((finalPos.getY() - initPos.getY()) * porcentajeRecorrido);
+			newX = initPos_.getX() +
+				((finalPos_.getX() - initPos_.getX()) * porcentajeRecorrido);
+			newY = initPos_.getY() +
+				((finalPos_.getY() - initPos_.getY()) * porcentajeRecorrido);
 			break;
 		case EaseOutCubic:
-			newX = finalPos.getX() - 
-				((float)pow(1 - porcentajeRecorrido, 3) * (finalPos.getX() - initPos.getX()));
-			newY = finalPos.getY() - 
-				((float)pow(1 - porcentajeRecorrido, 3) * (finalPos.getY() - initPos.getY()));
+			newX = finalPos_.getX() - 
+				((float)pow(1 - porcentajeRecorrido, 3) * (finalPos_.getX() - initPos_.getX()));
+			newY = finalPos_.getY() - 
+				((float)pow(1 - porcentajeRecorrido, 3) * (finalPos_.getY() - initPos_.getY()));
 			break;
 		case EaseOutBack:
 			float t = porcentajeRecorrido;
 			float constante = 1.70158f;
-			newX = initPos.getX() + (finalPos.getX() - initPos.getX()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
-			newY = initPos.getY() + (finalPos.getY() - initPos.getY()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
+			newX = initPos_.getX() + (finalPos_.getX() - initPos_.getX()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
+			newY = initPos_.getY() + (finalPos_.getY() - initPos_.getY()) * (float)(1 - pow(1 - t, 3) * (1 - t * (constante * t - constante)));
 			break;
 	}
 	
 
-	tr->setPos(newX, newY);
+	mTr_->setPos(newX, newY);
 
-	if (timer > (startTimer + movTime)) 
+	if (timer_ > (startTimer_ + movTime_)) 
 	{
-		tr->setPos(finalPos);
+		mTr_->setPos(finalPos_);
 		ent_->removeComponent<MoverTransform>();
 	}
 }

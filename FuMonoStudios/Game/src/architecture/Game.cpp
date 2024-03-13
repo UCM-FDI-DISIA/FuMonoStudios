@@ -6,30 +6,26 @@
 #include "../scenes/MainScene.h"
 #include "../scenes/MainMenu.h"
 #include "../scenes/ExplorationScene.h"
-#include "../Time.h"
-#include "../GeneralData.h"
-//#include "Game.h"
-/*
-TODO
-Anadir fichero de configuracion el init de SDLUtils cuando haya recursos que cargar
-*/
+#include "../scenes/EndWorkScene.h"
+#include "Time.h"
+#include "GeneralData.h"
 
-Game::Game() :exit(false) {
+Game::Game() :exit_(false) {
 	SDLUtils::init("Mail To Atlantis", 1600, 900, "recursos/config/mail.resources.json");
 
 	auto& sdl = *SDLUtils::instance();
 
 	sdl.showCursor();
-	window = sdl.window();
-	renderer = sdl.renderer();
-	gameScenes = { new ecs::MainScene(),new ecs::ExplorationScene(),new ecs::MainMenu() };
+	window_ = sdl.window();
+	renderer_ = sdl.renderer();
+	gameScenes_ = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
 	loadScene(ecs::sc::MENU_SCENE);
 }
 
 Game::~Game()
 {
-	for (auto s : gameScenes) {
+	for (auto s : gameScenes_) {
 		delete s;
 	}
 }
@@ -37,19 +33,20 @@ Game::~Game()
 
 void Game::run()
 {
-	while (!exit)
+	while (!exit_)
 	{
-		if (sceneChange)
+		if (sceneChange_)
 		{
 			changeScene(scene1_, scene2_);
-			sceneChange = false;
+			sceneChange_ = false;
 		}
 
+		refresh();
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
 
 		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || ih().closeWindowEvent()) {
-			exit = true;
+			exit_ = true;
 		}
 		if (ih().isKeyDown(SDL_SCANCODE_F)) {
 			sdlutils().toggleFullScreen();
@@ -66,7 +63,7 @@ void Game::run()
 		render();
 		sdlutils().presentRenderer();
 
-		Time::deltaTime = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
+		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
 	}
 }
 
@@ -76,10 +73,11 @@ void Game::run()
 //}
 
 /// <summary>
-/// carga la escena indicada por el Id
-/// se ejecutara la ultima de la cadena de proceso
+/// Carga la escena indicada por el Id
+/// Se ejecutara la ultima de la cadena de proceso
 /// </summary>
 /// <param name="scene"></param>
+
 //void Game::loadScene(ecs::sc::sceneId scene)
 //{
 //	//llamar al init de la escena a cargar????
@@ -87,68 +85,69 @@ void Game::run()
 //	//cargamos la escena
 //	loadedScenes.push_back(gameScenes[scene]);
 //}
+
 void Game::loadScene(ecs::sc::sceneId scene)
 {
-	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
-	if (it == loadedScenes.end()) {
+	auto it = std::find(loadedScenes_.begin(), loadedScenes_.end(), gameScenes_[scene]);
+	if (it == loadedScenes_.end()) {
 		//llamar al init de la escena a cargar????
-		gameScenes[scene]->init();
+		gameScenes_[scene]->init();
 		//cargamos la escena
-		loadedScenes.push_back(gameScenes[scene]);
+		loadedScenes_.push_back(gameScenes_[scene]);
 	}
 }
 
 /// <summary>
-/// descarga al escena pedida
+/// Descarga al escena pedida
 /// </summary>
 /// <param name="scene"></param>
 void Game::killScene(ecs::sc::sceneId scene)
 {
-	auto it = std::find(loadedScenes.begin(), loadedScenes.end(), gameScenes[scene]);
-	if (it != loadedScenes.end()) {
-		loadedScenes.erase(it);
+	auto it = std::find(loadedScenes_.begin(), loadedScenes_.end(), gameScenes_[scene]);
+	if (it != loadedScenes_.end()) {
+		(*it)->close();
+		loadedScenes_.erase(it);
 		std::cout << "Scene Killed" << std::endl;
 	}
 }
 
 void Game::requestChangeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2)
 {
-	sceneChange = true;
+	sceneChange_ = true;
 	scene1_ = scene1;
 	scene2_ = scene2;
 }
 
 void Game::changeScene(ecs::sc::sceneId scene1, ecs::sc::sceneId scene2) {
 	//Más adelante el changeScene deberá de tener más parámetros correspondientes a lo que se va a guardar en
-	//el GeneralData para compartir información entre escenas, pero por ahora nos bastamos con esto
+	//El GeneralData para compartir información entre escenas, pero por ahora nos bastamos con esto
 
 	//Estas comprobaciones van a ser una prueba de que se puede modificar la clase GeneralData, no estará así en la versión final
 	if (scene1 == ecs::sc::MENU_SCENE) {
-		generalData().SetFinalID(1);
-		generalData().SetEventoID(1);
+		generalData().setFinalID(1);
+		generalData().setEventoID(1);
 	}
 	else if (scene1 == ecs::sc::EXPLORE_SCENE) {
-		generalData().SetFinalID(2);
-		generalData().SetEventoID(2);
+		generalData().setFinalID(2);
+		generalData().setEventoID(2);
 	}
 	else if (scene1 == ecs::sc::MAIN_SCENE) {
-		generalData().SetFinalID(3);
-		generalData().SetEventoID(3);
+		generalData().setFinalID(3);
+		generalData().setEventoID(3);
 	}
 	killScene(scene1);
 	loadScene(scene2);
 	/*if (loadedScenes.size() < 1) {
 		loadScene(scene2);
 	}*/
-
 }
 
 /// <summary>
-/// actualiza el juego
+/// Actualiza el juego
 /// </summary>
 void Game::update()
 {
-	for (auto scene : loadedScenes) {
+	for (auto& scene : loadedScenes_) {
 		scene->update();
 	}
 }
@@ -158,7 +157,14 @@ void Game::update()
 /// </summary>
 void Game::render()
 {
-	for (auto scene : loadedScenes) {
+	for (auto& scene : loadedScenes_) {
 		scene->render();
+	}
+}
+
+void Game::refresh()
+{
+	for (auto& scene : loadedScenes_) {
+		scene->refresh();
 	}
 }

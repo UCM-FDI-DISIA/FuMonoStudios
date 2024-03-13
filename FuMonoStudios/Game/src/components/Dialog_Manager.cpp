@@ -1,35 +1,39 @@
 // dialog_manager.cpp
 #include "dialog_manager.h"
 #include <fstream>
+#include "../json/JSON.h"
 
-DialogManager::DialogManager() : currentDialogIndex(0) {
+DialogManager::DialogManager() : currentDialogIndex_(0) {
 }
 
 
 
-std::string DialogManager::GetCurrentDialog() {
-    if (currentDialogIndex < dialogs.size()) {
-        return dialogs[currentDialogIndex];
+std::string DialogManager::getCurrentDialog() {
+    if (currentDialogIndex_ < dialogs_.size()) {
+        return dialogs_[currentDialogIndex_];
     }
     else {
-        return ""; // No hay más diálogos. cleon: ultramegamaxi MAL
+        return ""; // No hay mï¿½s diï¿½logos. cleon: ultramegamaxi MAL
     }
 }
 
 
-void DialogManager::NextDialog() {
-    if (currentDialogIndex < dialogs.size() - 1) {
-        currentDialogIndex++;
+void DialogManager::nextDialog() {
+    if (currentDialogIndex_ < dialogs_.size() - 1) {
+        currentDialogIndex_++;
+    }
+    else {
+        currentDialogIndex_ = resetDialogueIndex_;
     }
 }
-// un string sin referencia es como un día sin sol: const string&
-void DialogManager::setDialogues(std::string path) {
+// un string sin referencia es como un dï¿½a sin sol: const string&
+void DialogManager::setDialogues(const std::string& path) {
     //eliminamos los dialogos anteriores
-    dialogs.clear();
+    dialogs_.clear();
     //reseteamos la posicon del indice
-    currentDialogIndex = 0;
+    currentDialogIndex_ = 0;
     std::ifstream file(path);
-    if (file.is_open()) { // estamos en 2º. is_open es para bebés programadores. usad librería de carga
+    if (file.is_open()) { // estamos en 2ï¿½. is_open es para bebï¿½s programadores. usad librerï¿½a de carga
         std::string line;
         std::string currentDialog;
 
@@ -39,8 +43,8 @@ void DialogManager::setDialogues(std::string path) {
             if (pos != std::string::npos) {
                 // Agrega el contenido antes del $
                 currentDialog += line.substr(0, pos);  
-                // añadimos el dialogo
-                dialogs.push_back(currentDialog);
+                // aï¿½adimos el dialogo
+                dialogs_.push_back(currentDialog);
                 currentDialog.clear();
             }
         }
@@ -49,6 +53,8 @@ void DialogManager::setDialogues(std::string path) {
     }
     else {
         std::cerr << "Error al abrir el archivo: " << path << std::endl;
-        throw std::runtime_error("No se pudo abrir el archivo de diálogo");
+        throw std::runtime_error("No se pudo abrir el archivo de diï¿½logo");
     }
+
+
 }

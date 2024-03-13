@@ -16,10 +16,6 @@ al ponets el componente)
 */
 class MultipleTextures : public ecs::Component
 {
-private:
-    std::vector<Texture*> texturesVector_;
-    std::vector<Texture*>::iterator currentTexture_;
-    RenderImage* renderImage_;
 public:
     __CMP_DECL__(ecs::cmp::MULTIPLETEXTURES)
     MultipleTextures();
@@ -30,6 +26,11 @@ public:
     void addTexture(Texture* texture);
     void nextTexture();
     void previousTexture();
+    void restartTexture();
     Texture* getCurrentTexture() { return *currentTexture_; } 
+private:
+    std::vector<Texture*> texturesVector_;
+    std::vector<Texture*>::iterator currentTexture_;
+    RenderImage* mRend_;
 };
 

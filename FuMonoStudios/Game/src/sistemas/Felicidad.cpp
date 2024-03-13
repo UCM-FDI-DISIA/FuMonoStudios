@@ -3,26 +3,26 @@
 Felicidad::Felicidad()
 {
 	for (int i = 0; i <= 6; i++) {
-		felicidades[(pers::Personajes) i] = 0;
+		felicidades_[(pers::Personajes) i] = 0;
 	}
 }
 
 void Felicidad::aumentaFel(pers::Personajes p, uint f) // cleon: no se�is salvajes de C++. Personajes por referencia (constante?)
 {
-	if (felicidades.at(p) + f <= 99)
-		felicidades[p] += f;
+	if (felicidades_.at(p) + f <= 99)
+		felicidades_[p] += f;
 	else
-		felicidades[p] = 99; // Toma 99.
+		felicidades_[p] = 99; // Toma 99.
 }
 
 void Felicidad::decrementaFel(pers::Personajes p, uint f)
 {
-	felicidades[p] -= f;
+	felicidades_[p] -= f;
 }
 
 pers::EstadosDeFelicidad Felicidad::interpretaFel(pers::Personajes p) const
 {
-	int s = felicidades.at(p);
+	int s = felicidades_.at(p);
 	if (s <= 0){
 		return pers::MINIMA;
 	}

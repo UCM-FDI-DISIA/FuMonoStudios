@@ -24,7 +24,7 @@ public:
 
 private:
 
-	Transform* tr_;
+	Transform* mTr_;
 
-	std::list<CallbackClickeable> eventsWhenClick;
+	std::list<CallbackClickeable> eventsWhenClick_;
 };

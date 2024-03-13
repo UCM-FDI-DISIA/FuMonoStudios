@@ -8,7 +8,7 @@
 #include "Render.h"
 
 DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(nullptr),
-	dialogueWidth_(sdlutils().width() - 300),dialogueIndex(1),textTexture_(nullptr)
+	dialogueWidth_(sdlutils().width() - 300),dialogueIndex_(1),mTexture_(nullptr)
 {
 	mDialogMngr_ = manager;
 	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
@@ -31,29 +31,30 @@ void DialogComponent::initComponent()
 void DialogComponent::update()
 {
 	//Escritura caracter a caracter
-	if (sdlutils().virtualTimer().currTime() > lasTimePaused + 40) { // este 40 en mejor sitio
+	if (sdlutils().virtualTimer().currTime() > lastTimePaused_ + 40) { // este 40 en mejor sitio
 		setCurrentDialogue();
 		//avance al siguiente caracter
-		if(dialogueIndex < mDialogMngr_->GetCurrentDialog().size())
-			dialogueIndex++;
-		lasTimePaused = sdlutils().virtualTimer().currTime();
+		if(dialogueIndex_ < mDialogMngr_->getCurrentDialog().size())
+			dialogueIndex_++;
+		lastTimePaused_ = sdlutils().virtualTimer().currTime();
 	}
 	//Saltar dialogo pasando al siguiente
 	if (ih().isKeyDown(SDL_SCANCODE_SPACE)&&
-		dialogueIndex == mDialogMngr_->GetCurrentDialog().size()) {
-		mDialogMngr_->NextDialog();
-		dialogueIndex = 1;
+		dialogueIndex_ == mDialogMngr_->getCurrentDialog().size()) {
+		mDialogMngr_->nextDialog();
+		dialogueIndex_ = 1;
 	}
 }
 
 void DialogComponent::setCurrentDialogue()
 {
-	if (textTexture_ != nullptr) {
-		delete textTexture_;
-		textTexture_ = nullptr;
+	if (mTexture_ != nullptr) {
+		delete mTexture_;
+		mTexture_ = nullptr;
 	}
-	textTexture_ = new Texture(sdlutils().renderer(), mDialogMngr_->GetCurrentDialog().substr(0,dialogueIndex), *mFont_, build_sdlcolor(0xffffffffff), dialogueWidth_);
-	mRend_->setTexture(textTexture_);
-	mTr_->setWidth(textTexture_->width());
-	mTr_->setHeith(textTexture_->height());
+	mTexture_ = new Texture(sdlutils().renderer(), mDialogMngr_->getCurrentDialog().substr(0,dialogueIndex_),
+		*mFont_, build_sdlcolor(0xffffffffff), dialogueWidth_);
+	mRend_->setTexture(mTexture_);
+	mTr_->setWidth(mTexture_->width());
+	mTr_->setHeith(mTexture_->height());
 }

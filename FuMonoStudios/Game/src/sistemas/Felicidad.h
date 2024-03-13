@@ -10,13 +10,13 @@ namespace pers{
 using uint = unsigned int;
 class Felicidad
 {
-private:
-	std::unordered_map<pers::Personajes, int> felicidades;
 public:
 	Felicidad();
 
 	void aumentaFel(pers::Personajes p, uint f);
 	void decrementaFel(pers::Personajes p, uint f);
 	pers::EstadosDeFelicidad interpretaFel(pers::Personajes p) const;
+private:
+	std::unordered_map<pers::Personajes, int> felicidades_;
 };
 
