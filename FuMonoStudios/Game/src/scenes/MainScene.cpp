@@ -300,7 +300,8 @@ void ecs::MainScene::createPaquete (int lv) {
 	Texture* texturaPaquet100 = &sdlutils().images().at("caja100");
 
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-  trPq->setScale(paqueteScale);
+	trPq->setScale(paqueteScale);
+	trPq->activateDepth();
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);

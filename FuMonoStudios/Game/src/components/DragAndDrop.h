@@ -30,7 +30,11 @@ public:
 
 	void update() override;
 
+	void disableInteraction() { canInteract = false; }
+	void activateInteraction() { canInteract = true; }
 private:
+	bool canInteract = true;
+
 	Transform* tr_;
 	Gravity* grav_;
 	Trigger* tri_;
