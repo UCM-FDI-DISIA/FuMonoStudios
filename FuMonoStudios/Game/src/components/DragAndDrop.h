@@ -31,22 +31,18 @@ public:
 	void update() override;
 
 private:
-
 	Transform* tr_;
-	
 	Gravity* grav_;
-
 	Trigger* tri_;
 
 	bool dragging_;
-
 	float differenceX_;
-
 	float differenceY_;
 
+	// para el escalado al arrastrar objetos
+	float porcentajeStart;
+
 	bool usingOnlyClosestEnt_ = false;
-
 	bool usingCallback_ = false;
-
 	SimpleCallback func_;
 };

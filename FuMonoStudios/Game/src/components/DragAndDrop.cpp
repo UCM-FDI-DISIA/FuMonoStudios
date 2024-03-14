@@ -62,6 +62,7 @@ void DragAndDrop::update() {
 			//Para que funcione sin ir al centro, con margen
 			differenceX_ = point.x - tr_->getPos().getX();;
 			differenceY_ = point.y - tr_->getPos().getY();;
+			porcentajeStart = tr_->getPorcentajeScale();
 		}
 	}
 	//Deteccion al soltar el objeto
@@ -96,10 +97,15 @@ void DragAndDrop::update() {
 			&& (point.y - differenceY_ < sdlutils().height() - (tr_->getHeigth() / 6)))
 		{
 
+			Vector2D pos = Vector2D(
+				point.x - (differenceX_ * (1 - (porcentajeStart - tr_->getPorcentajeScale()))),
+				point.y - (differenceY_ * (1 - (porcentajeStart - tr_->getPorcentajeScale()))));
+
 			//Sin centrarse el objeto
 			//tr_->setPos((point.x - differenceX_), (point.y - differenceY_));
-			tr_->setPosDragging(Vector2D(point.x, point.y), differenceX_, differenceY_);
+			tr_->setPos(pos);
 
 		}
 	}
+
 }

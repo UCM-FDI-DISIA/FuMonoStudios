@@ -57,30 +57,6 @@ void Transform::setParent(Transform* newParent) {
 	}
 }
 
-void Transform::setPosDragging(Vector2D cursorPos, float differenceX, float differenceY) 
-{
-	float porcentaje = ((trueScale_ * 100) / scale_) / 100;
-
-	Vector2D pos = Vector2D(cursorPos.getX() - (differenceX * porcentaje),
-					cursorPos.getY() - (differenceY * porcentaje));
-
-
-	std::cout << trueScale_ << std::endl;
-	position_ = pos;
-
-	// mueve las posiciones relativas de los hijos al cambiar de escala
-	for (Transform* trCh : childsTr_)
-	{
-		trCh->setPos((trCh->getRelPos() * depth_).getX(),
-			(trCh->getRelPos() * depth_).getY());
-	}
-
-	if (usingDepth_)
-	{
-		updateDepth();
-	}
-}
-
 void Transform::setScale(float Scale) {
 	scale_ = Scale;
 	if (!usingDepth_)
@@ -104,7 +80,7 @@ void Transform::updateDepth() {
 	for (Transform* chTr : childsTr_)
 	{
 		float porcentaje = ((trueScale_ * 100) / scale_) / 100;
-		chTr->setTrueScale(porcentaje * chTr->getOriginalScale());
+		chTr->setTrueScale(porcentaje * chTr->scale_);
 	}
 }
 

@@ -73,8 +73,6 @@ public:
 	/// <returns></returns>
 	float getHeigth() const { return height_ * trueScale_; };
 
-	void setPosDragging(Vector2D cursorPos, float differenceX, float differenceY);
-
 	void setScale(float Scale);
 	
 	void setWidth(float newWidth) { width_ = newWidth; }
@@ -83,9 +81,10 @@ public:
 	void activateDepth();
 	float getDepth() { return depth_; }
 
+
+	float getPorcentajeScale() {
+		return ((trueScale_ * 100) / scale_) / 100; }
 private:
-	float getTrueScale() { return trueScale_; }
-	float getOriginalScale() { return scale_; }
 	void setTrueScale(float newScale) { trueScale_ = newScale; }
 	/// <summary>
 	/// Posicion relativa (al padre) del objeto
