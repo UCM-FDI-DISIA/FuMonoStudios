@@ -30,7 +30,7 @@ public:
     /// Vacia el vector de dialogos anterior y resetea el indice de dialogos
     /// </summary>
     /// <param name="path"></param>
-    void setDialogues(const std::string& path);
+    void setDialogues(const std::string& filename);
 
 private:
     /// <summary>
