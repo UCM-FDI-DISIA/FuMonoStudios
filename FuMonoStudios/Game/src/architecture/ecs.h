@@ -24,6 +24,7 @@ namespace ecs {
 			MOVERTRANSFORM,
 			WRAP,
 			SELFDESTRUCT,
+			DEPTH,
 			// do not remove this
 			_LAST_CMP_ID
 		};

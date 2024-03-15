@@ -4,6 +4,8 @@
 #include <SDL.h>
 #include "../sdlutils/SDLUtils.h"
 
+class Depth;
+
 class Transform : public ecs::Component
 {
 public:
@@ -73,19 +75,24 @@ public:
 	/// <returns></returns>
 	float getHeigth() const { return height_ * trueScale_; };
 
-	void setScale(float Scale);
-	
+	void setScale(float Scale) { scale_ = Scale; trueScale_ = Scale; }
+	// este solo lo usa el depth
+	void setTrueScale(float newScale) { trueScale_ = newScale; } 
+	float getScale() { return scale_; }
+	float getTrueScale() { return trueScale_; }
+
+	void activateDepth();
+
+	std::list<Transform*> GetChildren() { return childsTr_; }
+
 	void setWidth(float newWidth) { width_ = newWidth; }
 	void setHeith(float newHeith) { height_ = newHeith; }
 
-	void activateDepth();
-	float getDepth() { return depth_; }
-
-
+	// esto lo usa el dragNdrop para que funcione con el escalado
 	float getPorcentajeScale() {
-		return ((trueScale_ * 100) / scale_) / 100; }
+		return ((trueScale_ * 100) / scale_) / 100;
+	}
 private:
-	void setTrueScale(float newScale) { trueScale_ = newScale; }
 	/// <summary>
 	/// Posicion relativa (al padre) del objeto
 	/// En el caso de no tener padre es la posicion global
@@ -103,12 +110,10 @@ private:
 	float height_;
 
 	float scale_;
+	float trueScale_;
 
-	void updateDepth();
-	bool usingDepth_ = false; // bool a activar si quieres usar depth
-	// escala aplicada después del depth
-	float trueScale_; 
-	float depth_;
+	// para comunicarse con el en caso de usar depth
+	Depth* depthComp_;
 
 	/// <summary>
 	/// Padre del objeto

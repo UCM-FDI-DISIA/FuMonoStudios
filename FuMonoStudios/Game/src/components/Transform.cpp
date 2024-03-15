@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "Depth.h"
 
 Transform::Transform(float x, float y, float w, float h) : Component(), 
 position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1),parentTr_(nullptr) {
@@ -57,31 +58,8 @@ void Transform::setParent(Transform* newParent) {
 	}
 }
 
-void Transform::setScale(float Scale) {
-	scale_ = Scale;
-	if (!usingDepth_)
-		trueScale_ = scale_;
-}
-
 void Transform::activateDepth() {
-		usingDepth_ = true;
-		updateDepth();
-}
-
-void Transform::updateDepth() {
-	//función que calcula el depth
-	depth_ = (getCenter().getY() * 0.07) + 40;
-	if (depth_ > 100)
-		depth_ = 100;
-	depth_ = depth_ / 100; // para que quede como porcentaje
-	trueScale_ = scale_ * depth_;
-
-	// esto actualiza el scale de cada transform
-	for (Transform* chTr : childsTr_)
-	{
-		float porcentaje = ((trueScale_ * 100) / scale_) / 100;
-		chTr->setTrueScale(porcentaje * chTr->scale_);
-	}
+	depthComp_ = ent_->getComponent<Depth>();
 }
 
 //Cambia la posicion del objeto desde una perspectiva global
@@ -89,16 +67,10 @@ void Transform::setPos(Vector2D& pos)
 {
 	position_ = pos;
 
-	// mueve las posiciones relativas de los hijos al cambiar de escala
-	for (Transform* trCh : childsTr_)
+	if (depthComp_ != nullptr )
 	{
-		trCh->setPos((trCh->getRelPos() * depth_).getX(), 
-			(trCh->getRelPos() * depth_).getY());
-	}
-
-	if (usingDepth_)
-	{
-		updateDepth();
+		depthComp_->updateChildPos();
+		depthComp_->updateDepth();
 	}
 }
 

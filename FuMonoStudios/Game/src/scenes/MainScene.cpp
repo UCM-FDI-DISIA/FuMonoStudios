@@ -23,6 +23,8 @@
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
 #include "../sistemas/ComonObjectsFactory.h"
+#include "../components/Depth.h"
+
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
@@ -232,7 +234,7 @@ void ecs::MainScene::createManual()
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
-	manualTransform->activateDepth();
+	manual->addComponent<Depth>();
 }
 
 void ecs::MainScene::initTexts() {
@@ -301,7 +303,7 @@ void ecs::MainScene::createPaquete (int lv) {
 
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
 	trPq->setScale(paqueteScale);
-	trPq->activateDepth();
+	paqEnt->addComponent<Depth>();
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
