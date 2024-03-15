@@ -32,6 +32,12 @@ void Herramientas::setFunctionality(TipoHerramienta tipo) {
 			paqComp->sellarCalle(Paquete::C3, ent_->getComponent<Transform>());
 			};
 		break;
+	case WeightMachine:
+		funcion_ = [this](ecs::Entity* paq) {
+			Paquete* paqComp = paq->getComponent<Paquete>();
+			paqComp->sellarCalle(Paquete::C3, ent_->getComponent<Transform>());
+		};
+		break;
 	}
 	std::cout << "El tipo de herramienta es: " << tipo << std::endl;
 }

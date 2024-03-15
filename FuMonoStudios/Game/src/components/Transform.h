@@ -51,6 +51,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Vector2D getRelPos() const;
+	// Recibe una posicion y te devuelve
+	Vector2D getPosRelPos() const;
 
 	/// <summary>
 	/// Devuelve posicion del objeto en su centro en

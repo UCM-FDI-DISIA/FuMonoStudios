@@ -152,6 +152,19 @@ void ecs::MainScene::createSelladores() {
 	selloC->addComponent<RenderImage>(selloCTex);
 	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
 	herrSelladorC->setFunctionality(SelloCalleC);
+
+	//// Balanza
+	//Entity* selloC = addEntity(layer::OFFICEELEMENTS);
+	//Texture* selloCTex = &sdlutils().images().at("balanza");
+	//Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
+	//	, selloCTex->height());
+	//selloCTR->setScale(scaleSelladores);
+	//selloC->addComponent<DragAndDrop>(true, [selloC]() {
+	//	selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
+	//});
+	//selloC->addComponent<RenderImage>(selloCTex);
+	//Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
+	//herrSelladorC->setFunctionality(WeightMachine);
 }
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist) {
@@ -321,8 +334,8 @@ void ecs::MainScene::createPaquete (int lv) {
 	paqEnt->addComponent<Wrap>(20, 0, route);
 
 
-	PaqueteBuilder a;
-	a.paqueteRND (lv, paqEnt);
+	PaqueteBuilder* paqBuildInstance = PaqueteBuilder::getInstance();
+	paqBuildInstance->paqueteRND(lv, paqEnt);
 
 	// añadimos que pueda ser interactuado por selladores
 	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {
