@@ -140,5 +140,5 @@ void PaqueteBuilder::crearSello(ecs::Entity* paq, Texture* tex, Vector2D pos, do
 		Transform* selloTr = selloEnt->addComponent<Transform>
 		(pos.getX(), pos.getY(), tex->width() * scaleFactor, tex->height() * scaleFactor);
 	selloEnt->addComponent<RenderImage>(tex);
-	selloTr->setParent(paq->getComponent<Transform>());
+	selloTr->setParent(paqTr);
 }

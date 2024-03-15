@@ -74,15 +74,20 @@ bool Paquete::correcto() const{
 
 void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 
-	Vector2D posSellador = trSellador->getPos();
-	// solo puedes sellar una vez 
+	Vector2D posPaquete = ent_->getComponent<Transform>()->getPos();
+
+	// queremos que la pos sea relativa ya que el sello será hijo de paquete
+	Vector2D posSellador = Vector2D(trSellador->getPos().getX() - posPaquete.getX() + trSellador->getWidth()/2,
+									trSellador->getPos().getY() - posPaquete.getY() + trSellador->getHeigth()/2);
+
+	// solo puedes sellar una vez  
 	if (sello != Erronea && calleMarcada_ == Erronea)
 	{
 		calleMarcada_ = sello;
 		PaqueteBuilder::getInstance()->crearSelloCalle(ent_, miCalle_, posSellador);
 	}
 }
-
+	
 void Paquete::sellarPeso(NivelPeso peso) {
 
 	

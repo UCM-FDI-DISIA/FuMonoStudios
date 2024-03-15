@@ -15,7 +15,7 @@ const int PESO_CARTA = 2;	//Peso carta
 // Miguel: En el futuro haremos que salgan un poco desviados de su
 // posición original para que parezcan más orgánicos los paquetes
 // posicion y tama�o Tipo sellos
-const Vector2D TIPO_SELLO_POS = Vector2D(20, 80);
+const Vector2D TIPO_SELLO_POS = Vector2D(10, 60);
 const double TIPO_SELLO_SIZE = 0.2;
 // posicion y tama�o Fragil sellos
 const Vector2D FRAGIL_SELLO_POS = Vector2D(150, 150);
@@ -65,6 +65,9 @@ public:
 			Texture* selloTex = &sdlutils().images().at(
 				(std::string)"sello" +=
 				(std::string)(nuestraCalle == Paquete::C1 ? "A" : nuestraCalle == Paquete::C2 ? "B" : "C"));
+
+			//Ajustamos la posicion con respecto a la textura del sello
+			pos = Vector2D(pos.getX() - selloTex->width() / 2 * PESO_SELLO_SIZE, pos.getY() - selloTex->height() / 2 * PESO_SELLO_SIZE);
 
 			//Creamos sello
 			crearSello(ent, selloTex, pos, PESO_SELLO_SIZE);
