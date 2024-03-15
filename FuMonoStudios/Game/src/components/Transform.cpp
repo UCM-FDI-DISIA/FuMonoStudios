@@ -123,7 +123,7 @@ Vector2D Transform::getPos() const
 }
 
 Vector2D Transform::getCenter() const {
-	return Vector2D(position_.getX() + ((width_ * trueScale_) / 2), position_.getY() + ((height_ * scale_) / 2));
+	return Vector2D(position_.getX() + ((width_ * trueScale_) / 2), position_.getY() + ((height_ * trueScale_) / 2));
 }
 
 //Devuelve la posici�n relativa
