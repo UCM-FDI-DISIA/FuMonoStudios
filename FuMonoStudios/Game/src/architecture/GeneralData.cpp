@@ -44,3 +44,20 @@ int GeneralData::getPaqueteLevel() {
 	//Aqui habra que decidir el paquete level en funci�n del d�a
 	return paqueteLvl_;
 }
+
+void GeneralData::changeParamID(int i, bool suma) {
+	if (suma) {
+		paramAjustes_[i] += 10;
+		if (paramAjustes_[i] >= 100) {
+			paramAjustes_[i] = 100;
+		}
+	}
+	else {
+		paramAjustes_[i] -= 10;
+		if (paramAjustes_[i] <= 0) {
+			paramAjustes_[i] = 0;
+		}
+	}
+
+	std::cout << "El valor del parametro ahora es: " << paramAjustes_[i] << std::endl;
+}

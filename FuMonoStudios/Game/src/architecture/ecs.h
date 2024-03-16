@@ -42,6 +42,7 @@ namespace ecs {
 			EXPLORE_SCENE,
 			END_WORK_SCENE,
 			MENU_SCENE,
+			CONFIG_SCENE,
 			_LAST_SCENE
 		};
 		constexpr sceneId maxSceneId = _LAST_SCENE;

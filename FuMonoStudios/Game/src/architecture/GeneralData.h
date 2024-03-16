@@ -23,6 +23,11 @@ public:
 	void setEventoID(int evento); //Cambia el ID del evento a ocurrir
 	int getEventoID(); //Devuelve el id del evento que ocurrir� en el juego
 	int getMoney() { return dinero_; }
+	void changeParamID(int i, bool suma); //Modifica un parametro en especifico del array y decide si se suma o no
+	int getParam(int i) {
+		std::cout << "El valor del parametro que quieres es: " << paramAjustes_[i] << std::endl;
+		return paramAjustes_[i]; 
+	}
 
 	void correctPackage() { corrects_++; }
 	void wrongPackage() { fails_++; }
@@ -47,6 +52,9 @@ private:
 	int eventoID_; //Variable int que define cual evento especial de la historia deber� de ejecutarse
 	int dia_;
 	int paqueteLvl_ = 0; // de momento es 0
+	int paramAjustes_[10]; //Array de ints en el que cada posicion corresponde al numero de configuracion de un parametro
+						  //dentro de los ajustes del juego. Por ejemplo, la posición 1 puede corresponder al
+	                      //nivel de volumen (maximo 100).
 	std::vector<Paquete> paquetesNPCs;
 };
 

@@ -59,6 +59,19 @@ void ecs::MainMenu::init()
 
 	};
 	clickerPress->addEvent(funcPress);
+
+	Entity* BotonPress2 = addEntity();
+
+	Transform* transformBoton2 = BotonPress2->addComponent<Transform>(400, 650, texturaBoton->width(), texturaBoton->height());
+	RenderImage* renderBoton2 = BotonPress2->addComponent<RenderImage>(texturaBoton);
+
+	auto clickerPress2 = BotonPress2->addComponent<Clickeable>();
+
+	CallbackClickeable funcPress2 = [this]() {
+		gm().requestChangeScene(ecs::sc::MENU_SCENE, ecs::sc::CONFIG_SCENE);
+
+	};
+	clickerPress2->addEvent(funcPress2);
 }
 
 void ecs::MainMenu::changeToMainScene() {
