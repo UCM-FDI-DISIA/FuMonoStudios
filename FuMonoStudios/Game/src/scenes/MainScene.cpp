@@ -63,6 +63,8 @@ void ecs::MainScene::init()
 
 	createManual();
 
+	createClock();
+
 	initTexts();
 
 	createPaquete(generalData().getPaqueteLevel());
@@ -112,6 +114,39 @@ void ecs::MainScene::init()
 void ecs::MainScene::close() {
 	ecs::Scene::close();
 	generalData().updateMoney(correct_,fails_);
+}
+
+void ecs::MainScene::createClock() {
+	Entity* clock = addEntity(layer::BACKGROUND);
+	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
+	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
+	clockCenter = clock->getComponent<Transform>()->getCenter();
+
+
+	Entity* manecillaL = addEntity(layer::BACKGROUND);
+	//trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
+	//manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+
+	Entity* manecillaS = addEntity(layer::BACKGROUND);
+	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
+	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
+
+	ComonObjectsFactory a(this);
+	a.createTextuButton(Vector2D(200, 100), "radio+", 50, [this]() {
+		radiusManS += 0.1;
+		});
+
+	a.createTextuButton(Vector2D(200, 200), "radio-", 50, [this]() {
+		radiusManS -= 0.1;
+		});
+
+	a.createTextuButton(Vector2D(200, 300), "augRot+", 50, [this]() {
+		constRotS += 0.1;
+		});
+
+	a.createTextuButton(Vector2D(200, 400), "augRot-", 50, [this]() {
+		constRotS -= 0.1;
+		});
 }
 
 void ecs::MainScene::createSelladores() {
@@ -260,6 +295,20 @@ void ecs::MainScene::initTexts() {
 }
 
 void ecs::MainScene::updateTimer() {
+
+	x = (x + 0.01);
+
+	/*trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
+						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
+	trManecillaL->setRotation(90 + x * constRotL);*/
+
+	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(x),
+							clockCenter.getY() + offsetS.getY() + radiusManS * sin(x));
+		trManecillaS->setRotation(90 + x * constRotS);
+
+	std::cout << "Radius:" << radiusManS << " AugmentRot:" << constRotS << std::endl;
+
+
 	if (timerTexture_ != nullptr)
 	{
 		delete timerTexture_;

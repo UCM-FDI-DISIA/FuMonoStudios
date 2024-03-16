@@ -212,6 +212,18 @@
     {
       "id": "miniManual",
       "file": "recursos/images/ManualMini.png"
+    },
+    {
+      "id": "reloj",
+      "file": "recursos/images/Reloj.png"
+    },
+    {
+      "id": "manecillaL",
+      "file": "recursos/images/manecillaL.png"
+    },
+    {
+      "id": "manecillaS",
+      "file": "recursos/images/manecillaS.png"
     }
   ],
   "fonts":[
