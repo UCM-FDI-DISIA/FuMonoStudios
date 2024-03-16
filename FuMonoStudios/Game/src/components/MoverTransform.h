@@ -2,6 +2,7 @@
 #include "../architecture/Component.h"
 #include "../sdlutils/SDLutils.h"
 #include "Transform.h"
+#include "DragAndDrop.h"
 
 // El easing EaseOutBack recomendado para la entrada
 // del paquete por la derecha 

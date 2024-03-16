@@ -3,8 +3,8 @@
 #include "../architecture/Entity.h"
 #include "../architecture/Time.h"
 
-const float Gravity::GRAVITY_LIMIT = 400.0f;
-const float Gravity::DEFAUTL_FORCE = 9.8f;
+const float Gravity::GRAVITY_LIMIT = 625.0f;
+const float Gravity::DEFAUTL_FORCE = 9.8f * 2;
 const float Gravity::MAX_VELOCITY = 30.0f;
 
 Gravity::Gravity() : tr_(nullptr), gravityForce_(DEFAUTL_FORCE), velocity_(0), active_(true) {}
@@ -23,7 +23,7 @@ void Gravity::initComponent() {
 void Gravity::update() {
 
     if (active_) {
-        bool contactGround = (tr_->getPos().getY() >= GRAVITY_LIMIT);
+        bool contactGround = (tr_->getCenter().getY() >= GRAVITY_LIMIT);
 
         if (!contactGround) {
             velocity_ += gravityForce_ * Time::getDeltaTime();
