@@ -43,6 +43,7 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
+
 			updateTimer();
 		}
 		else
@@ -124,29 +125,12 @@ void ecs::MainScene::createClock() {
 
 
 	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	//trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
-	//manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
+	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
 
 	Entity* manecillaS = addEntity(layer::BACKGROUND);
 	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
 	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
-
-	ComonObjectsFactory a(this);
-	a.createTextuButton(Vector2D(200, 100), "radio+", 50, [this]() {
-		radiusManS += 0.1;
-		});
-
-	a.createTextuButton(Vector2D(200, 200), "radio-", 50, [this]() {
-		radiusManS -= 0.1;
-		});
-
-	a.createTextuButton(Vector2D(200, 300), "augRot+", 50, [this]() {
-		constRotS += 0.1;
-		});
-
-	a.createTextuButton(Vector2D(200, 400), "augRot-", 50, [this]() {
-		constRotS -= 0.1;
-		});
 }
 
 void ecs::MainScene::createSelladores() {
@@ -295,19 +279,23 @@ void ecs::MainScene::initTexts() {
 }
 
 void ecs::MainScene::updateTimer() {
+	// numeros que aplicados hacen representar bien las horas y minutos
+	float x = ((minutes - 15) / 9.55);
+	float y = ((hours - 6) / 3.82);
 
-	x = (x + 0.01);
-
-	/*trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
+	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
 						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
-	trManecillaL->setRotation(90 + x * constRotL);*/
+	trManecillaL->setRotation(90 + x * CONST_ROT);
 
-	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(x),
-							clockCenter.getY() + offsetS.getY() + radiusManS * sin(x));
-		trManecillaS->setRotation(90 + x * constRotS);
+	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
+							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
+	trManecillaS->setRotation(y * CONST_ROT);
 
-	std::cout << "Radius:" << radiusManS << " AugmentRot:" << constRotS << std::endl;
+	minutes += timeMultiplier * 1;
+	hours += timeMultiplier * 0.01666;
 
+	//std::cout << "y: " << y << " x:" << x << std::endl;
+	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
 
 	if (timerTexture_ != nullptr)
 	{
