@@ -20,7 +20,7 @@ namespace ecs {
         Font* getFont() { return timeFont_; }
     private:
         void createManual();
-        void createTubo(Paquete::Distrito dist);
+        void createTubo(Paquete::Distrito dist, bool desbloqueado);
         void createSelladores();
         void createPaquete(int lv);
         
