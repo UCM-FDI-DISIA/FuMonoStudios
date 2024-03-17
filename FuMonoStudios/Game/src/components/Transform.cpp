@@ -44,7 +44,7 @@ Transform* Transform::getParent() const {
 	return parentTr_;
 }
 
-// Los objetos solo pueden tener un unico padre
+// Los objetos solo pueden tener un �nico padre
 void Transform::setParent(Transform* newParent) {
 	if (parentTr_ != newParent) {
 		parentTr_ = newParent;

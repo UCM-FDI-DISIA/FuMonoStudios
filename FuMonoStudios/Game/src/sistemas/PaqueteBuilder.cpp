@@ -4,8 +4,6 @@
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
 
-PaqueteBuilder* PaqueteBuilder::instance = nullptr;
-
 Paquete::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
 	int rnd = sdlutils().rand().nextInt(0, 8);
 	return (Paquete::Distrito)rnd;
@@ -93,26 +91,25 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 
 	//Creamos la entidad Tipo sello 
 	Paquete::TipoPaquete miTipo = paqComp->getTipo();
-	Texture* selloTex = &sdlutils().images().at(miTipo == Paquete::Alimento ? "selloAlimento" :
+	std::string tipoString = (miTipo == Paquete::Alimento ? "selloAlimento" :
 		miTipo == Paquete::Medicinas ? "selloMedicinas" :
 		miTipo == Paquete::Joyas ? "selloJoyas" :
 		miTipo == Paquete::Materiales ? "selloMateriales" :
 		miTipo == Paquete::Armamento ? "selloArmamento" : "Desconocido");
-	crearSello(paq, selloTex, TIPO_SELLO_POS, TIPO_SELLO_SIZE);
+	crearSello(paq, tipoString, TIPO_SELLO_POS_X, TIPO_SELLO_POS_Y, TIPO_SELLO_SIZE, TIPO_SELLO_SIZE);
 
 	//Creamos la entidad Peso sello 
 	Paquete::NivelPeso miPeso = paqComp->getPeso();
 	if (miPeso != Paquete::Ninguno) {
-		Texture* selloTex = &sdlutils().images().at(miTipo == Paquete::Bajo ? "selloPesoBajo" :
+		tipoString = (miTipo == Paquete::Bajo ? "selloPesoBajo" :
 			miTipo == Paquete::Medio ? "selloPesoMedio" :
 			miTipo == Paquete::Alto ? "selloPesoAlto" : "selloPesoBajo");
-		crearSello(paq, selloTex, PESO_SELLO_POS, PESO_SELLO_SIZE);
+		crearSello(paq, tipoString, PESO_SELLO_POS_X, PESO_SELLO_POS_Y, PESO_SELLO_SIZE, PESO_SELLO_SIZE);
 	}
 	//Creamos la entidad Fragil sello 
 	bool fragil = paqComp->getFragil();
 	if (fragil) {
-		Texture* selloTex = &sdlutils().images().at("selloFragil");
-		crearSello(paq, selloTex, FRAGIL_SELLO_POS, FRAGIL_SELLO_SIZE);
+		crearSello(paq, "selloFragil", FRAGIL_SELLO_POS_X, FRAGIL_SELLO_POS_Y, FRAGIL_SELLO_SIZE, FRAGIL_SELLO_SIZE);
 	}
 }
 
@@ -134,11 +131,10 @@ void PaqueteBuilder::createVisualDirections(ecs::Entity* paq, Paquete* paqComp) 
 	remitenteTr->setParent(paq->getComponent<Transform>());
 }
 
-void PaqueteBuilder::crearSello(ecs::Entity* paq, Texture* tex, Vector2D pos, double scaleFactor) {
-	Transform* paqTr = paq->getComponent<Transform>();
-	ecs::Entity* selloEnt = paq->getMngr()->addEntity(ecs::layer::STAMP);
-		Transform* selloTr = selloEnt->addComponent<Transform>
-		(pos.getX(), pos.getY(), tex->width() * scaleFactor, tex->height() * scaleFactor);
-	selloEnt->addComponent<RenderImage>(tex);
-	selloTr->setParent(paqTr);
+void PaqueteBuilder::crearSello(ecs::Entity* paq, std::string texKey, int x, int y, int width, int height) {
+	ecs::Entity* SelloEnt = paq->getMngr()->addEntity(ecs::layer::STAMP);
+	Texture* SelloTex = &sdlutils().images().at(texKey);
+	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);
+	SelloEnt->addComponent<RenderImage>(SelloTex);
+	SelloTr->setParent(paq->getComponent<Transform>());
 }

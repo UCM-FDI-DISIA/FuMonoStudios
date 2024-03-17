@@ -7,7 +7,7 @@
 using Callback = std::function<void(ecs::Entity*)>;
 
 enum TipoHerramienta {
-	SelloCalleA, SelloCalleB, SelloCalleC, WeightMachine
+	SelloCalleA, SelloCalleB, SelloCalleC
 };
 
 // Para usar esta clase, hay que asignarla al entity y luego
