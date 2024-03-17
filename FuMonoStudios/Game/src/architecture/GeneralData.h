@@ -30,7 +30,7 @@ public:
 	void setDia(int dia) { dia_ = dia; }
 
 	void setTubesAmount(int tubos) { numTubos_ = tubos; } // Aumenta el numero de tubos en el minijuego cuando se requiera (podría llamarse automáticamente
-														  // desde setDia modificado)
+														  // desde setDia modificado). Que jose lo haga cuando se sepan los días en los que un distrito y su tubo se desbloquean
 	int getTubesAmount() { return numTubos_; }
 
 	void correctPackage() { corrects_++; }

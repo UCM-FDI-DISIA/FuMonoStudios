@@ -73,6 +73,7 @@ void ecs::MainScene::init()
 		createTubo((Paquete::Distrito)i, true);
 		j++;
 	}
+	//Creación de paquetes bloqueados
 	for (int z = j; z < 7; z++) {
 		createTubo((Paquete::Distrito)z, false);
 	}
