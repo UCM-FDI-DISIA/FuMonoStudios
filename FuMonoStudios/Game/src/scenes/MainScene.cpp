@@ -24,6 +24,7 @@
 #include "../architecture/GeneralData.h"
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
+#include "../components/ErrorNote.h"
 
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
@@ -94,6 +95,8 @@ void ecs::MainScene::init()
 			{
 				generalData().wrongPackage();
 				fails_++;
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), true, false);
 			}
 				
 			else
@@ -183,6 +186,14 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 			}
 			else {
 				fails_++;
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				if (dist == entRec->getComponent<Paquete>()->getDistrito()) {
+					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, false);
+				}
+				else
+				{
+					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
+				}
 			}
 #ifdef _DEBUG
 			updateFailsText();
