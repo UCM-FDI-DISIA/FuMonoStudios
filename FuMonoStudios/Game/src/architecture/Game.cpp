@@ -12,6 +12,7 @@
 #include "../scenes/EndWorkScene.h"
 #include "Time.h"
 #include "GeneralData.h"
+#include <iostream>
 
 Game::Game() :exit_(false) {
 	SDLUtils::init("Mail To Atlantis", 1920, 1080, "recursos/config/mail.resources.json");
@@ -25,7 +26,7 @@ Game::Game() :exit_(false) {
 	SDL_SetWindowFullscreen(window_,SDL_WINDOW_FULLSCREEN_DESKTOP);
 	gameScenes_ = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
-	loadScene(ecs::sc::MAIN_SCENE);
+	loadScene(ecs::sc::MENU_SCENE);
 }
 
 Game::~Game()
@@ -41,6 +42,7 @@ void Game::run()
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.DisplaySize = ImVec2(1920, 1080);
 
 	ImGui_ImplSDL2_InitForSDLRenderer(sdlutils().window(), sdlutils().renderer());
 	ImGui_ImplSDLRenderer2_Init(sdlutils().renderer());
@@ -77,11 +79,10 @@ void Game::run()
 		update();
 		sdlutils().clearRenderer();
 
-		render();
-
 		ImGui_ImplSDLRenderer2_NewFrame();
 		ImGui_ImplSDL2_NewFrame();
 		/**/
+		render();
 
 		sdlutils().presentRenderer();
 
