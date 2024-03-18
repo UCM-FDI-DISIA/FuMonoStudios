@@ -1,6 +1,9 @@
 #include "MainScene.h"
 #include "../architecture/Entity.h"
 #include <iostream>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdlrenderer2.h>
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Transform.h"
 #include "../components/Render.h"
@@ -30,6 +33,11 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
+#ifdef DEV_TOOLS
+	stampsUnloked_= true;
+	timeToAdd_ = 5;
+#endif // DEV_TOOLS
+
 }
 
 ecs::MainScene::~MainScene()
@@ -51,11 +59,66 @@ void ecs::MainScene::update()
 	}
 }
 
+void ecs::MainScene::render()
+{
+	Scene::render();
+#ifdef DEV_TOOLS
+	ImGui::NewFrame();
+	ImGui::Begin("Paquetes Scene Data");
+	std::string time = "Current Game Time: " + std::to_string(timer_);
+	ImGui::Text(time.c_str());
+	std::string data = "Aciertos: " + std::to_string(correct_);
+	ImGui::Text(data.c_str());
+	data = "Fallos: " + std::to_string(fails_);
+	ImGui::Text(data.c_str());
+	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
+	ImGui::Text(data.c_str());
+	ImGui::End();
+
+
+	ImGui::Begin("Controls");
+	if (ImGui::CollapsingHeader("Paquetes"))
+	{
+		ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
+		if (ImGui::Button("Create pacage")) {
+			createPaquete(generalData().getPaqueteLevel());
+		}
+	}
+	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
+	if (ImGui::CollapsingHeader("Mecánicas"))
+	{
+		int lvl = generalData().getPaqueteLevel();
+		ImGui::InputInt("Nivel del Paquete", &lvl);
+		generalData().setPaqueteLevel(lvl);
+		//ImGui::Checkbox("Sellos",&stampsUnloked_);
+		//ImGui::Checkbox("Peso",&weightUnloked_);
+		//ImGui::Checkbox("Cinta", &cintaUnloked_);
+	}
+	if (ImGui::CollapsingHeader("Tiempo")) {
+		if (ImGui::Button("Reset Timer")) {
+			timer_ = MINIGAME_TIME;
+		}
+
+		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
+		if (ImGui::Button("Add Time")) {
+			timer_ += timeToAdd_;
+		}
+	}
+
+	ImGui::End();
+	ImGui::Render();
+
+	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+#endif // DEV_TOOLS
+
+}
+
 void ecs::MainScene::init()
 {
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
+	ComonObjectsFactory factory(this);
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -75,12 +138,11 @@ void ecs::MainScene::init()
 	createSelladores();
   
   	//cinta envolver
-	Entity* cinta = addEntity(ecs::layer::TAPE);
-	cinta->addComponent<Transform>(560, 500, 100, 150);
-	Texture* texturaCin = &sdlutils().images().at("cinta");
-	RenderImage* rd = cinta->addComponent<RenderImage>(texturaCin);
+	factory.setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory.createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
+	factory.setLayer(ecs::layer::DEFAULT);
 
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
@@ -104,8 +166,7 @@ void ecs::MainScene::init()
 				generalData().correctPackage();
 				correct_++;
 			}
-				
-			updateFailsText();
+			
 			entRec->setAlive(false);
 			createPaquete(generalData().getPaqueteLevel());
 		}
@@ -195,9 +256,6 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
 				}
 			}
-#ifdef _DEBUG
-			updateFailsText();
-#endif // _DEBUG
 
 			std::cout << "crazy! " << dist << std::endl;
 		}
@@ -245,88 +303,59 @@ void ecs::MainScene::createManual()
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
+
+	fact.setLayer(ecs::layer::DEFAULT);
+
 	manual->addComponent<Depth>();
 }
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
+#ifndef DEV_TOOLS
 	timerEnt_ = addEntity(ecs::layer::UI);
 	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
 	timerEnt_->addComponent<RenderImage>();
 	updateTimer();
-#ifdef _DEBUG
-
-
-	// creamos contador fallos y aciertos
-	successEnt_ = addEntity(ecs::layer::UI);
-	successEnt_->addComponent<Transform>(1350, 250, 100, 100);
-	successEnt_->addComponent<RenderImage>();
-
-	failsEnt_ = addEntity(ecs::layer::UI);
-	failsEnt_->addComponent<Transform>(1350, 350, 100, 100);
-	failsEnt_->addComponent<RenderImage>();
-
-	updateFailsText();
-#endif // _DEBUG
+#endif // DEV_TOOLS
 }
 
 void ecs::MainScene::updateTimer() {
+#ifndef DEV_TOOLS
 	if (timerTexture_ != nullptr)
 	{
 		delete timerTexture_;
 		timerTexture_ = nullptr;
 	}
-		
+
 	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
 	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
+#endif // !DEV_TOOLS
 }
 
-#ifdef _DEBUG
-void ecs::MainScene::updateFailsText() {
-	if (successTexture_ != nullptr) {
-		delete successTexture_;
-		successTexture_ = nullptr;
-	}
-	successTexture_ = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct_), *timeFont_, build_sdlcolor(0x00ff00ff), 200);
-	successEnt_->getComponent<RenderImage>()->setTexture(successTexture_);
-
-	if (failsTexture_ != nullptr) {
-		delete failsTexture_;
-		failsTexture_ = nullptr;
-	}
-	failsTexture_ = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails_), *timeFont_, build_sdlcolor(0xff0000ff), 200);
-	failsEnt_->getComponent<RenderImage>()->setTexture(failsTexture_);
-}
-#endif // _DEBUG
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
+
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
 
-	Texture* texturaPaquet25 = &sdlutils().images().at("caja25");
-
-	Texture* texturaPaquet50 = &sdlutils().images().at("caja50");
-
-	Texture* texturaPaquet75 = &sdlutils().images().at("caja75");
-
-	Texture* texturaPaquet100 = &sdlutils().images().at("caja100");
+	std::vector<Texture*> textures = {
+		texturaPaquet,
+		&sdlutils().images().at("caja25"),
+		&sdlutils().images().at("caja50"),
+		&sdlutils().images().at("caja75"),
+		&sdlutils().images().at("caja100")
+	};
 
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-	trPq->setScale(paqueteScale);
+	trPq->setScale(paqueteScale);+
 	paqEnt->addComponent<Depth>();
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
 	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
 
-	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>();
-
-	multTexturesPaq->addTexture(texturaPaquet);
-	multTexturesPaq->addTexture(texturaPaquet25);
-	multTexturesPaq->addTexture(texturaPaquet50);
-	multTexturesPaq->addTexture(texturaPaquet75);
-	multTexturesPaq->addTexture(texturaPaquet100);
+	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
 
 	multTexturesPaq->initComponent();
 

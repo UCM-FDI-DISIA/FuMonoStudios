@@ -1,5 +1,8 @@
 #include "Game.h"
 #include <list>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdlrenderer2.h>
 #include <SDL.h>
 #include <algorithm>
 #include "../sdlutils/InputHandler.h"
@@ -35,6 +38,13 @@ Game::~Game()
 
 void Game::run()
 {
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	ImGui_ImplSDL2_InitForSDLRenderer(sdlutils().window(), sdlutils().renderer());
+	ImGui_ImplSDLRenderer2_Init(sdlutils().renderer());
+
 	while (!exit_)
 	{
 		if (sceneChange_)
@@ -42,7 +52,10 @@ void Game::run()
 			changeScene(scene1_, scene2_);
 			sceneChange_ = false;
 		}
-
+		//SDL_Event e;
+		//while (SDL_PollEvent(&e)) {
+		//	ImGui_ImplSDL2_ProcessEvent(&e);
+		//}
 		refresh();
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
@@ -60,13 +73,25 @@ void Game::run()
 			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
 
+
 		update();
 		sdlutils().clearRenderer();
+
 		render();
+
+		ImGui_ImplSDLRenderer2_NewFrame();
+		ImGui_ImplSDL2_NewFrame();
+		/**/
+
 		sdlutils().presentRenderer();
 
 		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
+
+
 	}
+	ImGui_ImplSDLRenderer2_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
 }
 
 //void Game::writeMessage() {

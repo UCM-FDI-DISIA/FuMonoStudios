@@ -41,6 +41,13 @@
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
+    <ClCompile Include="ImGui\imgui.cpp" />
+    <ClCompile Include="ImGui\imgui_demo.cpp" />
+    <ClCompile Include="ImGui\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\imgui_tables.cpp" />
+    <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
   </ItemGroup>
@@ -96,6 +103,14 @@
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\components\SelfDestruct.h" />
     <ClInclude Include="src\utils\checkML.h" />
+    <ClInclude Include="ImGui\imconfig.h" />
+    <ClInclude Include="ImGui\imgui.h" />
+    <ClInclude Include="ImGui\imgui_internal.h" />
+    <ClInclude Include="ImGui\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\imstb_textedit.h" />
+    <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
+    <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
   </ItemGroup>
