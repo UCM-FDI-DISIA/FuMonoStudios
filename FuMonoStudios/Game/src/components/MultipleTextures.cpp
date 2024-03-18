@@ -37,6 +37,14 @@ void MultipleTextures::previousTexture()
     mRend_->setTexture(*currentTexture_);
 }
 
+void MultipleTextures::restartTexture() {
+
+    currentTexture_ = texturesVector_.begin();
+
+    mRend_->setTexture(*currentTexture_);
+
+}
+
 void MultipleTextures::initComponent()
 {
     mRend_ = ent_->getComponent<RenderImage>();

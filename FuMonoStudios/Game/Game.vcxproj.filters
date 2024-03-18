@@ -48,6 +48,8 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
+    <ClCompile Include="src\components\Depth.cpp" />
+    <ClCompile Include="src\components\ErrorNote.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -109,6 +111,8 @@
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
+    <ClInclude Include="src\components\Depth.h" />
+    <ClInclude Include="src\components\ErrorNote.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />

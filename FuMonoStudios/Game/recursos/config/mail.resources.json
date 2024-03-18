@@ -200,6 +200,18 @@
     {
       "id": "papelera",
       "file": "recursos/images/papelera.png"
+    },
+    {
+      "id": "cartel",
+      "file": "recursos/images/CartelCompleto.png"
+    },
+    {
+      "id": "cuadroDialogo",
+      "file": "recursos/images/CuadroDialogo.png"
+    },
+    {
+      "id": "miniManual",
+      "file": "recursos/images/ManualMini.png"
     }
   ],
   "fonts":[

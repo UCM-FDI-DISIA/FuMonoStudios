@@ -26,6 +26,7 @@ public:
     void addTexture(Texture* texture);
     void nextTexture();
     void previousTexture();
+    void restartTexture();
     Texture* getCurrentTexture() { return *currentTexture_; } 
 private:
     std::vector<Texture*> texturesVector_;

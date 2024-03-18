@@ -14,16 +14,18 @@
 #include "GeneralData.h"
 
 Game::Game() :exit_(false) {
-	SDLUtils::init("Mail To Atlantis", 1600, 900, "recursos/config/mail.resources.json");
+	SDLUtils::init("Mail To Atlantis", 1920, 1080, "recursos/config/mail.resources.json");
 
 	auto& sdl = *SDLUtils::instance();
 
 	sdl.showCursor();
 	window_ = sdl.window();
 	renderer_ = sdl.renderer();
+
+	SDL_SetWindowFullscreen(window_,SDL_WINDOW_FULLSCREEN_DESKTOP);
 	gameScenes_ = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
-	loadScene(ecs::sc::MENU_SCENE);
+	loadScene(ecs::sc::MAIN_SCENE);
 }
 
 Game::~Game()

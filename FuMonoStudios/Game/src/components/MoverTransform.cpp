@@ -14,6 +14,10 @@ void MoverTransform::initComponent() {
 	mTr_ = ent_->getComponent<Transform>();
 	initPos_ = mTr_->getPos();
 	startTimer_ = sdlutils().currRealTime();
+
+	DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
+	if (dnd_ != nullptr)
+		dnd_->disableInteraction();
 }
 
 void MoverTransform::update() {
@@ -50,6 +54,11 @@ void MoverTransform::update() {
 	if (timer_ > (startTimer_ + movTime_)) 
 	{
 		mTr_->setPos(finalPos_);
+
+		DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
+		if (dnd_ != nullptr)
+			dnd_->activateInteraction();
+
 		ent_->removeComponent<MoverTransform>();
 	}
 }
