@@ -1,5 +1,8 @@
 #include "Game.h"
 #include <list>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdlrenderer2.h>
 #include <SDL.h>
 #include <algorithm>
 #include "../sdlutils/InputHandler.h"
@@ -9,6 +12,7 @@
 #include "../scenes/EndWorkScene.h"
 #include "Time.h"
 #include "GeneralData.h"
+#include <iostream>
 
 Game::Game() :exit_(false) {
 	SDLUtils::init("Mail To Atlantis", 1920, 1080, "recursos/config/mail.resources.json");
@@ -22,7 +26,7 @@ Game::Game() :exit_(false) {
 	SDL_SetWindowFullscreen(window_,SDL_WINDOW_FULLSCREEN_DESKTOP);
 	gameScenes_ = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
-	loadScene(ecs::sc::MAIN_SCENE);
+	loadScene(ecs::sc::MENU_SCENE);
 }
 
 Game::~Game()
@@ -35,6 +39,14 @@ Game::~Game()
 
 void Game::run()
 {
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.DisplaySize = ImVec2(1920, 1080);
+
+	ImGui_ImplSDL2_InitForSDLRenderer(sdlutils().window(), sdlutils().renderer());
+	ImGui_ImplSDLRenderer2_Init(sdlutils().renderer());
+
 	while (!exit_)
 	{
 		if (sceneChange_)
@@ -42,7 +54,10 @@ void Game::run()
 			changeScene(scene1_, scene2_);
 			sceneChange_ = false;
 		}
-
+		//SDL_Event e;
+		//while (SDL_PollEvent(&e)) {
+		//	ImGui_ImplSDL2_ProcessEvent(&e);
+		//}
 		refresh();
 		ih().refresh();
 		Uint32 startTime = sdlutils().virtualTimer().currTime();
@@ -60,13 +75,24 @@ void Game::run()
 			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
 
+
 		update();
 		sdlutils().clearRenderer();
+
+		ImGui_ImplSDLRenderer2_NewFrame();
+		ImGui_ImplSDL2_NewFrame();
+		/**/
 		render();
+
 		sdlutils().presentRenderer();
 
 		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
+
+
 	}
+	ImGui_ImplSDLRenderer2_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
 }
 
 //void Game::writeMessage() {

@@ -2,11 +2,13 @@
 #include<list>
 #include <SDL.h>
 #include <array>
-#include "../utils/Singleton.h"
-#include "../architecture/ecs.h"
-#include "../sdlutils/SDLUtils.h"
-#include "Scene.h"
+#include <utils/Singleton.h>
+#include <architecture/ecs.h>
+#include <sdlutils/SDLUtils.h>
+#include <architecture/Scene.h>
 #include <functional>
+
+#define DEV_TOOLS
 
 class Game : public Singleton<Game> {
 

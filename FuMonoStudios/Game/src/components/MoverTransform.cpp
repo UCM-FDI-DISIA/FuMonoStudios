@@ -2,7 +2,15 @@
 #include "../architecture/Entity.h"
 
 MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing) 
-	: finalPos_(newPos), movTime_(MovTime * 1000), easing_(Easing), timer_(0), mTr_(nullptr){
+	: finalPos_(newPos), movTime_(MovTime * 1000), 
+	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(false){
+
+}
+
+MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing, SimpleCallback call)
+	: finalPos_(newPos), movTime_(MovTime * 1000),
+	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(true), call_(call)
+{
 
 }
 
@@ -58,7 +66,8 @@ void MoverTransform::update() {
 		DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
 		if (dnd_ != nullptr)
 			dnd_->activateInteraction();
-
+		if (usingCallback)
+			call_();
 		ent_->removeComponent<MoverTransform>();
 	}
 }

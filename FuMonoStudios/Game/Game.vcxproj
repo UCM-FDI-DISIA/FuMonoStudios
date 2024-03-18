@@ -74,6 +74,18 @@
     <Import Project="Properties.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)ImGui;$(ProjectDir)ImGui\backends;$(ProjectDir)ImGui\misc;$(ProjectDir)src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -131,6 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
+    <ClCompile Include="ImGui\imgui.cpp" />
+    <ClCompile Include="ImGui\imgui_demo.cpp" />
+    <ClCompile Include="ImGui\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\imgui_tables.cpp" />
+    <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="src\components\ErrorNote.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
@@ -174,6 +194,15 @@
     <ClCompile Include="src\architecture\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
+    <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
+    <ClInclude Include="ImGui\imconfig.h" />
+    <ClInclude Include="ImGui\imgui.h" />
+    <ClInclude Include="ImGui\imgui_internal.h" />
+    <ClInclude Include="ImGui\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\imstb_textedit.h" />
+    <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />

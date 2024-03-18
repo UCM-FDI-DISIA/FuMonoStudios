@@ -228,6 +228,7 @@
   ],
   "fonts":[
     {"id": "arial50","file": "recursos/fonts/ARIAL.ttf", "size": 50 },
+    {"id": "arial40","file": "recursos/fonts/ARIAL.ttf", "size": 40 },
     {"id": "capture_it50","file": "recursos/fonts/Capture_it.ttf", "size": 50 },
     {"id": "NES50","file": "recursos/fonts/NES-Chimera.ttf", "size": 50 },
     {"id": "roboto50","file": "recursos/fonts/Roboto-Thin.ttf", "size": 50 }
