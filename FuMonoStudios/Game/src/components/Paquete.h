@@ -47,7 +47,7 @@ public:
 	// Sella la calle una única vez con el sellador
 	void sellarCalle(Calle sello, Transform* trSellador);
 	// Sella el peso
-	void sellarPeso(NivelPeso peso);
+	void sellarPeso(Transform* trBalanza);
 	/// <summary>
 	/// metodo que devuelve el string a implimir en la etiqueta de direccion
 	/// </summary>
@@ -97,5 +97,6 @@ private:
 	//Variables que debe modificar el jugador
 	Calle calleMarcada_;		//Variable que indica para qu� distrito ha sido etiquetado el paquete
 	bool envuelto_;			//Variable que indica si est� envuelto o no el paquete
+	bool pesado_;			// indica si ya fue pesado
 };
 

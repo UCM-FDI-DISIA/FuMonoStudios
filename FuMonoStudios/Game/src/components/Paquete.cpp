@@ -7,6 +7,7 @@
 #include "../architecture/Scene.h"
 #include <bitset>
 #include "../sistemas/PaqueteBuilder.h"
+#include "MoverTransform.h"
 
 
 // cleon: 962 gatitos acaban de morir. con dolor.
@@ -21,7 +22,7 @@ const int pesadoMax = 75;
 
 Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : 
 	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
-	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
+	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), pesado_(false), calleMarcada_(Erronea){
 	
 	std::string filename = "recursos/config/mail.direcctions.json";
 	getStreetsFromJSON(filename, Demeter, "Demeter");
@@ -88,9 +89,17 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 	}
 }
 	
-void Paquete::sellarPeso(NivelPeso peso) {
+void Paquete::sellarPeso(Transform* trBalanza) {
 
-	
+	if (!pesado_) {
+		ent_->addComponent<MoverTransform>(Vector2D(trBalanza->getPos()), 0.5, Easing::EaseOutCubic);
+		//ent_->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
+
+		NivelPeso test = NivelPeso::Alto;
+		PaqueteBuilder::getInstance()->crearSelloPesado(ent_, test);
+		//PaqueteBuilder::getInstance()->crearSelloPesado(ent_, miPeso_);
+		pesado_ = true;
+	}
 }
 
 std::string Paquete::getDirecction()

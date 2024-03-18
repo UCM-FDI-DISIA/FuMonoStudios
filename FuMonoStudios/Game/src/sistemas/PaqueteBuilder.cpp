@@ -100,14 +100,6 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 		miTipo == Paquete::Armamento ? "selloArmamento" : "Desconocido");
 	crearSello(paq, selloTex, TIPO_SELLO_POS, TIPO_SELLO_SIZE);
 
-	//Creamos la entidad Peso sello 
-	Paquete::NivelPeso miPeso = paqComp->getPeso();
-	if (miPeso != Paquete::Ninguno) {
-		Texture* selloTex = &sdlutils().images().at(miTipo == Paquete::Bajo ? "selloPesoBajo" :
-			miTipo == Paquete::Medio ? "selloPesoMedio" :
-			miTipo == Paquete::Alto ? "selloPesoAlto" : "selloPesoBajo");
-		crearSello(paq, selloTex, PESO_SELLO_POS, PESO_SELLO_SIZE);
-	}
 	//Creamos la entidad Fragil sello 
 	bool fragil = paqComp->getFragil();
 	if (fragil) {

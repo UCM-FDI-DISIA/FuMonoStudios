@@ -35,7 +35,10 @@ void Herramientas::setFunctionality(TipoHerramienta tipo) {
 	case WeightMachine:
 		funcion_ = [this](ecs::Entity* paq) {
 			Paquete* paqComp = paq->getComponent<Paquete>();
-			paqComp->sellarCalle(Paquete::C3, ent_->getComponent<Transform>());
+			paqComp->getPeso();
+
+			Transform* entTr = ent_->getComponent<Transform>();
+			paqComp->sellarPeso(entTr);
 		};
 		break;
 	}

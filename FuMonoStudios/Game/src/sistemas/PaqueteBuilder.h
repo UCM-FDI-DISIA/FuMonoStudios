@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "../sdlutils/VirtualTimer.h"
 #include "../architecture/GeneralData.h"
+#include "../components/MoverTransform.h"
+
 
 
 const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
@@ -76,7 +78,13 @@ public:
 	//Añade sello de peso
 	void crearSelloPesado(ecs::Entity* ent, enum Paquete::NivelPeso nuestroPeso) {
 		if (ent->getComponent<Paquete>() != nullptr) {
-
+			//Creamos la entidad Peso sello 
+			if (nuestroPeso != Paquete::Ninguno) {
+				Texture* selloTex = &sdlutils().images().at(nuestroPeso == Paquete::Bajo ? "selloPesoBajo" :
+					nuestroPeso == Paquete::Medio ? "selloPesoMedio" :
+					nuestroPeso == Paquete::Alto ? "selloPesoAlto" : "selloPesoBajo");
+				crearSello(ent, selloTex, PESO_SELLO_POS, PESO_SELLO_SIZE);
+			}
 		}
 	}
 

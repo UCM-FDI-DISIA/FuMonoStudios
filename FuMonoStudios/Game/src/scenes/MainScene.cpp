@@ -69,7 +69,7 @@ void ecs::MainScene::init()
 		createTubo((Paquete::Distrito)i);
 	}
 
-	createSelladores();
+	createHerramientas();
   
   	//cinta envolver
 	Entity* cinta = addEntity(ecs::layer::TAPE);
@@ -112,7 +112,7 @@ void ecs::MainScene::close() {
 	generalData().updateMoney(correct_,fails_);
 }
 
-void ecs::MainScene::createSelladores() {
+void ecs::MainScene::createHerramientas() {
 	float scaleSelladores = 0.2f;
 
 	// Sellador rojo (1)
@@ -152,18 +152,10 @@ void ecs::MainScene::createSelladores() {
 	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
 	herrSelladorC->setFunctionality(SelloCalleC);
 
-	//// Balanza
-	//Entity* selloC = addEntity(layer::OFFICEELEMENTS);
-	//Texture* selloCTex = &sdlutils().images().at("balanza");
-	//Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
-	//	, selloCTex->height());
-	//selloCTR->setScale(scaleSelladores);
-	//selloC->addComponent<DragAndDrop>(true, [selloC]() {
-	//	selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
-	//});
-	//selloC->addComponent<RenderImage>(selloCTex);
-	//Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
-	//herrSelladorC->setFunctionality(WeightMachine);
+	// Balanza
+	createBalanza();
+
+
 }
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist) {
@@ -266,6 +258,33 @@ void ecs::MainScene::initTexts() {
 
 	updateFailsText();
 #endif // _DEBUG
+}
+
+void ecs::MainScene::createBalanza() {
+	Entity* balanzaBase = addEntity(layer::DEFAULT);
+	Entity* balanzaA = addEntity(layer::DEFAULT);
+	Entity* balanzaB = addEntity(layer::TAPE);
+	Texture* balanzaBaseTex = &sdlutils().images().at("weightMachineBase");
+	Texture* balanzaATex = &sdlutils().images().at("weightMachineBalanzaA");
+	Texture* balanzaBTex = &sdlutils().images().at("weightMachineBalanzaB");
+	Transform* balanzaBaseTR = balanzaBase->addComponent<Transform>(250, 520, balanzaBaseTex->width()
+		, balanzaBaseTex->height());
+	Transform* balanzaATR = balanzaA->addComponent<Transform>(0, 0, balanzaATex->width()
+		, balanzaATex->height());
+	Transform* balanzaBTR = balanzaB->addComponent<Transform>(0, 0, balanzaBTex->width()
+		, balanzaBTex->height());
+	balanzaBaseTR->setScale(0.5);
+	balanzaATR->setScale(0.5);
+	balanzaBTR->setScale(0.5);
+	balanzaATR->setParent(balanzaBaseTR);
+	balanzaBTR->setParent(balanzaBaseTR);
+	balanzaBase->addComponent<DragAndDrop>();
+	balanzaBase->addComponent<Gravity>();
+	balanzaBase->addComponent<RenderImage>(balanzaBaseTex);
+	balanzaA->addComponent<RenderImage>(balanzaATex);
+	balanzaB->addComponent<RenderImage>(balanzaBTex);
+	Herramientas* herrBalanza = balanzaBase->addComponent<Herramientas>();
+	herrBalanza->setFunctionality(WeightMachine);
 }
 
 void ecs::MainScene::updateTimer() {
