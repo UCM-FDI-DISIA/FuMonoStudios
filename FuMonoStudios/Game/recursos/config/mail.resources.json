@@ -207,35 +207,47 @@
         {
             "id": "caja75",
             "file": "recursos/images/Caja_Envuelta_75.png"
-
         },
-        {
-            "id": "caja100",
-            "file": "recursos/images/Caja_Envuelta_100.png"
-        },
-        {
-            "id": "papelera",
-            "file": "recursos/images/papelera.png"
-        },
-        {
-            "id": "cartel",
-            "file": "recursos/images/CartelCompleto.png"
-        },
-        {
-            "id": "cuadroDialogo",
-            "file": "recursos/images/CuadroDialogo.png"
-        },
-        {
-            "id": "miniManual",
-            "file": "recursos/images/ManualMini.png"
-        },
-        {
-            "id": "Recibo",
-            "file": "recursos/images/Recibo.png"
-        }
-    ],
+    {
+        "id": "Recibo",
+        "file": "recursos/images/Recibo.png"
+    },
+    {
+      "id":"caja100",
+      "file": "recursos/images/Caja_Envuelta_100.png"
+    },
+    {
+      "id": "papelera",
+      "file": "recursos/images/papelera.png"
+    },
+    {
+      "id": "cartel",
+      "file": "recursos/images/CartelCompleto.png"
+    },
+    {
+      "id": "cuadroDialogo",
+      "file": "recursos/images/CuadroDialogo.png"
+    },
+    {
+      "id": "miniManual",
+      "file": "recursos/images/ManualMini.png"
+    },
+    {
+      "id": "reloj",
+      "file": "recursos/images/Reloj.png"
+    },
+    {
+      "id": "manecillaL",
+      "file": "recursos/images/manecillaL.png"
+    },
+    {
+      "id": "manecillaS",
+      "file": "recursos/images/manecillaS.png"
+    }
+  ],
   "fonts":[
     {"id": "arial50","file": "recursos/fonts/ARIAL.ttf", "size": 50 },
+    {"id": "arial40","file": "recursos/fonts/ARIAL.ttf", "size": 40 },
     {"id": "capture_it50","file": "recursos/fonts/Capture_it.ttf", "size": 50 },
     {"id": "NES50","file": "recursos/fonts/NES-Chimera.ttf", "size": 50 },
     {"id": "roboto50","file": "recursos/fonts/Roboto-Thin.ttf", "size": 50 },

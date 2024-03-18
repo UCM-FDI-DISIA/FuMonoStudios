@@ -44,3 +44,7 @@ int GeneralData::getPaqueteLevel() {
 	//Aqui habra que decidir el paquete level en funci�n del d�a
 	return paqueteLvl_;
 }
+
+void GeneralData::setPaqueteLevel(int lvl) {
+	paqueteLvl_ = lvl;
+}

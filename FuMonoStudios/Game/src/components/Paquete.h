@@ -62,6 +62,7 @@ public:
 	bool getFragil() const { return fragil_; }
 	bool getSelloCorrecto() const { return selloCorrecto_; }
 	bool isCarta() const { return carta_; }
+	bool pesoCorrecto() const;
 
 private:
 	/// <summary>
