@@ -7,7 +7,17 @@
 #include "Depth.h"
 
 Transform::Transform(float x, float y, float w, float h) : Component(), 
-position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1),parentTr_(nullptr) {
+position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1),parentTr_(nullptr),rotation_(0) {
+	auto& sdl = *SDLUtils::instance();
+
+#ifdef _DEBUG
+	renderer_ = sdl.renderer();
+#endif // _DEBUG
+
+}
+
+Transform::Transform(float x, float y, float w, float h, float rot) : Component(),
+position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1), parentTr_(nullptr), rotation_(rot) {
 	auto& sdl = *SDLUtils::instance();
 
 #ifdef _DEBUG

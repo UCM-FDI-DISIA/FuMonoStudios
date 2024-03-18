@@ -11,6 +11,7 @@ class Transform : public ecs::Component
 public:
 	__CMP_DECL__(ecs::cmp::TRANSFORM)
 		Transform(float x, float y, float w, float h);
+		Transform(float x, float y, float w, float h, float rot);
 	~Transform();
 
 	/// <summary>
@@ -89,9 +90,14 @@ public:
 	void setHeith(float newHeith) { height_ = newHeith; }
 
 	// esto lo usa el dragNdrop para que funcione con el escalado
+	// no es lo mismo del depth, es el porcentaje de escala desde
+	// su origen (1)
 	float getPorcentajeScale() {
 		return ((trueScale_ * 100) / scale_) / 100;
 	}
+
+	void setRotation(float newRot) { rotation_ = newRot; }
+	float getRotation() { return rotation_; }
 private:
 	/// <summary>
 	/// Posicion relativa (al padre) del objeto
@@ -113,7 +119,9 @@ private:
 	float trueScale_;
 
 	// para comunicarse con el en caso de usar depth
-	Depth* depthComp_;
+	Depth* depthComp_ = nullptr;
+
+	float rotation_;
 
 	/// <summary>
 	/// Padre del objeto

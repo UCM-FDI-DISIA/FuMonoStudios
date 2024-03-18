@@ -52,6 +52,7 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
+
 			updateTimer();
 		}
 		else
@@ -128,6 +129,8 @@ void ecs::MainScene::init()
 
 	createManual();
 
+	createClock();
+
 	initTexts();
 
 	createPaquete(generalData().getPaqueteLevel());
@@ -177,6 +180,22 @@ void ecs::MainScene::init()
 void ecs::MainScene::close() {
 	ecs::Scene::close();
 	generalData().updateMoney(correct_,fails_);
+}
+
+void ecs::MainScene::createClock() {
+	Entity* clock = addEntity(layer::BACKGROUND);
+	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
+	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
+	clockCenter = clock->getComponent<Transform>()->getCenter();
+
+
+	Entity* manecillaL = addEntity(layer::BACKGROUND);
+	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
+	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+
+	Entity* manecillaS = addEntity(layer::BACKGROUND);
+	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
+	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
 }
 
 void ecs::MainScene::createSelladores() {
@@ -321,6 +340,24 @@ void ecs::MainScene::initTexts() {
 }
 
 void ecs::MainScene::updateTimer() {
+	// numeros que aplicados hacen representar bien las horas y minutos
+	float x = ((minutes - 15) / 9.55);
+	float y = ((hours - 6) / 3.82);
+
+	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
+						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
+	trManecillaL->setRotation(90 + x * CONST_ROT);
+
+	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
+							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
+	trManecillaS->setRotation(y * CONST_ROT);
+
+	minutes += timeMultiplier * 1;
+	hours += timeMultiplier * 0.01666;
+
+	//std::cout << "y: " << y << " x:" << x << std::endl;
+	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
+  
 #ifndef DEV_TOOLS
 	if (timerTexture_ != nullptr)
 	{
