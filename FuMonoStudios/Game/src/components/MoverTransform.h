@@ -8,6 +8,8 @@
 // del paquete por la derecha 
 enum Easing { Linear, EaseOutCubic, EaseOutBack };
 
+using SimpleCallback = std::function<void()>;
+
 // Este componente mueve el transform hacia las coordenadas X
 // en un tiempo Y con un easing. El easing es un efecto, pj 
 // un muelle o linear.
@@ -15,12 +17,16 @@ enum Easing { Linear, EaseOutCubic, EaseOutBack };
 // Para entender los easings https://easings.net
 // 
 // El movTime se mete en segundos 
+// Puedes pasarle un callback para que se ejecute al terminar
+// el movertransform. Esto puede ser util para encadenar moverTansforms>
 class MoverTransform : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::MOVERTRANSFORM)
 
 	MoverTransform(Vector2D& newPos, float MovTime, Easing Easing);
+
+	MoverTransform(Vector2D& newPos, float MovTime, Easing Easing, SimpleCallback call);
 
 	~MoverTransform();
 
@@ -35,5 +41,8 @@ private:
 	Vector2D finalPos_;
 	Vector2D initPos_;
 	Transform* mTr_;
+
+	bool usingCallback;
+	SimpleCallback call_;
 };
 
