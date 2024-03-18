@@ -37,26 +37,12 @@ void ecs::ConfigScene::init()
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
 
-	/*Boton->addComponent<Trigger>();
-	Boton->getComponent<Trigger>()->addCallback([]() {
-
-		std::cout << "Tocando" << std::endl;
-
-		});*/
-
-		/*void Aux(Game * game) {
-
-
-
-			(*game).loadScene(ecs::sc::MAIN_SCENE);
-
-		}*/
 	CallbackClickeable funcPress = [this]() {
 		gm().requestChangeScene(ecs::sc::CONFIG_SCENE, ecs::sc::MENU_SCENE);
 
 	};
 	clickerPress->addEvent(funcPress);
-
+	//Luis: esto que sea place holder hay que poner imagen
 	// Texturas botones - y +
 	Texture* texturaBoton2 = new Texture(sdlutils().renderer(), "(-)", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
 	Texture* texturaBoton3 = new Texture(sdlutils().renderer(), "(+)", sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
@@ -142,7 +128,7 @@ void ecs::ConfigScene::updateValue(Texture* texture, Entity* entity, int index) 
 	texture = new Texture(sdlutils().renderer(), std::to_string(generalData().getParam(index)), sdlutils().fonts().at("arial50"), build_sdlcolor(0x000000ff));
 	entity->getComponent<RenderImage>()->setTexture(texture);
 }
-
+//LUIS: Y si esto fuera un return to scene ????
 void ecs::ConfigScene::changeToMenuScene() {
 
 	//game().loadScene(ecs::sc::MAIN_SCENE);
