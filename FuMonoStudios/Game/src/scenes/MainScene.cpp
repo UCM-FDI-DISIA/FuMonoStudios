@@ -64,6 +64,7 @@ void ecs::MainScene::render()
 	Scene::render();
 #ifdef DEV_TOOLS
 	ImGui::NewFrame();
+
 	ImGui::Begin("Paquetes Scene Data");
 	std::string time = "Current Game Time: " + std::to_string(timer_);
 	ImGui::Text(time.c_str());
