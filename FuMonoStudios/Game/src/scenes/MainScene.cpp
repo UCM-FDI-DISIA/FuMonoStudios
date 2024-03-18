@@ -184,7 +184,6 @@ void ecs::MainScene::close() {
 	generalData().updateMoney(correct_,fails_);
 }
 
-void ecs::MainScene::createHerramientas() {
 void ecs::MainScene::createClock() {
 	Entity* clock = addEntity(layer::BACKGROUND);
 	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
@@ -201,6 +200,7 @@ void ecs::MainScene::createClock() {
 	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
 }
 
+void ecs::MainScene::createHerramientas() {
 	float scaleSelladores = 0.2f;
 
 	// Sellador rojo (1)

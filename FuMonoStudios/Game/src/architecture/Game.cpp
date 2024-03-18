@@ -23,7 +23,7 @@ Game::Game() :exit_(false) {
 	window_ = sdl.window();
 	renderer_ = sdl.renderer();
 
-	SDL_SetWindowFullscreen(window_,SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_SetWindowFullscreen(window_,SDL_WINDOW_FULLSCREEN);
 	gameScenes_ = { new ecs::MainScene(),new ecs::ExplorationScene(),new EndWorkScene(),new ecs::MainMenu() };
 
 	loadScene(ecs::sc::MENU_SCENE);
