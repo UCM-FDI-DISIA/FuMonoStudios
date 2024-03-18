@@ -2,6 +2,8 @@
 
 #include "../architecture/Component.h"
 #include <unordered_map>
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "../utils/Vector2D.h"
@@ -61,6 +63,8 @@ public:
 	bool getSelloCorrecto() const { return selloCorrecto_; }
 	bool isCarta() const { return carta_; }
 	bool pesoCorrecto() const;
+
+	void giveData(std::ofstream&) const;
 
 private:
 	/// <summary>

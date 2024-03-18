@@ -1,6 +1,7 @@
 #include "MainScene.h"
 #include "../architecture/Entity.h"
 #include <iostream>
+#include <fstream>
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_sdlrenderer2.h>
@@ -264,6 +265,12 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 				});
 			if (tuboCheck->checkPackage(entRec->getComponent<Paquete>())) {
 				correct_++;
+
+				//TODO mover a un método
+				std::ofstream csv;
+				csv.open("src/prueba.csv", std::ios::app);
+				entRec->getComponent<Paquete>()->giveData(csv);
+				csv.close();
 			}
 			else {
 				fails_++;

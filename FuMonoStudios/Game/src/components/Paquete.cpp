@@ -130,6 +130,10 @@ std::string Paquete::getDirecction()
 	return dir;
 }
 
+void Paquete::giveData(std::ofstream& stream) const{
+	stream << (int)miDistrito_ << "," << miRemitente_ << "," << (int)miCalle_<<"\n";
+}
+//mover a paquete builder
 void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
 {
 	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));

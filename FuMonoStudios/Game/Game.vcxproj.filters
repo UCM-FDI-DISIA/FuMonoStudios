@@ -113,6 +113,7 @@
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
+    <ClInclude Include="rapidCSV\rapidcsv.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
