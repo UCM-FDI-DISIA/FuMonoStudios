@@ -74,7 +74,7 @@ void ecs::MainScene::init()
 		j++;
 	}
 	//Creación de paquetes bloqueados
-	for (int z = j; z < 7; z++) {
+	for (int z = j; z < 7; z++) { //grande jose la los numeros magicos te la sabes
 		createTubo((Paquete::Distrito)z, false);
 	}
 
@@ -242,9 +242,9 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 			}
 #ifdef _DEBUG
 			updateFailsText();
+			std::cout << "crazy! " << dist << std::endl;
 #endif // _DEBUG
 
-			std::cout << "crazy! " << dist << std::endl;
 		}
 
 			});
@@ -261,8 +261,10 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 		cruzEnt->addComponent<RenderImage>(texCruz);
 	}
 
-
+#ifdef _DEBUG
 	std::cout << "Creado el tubo  " << dist << std::endl;
+#endif // _DEBUG
+
 }
 
 void ecs::MainScene::createManual()
