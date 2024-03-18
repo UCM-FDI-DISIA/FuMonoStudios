@@ -6,4 +6,6 @@ public:
 	EndWorkScene();
 	virtual ~EndWorkScene();
 	void init() override;
+private:
+	Font* font_;
 };

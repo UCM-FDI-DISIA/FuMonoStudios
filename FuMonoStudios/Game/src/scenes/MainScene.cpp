@@ -39,6 +39,8 @@ void ecs::MainScene::update()
 	Scene::update();
 	if (!timerPaused_)
 	{
+		gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
+
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
 			updateTimer();
