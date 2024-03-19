@@ -34,7 +34,7 @@ namespace ecs {
         Font* timeFont_;
         
         int i = 0;
-        float timeMultiplier = 1;
+        float timeMultiplier = 0.2;
         float hours = 0;
         float minutes = 0;
         Vector2D clockCenter;

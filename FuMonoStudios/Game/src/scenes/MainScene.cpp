@@ -44,7 +44,13 @@ void ecs::MainScene::update()
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
 
+			// actualizamos el timer 1 vez por seg
+			//if (timer_ - int(timer_) < 0.007)
 			updateTimer();
+
+			std::cout << timer_ - int(timer_) << std::endl;
+			minutes += timeMultiplier * 1;
+			hours += timeMultiplier * 0.01666;
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
@@ -290,9 +296,6 @@ void ecs::MainScene::updateTimer() {
 	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
 							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
 	trManecillaS->setRotation(y * CONST_ROT);
-
-	minutes += timeMultiplier * 1;
-	hours += timeMultiplier * 0.01666;
 
 	//std::cout << "y: " << y << " x:" << x << std::endl;
 	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
