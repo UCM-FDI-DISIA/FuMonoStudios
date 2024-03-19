@@ -7,11 +7,12 @@
 #include "sdlutils/SDLUtils.h"
 #include "utils/checkML.h"
 
+
+
 int main(int argc, char* argv[]) {
 	std::cout << "Hola Buenas Tardes";
 	try {
-		auto& game = *Game::instance();
-		game.run(); 
+		Game::instance()->run();
 		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	}
 	catch (std::string e) {

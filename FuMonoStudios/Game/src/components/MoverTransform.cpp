@@ -2,7 +2,15 @@
 #include "../architecture/Entity.h"
 
 MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing) 
-	: finalPos_(newPos), movTime_(MovTime * 1000), easing_(Easing), timer_(0), mTr_(nullptr){
+	: finalPos_(newPos), movTime_(MovTime * 1000), 
+	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(false){
+
+}
+
+MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing, SimpleCallback call)
+	: finalPos_(newPos), movTime_(MovTime * 1000),
+	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(true), call_(call)
+{
 
 }
 
@@ -14,6 +22,10 @@ void MoverTransform::initComponent() {
 	mTr_ = ent_->getComponent<Transform>();
 	initPos_ = mTr_->getPos();
 	startTimer_ = sdlutils().currRealTime();
+
+	DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
+	if (dnd_ != nullptr)
+		dnd_->disableInteraction();
 }
 
 void MoverTransform::update() {
@@ -50,6 +62,12 @@ void MoverTransform::update() {
 	if (timer_ > (startTimer_ + movTime_)) 
 	{
 		mTr_->setPos(finalPos_);
+
+		DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
+		if (dnd_ != nullptr)
+			dnd_->activateInteraction();
+		if (usingCallback)
+			call_();
 		ent_->removeComponent<MoverTransform>();
 	}
 }

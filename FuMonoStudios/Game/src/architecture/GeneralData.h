@@ -35,6 +35,8 @@ public:
 	Paquete getPaqueteNPC() { Paquete p = paquetesNPCs.back(); paquetesNPCs.pop_back(); return p; }
 
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
+	void setPaqueteLevel(int lvl);
+
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }
@@ -46,7 +48,7 @@ private:
 	int finalID_; //Variable int que define en la �ltima escena cu�l final se va a reproducir
 	int eventoID_; //Variable int que define cual evento especial de la historia deber� de ejecutarse
 	int dia_;
-	int paqueteLvl_ = 0; // de momento es 0
+	int paqueteLvl_; // de momento es 0
 	std::vector<Paquete> paquetesNPCs;
 };
 
