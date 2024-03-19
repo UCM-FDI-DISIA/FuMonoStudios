@@ -19,9 +19,9 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
-	actualPlace_ = &demeter;
-	navigate("Demeter");
-	createObjects("Demeter");
+	actualPlace_ = &hestia;
+	navigate("Hestia");
+	createObjects("Hestia");
 	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
 
 }
@@ -161,11 +161,10 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 	ComonObjectsFactory factory(this);
 
 	Vector2D pos{ x, y };
-	Texture* texturaBoton = &sdlutils().images().at(character);
-	float scale = 0.25;
-	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
+	Texture* textureCharacter = &sdlutils().images().at(character);
+	Vector2D size{ textureCharacter->width() * SCALE_NPCS, 
+		textureCharacter->height() * SCALE_NPCS };
 	
-
 	CallbackClickeable funcPress = [this]() {
 		//Esto sería la caja del fondo (lo de SDL que se ve)
 		ecs::Entity* boxBg = addEntity();
@@ -182,9 +181,9 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 		actualPlace_->addObjects(dialogoBox);
 	};
 
-	ecs::Entity* BotonPress = factory.createImageButton(pos, size, texturaBoton, funcPress);
+	ecs::Entity* entityNPC = factory.createImageButton(pos, size, textureCharacter, funcPress);
 	
-	return BotonPress;
+	return entityNPC;
 }
 
 void ecs::ExplorationScene::createObjects(std::string place) {

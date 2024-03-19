@@ -4,6 +4,8 @@
 #include "../sistemas/ComonObjectsFactory.h"
 #include <list>
 
+constexpr float SCALE_NPCS = 0.25;
+
 namespace ecs {
 
 	/// <summary>
