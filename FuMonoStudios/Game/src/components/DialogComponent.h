@@ -53,6 +53,9 @@ private:
     /// </summary>
     int dialogueIndex_;
 
+    // flag para saber cuando hay que cerrar la caja de dialogo
+    bool endDialogue;
+
     // flag para saber si puedes pulsar skipear o no
     bool canSkip;
 

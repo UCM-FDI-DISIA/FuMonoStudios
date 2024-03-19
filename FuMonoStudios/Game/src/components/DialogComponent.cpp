@@ -10,7 +10,7 @@
 
 DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(nullptr),
 	dialogueWidth_(sdlutils().width() - 335),dialogueIndex_(1),mTexture_(nullptr),
-	canSkip(true)
+	canSkip(true), endDialogue(false)
 {
 	mDialogMngr_ = manager;
 	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
@@ -51,11 +51,16 @@ void DialogComponent::update()
 			canSkip = true;
 			});
 
-		//Saltar dialogo pasando al siguiente
+		// Pasar al siguiente dialogo o terminar conversacion
 		if (dialogueIndex_ == mDialogMngr_->getCurrentDialog().size()) 
 		{
-			mDialogMngr_->nextDialog();
+			endDialogue = mDialogMngr_->nextDialog();
 			dialogueIndex_ = 1;
+
+			if (endDialogue)
+			{
+				ent_->getComponent<Transform>()->getParentEnt()->setAlive(false);
+			}
 		}
 		//Sacar todo el diálogo antes de que acabe de escribirse
 		else

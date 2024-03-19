@@ -77,8 +77,8 @@ namespace ecs {
 
 	};
 
+	
 	//CLASE
-
     class ExplorationScene :
         public Scene
 

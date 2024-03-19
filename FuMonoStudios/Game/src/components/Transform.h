@@ -27,6 +27,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Transform* getParent() const;
+	ecs::Entity* getParentEnt() const;
+
 	/// <summary>
 	/// Establece el padre de este transform
 	/// </summary>

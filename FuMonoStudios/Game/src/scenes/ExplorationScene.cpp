@@ -181,9 +181,9 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 		actualPlace_->addObjects(dialogoBox);
 	};
 
-	ecs::Entity* entityNPC = factory.createImageButton(pos, size, textureCharacter, funcPress);
+	ecs::Entity* BotonPress = factory.createImageButton(pos, size, textureCharacter, funcPress);
 	
-	return entityNPC;
+	return BotonPress;
 }
 
 void ecs::ExplorationScene::createObjects(std::string place) {
