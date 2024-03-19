@@ -9,6 +9,7 @@
 #include <functional>
 
 #define DEV_TOOLS
+#define QA_TOOLS
 
 class Game : public Singleton<Game> {
 
