@@ -118,7 +118,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEV_TOOLS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -146,6 +146,7 @@
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
+    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
     <ClInclude Include="src\scenes\ExplorationScene2.h" />
+    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="ImGui\imconfig.h" />

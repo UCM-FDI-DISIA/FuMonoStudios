@@ -22,8 +22,11 @@ namespace ecs {
         Font* getFont() { return timeFont_; }
     private:
         void createManual();
+
+        void createTubo(Paquete::Distrito dist, bool desbloqueado);
+
         void createClock();
-        void createTubo(Paquete::Distrito dist);
+
         void createSelladores();
         void createPaquete(int lv);
         
@@ -35,10 +38,10 @@ namespace ecs {
         bool timerPaused_;
         Font* timeFont_;
         
-        int i = 0;
-        float timeMultiplier = 1;
-        float hours = 0;
-        float minutes = 0;
+        float timeMultiplier;
+        float timeToUpdateClock;
+        float hours;
+        float minutes;
         Vector2D clockCenter;
         Transform* trManecillaL;
         Transform* trManecillaS;
@@ -49,6 +52,8 @@ namespace ecs {
         const Vector2D offsetS = Vector2D(-15, 1);
         const float radiusManS = 6;
         // 
+
+        int i = 0;
 
 #ifdef DEV_TOOLS
         bool nextPacageCorrect_;

@@ -38,7 +38,6 @@ Paquete::~Paquete() {
 }
 
 void Paquete::initComponent() {
-
 }
 
 bool Paquete::bienSellado() const{
@@ -60,12 +59,12 @@ bool Paquete::pesoCorrecto() const {
 	return result;
 }
 bool Paquete::correcto() const{ 
-	//M�todo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendr�a que devolver al remitente)
+	//Metodo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendria que devolver al remitente)
 	bool resul = true;
 	if (miCalle_ == Erronea) { //Si la calle es err0nea, el paquete no es correcto
 		resul = false;
 	}
-	if (miDistrito_ == Erroneo) { //Si el distrito es err�neo, el paquete no es correcto
+	if (miDistrito_ == Erroneo) { //Si el distrito es erroneo, el paquete no es correcto
 		resul = false;
 	}
 	else if (!selloCorrecto_) {	//Si el sello de tipo no es correcto, el paquete no es correcto
@@ -74,7 +73,7 @@ bool Paquete::correcto() const{
 	else if (!pesoCorrecto()){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
 		resul = false;				
 	}
-	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete ser� correcto y devolver� true. Si en alg�n momento ha fallado, devolver� false
+	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete sera correcto y devolvera true. Si en algun momento ha fallado, devolvera false
 }
 
 void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
