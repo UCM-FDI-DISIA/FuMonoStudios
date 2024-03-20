@@ -1,0 +1,277 @@
+{
+
+    "places": [
+
+        {"Demeter": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hermes",
+                "scale" : 0.5,
+                "dir" : true              
+                },
+
+                {"id" : 2,
+                "x" : 1300,
+                "y" : 100,
+                "dest" : "Artemisa",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "pancracio",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+        ]},
+
+        {"Hefesto": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hestia",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "paulino",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+        ]},
+
+        {"Hestia": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Artemisa",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "anemos",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+
+        ]},
+
+        {"Artemisa": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hestia",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "abigail",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+
+        ]},
+
+        {"Hermes": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Apolo",
+                "scale" : 0.5,
+                "dir" : true              
+                },
+
+                {"id" : 2,
+                "x" : 1300,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "glover",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+
+        ]},
+
+        {"Apolo": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Poseidon",
+                "scale" : 0.5,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hermes",
+                "scale" : 0.5,
+                "dir" : true              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "Soldado",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+        ]},
+
+        {"Poseidon": [
+
+            {"arrows": [
+
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Apolo",
+                "scale" : 0.5,
+                "dir" : false              
+                }
+
+            ]},
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "gargafiel",
+                "scale" : 0.25,
+                "dir" : true              
+                }
+
+            ]}
+
+            
+
+        ]}
+
+    ]
+
+
+
+
+
+
+}

@@ -3,6 +3,7 @@
 #include "../architecture/Entity.h"
 #include <stdlib.h>
 #include "../sdlutils/VirtualTimer.h"
+#include "../architecture/GeneralData.h"
 
 
 const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
@@ -31,18 +32,28 @@ class PaqueteBuilder
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
 	void paqueteRND(int level, ecs::Entity* ent) {
+		bool continuar = true;
+		if (generalData().areTherePaquetesNPC()) {
+			int rnd = sdlutils().rand().nextInt(0, 4);
+			if (rnd == 0) continuar = false;
+		}
 
-		if (level == 0) {
-			nivel0(ent);
+		if (continuar) {
+			if (level == 0) {
+				nivel0(ent);
+			}
+			else if (level == 1) {
+				nivel1(ent);
+			}
+			else if (level == 2) {
+				nivel2(ent);
+			}
+			else if (level == 3) {
+				nivel3(ent);
+			}
 		}
-		else if (level == 1) {
-			nivel1(ent);
-		}
-		else if (level == 2) {
-			nivel2(ent);
-		}
-		else if (level == 3) {
-			nivel3(ent);
+		else {
+			paqueteNPC(ent);
 		}
 	}
 	//Método al que se llama que devuelve una Carta generada aleatoriamente 
@@ -78,6 +89,13 @@ private:
 		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, PESO_CARTA, false, true);
 		//addVisualElementsCarta(ent);
 	}
+	void paqueteNPC(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
+		Paquete pNPC = generalData().getPaqueteNPC();
+		Paquete* pq = ent->addComponent<Paquete>(pNPC.getDistrito(), pNPC.getCalle(), pNPC.getRemitente(), pNPC.getTipo(), pNPC.getSelloCorrecto(), pNPC.getPeso(), pNPC.getCantidadPeso(), pNPC.getFragil(), pNPC.isCarta());
+		if(!pNPC.isCarta()) addVisualElements(ent);
+		//else addVisualElementsCarta(ent);
+	}
+
 
 	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
 	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay

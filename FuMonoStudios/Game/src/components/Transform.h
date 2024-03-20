@@ -4,11 +4,14 @@
 #include <SDL.h>
 #include "../sdlutils/SDLUtils.h"
 
+class Depth;
+
 class Transform : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::TRANSFORM)
 		Transform(float x, float y, float w, float h);
+		Transform(float x, float y, float w, float h, float rot);
 	~Transform();
 
 	/// <summary>
@@ -24,6 +27,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Transform* getParent() const;
+	ecs::Entity* getParentEnt() const;
+
 	/// <summary>
 	/// Establece el padre de este transform
 	/// </summary>
@@ -66,24 +71,43 @@ public:
 	/// Devuelve el ancho del transform
 	/// </summary>
 	/// <returns></returns>
-	float getWidth() const { return width_ * scale_; };
+	float getWidth() const { return width_ * trueScale_; };
 	/// <summary>
 	/// Devuelve la altura del transform
 	/// </summary>
 	/// <returns></returns>
-	float getHeigth() const { return height_ * scale_; };
+	float getHeigth() const { return height_ * trueScale_; };
 
-	void setScale(float Scale) { scale_ = Scale; }
+	void setScale(float Scale) { scale_ = Scale; trueScale_ = Scale; }
+	// este solo lo usa el depth
+	void setTrueScale(float newScale) { trueScale_ = newScale; } 
+	float getScale() { return scale_; }
+	float getTrueScale() { return trueScale_; }
+
+	void activateDepth();
+
+	std::list<Transform*> GetChildren() { return childsTr_; }
 
 	void setWidth(float newWidth) { width_ = newWidth; }
 	void setHeith(float newHeith) { height_ = newHeith; }
 
+	// esto lo usa el dragNdrop para que funcione con el escalado
+	// no es lo mismo del depth, es el porcentaje de escala desde
+	// su origen (1)
+	float getPorcentajeScale() {
+		return ((trueScale_ * 100) / scale_) / 100;
+	}
+
+	void setRotation(float newRot) { rotation_ = newRot; }
+	float getRotation() { return rotation_; }
 private:
 	/// <summary>
 	/// Posicion relativa (al padre) del objeto
 	/// En el caso de no tener padre es la posicion global
 	/// </summary>
 	Vector2D position_;
+
+	Vector2D relPos_;
 	/// <summary>
 	/// Ancho del objeto
 	/// </summary>
@@ -94,11 +118,17 @@ private:
 	float height_;
 
 	float scale_;
+	float trueScale_;
+
+	// para comunicarse con el en caso de usar depth
+	Depth* depthComp_ = nullptr;
+
+	float rotation_;
 
 	/// <summary>
 	/// Padre del objeto
 	/// </summary>
-	Transform* parentTr_;
+	Transform* parentTr_ = nullptr;
 	/// <summary>
 	/// Lista de los hijos del transform
 	/// </summary>

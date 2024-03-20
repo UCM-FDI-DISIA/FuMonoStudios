@@ -141,18 +141,18 @@ private:
 	void killObjects();
 
 	/// <summary>
-	/// Crea los objetos del lugar acatual al que te acabas de mover.
-	/// USAR DESPU�S DE HABER NAVEGADO
+	/// Crea los objetos del lugar actual al que te acabas de mover.
+	/// USAR DESPUES DE HABER NAVEGADO
 	/// </summary>
 	void createObjects(std::string place);
 
 	/// <summary>
-	/// M�todo factor�a para las flechas de navegaci�n
+	/// Metodo factoria para las flechas de navegacion
 	/// </summary>
 	ecs::Entity* createNavegationsArrows(int x, int y, std::string placeDir);
 
 	/// <summary>
-	/// M�todo factir�a para characters
+	/// Metodo factoria para characters
 	/// </summary>
 	ecs::Entity* createCharacter(int x, int y, std::string character);
 };

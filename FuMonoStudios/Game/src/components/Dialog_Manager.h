@@ -35,9 +35,10 @@ public:
 
     /// <summary>
     /// Avanza al siguente dialogo. 
-    /// Si ya está en el ultimo diálogo no avanza y se queda en ese
+    /// Si ya está en el ultimo diálogo devuelve false y resetea
+    /// el index a 0
     /// </summary>
-    void nextDialog();
+    bool nextDialog();
     /// <summary>
     /// Toma una ruta del fichero de donde actualizar el vector de diálogos
     /// Vacia el vector de dialogos anterior y resetea el indice de dialogos
@@ -54,10 +55,6 @@ private:
     /// Indice que indica en que diálogo nos encontramos
     /// </summary>
     size_t currentDialogIndex_;
-    /// <summary>
-    /// Indice al que se vuelve cuando se termia la hilera de diálogos
-    /// </summary>
-    int resetDialogueIndex_;
 };
 
 #endif // DIALOG_MANAGER_H

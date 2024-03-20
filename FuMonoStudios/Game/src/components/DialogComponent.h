@@ -53,7 +53,12 @@ private:
     /// </summary>
     int dialogueIndex_;
 
+    // flag para saber cuando hay que cerrar la caja de dialogo
+    bool endDialogue;
+
+    // flag para saber si puedes pulsar skipear o no
+    bool canSkip;
+
     uint32_t lastTimePaused_ = 0;
-    //Font* dialogueFont_;
 };
 

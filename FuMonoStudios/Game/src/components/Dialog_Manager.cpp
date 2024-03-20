@@ -19,14 +19,19 @@ std::string DialogManager::getCurrentDialog() {
 }
 
 
-void DialogManager::nextDialog() {
-    if (currentDialogIndex_ < dialogs_.size() - 1) {
-        currentDialogIndex_++;
+bool DialogManager::nextDialog() {
+    bool isEndOfConversation = (currentDialogIndex_ >= dialogs_.size() - 1);
+
+    if (isEndOfConversation) {
+
+        currentDialogIndex_ = 0;
     }
     else {
-        currentDialogIndex_ = resetDialogueIndex_;
+        currentDialogIndex_++;
     }
+    return isEndOfConversation;
 }
+
 // un string sin referencia es como un d�a sin sol: const string&
 void DialogManager::setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric) 
 {
@@ -48,24 +53,29 @@ void DialogManager::setDialogues(const std::string& filename, std::string charNa
     JSONValue* jValue = nullptr;
 
     jValue = root[charName];
-    if (jValue != nullptr) {
-      if (jValue->IsArray()) {
-        dialogs_.reserve(jValue->AsArray().size());
-        for (auto v : jValue->AsArray()) {
-          if (v->IsObject()) {
-            JSONObject vObj = v->AsObject();
-            std::string type = vObj[typeDialog]->AsString();
+    if (jValue != nullptr)
+    {
+        if (jValue->IsArray())
+        {
+            dialogs_.reserve(jValue->AsArray().size());
+            for (auto v : jValue->AsArray())
+            {
+                if (v->IsObject())
+                {
+                    JSONObject vObj = v->AsObject();
+                    std::string type = vObj[typeDialog]->AsString();
 #ifdef _DEBUG
             std::cout << "Loading dialogo with id: " << type << std::endl;
 #endif
-            dialogs_.push_back(type);
-          }
-          else {
-            throw "'Dialogs' array in '" + filename
-              + "' includes and invalid value";
-          }
+                    dialogs_.push_back(type);
+                }
+                else
+                {
+                    throw "'Dialogs' array in '" + filename
+                        + "' includes and invalid value";
+                }
+            }
         }
-      }
-    }
 
+    }
 }

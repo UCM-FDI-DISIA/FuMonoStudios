@@ -51,7 +51,7 @@ private:
 	void restartRoute();
 
 	//Comprueba si ha chocado con el punto especificado por última vez
-	void checkPointTouch(pointRoute point);
+	void checkPointTouch(int point);
 
 	Transform* tr_ = nullptr;
 
@@ -64,6 +64,8 @@ private:
 
 	//ultimo punto por el que se a pasado de la ruta
 	std::list<int>::iterator lastPoint;
+
+	std::list<int>::iterator beforePoint;
 
 	//radio en el cual se considera que se a pasado por el punto
 	float space = 5;

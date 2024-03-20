@@ -4,8 +4,20 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../architecture/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "Depth.h"
 
-Transform::Transform(float x, float y, float w, float h) : Component(), position_(x, y), width_(w), height_(h), scale_(1),parentTr_(nullptr) {
+Transform::Transform(float x, float y, float w, float h) : Component(), 
+position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1),parentTr_(nullptr),rotation_(0) {
+	auto& sdl = *SDLUtils::instance();
+
+#ifdef _DEBUG
+	renderer_ = sdl.renderer();
+#endif // _DEBUG
+
+}
+
+Transform::Transform(float x, float y, float w, float h, float rot) : Component(),
+position_(x, y), width_(w), height_(h), scale_(1), trueScale_(1), parentTr_(nullptr), rotation_(rot) {
 	auto& sdl = *SDLUtils::instance();
 
 #ifdef _DEBUG
@@ -44,6 +56,10 @@ Transform* Transform::getParent() const {
 	return parentTr_;
 }
 
+ecs::Entity* Transform::getParentEnt() const {
+	return parentTr_->ent_;
+}
+
 // Los objetos solo pueden tener un �nico padre
 void Transform::setParent(Transform* newParent) {
 	if (parentTr_ != newParent) {
@@ -51,15 +67,25 @@ void Transform::setParent(Transform* newParent) {
 		parentTr_->childsTr_.push_back(this);
 		parentListIt_ = parentTr_->childsTr_.end();
 		parentListIt_--;
-		// Update relative pos				
+		// Update relative pos	
+		relPos_ = position_;
 	}
 }
 
+void Transform::activateDepth() {
+	depthComp_ = ent_->getComponent<Depth>();
+}
 
 //Cambia la posicion del objeto desde una perspectiva global
 void Transform::setPos(Vector2D& pos)
 {
 	position_ = pos;
+
+	if (depthComp_ != nullptr )
+	{
+		depthComp_->updateChildPos();
+		depthComp_->updateDepth();
+	}
 }
 
 //Cambia la posicion del objeto desde una perspectiva global
@@ -83,18 +109,18 @@ Vector2D Transform::getPos() const
 }
 
 Vector2D Transform::getCenter() const {
-	return Vector2D(position_.getX() + ((width_ * scale_) / 2), position_.getY() + ((height_ * scale_) / 2));
+	return Vector2D(position_.getX() + ((width_ * trueScale_) / 2), position_.getY() + ((height_ * trueScale_) / 2));
 }
 
 //Devuelve la posici�n relativa
 Vector2D Transform::getRelPos() const {
-	return position_;
+	return relPos_;
 }
 
 //Devuelve el Rect en el mundo
 SDL_Rect& Transform::getRect()const {
 	Vector2D pos = getPos();
-	SDL_Rect rect = build_sdlrect(pos, width_ * scale_, height_ * scale_);
+	SDL_Rect rect = build_sdlrect(pos, width_ * trueScale_, height_ * trueScale_);
 	return rect;
 }
 

@@ -10,29 +10,39 @@ namespace ecs {
 
 	}
 	Scene::~Scene() {
-		for (auto ly : objs_) {
-			for (auto e : ly)
-				delete e;
-		}
+		clearScene();
 		//std::cout << "Se Destruyo correctamente la escena"<<std::endl;
 	}
 
 	void Scene::init()
 	{
 	}
+	void Scene::close()
+	{
+		clearScene();
+	}
 	void Scene::update() {
 		//std::cout << "Hola" << std::endl;
-		for (auto ly : objs_)
-			for (auto e : ly)
-				if(e->isActive() && e->isEnable())
+		
+		int i = 0;
+
+		for (auto& ly : objs_)
+			for (auto& e : ly) {
+
+				i++;
+
+				if (e->isActive() && e->isEnable())
 					e->update();
+
+			}
+
+				
 	}
 	void Scene::render() {
-		for (auto ly : objs_)
-			for (auto e : ly)
+		for (auto& ly : objs_)
+			for (auto& e : ly)
 				if(e->isActive())
 					e->render();
-		refresh();
 	}
 
 	void Scene::deleteQueueEntities()
@@ -122,4 +132,17 @@ namespace ecs {
 				grpEnts.end());
 		}
 	}
+
+	void Scene::clearScene()
+	{
+		for (auto& ly : objs_) {
+			for (auto& e : ly) {
+				delete e;
+				e = nullptr;
+			}
+			ly.clear();
+		}
+	}
+
+
 }
