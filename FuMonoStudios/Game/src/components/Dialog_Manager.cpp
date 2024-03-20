@@ -28,31 +28,11 @@ void DialogManager::nextDialog() {
     }
 }
 // un string sin referencia es como un d�a sin sol: const string&
-void DialogManager::setDialogues(const std::string& filename) {
+void DialogManager::setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric) {
     //eliminamos los dialogos anteriores
     dialogs_.clear();
     //reseteamos la posicon del indice
     currentDialogIndex_ = 0;
-    //std::ifstream file(path);
-    //if (file.is_open()) { // estamos en 2�. is_open es para beb�s programadores. usad librer�a de carga
-    //    //std::string line;
-    //    //std::string currentDialog;
-
-    //    //while (std::getline(file, line)) {
-    //    //    size_t pos = line.find('$');
-    //    //    //si hay contenido
-    //    //    if (pos != std::string::npos) {
-    //    //        // Agrega el contenido antes del $
-    //    //        currentDialog += line.substr(0, pos);
-    //    //        // a�adimos el dialogo
-    //    //        dialogs_.push_back(currentDialog);
-    //    //        currentDialog.clear();
-    //    //file.close();
-    //}
-    //else {
-    //    std::cerr << "Error al abrir el archivo: " << path << std::endl;
-    //    throw std::runtime_error("No se pudo abrir el archivo de di�logo");
-    //}
 
     std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
 
@@ -66,25 +46,25 @@ void DialogManager::setDialogues(const std::string& filename) {
     JSONObject root = jValueRoot->AsObject();
     JSONValue* jValue = nullptr;
 
-    // Iterate over each character/dialog in the JSON
-    for (const auto& [character, dialogData] : root) {
-        if (dialogData->IsObject()) {
-            JSONObject dialogObject = dialogData->AsObject();
-            // Iterate over each section of dialog for the character
-            for (const auto& [section, dialogs] : dialogObject) {
-                // Check if the section contains an array of dialogs
-                if (dialogs->IsArray()) {
-                    JSONArray dialogArray = dialogs->AsArray();
-                    // Add each dialog to the list
-                    for (const auto& dialogValue : dialogArray) {
-                        if (dialogValue->IsString()) {
-                            dialogs_.push_back(dialogValue->AsString());
-                        }
-                    }
+    jValue = root[charName];
+    if (jValue != nullptr) {
+        if (jValue->IsArray()) {
+            dialogs_.reserve(jValue->AsArray().size());
+            for (auto v : jValue->AsArray()) {
+                if (v->IsObject()) {
+                    JSONObject vObj = v->AsObject();
+                    std::string type = vObj[typeDialog]->AsString();
+#ifdef _DEBUG
+                    std::cout << "Loading dialogo with id: " << type << std::endl;
+#endif
+                    dialogs_.push_back(type);
+                }
+                else {
+                    throw "'Dialogs' array in '" + filename
+                        + "' includes and invalid value";
                 }
             }
         }
-    }
 
 
 }

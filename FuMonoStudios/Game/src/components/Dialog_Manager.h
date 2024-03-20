@@ -15,6 +15,19 @@ public:
     DialogManager();
 
     /// <summary>
+    /// enum con todos los NPCs
+    /// </summary>
+    enum Personaje { Campesino, Secretario, Vagabundo, Artesano, Tarotisa, Soldado, Contable };
+    /// <summary>
+    /// enum con todos los tipos de dialogos
+    /// </summary>
+    enum TipoDialog { Presentacion, FelMinimo, FelMaximo, Genericos, Eventos };
+    /// <summary>
+    /// enum con todos los tipos de dialogos genericos
+    /// </summary>
+    enum TipoGenerico { Alimento, Medicinas, Joyas, Materiales, Armamento };
+
+    /// <summary>
     /// Devuelve el dialogo acutal segun el indice de dialogo
     /// </summary>
     /// <returns></returns>
@@ -30,7 +43,7 @@ public:
     /// Vacia el vector de dialogos anterior y resetea el indice de dialogos
     /// </summary>
     /// <param name="path"></param>
-    void setDialogues(const std::string& filename);
+    void setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric);
 
 private:
     /// <summary>
