@@ -47,6 +47,8 @@ public:
 
 	Paquete getPaqueteNPC() { Paquete p = paquetesNPCs.back(); paquetesNPCs.pop_back(); return p; }
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
+	void setPaqueteLevel(int lvl);
+
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }

@@ -43,7 +43,21 @@ void Paquete::initComponent() {
 bool Paquete::bienSellado() const{
 	return calleMarcada_ == miCalle_;
 }
-
+bool Paquete::pesoCorrecto() const {
+	bool result = true;
+	if (miPeso_ != Ninguno) {	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
+		if (miPeso_ == Bajo) {
+			if (peso_ > ligeroMax) result = false;
+		}
+		else if (miPeso_ == Medio) {
+			if (peso_ < ligeroMax || peso_ > medioMax) result = false;
+		}
+		else if (miPeso_ == Alto) {
+			if (peso_ < medioMax) result = false;
+		}
+	}
+	return result;
+}
 bool Paquete::correcto() const{ 
 	//Metodo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendria que devolver al remitente)
 	bool resul = true;
@@ -56,16 +70,8 @@ bool Paquete::correcto() const{
 	else if (!selloCorrecto_) {	//Si el sello de tipo no es correcto, el paquete no es correcto
 		resul = false;
 	}
-	else if (miPeso_ != Ninguno){	//Si tiene un sello de pesado y su peso no esta entre los valores indicados, el paquete no es correcto
-		if (miPeso_ == Bajo) {
-			if (peso_ > ligeroMax) resul = false;
-		}
-		else if (miPeso_ == Medio) {
-			if (peso_ < ligeroMax || peso_ > medioMax) resul = false;
-		}
-		else if (miPeso_ == Alto) {
-			if (peso_ < medioMax) resul = false;
-		}		
+	else if (!pesoCorrecto()){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
+		resul = false;				
 	}
 	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete sera correcto y devolvera true. Si en algun momento ha fallado, devolvera false
 }

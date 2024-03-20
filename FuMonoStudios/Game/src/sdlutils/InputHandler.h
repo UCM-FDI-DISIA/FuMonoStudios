@@ -3,6 +3,8 @@
 #pragma once
 
 #include <iostream>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
 #include <SDL.h>
 #include <array>
 
@@ -66,8 +68,10 @@ public:
 		SDL_Event event;
 
 		clearState();
-		while (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&event)) {
 			update(event);
+			ImGui_ImplSDL2_ProcessEvent(&event);
+		}
 	}
 
 	// close window event
