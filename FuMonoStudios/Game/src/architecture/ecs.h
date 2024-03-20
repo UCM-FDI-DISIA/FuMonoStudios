@@ -57,6 +57,7 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			BIN,
 			PACKAGE,
 			STAMP,
 			OFFICEELEMENTS,
