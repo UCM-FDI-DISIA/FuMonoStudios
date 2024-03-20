@@ -46,6 +46,7 @@
       <Filter>utilsSource</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
+    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
@@ -138,6 +139,7 @@
     </ClInclude>
     <ClInclude Include="src\scenes\ExplorationScene2.h" />
     <ClInclude Include="src\utils\checkML.h" />
+    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_internal.h" />
