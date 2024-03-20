@@ -122,7 +122,7 @@ void ecs::ExplorationScene::navigate(std::string placeDir) // otro string sin co
 		actualPlace_ = actualPlace_->getPlaceFromDirection(placeDir);
 }
 
-ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, std::string placeDir)
+ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, std::string placeDir, float scale)
 {
 	//para crear la flecha a hefesto
 
@@ -130,7 +130,6 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 	factory.setLayer(ecs::layer::FOREGROUND);
 	Vector2D pos{ x, y };
 	Texture* sujetaplazas = &sdlutils().images().at("cartel");
-	float scale = 0.5;
 	Vector2D size{ sujetaplazas->width() * scale, sujetaplazas->height() * scale };
 	
 	CallbackClickeable cosa = [this, placeDir]() {
@@ -149,7 +148,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::string character) {
+ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::string character, float scale) {
 
 	// Para Dani: El Personaje PlaceHolder que te he creado se compone del botón de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
@@ -162,7 +161,6 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 
 	Vector2D pos{ x, y };
 	Texture* texturaBoton = &sdlutils().images().at(character);
-	float scale = 0.25;
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
 
@@ -190,10 +188,10 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 void ecs::ExplorationScene::createObjects(std::string place) {
 
 	if (place == "Demeter") {
-		demeter.addObjects(createNavegationsArrows(100, 100, "Hefesto"));
-		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes"));
-		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa"));
-		demeter.addObjects(createCharacter(300, 300, "pancracio"));
+		demeter.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
+		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes", 0.5));
+		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa", 0.5));
+		demeter.addObjects(createCharacter(300, 300, "pancracio", 0.25));
 
 
 		//boton ir a trabajar
@@ -209,33 +207,33 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	}
 	else if (place == "Hefesto")
 	{
-		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia"));
-		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter"));
-		hefesto.addObjects(createCharacter(300, 300, "paulino"));
+		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia", 0.5));
+		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
+		hefesto.addObjects(createCharacter(300, 300, "paulino", 0.25));
 	}
 	else if (place == "Hestia") {
-		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa"));
-		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto"));
-		hestia.addObjects(createCharacter(300, 300, "anemos"));
+		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa", 0.5));
+		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto", 0.5));
+		hestia.addObjects(createCharacter(300, 300, "anemos", 0.25));
 	}
 	else if (place == "Artemisa") {
-		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter"));
-		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia"));
-		artemisa.addObjects(createCharacter(300, 300, "abigail"));
+		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter", 0.5));
+		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia", 0.5));
+		artemisa.addObjects(createCharacter(300, 300, "abigail", 0.25));
 	}
 	else if (place == "Hermes") {
-		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto"));
-		hermes.addObjects(createNavegationsArrows(700, 100, "Apolo"));
-		hermes.addObjects(createNavegationsArrows(1300, 100, "Demeter"));
+		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
+		hermes.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
+		hermes.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
 	}
 	else if (place == "Apolo") {
-		apolo.addObjects(createNavegationsArrows(100, 100, "Poseidon"));
-		apolo.addObjects(createNavegationsArrows(1300, 100, "Hermes"));
-		apolo.addObjects(createCharacter(300, 300, "Soldado"));
+		apolo.addObjects(createNavegationsArrows(100, 100, "Poseidon", 0.5));
+		apolo.addObjects(createNavegationsArrows(1300, 100, "Hermes", 0.5));
+		apolo.addObjects(createCharacter(300, 300, "Soldado", 0.25));
 	}
 	else if (place == "Poseidon") {
-		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo"));
-		poseidon.addObjects(createCharacter(300, 300, "gargafiel"));
+		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
+		poseidon.addObjects(createCharacter(300, 300, "gargafiel", 0.25));
 	}
 }
 

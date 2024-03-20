@@ -128,12 +128,12 @@ namespace ecs {
 		/// <summary>
 		/// Metodo factoria para las flechas de navegacion
 		/// </summary>
-		ecs::Entity* createNavegationsArrows(float x, float y, std::string placeDir);
+		ecs::Entity* createNavegationsArrows(float x, float y, std::string placeDir, float scale);
 
 		/// <summary>
 		/// Metodo factoria para characters
 		/// </summary>
-		ecs::Entity* createCharacter(float x, float y, std::string character);
+		ecs::Entity* createCharacter(float x, float y, std::string character, float scale);
         
 		//Puntero al lugar actual
 		Lugar* actualPlace_;
