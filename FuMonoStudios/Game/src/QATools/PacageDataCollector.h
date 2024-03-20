@@ -7,11 +7,15 @@ class PacageDataCollector :
 public:
     PacageDataCollector() :DataCollector("QAdata/pacages.csv"),nextVoidRow(0) {
         doc.Clear();
-        dataFile << "Direccion" << SEPARATOR << "Tipo de Sello" << SEPARATOR << "Tipo de Peso" << "\n";
+        doc.SetColumnName(0, "Distrito");
+        doc.SetColumnName(1, "Calle");
+        doc.SetColumnName(2, "Peso");
+        doc.SetColumnName(3, "Fragil");
+
     }
     ~PacageDataCollector() {};
 
-    void writePacageData(Paquete&);
+    void writePacageData(const Paquete&);
 
 private:
     int nextVoidRow;

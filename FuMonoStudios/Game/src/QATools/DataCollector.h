@@ -11,12 +11,7 @@ protected:
 	DataCollector(const std::string& docPath);
 	virtual ~DataCollector() {
 		doc.Save();
-		//dataFile.close();
 	};
-	/// <summary>
-	/// Caracter de separacion para el scv
-	/// </summary>
-	const char SEPARATOR = ';';
 	/// <summary>
 	/// Fichero en el que se cargará la informacion
 	/// </summary>

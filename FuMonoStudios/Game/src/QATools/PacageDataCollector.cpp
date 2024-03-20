@@ -1,7 +1,7 @@
 #include "PacageDataCollector.h"
 
 
-void PacageDataCollector::writePacageData(Paquete& pacage) {
+void PacageDataCollector::writePacageData(const Paquete& pacage) {
 	doc.SetCell(0, nextVoidRow, (int) pacage.getDistrito()+1);
 	doc.SetCell(1, nextVoidRow, (int) pacage.getCalle()+1);
 	doc.SetCell(2, nextVoidRow, (int) pacage.getPeso());
