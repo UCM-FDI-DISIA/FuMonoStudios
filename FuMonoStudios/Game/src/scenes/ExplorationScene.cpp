@@ -21,9 +21,9 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &hestia;
-	navigate("Hestia");
-	createObjects("Hestia");
-	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
+	navigate("Artemisa");
+	createObjects("Artemisa");
+	rect_ = build_sdlrect(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 
 }
 
@@ -96,6 +96,7 @@ void ecs::ExplorationScene::initDirectionsDefaultMap()
 
 void ecs::ExplorationScene::render()
 {
+
 	actualPlace_->getTexture()->render(rect_);
 	Scene::render();
 }
