@@ -39,7 +39,6 @@ namespace ecs {
         Font* timeFont_;
         
         float timeMultiplier;
-        float timeToUpdateClock;
         float hours;
         float minutes;
         Vector2D clockCenter;
@@ -52,8 +51,6 @@ namespace ecs {
         const Vector2D offsetS = Vector2D(-15, 1);
         const float radiusManS = 6;
         // 
-
-        int i = 0;
 
 #ifdef DEV_TOOLS
         bool nextPacageCorrect_;
