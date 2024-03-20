@@ -31,35 +31,10 @@ class PaqueteBuilder
 {
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
-	void paqueteRND(int level, ecs::Entity* ent) {
-		bool continuar = true;
-		if (generalData().areTherePaquetesNPC()) {
-			int rnd = sdlutils().rand().nextInt(0, 4);
-			if (rnd == 0) continuar = false;
-		}
-
-		if (continuar) {
-			if (level == 0) {
-				nivel0(ent);
-			}
-			else if (level == 1) {
-				nivel1(ent);
-			}
-			else if (level == 2) {
-				nivel2(ent);
-			}
-			else if (level == 3) {
-				nivel3(ent);
-			}
-		}
-		else {
-			paqueteNPC(ent);
-		}
-	}
+	ecs::Entity* paqueteRND(int level, ecs::Scene*);
 	//Método al que se llama que devuelve una Carta generada aleatoriamente 
-	Paquete* cartaRND(ecs::Entity* ent) {
-		carta(ent);
-	}
+	ecs::Entity* cartaRND(ecs::Scene*);
+
 	PaqueteBuilder() { 
 		srand(sdlutils().currRealTime()); 
 		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
@@ -86,7 +61,7 @@ private:
 		addVisualElements(ent);
 	}
 	void carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, PESO_CARTA, false, true);
+		 
 		//addVisualElementsCarta(ent);
 	}
 	void paqueteNPC(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
