@@ -21,8 +21,6 @@
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
-    <ClCompile Include="src\utils\Collisions.cpp" />
-    <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\components\Paquete.cpp" />
     <ClCompile Include="src\components\PackageChecker.cpp" />
@@ -41,6 +39,13 @@
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
+    <ClCompile Include="src\utils\Collisions.cpp">
+      <Filter>utilsSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\Vector2D.cpp">
+      <Filter>utilsSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
     <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -51,13 +56,12 @@
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
+    <ClCompile Include="src\architecture\Config.cpp" />
+    <ClCompile Include="src\components\DelayedCallback.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
-    <ClInclude Include="src\components\Clickeable.h" />
-    <ClInclude Include="src\components\DragAndDrop.h" />
     <ClInclude Include="src\components\Render.h" />
-    <ClInclude Include="src\architecture\Component.h" />
     <ClInclude Include="src\architecture\ecs.h" />
     <ClInclude Include="src\architecture\Entity.h" />
     <ClInclude Include="src\architecture\Game.h" />
@@ -79,19 +83,11 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
-    <ClInclude Include="src\utils\Collisions.h" />
-    <ClInclude Include="src\utils\DynamicBitSet.h" />
-    <ClInclude Include="src\utils\mpl.h" />
-    <ClInclude Include="src\utils\ptr_iterator.h" />
-    <ClInclude Include="src\utils\Singleton.h" />
-    <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\components\MultipleTextures.h" />
     <ClInclude Include="src\components\Paquete.h" />
     <ClInclude Include="src\components\PackageChecker.h" />
     <ClInclude Include="src\components\Herramientas.h" />
-    <ClInclude Include="src\components\DialogComponent.h" />
-    <ClInclude Include="src\components\Dialog_Manager.h" />
     <ClInclude Include="src\scenes\MainMenu.h" />
     <ClInclude Include="src\components\MoverTransform.h" />
     <ClInclude Include="src\architecture\Time.h" />
@@ -101,8 +97,47 @@
     <ClInclude Include="src\sistemas\Mapa.h" />
     <ClInclude Include="src\components\Wrap.h" />
     <ClInclude Include="src\scenes\EndWorkScene.h" />
-    <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\components\SelfDestruct.h" />
+    <ClInclude Include="src\components\Clickeable.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sistemas\ComonObjectsFactory.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\architecture\Component.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\DialogComponent.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\checkML.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Collisions.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\DynamicBitSet.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\mpl.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\ptr_iterator.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Singleton.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Vector2D.h">
+      <Filter>utilsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Dialog_Manager.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\DragAndDrop.h">
+      <Filter>componetsHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\ExplorationScene2.h" />
     <ClInclude Include="src\utils\checkML.h" />
     <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\imconfig.h" />
@@ -115,6 +150,8 @@
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
+    <ClInclude Include="src\architecture\Config.h" />
+    <ClInclude Include="src\components\DelayedCallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
@@ -145,5 +182,16 @@
     <Image Include="recursos\images\Materiales.png" />
     <Image Include="recursos\images\Joyas.png" />
     <Image Include="recursos\images\placeholderTrabajar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="componetsHeader">
+      <UniqueIdentifier>{c8e53fa0-f34e-49ee-a592-ff44e985ef5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilsHeader">
+      <UniqueIdentifier>{7f0881b8-a627-4c24-a979-e09bd2f409e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilsSource">
+      <UniqueIdentifier>{70ea59ee-a0af-4a3c-ac21-0874f74e9201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
