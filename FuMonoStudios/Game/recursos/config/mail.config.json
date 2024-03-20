@@ -6,89 +6,40 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hefesto"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 700},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hermes"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hermes",
+                "scale" : 0.5,
+                "dir" : true              
                 },
 
-                {"2":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Artemisa"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 2,
+                "x" : 1300,
+                "y" : 100,
+                "dest" : "Artemisa",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-                
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "pancracio"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "pancracio",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
@@ -99,69 +50,32 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hestia"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hestia",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Demeter"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-  
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "paulino"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "paulino",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
@@ -172,72 +86,36 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Artemisa"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Artemisa",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hefesto"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-  
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "anemos"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "anemos",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
+
 
         ]},
 
@@ -245,72 +123,36 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Demeter"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hestia"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hestia",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-  
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "abigail"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "abigail",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
+
 
         ]},
 
@@ -318,92 +160,44 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hefesto"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Hefesto",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 700},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Apolo"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Apolo",
+                "scale" : 0.5,
+                "dir" : true              
                 },
 
-                {"2":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Demeter"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 2,
+                "x" : 1300,
+                "y" : 100,
+                "dest" : "Demeter",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-  
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "glover"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "glover",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
+
 
         ]},
 
@@ -411,69 +205,32 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 100},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Poseidon"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Poseidon",
+                "scale" : 0.5,
+                "dir" : false              
                 },
 
-                {"1":[
-
-                    {"id" : "x",
-                    "data" : 1300},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Hermes"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 1,
+                "x" : 700,
+                "y" : 100,
+                "dest" : "Hermes",
+                "scale" : 0.5,
+                "dir" : true              
                 }
-  
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "Soldado"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "Soldado",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
@@ -484,58 +241,36 @@
 
             {"arrows": [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 700},
-
-                    {"id" : "y",
-                    "data" : 100},
-                    
-                    {"id" : "dest",
-                    "data" : "Apolo"},
-
-                    {"id" : "scale",
-                    "data" : "0.5"},
-
-                    {"id" : "dir",
-                    "data" : "false"}
-
-                    ]
+                {"id" : 0,
+                "x" : 100,
+                "y" : 100,
+                "dest" : "Apolo",
+                "scale" : 0.5,
+                "dir" : false              
                 }
 
             ]},
 
             {"character" : [
 
-                {"0":[
-
-                    {"id" : "x",
-                    "data" : 300},
-
-                    {"id" : "y",
-                    "data" : 300},
-                    
-                    {"id" : "name",
-                    "data" : "gargafiel"},
-
-                    {"id" : "scale",
-                    "data" : "0.25"},
-
-                    {"id" : "dir",
-                    "data" : "true"}
-
-                ]
+                {"id" : 0,
+                "x" : 300,
+                "y" : 300,
+                "name" : "gargafiel",
+                "scale" : 0.25,
+                "dir" : true              
                 }
 
             ]}
+
+            
 
         ]}
 
     ]
 
 
-    
+
 
 
 

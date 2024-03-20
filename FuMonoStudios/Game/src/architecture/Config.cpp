@@ -51,19 +51,55 @@ void Config::loadReasources(std::string filename) {
 
 						JSONObject iObj = i->AsObject();
 
+						std::vector<Arrows> placeArrows;
+
+						std::vector<Characters> placeCharacters;
+
 						for (auto& a : iObj["arrows"]->AsArray()) {
 
+							JSONObject aObj = a->AsObject();
 
+							double x = aObj["x"]->AsNumber();
+
+							double y = aObj["y"]->AsNumber();
+
+							std::string dest = aObj["dest"]->AsString();
+
+							double scale = aObj["scale"]->AsNumber();
+
+							bool dir = aObj["dir"]->AsBool();
+
+							Arrows arrow{ x, y, dest, scale, dir };
+
+							placeArrows.push_back(arrow);
 
 						}
 
-					}
+						for (auto& c : iObj["character"]->AsArray()) {
 
-					JSONObject vObj = v->AsObject();
-					std::string key = vObj["id"]->AsString();
-					std::string txt = vObj["text"]->AsString();
+							JSONObject cObj = c->AsObject();
+
+							double x = cObj["x"]->AsNumber();
+
+							double y = cObj["y"]->AsNumber();
+
+							std::string dest = cObj["name"]->AsString();
+
+							double scale = cObj["scale"]->AsNumber();
+
+							bool dir = cObj["dir"]->AsBool();
+
+							Characters character{ x, y, dest, scale, dir };
+
+							placeCharacters.push_back(character);
+
+						}
+
+						places_.emplace((*v->AsObject().begin()), placeArrows, placeCharacters);
+
+					}
 					
-					places_.emplace(key, );
+					
 
 				}
 				else {
