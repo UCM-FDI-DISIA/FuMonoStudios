@@ -11,7 +11,7 @@ class PackageChecker : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::CHECKER)
-	PackageChecker(Paquete::Distrito);
+	PackageChecker();
 	~PackageChecker();
 
 	virtual void initComponent();
@@ -23,7 +23,6 @@ public:
 private:
 	bool checkAdditionalConditions(Paquete*);
 
-	Paquete::Distrito toDis_;
 	std::list<Condition> extraCond_;
 };
 

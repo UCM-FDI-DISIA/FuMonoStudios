@@ -41,6 +41,7 @@
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
+    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />
     <ClInclude Include="src\components\SelfDestruct.h" />
     <ClInclude Include="src\utils\checkML.h" />
+    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_internal.h" />

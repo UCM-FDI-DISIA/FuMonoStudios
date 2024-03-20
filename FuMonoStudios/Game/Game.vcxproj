@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="src\architecture\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="ImGui\imconfig.h" />

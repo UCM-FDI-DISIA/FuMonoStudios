@@ -22,8 +22,11 @@ namespace ecs {
         Font* getFont() { return timeFont_; }
     private:
         void createManual();
+
+        void createTubo(Paquete::Distrito dist, bool desbloqueado);
+
         void createClock();
-        void createTubo(Paquete::Distrito dist);
+
         void createSelladores();
         void createPaquete(int lv);
         
