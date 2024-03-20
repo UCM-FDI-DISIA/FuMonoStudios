@@ -8,6 +8,7 @@
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
 #include "../architecture/Game.h"
+#include "../architecture/Config.h"
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
@@ -186,8 +187,11 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 
 void ecs::ExplorationScene::createObjects(std::string place) {
 
+	auto& pl = config().places();
 	if (place == "Demeter") {
-		demeter.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
+		demeter.addObjects(createNavegationsArrows(pl.at("Demeter").myArrows[0].x_, pl.at("Demeter").myArrows[0].y_, 
+			pl.at("Demeter").myArrows[0].destination_, pl.at("Demeter").myArrows[0].scale_));
+
 		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes", 0.5));
 		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa", 0.5));
 		demeter.addObjects(createCharacter(300, 300, "pancracio", 0.25));

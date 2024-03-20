@@ -5,6 +5,7 @@
 #include <utils/Singleton.h>
 #include <architecture/ecs.h>
 #include <sdlutils/SDLUtils.h>
+#include "Config.h"
 #include <architecture/Scene.h>
 #include <functional>
 

@@ -2,9 +2,13 @@
 
 #include "../utils/Singleton.h"
 
+#include <SDL.h>
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <stdexcept>
+#include <exception>
+
 
 class Config : public Singleton<Config> {
 
@@ -54,6 +58,10 @@ public:
 
 		std::vector<Characters> myCharacters;
 
+		Places(std::vector<Arrows> arrows, std::vector<Characters> characters) : myArrows(arrows), myCharacters(characters){
+
+		}
+
 	};
 
 
@@ -70,6 +78,7 @@ public:
 		}
 
 		inline T& at(const std::string& key) {
+	
 			try {
 				return map_.at(key);
 			}
@@ -84,6 +93,7 @@ public:
 				throw "Unknown error when accessing key '" + key + "' of '" + //
 					desc_ + "'";
 			}
+		
 		}
 
 		inline T& operator[](const std::string& key) {
@@ -91,13 +101,7 @@ public:
 		}
 	};
 
-	virtual ~Config();
 
-	// cannot copy/move
-	Config(Config&) = delete;
-	Config(Config&&) = delete;
-	Config& operator=(Config&) = delete;
-	Config& operator=(Config&&) = delete;
 
 	
 	// All resource maps can be modified from outside, this way you can store

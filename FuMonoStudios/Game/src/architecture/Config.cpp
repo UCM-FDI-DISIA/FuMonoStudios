@@ -46,14 +46,20 @@ void Config::loadReasources(std::string filename) {
 
 				if (v->IsObject()) {
 
+					JSONObject vObj = v->AsObject();
+
+					std::string key = vObj["id"]->AsString();
+
+					std::vector<Arrows> placeArrows;
+
+					std::vector<Characters> placeCharacters;
+
 					//recorrido de la info del lugar
-					for (auto& i : v->AsArray()) {
+					for (auto& i : vObj["data"]->AsArray()) {
 
 						JSONObject iObj = i->AsObject();
 
-						std::vector<Arrows> placeArrows;
-
-						std::vector<Characters> placeCharacters;
+						
 
 						for (auto& a : iObj["arrows"]->AsArray()) {
 
@@ -75,7 +81,18 @@ void Config::loadReasources(std::string filename) {
 
 						}
 
-						for (auto& c : iObj["character"]->AsArray()) {
+
+						
+
+					}
+
+					//recorrido de la info del lugar
+					for (auto& o : vObj["dataChar"]->AsArray()) {
+
+						JSONObject oObj = o->AsObject();
+
+
+						for (auto& c : oObj["character"]->AsArray()) {
 
 							JSONObject cObj = c->AsObject();
 
@@ -95,9 +112,11 @@ void Config::loadReasources(std::string filename) {
 
 						}
 
-						places_.emplace((*v->AsObject().begin()), placeArrows, placeCharacters);
-
 					}
+
+					Places pl{ placeArrows, placeCharacters };
+
+					places_.emplace(key, pl);
 					
 					
 
