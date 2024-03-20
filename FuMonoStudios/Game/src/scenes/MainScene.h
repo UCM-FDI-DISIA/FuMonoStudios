@@ -61,6 +61,10 @@ namespace ecs {
 
 #ifdef QA_TOOLS
         PacageDataCollector dataCollector;
+        
+
+        void makeDataWindow();
+        void makeControlsWindow();
 #endif // DEBUG
 
 

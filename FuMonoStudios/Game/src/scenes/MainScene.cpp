@@ -68,49 +68,8 @@ void ecs::MainScene::render()
 	Scene::render();
 #ifdef DEV_TOOLS
 	ImGui::NewFrame();
-
-	ImGui::Begin("Paquetes Scene Data");
-	std::string time = "Current Game Time: " + std::to_string(timer_);
-	ImGui::Text(time.c_str());
-	std::string data = "Aciertos: " + std::to_string(correct_);
-	ImGui::Text(data.c_str());
-	data = "Fallos: " + std::to_string(fails_);
-	ImGui::Text(data.c_str());
-	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
-	ImGui::Text(data.c_str());
-	ImGui::End();
-
-
-	ImGui::Begin("Controls");
-	if (ImGui::CollapsingHeader("Paquetes"))
-	{
-		ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
-		if (ImGui::Button("Create pacage")) {
-			createPaquete(generalData().getPaqueteLevel());
-		}
-	}
-	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
-	if (ImGui::CollapsingHeader("Mecánicas"))
-	{
-		int lvl = generalData().getPaqueteLevel();
-		ImGui::InputInt("Nivel del Paquete", &lvl);
-		generalData().setPaqueteLevel(lvl);
-		//ImGui::Checkbox("Sellos",&stampsUnloked_);
-		//ImGui::Checkbox("Peso",&weightUnloked_);
-		//ImGui::Checkbox("Cinta", &cintaUnloked_);
-	}
-	if (ImGui::CollapsingHeader("Tiempo")) {
-		if (ImGui::Button("Reset Timer")) {
-			timer_ = MINIGAME_TIME;
-		}
-
-		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
-		if (ImGui::Button("Add Time")) {
-			timer_ += timeToAdd_;
-		}
-	}
-
-	ImGui::End();
+	makeDataWindow();
+	makeControlsWindow();
 	ImGui::Render();
 
 	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
@@ -267,10 +226,6 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 				});
 			if (tuboCheck->checkPackage(entRec->getComponent<Paquete>())) {
 				correct_++;
-#ifdef QA_TOOLS
-				//TODO mover a un método
-				dataCollector.writePacageData(*entRec->getComponent<Paquete>());
-#endif // QA_TOOLS
 			}
 			else {
 				fails_++;
@@ -335,6 +290,63 @@ void ecs::MainScene::createManual()
 
 	manual->addComponent<Depth>();
 }
+#ifdef DEV_TOOLS
+
+
+void ecs::MainScene::makeDataWindow()
+{
+	ImGui::Begin("Paquetes Scene Data");
+	//Reloj del timepo de la partida
+	std::string time = "Current Game Time: " + std::to_string(timer_);
+	ImGui::Text(time.c_str());
+	//Contador de aciertos
+	std::string data = "Aciertos: " + std::to_string(correct_);
+	ImGui::Text(data.c_str());
+	//contador de Fallos
+	data = "Fallos: " + std::to_string(fails_);
+	ImGui::Text(data.c_str());
+	//Nivel de los paquetes
+	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
+	ImGui::Text(data.c_str());
+	//Dia acutual del juego
+	data = "Current day: " + std::to_string(GeneralData::instance()->getCurrentDay());
+	ImGui::Text(data.c_str());
+	ImGui::End();
+}
+
+void ecs::MainScene::makeControlsWindow()
+{
+	ImGui::Begin("Controls");
+	if (ImGui::CollapsingHeader("Paquetes"))
+	{
+		ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
+		if (ImGui::Button("Create pacage")) {
+			createPaquete(generalData().getPaqueteLevel());
+		}
+	}
+	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
+	if (ImGui::CollapsingHeader("Mecánicas"))
+	{
+		int lvl = generalData().getPaqueteLevel();
+		ImGui::InputInt("Nivel del Paquete", &lvl);
+		generalData().setPaqueteLevel(lvl);
+		//ImGui::Checkbox("Sellos",&stampsUnloked_);
+		//ImGui::Checkbox("Peso",&weightUnloked_);
+		//ImGui::Checkbox("Cinta", &cintaUnloked_);
+	}
+	if (ImGui::CollapsingHeader("Tiempo")) {
+		if (ImGui::Button("Reset Timer")) {
+			timer_ = MINIGAME_TIME;
+		}
+
+		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
+		if (ImGui::Button("Add Time")) {
+			timer_ += timeToAdd_;
+		}
+	}
+	ImGui::End();
+}
+#endif // DEV_TOOLS
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
