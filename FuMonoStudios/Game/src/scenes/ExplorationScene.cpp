@@ -19,9 +19,9 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
-	actualPlace_ = &demeter;
-	navigate("Demeter");
-	createObjects("Demeter");
+	actualPlace_ = &hestia;
+	navigate("Hestia");
+	createObjects("Hestia");
 	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
 
 }
@@ -150,12 +150,12 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 
 ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::string character, float scale) {
 
-	// Para Dani: El Personaje PlaceHolder que te he creado se compone del botón de press que al pulsarse te crea
+	// Para Dani: El Personaje PlaceHolder que te he creado se compone del botï¿½n de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
 // solucionar sacando las entidades de box al h y comprobando si punteros a entidad son null o con un booleano que
 // haga de flag)
 
-// Para Dani: Aquí le hacemos clickable y le ponemos como callback el método funcPress
+// Para Dani: Aquï¿½ le hacemos clickable y le ponemos como callback el mï¿½todo funcPress
 
 	ComonObjectsFactory factory(this);
 
@@ -163,15 +163,14 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 	Texture* texturaBoton = &sdlutils().images().at(character);
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
-
 	CallbackClickeable funcPress = [this]() {
-		//Esto sería la caja del fondo (lo de SDL que se ve)
+		//Esto serï¿½a la caja del fondo (lo de SDL que se ve)
 		ecs::Entity* boxBg = addEntity();
 		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 250, sdlutils().width() - 200, 200);
 		boxBg->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
 		actualPlace_->addObjects(boxBg);
 
-		//Aquí pillaría el diálogo con el manager y crearía la entidad que lo renderiza
+		//Aquï¿½ pillarï¿½a el diï¿½logo con el manager y crearï¿½a la entidad que lo renderiza
 		ecs::Entity* dialogoBox = addEntity();
 		auto textTr = dialogoBox->addComponent<Transform>(80, 55, 100, 100);
 		textTr->setParent(bgTr);
@@ -180,7 +179,7 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 		actualPlace_->addObjects(dialogoBox);
 	};
 
-	ecs::Entity* BotonPress = factory.createImageButton(pos, size, texturaBoton, funcPress);
+	ecs::Entity* BotonPress = factory.createImageButton(pos, size, textureCharacter, funcPress);
 	
 	return BotonPress;
 }
