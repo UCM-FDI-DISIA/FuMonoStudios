@@ -33,6 +33,13 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
+	timeToUpdateClock = timer_ - 0.2;
+
+	//calculamos el multiplicador de timepo del clock
+	// para que funcione con cualquier tiempo de juego
+	timeMultiplier = 1440 / (MINIGAME_TIME * 5);
+	hours = 0;
+	minutes = 0;
 #ifdef DEV_TOOLS
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
@@ -53,7 +60,14 @@ void ecs::MainScene::update()
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
 
-			updateTimer();
+			
+			if (timer_ < timeToUpdateClock)
+			{
+				updateTimer();
+				// el reloj se actualiza 5 veces por segundo
+				timeToUpdateClock = timer_ - 0.2;
+				std::cout << (i++) << std::endl;
+			}
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
