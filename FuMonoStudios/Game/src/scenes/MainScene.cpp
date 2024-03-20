@@ -333,10 +333,6 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
 				}
 			}
-#ifdef _DEBUG
-			updateFailsText();
-			std::cout << "crazy! " << dist << std::endl;
-#endif // _DEBUG
 
 		}
 
