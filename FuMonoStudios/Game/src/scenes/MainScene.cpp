@@ -171,9 +171,19 @@ void ecs::MainScene::init()
 			if (paqComp->correcto())
 			{
 				generalData().wrongPackage();
-				fails_++;
-				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				fails_++;				
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);				/*
+				Texture* selloATex = &sdlutils ().images ().at ("selladorA");
+				Transform* selloATR = NotaErronea->addComponent<Transform> (150, 1500, selloATex->width (), selloATex->height ());
+				selloATR->setScale (0.2f);
+				NotaErronea->addComponent<DragAndDrop> (true, [NotaErronea]() {
+					NotaErronea->addComponent<MoverTransform> (Vector2D (150, 1500), 0.5, Easing::EaseOutCubic, [NotaErronea]() {
+						NotaErronea->setAlive (false);
+						});
+					});
+				NotaErronea->addComponent<RenderImage> (selloATex);								
 				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), true, false);
+				NotaErronea->addComponent<MoverTransform> (Vector2D (150, 900), 0.5, Easing::EaseOutCubic);				*/
 			}
 				
 			else
