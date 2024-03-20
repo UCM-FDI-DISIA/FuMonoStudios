@@ -3,6 +3,7 @@
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
+#include <QATools/PacageDataCollector.h>
 
 namespace ecs {
     class Game;
@@ -57,6 +58,11 @@ namespace ecs {
         bool cintaUnloked_;
         int timeToAdd_;
 #endif // DEV_TOOLS
+
+#ifdef QA_TOOLS
+        PacageDataCollector dataCollector;
+#endif // DEBUG
+
 
         // objects
         void initTexts(); // metodo auxiliar para limpio

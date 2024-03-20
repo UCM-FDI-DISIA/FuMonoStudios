@@ -1,6 +1,7 @@
 #include "DataCollector.h"
 
-DataCollector::DataCollector()
+DataCollector::DataCollector(const std::string& docPath)
 {
+	doc.Load(docPath);
 }
 

@@ -5,14 +5,15 @@ class PacageDataCollector :
     public DataCollector
 {
 public:
-    PacageDataCollector() :DataCollector() {
-        dataFile.open("QAdata/pacages.csv",std::ios::app);
+    PacageDataCollector() :DataCollector("QAdata/pacages.csv"),nextVoidRow(0) {
+        doc.Clear();
         dataFile << "Direccion" << SEPARATOR << "Tipo de Sello" << SEPARATOR << "Tipo de Peso" << "\n";
     }
     ~PacageDataCollector() {};
 
-    //cambiar mas adelante para que pueda ser const
-    virtual std::ofstream& operator<<(Paquete&);
+    void writePacageData(Paquete&);
 
+private:
+    int nextVoidRow;
 };
 

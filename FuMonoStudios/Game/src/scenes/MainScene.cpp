@@ -31,8 +31,8 @@
 #include "../components/ErrorNote.h"
 
 
-#include <QATools/PacageDataCollector.h>
-ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
+
+ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr),dataCollector()
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
@@ -269,8 +269,7 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 				correct_++;
 #ifdef QA_TOOLS
 				//TODO mover a un método
-				PacageDataCollector data;
-				data << *entRec->getComponent<Paquete>();
+				dataCollector.writePacageData(*entRec->getComponent<Paquete>());
 #endif // QA_TOOLS
 			}
 			else {
