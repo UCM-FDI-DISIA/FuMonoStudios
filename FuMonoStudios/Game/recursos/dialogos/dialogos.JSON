@@ -1,5 +1,5 @@
 {
-    "vagabundo": {
+    "vagabundo":{
         "presentacion": 
         [
             "seifnsfnoñfbsfsfoñbsoibfsf",
@@ -15,29 +15,6 @@
             "eoñfnfnsñfnsofbf",
             "peofnesfnseodibadoad"
         ],
-        "genericos": 
-        {
-            "malos": 
-            [
-                "sdsefsfsfbsfosf",
-                "oweifbweofffsfsf"
-            ],
-            "neutrales":
-            [
-                "oafbefusilfuvsifvsf",
-                "iefbesofbsfsñef"
-            ],
-            "felices": 
-            [
-                "ewoifsñbesffb",
-                "epfihseoñsefñohf"
-            ],
-            "maxiFeliz": 
-            [
-                "dsfbsbbgfbdff",
-                "wefiwfbsfbsfbsef"
-            ]
-        },
         "eventos": 
         [
             "oefbeoñfbfobsosfbsofibesi",
@@ -60,29 +37,6 @@
             "eoñfnfnsñfnsofbf",
             "peofnesfnseodibadoad"
         ],
-        "genericos": 
-        {
-            "malos": 
-            [
-                "sdsefsfsfbsfosf",
-                "oweifbweofffsfsf"
-            ],
-            "neutrales": 
-            [
-                "oafbefusilfuvsifvsf",
-                "iefbesofbsfsñef"
-            ],
-            "felices": 
-            [
-                "ewoifsñbesffb",
-                "epfihseoñsefñohf"
-            ],
-            "maxiFeliz": 
-            [
-                "dsfbsbbgfbdff",
-                "wefiwfbsfbsfbsef"
-            ]
-        },
         "eventos": 
         [
             "oefbeoñfbfobsosfbsofibesi",

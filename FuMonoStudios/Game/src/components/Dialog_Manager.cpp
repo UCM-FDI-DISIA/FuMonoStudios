@@ -28,7 +28,8 @@ void DialogManager::nextDialog() {
     }
 }
 // un string sin referencia es como un d�a sin sol: const string&
-void DialogManager::setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric) {
+void DialogManager::setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric) 
+{
     //eliminamos los dialogos anteriores
     dialogs_.clear();
     //reseteamos la posicon del indice
@@ -48,23 +49,23 @@ void DialogManager::setDialogues(const std::string& filename, std::string charNa
 
     jValue = root[charName];
     if (jValue != nullptr) {
-        if (jValue->IsArray()) {
-            dialogs_.reserve(jValue->AsArray().size());
-            for (auto v : jValue->AsArray()) {
-                if (v->IsObject()) {
-                    JSONObject vObj = v->AsObject();
-                    std::string type = vObj[typeDialog]->AsString();
+      if (jValue->IsArray()) {
+        dialogs_.reserve(jValue->AsArray().size());
+        for (auto v : jValue->AsArray()) {
+          if (v->IsObject()) {
+            JSONObject vObj = v->AsObject();
+            std::string type = vObj[typeDialog]->AsString();
 #ifdef _DEBUG
-                    std::cout << "Loading dialogo with id: " << type << std::endl;
+            std::cout << "Loading dialogo with id: " << type << std::endl;
 #endif
-                    dialogs_.push_back(type);
-                }
-                else {
-                    throw "'Dialogs' array in '" + filename
-                        + "' includes and invalid value";
-                }
-            }
+            dialogs_.push_back(type);
+          }
+          else {
+            throw "'Dialogs' array in '" + filename
+              + "' includes and invalid value";
+          }
         }
-
+      }
+    }
 
 }
