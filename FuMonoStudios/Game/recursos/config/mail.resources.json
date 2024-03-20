@@ -1,187 +1,198 @@
 {
-  "images": [
-    {
-      "id": "placeHolder",
-      "file": "recursos/images/SDL_logo.png"
-    },
-    {
-      "id": "boxTest",
-      "file": "recursos/images/Box.png"
-    },
-    {
-      "id": "selloTest",
-      "file": "recursos/images/Sello.png"
-    },
-    {
-      "id": "bookTest",
-      "file": "recursos/images/Book.png"
-    },
-    {
-      "id": "book1",
-      "file": "recursos/images/Book1.png"
-    },
-    {
-      "id": "book2",
-      "file": "recursos/images/Book2.png"
-    },
-    {
-      "id": "book3",
-      "file": "recursos/images/Book3.png"
-    },
-    {
-      "id": "book4",
-      "file": "recursos/images/Book4.png"
-    },
-    {
-      "id": "book5",
-      "file": "recursos/images/Book5.png"
-    },
-    {
-      "id": "flechaTest",
-      "file": "recursos/images/flecha.png"
-    },
-    {
-      "id": "botonTrabajar",
-      "file": "recursos/images/placeholderTrabajar.png"
-    },
-    {
-      "id": "demeter",
-      "file": "recursos/images/Demeter.png"
-    },
-    {
-      "id": "hefesto",
-      "file": "recursos/images/Hefesto.png"
-    },
-    {
-      "id": "hestia",
-      "file": "recursos/images/Hestia.png"
-    },
-    {
-      "id": "artemisa",
-      "file": "recursos/images/Artemisa2.png"
-    },
-    {
-      "id": "hermes",
-      "file": "recursos/images/Hermes.png"
-    },
-    {
-      "id": "apolo",
-      "file": "recursos/images/Apolo.png"
-    },
-    {
-      "id": "poseidon",
-      "file": "recursos/images/Poseidon.png"
-    },
+    "images": [
+        {
+            "id": "placeHolder",
+            "file": "recursos/images/SDL_logo.png"
+        },
+        {
+            "id": "boxTest",
+            "file": "recursos/images/Box.png"
+        },
+        {
+            "id": "selloTest",
+            "file": "recursos/images/Sello.png"
+        },
+        {
+            "id": "bookTest",
+            "file": "recursos/images/Book.png"
+        },
+        {
+            "id": "book1",
+            "file": "recursos/images/Book1.png"
+        },
+        {
+            "id": "book2",
+            "file": "recursos/images/Book2.png"
+        },
+        {
+            "id": "book3",
+            "file": "recursos/images/Book3.png"
+        },
+        {
+            "id": "book4",
+            "file": "recursos/images/Book4.png"
+        },
+        {
+            "id": "book5",
+            "file": "recursos/images/Book5.png"
+        },
+        {
+            "id": "flechaTest",
+            "file": "recursos/images/flecha.png"
+        },
+        {
+            "id": "botonTrabajar",
+            "file": "recursos/images/placeholderTrabajar.png"
+        },
+        {
+            "id": "demeter",
+            "file": "recursos/images/Demeter.png"
+        },
+        {
+            "id": "hefesto",
+            "file": "recursos/images/Hefesto.png"
+        },
+        {
+            "id": "hestia",
+            "file": "recursos/images/Hestia.png"
+        },
+        {
+            "id": "artemisa",
+            "file": "recursos/images/Artemisa2.png"
+        },
+        {
+            "id": "hermes",
+            "file": "recursos/images/Hermes.png"
+        },
+        {
+            "id": "apolo",
+            "file": "recursos/images/Apolo.png"
+        },
+        {
+            "id": "poseidon",
+            "file": "recursos/images/Poseidon.png"
+        },
+        {
+            "id": "selladorA",
+            "file": "recursos/images/selladorRojo.png"
+        },
+        {
+            "id": "selladorB",
+            "file": "recursos/images/selladorAzul.png"
+        },
+        {
+            "id": "selladorC",
+            "file": "recursos/images/selladorVerde.png"
+        },
+        {
+            "id": "selloA",
+            "file": "recursos/images/SelloRojo.png"
+        },
+        {
+            "id": "selloB",
+            "file": "recursos/images/SelloAzul.png"
+        },
+        {
+            "id": "selloC",
+            "file": "recursos/images/SelloVerde.png"
+        },
+        {
+            "id": "press",
+            "file": "recursos/images/SDL_logo.png"
+        },
+        {
+            "id": "selloAlimento",
+            "file": "recursos/images/Alimentos.png"
+        },
+        {
+            "id": "selloArmamento",
+            "file": "recursos/images/Armas.png"
+        },
+        {
+            "id": "selloFragil",
+            "file": "recursos/images/Fragil.png"
+        },
+        {
+            "id": "selloJoyas",
+            "file": "recursos/images/Joyas.png"
+        },
+        {
+            "id": "selloMateriales",
+            "file": "recursos/images/Materiales.png"
+        },
+        {
+            "id": "selloMedicinas",
+            "file": "recursos/images/Medicina.png"
+        },
+        {
+            "id": "selloPesoAlto",
+            "file": "recursos/images/PesoAlto.png"
+        },
+        {
+            "id": "selloPesoBajo",
+            "file": "recursos/images/PesoBajo.png"
+        },
+        {
+            "id": "selloPesoMedio",
+            "file": "recursos/images/PesoMedio.png"
+        },
+        {
+            "id": "tubo1",
+            "file": "recursos/images/tubo1.png"
+        },
+        {
+            "id": "tubo2",
+            "file": "recursos/images/tubo2.png"
+        },
+        {
+            "id": "tubo3",
+            "file": "recursos/images/tubo3.png"
+        },
+        {
+            "id": "tubo4",
+            "file": "recursos/images/tubo4.png"
+        },
+        {
+            "id": "tubo5",
+            "file": "recursos/images/tubo5.png"
+        },
+        {
+            "id": "tubo6",
+            "file": "recursos/images/tubo6.png"
+        },
+        {
+            "id": "tubo7",
+            "file": "recursos/images/tubo7.png"
+        },
+        {
+            "id": "cruz",
+            "file": "recursos/images/cruz.png"
+        },
+        {
+            "id": "title",
+            "file": "recursos/images/titulo.png"
+        },
+        {
+            "id": "fondoOficina",
+            "file": "recursos/images/OficinaProyectosDesenfocada.png"
+        },
+        {
+            "id": "cinta",
+            "file": "recursos/images/Cinta.png"
+        },
+        {
+            "id": "caja25",
+            "file": "recursos/images/Caja_Envuelta_25.png"
 
-    {
-      "id": "selladorA",
-      "file": "recursos/images/selladorRojo.png"
-    },
-    {
-      "id": "selladorB",
-      "file": "recursos/images/selladorAzul.png"
-    },
-    {
-      "id": "selladorC",
-      "file": "recursos/images/selladorVerde.png"
-    },
-    {
-      "id": "selloA",
-      "file": "recursos/images/SelloRojo.png"
-    },
-    {
-      "id": "selloB",
-      "file": "recursos/images/SelloAzul.png"
-    },
-    {
-      "id": "selloC",
-      "file": "recursos/images/SelloVerde.png"
-    },
-    {
-      "id": "press",
-      "file": "recursos/images/SDL_logo.png"
-    },
+        },
+        {
+            "id": "caja50",
+            "file": "recursos/images/Caja_Envuelta_50.png"
 
-    {
-      "id": "selloAlimento",
-      "file": "recursos/images/Alimentos.png"
-    },
-    {
-      "id": "selloArmamento",
-      "file": "recursos/images/Armas.png"
-    },
-    {
-      "id": "selloFragil",
-      "file": "recursos/images/Fragil.png"
-    },
-    {
-      "id": "selloJoyas",
-      "file": "recursos/images/Joyas.png"
-    },
-    {
-      "id": "selloMateriales",
-      "file": "recursos/images/Materiales.png"
-    },
-    {
-      "id": "selloMedicinas",
-      "file": "recursos/images/Medicina.png"
-    },
-    {
-      "id": "selloPesoAlto",
-      "file": "recursos/images/PesoAlto.png"
-    },
-    {
-      "id": "selloPesoBajo",
-      "file": "recursos/images/PesoBajo.png"
-    },
-    {
-      "id": "selloPesoMedio",
-      "file": "recursos/images/PesoMedio.png"
-    },
-    {
-      "id": "tubo1",
-      "file": "recursos/images/tubo1.png"
-    },
-    {
-      "id": "tubo2",
-      "file": "recursos/images/tubo2.png"
-    },
-    {
-      "id": "tubo3",
-      "file": "recursos/images/tubo3.png"
-    },
-    {
-      "id": "tubo4",
-      "file": "recursos/images/tubo4.png"
-    },
-    {
-      "id": "tubo5",
-      "file": "recursos/images/tubo5.png"
-    },
-    {
-      "id": "tubo6",
-      "file": "recursos/images/tubo6.png"
-    },
-    {
-      "id": "tubo7",
-      "file": "recursos/images/tubo7.png"
-    },
-    {
-      "id": "title",
-      "file": "recursos/images/titulo.png"
-    },
-    {
-      "id": "fondoOficina",
-      "file": "recursos/images/OficinaProyectosDesenfocada.png"
-    },
-    {
-      "id":"cinta",
-      "file": "recursos/images/Cinta.png"
-    },
-    {
-      "id":"caja25",
-      "file": "recursos/images/Caja_Envuelta_25.png"
-
+        },
+        {
+            "id": "caja75",
+            "file": "recursos/images/Caja_Envuelta_75.png"
     },
     {
       "id":"caja50",
@@ -200,10 +211,35 @@
     {
       "id": "papelera",
       "file": "recursos/images/papelera.png"
+    },
+    {
+      "id": "cartel",
+      "file": "recursos/images/CartelCompleto.png"
+    },
+    {
+      "id": "cuadroDialogo",
+      "file": "recursos/images/CuadroDialogo.png"
+    },
+    {
+      "id": "miniManual",
+      "file": "recursos/images/ManualMini.png"
+    },
+    {
+      "id": "reloj",
+      "file": "recursos/images/Reloj.png"
+    },
+    {
+      "id": "manecillaL",
+      "file": "recursos/images/manecillaL.png"
+    },
+    {
+      "id": "manecillaS",
+      "file": "recursos/images/manecillaS.png"
     }
   ],
   "fonts":[
     {"id": "arial50","file": "recursos/fonts/ARIAL.ttf", "size": 50 },
+    {"id": "arial40","file": "recursos/fonts/ARIAL.ttf", "size": 40 },
     {"id": "capture_it50","file": "recursos/fonts/Capture_it.ttf", "size": 50 },
     {"id": "NES50","file": "recursos/fonts/NES-Chimera.ttf", "size": 50 },
     {"id": "roboto50","file": "recursos/fonts/Roboto-Thin.ttf", "size": 50 }

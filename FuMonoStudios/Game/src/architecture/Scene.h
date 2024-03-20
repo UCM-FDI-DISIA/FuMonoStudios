@@ -24,6 +24,10 @@ namespace ecs {
 		/// </summary>
 		virtual void init();
 
+		/// <summary>
+		/// metodo que se llama al descargar una escena
+		/// </summary>
+		virtual void close();
 		//Vamos a querer tener un handle input o procesamos en el update?
 
 		/// <summary>
@@ -56,7 +60,10 @@ namespace ecs {
 
 		void refresh();
 
-		void deleteAllEntities();
+		/// <summary>
+		/// Elimina todas las entidades que estuvieran en la escena
+		/// </summary>
+		void clearScene();
 	protected:
     /// <summary>
 		/// Vector de los objetos que pertenecen a la escena

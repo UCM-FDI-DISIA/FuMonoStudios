@@ -10,7 +10,7 @@
 #include <list>
 #include <functional>
 
-PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis_(dis), extraCond_()
+PackageChecker::PackageChecker() : extraCond_()
 {
 
 }
@@ -34,14 +34,15 @@ bool PackageChecker::checkPackage(Paquete* package)
 {
 	bool correctPack = false;
 	if (package->correcto() && package->bienSellado()) {
-		if (toDis_ == package->getDistrito()) {
-			correctPack = checkAdditionalConditions(package);
-		}
+		correctPack = checkAdditionalConditions(package);
 	}
 	else {
-		if (toDis_ == Paquete::Erroneo) {
-			correctPack = checkAdditionalConditions(package);
-		}
+		//Esto me gustaria cambiarlo luego, es decir, simplemente darle un booleano de papelera o algo. Nos ahorraria tambien el tema de
+		//que tenemos un distrito extra. Por ahora esta asi simplemente porque la refactorizacion que acabo de hacer parece un poco tonta.
+		//Ademas no se siquiera si vamos a hacer que las papeleras tengan condiciones extras Dx
+		//Pero sí que se que podemos dar a un tubo la condicion de papelera (por ejemplo, un dia decir que todos los paqutes malos tienen que ser 
+		//redirigidos a la oficina en x distrito y entonces funciona ambos de papelera para los errones pero normal para el resto)
+		correctPack = checkAdditionalConditions(package);
 	}
 	return correctPack;
 }
@@ -68,11 +69,11 @@ void PackageChecker::checkEntity(ecs::Entity* ent)
 bool PackageChecker::checkAdditionalConditions(Paquete* package)
 {
 	bool aditional = true;
-	/*for (Condition call : extraCond) {
+	for (Condition call : extraCond_) {
 		if (!call(package)) {
 			aditional = false;
 		}
-	}*/
+	}
 	return aditional;
 }
 

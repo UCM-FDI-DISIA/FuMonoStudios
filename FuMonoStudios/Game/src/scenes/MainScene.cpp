@@ -1,6 +1,9 @@
 #include "MainScene.h"
 #include "../architecture/Entity.h"
 #include <iostream>
+#include <imgui.h>
+#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdlrenderer2.h>
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Transform.h"
 #include "../components/Render.h"
@@ -22,11 +25,19 @@
 #include "../architecture/GameConstants.h"
 #include "../components/SelfDestruct.h"
 #include "../architecture/GeneralData.h"
+#include "../sistemas/ComonObjectsFactory.h"
+#include "../components/Depth.h"
+#include "../components/ErrorNote.h"
 
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
-	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
+	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
+#ifdef DEV_TOOLS
+	stampsUnloked_= true;
+	timeToAdd_ = 5;
+#endif // DEV_TOOLS
+
 }
 
 ecs::MainScene::~MainScene()
@@ -41,6 +52,7 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
+
 			updateTimer();
 		}
 		else
@@ -48,11 +60,67 @@ void ecs::MainScene::update()
 	}
 }
 
+void ecs::MainScene::render()
+{
+	Scene::render();
+#ifdef DEV_TOOLS
+	ImGui::NewFrame();
+
+	ImGui::Begin("Paquetes Scene Data");
+	std::string time = "Current Game Time: " + std::to_string(timer_);
+	ImGui::Text(time.c_str());
+	std::string data = "Aciertos: " + std::to_string(correct_);
+	ImGui::Text(data.c_str());
+	data = "Fallos: " + std::to_string(fails_);
+	ImGui::Text(data.c_str());
+	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
+	ImGui::Text(data.c_str());
+	ImGui::End();
+
+
+	ImGui::Begin("Controls");
+	if (ImGui::CollapsingHeader("Paquetes"))
+	{
+		ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
+		if (ImGui::Button("Create pacage")) {
+			createPaquete(generalData().getPaqueteLevel());
+		}
+	}
+	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
+	if (ImGui::CollapsingHeader("Mecánicas"))
+	{
+		int lvl = generalData().getPaqueteLevel();
+		ImGui::InputInt("Nivel del Paquete", &lvl);
+		generalData().setPaqueteLevel(lvl);
+		//ImGui::Checkbox("Sellos",&stampsUnloked_);
+		//ImGui::Checkbox("Peso",&weightUnloked_);
+		//ImGui::Checkbox("Cinta", &cintaUnloked_);
+	}
+	if (ImGui::CollapsingHeader("Tiempo")) {
+		if (ImGui::Button("Reset Timer")) {
+			timer_ = MINIGAME_TIME;
+		}
+
+		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
+		if (ImGui::Button("Add Time")) {
+			timer_ += timeToAdd_;
+		}
+	}
+
+	ImGui::End();
+	ImGui::Render();
+
+	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+#endif // DEV_TOOLS
+
+}
+
 void ecs::MainScene::init()
 {
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
+	ComonObjectsFactory factory(this);
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -61,27 +129,32 @@ void ecs::MainScene::init()
 
 	createManual();
 
+	createClock();
+
 	initTexts();
 
 	createPaquete(generalData().getPaqueteLevel());
 
-	createTubo(Paquete::Hestia);
-	createTubo(Paquete::Hefesto);
-	createTubo(Paquete::Demeter);
-	createTubo(Paquete::Artemisa);
-	createTubo(Paquete::Hermes);
-	createTubo(Paquete::Apolo);
-	createTubo(Paquete::Poseidon);
+	// En el caso de que los tubos no estén ordenados, habrá que ordenarlos
+	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
+	int j = 0;
+	for (int i = 0;i < numTubos; i++) {
+		createTubo((Paquete::Distrito)i, true);
+		j++;
+	}
+	//Creación de paquetes bloqueados
+	for (int z = j; z < 7; z++) { //grande jose la los numeros magicos te la sabes
+		createTubo((Paquete::Distrito)z, false);
+	}
 
 	createSelladores();
   
   	//cinta envolver
-	Entity* cinta = addEntity(ecs::layer::TAPE);
-	cinta->addComponent<Transform>(560, 500, 100, 150);
-	Texture* texturaCin = &sdlutils().images().at("cinta");
-	RenderImage* rd = cinta->addComponent<RenderImage>(texturaCin);
+	factory.setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory.createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
+	factory.setLayer(ecs::layer::DEFAULT);
 
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
@@ -96,6 +169,8 @@ void ecs::MainScene::init()
 			{
 				generalData().wrongPackage();
 				fails_++;
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), true, false);
 			}
 				
 			else
@@ -103,12 +178,81 @@ void ecs::MainScene::init()
 				generalData().correctPackage();
 				correct_++;
 			}
-				
-			updateFailsText();
+			
 			entRec->setAlive(false);
 			createPaquete(generalData().getPaqueteLevel());
 		}
 		});
+
+	// A medida que se vaya avanzando en el desarrollo, se tendra que expandir esto de apajo para que en X dia suceda algo o aparezcan nuevas herramientas
+	// Me gustaría que todo lo relacionado con los eventos de los dias y los paquetes y herramientas correspondientes estuviera documentado
+	// En el miro había un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
+	int dia = generalData().getDia();
+	if (dia > 0 && dia < 2) {
+		Texture* texturaSellador = &sdlutils().images().at("selladorA");
+		Entity* sellador = addEntity();
+		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width() / 2, texturaSellador->height() / 2);
+		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
+		sellador->addComponent<Gravity>();
+		sellador->addComponent<DragAndDrop>();
+		sellador->addComponent<Herramientas>();
+		sellador->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+	}
+	else if (dia >= 2 && dia < 4) {
+		Texture* texturaCinta = &sdlutils().images().at("cinta");
+		Entity* cinta = addEntity();
+		Transform* transformCinta = cinta->addComponent<Transform>(560, 0, texturaCinta->width() / 2, texturaCinta->height() / 2);
+		RenderImage* renderCinta = cinta->addComponent<RenderImage>(texturaCinta);
+		cinta->addComponent<Gravity>();
+		cinta->addComponent<DragAndDrop>();
+	}
+	else if (dia >= 4 && dia < 6) {}
+	else if (dia >= 6 && dia < 8) {}
+	else if (dia >= 8 && dia < 10) {}
+
+	/*switch (dia) {
+	case 1: {
+		Texture* texturaSellador1 = &sdlutils().images().at("sellador");
+		Entity* sellador1 = addEntity();
+		Transform* transformSellador1 = sellador1->addComponent<Transform>(460, 0, texturaSellador1->width() / 2, texturaSellador1->height() / 2);
+		RenderImage* renderSellador1 = sellador1->addComponent<RenderImage>(texturaSellador1);
+		sellador1->addComponent<Gravity>();
+		sellador1->addComponent<DragAndDrop>();
+		sellador1->addComponent<Herramientas>();
+		sellador1->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+		break;
+		}
+	case 2: {
+		Texture* texturaCinta1 = &sdlutils().images().at("cinta");
+		Entity* cinta1 = addEntity();
+		Transform* transformCinta1 = cinta1->addComponent<Transform>(460, 0, texturaCinta1->width() / 2, texturaCinta1->height() / 2);
+		RenderImage* renderCinta1 = cinta1->addComponent<RenderImage>(texturaCinta1);
+		cinta1->addComponent<Gravity>();
+		cinta1->addComponent<DragAndDrop>();
+		break;
+		}
+	}*/
+}
+
+void ecs::MainScene::close() {
+	ecs::Scene::close();
+	generalData().updateMoney(correct_,fails_);
+}
+
+void ecs::MainScene::createClock() {
+	Entity* clock = addEntity(layer::BACKGROUND);
+	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
+	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
+	clockCenter = clock->getComponent<Transform>()->getCenter();
+
+
+	Entity* manecillaL = addEntity(layer::BACKGROUND);
+	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
+	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+
+	Entity* manecillaS = addEntity(layer::BACKGROUND);
+	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
+	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
 }
 
 void ecs::MainScene::createSelladores() {
@@ -141,7 +285,8 @@ void ecs::MainScene::createSelladores() {
 	// Sellador verde (3)
 	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
 	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width(), selloCTex->height());
+	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
+, selloCTex->height());
 	selloCTR->setScale(scaleSelladores);
 	selloC->addComponent<DragAndDrop>(true, [selloC]() {
 		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
@@ -151,169 +296,177 @@ void ecs::MainScene::createSelladores() {
 	herrSelladorC->setFunctionality(SelloCalleC);
 }
 
-void ecs::MainScene::createTubo(Paquete::Distrito dist) {
+void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 	float scaleTubos = 0.3f;
-	
 	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);
 	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(dist + 1));
+
 	Transform* tuboTr = tuboEnt->addComponent<Transform>(75 + (220 * dist), -40, texTubo->width(), texTubo->height());
 	tuboTr->setScale(scaleTubos);
 	tuboEnt->addComponent<RenderImage>(texTubo);
-	Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist);
-	tuboTri->addCallback([this, dist,tuboCheck](ecs::Entity* entRec) {
-		//comprobamos si es un paquete
-		Transform* entTr = entRec->getComponent<Transform>();
+
+	if (desbloqueado) {
+		Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
+		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>();
+		tuboTri->addCallback([this, dist, tuboCheck](ecs::Entity* entRec) {
+			//comprobamos si es un paquete
+			Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
+			entRec->removeComponent<Gravity>();
+			entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+				entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			entRec->addComponent<SelfDestruct>(1, [this]() {
+				generalData().correctPackage();
+			createPaquete(generalData().getPaqueteLevel());
+				});
 			if (tuboCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				entRec->removeComponent<Gravity>();
-				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
-				entRec->addComponent<SelfDestruct>(1, [this]() {
-					correct_++;
-					generalData().correctPackage();
-					updateFailsText();
-					createPaquete(0);
-					});
+				correct_++;
 			}
 			else {
-				entRec->removeComponent<Gravity>();
-				entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-					Vector2D(entTr->getPos().getX(), entTr->getPos().getY() - 600), 1.5, Easing::EaseOutCubic);
-				entRec->addComponent<SelfDestruct>(1, [this]() {
-					fails_++;
-					generalData().wrongPackage();
-					updateFailsText();
-					createPaquete(0);
-					});
+				fails_++;
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				if (dist == entRec->getComponent<Paquete>()->getDistrito()) {
+					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, false);
+				}
+				else
+				{
+					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
+				}
 			}
-			std::cout << "crazy! " << dist << std::endl;
+
 		}
 
-		});
+			});
+		tuboCheck->addCondition([dist](Paquete* paqRec) -> bool {
+			return paqRec->getDistrito() == dist;
+			});
+	}
+	else {
+		Entity* cruzEnt = addEntity(ecs::layer::UI);
+		Texture* texCruz = &sdlutils().images().at("cruz");
+
+		Transform* cruzTr = cruzEnt->addComponent<Transform>(75 + (220 * dist), 120, texCruz->width(), texCruz->height());
+		cruzTr->setScale(0.2f);
+		cruzEnt->addComponent<RenderImage>(texCruz);
+	}
+
+#ifdef _DEBUG
+	std::cout << "Creado el tubo  " << dist << std::endl;
+#endif // _DEBUG
+
 }
 
 void ecs::MainScene::createManual()
 {
+	ComonObjectsFactory fact(this);
 	Entity* manual = addEntity(ecs::layer::MANUAL);
+	//se puede hacer un for
 	Texture* manualTexture = &sdlutils().images().at("book1");
 	Texture* manualTexture2 = &sdlutils().images().at("book2");
 	Texture* manualTexture3 = &sdlutils().images().at("book3");
 	Texture* manualTexture4 = &sdlutils().images().at("book4");
 	Texture* manualTexture5 = &sdlutils().images().at("book5");
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+
+	std::vector<Texture*> bookTextures = {
+		manualTexture,
+		manualTexture2,
+		manualTexture3,
+		manualTexture4,
+		manualTexture5
+	};
 	float scaleManual = 0.075;
 	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width(), manualTexture->height());
 	manualTransform->setScale(scaleManual);
-	manual->addComponent<Gravity>();
 	RenderImage* manualRender = manual->addComponent<RenderImage>();
+	manual->addComponent<Gravity>();
 	manual->addComponent<DragAndDrop>(true);
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>();
-	multTextures->addTexture(manualTexture);
-	multTextures->addTexture(manualTexture2);
-	multTextures->addTexture(manualTexture3);
-	multTextures->addTexture(manualTexture4);
-	multTextures->addTexture(manualTexture5);
-	multTextures->initComponent();
+	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>(bookTextures);
 	manualRender->setTexture(multTextures->getCurrentTexture());
 
 
-	Entity* button = addEntity(ecs::layer::FOREGROUND);
-	float buttonScale = 0.15;
-	Transform* buttonTransform = button->addComponent<Transform>(400, 300, buttonTexture->width(), buttonTexture->height());
-	buttonTransform->setScale(buttonScale);
-	RenderImage* buttonRender = button->addComponent<RenderImage>(buttonTexture);
-	buttonTransform->setParent(manualTransform);
-	button->addComponent<Clickeable>();
-	button->getComponent<Clickeable>()->addEvent([multTextures]() {
+	Vector2D buttonSize(100, 40);
+	fact.setLayer(ecs::layer::FOREGROUND);
 
-		multTextures->nextTexture();
-		});
+	auto next = [multTextures]() {multTextures->nextTexture();};
+	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
+	right->getComponent<Transform>()->setParent(manualTransform);
 
-	Entity* button2 = addEntity(ecs::layer::FOREGROUND);
-	Transform* buttonTransform2 = button2->addComponent<Transform>(100, 300, buttonTexture->width() * buttonScale, buttonTexture->height() * buttonScale);
-	RenderImage* buttonRender2 = button2->addComponent<RenderImage>(buttonTexture);
-	buttonTransform2->setParent(manualTransform);
-	button2->addComponent<Clickeable>();
-	button2->getComponent<Clickeable>()->addEvent([multTextures]() {
+	auto previous = [multTextures]() {multTextures->previousTexture();};
+	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
+	left->getComponent<Transform>()->setParent(manualTransform);
 
-		multTextures->previousTexture();
-		});
+
+	fact.setLayer(ecs::layer::DEFAULT);
+
+	manual->addComponent<Depth>();
 }
 
 void ecs::MainScene::initTexts() {
 	// inicializamos el timer
+#ifndef DEV_TOOLS
 	timerEnt_ = addEntity(ecs::layer::UI);
 	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
 	timerEnt_->addComponent<RenderImage>();
 	updateTimer();
-
-	// creamos contador fallos y aciertos
-	successEnt_ = addEntity(ecs::layer::UI);
-	successEnt_->addComponent<Transform>(1350, 250, 100, 100);
-	successEnt_->addComponent<RenderImage>();
-
-	failsEnt_ = addEntity(ecs::layer::UI);
-	failsEnt_->addComponent<Transform>(1350, 350, 100, 100);
-	failsEnt_->addComponent<RenderImage>();
-
-	updateFailsText();
+#endif // DEV_TOOLS
 }
 
 void ecs::MainScene::updateTimer() {
+	// numeros que aplicados hacen representar bien las horas y minutos
+	float x = ((minutes - 15) / 9.55);
+	float y = ((hours - 6) / 3.82);
+
+	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
+						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
+	trManecillaL->setRotation(90 + x * CONST_ROT);
+
+	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
+							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
+	trManecillaS->setRotation(y * CONST_ROT);
+
+	minutes += timeMultiplier * 1;
+	hours += timeMultiplier * 0.01666;
+
+	//std::cout << "y: " << y << " x:" << x << std::endl;
+	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
+  
+#ifndef DEV_TOOLS
 	if (timerTexture_ != nullptr)
 	{
 		delete timerTexture_;
 		timerTexture_ = nullptr;
 	}
-		
+
 	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
 	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
+#endif // !DEV_TOOLS
 }
 
-void ecs::MainScene::updateFailsText() {
-	if (successTexture_ != nullptr) {
-		delete successTexture_;
-		successTexture_ = nullptr;
-	}
-	successTexture_ = new Texture(sdlutils().renderer(), "Aciertos: " + std::to_string(correct_), *timeFont_, build_sdlcolor(0x00ff00ff), 200);
-	successEnt_->getComponent<RenderImage>()->setTexture(successTexture_);
-
-	if (failsTexture_ != nullptr) {
-		delete failsTexture_;
-		failsTexture_ = nullptr;
-	}
-	failsTexture_ = new Texture(sdlutils().renderer(), "Fallos: " + std::to_string(fails_), *timeFont_, build_sdlcolor(0xff0000ff), 200);
-	failsEnt_->getComponent<RenderImage>()->setTexture(failsTexture_);
-}
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
+
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
 
-	Texture* texturaPaquet25 = &sdlutils().images().at("caja25");
-
-	Texture* texturaPaquet50 = &sdlutils().images().at("caja50");
-
-	Texture* texturaPaquet75 = &sdlutils().images().at("caja75");
-
-	Texture* texturaPaquet100 = &sdlutils().images().at("caja100");
+	std::vector<Texture*> textures = {
+		texturaPaquet,
+		&sdlutils().images().at("caja25"),
+		&sdlutils().images().at("caja50"),
+		&sdlutils().images().at("caja75"),
+		&sdlutils().images().at("caja100")
+	};
 
 	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-  trPq->setScale(paqueteScale);
+	trPq->setScale(paqueteScale);+
+	paqEnt->addComponent<Depth>();
 	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
 	paqEnt->addComponent<Gravity>();
 	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
 	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
 
-	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>();
-
-	multTexturesPaq->addTexture(texturaPaquet);
-	multTexturesPaq->addTexture(texturaPaquet25);
-	multTexturesPaq->addTexture(texturaPaquet50);
-	multTexturesPaq->addTexture(texturaPaquet75);
-	multTexturesPaq->addTexture(texturaPaquet100);
+	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
 
 	multTexturesPaq->initComponent();
 
