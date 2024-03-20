@@ -57,22 +57,9 @@ public:
 	};
 
 
-	// we abstract away the actual data structure we use for
-	// tables. All we assume is that is has the following
-	// methods
-	//
-	//   emplace(key,value)
-	//   at(key)
-	//   reserve(unsigned int)
-	//   clear()
-	//
 	template<typename T>
 	using sdl_resource_table = std::unordered_map<std::string, T>;
 
-	// just a wrapper for accessing a map, to protect the table and
-	// to throw a meaningful exception when the key is not found
-	// in the original map
-	//
 	template<typename T>
 	class map_access_wrapper {
 		sdl_resource_table<T>& map_;
@@ -121,19 +108,19 @@ public:
 		return placesAccessWrapper_;
 	}
 
-	private:
+private:
 
-		Config();
-		Config(std::string filename);
+	Config();
+	Config(std::string filename);
 
-		void closeInfo(); // free resources the
-		void loadReasources(std::string filename); // load resources from the json file
-
-
-		sdl_resource_table<Places> places_; // fonts map (string -> font)
+	void closeInfo(); // free resources the
+	void loadReasources(std::string filename); // load resources from the json file
 
 
-		map_access_wrapper<Places> placesAccessWrapper_;
+	sdl_resource_table<Places> places_; // fonts map (string -> font)
+
+
+	map_access_wrapper<Places> placesAccessWrapper_;
 
 };
 
