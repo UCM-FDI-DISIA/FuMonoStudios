@@ -35,7 +35,8 @@ public:
 
     /// <summary>
     /// Avanza al siguente dialogo. 
-    /// Si ya está en el ultimo diálogo no avanza y se queda en ese
+    /// Si ya está en el ultimo diálogo devuelve false y resetea
+    /// el index a 0
     /// </summary>
     bool nextDialog();
     /// <summary>
