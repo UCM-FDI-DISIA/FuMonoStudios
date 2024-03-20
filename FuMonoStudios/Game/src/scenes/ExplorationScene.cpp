@@ -52,13 +52,13 @@ void ecs::ExplorationScene::initPlacesDefaultMap()
 	artemisa = Lugar(&sdlutils().images().at("artemisa"), true);
 
 	//Hermes
-	hermes = Lugar(&sdlutils().images().at("hermes"), false);
+	hermes = Lugar(&sdlutils().images().at("hermes"), true);
 
 	//Apolo
-	apolo = Lugar(&sdlutils().images().at("apolo"), false);
+	apolo = Lugar(&sdlutils().images().at("apolo"), true);
 
 	//Posidon
-	poseidon = Lugar(&sdlutils().images().at("poseidon"), false);
+	poseidon = Lugar(&sdlutils().images().at("poseidon"), true);
 }
 
 void ecs::ExplorationScene::initDirectionsDefaultMap()
@@ -188,13 +188,25 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 void ecs::ExplorationScene::createObjects(std::string place) {
 
 	auto& pl = config().places();
-	if (place == "Demeter") {
-		demeter.addObjects(createNavegationsArrows(pl.at("Demeter").myArrows[0].x_, pl.at("Demeter").myArrows[0].y_, 
-			pl.at("Demeter").myArrows[0].destination_, pl.at("Demeter").myArrows[0].scale_));
 
-		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes", 0.5));
-		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa", 0.5));
-		demeter.addObjects(createCharacter(300, 300, "pancracio", 0.25));
+	if (place == "Demeter") {
+
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			demeter.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			demeter.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
+		
 
 
 		//boton ir a trabajar
@@ -210,33 +222,106 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	}
 	else if (place == "Hefesto")
 	{
-		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia", 0.5));
-		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
-		hefesto.addObjects(createCharacter(300, 300, "paulino", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hefesto.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hefesto.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Hestia") {
-		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa", 0.5));
-		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto", 0.5));
-		hestia.addObjects(createCharacter(300, 300, "anemos", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hestia.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hestia.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Artemisa") {
-		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter", 0.5));
-		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia", 0.5));
-		artemisa.addObjects(createCharacter(300, 300, "abigail", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			artemisa.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			artemisa.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Hermes") {
-		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
-		hermes.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
-		hermes.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hermes.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hermes.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Apolo") {
-		apolo.addObjects(createNavegationsArrows(100, 100, "Poseidon", 0.5));
-		apolo.addObjects(createNavegationsArrows(1300, 100, "Hermes", 0.5));
-		apolo.addObjects(createCharacter(300, 300, "Soldado", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			apolo.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			apolo.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Poseidon") {
-		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
-		poseidon.addObjects(createCharacter(300, 300, "gargafiel", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			poseidon.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			poseidon.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 }
 
