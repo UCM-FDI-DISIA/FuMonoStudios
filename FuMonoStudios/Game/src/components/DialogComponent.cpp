@@ -6,6 +6,7 @@
 #include "Dialog_Manager.h"
 #include "Transform.h"
 #include "Render.h"
+#include "DelayedCallback.h"
 
 DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(nullptr),
 	dialogueWidth_(sdlutils().width() - 300),dialogueIndex_(1),mTexture_(nullptr),
