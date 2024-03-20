@@ -19,14 +19,19 @@ std::string DialogManager::getCurrentDialog() {
 }
 
 
-void DialogManager::nextDialog() {
-    if (currentDialogIndex_ < dialogs_.size() - 1) {
-        currentDialogIndex_++;
+bool DialogManager::nextDialog() {
+    bool isEndOfConversation = (currentDialogIndex_ >= dialogs_.size() - 1);
+
+    if (isEndOfConversation) {
+
+        currentDialogIndex_ = 0;
     }
     else {
-        currentDialogIndex_ = resetDialogueIndex_;
+        currentDialogIndex_++;
     }
+    return isEndOfConversation;
 }
+
 // un string sin referencia es como un d�a sin sol: const string&
 void DialogManager::setDialogues(const std::string& filename, std::string charName, std::string typeDialog, std::string typeGeneric) {
     //eliminamos los dialogos anteriores
