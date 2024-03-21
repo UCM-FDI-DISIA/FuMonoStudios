@@ -70,6 +70,8 @@ private:
 
 
 	std::list<std::function<void(void)>> requets;
+
+	float autoRecodTime = 0;
 };
 
 inline Game& gm() {
