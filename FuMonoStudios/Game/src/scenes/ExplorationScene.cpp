@@ -21,8 +21,8 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &hestia;
-	navigate("Artemisa");
-	createObjects("Artemisa");
+	navigate("Hestia");
+	createObjects("Hestia");
 	rect_ = build_sdlrect(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 
 }
@@ -124,13 +124,12 @@ void ecs::ExplorationScene::navigate(std::string placeDir) // otro string sin co
 		actualPlace_ = actualPlace_->getPlaceFromDirection(placeDir);
 }
 
-ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, std::string placeDir, float scale)
+ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::string placeDir, float scale)
 {
 	//para crear la flecha a hefesto
 
 	ComonObjectsFactory factory(this);
 	factory.setLayer(ecs::layer::FOREGROUND);
-	Vector2D pos{ x, y };
 	Texture* sujetaplazas = &sdlutils().images().at("cartel");
 	Vector2D size{ sujetaplazas->width() * scale, sujetaplazas->height() * scale };
 	
@@ -150,7 +149,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::string character, float scale) {
+ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, std::string character, float scale) {
 
 	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
@@ -161,7 +160,6 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 
 	ComonObjectsFactory factory(this);
 
-	Vector2D pos{ x, y };
 	Texture* texturaBoton = &sdlutils().images().at(character);
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
@@ -194,7 +192,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			demeter.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			demeter.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -202,30 +200,19 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			demeter.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			demeter.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
 		}
 		
 
-
-		//boton ir a trabajar
-		ecs::Entity* botonTrabajar = addEntity();
-		botonTrabajar->addComponent<Transform>(500, 500, 200, 100);
-		botonTrabajar->addComponent<RenderImage>(&sdlutils().images().at("botonTrabajar"));
-		auto clickableBotonTrabajar = botonTrabajar->addComponent<Clickeable>();
-		CallbackClickeable funcPress = [this]() {
-			gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
-		};
-		clickableBotonTrabajar->addEvent(funcPress);
-		demeter.addObjects(botonTrabajar);
 	}
 	else if (place == "Hefesto")
 	{
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			hefesto.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			hefesto.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -233,7 +220,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			hefesto.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			hefesto.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
@@ -242,7 +229,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	else if (place == "Hestia") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			hestia.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			hestia.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -250,16 +237,26 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			hestia.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			hestia.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
 		}
+
+		//boton ir a trabajar
+		ecs::Entity* botonTrabajar = addEntity();
+		botonTrabajar->addComponent<Transform>(525, 300, 100, 300);
+		auto clickableBotonTrabajar = botonTrabajar->addComponent<Clickeable>();
+		CallbackClickeable funcPress = [this]() {
+			gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
+		};
+		clickableBotonTrabajar->addEvent(funcPress);
+		demeter.addObjects(botonTrabajar);
 	}
 	else if (place == "Artemisa") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			artemisa.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			artemisa.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -267,7 +264,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			artemisa.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			artemisa.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
@@ -276,7 +273,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	else if (place == "Hermes") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			hermes.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			hermes.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -284,7 +281,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			hermes.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			hermes.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
@@ -293,7 +290,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	else if (place == "Apolo") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			apolo.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			apolo.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -301,7 +298,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			apolo.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			apolo.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
@@ -310,7 +307,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 	else if (place == "Poseidon") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
 
-			poseidon.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].x_, pl.at(place).myArrows[i].y_,
+			poseidon.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
 				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
 
 
@@ -318,7 +315,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
 
-			poseidon.addObjects(createCharacter(pl.at(place).myCharacters[i].x_, pl.at(place).myCharacters[i].y_,
+			poseidon.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
 				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
 
 
