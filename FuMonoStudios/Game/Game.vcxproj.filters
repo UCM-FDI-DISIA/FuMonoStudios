@@ -58,6 +58,7 @@
     <ClCompile Include="src\components\ErrorNote.cpp" />
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
+    <ClCompile Include="src\entities\ClockAux.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
+    <ClInclude Include="src\entities\ClockAux.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />

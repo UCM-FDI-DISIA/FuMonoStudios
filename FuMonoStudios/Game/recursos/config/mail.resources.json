@@ -257,6 +257,10 @@
       "file": "recursos/images/Reloj.png"
     },
     {
+      "id": "reloj2",
+      "file": "recursos/images/Reloj2.png"
+    },
+    {
       "id": "manecillaL",
       "file": "recursos/images/manecillaL.png"
     },

@@ -28,13 +28,11 @@
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
 #include "../components/ErrorNote.h"
+#include "../entities/ClockAux.h"
 
-ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
+ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 {
-	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
-	hours = 0;
-	minutes = 0;
 #ifdef DEV_TOOLS
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
@@ -54,9 +52,6 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
-			timeMultiplier = (1440 / MINIGAME_TIME * 1) * Time::getDeltaTime();
-
-			updateTimer();
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
@@ -133,8 +128,6 @@ void ecs::MainScene::init()
 	createManual();
 
 	createClock();
-
-	initTexts();
 
 	createPaquete(generalData().getPaqueteLevel());
 
@@ -253,19 +246,8 @@ void ecs::MainScene::close() {
 }
 
 void ecs::MainScene::createClock() {
-	Entity* clock = addEntity(layer::BACKGROUND);
-	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
-	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
-	clockCenter = clock->getComponent<Transform>()->getCenter();
-
-
-	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
-	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
-
-	Entity* manecillaS = addEntity(layer::BACKGROUND);
-	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
-	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
+	Entity* clock = addEntity(ecs::layer::BACKGROUND);
+	clock->addComponent<ClockAux>(MINIGAME_TIME);
 }
 
 void ecs::MainScene::createSelladores() {
@@ -414,48 +396,6 @@ void ecs::MainScene::createManual()
 
 	manual->addComponent<Depth>();
 }
-
-void ecs::MainScene::initTexts() {
-	// inicializamos el timer
-#ifndef DEV_TOOLS
-	timerEnt_ = addEntity(ecs::layer::UI);
-	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
-	timerEnt_->addComponent<RenderImage>();
-	updateTimer();
-#endif // DEV_TOOLS
-}
-
-void ecs::MainScene::updateTimer() {
-	// numeros que aplicados hacen representar bien las horas y minutos
-	float x = ((minutes - 15) / 9.55);
-	float y = ((hours - 6) / 3.82);
-
-	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
-						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
-	trManecillaL->setRotation(90 + x * CONST_ROT);
-
-	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
-							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
-	trManecillaS->setRotation(y * CONST_ROT);
-
-	minutes += timeMultiplier * 1;
-	hours += timeMultiplier * 0.01666;
-
-	//std::cout << "y: " << y << " x:" << x << std::endl;
-	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
-  
-#ifndef DEV_TOOLS
-	if (timerTexture_ != nullptr)
-	{
-		delete timerTexture_;
-		timerTexture_ = nullptr;
-	}
-
-	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
-	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
-#endif // !DEV_TOOLS
-}
-
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;
