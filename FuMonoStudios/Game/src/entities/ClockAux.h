@@ -23,6 +23,7 @@ public:
 
 	void update() override;
 private:
+    float minigameTime;
     float timeMultiplier;
     float hours;
     float minutes;
@@ -38,7 +39,7 @@ private:
     //
 
     // feedback parpadeo
-    float timeBetweenLowTime = 2;
+    float timeBetweenLowTime = 1000;
     bool lowTimeFlag;
     float timerLowTime;
     float timeToUpdateLowTime;

@@ -5,10 +5,11 @@
 #include "../components/Transform.h"
 #include "../architecture/Time.h"
 
-ClockAux::ClockAux(float minigameTime) {
+ClockAux::ClockAux(float MinigameTime) {
+	minigameTime = MinigameTime;
 	hours = 0;
 	minutes = 0;
-	timeMultiplier = (1440 / minigameTime) * Time::getDeltaTime();
+	timeMultiplier = (1440 / MinigameTime) * Time::getDeltaTime();
 	trManecillaL = nullptr;
 	trManecillaS = nullptr;
 	lowTimeFlag = false;
@@ -36,6 +37,8 @@ void ClockAux::initComponent() {
 }
 
 void ClockAux::update() {
+	timeMultiplier = (1440 / minigameTime) * Time::getDeltaTime();
+
 	// numeros que aplicados hacen representar bien las horas y minutos
 	float x = ((minutes - 15) / 9.55);
 	float y = ((hours - 6) / 3.82);
@@ -52,7 +55,7 @@ void ClockAux::update() {
 	hours += timeMultiplier * 0.01666;
 
 
-	if (hours > 21)
+	if (hours > 18)
 	{
 		timerLowTime = sdlutils().currRealTime();
 
