@@ -175,11 +175,15 @@ void ecs::MainScene::init()
 			createPaquete(generalData().getPaqueteLevel());
 		}
 		});
+
+	sdlutils().musics().at("trabajo").play();
 }
 
 void ecs::MainScene::close() {
 	ecs::Scene::close();
 	generalData().updateMoney(correct_,fails_);
+
+	sdlutils().musics().at("trabajo").pauseMusic();
 }
 
 void ecs::MainScene::createClock() {
