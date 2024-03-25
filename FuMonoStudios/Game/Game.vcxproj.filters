@@ -39,7 +39,6 @@
     <ClCompile Include="src\scenes\EndWorkScene.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
     <ClCompile Include="src\components\SelfDestruct.cpp" />
-    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="src\utils\Collisions.cpp">
       <Filter>utilsSource</Filter>
     </ClCompile>
@@ -47,6 +46,7 @@
       <Filter>utilsSource</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
+    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
@@ -58,6 +58,7 @@
     <ClCompile Include="src\components\ErrorNote.cpp" />
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
+    <ClCompile Include="src\entities\ClockAux.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
+    <ClInclude Include="src\entities\ClockAux.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />

@@ -2,7 +2,8 @@
 
     "places": [
 
-        {"Demeter": [
+        {"id": "Demeter",
+         "data":  [
 
             {"arrows": [
 
@@ -30,7 +31,10 @@
                 "dir" : true              
                 }
 
-            ]},
+            ]}
+
+        ],
+        "dataChar": [
 
             {"character" : [
 
@@ -43,10 +47,11 @@
                 }
 
             ]}
+        ]
+        },
 
-        ]},
-
-        {"Hefesto": [
+        {"id": "Hefesto",
+        "data": [
 
             {"arrows": [
 
@@ -66,7 +71,10 @@
                 "dir" : true              
                 }
 
-            ]},
+            ]}
+
+        ],
+        "dataChar": [
 
             {"character" : [
 
@@ -79,84 +87,88 @@
                 }
 
             ]}
-
         ]},
 
-        {"Hestia": [
+        {"id": "Hestia",
+        "data": [
 
             {"arrows": [
 
                 {"id" : 0,
-                "x" : 100,
-                "y" : 100,
+                "x" : 250,
+                "y" : 650,
                 "dest" : "Artemisa",
-                "scale" : 0.5,
+                "scale" : 0.45,
                 "dir" : false              
                 },
 
                 {"id" : 1,
-                "x" : 700,
-                "y" : 100,
+                "x" : 1350,
+                "y" : 500,
                 "dest" : "Hefesto",
-                "scale" : 0.5,
-                "dir" : true              
-                }
-
-            ]},
-
-            {"character" : [
-
-                {"id" : 0,
-                "x" : 300,
-                "y" : 300,
-                "name" : "anemos",
-                "scale" : 0.25,
+                "scale" : 0.35,
                 "dir" : true              
                 }
 
             ]}
 
-
-        ]},
-
-        {"Artemisa": [
-
-            {"arrows": [
-
-                {"id" : 0,
-                "x" : 100,
-                "y" : 100,
-                "dest" : "Demeter",
-                "scale" : 0.5,
-                "dir" : false              
-                },
-
-                {"id" : 1,
-                "x" : 700,
-                "y" : 100,
-                "dest" : "Hestia",
-                "scale" : 0.5,
-                "dir" : true              
-                }
-
-            ]},
+        ],
+        "dataChar": [
 
             {"character" : [
 
                 {"id" : 0,
+                "x" : 675,
+                "y" : 475,
+                "name" : "anemos",
+                "scale" : 0.28,
+                "dir" : true              
+                }
+
+            ]}
+        ]},
+
+        {"id": "Artemisa",
+        "data": [
+
+            {"arrows": [
+
+                {"id" : 0,
                 "x" : 300,
+                "y" : 375,
+                "dest" : "Demeter",
+                "scale" : 0.35,
+                "dir" : false              
+                },
+
+                {"id" : 1,
+                "x" : 1000,
+                "y" : 300,
+                "dest" : "Hestia",
+                "scale" : 0.3,
+                "dir" : true              
+                }
+
+            ]}
+
+        ],
+        "dataChar": [
+
+            {"character" : [
+
+                {"id" : 0,
+                "x" : 725,
                 "y" : 300,
                 "name" : "abigail",
-                "scale" : 0.25,
+                "scale" : 0.18,
                 "dir" : true              
                 }
 
             ]}
-
-
         ]},
 
-        {"Hermes": [
+        {"id": "Hermes",
+        "data": [
 
             {"arrows": [
 
@@ -184,7 +196,10 @@
                 "dir" : true              
                 }
 
-            ]},
+            ]}
+
+        ],
+        "dataChar": [
 
             {"character" : [
 
@@ -197,11 +212,10 @@
                 }
 
             ]}
-
-
         ]},
 
-        {"Apolo": [
+        {"id": "Apolo",
+        "data": [
 
             {"arrows": [
 
@@ -221,23 +235,26 @@
                 "dir" : true              
                 }
 
-            ]},
+            ]}
+
+        ],
+        "dataChar": [
 
             {"character" : [
 
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "Soldado",
+                "name" : "abakand",
                 "scale" : 0.25,
                 "dir" : true              
                 }
 
             ]}
-
         ]},
 
-        {"Poseidon": [
+        {"id": "Poseidon",
+        "data": [
 
             {"arrows": [
 
@@ -249,7 +266,11 @@
                 "dir" : false              
                 }
 
-            ]},
+            ]}
+
+
+        ],
+        "dataChar": [
 
             {"character" : [
 
@@ -262,9 +283,6 @@
                 }
 
             ]}
-
-            
-
         ]}
 
     ]

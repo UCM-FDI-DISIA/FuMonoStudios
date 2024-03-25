@@ -28,10 +28,10 @@
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
 #include "../components/ErrorNote.h"
+#include "../entities/ClockAux.h"
 
-ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
+ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 {
-	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
 #ifdef DEV_TOOLS
 	stampsUnloked_= true;
@@ -52,8 +52,6 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
-
-			updateTimer();
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
@@ -124,14 +122,12 @@ void ecs::MainScene::init()
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
-	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
+	Fondo->addComponent<Transform>(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 
 	createManual();
 
 	createClock();
-
-	initTexts();
 
 	createPaquete(generalData().getPaqueteLevel());
 
@@ -157,7 +153,7 @@ void ecs::MainScene::init()
 	factory.setLayer(ecs::layer::DEFAULT);
 
 	// papelera
-	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
+	Entity* papelera = addEntity(ecs::layer::BIN);
 	papelera->addComponent<Transform>(50, 650, 100, 150);
 	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
 	Trigger* papTrig = papelera->addComponent<Trigger>();
@@ -167,10 +163,7 @@ void ecs::MainScene::init()
 		{
 			if (paqComp->correcto())
 			{
-				generalData().wrongPackage();
-				fails_++;
-				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
-				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), true, false);
+				createErrorMessage(paqComp, true, false);
 			}
 				
 			else
@@ -241,25 +234,53 @@ void ecs::MainScene::close() {
 
 void ecs::MainScene::createClock() {
 	Entity* clock = addEntity(layer::BACKGROUND);
-	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
+	clock->addComponent<Transform>(1140, 510, 210, 140, 0);
 	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
 	clockCenter = clock->getComponent<Transform>()->getCenter();
+	clock->addComponent<ClockAux>(MINIGAME_TIME);
+}
 
+
+void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tuboIncorrecto) {
+	Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);	
+	NotaErronea->addComponent<ErrorNote>(paqComp, basura, tuboIncorrecto);
+	Texture* NotaTex = &sdlutils().images().at("notaError");
+	Transform* selloATR = NotaErronea->addComponent<Transform>(100, 1400, NotaTex->width()*2, NotaTex->height()*2);
+	selloATR->setScale(0.2f);
+	NotaErronea->addComponent<DragAndDrop>(true, [NotaErronea]() {
+		NotaErronea->addComponent<MoverTransform>(Vector2D(100, 1400), 0.5, Easing::EaseOutCubic, [NotaErronea]() {
+			NotaErronea->setAlive(false);
+			});
+		});
+	NotaErronea->addComponent<RenderImage>(NotaTex);
+	
+	//El texto de la nota
+	Entity* texto_ = addEntity(ecs::layer::STAMP);
+	Font* textFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	Texture* textureText_ = new Texture(sdlutils().renderer(), NotaErronea->getComponent<ErrorNote>()->text_, *textFont, build_sdlcolor(0x000000ff), 500);
+	Transform* distritoTr = texto_->addComponent<Transform>(25, 70, 250, 100);
+	RenderImage* distritoRender = texto_->addComponent<RenderImage>();
+	distritoRender->setTexture(textureText_);
+	distritoTr->setParent(NotaErronea->getComponent<Transform>());
 
 	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
+	trManecillaL = manecillaL->addComponent<Transform>(1230, 555, 25, 40);
 	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
 
 	Entity* manecillaS = addEntity(layer::BACKGROUND);
-	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
+	trManecillaS = manecillaS->addComponent<Transform>(1235, 580, 25, 15, 0);
 	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
+
+
+	NotaErronea->addComponent<MoverTransform>(Vector2D(100, 880), 0.5, Easing::EaseOutCubic);
+
 }
 
 void ecs::MainScene::createSelladores() {
 	float scaleSelladores = 0.2f;
 
 	// Sellador rojo (1)
-	Entity* selloA = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloA = addEntity(layer::STAMP);
 	Texture* selloATex = &sdlutils().images().at("selladorA");
 	Transform* selloATR = selloA->addComponent<Transform>(100, 300, selloATex->width(), selloATex->height());
 	selloATR->setScale(scaleSelladores);
@@ -271,7 +292,7 @@ void ecs::MainScene::createSelladores() {
 	herrSelladorA->setFunctionality(SelloCalleA);
 	
 	// Sellador azul (2)
-	Entity* selloB = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloB = addEntity(layer::STAMP);
 	Texture* selloBTex = &sdlutils().images().at("selladorB");
 	Transform* selloBTR = selloB->addComponent<Transform>(100, 410, selloBTex->width(), selloBTex->height());
 	selloBTR->setScale(scaleSelladores);
@@ -283,7 +304,7 @@ void ecs::MainScene::createSelladores() {
 	herrSelladorB->setFunctionality(SelloCalleB);
 
 	// Sellador verde (3)
-	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloC = addEntity(layer::STAMP);
 	Texture* selloCTex = &sdlutils().images().at("selladorC");
 	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
 , selloCTex->height());
@@ -323,14 +344,13 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 				correct_++;
 			}
 			else {
-				fails_++;
-				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				fails_++;				
 				if (dist == entRec->getComponent<Paquete>()->getDistrito()) {
-					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, false);
+					createErrorMessage(entRec->getComponent<Paquete>(), false, false);					
 				}
 				else
 				{
-					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
+					createErrorMessage(entRec->getComponent<Paquete>(), false, true);
 				}
 			}
 
@@ -401,48 +421,6 @@ void ecs::MainScene::createManual()
 
 	manual->addComponent<Depth>();
 }
-
-void ecs::MainScene::initTexts() {
-	// inicializamos el timer
-#ifndef DEV_TOOLS
-	timerEnt_ = addEntity(ecs::layer::UI);
-	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
-	timerEnt_->addComponent<RenderImage>();
-	updateTimer();
-#endif // DEV_TOOLS
-}
-
-void ecs::MainScene::updateTimer() {
-	// numeros que aplicados hacen representar bien las horas y minutos
-	float x = ((minutes - 15) / 9.55);
-	float y = ((hours - 6) / 3.82);
-
-	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
-						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
-	trManecillaL->setRotation(90 + x * CONST_ROT);
-
-	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
-							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
-	trManecillaS->setRotation(y * CONST_ROT);
-
-	minutes += timeMultiplier * 1;
-	hours += timeMultiplier * 0.01666;
-
-	//std::cout << "y: " << y << " x:" << x << std::endl;
-	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
-  
-#ifndef DEV_TOOLS
-	if (timerTexture_ != nullptr)
-	{
-		delete timerTexture_;
-		timerTexture_ = nullptr;
-	}
-
-	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
-	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
-#endif // !DEV_TOOLS
-}
-
 
 void ecs::MainScene::createPaquete (int lv) {
 	float paqueteScale = 0.25f;

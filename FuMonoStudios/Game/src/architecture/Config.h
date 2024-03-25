@@ -1,10 +1,15 @@
 #pragma once
 
 #include "../utils/Singleton.h"
+#include "../utils/Vector2D.h"
 
+#include <SDL.h>
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <stdexcept>
+#include <exception>
+
 
 class Config : public Singleton<Config> {
 
@@ -14,9 +19,7 @@ public:
 
 	struct Arrows {
 
-		double x_;
-
-		double y_;
+		Vector2D pos;
 
 		std::string destination_;
 
@@ -24,7 +27,7 @@ public:
 
 		bool directionRight_;
 
-		Arrows(double x, double y, std::string destination, double scale, bool directionRight) : x_(x), y_(y), destination_(destination), 
+		Arrows(double x, double y, std::string destination, double scale, bool directionRight) : pos(x, y), destination_(destination),
 			scale_(scale), directionRight_(directionRight){}
 
 
@@ -32,9 +35,7 @@ public:
 
 	struct Characters {
 
-		double x_;
-
-		double y_;
+		Vector2D pos;
 
 		std::string name_;
 
@@ -42,7 +43,7 @@ public:
 
 		bool directionRight_;
 
-		Characters(double x, double y, std::string name, double scale, bool directionRight) : x_(x), y_(y), name_(name),
+		Characters(double x, double y, std::string name, double scale, bool directionRight) : pos(x, y), name_(name),
 			scale_(scale), directionRight_(directionRight) {}
 
 
@@ -53,6 +54,10 @@ public:
 		std::vector<Arrows> myArrows;
 
 		std::vector<Characters> myCharacters;
+
+		Places(std::vector<Arrows> arrows, std::vector<Characters> characters) : myArrows(arrows), myCharacters(characters){
+
+		}
 
 	};
 
@@ -70,6 +75,7 @@ public:
 		}
 
 		inline T& at(const std::string& key) {
+	
 			try {
 				return map_.at(key);
 			}
@@ -84,6 +90,7 @@ public:
 				throw "Unknown error when accessing key '" + key + "' of '" + //
 					desc_ + "'";
 			}
+		
 		}
 
 		inline T& operator[](const std::string& key) {
@@ -91,13 +98,7 @@ public:
 		}
 	};
 
-	virtual ~Config();
 
-	// cannot copy/move
-	Config(Config&) = delete;
-	Config(Config&&) = delete;
-	Config& operator=(Config&) = delete;
-	Config& operator=(Config&&) = delete;
 
 	
 	// All resource maps can be modified from outside, this way you can store

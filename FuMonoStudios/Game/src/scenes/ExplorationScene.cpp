@@ -8,6 +8,7 @@
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
 #include "../architecture/Game.h"
+#include "../architecture/Config.h"
 #include <string>
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
@@ -22,7 +23,7 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	actualPlace_ = &hestia;
 	navigate("Hestia");
 	createObjects("Hestia");
-	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
+	rect_ = build_sdlrect(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 
 }
 
@@ -51,13 +52,13 @@ void ecs::ExplorationScene::initPlacesDefaultMap()
 	artemisa = Lugar(&sdlutils().images().at("artemisa"), true);
 
 	//Hermes
-	hermes = Lugar(&sdlutils().images().at("hermes"), false);
+	hermes = Lugar(&sdlutils().images().at("hermes"), true);
 
 	//Apolo
-	apolo = Lugar(&sdlutils().images().at("apolo"), false);
+	apolo = Lugar(&sdlutils().images().at("apolo"), true);
 
 	//Posidon
-	poseidon = Lugar(&sdlutils().images().at("poseidon"), false);
+	poseidon = Lugar(&sdlutils().images().at("poseidon"), true);
 }
 
 void ecs::ExplorationScene::initDirectionsDefaultMap()
@@ -95,6 +96,7 @@ void ecs::ExplorationScene::initDirectionsDefaultMap()
 
 void ecs::ExplorationScene::render()
 {
+
 	actualPlace_->getTexture()->render(rect_);
 	Scene::render();
 }
@@ -122,13 +124,12 @@ void ecs::ExplorationScene::navigate(std::string placeDir) // otro string sin co
 		actualPlace_ = actualPlace_->getPlaceFromDirection(placeDir);
 }
 
-ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, std::string placeDir, float scale)
+ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::string placeDir, float scale)
 {
 	//para crear la flecha a hefesto
 
 	ComonObjectsFactory factory(this);
 	factory.setLayer(ecs::layer::FOREGROUND);
-	Vector2D pos{ x, y };
 	Texture* sujetaplazas = &sdlutils().images().at("cartel");
 	Vector2D size{ sujetaplazas->width() * scale, sujetaplazas->height() * scale };
 	
@@ -148,7 +149,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(float x, float y, st
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::string character, float scale) {
+ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, std::string character, float scale) {
 
 	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
@@ -159,7 +160,6 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 
 	ComonObjectsFactory factory(this);
 
-	Vector2D pos{ x, y };
 	Texture* texturaBoton = &sdlutils().images().at(character);
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
@@ -186,17 +186,66 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(float x, float y, std::strin
 
 void ecs::ExplorationScene::createObjects(std::string place) {
 
-	if (place == "Demeter") {
-		demeter.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
-		demeter.addObjects(createNavegationsArrows(700, 100, "Hermes", 0.5));
-		demeter.addObjects(createNavegationsArrows(1300, 100, "Artemisa", 0.5));
-		demeter.addObjects(createCharacter(300, 300, "pancracio", 0.25));
+	auto& pl = config().places();
 
+	if (place == "Demeter") {
+
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			demeter.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			demeter.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
+		
+
+	}
+	else if (place == "Hefesto")
+	{
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hefesto.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hefesto.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
+	}
+	else if (place == "Hestia") {
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hestia.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hestia.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 
 		//boton ir a trabajar
 		ecs::Entity* botonTrabajar = addEntity();
-		botonTrabajar->addComponent<Transform>(500, 500, 200, 100);
-		botonTrabajar->addComponent<RenderImage>(&sdlutils().images().at("botonTrabajar"));
+		botonTrabajar->addComponent<Transform>(525, 300, 100, 300);
 		auto clickableBotonTrabajar = botonTrabajar->addComponent<Clickeable>();
 		CallbackClickeable funcPress = [this]() {
 			gm().requestChangeScene(ecs::sc::EXPLORE_SCENE, ecs::sc::MAIN_SCENE);
@@ -204,35 +253,73 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 		clickableBotonTrabajar->addEvent(funcPress);
 		demeter.addObjects(botonTrabajar);
 	}
-	else if (place == "Hefesto")
-	{
-		hefesto.addObjects(createNavegationsArrows(100, 100, "Hestia", 0.5));
-		hefesto.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
-		hefesto.addObjects(createCharacter(300, 300, "paulino", 0.25));
-	}
-	else if (place == "Hestia") {
-		hestia.addObjects(createNavegationsArrows(100, 100, "Artemisa", 0.5));
-		hestia.addObjects(createNavegationsArrows(1300, 100, "Hefesto", 0.5));
-		hestia.addObjects(createCharacter(300, 300, "anemos", 0.25));
-	}
 	else if (place == "Artemisa") {
-		artemisa.addObjects(createNavegationsArrows(100, 100, "Demeter", 0.5));
-		artemisa.addObjects(createNavegationsArrows(1300, 100, "Hestia", 0.5));
-		artemisa.addObjects(createCharacter(300, 300, "abigail", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			artemisa.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			artemisa.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Hermes") {
-		hermes.addObjects(createNavegationsArrows(100, 100, "Hefesto", 0.5));
-		hermes.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
-		hermes.addObjects(createNavegationsArrows(1300, 100, "Demeter", 0.5));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			hermes.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			hermes.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Apolo") {
-		apolo.addObjects(createNavegationsArrows(100, 100, "Poseidon", 0.5));
-		apolo.addObjects(createNavegationsArrows(1300, 100, "Hermes", 0.5));
-		apolo.addObjects(createCharacter(300, 300, "Soldado", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			apolo.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			apolo.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 	else if (place == "Poseidon") {
-		poseidon.addObjects(createNavegationsArrows(700, 100, "Apolo", 0.5));
-		poseidon.addObjects(createCharacter(300, 300, "gargafiel", 0.25));
+		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
+
+			poseidon.addObjects(createNavegationsArrows(pl.at(place).myArrows[i].pos,
+				pl.at(place).myArrows[i].destination_, pl.at(place).myArrows[i].scale_));
+
+
+		}
+
+		for (int i = 0; i < pl.at(place).myCharacters.size(); ++i) {
+
+			poseidon.addObjects(createCharacter(pl.at(place).myCharacters[i].pos,
+				pl.at(place).myCharacters[i].name_, pl.at(place).myCharacters[i].scale_));
+
+
+		}
 	}
 }
 
