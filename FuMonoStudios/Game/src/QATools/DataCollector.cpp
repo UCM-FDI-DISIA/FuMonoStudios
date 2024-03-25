@@ -1,8 +1,10 @@
 #include "DataCollector.h"
 #include <architecture/Time.h>
+#include <architecture/GeneralData.h>
 #include <SDL.h>
+//#include <cpr/cpr.h>
 
-DataCollector::DataCollector() : currentRow_(0) {
+DataCollector::DataCollector() : currentRow_(0), dataArray_(),clicks_(0) {
 	dataArray_.resize(NUMBER_OF_METRICS);
 	rapidcsv::LabelParams(-1, 0);
 
@@ -10,7 +12,7 @@ DataCollector::DataCollector() : currentRow_(0) {
 	doc_.Load("QAdata/myData.csv");
 	doc_.Clear();
 	std::vector<std::string> Labels = { 
-		"Escena","Marca de Tiempo","Clicks",
+		"Escena","Marca de Tiempo (ms)","Clicks","Dia de Juego","Distrito","Calle","Tipo","Peso","Envoltura","NPC"
 	};
 
 	for (int i = 0; i < Labels.size(); i++) {
@@ -18,13 +20,25 @@ DataCollector::DataCollector() : currentRow_(0) {
 	}
 };
 
+void DataCollector::recordPacage(Paquete* pacage) {
+	dataArray_[doc_.GetColumnIdx("Distrito")] = pacage->getDistrito();
+	dataArray_[doc_.GetColumnIdx("Calle")] = pacage->getCalle();
+	dataArray_[doc_.GetColumnIdx("Tipo")] = pacage->getTipo();
+	dataArray_[doc_.GetColumnIdx("Peso")] = pacage->getPeso();
+	dataArray_[doc_.GetColumnIdx("Envoltura")] = pacage->getFragil();
+	record();
+}
+
+DataCollector::~DataCollector()
+{
+	doc_.Save();
+}
 
 void DataCollector::record()
 {
-	float currTime = SDL_GetTicks() / 1000.0f;
-	//dataArray_[0] = currentScene_;
-	dataArray_[1] = currTime;
+	dataArray_[1] = SDL_GetTicks();
 	dataArray_[2] = clicks_;
+	dataArray_[3] = generalData().getCurrentDay();
 	doc_.SetRow(currentRow_, dataArray_);
 	dataArray_.clear();
 	dataArray_.resize(NUMBER_OF_METRICS);

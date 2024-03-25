@@ -4,6 +4,7 @@
 #include "../../rapidCSV/rapidcsv.h"
 #include <utils/Singleton.h>
 #include <vector>
+#include <components/Paquete.h>
 
 constexpr int NUMBER_OF_METRICS = 10;
 
@@ -15,14 +16,13 @@ class DataCollector : public Singleton<DataCollector>
 	friend Singleton<DataCollector>;
 
 public:
-	~DataCollector() {
-		doc_.Save();
-	};
+	~DataCollector();
 
 	void record();
 
 	inline std::vector<float>& dataArray() { return dataArray_; }
 	inline int& clicks() { return clicks_; }
+	void recordPacage(Paquete*);
 
 private:
 	DataCollector();

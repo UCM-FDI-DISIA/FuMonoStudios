@@ -29,6 +29,7 @@
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
 #include "../components/ErrorNote.h"
+#include <QATools/DataCollector.h>
 
 
 
@@ -238,7 +239,10 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
 				}
 			}
-
+			/*
+			Recogida de datos del paquete enviado (no esta implementado el revisar si era correcto o no
+			*/
+			dataCollector().recordPacage(entRec->getComponent<Paquete>());
 			std::cout << "crazy! " << dist << std::endl;
 		}
 

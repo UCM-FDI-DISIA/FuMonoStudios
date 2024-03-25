@@ -51,7 +51,6 @@
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
     <ClCompile Include="src\QATools\DataCollector.cpp" />
-    <ClCompile Include="src\QATools\PacageDataCollector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -117,7 +116,6 @@
     <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="rapidCSV\rapidcsv.h" />
     <ClInclude Include="src\QATools\DataCollector.h" />
-    <ClInclude Include="src\QATools\PacageDataCollector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />

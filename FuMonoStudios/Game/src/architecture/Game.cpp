@@ -90,10 +90,10 @@ void Game::run()
 		sdlutils().presentRenderer();
 
 		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
-		if (sdlutils().virtualTimer().currTime()/1000 > autoRecodTime) {
+		/*if (sdlutils().virtualTimer().currTime()/1000 > autoRecodTime) {
 			dataCollector().record();
 			autoRecodTime++;
-		}
+		}*/
 	}
 	ImGui_ImplSDLRenderer2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
