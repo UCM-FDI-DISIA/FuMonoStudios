@@ -30,6 +30,8 @@ namespace ecs {
         void createSelladores();
         void createPaquete(int lv);
 
+        void createInks();
+
         int fails_;
         int correct_;
 
