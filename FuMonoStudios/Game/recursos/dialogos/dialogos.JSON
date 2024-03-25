@@ -2,8 +2,8 @@
     "vagabundo":{
         "presentacion": 
         [
-            "seifnsfnoñfbsfsfoñbsoibfsf",
-            "seifbesbfsefbsñbfsfbsñfboief"
+            "hola",
+            "seifbesbfsefbsfsfbsfboief"
         ],
         "felicidadMinimo": 
         [
@@ -12,20 +12,20 @@
         ],
         "felicidadMaximo":
          [
-            "eoñfnfnsñfnsofbf",
+            "eofnfnsfnsofbf",
             "peofnesfnseodibadoad"
         ],
         "eventos": 
         [
-            "oefbeoñfbfobsosfbsofibesi",
+            "oefbeofbfobsosfbsofibesi",
             "eoifesfbisefbsfbsefsofbsifb"
         ]
     },
     "secretario": {
         "presentacion": 
         [
-            "seifnsfnoñfbsfsfoñbsoibfsf",
-            "seifbesbfsefbsñbfsfbsñfboief"
+            "adios",
+            "seifbesbfsefbsfsfbsboief"
         ],
         "felicidadMinimo": 
         [
@@ -34,12 +34,12 @@
         ],
         "felicidadMaximo": 
         [
-            "eoñfnfnsñfnsofbf",
+            "eonfnsfnsofbf",
             "peofnesfnseodibadoad"
         ],
         "eventos": 
         [
-            "oefbeoñfbfobsosfbsofibesi",
+            "oefbeofbfobsosfbsofibesi",
             "eoifesfbisefbsfbsefsofbsifb"
         ]
     }

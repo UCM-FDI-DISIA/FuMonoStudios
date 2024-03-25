@@ -53,29 +53,28 @@ void DialogManager::setDialogues(const std::string& filename, std::string charNa
     JSONValue* jValue = nullptr;
 
     jValue = root[charName];
-    if (jValue != nullptr)
+    if (jValue != nullptr && jValue->IsObject())
     {
-        if (jValue->IsArray())
+        JSONObject charObj = jValue->AsObject();
+        jValue = charObj[typeDialog]; // Accede al tipo de diálogo específico
+
+        if (jValue != nullptr && jValue->IsArray())
         {
-            dialogs_.reserve(jValue->AsArray().size());
-            for (auto v : jValue->AsArray())
+            for (auto& dialogValue : jValue->AsArray())
             {
-                if (v->IsObject())
+                if (dialogValue->IsString())
                 {
-                    JSONObject vObj = v->AsObject();
-                    std::string type = vObj[typeDialog]->AsString();
+                    std::string dialogText = dialogValue->AsString();
 #ifdef _DEBUG
-            std::cout << "Loading dialogo with id: " << type << std::endl;
+                    std::cout << "Cargando diálogo: " << dialogText << std::endl;
 #endif
-                    dialogs_.push_back(type);
+                    dialogs_.push_back(dialogText);
                 }
                 else
                 {
-                    throw "'Dialogs' array in '" + filename
-                        + "' includes and invalid value";
+                    throw std::runtime_error("Valor inválido en el arreglo de '" + filename + "'");
                 }
             }
         }
-
     }
 }

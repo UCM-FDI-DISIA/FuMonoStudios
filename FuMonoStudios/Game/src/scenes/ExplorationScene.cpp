@@ -17,7 +17,6 @@
 ecs::ExplorationScene::ExplorationScene() :Scene()
 {
 
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &hestia;
@@ -205,7 +204,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 
 	}
 	else if (place == "Hefesto")
@@ -225,6 +225,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "secretario", "presentacion", "jiji");
+
 	}
 	else if (place == "Hestia") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -242,6 +244,9 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 
 		//boton ir a trabajar
 		ecs::Entity* botonTrabajar = addEntity();
@@ -269,6 +274,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 	}
 	else if (place == "Hermes") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -286,6 +293,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 	}
 	else if (place == "Apolo") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -303,6 +312,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 	}
 	else if (place == "Poseidon") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -320,6 +331,8 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
+
 	}
 }
 

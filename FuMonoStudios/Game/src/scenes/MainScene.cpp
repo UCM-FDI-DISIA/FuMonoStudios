@@ -236,7 +236,7 @@ void ecs::MainScene::createClock() {
 	Entity* clock = addEntity(layer::BACKGROUND);
 	clock->addComponent<Transform>(1140, 510, 210, 140, 0);
 	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
-	clockCenter = clock->getComponent<Transform>()->getCenter();
+	//clockCenter = clock->getComponent<Transform>()->getCenter();
 	clock->addComponent<ClockAux>(MINIGAME_TIME);
 }
 
@@ -264,11 +264,11 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 	distritoTr->setParent(NotaErronea->getComponent<Transform>());
 
 	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	trManecillaL = manecillaL->addComponent<Transform>(1230, 555, 25, 40);
+	//trManecillaL = manecillaL->addComponent<Transform>(1230, 555, 25, 40);
 	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
 
 	Entity* manecillaS = addEntity(layer::BACKGROUND);
-	trManecillaS = manecillaS->addComponent<Transform>(1235, 580, 25, 15, 0);
+	//trManecillaS = manecillaS->addComponent<Transform>(1235, 580, 25, 15, 0);
 	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
 
 
