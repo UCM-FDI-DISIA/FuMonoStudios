@@ -25,6 +25,8 @@ namespace ecs {
 
         void createClock();
 
+        void createErrorMessage(Paquete* paqComp, bool, bool);
+
         void createSelladores();
         void createPaquete(int lv);
 
