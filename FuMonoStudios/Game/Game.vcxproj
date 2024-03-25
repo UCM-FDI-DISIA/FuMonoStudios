@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\entities\ClockAux.cpp" />
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="src\architecture\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\entities\ClockAux.h" />
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
     <ClInclude Include="src\scenes\ExplorationScene2.h" />

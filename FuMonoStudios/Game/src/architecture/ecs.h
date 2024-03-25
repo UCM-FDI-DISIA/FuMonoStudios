@@ -27,6 +27,7 @@ namespace ecs {
 			DEPTH,
 			ERROR_NOTE,
 			DELAYEDCALLBACK,
+			CLOCKAUX,
 			// do not remove this
 			_LAST_CMP_ID
 		};
