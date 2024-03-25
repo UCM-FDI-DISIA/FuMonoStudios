@@ -16,7 +16,7 @@ Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 	actualPlace_ = &demeter;
 	navigate("Demeter");
 	createObjects("Demeter");
-	rect_ = build_sdlrect(0, 0, sdlutils().width(), sdlutils().height());
+	rect_ = build_sdlrect(0, 0, sdlutils().width() / 2, sdlutils().height() / 2);
 }
 
 ecs::Entity* Mapa::createNavegationsArrows(int x, int y, std::string placeDir)

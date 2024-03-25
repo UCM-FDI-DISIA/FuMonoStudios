@@ -122,7 +122,7 @@ void ecs::MainScene::init()
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
-	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
+	Fondo->addComponent<Transform>(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
 
 	createManual();
@@ -233,9 +233,13 @@ void ecs::MainScene::close() {
 }
 
 void ecs::MainScene::createClock() {
-	Entity* clock = addEntity(ecs::layer::BACKGROUND);
+	Entity* clock = addEntity(layer::BACKGROUND);
+	clock->addComponent<Transform>(1140, 510, 210, 140, 0);
+	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
+	clockCenter = clock->getComponent<Transform>()->getCenter();
 	clock->addComponent<ClockAux>(MINIGAME_TIME);
 }
+
 
 void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tuboIncorrecto) {
 	Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);	
@@ -259,15 +263,24 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 	distritoRender->setTexture(textureText_);
 	distritoTr->setParent(NotaErronea->getComponent<Transform>());
 
+	Entity* manecillaL = addEntity(layer::BACKGROUND);
+	trManecillaL = manecillaL->addComponent<Transform>(1230, 555, 25, 40);
+	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+
+	Entity* manecillaS = addEntity(layer::BACKGROUND);
+	trManecillaS = manecillaS->addComponent<Transform>(1235, 580, 25, 15, 0);
+	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
+
 
 	NotaErronea->addComponent<MoverTransform>(Vector2D(100, 880), 0.5, Easing::EaseOutCubic);
+
 }
 
 void ecs::MainScene::createSelladores() {
 	float scaleSelladores = 0.2f;
 
 	// Sellador rojo (1)
-	Entity* selloA = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloA = addEntity(layer::STAMP);
 	Texture* selloATex = &sdlutils().images().at("selladorA");
 	Transform* selloATR = selloA->addComponent<Transform>(100, 300, selloATex->width(), selloATex->height());
 	selloATR->setScale(scaleSelladores);
@@ -279,7 +292,7 @@ void ecs::MainScene::createSelladores() {
 	herrSelladorA->setFunctionality(SelloCalleA);
 	
 	// Sellador azul (2)
-	Entity* selloB = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloB = addEntity(layer::STAMP);
 	Texture* selloBTex = &sdlutils().images().at("selladorB");
 	Transform* selloBTR = selloB->addComponent<Transform>(100, 410, selloBTex->width(), selloBTex->height());
 	selloBTR->setScale(scaleSelladores);
@@ -291,7 +304,7 @@ void ecs::MainScene::createSelladores() {
 	herrSelladorB->setFunctionality(SelloCalleB);
 
 	// Sellador verde (3)
-	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
+	Entity* selloC = addEntity(layer::STAMP);
 	Texture* selloCTex = &sdlutils().images().at("selladorC");
 	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
 , selloCTex->height());

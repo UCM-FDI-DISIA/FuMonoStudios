@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../utils/Singleton.h"
+#include "../utils/Vector2D.h"
 
 #include <SDL.h>
 #include <string>
@@ -18,9 +19,7 @@ public:
 
 	struct Arrows {
 
-		double x_;
-
-		double y_;
+		Vector2D pos;
 
 		std::string destination_;
 
@@ -28,7 +27,7 @@ public:
 
 		bool directionRight_;
 
-		Arrows(double x, double y, std::string destination, double scale, bool directionRight) : x_(x), y_(y), destination_(destination), 
+		Arrows(double x, double y, std::string destination, double scale, bool directionRight) : pos(x, y), destination_(destination),
 			scale_(scale), directionRight_(directionRight){}
 
 
@@ -36,9 +35,7 @@ public:
 
 	struct Characters {
 
-		double x_;
-
-		double y_;
+		Vector2D pos;
 
 		std::string name_;
 
@@ -46,7 +43,7 @@ public:
 
 		bool directionRight_;
 
-		Characters(double x, double y, std::string name, double scale, bool directionRight) : x_(x), y_(y), name_(name),
+		Characters(double x, double y, std::string name, double scale, bool directionRight) : pos(x, y), name_(name),
 			scale_(scale), directionRight_(directionRight) {}
 
 
