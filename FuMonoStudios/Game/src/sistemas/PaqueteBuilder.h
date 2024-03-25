@@ -35,43 +35,13 @@ public:
 	//Método al que se llama que devuelve una Carta generada aleatoriamente 
 	ecs::Entity* cartaRND(ecs::Scene*);
 
-	PaqueteBuilder() { 
-		srand(sdlutils().currRealTime()); 
-		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
-	};
+	void paqueteNPC(ecs::Entity*);
+
+	PaqueteBuilder();
+
+	~PaqueteBuilder();
+
 private:
-	void nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
-		addVisualElements(ent);
-	}
-	void nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), boolRND(35), Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
-		addVisualElements(ent);
-	}
-	void nivel2(ecs::Entity* ent) { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, así como calles erróneas y sellos de tipo erróneos
-		int peso;
-		Paquete::NivelPeso Nv = pesoRND(25, 30, peso);
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, false, false);
-		addVisualElements(ent);
-	}
-	void nivel3(ecs::Entity* ent) { //Un paquete que puede tener peso, sellos de frágil, calles erróneas y sellos de tipo erróneos
-		int peso;
-		Paquete::NivelPeso Nv = pesoRND(20, 25, peso);
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, boolRND(80), false);
-		addVisualElements(ent);
-	}
-	void carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		 
-		//addVisualElementsCarta(ent);
-	}
-	void paqueteNPC(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete pNPC = generalData().getPaqueteNPC();
-		Paquete* pq = ent->addComponent<Paquete>(pNPC.getDistrito(), pNPC.getCalle(), pNPC.getRemitente(), pNPC.getTipo(), pNPC.getSelloCorrecto(), pNPC.getPeso(), pNPC.getCantidadPeso(), pNPC.getFragil(), pNPC.isCarta());
-		if(!pNPC.isCarta()) addVisualElements(ent);
-		//else addVisualElementsCarta(ent);
-	}
-
-
 	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
 	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
 	Paquete::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta

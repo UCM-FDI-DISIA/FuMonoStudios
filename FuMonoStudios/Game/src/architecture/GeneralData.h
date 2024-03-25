@@ -29,10 +29,10 @@ public:
 	int getFails() { return fails_; }
 	int getCorrects() { return corrects_; }
 	void resetFailsCorrects() { fails_ = 0; corrects_ = 0; }
-	void addPaqueteNPC(Paquete p) { paquetesNPCs.push_back(p); }
+	void addPaqueteNPC(Paquete* p) { paquetesNPCs.push_back(p); }
 	bool areTherePaquetesNPC() { return paquetesNPCs.size() != 0; }
 	void resetPaquetesNPC() { while (areTherePaquetesNPC()) paquetesNPCs.pop_back(); }
-	Paquete getPaqueteNPC() { Paquete p = paquetesNPCs.back(); paquetesNPCs.pop_back(); return p; }
+	Paquete* getPaqueteNPC() { Paquete* p = paquetesNPCs.back(); paquetesNPCs.pop_back(); return p; }
 
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
 	void setPaqueteLevel(int lvl);
@@ -49,7 +49,7 @@ private:
 	int eventoID_; //Variable int que define cual evento especial de la historia deber� de ejecutarse
 	int dia_;
 	int paqueteLvl_; // de momento es 0
-	std::vector<Paquete> paquetesNPCs;
+	std::vector<Paquete*> paquetesNPCs;
 };
 
 inline GeneralData& generalData() {

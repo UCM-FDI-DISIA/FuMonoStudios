@@ -4,6 +4,16 @@
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
 
+PaqueteBuilder::PaqueteBuilder() {
+	srand(sdlutils().currRealTime());
+	directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+}
+
+PaqueteBuilder::~PaqueteBuilder() {
+	delete directionsFont;
+}
+
+
 ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 	ecs::Entity* ent = mScene->addEntity();
 	
@@ -57,10 +67,9 @@ ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {
 }
 
 void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
-	Paquete pNPC = generalData().getPaqueteNPC();
+	Paquete* pNPC = generalData().getPaqueteNPC();
 	Paquete* pq = ent->addComponent<Paquete>(pNPC);
-	//Paquete* pq = ent->addComponent<Paquete>(pNPC.getDistrito(), pNPC.getCalle(), pNPC.getRemitente(), pNPC.getTipo(), pNPC.getSelloCorrecto(), pNPC.getPeso(), pNPC.getCantidadPeso(), pNPC.getFragil(), pNPC.isCarta());
-	if (!pNPC.isCarta()) addVisualElements(ent);
+	if (!pNPC->isCarta()) addVisualElements(ent);
 	//else addVisualElementsCarta(ent);
 }
 
