@@ -8,7 +8,8 @@
 #include <architecture/Scene.h>
 #include <functional>
 
-//#define DEV_TOOLS
+#define DEV_TOOLS
+//#define QA_TOOLS
 
 class Game : public Singleton<Game> {
 
@@ -69,6 +70,8 @@ private:
 
 
 	std::list<std::function<void(void)>> requets;
+
+	float autoRecodTime = 0;
 };
 
 inline Game& gm() {

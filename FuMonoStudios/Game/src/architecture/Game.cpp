@@ -13,6 +13,7 @@
 #include "Time.h"
 #include "GeneralData.h"
 #include <iostream>
+#include <QATools/DataCollector.h>
 
 Game::Game() :exit_(false) {
 	SDLUtils::init("Mail To Atlantis", 1920, 1080, "recursos/config/mail.resources.json");
@@ -74,7 +75,9 @@ void Game::run()
 		if (ih().isKeyDown(SDL_SCANCODE_W)) {
 			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
-
+		if (ih().mouseButtonDownEvent()&&ih().getMouseButtonState(0)) {
+			dataCollector().clicks()++;
+		}
 
 		update();
 		sdlutils().clearRenderer();
@@ -87,8 +90,10 @@ void Game::run()
 		sdlutils().presentRenderer();
 
 		Time::deltaTime_ = (sdlutils().virtualTimer().currTime() - startTime) / 1000.0;
-
-
+		/*if (sdlutils().virtualTimer().currTime()/1000 > autoRecodTime) {
+			dataCollector().record();
+			autoRecodTime++;
+		}*/
 	}
 	ImGui_ImplSDLRenderer2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
@@ -116,6 +121,7 @@ void Game::run()
 
 void Game::loadScene(ecs::sc::sceneId scene)
 {
+	dataCollector().dataArray()[0] = (int)scene;
 	auto it = std::find(loadedScenes_.begin(), loadedScenes_.end(), gameScenes_[scene]);
 	if (it == loadedScenes_.end()) {
 		//llamar al init de la escena a cargar????
@@ -123,6 +129,7 @@ void Game::loadScene(ecs::sc::sceneId scene)
 		//cargamos la escena
 		loadedScenes_.push_back(gameScenes_[scene]);
 	}
+	dataCollector().record();
 }
 
 /// <summary>

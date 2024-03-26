@@ -59,6 +59,8 @@ namespace ecs {
         bool weightUnloked_;
         bool cintaUnloked_;
         int timeToAdd_;
+        void makeDataWindow();
+        void makeControlsWindow();
 #endif // DEV_TOOLS
 
         // objects
