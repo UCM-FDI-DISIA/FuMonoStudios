@@ -4,11 +4,21 @@
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
 #include <sistemas/ComonObjectsFactory.h>
+#include "../json/JSON.h"
 
 
 PaqueteBuilder::PaqueteBuilder(ecs::Scene* sc):createdTextures(),mScene_(sc) {
 	srand(sdlutils().currRealTime());
 	directionsFont = &sdlutils().fonts().at("arial40");
+
+	std::string filename = "recursos/config/mail.direcctions.json";
+	getStreetsFromJSON(filename, Demeter, "Demeter");
+	getStreetsFromJSON(filename, Hefesto, "Hefesto");
+	getStreetsFromJSON(filename, Hestia, "Hestia");
+	getStreetsFromJSON(filename, Artemisa, "Artemisa");
+	getStreetsFromJSON(filename, Hermes, "Hermes");
+	getStreetsFromJSON(filename, Apolo, "Apolo");
+	getStreetsFromJSON(filename, Poseidon, "Poseidon");
 }
 
 PaqueteBuilder::~PaqueteBuilder() {
@@ -65,7 +75,19 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 			}
 		}
 
-		Paquete* pq = packageBase->addComponent<Paquete>(distritoRND(), calleRND(streetErrorChance), remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
+		pq::Distrito toDist = distritoRND();
+		pq::Calle toDir = calleRND(streetErrorChance);
+		std::string dir;
+		if (toDir == Erronea)
+			//Cambiarlo por el sistema de calles erróneas una vez esté
+			//Simplemente sería meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
+			//Y meterle un randomizador para que de esas pille la que más le guste
+			//Tipo, haces distritoCalle_[Erroneo][rand]
+			dir = "(CALLE INVENTADA)";
+		else
+			dir = distritoCalle_[toDist][toDir];
+
+		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir, remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
 			boolRND(notFragileChance), false);
 		addVisualElements(packageBase);
 		if (pq->getFragil()) {
@@ -207,6 +229,45 @@ std::string PaqueteBuilder::remitenteRND() {
 
 	return "Nombre Random";
 }
+
+void PaqueteBuilder::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
+{
+	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
+
+	// check it was loaded correctly
+	// the root must be a JSON object
+	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
+		throw "Something went wrong while load/parsing '" + filename + "'";
+	}
+
+	// we know the root is JSONObject
+	JSONObject root = jValueRoot->AsObject();
+	JSONValue* jValue = nullptr;
+
+	jValue = root[distString];
+	if (jValue != nullptr) {
+		if (jValue->IsArray()) {
+			distritoCalle_[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
+			for (auto v : jValue->AsArray()) {
+				if (v->IsString()) {
+					std::string aux = v->AsString();
+#ifdef _DEBUG
+					std::cout << "Loading distrito with id: " << aux << std::endl;
+#endif
+					distritoCalle_[dist].emplace_back(aux);
+				}
+				else {
+					throw "'Calles' array in '" + filename
+						+ "' includes and invalid value";
+				}
+			}
+		}
+		else {
+			throw "'Demeter' is not an array in '" + filename + "'";
+		}
+	}
+}
+
 
 void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 	Paquete* paqComp = paq->getComponent<Paquete>();

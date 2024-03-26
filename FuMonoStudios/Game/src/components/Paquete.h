@@ -44,7 +44,7 @@ public:
 
 	Paquete(Paquete&);
 	Paquete(Distrito, Calle, std::string remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, 
-		bool fragil = false, bool carta = false);
+		bool fragil = false, bool carta = false, std::string nombreCalle);
 	~Paquete();
 
 	void initComponent() override;
@@ -72,27 +72,13 @@ public:
 	void giveData(std::ofstream&) const;
 
 private:
-	/// <summary>
-	/// Funcion auxiliar para cargar en el mapa las direcciones
-	/// </summary>
-	/// <param name="filename">direccion del fichero json</param>
-	/// <param name="dist">valor enum del distritio al que pertenece</param>
-	/// <param name="distString">valor string del distrito al que pertenece</param>
-	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
 	//void createSello(std::string texKey, int x, int y, int width, int height); (movido al paqueteBuilder)
 
-	/*
-	*TODO: Meter estos datos en el paquete builder
-	*/
-	/// <summary>
-	/// mapa que relaciona cada distrito con su calle
-	/// usado para la generacion del string de la direccion
-	/// </summary>
-	std::unordered_map<Distrito, std::vector<std::string>> distritoCalle_;
 	//Variables que se generan automaticamente con informaci�n de los paquetes
 	Distrito miDistrito_;	//Variable con el distrito al que es enviado el paquete	
 	std::string miRemitente_;  //Variable con el nombre del remitente
 	Calle miCalle_;			//Variable con la calle a la que es enviada el paquete	
+	std::string nombreCalle_;
 	TipoPaquete miTipo_;		//Variable con el tipo de cargamente que lleva el paquete
 	bool selloCorrecto_;		//Variable que indica si el sello que contiene el paquete es correcto o no
 	NivelPeso miPeso_;		//Variable que indica qu� peso esta marcado en el paquete, o si este peso ni siquera est� marcado
