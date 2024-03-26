@@ -6,6 +6,7 @@
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
 #include "../architecture/Game.h"
+#include "../components/RenderWithLight.h"
 
 //ecs::MainMenu::MainMenu()
 //{
@@ -36,7 +37,7 @@ void ecs::MainMenu::init()
 	Entity* BotonPress = addEntity();
 	
 	Transform* transformBoton = BotonPress->addComponent<Transform>(400, 600, texturaBoton->width(), texturaBoton->height());
-	RenderImage* renderBoton = BotonPress->addComponent<RenderImage>(texturaBoton);
+	RenderWithLight* renderBoton = BotonPress->addComponent<RenderWithLight>(texturaBoton);
 
 	auto clickerPress = BotonPress->addComponent<Clickeable>();
 

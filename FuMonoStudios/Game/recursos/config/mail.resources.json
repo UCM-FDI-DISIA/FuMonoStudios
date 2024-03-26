@@ -224,6 +224,10 @@
         {
             "id": "manecillaS",
             "file": "recursos/images/manecillaS.png"
+        },
+        {
+            "id": "luz",
+            "file": "recursos/images/luz.png"
         }
     ],
     "fonts": [

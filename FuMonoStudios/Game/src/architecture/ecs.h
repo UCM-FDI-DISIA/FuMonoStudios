@@ -26,6 +26,7 @@ namespace ecs {
 			SELFDESTRUCT,
 			DEPTH,
 			ERROR_NOTE,
+			IMAGEWITHLIGHT,
 			// do not remove this
 			_LAST_CMP_ID
 		};

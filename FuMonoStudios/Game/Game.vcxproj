@@ -150,6 +150,7 @@
     <ClCompile Include="ImGui\imgui_draw.cpp" />
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="src\components\RenderWithLight.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\sistemas\ComonObjectsFactory.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="src\components\RenderWithLight.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />

@@ -50,6 +50,7 @@
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
+    <ClCompile Include="src\components\RenderWithLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -113,6 +114,7 @@
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
+    <ClInclude Include="src\components\RenderWithLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
