@@ -39,13 +39,15 @@ void Clickeable::update() {
 
 	if (ihdlr.mouseButtonDownEvent()) {
 
-		SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second};
+		SDL_Rect* mRect_ = &mTr_->getRect();
+		SDL_Point point{ ihdlr.getMousePos().first, ihdlr.getMousePos().second };
 
-		if (SDL_PointInRect(&point, &mTr_->getRect())) {
+		if (SDL_PointInRect(&point, mRect_)) {
 
 			std::cout << "click" << std::endl;
 			// 
 			//Recorrido por las colbacks a las que est� suscrito este objeto
+			sdlutils().soundEffects().at("click").play();
 			for (CallbackClickeable call : eventsWhenClick_) {
 
 				call();
