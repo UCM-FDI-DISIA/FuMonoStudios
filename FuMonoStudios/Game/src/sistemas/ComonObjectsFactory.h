@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../architecture/Scene.h"
+#include <architecture/Scene.h>
 #include "../architecture/Entity.h"
 #include "../components/Clickeable.h"
 
@@ -10,11 +10,12 @@ a lo tonto)
 
 Los metodos devuelven un puntero a la entidad por si se le quiere aplicar mas operaciones en tras crearlo
 */
+
 class ComonObjectsFactory
 {
 public:
-	ComonObjectsFactory(ecs::Scene* sc):scene_(sc), destLayer_(ecs::layer::DEFAULT){};
-	~ComonObjectsFactory(){};
+	ComonObjectsFactory(ecs::Scene* sc);
+	virtual ~ComonObjectsFactory();
 	/// <summary>
 	/// establece la capa donde se crearan los objetos usando esta factory
 	/// </summary>
@@ -78,5 +79,7 @@ private:
 	/// capa donde se van a crear los objetos
 	/// </summary>
 	ecs::layer::layerId destLayer_;
+
+	std::vector<Texture*> createdTextures;
 };
 

@@ -6,35 +6,21 @@
 #include <sistemas/ComonObjectsFactory.h>
 
 
-PaqueteBuilder::PaqueteBuilder() {
+PaqueteBuilder::PaqueteBuilder():createdTextures() {
 	srand(sdlutils().currRealTime());
 	directionsFont = &sdlutils().fonts().at("arial40");
 }
 
 PaqueteBuilder::~PaqueteBuilder() {
-
+	for (Texture* t : createdTextures) {
+		delete t;
+	}
 }
 
 
 ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
-	ComonObjectsFactory factory(mScene);
-
-	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	//ENVOLTURA
-	//se puede rellenar con un for
-	std::vector<Texture*> textures = {
-		texturaPaquet,
-		&sdlutils().images().at("caja25"),
-		&sdlutils().images().at("caja50"),
-		&sdlutils().images().at("caja75"),
-		&sdlutils().images().at("caja100")
-	};
-	auto packageBase = factory.createMultiTextureImage(Vector2D(1600.0f, 600.0f),Vector2D(320.5f,245.5), textures);
-
-	packageBase->addComponent<Depth>();
-	packageBase->addComponent<Gravity>();
-	DragAndDrop* drgPq = packageBase->addComponent<DragAndDrop>(true);
 	
+	auto packageBase = buildBasePackage(mScene);
 
 	//Wrap debe ir despues del Transform, Trigger y Multitextures
 	std::list<int> route{ pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown };
@@ -104,6 +90,28 @@ void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
 	Paquete* pq = ent->addComponent<Paquete>(*pNPC);
 	if (!pNPC->isCarta()) addVisualElements(ent);
 	//else addVisualElementsCarta(ent);
+}
+
+ecs::Entity* PaqueteBuilder::buildBasePackage(ecs::Scene* mScene)
+{
+	ComonObjectsFactory* factory = mScene->getFactory();
+
+	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
+	//ENVOLTURA
+	//se puede rellenar con un for
+	std::vector<Texture*> textures = {
+		texturaPaquet,
+		&sdlutils().images().at("caja25"),
+		&sdlutils().images().at("caja50"),
+		&sdlutils().images().at("caja75"),
+		&sdlutils().images().at("caja100")
+	};
+	auto packageBase = factory->createMultiTextureImage(Vector2D(1600.0f, 600.0f), Vector2D(320.5f, 245.5), textures);
+
+	packageBase->addComponent<Depth>();
+	packageBase->addComponent<Gravity>();
+	DragAndDrop* drgPq = packageBase->addComponent<DragAndDrop>(true);
+	return packageBase;
 }
 
 Paquete::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
@@ -224,6 +232,7 @@ void PaqueteBuilder::createVisualDirections(ecs::Entity* paq, Paquete* paqComp) 
 	// Texto distrito y calle
 	ecs::Entity* distritoEnt = paq->getMngr()->addEntity(ecs::layer::STAMP);
 	Texture* distritoTex = new Texture(sdlutils().renderer(), paqComp->getDirecction(), *directionsFont, build_sdlcolor(0x000000ff), 500);
+	createdTextures.push_back(distritoTex);
 	Transform* distritoTr = distritoEnt->addComponent<Transform>(10, 165, 200, 50);
 	RenderImage* distritoRender = distritoEnt->addComponent<RenderImage>();
 	distritoRender->setTexture(distritoTex);
@@ -232,6 +241,7 @@ void PaqueteBuilder::createVisualDirections(ecs::Entity* paq, Paquete* paqComp) 
 	// Texto remitente
 	ecs::Entity* remitenteEnt = paq->getMngr()->addEntity(ecs::layer::STAMP);
 	Texture* remitenteTex = new Texture(sdlutils().renderer(), "Rte: " + paqComp->getRemitente(), *directionsFont, build_sdlcolor(0x000000ff), 500);
+	createdTextures.push_back(remitenteTex);
 	Transform* remitenteTr = remitenteEnt->addComponent<Transform>(10, 215, 150, 25);
 	RenderImage* remitenteRender = remitenteEnt->addComponent<RenderImage>();
 	remitenteRender->setTexture(remitenteTex);

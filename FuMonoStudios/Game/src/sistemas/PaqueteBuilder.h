@@ -52,6 +52,7 @@ public:
 	~PaqueteBuilder();
 
 private:
+	ecs::Entity* buildBasePackage(ecs::Scene* mScene);
 	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
 	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
 	Paquete::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
@@ -69,4 +70,5 @@ private:
 	// esto hay que cambiarlo de sitio, al scene o algo
 	Font* directionsFont;
 
+	std::vector<Texture*> createdTextures;
 };

@@ -3,6 +3,18 @@
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
 
+
+
+ComonObjectsFactory::ComonObjectsFactory(ecs::Scene* sc):scene_(sc), destLayer_(ecs::layer::DEFAULT){}
+ComonObjectsFactory::~ComonObjectsFactory()
+{
+	//futuro sistema de limpieza
+	//primero hace falta que las COF sean un atributo de la clase escena
+	for (auto t : createdTextures) {
+		delete t;
+	}
+}
+
 ecs::Entity* ComonObjectsFactory::createMultiTextureImage(const Vector2D& pos, const Vector2D& size, const std::vector<Texture*>& textures)
 {
 	auto entity = scene_->addEntity(destLayer_);
@@ -23,6 +35,7 @@ ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const std::st
 #endif // _DEBUG
 	auto entity = scene_->addEntity(destLayer_);
 	Texture* labelText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("arial"+std::to_string(fontSize)), textColor);
+	createdTextures.push_back(labelText);
 	entity->addComponent<Transform>(pos.getX(), pos.getY(), labelText->width(), labelText->height());
 	entity->addComponent<RenderImage>(labelText);
 	return entity;

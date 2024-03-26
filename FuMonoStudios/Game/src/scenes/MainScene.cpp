@@ -121,7 +121,6 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	ComonObjectsFactory factory(this);
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -143,11 +142,11 @@ void ecs::MainScene::init()
 	createSelladores();
   
   	//cinta envolver
-	factory.setLayer(ecs::layer::TAPE);
-	Entity* cinta = factory.createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
+	factory_->setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory_->createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
-	factory.setLayer(ecs::layer::DEFAULT);
+	factory_->setLayer(ecs::layer::DEFAULT);
 
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
@@ -208,11 +207,10 @@ void ecs::MainScene::createSelladores() {
 void ecs::MainScene::createStamp(TipoHerramienta type)
 {
 	constexpr float STAMPSIZE = 102.4f;
-	ComonObjectsFactory fact(this);
 
-	fact.setLayer(layer::OFFICEELEMENTS);
+	factory_->setLayer(layer::OFFICEELEMENTS);
 
-	auto stamp = fact.createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
+	auto stamp = factory_->createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
 		& sdlutils().images().at("sellador" + std::to_string(type)));
 
 	stamp->addComponent<MoverTransform>(
@@ -277,7 +275,6 @@ void ecs::MainScene::createManual()
 	constexpr int MANUALNUMPAGES = 5;
 	constexpr float MANUAL_WIDTH = 670;
 	constexpr float MANUAL_HEITH = 459;
-	ComonObjectsFactory fact(this);
 
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	//creado array de texturas par el libro
@@ -286,9 +283,9 @@ void ecs::MainScene::createManual()
 	for (int i = 1; i <= 5; i++) {
 		bookTextures.emplace_back(&sdlutils().images().at("book"+std::to_string(i)));
 	}
-	fact.setLayer(ecs::layer::MANUAL);
+	factory_->setLayer(ecs::layer::MANUAL);
 
-	auto baseManual = fact.createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
+	auto baseManual = factory_->createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
 	Transform* manualTransform = baseManual->getComponent<Transform>();
 	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
 	manualRender->setVector(bookTextures);
@@ -298,16 +295,16 @@ void ecs::MainScene::createManual()
 
 
 	Vector2D buttonSize(100, 40);
-	fact.setLayer(ecs::layer::FOREGROUND);
+	factory_->setLayer(ecs::layer::FOREGROUND);
 	auto next = [manualRender]() {manualRender->nextTexture();};
-	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
+	auto right = factory_->createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
 	right->getComponent<Transform>()->setParent(manualTransform);
 
 	auto previous = [manualRender]() {manualRender->previousTexture();};
-	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
+	auto left = factory_->createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
-	fact.setLayer(ecs::layer::DEFAULT);
+	factory_->setLayer(ecs::layer::DEFAULT);
 
 }
 
