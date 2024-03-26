@@ -75,9 +75,11 @@ void Game::run()
 		if (ih().isKeyDown(SDL_SCANCODE_W)) {
 			changeScene(ecs::sc::MAIN_SCENE, ecs::sc::MENU_SCENE);
 		}
+#ifdef QA_TOOLS
 		if (ih().mouseButtonDownEvent()&&ih().getMouseButtonState(0)) {
 			dataCollector().clicks()++;
 		}
+#endif // QA_TOOLS
 
 		update();
 		sdlutils().clearRenderer();
@@ -121,7 +123,10 @@ void Game::run()
 
 void Game::loadScene(ecs::sc::sceneId scene)
 {
-	dataCollector().dataArray()[0] = (int)scene;
+#ifdef QA_TOOLS
+	sdataCollector().dataArray()[0] = (int)scene;
+#endif // QA_TOOLS
+
 	auto it = std::find(loadedScenes_.begin(), loadedScenes_.end(), gameScenes_[scene]);
 	if (it == loadedScenes_.end()) {
 		//llamar al init de la escena a cargar????
@@ -129,7 +134,10 @@ void Game::loadScene(ecs::sc::sceneId scene)
 		//cargamos la escena
 		loadedScenes_.push_back(gameScenes_[scene]);
 	}
+#ifdef QA_TOOLS
 	dataCollector().record();
+#endif // QA_TOOLS
+
 }
 
 /// <summary>

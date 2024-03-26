@@ -229,7 +229,9 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 			/*
 			Recogida de datos del paquete enviado (no esta implementado el revisar si era correcto o no
 			*/
+#ifdef QA_TOOLS
 			dataCollector().recordPacage(entRec->getComponent<Paquete>());
+#endif // QA_TOOLS
 			std::cout << "crazy! " << dist << std::endl;
 		}
 

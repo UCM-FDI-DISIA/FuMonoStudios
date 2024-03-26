@@ -1,4 +1,7 @@
 #pragma once
+#ifdef QA_TOOLS
+
+
 #include <iostream>
 #include <fstream>
 #include "../../rapidCSV/rapidcsv.h"
@@ -40,4 +43,5 @@ private:
 inline DataCollector& dataCollector() {
 	return *DataCollector::instance();
 }
+#endif // QA_TOOLS
 
