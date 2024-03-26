@@ -32,6 +32,7 @@
 
 
 
+
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
 	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
@@ -305,13 +306,30 @@ void ecs::MainScene::makeControlsWindow()
 	ImGui::Begin("Controls");
 	if (ImGui::CollapsingHeader("Paquetes"))
 	{
-		
-		if (ImGui::Checkbox("Custom Package", &customPackage)) {
-
+		//panel para crear un paquete custom
+		static int dist,calle,tipo,nivPeso,peso = 0;
+		static bool correcto,fragil, carta = false;
+		ImGui::Checkbox("Custom Package", &customPackage);
+		if (customPackage) {
+			ImGui::InputInt("Distrito", &dist);
+			ImGui::InputInt("Calle",&calle);
+			ImGui::InputInt("Tipo",&tipo);
+			ImGui::Checkbox("Correcto", &correcto);
+			ImGui::InputInt("NivPeso",&nivPeso);
+			ImGui::InputInt("Peso", &peso);
+			ImGui::Checkbox("Fragil", &fragil);
+			ImGui::Checkbox("Carta", &carta);
+			ImGui::InputInt("Peso",&peso);
 		}
 		ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
 		if (ImGui::Button("Create pacage")) {
-			createPaquete(generalData().getPaqueteLevel());
+			if (customPackage) {
+				mPaqBuild_->customPackage((pq::Distrito)dist,(pq::Calle)calle,"Sujeto de Pruebas", (pq::TipoPaquete)tipo, 
+					correcto, (pq::NivelPeso)nivPeso, peso, fragil, carta);
+			}
+			else {
+				createPaquete(generalData().getPaqueteLevel());
+			}
 		}
 	}
 	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas

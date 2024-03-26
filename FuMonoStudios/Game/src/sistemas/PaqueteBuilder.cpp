@@ -22,9 +22,6 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 	
 	auto packageBase = buildBasePackage(mScene);
 
-	//Wrap debe ir despues del Transform, Trigger y Multitextures
-	std::list<int> route{ pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown };
-	packageBase->addComponent<Wrap>(20, 0, route);
 
 	packageBase->getComponent<Trigger>()->addCallback([packageBase](ecs::Entity* entRec) {
 		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
@@ -71,6 +68,11 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		Paquete* pq = packageBase->addComponent<Paquete>(distritoRND(), calleRND(streetErrorChance), remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
 			boolRND(notFragileChance), false);
 		addVisualElements(packageBase);
+		if (pq->getFragil()) {
+			//Wrap debe ir despues del Transform, Trigger y Multitextures
+			std::list<int> route{ pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown };
+			packageBase->addComponent<Wrap>(20, 0, route);
+		}
 	}
 	else {
 		paqueteNPC(packageBase);
@@ -92,7 +94,7 @@ void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
 	//else addVisualElementsCarta(ent);
 }
 
-ecs::Entity* PaqueteBuilder::customPackage(Paquete::Distrito distrito, Paquete::Calle calle, std::string remitente, Paquete::TipoPaquete tipo, bool correcto, Paquete::NivelPeso nivPeso, int peso, bool fragil, bool carta)
+ecs::Entity* PaqueteBuilder::customPackage(pq::Distrito distrito, pq::Calle calle, const std::string& remitente, pq::TipoPaquete tipo, bool correcto, pq::NivelPeso nivPeso, int peso, bool fragil, bool carta)
 {
 	auto base = buildBasePackage(mScene_);
 	base->addComponent<Paquete>(distrito,calle,remitente,tipo,correcto,nivPeso,peso,fragil,carta);

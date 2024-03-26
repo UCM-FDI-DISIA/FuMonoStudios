@@ -47,8 +47,8 @@ public:
 
 	void paqueteNPC(ecs::Entity*);
 
-	ecs::Entity* customPackage(Paquete::Distrito, Paquete::Calle, std::string remitente, Paquete::TipoPaquete, bool correcto = true, 
-		Paquete::NivelPeso nivPeso = Paquete::Ninguno, int peso = 0,
+	ecs::Entity* customPackage(pq::Distrito, pq::Calle, const std::string& remitente, pq::TipoPaquete, bool correcto = true, 
+		pq::NivelPeso nivPeso = pq::Ninguno, int peso = 0,
 		bool fragil = false, bool carta = false);
 
 	PaqueteBuilder(ecs::Scene*);
