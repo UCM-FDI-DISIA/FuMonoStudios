@@ -183,7 +183,7 @@ void ecs::MainScene::close() {
 	ecs::Scene::close();
 	generalData().updateMoney(correct_,fails_);
 
-	sdlutils().musics().at("trabajo").pauseMusic();
+	sdlutils().musics().at("trabajo").haltMusic();
 }
 
 void ecs::MainScene::createClock() {

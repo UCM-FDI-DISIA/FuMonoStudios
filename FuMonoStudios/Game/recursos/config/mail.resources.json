@@ -267,6 +267,11 @@
         {
             "id": "trabajo",
             "file": "recursos/sounds/imperial_march.wav"
+        },
+        {
+            "id": "mainMenu",
+            "file": "recursos/sounds/DQOverture.wav"
         }
+
     ]
 }

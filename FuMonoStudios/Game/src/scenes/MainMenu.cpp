@@ -56,10 +56,12 @@ void ecs::MainMenu::init()
 
 	}*/
 	CallbackClickeable funcPress = [this]() {
+		sdlutils().musics().at("mainMenu").haltMusic();
 		gm().requestChangeScene(ecs::sc::MENU_SCENE, ecs::sc::EXPLORE_SCENE);
 
 	};
 	clickerPress->addEvent(funcPress);
+	sdlutils().musics().at("mainMenu").play();
 }
 
 void ecs::MainMenu::changeToMainScene() {
