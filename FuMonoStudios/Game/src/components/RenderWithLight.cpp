@@ -25,7 +25,7 @@ void RenderWithLight::render() const {
 	Vector2D pos = mTr_->getPos();
 
 	SDL_Rect mRect_ = build_sdlrect(pos, mTr_->getWidth(), mTr_->getHeigth());
-	if (ent_->getComponent<Clickeable>() != nullptr && SDL_PointInRect(&point, &mRect_)) {
+	if (SDL_PointInRect(&point, &mRect_)) {
 		Texture* t = &sdlutils().images().at("luz");
 
 		pos = pos - Vector2D(10, 10);
