@@ -4,6 +4,7 @@
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
 #include <components/Herramientas.h>
+#include "../sistemas/PaqueteBuilder.h"
 
 namespace ecs {
     class Game;
@@ -64,6 +65,9 @@ namespace ecs {
         void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt_;
         Texture* timerTexture_;
+
+        //El pinche paquete builder para no crear uno en cada paquete
+        PaqueteBuilder* mPaqBuild_;
     };
 }
 
