@@ -47,7 +47,8 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		if (rnd == 0) continuar = false;
 	}
 	//rellenar esto con un json en funcion de el nivel / dia en el que te encuentres
-	DifficultySettings lvl1 = { 100, 20, 25, 30, 80};
+	DifficultySettings lvl1 = getLevelSetings(level);
+	//{ 100, 20, 25, 30, 80};
 
 	//int streetErrorChance=10, stampErrorChance = 0, notFragileChance = 100;
 	int peso;
@@ -284,6 +285,27 @@ void PaqueteBuilder::getStreetsFromJSON(const std::string& filename, Distrito di
 			throw "'Demeter' is not an array in '" + filename + "'";
 		}
 	}
+}
+
+PaqueteBuilder::DifficultySettings PaqueteBuilder::getLevelSetings(int lvl)
+{
+	DifficultySettings diff;
+	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(DIFF_SETTINGS_PATH));
+
+	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
+		throw "Something went wrong while load/parsing '" + DIFF_SETTINGS_PATH + "'";
+	}
+
+	JSONObject root = jValueRoot->AsObject();
+	JSONObject lvlObj = root["lvl"+std::to_string(lvl)]->AsObject();
+
+	diff.streetErrorChance = lvlObj["streetErrorChance"]->AsNumber();
+	diff.stampErrorChance = lvlObj["stampErrorChance"]->AsNumber();
+	diff.weithChance = lvlObj["weightChance"]->AsNumber();
+	diff.weightErrorChance = lvlObj["weightErrorChance"]->AsNumber();
+	diff.notFragileChance = lvlObj["notFragileChance"]->AsNumber();
+
+	return diff;
 }
 
 

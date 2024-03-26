@@ -37,6 +37,8 @@ const int PESO_SELLO_SIZE = 80;
 //Escala del paquete 
 const float PAQUETE_SIZE = 0.25f;
 
+const std::string DIFF_SETTINGS_PATH = "recursos/config/mail.dificulty.json";
+
 class PaqueteBuilder
 {
 public:
@@ -83,6 +85,8 @@ private:
 	/// <param name="dist">valor enum del distritio al que pertenece</param>
 	/// <param name="distString">valor string del distrito al que pertenece</param>
 	void getStreetsFromJSON(const std::string& filename, Distrito dist,const std::string& distString);
+
+	DifficultySettings getLevelSetings(int lvl);
 
 	// Se llama a este después de crear el paquete
 	void addVisualElements(ecs::Entity* paq);

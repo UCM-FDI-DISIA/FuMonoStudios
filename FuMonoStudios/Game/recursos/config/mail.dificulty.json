@@ -1,0 +1,17 @@
+{
+    "lvl1" : {
+        "streetErrorChance": 20,
+        "stampErrorChance": 35,
+        "weightChance" : 0,
+        "weightErrorChance" : 30,
+        "notFragileChance" : 100
+    },
+    "lvl2" : {
+        "streetErrorChance": 20,
+        "stampErrorChance": 35,
+        "weightChance" : 5,
+        "weightErrorChance" : 30,
+        "notFragileChance" : 80
+    }
+
+}
