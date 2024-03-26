@@ -12,7 +12,7 @@ ErrorNote::ErrorNote(Paquete* p, bool basura, bool tuboIncorrecto) {
 		if (!p->getSelloCorrecto()) {
 			std::cout << "Ese paquete tiene un sello incorrecto \n";
 		}
-		else if (p->getCalle() == Paquete::Erronea) {
+		else if (p->getCalle() == pq::Erronea) {
 			std::cout << "Ese paquete no tenia una calle existente\n";
 		}
 		else if (!p->bienSellado()) {

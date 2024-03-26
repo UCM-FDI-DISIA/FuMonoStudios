@@ -9,12 +9,7 @@
 
 class Scene;
 
-class Paquete : public ecs::Component
-{
-public:
-	__CMP_DECL__(ecs::cmp::PAQUETE)
-		
-
+namespace pq {
 	/*
 	De locos pero y si lo metemos en un espacio de nombres
 	*/
@@ -34,6 +29,16 @@ public:
 	/// enum con todas los tipos de medici�n de peso que pueden tener los paquetes
 	/// </summary>
 	enum NivelPeso { Ninguno, Bajo, Medio, Alto };
+}
+
+using namespace pq;
+
+class Paquete : public ecs::Component
+{
+public:
+	__CMP_DECL__(ecs::cmp::PAQUETE)
+		
+
 
 	Paquete(Paquete&);
 	Paquete(Distrito, Calle, std::string remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, 
