@@ -1,5 +1,4 @@
 #pragma once
-#include "../components/Paquete.h"
 #include "../architecture/Entity.h"
 #include <stdlib.h>
 #include "../sdlutils/VirtualTimer.h"
@@ -11,6 +10,7 @@
 #include "../components/Trigger.h"
 #include "../components/Herramientas.h"
 #include "../components/MoverTransform.h"
+#include <components/Paquete.h>
 
 
 const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
@@ -47,7 +47,11 @@ public:
 
 	void paqueteNPC(ecs::Entity*);
 
-	PaqueteBuilder();
+	ecs::Entity* customPackage(Paquete::Distrito, Paquete::Calle, std::string remitente, Paquete::TipoPaquete, bool correcto = true, 
+		Paquete::NivelPeso nivPeso = Paquete::Ninguno, int peso = 0,
+		bool fragil = false, bool carta = false);
+
+	PaqueteBuilder(ecs::Scene*);
 
 	~PaqueteBuilder();
 
@@ -71,4 +75,6 @@ private:
 	Font* directionsFont;
 
 	std::vector<Texture*> createdTextures;
+
+	ecs::Scene* mScene_;
 };

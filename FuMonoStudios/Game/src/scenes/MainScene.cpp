@@ -40,7 +40,7 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
 #endif // DEV_TOOLS
-	mPaqBuild_ = new PaqueteBuilder();
+	mPaqBuild_ = new PaqueteBuilder(this);
 }
 
 ecs::MainScene::~MainScene()
@@ -301,9 +301,14 @@ void ecs::MainScene::makeDataWindow()
 
 void ecs::MainScene::makeControlsWindow()
 {
+	static bool customPackage;
 	ImGui::Begin("Controls");
 	if (ImGui::CollapsingHeader("Paquetes"))
 	{
+		
+		if (ImGui::Checkbox("Custom Package", &customPackage)) {
+
+		}
 		ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
 		if (ImGui::Button("Create pacage")) {
 			createPaquete(generalData().getPaqueteLevel());

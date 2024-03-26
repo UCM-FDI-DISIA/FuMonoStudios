@@ -6,7 +6,7 @@
 #include <sistemas/ComonObjectsFactory.h>
 
 
-PaqueteBuilder::PaqueteBuilder():createdTextures() {
+PaqueteBuilder::PaqueteBuilder(ecs::Scene* sc):createdTextures(),mScene_(sc) {
 	srand(sdlutils().currRealTime());
 	directionsFont = &sdlutils().fonts().at("arial40");
 }
@@ -90,6 +90,14 @@ void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
 	Paquete* pq = ent->addComponent<Paquete>(*pNPC);
 	if (!pNPC->isCarta()) addVisualElements(ent);
 	//else addVisualElementsCarta(ent);
+}
+
+ecs::Entity* PaqueteBuilder::customPackage(Paquete::Distrito distrito, Paquete::Calle calle, std::string remitente, Paquete::TipoPaquete tipo, bool correcto, Paquete::NivelPeso nivPeso, int peso, bool fragil, bool carta)
+{
+	auto base = buildBasePackage(mScene_);
+	base->addComponent<Paquete>(distrito,calle,remitente,tipo,correcto,nivPeso,peso,fragil,carta);
+	addVisualElements(base);
+	return base;
 }
 
 ecs::Entity* PaqueteBuilder::buildBasePackage(ecs::Scene* mScene)
