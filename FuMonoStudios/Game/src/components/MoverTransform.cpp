@@ -3,7 +3,7 @@
 
 MoverTransform::MoverTransform(Vector2D& newPos, float MovTime, Easing Easing) 
 	: finalPos_(newPos), movTime_(MovTime * 1000), 
-	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(false){
+	easing_(Easing), timer_(0), mTr_(nullptr), usingCallback(false),call_(){
 
 }
 
@@ -66,7 +66,7 @@ void MoverTransform::update() {
 		DragAndDrop* dnd_ = ent_->getComponent<DragAndDrop>();
 		if (dnd_ != nullptr)
 			dnd_->activateInteraction();
-		if (usingCallback)
+		if (call_)
 			call_();
 		ent_->removeComponent<MoverTransform>();
 	}

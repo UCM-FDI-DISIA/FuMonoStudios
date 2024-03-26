@@ -3,6 +3,7 @@
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
+#include <components/Herramientas.h>
 
 namespace ecs {
     class Game;
@@ -25,6 +26,7 @@ namespace ecs {
         void createClock();
         void createTubo(Paquete::Distrito dist);
         void createSelladores();
+        void createStamp(TipoHerramienta type);
         void createPaquete(int lv);
         
         void updateTimer();

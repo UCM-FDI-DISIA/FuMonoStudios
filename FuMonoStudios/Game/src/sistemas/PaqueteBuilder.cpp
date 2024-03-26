@@ -68,7 +68,7 @@ ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {
 
 void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
 	Paquete* pNPC = generalData().getPaqueteNPC();
-	Paquete* pq = ent->addComponent<Paquete>(pNPC);
+	Paquete* pq = ent->addComponent<Paquete>(*pNPC);
 	if (!pNPC->isCarta()) addVisualElements(ent);
 	//else addVisualElementsCarta(ent);
 }

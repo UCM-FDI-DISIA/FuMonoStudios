@@ -228,15 +228,24 @@ void ecs::MainScene::createSelladores() {
 	// Sellador verde (3)
 	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
 	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
-, selloCTex->height());
+	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width(), selloCTex->height());
 	selloCTR->setScale(scaleSelladores);
+
 	selloC->addComponent<DragAndDrop>(true, [selloC]() {
 		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
 		});
 	selloC->addComponent<RenderImage>(selloCTex);
 	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
 	herrSelladorC->setFunctionality(SelloCalleC);
+}
+
+void ecs::MainScene::createStamp(TipoHerramienta type)
+{
+	constexpr float STAMPSIZE = 102.4f;
+	ComonObjectsFactory fact(this);
+	fact.setLayer(layer::OFFICEELEMENTS);
+	auto stamp = fact.createImage(Vector2D(),Vector2D(STAMPSIZE,STAMPSIZE), & sdlutils().images().at("Sellador" + std::to_string(type)));
+
 }
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist) {
@@ -285,36 +294,32 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist) {
 
 void ecs::MainScene::createManual()
 {
+	constexpr int MANUALNUMPAGES = 5;
+	constexpr float MANUAL_WIDTH = 670;
+	constexpr float MANUAL_HEITH = 459;
 	ComonObjectsFactory fact(this);
-	Entity* manual = addEntity(ecs::layer::MANUAL);
-	//se puede hacer un for
-	Texture* manualTexture = &sdlutils().images().at("book1");
-	Texture* manualTexture2 = &sdlutils().images().at("book2");
-	Texture* manualTexture3 = &sdlutils().images().at("book3");
-	Texture* manualTexture4 = &sdlutils().images().at("book4");
-	Texture* manualTexture5 = &sdlutils().images().at("book5");
-	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 
-	std::vector<Texture*> bookTextures = {
-		manualTexture,
-		manualTexture2,
-		manualTexture3,
-		manualTexture4,
-		manualTexture5
-	};
-	float scaleManual = 0.075;
-	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width(), manualTexture->height());
-	manualTransform->setScale(scaleManual);
-	RenderImage* manualRender = manual->addComponent<RenderImage>();
-	manual->addComponent<Gravity>();
-	manual->addComponent<DragAndDrop>(true);
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>(bookTextures);
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	//creado array de texturas par el libro
+	std::vector<Texture*> bookTextures;
+	bookTextures.reserve(MANUALNUMPAGES);
+	for (int i = 1; i <= 5; i++) {
+		bookTextures.emplace_back(&sdlutils().images().at("book"+std::to_string(i)));
+	}
+	fact.setLayer(ecs::layer::MANUAL);
+
+	auto baseManual = fact.createImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),nullptr);
+	Transform* manualTransform = baseManual->getComponent<Transform>();
+	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
+	MultipleTextures* multTextures = baseManual->addComponent<MultipleTextures>(bookTextures);
 	manualRender->setTexture(multTextures->getCurrentTexture());
+	baseManual->addComponent<Gravity>();
+	baseManual->addComponent<DragAndDrop>(true);
+	baseManual->addComponent<Depth>();
 
 
 	Vector2D buttonSize(100, 40);
 	fact.setLayer(ecs::layer::FOREGROUND);
-
 	auto next = [multTextures]() {multTextures->nextTexture();};
 	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
 	right->getComponent<Transform>()->setParent(manualTransform);
@@ -323,10 +328,8 @@ void ecs::MainScene::createManual()
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
-
 	fact.setLayer(ecs::layer::DEFAULT);
 
-	manual->addComponent<Depth>();
 }
 
 void ecs::MainScene::initTexts() {
@@ -376,7 +379,7 @@ void ecs::MainScene::createPaquete (int lv) {
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
 
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
-
+	//se puede rellenar con un for
 	std::vector<Texture*> textures = {
 		texturaPaquet,
 		&sdlutils().images().at("caja25"),
@@ -402,7 +405,7 @@ void ecs::MainScene::createPaquete (int lv) {
 
 
 	PaqueteBuilder a;
-	a.paqueteRND (lv, paqEnt);
+	a.paqueteRND (lv, this);
 
 	// añadimos que pueda ser interactuado por selladores
 	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {

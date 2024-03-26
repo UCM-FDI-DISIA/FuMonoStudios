@@ -18,7 +18,7 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-Paquete::Paquete(Paquete&& otherPckg)
+Paquete::Paquete(Paquete& otherPckg)
 {
 	miDistrito_ = otherPckg.miDistrito_;
 	miCalle_ = otherPckg.miCalle_;

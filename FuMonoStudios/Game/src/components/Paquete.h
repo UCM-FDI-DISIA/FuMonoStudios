@@ -35,7 +35,7 @@ public:
 	/// </summary>
 	enum NivelPeso { Ninguno, Bajo, Medio, Alto };
 
-	Paquete(Paquete&&);
+	Paquete(Paquete&);
 	Paquete(Distrito, Calle, std::string remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, 
 		bool fragil = false, bool carta = false);
 	~Paquete();
