@@ -133,7 +133,7 @@ void ecs::MainScene::init()
 
 	initTexts();
 
-	//createPaquete(generalData().getPaqueteLevel());
+	createPaquete(generalData().getPaqueteLevel());
 
 	for (int i = 0; i < 7; i++) {
 		createTubo((Paquete::Distrito)i);
