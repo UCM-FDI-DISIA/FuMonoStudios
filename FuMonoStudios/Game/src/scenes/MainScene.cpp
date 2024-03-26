@@ -207,8 +207,14 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 		Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			entRec->removeComponent<Gravity>();
-			entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-				entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			//entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+			//	entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			auto mover = entRec->getComponent<MoverTransform>();
+			mover->setEasing(Easing::EaseOutCubic);
+			mover->setFinalPos(entTr->getPos() + Vector2D(0, -600));
+			//mover->setMoveTime(1.7f);
+			mover->enable();
+
 			entRec->addComponent<SelfDestruct>(1, [this]() {
 				generalData().correctPackage();
 				createPaquete(generalData().getPaqueteLevel());
@@ -219,13 +225,7 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 			else {
 				fails_++;
 				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
-				if (dist == entRec->getComponent<Paquete>()->getDistrito()) {
-					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, false);
-				}
-				else
-				{
-					NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, true);
-				}
+				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, dist != entRec->getComponent<Paquete>()->getDistrito());
 			}
 			/*
 			Recogida de datos del paquete enviado (no esta implementado el revisar si era correcto o no
@@ -402,5 +402,7 @@ void ecs::MainScene::createPaquete (int lv) {
 	/*podriamos hacer que lo que le pases al paquete builder sean las estadisticas o un json 
 	con las configuraciones de los niveles de dificultad y tener un constructora a parte que nos permita crear paquetes con configuraciones
 	personalizadas*/
-	mPaqBuild_->paqueteRND(lv, this);
+	auto pac = mPaqBuild_->paqueteRND(lv, this);
+	pac->addComponent<MoverTransform>(pac->getComponent<Transform>()->getPos()-Vector2D(200,0),
+		1,Easing::EaseOutBack)->enable();
 }

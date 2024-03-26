@@ -57,7 +57,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		pq::Distrito toDist = distritoRND();
 		pq::Calle toDir = calleRND(lvl1.streetErrorChance);
 		std::string dir;
-		if (toDir == Erronea)
+		if (toDir == Erronea || toDist == Erroneo)
 			//Cambiarlo por el sistema de calles erróneas una vez esté
 			//Simplemente sería meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
 			//Y meterle un randomizador para que de esas pille la que más le guste
@@ -175,7 +175,7 @@ bool PaqueteBuilder::boolRND(int probFalse) { //Este método devuelve una valor a
 
 pq::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = sdlutils().rand().nextInt(0, 101);										//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
-	if (rnd > probPeso) {
+	if (rnd <= probPeso) {
 		pq::NivelPeso pes;
 		rnd = sdlutils().rand().nextInt(1, 4);
 		pes = (pq::NivelPeso)rnd;

@@ -122,8 +122,11 @@ std::string Paquete::getDirecction()
 		dir = "Interior - ";
 
 	//creacion de codigo postal
-	if (miDistrito_ == Erroneo)
-		dir += "000\n";
+	//se puede mejorar el fallo si se hace que el codigo postal pase a ser un numero aleatorio
+	if (miDistrito_ == Erroneo) {
+		int rand = sdlutils().rand().nextInt(0, 7);
+		dir += std::bitset<3>(rand).to_string() + "\n";
+	}
 	else
 		dir += std::bitset<3>(miDistrito_ + 1).to_string() + "\n";
 
