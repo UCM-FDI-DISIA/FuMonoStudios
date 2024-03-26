@@ -69,7 +69,7 @@ private:
 	// coge el paquete recien creado y le añade el componente visual de dirección
 	void createVisualDirections(ecs::Entity* paq, Paquete* paqComp);
 	// coge el paquete recien creado y le añade el componente visual de sello
-	void crearSello(ecs::Entity* paq, std::string texKey, int x, int y, int width, int height);
+	void crearSello(ecs::Entity* paq, const std::string& texKey, int x, int y, int width, int height);
 
 	// esto hay que cambiarlo de sitio, al scene o algo
 	Font* directionsFont;

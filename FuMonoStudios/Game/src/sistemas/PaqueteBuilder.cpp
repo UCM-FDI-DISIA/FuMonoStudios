@@ -258,7 +258,7 @@ void PaqueteBuilder::createVisualDirections(ecs::Entity* paq, Paquete* paqComp) 
 	remitenteTr->setParent(paq->getComponent<Transform>());
 }
 
-void PaqueteBuilder::crearSello(ecs::Entity* paq, std::string texKey, int x, int y, int width, int height) {
+void PaqueteBuilder::crearSello(ecs::Entity* paq,const std::string& texKey, int x, int y, int width, int height) {
 	ecs::Entity* SelloEnt = paq->getMngr()->addEntity(ecs::layer::STAMP);
 	Texture* SelloTex = &sdlutils().images().at(texKey);
 	Transform* SelloTr = SelloEnt->addComponent<Transform>(x, y, width, height);

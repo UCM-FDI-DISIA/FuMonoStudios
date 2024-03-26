@@ -34,7 +34,7 @@ Paquete::Paquete(Paquete& otherPckg)
 	calleMarcada_ = otherPckg.calleMarcada_;
 }
 
-Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
+Paquete::Paquete(Distrito dis, Calle c, const std::string& remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
 	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
 	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
 	
