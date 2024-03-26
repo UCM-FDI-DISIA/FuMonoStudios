@@ -43,8 +43,8 @@ public:
 
 
 	Paquete(Paquete&);
-	Paquete(Distrito, Calle,const std::string& remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, 
-		bool fragil = false, bool carta = false, const std::string nombreCalle);
+	Paquete(Distrito, Calle, const std::string& nombreCalle,const std::string& remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0,
+		bool fragil = false, bool carta = false);
 	~Paquete();
 
 	void initComponent() override;

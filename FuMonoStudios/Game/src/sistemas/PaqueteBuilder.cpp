@@ -47,7 +47,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		if (rnd == 0) continuar = false;
 	}
 
-	int streetErrorChance, stampErrorChance = 0, notFragileChance = 100;
+	int streetErrorChance=10, stampErrorChance = 0, notFragileChance = 100;
 	int peso;
 	pq::NivelPeso Nv;
 	if (continuar) {
@@ -87,7 +87,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		else
 			dir = distritoCalle_[toDist][toDir];
 
-		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir, remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
+		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir,dir, remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
 			boolRND(notFragileChance), false);
 		addVisualElements(packageBase);
 		if (pq->getFragil()) {
@@ -105,7 +105,19 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 
 ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {
 	ecs::Entity* ent = mScene->addEntity();
-	ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, pq::NivelPeso::Ninguno, PESO_CARTA, false, true);
+
+	pq::Distrito toDist = distritoRND();
+	pq::Calle toDir = calleRND(10);
+	std::string dir;
+	if (toDir == Erronea)
+		//Cambiarlo por el sistema de calles erróneas una vez esté
+		//Simplemente sería meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
+		//Y meterle un randomizador para que de esas pille la que más le guste
+		//Tipo, haces distritoCalle_[Erroneo][rand]
+		dir = "(CALLE INVENTADA)";
+	else
+		dir = distritoCalle_[toDist][toDir];
+	ent->addComponent<Paquete>(distritoRND(), calleRND(20),dir, remitenteRND(), tipoRND(), true, pq::NivelPeso::Ninguno, PESO_CARTA, false, true);
 	return ent;
 }
 
@@ -119,7 +131,7 @@ void PaqueteBuilder::paqueteNPC(ecs::Entity* ent) {
 ecs::Entity* PaqueteBuilder::customPackage(pq::Distrito distrito, pq::Calle calle, const std::string& remitente, pq::TipoPaquete tipo, bool correcto, pq::NivelPeso nivPeso, int peso, bool fragil, bool carta)
 {
 	auto base = buildBasePackage(mScene_);
-	base->addComponent<Paquete>(distrito,calle,remitente,tipo,correcto,nivPeso,peso,fragil,carta);
+	base->addComponent<Paquete>(distrito,calle,"Tu vieja", remitente, tipo, correcto, nivPeso, peso, fragil, carta);
 	addVisualElements(base);
 	return base;
 }
