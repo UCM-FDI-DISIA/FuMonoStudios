@@ -229,31 +229,31 @@
       "file": "recursos/images/ManualMini.png"
     },
     {
-      "id": "abigail",
+      "id": "Tarotista",
       "file": "recursos/images/Abigail Ampoure.png"
     },
     {
-      "id": "gargafiel",
+      "id": "Secretario",
       "file": "recursos/images/Gargafiel Mustaki.png"
     },
     {
-      "id": "glover",
+      "id": "Contable",
       "file": "recursos/images/Glover Globus.png"
     },
     {
-      "id": "pancracio",
+      "id": "Campesino",
       "file": "recursos/images/Pancracio Warawa.png"
     },
     {
-      "id": "paulino",
+      "id": "Artesano",
       "file": "recursos/images/Paulino Tinteiros.png"
     },
     {
-      "id": "anemos",
+      "id": "Vagabundo",
       "file": "recursos/images/Anemos Tokugawa.png"
     },
     {
-      "id": "abakand",
+      "id": "Soldado",
       "file": "recursos/images/Abakand Istacoz.png"
     },
     {

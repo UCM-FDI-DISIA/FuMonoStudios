@@ -135,7 +135,7 @@ namespace ecs {
 		/// <summary>
 		/// Metodo factoria para characters
 		/// </summary>
-		ecs::Entity* createCharacter(Vector2D pos, std::string character, float scale);
+		ecs::Entity* createCharacter(Vector2D pos, DialogManager::Personaje character, float scale);
         
 		//Puntero al lugar actual
 		Lugar* actualPlace_;

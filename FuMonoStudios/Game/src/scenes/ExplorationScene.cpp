@@ -148,7 +148,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::s
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, std::string character, float scale) {
+ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const DialogManager::Personaje character, float scale) {
 
 	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
@@ -159,15 +159,18 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, std::string ch
 
 	ComonObjectsFactory factory(this);
 
-	Texture* texturaBoton = &sdlutils().images().at(character);
+	Texture* texturaBoton = &sdlutils().images().at(dialogMngr_.personajeToString(character));
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
-	CallbackClickeable funcPress = [this]() {
+	CallbackClickeable funcPress = [this, character]() {
 		//Esto ser�a la caja del fondo (lo de SDL que se ve)
 		ecs::Entity* boxBg = addEntity();
 		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 250, sdlutils().width() - 200, 200);
 		boxBg->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
 		actualPlace_->addObjects(boxBg);
+
+		// activamos los dialogos correspondientes
+		dialogMngr_.setDialogues(character, );
 
 		//Aqu� pillar�a el di�logo con el manager y crear�a la entidad que lo renderiza
 		ecs::Entity* dialogoBox = addEntity();
@@ -204,9 +207,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
-
-
 	}
 	else if (place == "Hefesto")
 	{
@@ -225,8 +225,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "secretario", "presentacion", "jiji");
-
 	}
 	else if (place == "Hestia") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -244,8 +242,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
 
 
 		//boton ir a trabajar
@@ -274,8 +270,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
-
 	}
 	else if (place == "Hermes") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -293,8 +287,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
-
 	}
 	else if (place == "Apolo") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -312,8 +304,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
-
 	}
 	else if (place == "Poseidon") {
 		for (int i = 0; i < pl.at(place).myArrows.size(); ++i) {
@@ -331,8 +321,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		dialogMngr_.setDialogues("recursos/dialogos/dialogos.JSON", "vagabundo", "presentacion", "jiji");
-
 	}
 }
 

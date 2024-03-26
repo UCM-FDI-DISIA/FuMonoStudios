@@ -3,14 +3,14 @@
 #include "../components/Paquete.h"
 #include "GameConstants.h"
 #include <vector>
+#include "../components/Dialog_Manager.h"
 
 class GeneralData : public Singleton<GeneralData>
 {
 	friend Singleton<GeneralData>;
 public:
-	GeneralData() :dinero_(INITIAL_MONEY), finalID_(INITIAL_FINAL), eventoID_(INITIAL_EVENT),failsMargin_(INITIAL_FAILS_MARGIN),
-		corrects_(0),fails_(0), dia_(1), numTubos_(INITIAL_TUBE_AMOUNT) { };
-	~GeneralData(){};
+	GeneralData();
+	~GeneralData();
 
 	/// <summary>
 	/// Metodo que acutaliza cuanto dinero tienes en funcion de los fallos y aciertos que realices
@@ -49,6 +49,19 @@ public:
 	int getPaqueteLevel(); // Devuelve el lvl del paquete correspondiente al d�a
 	void setPaqueteLevel(int lvl);
 
+	// lee los datos de NPCs desde su JSON
+	void readNPCData();
+	// escribe los datos de NPCs a su JSON
+	void writeNPCData();
+
+	// Variables de los NPCs
+	NPCdata* vagabundoData;
+	NPCdata* secretarioData;
+	NPCdata* campesinoData;
+	NPCdata* artesanoData;
+	NPCdata* tarotisaData;
+	NPCdata* soldadoData;
+	NPCdata* contableData;
 private:
 	void addMoney(int cant) { dinero_ += cant; }
 	void reduceMoney(int cant) { dinero_ -= cant; }
@@ -68,3 +81,54 @@ private:
 inline GeneralData& generalData() {
 	return *GeneralData::instance();
 }
+
+enum Felicidad { Minima, Mala, Normal, Buena, Maxima, NoHabladoAun};
+
+// Los datos de los NPC deben actualizarse al acabar cada día.
+// Recogen datos sobre su felicidad, así como que dialogo deben enseñar.
+// Al iniciarse, su felicidad estará en NoHabladoAun, y al sacar su
+// primer diálogo cambiará a Normal.
+// NPC MENORES: El bool giveEvent dicta si debe dar evento (true) o dar
+// un dialogo generico (false). El int iteration itera sobre los 3 posibles
+// dialogos genericos que tiene el personaje.
+// NPC GRANDES: El bool postConversation si es true, significa que ya se 
+// ha hablado con el una vez, y sacara el dialogo mas corto que sale despues
+// del dialogo original de ese dia.
+// 
+// Al acabar el día se debe llamar a setupDayData() para reiniciar las 
+// variables y ajustar datos segun el dia
+// 
+// NOTA IMPORTANTE: POSBILEMENTE SE PONDRA AQUI EL TEMA DE LAS CONDICIONES
+// Y LOS EVENTOS DE CADA NPC, AUN NO ESTA IMPLEMENTADO, SOLO ESTA PUESTO
+// LO DE LOS DIALOGOS
+struct NPCdata {
+	Felicidad felicidad;
+	virtual std::pair<DialogManager::TipoDialog, int> getDialogueInfo() = 0;
+
+	virtual void setupDayData() = 0;
+};
+
+struct NPCMenorData : public NPCdata {
+	NPCMenorData(Felicidad Felicidad, std::vector<bool> DiasDanEvento);
+
+	std::pair<DialogManager::TipoDialog, int> getDialogueInfo() override;
+	void setupDayData();
+private:
+	void activateEvent();
+	void deactivateEvent();
+	void iterateDialogue();
+
+	std::vector<bool> diasDanEvento;
+
+	bool giveEvent;
+	int iteration;
+};
+
+struct NPCMayorData : public NPCdata {
+	NPCMayorData(Felicidad Felicidad);
+
+	std::pair<DialogManager::TipoDialog, int> getDialogueInfo() override;
+	void setupDayData() override;
+private:
+	bool postConversation;
+};
