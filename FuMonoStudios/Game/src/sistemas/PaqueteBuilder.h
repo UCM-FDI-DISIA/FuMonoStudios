@@ -56,6 +56,16 @@ public:
 	~PaqueteBuilder();
 
 private:
+	typedef struct {
+		int streetErrorChance;
+		int stampErrorChance;
+		int weithChance;
+		int weightErrorChance;
+		int notFragileChance;
+	}DifficultySettings;
+
+
+
 	ecs::Entity* buildBasePackage(ecs::Scene* mScene);
 	void paqueteNPC(ecs::Entity*);
 
@@ -72,7 +82,7 @@ private:
 	/// <param name="filename">direccion del fichero json</param>
 	/// <param name="dist">valor enum del distritio al que pertenece</param>
 	/// <param name="distString">valor string del distrito al que pertenece</param>
-	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
+	void getStreetsFromJSON(const std::string& filename, Distrito dist,const std::string& distString);
 
 	// Se llama a este después de crear el paquete
 	void addVisualElements(ecs::Entity* paq);
@@ -96,4 +106,6 @@ private:
 	/// usado para la generacion del string de la direccion
 	/// </summary>
 	std::unordered_map<Distrito, std::vector<std::string>> distritoCalle_;
+
+	std::unordered_map<int,DifficultySettings> tuvieja;
 };

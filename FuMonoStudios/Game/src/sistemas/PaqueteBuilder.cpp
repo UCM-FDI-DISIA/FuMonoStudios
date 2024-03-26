@@ -46,12 +46,16 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		int rnd = sdlutils().rand().nextInt(0, 4);
 		if (rnd == 0) continuar = false;
 	}
+	//rellenar esto con un json en funcion de el nivel / dia en el que te encuentres
+	DifficultySettings lvl1 = { 100, 20, 25, 30, 80};
 
-	int streetErrorChance=10, stampErrorChance = 0, notFragileChance = 100;
+	//int streetErrorChance=10, stampErrorChance = 0, notFragileChance = 100;
 	int peso;
+
+
 	pq::NivelPeso Nv;
 	if (continuar) {
-		if (level < 2) {
+	/*	if (level < 2) {
 			Nv = pq::NivelPeso::Ninguno;
 			peso = rand() % PESADO_MAX + 1;
 			if (level == 0) {
@@ -73,10 +77,12 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 				notFragileChance = 80;
 				Nv = pesoRND(20, 25, peso);
 			}
-		}
+		}*/
+
+		Nv = pesoRND(lvl1.weithChance,lvl1.weightErrorChance, peso);
 
 		pq::Distrito toDist = distritoRND();
-		pq::Calle toDir = calleRND(streetErrorChance);
+		pq::Calle toDir = calleRND(lvl1.streetErrorChance);
 		std::string dir;
 		if (toDir == Erronea)
 			//Cambiarlo por el sistema de calles erróneas una vez esté
@@ -85,10 +91,10 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 			//Tipo, haces distritoCalle_[Erroneo][rand]
 			dir = "(CALLE INVENTADA)";
 		else
-			dir = distritoCalle_[toDist][toDir];
+			dir = distritoCalle_[toDist][(int)toDir];
 
-		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir,dir, remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
-			boolRND(notFragileChance), false);
+		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir,dir, remitenteRND(), tipoRND(), boolRND(lvl1.stampErrorChance), Nv, peso,
+			boolRND(lvl1.notFragileChance), false);
 		addVisualElements(packageBase);
 		if (pq->getFragil()) {
 			//Wrap debe ir despues del Transform, Trigger y Multitextures
@@ -242,7 +248,7 @@ std::string PaqueteBuilder::remitenteRND() {
 	return "Nombre Random";
 }
 
-void PaqueteBuilder::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
+void PaqueteBuilder::getStreetsFromJSON(const std::string& filename, Distrito dist, const std::string& distString)
 {
 	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
 
