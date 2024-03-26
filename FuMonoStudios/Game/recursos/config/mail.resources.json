@@ -74,15 +74,15 @@
     },
 
     {
-      "id": "selladorA",
+      "id": "sellador0",
       "file": "recursos/images/selladorRojo.png"
     },
     {
-      "id": "selladorB",
+      "id": "sellador1",
       "file": "recursos/images/selladorAzul.png"
     },
     {
-      "id": "selladorC",
+      "id": "sellador2",
       "file": "recursos/images/selladorVerde.png"
     },
     {

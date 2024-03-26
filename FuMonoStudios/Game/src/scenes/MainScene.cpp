@@ -199,44 +199,9 @@ void ecs::MainScene::createClock() {
 }
 
 void ecs::MainScene::createSelladores() {
-	float scaleSelladores = 0.2f;
-
-	// Sellador rojo (1)
-	Entity* selloA = addEntity(layer::OFFICEELEMENTS);
-	Texture* selloATex = &sdlutils().images().at("selladorA");
-	Transform* selloATR = selloA->addComponent<Transform>(100, 300, selloATex->width(), selloATex->height());
-	selloATR->setScale(scaleSelladores);
-	selloA->addComponent<DragAndDrop>(true, [selloA]() {
-		selloA->addComponent<MoverTransform>(Vector2D(100,300), 0.5, Easing::EaseOutCubic);
-		});
-	selloA->addComponent<RenderImage>(selloATex);
-	Herramientas* herrSelladorA = selloA->addComponent<Herramientas>();
-	herrSelladorA->setFunctionality(SelloCalleA);
-	
-	// Sellador azul (2)
-	Entity* selloB = addEntity(layer::OFFICEELEMENTS);
-	Texture* selloBTex = &sdlutils().images().at("selladorB");
-	Transform* selloBTR = selloB->addComponent<Transform>(100, 410, selloBTex->width(), selloBTex->height());
-	selloBTR->setScale(scaleSelladores);
-	selloB->addComponent<DragAndDrop>(true, [selloB]() {
-		selloB->addComponent<MoverTransform>(Vector2D(100, 410), 0.5, Easing::EaseOutCubic);
-		});
-	selloB->addComponent<RenderImage>(selloBTex);
-	Herramientas* herrSelladorB = selloB->addComponent<Herramientas>();
-	herrSelladorB->setFunctionality(SelloCalleB);
-
-	// Sellador verde (3)
-	Entity* selloC = addEntity(layer::OFFICEELEMENTS);
-	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width(), selloCTex->height());
-	selloCTR->setScale(scaleSelladores);
-
-	selloC->addComponent<DragAndDrop>(true, [selloC]() {
-		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
-		});
-	selloC->addComponent<RenderImage>(selloCTex);
-	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
-	herrSelladorC->setFunctionality(SelloCalleC);
+	createStamp(SelloCalleA);
+	createStamp(SelloCalleB);
+	createStamp(SelloCalleC);
 }
 
 void ecs::MainScene::createStamp(TipoHerramienta type)
@@ -244,8 +209,21 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 	constexpr float STAMPSIZE = 102.4f;
 	ComonObjectsFactory fact(this);
 	fact.setLayer(layer::OFFICEELEMENTS);
-	auto stamp = fact.createImage(Vector2D(),Vector2D(STAMPSIZE,STAMPSIZE), & sdlutils().images().at("Sellador" + std::to_string(type)));
 
+	auto stamp = fact.createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
+		& sdlutils().images().at("sellador" + std::to_string(type)));
+
+	stamp->addComponent<MoverTransform>(
+		stamp->getComponent<Transform>()->getPos(), 
+		0.5, 
+		Easing::EaseOutCubic)->disable();
+
+	stamp->addComponent<DragAndDrop>(true, [stamp]() {
+		stamp->getComponent<MoverTransform>()->enable();
+		});
+
+	Herramientas* herrSelladorA = stamp->addComponent<Herramientas>();
+	herrSelladorA->setFunctionality(type);
 }
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist) {
@@ -416,5 +394,5 @@ void ecs::MainScene::createPaquete (int lv) {
 		}
 		});
 
-	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack);
+	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack)->enable();
 }

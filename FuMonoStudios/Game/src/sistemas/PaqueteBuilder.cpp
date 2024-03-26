@@ -6,11 +6,11 @@
 
 PaqueteBuilder::PaqueteBuilder() {
 	srand(sdlutils().currRealTime());
-	directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	directionsFont = &sdlutils().fonts().at("arial40");
 }
 
 PaqueteBuilder::~PaqueteBuilder() {
-	delete directionsFont;
+
 }
 
 
