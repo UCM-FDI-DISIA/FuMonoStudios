@@ -46,40 +46,12 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		int rnd = sdlutils().rand().nextInt(0, 4);
 		if (rnd == 0) continuar = false;
 	}
-	//rellenar esto con un json en funcion de el nivel / dia en el que te encuentres
+	//se puede quedar como atributo de la clase si vemos que hace falta mayor velocidad en el juego
 	DifficultySettings lvl1 = getLevelSetings(level);
-	//{ 100, 20, 25, 30, 80};
-
-	//int streetErrorChance=10, stampErrorChance = 0, notFragileChance = 100;
 	int peso;
-
 
 	pq::NivelPeso Nv;
 	if (continuar) {
-	/*	if (level < 2) {
-			Nv = pq::NivelPeso::Ninguno;
-			peso = rand() % PESADO_MAX + 1;
-			if (level == 0) {
-				streetErrorChance = 10;
-			}
-			else if (level == 1) {
-				streetErrorChance = 20;
-				stampErrorChance = 35;
-			}
-		}
-		else {
-			stampErrorChance = 20;
-			if (level == 2) {
-				streetErrorChance = 15;
-				Nv = pesoRND(25, 30, peso);
-			}
-			else if (level == 3) {
-				streetErrorChance = 20;
-				notFragileChance = 80;
-				Nv = pesoRND(20, 25, peso);
-			}
-		}*/
-
 		Nv = pesoRND(lvl1.weithChance,lvl1.weightErrorChance, peso);
 
 		pq::Distrito toDist = distritoRND();
@@ -93,6 +65,10 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 			dir = "(CALLE INVENTADA)";
 		else
 			dir = distritoCalle_[toDist][(int)toDir];
+
+		/*
+		TODO hacer que la creacion del paquete vaya en funcion de la necsidad de los dias
+		*/
 
 		Paquete* pq = packageBase->addComponent<Paquete>(toDist, toDir,dir, remitenteRND(), tipoRND(), boolRND(lvl1.stampErrorChance), Nv, peso,
 			boolRND(lvl1.notFragileChance), false);
