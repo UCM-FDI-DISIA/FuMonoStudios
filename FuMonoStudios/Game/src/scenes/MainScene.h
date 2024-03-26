@@ -3,6 +3,8 @@
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
+#include <components/Herramientas.h>
+#include "../sistemas/PaqueteBuilder.h"
 
 namespace ecs {
     class Game;
@@ -28,6 +30,7 @@ namespace ecs {
         void createErrorMessage(Paquete* paqComp, bool, bool);
 
         void createSelladores();
+        void createStamp(TipoHerramienta type);
         void createPaquete(int lv);
 
         void createInks();
@@ -49,6 +52,12 @@ namespace ecs {
 #endif // DEV_TOOLS
 
         // objects
+        void initTexts(); // metodo auxiliar para limpio
+        Entity* timerEnt_;
+        Texture* timerTexture_;
+
+        //El pinche paquete builder para no crear uno en cada paquete
+        PaqueteBuilder* mPaqBuild_;
     };
 }
 

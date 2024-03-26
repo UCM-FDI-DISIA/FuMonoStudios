@@ -1,3 +1,4 @@
+
 #include "Paquete.h"
 #include "../json/JSON.h"
 #include <memory>
@@ -18,7 +19,22 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : 
+Paquete::Paquete(Paquete& otherPckg)
+{
+	miDistrito_ = otherPckg.miDistrito_;
+	miCalle_ = otherPckg.miCalle_;
+	miRemitente_ = otherPckg.miRemitente_;
+	miTipo_ = otherPckg.miTipo_;
+	selloCorrecto_ = otherPckg.selloCorrecto_;
+	miPeso_ = otherPckg.miPeso_;
+	peso_ = otherPckg.peso_;
+	fragil_ = otherPckg.fragil_;
+	carta_ = otherPckg.carta_;
+	envuelto_ = otherPckg.envuelto_;
+	calleMarcada_ = otherPckg.calleMarcada_;
+}
+
+Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
 	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
 	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
 	
@@ -90,7 +106,7 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 		//Textura en funcion de tipo calle
 		Texture* selloEntTex = &sdlutils().images().at(
 			(std::string)"sello" += 
-			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
+			(std::string)(sello == C1 ? "0" : sello == C2 ? "1" : "2"));
 
 		//creamos transform y colocamos el sello en el centro del sellador
 		float scale = 0.2f;

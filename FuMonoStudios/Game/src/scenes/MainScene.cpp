@@ -16,7 +16,6 @@
 #include <list>
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
-#include "../sistemas/PaqueteBuilder.h"
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
@@ -37,11 +36,13 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
 #endif // DEV_TOOLS
-
+	mPaqBuild_ = new PaqueteBuilder();
 }
 
 ecs::MainScene::~MainScene()
 {
+	delete timeFont_;
+	delete mPaqBuild_;
 }
 
 
@@ -129,7 +130,9 @@ void ecs::MainScene::init()
 
 	createClock();
 
-	createPaquete(generalData().getPaqueteLevel());
+	initTexts();
+
+	//createPaquete(generalData().getPaqueteLevel());
 
 	// En el caso de que los tubos no estén ordenados, habrá que ordenarlos
 	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
@@ -356,44 +359,32 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 }
 
 void ecs::MainScene::createSelladores() {
-	float scaleSelladores = 0.5f;
+	createStamp(SelloCalleA);
+	createStamp(SelloCalleB);
+	createStamp(SelloCalleC);
+}
 
-	// Sellador rojo (1)
-	Entity* selloA = addEntity(layer::STAMP);
-	Texture* selloATex = &sdlutils().images().at("selladorA");
-	Transform* selloATR = selloA->addComponent<Transform>(100, 300, selloATex->width(), selloATex->height());
-	selloATR->setScale(scaleSelladores);
-	selloA->addComponent<DragAndDrop>(true, [selloA]() {
-		selloA->addComponent<MoverTransform>(Vector2D(100,300), 0.5, Easing::EaseOutCubic);
-		});
-	selloA->addComponent<RenderImage>(selloATex);
-	Herramientas* herrSelladorA = selloA->addComponent<Herramientas>();
-	herrSelladorA->setFunctionality(SelloCalleA);
-	
-	// Sellador azul (2)
-	Entity* selloB = addEntity(layer::STAMP);
-	Texture* selloBTex = &sdlutils().images().at("selladorB");
-	Transform* selloBTR = selloB->addComponent<Transform>(100, 410, selloBTex->width(), selloBTex->height());
-	selloBTR->setScale(scaleSelladores);
-	selloB->addComponent<DragAndDrop>(true, [selloB]() {
-		selloB->addComponent<MoverTransform>(Vector2D(100, 410), 0.5, Easing::EaseOutCubic);
-		});
-	selloB->addComponent<RenderImage>(selloBTex);
-	Herramientas* herrSelladorB = selloB->addComponent<Herramientas>();
-	herrSelladorB->setFunctionality(SelloCalleB);
+void ecs::MainScene::createStamp(TipoHerramienta type)
+{
+	constexpr float STAMPSIZE = 102.4f;
+	ComonObjectsFactory fact(this);
 
-	// Sellador verde (3)
-	Entity* selloC = addEntity(layer::STAMP);
-	Texture* selloCTex = &sdlutils().images().at("selladorC");
-	Transform* selloCTR = selloC->addComponent<Transform>(100, 520, selloCTex->width()
-, selloCTex->height());
-	selloCTR->setScale(scaleSelladores);
-	selloC->addComponent<DragAndDrop>(true, [selloC]() {
-		selloC->addComponent<MoverTransform>(Vector2D(100, 520), 0.5, Easing::EaseOutCubic);
+	fact.setLayer(layer::OFFICEELEMENTS);
+
+	auto stamp = fact.createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
+		& sdlutils().images().at("sellador" + std::to_string(type)));
+
+	stamp->addComponent<MoverTransform>(
+		stamp->getComponent<Transform>()->getPos(), 
+		0.5, 
+		Easing::EaseOutCubic)->disable();
+
+	stamp->addComponent<DragAndDrop>(true, [stamp]() {
+		stamp->getComponent<MoverTransform>()->enable();
 		});
-	selloC->addComponent<RenderImage>(selloCTex);
-	Herramientas* herrSelladorC = selloC->addComponent<Herramientas>();
-	herrSelladorC->setFunctionality(SelloCalleC);
+
+	Herramientas* herrSelladorA = stamp->addComponent<Herramientas>();
+	herrSelladorA->setFunctionality(type);
 }
 
 void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
@@ -457,91 +448,46 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 
 void ecs::MainScene::createManual()
 {
+	constexpr int MANUALNUMPAGES = 5;
+	constexpr float MANUAL_WIDTH = 670;
+	constexpr float MANUAL_HEITH = 459;
 	ComonObjectsFactory fact(this);
-	Entity* manual = addEntity(ecs::layer::MANUAL);
-	//se puede hacer un for
-	Texture* manualTexture = &sdlutils().images().at("book1");
-	Texture* manualTexture2 = &sdlutils().images().at("book2");
-	Texture* manualTexture3 = &sdlutils().images().at("book3");
-	Texture* manualTexture4 = &sdlutils().images().at("book4");
-	Texture* manualTexture5 = &sdlutils().images().at("book5");
-	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 
-	std::vector<Texture*> bookTextures = {
-		manualTexture,
-		manualTexture2,
-		manualTexture3,
-		manualTexture4,
-		manualTexture5
-	};
-	float scaleManual = 0.075;
-	Transform* manualTransform = manual->addComponent<Transform>(500.0f, 500.0f, manualTexture->width(), manualTexture->height());
-	manualTransform->setScale(scaleManual);
-	RenderImage* manualRender = manual->addComponent<RenderImage>();
-	manual->addComponent<Gravity>();
-	manual->addComponent<DragAndDrop>(true);
-	MultipleTextures* multTextures = manual->addComponent<MultipleTextures>(bookTextures);
-	manualRender->setTexture(multTextures->getCurrentTexture());
+	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
+	//creado array de texturas par el libro
+	std::vector<Texture*> bookTextures;
+	bookTextures.reserve(MANUALNUMPAGES);
+	for (int i = 1; i <= 5; i++) {
+		bookTextures.emplace_back(&sdlutils().images().at("book"+std::to_string(i)));
+	}
+	fact.setLayer(ecs::layer::MANUAL);
+
+	auto baseManual = fact.createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
+	Transform* manualTransform = baseManual->getComponent<Transform>();
+	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
+	manualRender->setVector(bookTextures);
+	baseManual->addComponent<Gravity>();
+	baseManual->addComponent<DragAndDrop>(true);
+	baseManual->addComponent<Depth>();
 
 
 	Vector2D buttonSize(100, 40);
 	fact.setLayer(ecs::layer::FOREGROUND);
-
-	auto next = [multTextures]() {multTextures->nextTexture();};
+	auto next = [manualRender]() {manualRender->nextTexture();};
 	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
 	right->getComponent<Transform>()->setParent(manualTransform);
 
-	auto previous = [multTextures]() {multTextures->previousTexture();};
+	auto previous = [manualRender]() {manualRender->previousTexture();};
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
-
 	fact.setLayer(ecs::layer::DEFAULT);
 
-	manual->addComponent<Depth>();
 }
 
 void ecs::MainScene::createPaquete (int lv) {
-	float paqueteScale = 0.25f;
-	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
-
-	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
-
-	std::vector<Texture*> textures = {
-		texturaPaquet,
-		&sdlutils().images().at("caja25"),
-		&sdlutils().images().at("caja50"),
-		&sdlutils().images().at("caja75"),
-		&sdlutils().images().at("caja100")
-	};
-
-	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-	trPq->setScale(paqueteScale);+
-	paqEnt->addComponent<Depth>();
-	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
-	paqEnt->addComponent<Gravity>();
-	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
-	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
-
-	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
-
-	multTexturesPaq->initComponent();
-
-	//Wrap debe ir despues del Transform, Trigger y Multitextures
-	paqEnt->addComponent<Wrap>(20, 0, route);
-
-
-	PaqueteBuilder a;
-	a.paqueteRND (lv, paqEnt);
-
-	// añadimos que pueda ser interactuado por selladores
-	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {
-		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
-		if (herrEnt != nullptr)
-		{
-			herrEnt->interact(paqEnt);
-		}
-		});
-
-	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack);
+	/*podriamos hacer que lo que le pases al paquete builder sean las estadisticas o un json 
+	con las configuraciones de los niveles de dificultad y tener un constructora a parte que nos permita crear paquetes con configuraciones
+	personalizadas*/
+	mPaqBuild_->paqueteRND(lv, this);
 }

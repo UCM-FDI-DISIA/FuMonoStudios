@@ -21,6 +21,16 @@ public:
 	/// <param name="lay"></param>
 	void setLayer(ecs::layer::layerId lay) { destLayer_ = lay; }
 	/// <summary>
+	/// Crea un objeto que contiene varias imágenes si no se le añade tamaño 
+	/// se asume el tamaño de la primera textura pasada
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="size"></param>
+	/// <param name="textures"></param>
+	/// <returns></returns>
+	ecs::Entity* createMultiTextureImage(const Vector2D& pos, const Vector2D& size, const std::vector<Texture*>& textures);
+	ecs::Entity* createMultiTextureImage(const Vector2D& pos, const std::vector<Texture*>& textures);
+	/// <summary>
 	/// crea un objeto que contiene texto
 	/// </summary>
 	/// <param name="scene"></param>
@@ -58,6 +68,7 @@ public:
 	/// <returns></returns>
 	ecs::Entity* createTextuButton(const Vector2D& pos, const std::string text,
 		int fontSize, CallbackClickeable call,SDL_Color textColor = build_sdlcolor(0x000000ff));
+
 private:
 	/// <summary>
 	/// Scene to create the objects

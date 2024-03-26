@@ -5,6 +5,7 @@
 
 MultipleTextures::MultipleTextures()
 {
+
 }
 
 MultipleTextures::MultipleTextures(const std::vector<Texture*>& textures)

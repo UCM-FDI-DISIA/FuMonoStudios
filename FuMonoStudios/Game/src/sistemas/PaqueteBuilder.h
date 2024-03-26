@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include "../sdlutils/VirtualTimer.h"
 #include "../architecture/GeneralData.h"
+#include "../components/MultipleTextures.h"
+#include "../components/Wrap.h"
+#include "../components/Gravity.h"
+#include "../components/Depth.h"
+#include "../components/Trigger.h"
+#include "../components/Herramientas.h"
+#include "../components/MoverTransform.h"
 
 
 const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
@@ -27,76 +34,24 @@ const int PESO_SELLO_POS_X = 200;
 const int PESO_SELLO_POS_Y = 200;
 const int PESO_SELLO_SIZE = 80;
 
+//Escala del paquete 
+const float PAQUETE_SIZE = 0.25f;
+
 class PaqueteBuilder
 {
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
-	void paqueteRND(int level, ecs::Entity* ent) {
-		bool continuar = true;
-		if (generalData().areTherePaquetesNPC()) {
-			int rnd = sdlutils().rand().nextInt(0, 4);
-			if (rnd == 0) continuar = false;
-		}
-
-		if (continuar) {
-			if (level == 0) {
-				nivel0(ent);
-			}
-			else if (level == 1) {
-				nivel1(ent);
-			}
-			else if (level == 2) {
-				nivel2(ent);
-			}
-			else if (level == 3) {
-				nivel3(ent);
-			}
-		}
-		else {
-			paqueteNPC(ent);
-		}
-	}
+	ecs::Entity* paqueteRND(int level, ecs::Scene*);
 	//Método al que se llama que devuelve una Carta generada aleatoriamente 
-	Paquete* cartaRND(ecs::Entity* ent) {
-		carta(ent);
-	}
-	PaqueteBuilder() { 
-		srand(sdlutils().currRealTime()); 
-		directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
-	};
+	ecs::Entity* cartaRND(ecs::Scene*);
+
+	void paqueteNPC(ecs::Entity*);
+
+	PaqueteBuilder();
+
+	~PaqueteBuilder();
+
 private:
-	void nivel0(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos normales, de peso o de fragil, y solo puede tener calles err�neas
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
-		addVisualElements(ent);
-	}
-	void nivel1(ecs::Entity* ent) {	//Un paquete que no tiene ni sellos de peso ni sello de fragil, y puede tener tanto calles como sellos de tipo erróneos
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), boolRND(35), Paquete::NivelPeso::Ninguno, rand() % PESADO_MAX + 1, false, false);
-		addVisualElements(ent);
-	}
-	void nivel2(ecs::Entity* ent) { //Un paquete que no tiene sello de fragil, pero puede tener sellos de peso, así como calles erróneas y sellos de tipo erróneos
-		int peso;
-		Paquete::NivelPeso Nv = pesoRND(25, 30, peso);
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, false, false);
-		addVisualElements(ent);
-	}
-	void nivel3(ecs::Entity* ent) { //Un paquete que puede tener peso, sellos de frágil, calles erróneas y sellos de tipo erróneos
-		int peso;
-		Paquete::NivelPeso Nv = pesoRND(20, 25, peso);
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(15), remitenteRND(), tipoRND(), boolRND(20), Nv, peso, boolRND(80), false);
-		addVisualElements(ent);
-	}
-	void carta(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, PESO_CARTA, false, true);
-		//addVisualElementsCarta(ent);
-	}
-	void paqueteNPC(ecs::Entity* ent) {	//Una carta, que en esencia funciona igual que un paquete de nivel 0
-		Paquete pNPC = generalData().getPaqueteNPC();
-		Paquete* pq = ent->addComponent<Paquete>(pNPC.getDistrito(), pNPC.getCalle(), pNPC.getRemitente(), pNPC.getTipo(), pNPC.getSelloCorrecto(), pNPC.getPeso(), pNPC.getCantidadPeso(), pNPC.getFragil(), pNPC.isCarta());
-		if(!pNPC.isCarta()) addVisualElements(ent);
-		//else addVisualElementsCarta(ent);
-	}
-
-
 	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
 	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
 	Paquete::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta

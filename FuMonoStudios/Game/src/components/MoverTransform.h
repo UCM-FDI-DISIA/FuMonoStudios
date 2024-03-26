@@ -33,10 +33,13 @@ public:
 	void initComponent() override;
 
 	void update() override;
+	void enable();
+	void disable() { enable_ = false; }
 private:
 	float timer_;
 	float startTimer_;
 	float movTime_;
+	bool enable_;
 	Easing easing_;
 	Vector2D finalPos_;
 	Vector2D initPos_;
