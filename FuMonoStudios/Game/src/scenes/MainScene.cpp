@@ -288,10 +288,9 @@ void ecs::MainScene::createManual()
 	}
 	fact.setLayer(ecs::layer::MANUAL);
 
-	auto baseManual = fact.createImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),nullptr);
+	auto baseManual = fact.createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
 	Transform* manualTransform = baseManual->getComponent<Transform>();
 	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
-	MultipleTextures* multTextures = baseManual->addComponent<MultipleTextures>(bookTextures);
 	manualRender->setVector(bookTextures);
 	baseManual->addComponent<Gravity>();
 	baseManual->addComponent<DragAndDrop>(true);

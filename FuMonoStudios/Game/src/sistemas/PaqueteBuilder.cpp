@@ -3,6 +3,7 @@
 #include "../architecture/Entity.h"
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
+#include <sistemas/ComonObjectsFactory.h>
 
 
 PaqueteBuilder::PaqueteBuilder() {
@@ -16,17 +17,9 @@ PaqueteBuilder::~PaqueteBuilder() {
 
 
 ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
-	ecs::Entity* ent = mScene->addEntity();
+	ComonObjectsFactory factory(mScene);
 
 	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
-	Transform* trPq = ent->addComponent<Transform>(1600.0f, 600.0f, texturaPaquet->width(), texturaPaquet->height());
-	trPq->setScale(PAQUETE_SIZE);
-	RenderImage* rd = ent->addComponent<RenderImage>(texturaPaquet);
-
-	ent->addComponent<Depth>();
-	ent->addComponent<Gravity>();
-	DragAndDrop* drgPq = ent->addComponent<DragAndDrop>(true);
-	
 	//ENVOLTURA
 	//se puede rellenar con un for
 	std::vector<Texture*> textures = {
@@ -36,21 +29,24 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 		&sdlutils().images().at("caja75"),
 		&sdlutils().images().at("caja100")
 	};
-	MultipleTextures* multTexturesPaq = ent->addComponent<MultipleTextures>(textures);
+	auto packageBase = factory.createMultiTextureImage(Vector2D(1600.0f, 600.0f),Vector2D(320.5f,245.5), textures);
+
+	packageBase->addComponent<Depth>();
+	packageBase->addComponent<Gravity>();
+	DragAndDrop* drgPq = packageBase->addComponent<DragAndDrop>(true);
+	
 
 	//Wrap debe ir despues del Transform, Trigger y Multitextures
 	std::list<int> route{ pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown };
-	ent->addComponent<Wrap>(20, 0, route);
+	packageBase->addComponent<Wrap>(20, 0, route);
 
-	ent->getComponent<Trigger>()->addCallback([ent](ecs::Entity* entRec) {
+	packageBase->getComponent<Trigger>()->addCallback([packageBase](ecs::Entity* entRec) {
 		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
 		if (herrEnt != nullptr)
 		{
-			herrEnt->interact(ent);
+			herrEnt->interact(packageBase);
 		}
-		});
-
-	//ent->addComponent<MoverTransform>(Vector2D(1200, 600), 1, EaseOutBack);
+	});
 
 	bool continuar = true;
 	if (generalData().areTherePaquetesNPC()) {
@@ -85,15 +81,16 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 				Nv = pesoRND(20, 25, peso);
 			}
 		}
-		Paquete* pq = ent->addComponent<Paquete>(distritoRND(), calleRND(streetErrorChance), remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso, 
+
+		Paquete* pq = packageBase->addComponent<Paquete>(distritoRND(), calleRND(streetErrorChance), remitenteRND(), tipoRND(), boolRND(stampErrorChance), Nv, peso,
 			boolRND(notFragileChance), false);
-		addVisualElements(ent);
+		addVisualElements(packageBase);
 	}
 	else {
-		paqueteNPC(ent);
+		paqueteNPC(packageBase);
 	}
 
-	return ent;
+	return packageBase;
 }
 
 ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {

@@ -16,7 +16,7 @@ RenderImage::RenderImage(const std::vector<Texture*>& textures): RenderImage(tex
 
 }
 
-RenderImage::RenderImage(const std::vector<Texture*>& textures, int startIndx)
+RenderImage::RenderImage(const std::vector<Texture*>& textures, int startIndx): mTr_(nullptr)
 {
 	texturesVector_ = textures;
 	currentTextureIndx_ = startIndx;

@@ -3,6 +3,19 @@
 #include "../components/Render.h"
 #include "../components/Clickeable.h"
 
+ecs::Entity* ComonObjectsFactory::createMultiTextureImage(const Vector2D& pos, const Vector2D& size, const std::vector<Texture*>& textures)
+{
+	auto entity = scene_->addEntity(destLayer_);
+	entity->addComponent<Transform>(pos.getX(), pos.getY(), size.getX(), size.getY());
+	entity->addComponent<RenderImage>(textures);
+	return entity;
+}
+
+ecs::Entity* ComonObjectsFactory::createMultiTextureImage(const Vector2D& pos, const std::vector<Texture*>& textures)
+{
+	return createMultiTextureImage(pos,Vector2D(textures[0]->width(), textures[0]->height()),textures);
+}
+
 ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const std::string& text, int fontSize, SDL_Color textColor)
 {
 #ifdef _DEBUG
@@ -20,11 +33,7 @@ ecs::Entity* ComonObjectsFactory::createImage(const Vector2D& pos, const Vector2
 #ifdef _DEBUG
 	std::cout << "Entidad creada en la capa " << (int)destLayer_ << std::endl;
 #endif // _DEBUG
-
-	auto entity = scene_->addEntity(destLayer_);
-	entity->addComponent<Transform>(pos.getX(), pos.getY(), size.getX(), size.getY());
-	entity->addComponent<RenderImage>(texture);
-	return entity;
+	return createMultiTextureImage(pos, size, { texture });
 }
 
 ecs::Entity* ComonObjectsFactory::createImage(const Vector2D& pos, Texture* texture)
@@ -47,3 +56,4 @@ ecs::Entity* ComonObjectsFactory::createTextuButton(const Vector2D& pos, const s
 	click->addEvent(call);
 	return entity;
 }
+
