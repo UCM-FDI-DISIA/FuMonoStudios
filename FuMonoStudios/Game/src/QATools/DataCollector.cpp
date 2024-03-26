@@ -2,7 +2,14 @@
 #include <architecture/Time.h>
 #include <architecture/GeneralData.h>
 #include <SDL.h>
+//NECESARIO c++ 17
 //#include <cpr/cpr.h>
+/*
+dejo parado esto hasta hablar con carlos, no estoy siendo capaz de encontrar como hacer la solicitud
+al cliente de forma correcta
+*/
+//#include "restclient-cpp/connection.h"
+//#include "restclient-cpp/restclient.h"
 
 DataCollector::DataCollector() : currentRow_(0), dataArray_(),clicks_(0) {
 	dataArray_.resize(NUMBER_OF_METRICS);
