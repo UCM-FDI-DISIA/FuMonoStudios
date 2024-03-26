@@ -134,7 +134,7 @@ void ecs::MainScene::init()
 
 	initTexts();
 
-	createPaquete(generalData().getPaqueteLevel());
+	//createPaquete(generalData().getPaqueteLevel());
 
 	for (int i = 0; i < 7; i++) {
 		createTubo((Paquete::Distrito)i);
@@ -209,6 +209,7 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 {
 	constexpr float STAMPSIZE = 102.4f;
 	ComonObjectsFactory fact(this);
+
 	fact.setLayer(layer::OFFICEELEMENTS);
 
 	auto stamp = fact.createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
@@ -291,7 +292,7 @@ void ecs::MainScene::createManual()
 	Transform* manualTransform = baseManual->getComponent<Transform>();
 	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
 	MultipleTextures* multTextures = baseManual->addComponent<MultipleTextures>(bookTextures);
-	manualRender->setTexture(multTextures->getCurrentTexture());
+	manualRender->setVector(bookTextures);
 	baseManual->addComponent<Gravity>();
 	baseManual->addComponent<DragAndDrop>(true);
 	baseManual->addComponent<Depth>();
@@ -299,11 +300,11 @@ void ecs::MainScene::createManual()
 
 	Vector2D buttonSize(100, 40);
 	fact.setLayer(ecs::layer::FOREGROUND);
-	auto next = [multTextures]() {multTextures->nextTexture();};
+	auto next = [manualRender]() {manualRender->nextTexture();};
 	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
 	right->getComponent<Transform>()->setParent(manualTransform);
 
-	auto previous = [multTextures]() {multTextures->previousTexture();};
+	auto previous = [manualRender]() {manualRender->previousTexture();};
 	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
@@ -354,48 +355,8 @@ void ecs::MainScene::updateTimer() {
 
 
 void ecs::MainScene::createPaquete (int lv) {
-	/*float paqueteScale = 0.25f;
-	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
-
-	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
-
-
-	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-	trPq->setScale(paqueteScale);
-	paqEnt->addComponent<Depth>();
-	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
-	paqEnt->addComponent<Gravity>();
-	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
-
-	//ENVOLTURA
-	//se puede rellenar con un for
-	std::vector<Texture*> textures = {
-		texturaPaquet,
-		&sdlutils().images().at("caja25"),
-		&sdlutils().images().at("caja50"),
-		&sdlutils().images().at("caja75"),
-		&sdlutils().images().at("caja100")
-	};
-	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
-	multTexturesPaq->initComponent();
-
-	//Wrap debe ir despues del Transform, Trigger y Multitextures
-	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
-	paqEnt->addComponent<Wrap>(20, 0, route);
-
-	PaqueteBuilder a;
-	a.paqueteRND (lv, this);
-
-	// añadimos que pueda ser interactuado por selladores
-	paqEnt->getComponent<Trigger>()->addCallback([paqEnt](ecs::Entity* entRec) {
-		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
-		if (herrEnt != nullptr)
-		{
-			herrEnt->interact(paqEnt);
-		}
-		});
-
-	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack);
-	*/
+	/*podriamos hacer que lo que le pases al paquete builder sean las estadisticas o un json 
+	con las configuraciones de los niveles de dificultad y tener un constructora a parte que nos permita crear paquetes con configuraciones
+	personalizadas*/
 	mPaqBuild_->paqueteRND(lv, this);
 }

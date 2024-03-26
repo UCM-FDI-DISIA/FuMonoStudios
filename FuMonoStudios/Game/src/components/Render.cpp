@@ -3,9 +3,24 @@
 #include "Transform.h"
 #include "../architecture/Entity.h"
 
-RenderImage::RenderImage() : mTexture_(nullptr), mTr_(nullptr), ownsTexture_() {}
+RenderImage::RenderImage():RenderImage(nullptr){
 
-RenderImage::RenderImage(Texture* img) : mTexture_(img),mTr_(nullptr),ownsTexture_() {}
+}
+
+RenderImage::RenderImage(Texture* img) : mTr_(nullptr), currentTextureIndx_(0){
+	texturesVector_.push_back(img);
+}
+
+RenderImage::RenderImage(const std::vector<Texture*>& textures): RenderImage(textures,0)
+{
+
+}
+
+RenderImage::RenderImage(const std::vector<Texture*>& textures, int startIndx)
+{
+	texturesVector_ = textures;
+	currentTextureIndx_ = startIndx;
+}
 
 RenderImage::~RenderImage() {
 }
@@ -16,15 +31,26 @@ void RenderImage::initComponent() {
 }
 
 void RenderImage::render() const {
-
-	mTexture_->render(mTr_->getRect(), mTr_->getRotation());
-}
-
-void RenderImage::setTexture(Texture* texture)
-{
-	mTexture_ = texture;
+	assert(texturesVector_.size() > 0);
+	texturesVector_[currentTextureIndx_]->render(mTr_->getRect(), mTr_->getRotation());
 }
 
 const Texture* RenderImage::getTexture() {
-	return mTexture_;
+	return texturesVector_[currentTextureIndx_];
+}
+
+void RenderImage::nextTexture()
+{
+	if (currentTextureIndx_ < texturesVector_.size()-1) {
+		currentTextureIndx_++;
+	}
+	//version cirular
+	//currentTextureIndx_ = (currentTextureIndx_ + 1) % texturesVector_.size();
+}
+
+void RenderImage::previousTexture()
+{
+	if (currentTextureIndx_ > 0) {
+		currentTextureIndx_--;
+	}
 }
