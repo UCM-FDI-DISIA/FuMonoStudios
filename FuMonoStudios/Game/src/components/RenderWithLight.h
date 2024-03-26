@@ -22,6 +22,10 @@ private:
 	/// </summary>
 	Texture* mTexture_;
 	/// <summary>
+	/// Textura del recuadro
+	/// </summary>
+	Texture* lTexture_;
+	/// <summary>
 	/// Transform sobre el que se va a renderizar la imagen
 	/// </summary>
 	Transform* mTr_;

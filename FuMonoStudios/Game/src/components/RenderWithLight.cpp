@@ -5,9 +5,9 @@
 #include "../sdlutils/InputHandler.h"
 #include "Clickeable.h"
 
-RenderWithLight::RenderWithLight() : mTexture_(nullptr), mTr_(nullptr), ownsTexture_() {}
+RenderWithLight::RenderWithLight() : mTexture_(nullptr), mTr_(nullptr), ownsTexture_() { lTexture_ = &sdlutils().images().at("luz"); }
 
-RenderWithLight::RenderWithLight(Texture* img) : mTexture_(img), mTr_(nullptr), ownsTexture_() {}
+RenderWithLight::RenderWithLight(Texture* img) : mTexture_(img), mTr_(nullptr), ownsTexture_() { lTexture_ = &sdlutils().images().at("luz"); }
 
 RenderWithLight::~RenderWithLight() {
 }
@@ -26,10 +26,8 @@ void RenderWithLight::render() const {
 
 	SDL_Rect mRect_ = build_sdlrect(pos, mTr_->getWidth(), mTr_->getHeigth());
 	if (SDL_PointInRect(&point, &mRect_)) {
-		Texture* t = &sdlutils().images().at("luz");
-
 		pos = pos - Vector2D(10, 10);
-		t->render(build_sdlrect(pos, mTr_->getWidth() + 20, mTr_->getHeigth() + 20), mTr_->getRotation());
+		lTexture_->render(build_sdlrect(pos, mTr_->getWidth() + 20, mTr_->getHeigth() + 20), mTr_->getRotation());
 
 		pos = pos + Vector2D(10, 10);
 	}
