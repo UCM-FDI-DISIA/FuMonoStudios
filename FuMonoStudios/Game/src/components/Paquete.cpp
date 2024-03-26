@@ -1,3 +1,4 @@
+
 #include "Paquete.h"
 #include "../json/JSON.h"
 #include <memory>
@@ -106,7 +107,7 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 		//Textura en funcion de tipo calle
 		Texture* selloEntTex = &sdlutils().images().at(
 			(std::string)"sello" += 
-			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
+			(std::string)(sello == C1 ? "0" : sello == C2 ? "1" : "2"));
 
 		//creamos transform y colocamos el sello en el centro del sellador
 		float scale = 0.2f;

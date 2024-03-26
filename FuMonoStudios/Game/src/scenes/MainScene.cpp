@@ -16,7 +16,6 @@
 #include <list>
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
-#include "../sistemas/PaqueteBuilder.h"
 #include "../components/Herramientas.h"
 #include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
@@ -37,11 +36,13 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
 #endif // DEV_TOOLS
-
+	mPaqBuild_ = new PaqueteBuilder();
 }
 
 ecs::MainScene::~MainScene()
 {
+	delete timeFont_;
+	delete mPaqBuild_;
 }
 
 
@@ -375,10 +376,20 @@ void ecs::MainScene::updateTimer() {
 
 
 void ecs::MainScene::createPaquete (int lv) {
-	float paqueteScale = 0.25f;
+	/*float paqueteScale = 0.25f;
 	Entity* paqEnt = addEntity (ecs::layer::PACKAGE);
 
 	Texture* texturaPaquet = &sdlutils ().images ().at ("boxTest");
+
+
+	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
+	trPq->setScale(paqueteScale);
+	paqEnt->addComponent<Depth>();
+	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
+	paqEnt->addComponent<Gravity>();
+	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
+
+	//ENVOLTURA
 	//se puede rellenar con un for
 	std::vector<Texture*> textures = {
 		texturaPaquet,
@@ -387,22 +398,12 @@ void ecs::MainScene::createPaquete (int lv) {
 		&sdlutils().images().at("caja75"),
 		&sdlutils().images().at("caja100")
 	};
-
-	Transform* trPq = paqEnt->addComponent<Transform> (1600.0f, 600.0f, texturaPaquet->width (), texturaPaquet->height ());
-	trPq->setScale(paqueteScale);+
-	paqEnt->addComponent<Depth>();
-	RenderImage* rd = paqEnt->addComponent<RenderImage> (texturaPaquet);
-	paqEnt->addComponent<Gravity>();
-	DragAndDrop* drgPq = paqEnt->addComponent<DragAndDrop>(true);
-	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
-
 	MultipleTextures* multTexturesPaq = paqEnt->addComponent<MultipleTextures>(textures);
-
 	multTexturesPaq->initComponent();
 
 	//Wrap debe ir despues del Transform, Trigger y Multitextures
+	std::list<int> route {pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown};
 	paqEnt->addComponent<Wrap>(20, 0, route);
-
 
 	PaqueteBuilder a;
 	a.paqueteRND (lv, this);
@@ -417,4 +418,6 @@ void ecs::MainScene::createPaquete (int lv) {
 		});
 
 	paqEnt->addComponent<MoverTransform>(Vector2D(1200,600), 1, EaseOutBack);
+	*/
+	mPaqBuild_->paqueteRND(lv, this);
 }

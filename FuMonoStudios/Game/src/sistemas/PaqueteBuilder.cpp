@@ -4,6 +4,7 @@
 #include "../components/Render.h"
 #include "../architecture/GameConstants.h"
 
+
 PaqueteBuilder::PaqueteBuilder() {
 	srand(sdlutils().currRealTime());
 	directionsFont = new Font("recursos/fonts/ARIAL.ttf", 40);
@@ -16,7 +17,41 @@ PaqueteBuilder::~PaqueteBuilder() {
 
 ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 	ecs::Entity* ent = mScene->addEntity();
+
+	Texture* texturaPaquet = &sdlutils().images().at("boxTest");
+	Transform* trPq = ent->addComponent<Transform>(1600.0f, 600.0f, texturaPaquet->width(), texturaPaquet->height());
+	trPq->setScale(PAQUETE_SIZE);
+	RenderImage* rd = ent->addComponent<RenderImage>(texturaPaquet);
+
+	ent->addComponent<Depth>();
+	ent->addComponent<Gravity>();
+	DragAndDrop* drgPq = ent->addComponent<DragAndDrop>(true);
 	
+	//ENVOLTURA
+	//se puede rellenar con un for
+	std::vector<Texture*> textures = {
+		texturaPaquet,
+		&sdlutils().images().at("caja25"),
+		&sdlutils().images().at("caja50"),
+		&sdlutils().images().at("caja75"),
+		&sdlutils().images().at("caja100")
+	};
+	MultipleTextures* multTexturesPaq = ent->addComponent<MultipleTextures>(textures);
+
+	//Wrap debe ir despues del Transform, Trigger y Multitextures
+	std::list<int> route{ pointRoute::LeftUp, pointRoute::MiddleUp, pointRoute::MiddleMid, pointRoute::MiddleDown, pointRoute::RightDown };
+	ent->addComponent<Wrap>(20, 0, route);
+
+	ent->getComponent<Trigger>()->addCallback([ent](ecs::Entity* entRec) {
+		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
+		if (herrEnt != nullptr)
+		{
+			herrEnt->interact(ent);
+		}
+		});
+
+	//ent->addComponent<MoverTransform>(Vector2D(1200, 600), 1, EaseOutBack);
+
 	bool continuar = true;
 	if (generalData().areTherePaquetesNPC()) {
 		int rnd = sdlutils().rand().nextInt(0, 4);
@@ -57,6 +92,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 	else {
 		paqueteNPC(ent);
 	}
+
 	return ent;
 }
 

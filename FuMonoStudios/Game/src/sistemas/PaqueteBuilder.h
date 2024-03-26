@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include "../sdlutils/VirtualTimer.h"
 #include "../architecture/GeneralData.h"
+#include "../components/MultipleTextures.h"
+#include "../components/Wrap.h"
+#include "../components/Gravity.h"
+#include "../components/Depth.h"
+#include "../components/Trigger.h"
+#include "../components/Herramientas.h"
+#include "../components/MoverTransform.h"
 
 
 const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
@@ -26,6 +33,9 @@ const int FRAGIL_SELLO_SIZE = 80;
 const int PESO_SELLO_POS_X = 200;
 const int PESO_SELLO_POS_Y = 200;
 const int PESO_SELLO_SIZE = 80;
+
+//Escala del paquete 
+const float PAQUETE_SIZE = 0.25f;
 
 class PaqueteBuilder
 {
