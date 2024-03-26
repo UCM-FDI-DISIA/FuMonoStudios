@@ -99,7 +99,7 @@ void ecs::MainScene::init()
 	createPaquete(generalData().getPaqueteLevel());
 
 	for (int i = 0; i < 7; i++) {
-		createTubo((Paquete::Distrito)i);
+		createTubo((pq::Distrito)i);
 	}
 
 	createSelladores();
@@ -189,7 +189,7 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 	herrSelladorA->setFunctionality(type);
 }
 
-void ecs::MainScene::createTubo(Paquete::Distrito dist) {
+void ecs::MainScene::createTubo(pq::Distrito dist) {
 	float scaleTubos = 0.3f;
 	
 	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);

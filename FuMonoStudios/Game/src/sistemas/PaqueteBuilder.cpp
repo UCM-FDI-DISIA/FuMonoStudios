@@ -42,10 +42,10 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 
 	int streetErrorChance, stampErrorChance = 0, notFragileChance = 100;
 	int peso;
-	Paquete::NivelPeso Nv;
+	pq::NivelPeso Nv;
 	if (continuar) {
 		if (level < 2) {
-			Nv = Paquete::NivelPeso::Ninguno;
+			Nv = pq::NivelPeso::Ninguno;
 			peso = rand() % PESADO_MAX + 1;
 			if (level == 0) {
 				streetErrorChance = 10;
@@ -81,7 +81,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 
 ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {
 	ecs::Entity* ent = mScene->addEntity();
-	ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, Paquete::NivelPeso::Ninguno, PESO_CARTA, false, true);
+	ent->addComponent<Paquete>(distritoRND(), calleRND(20), remitenteRND(), tipoRND(), true, pq::NivelPeso::Ninguno, PESO_CARTA, false, true);
 	return ent;
 }
 
@@ -122,25 +122,25 @@ ecs::Entity* PaqueteBuilder::buildBasePackage(ecs::Scene* mScene)
 	return packageBase;
 }
 
-Paquete::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
+pq::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
 	//TO DO: Cambiarlo para que solo salgan distritos desbloqueados
 	int rnd = sdlutils().rand().nextInt(0, 8);
-	return (Paquete::Distrito)rnd;
+	return (pq::Distrito)rnd;
 }
 
-Paquete::TipoPaquete PaqueteBuilder::tipoRND() {	//Este método devuelve un Tipo de paquete aleatorio entre todas las posibilidades
+pq::TipoPaquete PaqueteBuilder::tipoRND() {	//Este método devuelve un Tipo de paquete aleatorio entre todas las posibilidades
 	int rnd = sdlutils().rand().nextInt(0, 5);
-	return (Paquete::TipoPaquete)rnd;
+	return (pq::TipoPaquete)rnd;
 }
 
-Paquete::Calle PaqueteBuilder::calleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
+pq::Calle PaqueteBuilder::calleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
 	int rnd = sdlutils().rand().nextInt(0, 101);
 	if (rnd > probError) {
 		rnd = sdlutils().rand().nextInt(0, 3);
-		return (Paquete::Calle)rnd;
+		return (pq::Calle)rnd;
 	}
 	else {
-		return Paquete::Calle::Erronea;
+		return pq::Calle::Erronea;
 	}
 }
 
@@ -154,30 +154,30 @@ bool PaqueteBuilder::boolRND(int probFalse) { //Este método devuelve una valor a
 	}
 }
 
-Paquete::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
+pq::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = sdlutils().rand().nextInt(0, 101);										//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
 	if (rnd > probPeso) {
-		Paquete::NivelPeso pes;
+		pq::NivelPeso pes;
 		rnd = sdlutils().rand().nextInt(1, 4);
-		pes = (Paquete::NivelPeso)rnd;
+		pes = (pq::NivelPeso)rnd;
 
 		rnd = sdlutils().rand().nextInt(0, 101);
 		if (rnd > probError) {
-			if (pes == Paquete::NivelPeso::Alto) {
+			if (pes == pq::NivelPeso::Alto) {
 				peso = sdlutils().rand().nextInt(MEDIO_MAX, PESADO_MAX + 1);
 			}
-			else if (pes == Paquete::NivelPeso::Medio) {
+			else if (pes == pq::NivelPeso::Medio) {
 				peso = sdlutils().rand().nextInt(LIGERO_MAX, MEDIO_MAX);
 			}
-			else if (pes == Paquete::NivelPeso::Bajo) {
+			else if (pes == pq::NivelPeso::Bajo) {
 				peso = sdlutils().rand().nextInt(PAQUETE_MIN, LIGERO_MAX);
 			}
 		}
 		else {
-			if (pes == Paquete::NivelPeso::Alto) {
+			if (pes == pq::NivelPeso::Alto) {
 				peso = sdlutils().rand().nextInt(PAQUETE_MIN, MEDIO_MAX); // o bajo o medio
 			}
-			else if (pes == Paquete::NivelPeso::Medio) {
+			else if (pes == pq::NivelPeso::Medio) {
 				rnd = sdlutils().rand().nextInt(0, 2);
 				if (rnd == 0) {
 					peso = sdlutils().rand().nextInt(PAQUETE_MIN, LIGERO_MAX); // bajo
@@ -186,7 +186,7 @@ Paquete::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& pes
 					peso = sdlutils().rand().nextInt(MEDIO_MAX, PESADO_MAX + 1); // alto
 				}
 			}
-			else if (pes == Paquete::NivelPeso::Bajo) {
+			else if (pes == pq::NivelPeso::Bajo) {
 				peso = sdlutils().rand().nextInt(LIGERO_MAX, PESADO_MAX + 1); // o medio o alto
 			}
 		}
@@ -194,7 +194,7 @@ Paquete::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& pes
 	}
 	else {
 		peso = sdlutils().rand().nextInt(PAQUETE_MIN, PESADO_MAX + 1);
-		return Paquete::NivelPeso::Ninguno;
+		return pq::NivelPeso::Ninguno;
 	}
 }
 
@@ -213,20 +213,20 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 	createVisualDirections(paq, paqComp);
 
 	//Creamos la entidad Tipo sello 
-	Paquete::TipoPaquete miTipo = paqComp->getTipo();
-	std::string tipoString = (miTipo == Paquete::Alimento ? "selloAlimento" :
-		miTipo == Paquete::Medicinas ? "selloMedicinas" :
-		miTipo == Paquete::Joyas ? "selloJoyas" :
-		miTipo == Paquete::Materiales ? "selloMateriales" :
-		miTipo == Paquete::Armamento ? "selloArmamento" : "Desconocido");
+	pq::TipoPaquete miTipo = paqComp->getTipo();
+	std::string tipoString = (miTipo == pq::Alimento ? "selloAlimento" :
+		miTipo == pq::Medicinas ? "selloMedicinas" :
+		miTipo == pq::Joyas ? "selloJoyas" :
+		miTipo == pq::Materiales ? "selloMateriales" :
+		miTipo == pq::Armamento ? "selloArmamento" : "Desconocido");
 	crearSello(paq, tipoString, TIPO_SELLO_POS_X, TIPO_SELLO_POS_Y, TIPO_SELLO_SIZE, TIPO_SELLO_SIZE);
 
 	//Creamos la entidad Peso sello 
-	Paquete::NivelPeso miPeso = paqComp->getPeso();
-	if (miPeso != Paquete::Ninguno) {
-		tipoString = (miTipo == Paquete::Bajo ? "selloPesoBajo" :
-			miTipo == Paquete::Medio ? "selloPesoMedio" :
-			miTipo == Paquete::Alto ? "selloPesoAlto" : "selloPesoBajo");
+	pq::NivelPeso miPeso = paqComp->getPeso();
+	if (miPeso != pq::Ninguno) {
+		tipoString = (miTipo == pq::Bajo ? "selloPesoBajo" :
+			miTipo == pq::Medio ? "selloPesoMedio" :
+			miTipo == pq::Alto ? "selloPesoAlto" : "selloPesoBajo");
 		crearSello(paq, tipoString, PESO_SELLO_POS_X, PESO_SELLO_POS_Y, PESO_SELLO_SIZE, PESO_SELLO_SIZE);
 	}
 	//Creamos la entidad Fragil sello 

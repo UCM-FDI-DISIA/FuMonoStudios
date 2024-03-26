@@ -10,7 +10,7 @@
 #include <list>
 #include <functional>
 
-PackageChecker::PackageChecker(Paquete::Distrito dis) : toDis_(dis), extraCond_()
+PackageChecker::PackageChecker(pq::Distrito dis) : toDis_(dis), extraCond_()
 {
 
 }
@@ -39,7 +39,7 @@ bool PackageChecker::checkPackage(Paquete* package)
 		}
 	}
 	else {
-		if (toDis_ == Paquete::Erroneo) {
+		if (toDis_ == pq::Erroneo) {
 			correctPack = checkAdditionalConditions(package);
 		}
 	}

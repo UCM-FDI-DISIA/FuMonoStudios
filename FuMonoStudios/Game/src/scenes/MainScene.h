@@ -25,7 +25,7 @@ namespace ecs {
     private:
         void createManual();
         void createClock();
-        void createTubo(Paquete::Distrito dist);
+        void createTubo(pq::Distrito dist);
         void createSelladores();
         void createStamp(TipoHerramienta type);
         void createPaquete(int lv);

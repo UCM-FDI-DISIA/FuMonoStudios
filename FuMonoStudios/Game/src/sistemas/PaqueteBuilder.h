@@ -57,11 +57,11 @@ public:
 
 private:
 	ecs::Entity* buildBasePackage(ecs::Scene* mScene);
-	Paquete::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
-	Paquete::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
-	Paquete::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
+	pq::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
+	pq::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay
+	pq::Calle calleRND(int probError);	//Método que elige una calle aleatoria de las posibilidades. El valor probError es, sobre 100, la probabilidad de que sea una calle incorrecta
 	bool boolRND(int probFalse);		//Método que genera un bool con valor aleatorio entre true y false. El valor probFalse es, sobre 100, la probabilidad de que sea false
-	Paquete::NivelPeso pesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
+	pq::NivelPeso pesoRND(int probPeso, int probError, int& peso);	//Método que elige si un paquete tiene peso, y si es erróneo, devolviendo un peso para el paquete con la variable "peso"
 	std::string remitenteRND();			//Método que elige un nombre random de Remitente
 
 	// Se llama a este después de crear el paquete
