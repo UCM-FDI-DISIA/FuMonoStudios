@@ -25,10 +25,20 @@ namespace ecs {
 	}
 	void Scene::update() {
 		//std::cout << "Hola" << std::endl;
+		
+		int i = 0;
+
 		for (auto& ly : objs_)
-			for (auto& e : ly)
-				if(e->isActive() && e->isEnable())
+			for (auto& e : ly) {
+
+				i++;
+
+				if (e->isActive() && e->isEnable())
 					e->update();
+
+			}
+
+				
 	}
 	void Scene::render() {
 		for (auto& ly : objs_)

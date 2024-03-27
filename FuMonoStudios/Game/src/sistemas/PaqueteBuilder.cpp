@@ -32,7 +32,7 @@ ecs::Entity* PaqueteBuilder::buildPackage(int level, ecs::Scene* mScene) {
 	
 	auto packageBase = buildBasePackage(mScene);
 	
-	//decision de si el paquete que saldrá es de NPC
+	//decision de si el paquete que saldrï¿½ es de NPC
 	if (!shouldBuildNPCPackage()) {
 		stdRandPackage(packageBase, level);
 	}
@@ -50,9 +50,9 @@ ecs::Entity* PaqueteBuilder::cartaRND(ecs::Scene* mScene) {
 	pq::Calle toDir = calleRND(10);
 	std::string dir;
 	if (toDir == Erronea)
-		//Cambiarlo por el sistema de calles erróneas una vez esté
-		//Simplemente sería meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
-		//Y meterle un randomizador para que de esas pille la que más le guste
+		//Cambiarlo por el sistema de calles errï¿½neas una vez estï¿½
+		//Simplemente serï¿½a meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
+		//Y meterle un randomizador para que de esas pille la que mï¿½s le guste
 		//Tipo, haces distritoCalle_[Erroneo][rand]
 		dir = "(CALLE INVENTADA)";
 	else
@@ -131,9 +131,9 @@ void PaqueteBuilder::stdRandPackage(ecs::Entity* packageBase, int level)
 	std::string dir;
 
 	if (toDir == Erronea || toDist == Erroneo)
-		//Cambiarlo por el sistema de calles erróneas una vez esté
-		//Simplemente sería meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
-		//Y meterle un randomizador para que de esas pille la que más le guste
+		//Cambiarlo por el sistema de calles errï¿½neas una vez estï¿½
+		//Simplemente serï¿½a meterlas en el mismo json, en el distrito erroneo y modificar el getStreetsFromJson
+		//Y meterle un randomizador para que de esas pille la que mï¿½s le guste
 		//Tipo, haces distritoCalle_[Erroneo][rand]
 		dir = "(CALLE INVENTADA)";
 	else
@@ -156,18 +156,18 @@ void PaqueteBuilder::stdRandPackage(ecs::Entity* packageBase, int level)
 	}
 }
 
-pq::Distrito PaqueteBuilder::distritoRND() {	//Este método devuelve un Distrito aleatorio entre todas las posibilidades
+pq::Distrito PaqueteBuilder::distritoRND() {	//Este mï¿½todo devuelve un Distrito aleatorio entre todas las posibilidades
 	//TO DO: Cambiarlo para que solo salgan distritos desbloqueados
 	int rnd = sdlutils().rand().nextInt(0, 8);
 	return (pq::Distrito)rnd;
 }
 
-pq::TipoPaquete PaqueteBuilder::tipoRND() {	//Este método devuelve un Tipo de paquete aleatorio entre todas las posibilidades
+pq::TipoPaquete PaqueteBuilder::tipoRND() {	//Este mï¿½todo devuelve un Tipo de paquete aleatorio entre todas las posibilidades
 	int rnd = sdlutils().rand().nextInt(0, 5);
 	return (pq::TipoPaquete)rnd;
 }
 
-pq::Calle PaqueteBuilder::calleRND(int probError) {	//Este método devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado erróneo
+pq::Calle PaqueteBuilder::calleRND(int probError) {	//Este mï¿½todo devuelve una calle aleatoria de las posibilidades, con probabilidad de que salga un resultado errï¿½neo
 	int rnd = sdlutils().rand().nextInt(0, 101);
 	if (rnd > probError) {
 		rnd = sdlutils().rand().nextInt(0, 3);
@@ -178,7 +178,7 @@ pq::Calle PaqueteBuilder::calleRND(int probError) {	//Este método devuelve una c
 	}
 }
 
-bool PaqueteBuilder::boolRND(int probFalse) { //Este método devuelve una valor aleatorio entre treu y false para un bool según una probabilidad
+bool PaqueteBuilder::boolRND(int probFalse) { //Este mï¿½todo devuelve una valor aleatorio entre treu y false para un bool segï¿½n una probabilidad
 	int rnd = sdlutils().rand().nextInt(0, 101);
 	if (rnd > probFalse) {
 		return true;
@@ -188,7 +188,7 @@ bool PaqueteBuilder::boolRND(int probFalse) { //Este método devuelve una valor a
 	}
 }
 
-pq::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este método elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
+pq::NivelPeso PaqueteBuilder::pesoRND(int probPeso, int probError, int& peso) {	//Este mï¿½todo elige aleatoriamente si colocar un sello de peso o no en el paquete y, en caso positivo,
 	int rnd = sdlutils().rand().nextInt(0, 101);										//elige aleatoriamente si el resultado es correcto o incorrecto, devolviendo un peso para el paquete
 	if (rnd <= probPeso) {
 		pq::NivelPeso pes;
@@ -303,7 +303,7 @@ PaqueteBuilder::DifficultySettings PaqueteBuilder::getLevelSetings(int lvl)
 void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 	Paquete* paqComp = paq->getComponent<Paquete>();
 
-	//Creamos la entidad de dirección y remitente
+	//Creamos la entidad de direcciï¿½n y remitente
 	createVisualDirections(paq, paqComp);
 
 	//Creamos la entidad Tipo sello 
@@ -313,6 +313,10 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 		miTipo == pq::Joyas ? "selloJoyas" :
 		miTipo == pq::Materiales ? "selloMateriales" :
 		miTipo == pq::Armamento ? "selloArmamento" : "Desconocido");
+	if (!paqComp->getSelloCorrecto()) {
+		std::string rnd = std::to_string(sdlutils().rand().nextInt(0, 3));		
+		tipoString += "F" + rnd;		
+	}
 	crearSello(paq, tipoString, TIPO_SELLO_POS_X, TIPO_SELLO_POS_Y, TIPO_SELLO_SIZE, TIPO_SELLO_SIZE);
 
 	//Creamos la entidad Peso sello 

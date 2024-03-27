@@ -84,11 +84,11 @@ void PackageChecker::checkEntity(ecs::Entity* ent)
 bool PackageChecker::checkAdditionalConditions(Paquete* package)
 {
 	bool aditional = true;
-	/*for (Condition call : extraCond) {
+	for (Condition call : extraCond_) {
 		if (!call(package)) {
 			aditional = false;
 		}
-	}*/
+	}
 	return aditional;
 }
 

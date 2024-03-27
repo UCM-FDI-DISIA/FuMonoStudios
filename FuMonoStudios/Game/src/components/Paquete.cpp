@@ -46,7 +46,6 @@ Paquete::~Paquete() {
 }
 
 void Paquete::initComponent() {
-
 }
 
 bool Paquete::bienSellado() const{

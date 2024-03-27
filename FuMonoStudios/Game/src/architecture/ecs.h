@@ -26,6 +26,8 @@ namespace ecs {
 			SELFDESTRUCT,
 			DEPTH,
 			ERROR_NOTE,
+			DELAYEDCALLBACK,
+			CLOCKAUX,
 			// do not remove this
 			_LAST_CMP_ID
 		};
@@ -57,7 +59,9 @@ namespace ecs {
 		{
 			BACKGROUND,
 			DEFAULT,
+			BIN,
 			PACKAGE,
+			INK,
 			STAMP,
 			OFFICEELEMENTS,
 			TAPE,

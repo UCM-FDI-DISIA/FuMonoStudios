@@ -24,11 +24,10 @@
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
 #include <QATools/DataCollector.h>
+#include "../components/ErrorNote.h"
+#include "../entities/ClockAux.h"
 
-
-
-
-ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
+ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 {
 	timer_ = MINIGAME_TIME;
 #ifdef DEV_TOOLS
@@ -51,8 +50,6 @@ void ecs::MainScene::update()
 	{
 		if (timer_ > 0) {
 			timer_ -= Time::getDeltaTime();
-
-			updateTimer();
 		}
 		else
 			gm().requestChangeScene(ecs::sc::MAIN_SCENE, ecs::sc::END_WORK_SCENE);
@@ -83,24 +80,35 @@ void ecs::MainScene::init()
 	factory_->createImage(Vector2D(), Vector2D(sdlutils().width(), sdlutils().height()),
 		&sdlutils().images().at("fondoOficina"));
 
-	for (int i = 0; i < 7; i++) {
-		createTubo((pq::Distrito)i);
-	}
+	//for (int i = 0; i < 7; i++) {
+	//	createTubo((pq::Distrito)i);
+	//}
 
 	createManual();
 
 	createClock();
-
-	initTexts();
-
+	
 	createPaquete(generalData().getPaqueteLevel());
 
 	createGarbage();
 
 
 	//creacion de las herramientas
+	// En el caso de que los tubos no estén ordenados, habrá que ordenarlos
+	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
+	int j = 0;
+	for (int i = 0;i < numTubos; i++) {
+		createTubo((pq::Distrito)i, true);
+		j++;
+	}
+	//Creación de paquetes bloqueados
+	for (int z = j; z < 7; z++) { //grande jose la los numeros magicos te la sabes
+		createTubo((pq::Distrito)z, false);
+	}
 
 	createSelladores();
+
+	//createInks();
   
   	//cinta envolver
 	factory_->setLayer(ecs::layer::TAPE);
@@ -110,6 +118,58 @@ void ecs::MainScene::init()
 	cinta->addComponent<Depth>();
 	factory_->setLayer(ecs::layer::DEFAULT);
 
+	//Luis: dejo esto comentado porque con la refactorizacion se va a poder hacer de forma mas elegante
+
+	// A medida que se vaya avanzando en el desarrollo, se tendra que expandir esto de apajo para que en X dia suceda algo o aparezcan nuevas herramientas
+	// Me gustaría que todo lo relacionado con los eventos de los dias y los paquetes y herramientas correspondientes estuviera documentado
+	// En el miro había un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
+
+	/*int dia = generalData().getDia();
+	if (dia > 0 && dia < 2) {
+		Texture* texturaSellador = &sdlutils().images().at("selladorA");
+		Entity* sellador = addEntity(ecs::layer::STAMP);
+		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width(), texturaSellador->height());
+		transformSellador->setScale(0.4);
+		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
+		sellador->addComponent<Gravity>();
+		sellador->addComponent<DragAndDrop>();
+		sellador->addComponent<Herramientas>();
+		sellador->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+	}
+	else if (dia >= 2 && dia < 4) {
+		Texture* texturaCinta = &sdlutils().images().at("cinta");
+		Entity* cinta = addEntity();
+		Transform* transformCinta = cinta->addComponent<Transform>(560, 0, texturaCinta->width() / 2, texturaCinta->height() / 2);
+		RenderImage* renderCinta = cinta->addComponent<RenderImage>(texturaCinta);
+		cinta->addComponent<Gravity>();
+		cinta->addComponent<DragAndDrop>();
+	}
+	else if (dia >= 4 && dia < 6) {}
+	else if (dia >= 6 && dia < 8) {}
+	else if (dia >= 8 && dia < 10) {}*/
+
+	/*switch (dia) {
+	case 1: {
+		Texture* texturaSellador1 = &sdlutils().images().at("sellador");
+		Entity* sellador1 = addEntity();
+		Transform* transformSellador1 = sellador1->addComponent<Transform>(460, 0, texturaSellador1->width() / 2, texturaSellador1->height() / 2);
+		RenderImage* renderSellador1 = sellador1->addComponent<RenderImage>(texturaSellador1);
+		sellador1->addComponent<Gravity>();
+		sellador1->addComponent<DragAndDrop>();
+		sellador1->addComponent<Herramientas>();
+		sellador1->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+		break;
+		}
+	case 2: {
+		Texture* texturaCinta1 = &sdlutils().images().at("cinta");
+		Entity* cinta1 = addEntity();
+		Transform* transformCinta1 = cinta1->addComponent<Transform>(460, 0, texturaCinta1->width() / 2, texturaCinta1->height() / 2);
+		RenderImage* renderCinta1 = cinta1->addComponent<RenderImage>(texturaCinta1);
+		cinta1->addComponent<Gravity>();
+		cinta1->addComponent<DragAndDrop>();
+		break;
+		}
+	}*/
 }
 
 void ecs::MainScene::close() {
@@ -118,19 +178,123 @@ void ecs::MainScene::close() {
 }
 
 void ecs::MainScene::createClock() {
-	Entity* clock = addEntity(layer::BACKGROUND);
-	clock->addComponent<Transform>(1340, 510, 210, 140, 0);
-	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
-	clockCenter = clock->getComponent<Transform>()->getCenter();
+	Entity* clock = addEntity(ecs::layer::BACKGROUND);
+	clock->addComponent<ClockAux>(MINIGAME_TIME);
+}
+
+void ecs::MainScene::createInks() {
+
+	// Tinta rojo (1)
+	Entity* inkA = addEntity(layer::INK);
+	Texture* inkATex = &sdlutils().images().at("tintaA");
+	Transform* selloATR = inkA->addComponent<Transform>(300, 500, inkATex->width(), inkATex->height());
+
+	selloATR->setScale(0.5);
+
+	inkA->addComponent<RenderImage>(inkATex);
+
+	Trigger* inkATri = inkA->addComponent<Trigger>();
+
+	inkATri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleA);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorA"));
+
+		}
+
+	});
+
+	
 
 
-	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	trManecillaL = manecillaL->addComponent<Transform>(1430, 555, 25, 40);
-	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
+	// Tinta azul (2)
+	Entity* inkB = addEntity(layer::INK);
+	Texture* inkBTex = &sdlutils().images().at("tintaB");
+	Transform* selloBTR = inkB->addComponent<Transform>(425, 500, inkBTex->width(), inkBTex->height());
 
-	Entity* manecillaS = addEntity(layer::BACKGROUND);
-	trManecillaS = manecillaS->addComponent<Transform>(1435, 580, 25, 15, 0);
-	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
+	selloBTR->setScale(0.5);
+
+	inkB->addComponent<RenderImage>(inkBTex);
+
+	Trigger* inkBTri = inkB->addComponent<Trigger>();
+
+	inkBTri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleB);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorB"));
+
+		}
+
+	});
+
+	// Tinta verde (3)
+	Entity* inkC = addEntity(layer::INK);
+	Texture* inkCTex = &sdlutils().images().at("tintaC");
+	Transform* selloCTR = inkC->addComponent<Transform>(550, 500, inkCTex->width(), inkCTex->height());
+
+	selloCTR->setScale(0.5);
+
+	inkC->addComponent<RenderImage>(inkCTex);
+
+	Trigger* inkCTri = inkC->addComponent<Trigger>();
+
+	inkCTri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleC);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorC"));
+
+		}
+
+		});
+
+}
+
+
+void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tuboIncorrecto) {
+	Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);	
+	NotaErronea->addComponent<ErrorNote>(paqComp, basura, tuboIncorrecto);
+	Texture* NotaTex = &sdlutils().images().at("notaError");
+	Transform* selloATR = NotaErronea->addComponent<Transform>(100, 1400, NotaTex->width()*2, NotaTex->height()*2);
+	selloATR->setScale(0.2f);
+	NotaErronea->addComponent<DragAndDrop>(true, [NotaErronea]() {
+		NotaErronea->addComponent<MoverTransform>(Vector2D(100, 1400), 0.5, Easing::EaseOutCubic, [NotaErronea]() {
+			NotaErronea->setAlive(false);
+			});
+		});
+	NotaErronea->addComponent<RenderImage>(NotaTex);
+	
+	//El texto de la nota
+	Entity* texto_ = addEntity(ecs::layer::STAMP);
+	Font* textFont = new Font("recursos/fonts/ARIAL.ttf", 40);
+	Texture* textureText_ = new Texture(sdlutils().renderer(), NotaErronea->getComponent<ErrorNote>()->text_, *textFont, build_sdlcolor(0x000000ff), 500);
+	Transform* distritoTr = texto_->addComponent<Transform>(25, 70, 250, 100);
+	RenderImage* distritoRender = texto_->addComponent<RenderImage>();
+	distritoRender->setTexture(textureText_);
+	distritoTr->setParent(NotaErronea->getComponent<Transform>());
+
+	NotaErronea->addComponent<MoverTransform>(Vector2D(100, 880), 0.5, Easing::EaseOutCubic);
+
 }
 
 void ecs::MainScene::createSelladores() {
@@ -162,21 +326,35 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 	herrSelladorA->setFunctionality(type);
 }
 
-void ecs::MainScene::createTubo(pq::Distrito dist) {
+void ecs::MainScene::createTubo(pq::Distrito dist,bool unlock) {
 	constexpr float TUBE_WIDTH = 138;
 	constexpr float TUBE_HEITH = 282;
 	constexpr float TUBES_X_OFFSET = 200;
 	constexpr float DISTANCE_BETWEEN_TUBES = 220;
 	factory_->setLayer(ecs::layer::BACKGROUND);
-	
-	Entity* tuboEnt = factory_->createImage(
-		Vector2D(TUBES_X_OFFSET + (DISTANCE_BETWEEN_TUBES * dist), - 40),
-		Vector2D(TUBE_WIDTH,TUBE_HEITH), 
-		&sdlutils().images().at("tubo" + std::to_string(dist + 1)));
 
-	Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist,this);
+	Entity* tuboEnt = factory_->createImage(
+		Vector2D(TUBES_X_OFFSET + (DISTANCE_BETWEEN_TUBES * dist), -40),
+		Vector2D(TUBE_WIDTH, TUBE_HEITH),
+		&sdlutils().images().at("tubo" + std::to_string(dist + 1)));
+	if (unlock) {
+
+		Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
+		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist, this);
+	}
+	else {
+		factory_->setLayer(layer::UI);
+		auto tubeTr = tuboEnt->getComponent<Transform>();
+
+		auto cross = factory_->createImage(Vector2D(0, 120),
+			Vector2D(tubeTr->getWidth(), tubeTr->getWidth()),
+			&sdlutils().images().at("cruz"));
+
+		cross->getComponent<Transform>()->setParent(tubeTr);
+
+	}
 }
+
 
 void ecs::MainScene::createManual()
 {
@@ -305,29 +483,6 @@ void ecs::MainScene::makeControlsWindow()
 }
 #endif // DEV_TOOLS
 
-void ecs::MainScene::initTexts() {
-
-}
-
-void ecs::MainScene::updateTimer() {
-	// numeros que aplicados hacen representar bien las horas y minutos
-	float x = ((minutes - 15) / 9.55);
-	float y = ((hours - 6) / 3.82);
-
-	trManecillaL->setPos(clockCenter.getX() + offsetL.getX() + radiusManL * cos(x),
-						clockCenter.getY() + offsetL.getY() + radiusManL * sin(x));
-	trManecillaL->setRotation(90 + x * CONST_ROT);
-
-	trManecillaS->setPos(clockCenter.getX() + offsetS.getX() + radiusManS * cos(y),
-							clockCenter.getY() + offsetS.getY() + radiusManS * sin(y));
-	trManecillaS->setRotation(y * CONST_ROT);
-
-	minutes += timeMultiplier * 1;
-	hours += timeMultiplier * 0.01666;
-
-	//std::cout << "y: " << y << " x:" << x << std::endl;
-	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
-}
 
 
 void ecs::MainScene::createPaquete (int lv) {
