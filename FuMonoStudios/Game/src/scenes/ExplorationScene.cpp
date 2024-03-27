@@ -13,18 +13,19 @@
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
 #include "../sistemas/ComonObjectsFactory.h"
+#include "../architecture/GeneralData.h"
+#include "../components/DelayedCallback.h"
 
 ecs::ExplorationScene::ExplorationScene() :Scene()
 {
-
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &hestia;
 	navigate("Hestia");
 	createObjects("Hestia");
 	rect_ = build_sdlrect(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
-
+	canStartConversation = true;
+	generalData().setDayData();
 }
 
 ecs::ExplorationScene::~ExplorationScene()
@@ -135,6 +136,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::s
 	
 	CallbackClickeable cosa = [this, placeDir]() {
 		if (actualPlace_->navigate(placeDir)) {
+			closeConversation();
 			actualPlace_->killObjects();
 			placeToGo.push_back(placeDir);
 			
@@ -149,34 +151,30 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::s
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, std::string character, float scale) {
-
-	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
-// la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
-// solucionar sacando las entidades de box al h y comprobando si punteros a entidad son null o con un booleano que
-// haga de flag)
-
-// Para Dani: Aqu� le hacemos clickable y le ponemos como callback el m�todo funcPress
+ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::string& character, float scale) {
 
 	ComonObjectsFactory factory(this);
 
 	Texture* texturaBoton = &sdlutils().images().at(character);
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
-	CallbackClickeable funcPress = [this]() {
-		//Esto ser�a la caja del fondo (lo de SDL que se ve)
-		ecs::Entity* boxBg = addEntity();
-		auto bgTr = boxBg->addComponent<Transform>(100, sdlutils().height() - 250, sdlutils().width() - 200, 200);
-		boxBg->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
-		actualPlace_->addObjects(boxBg);
+	// al pulsar sale el dialogo
+	CallbackClickeable funcPress = [this, character]() {
 
-		//Aqu� pillar�a el di�logo con el manager y crear�a la entidad que lo renderiza
-		ecs::Entity* dialogoBox = addEntity();
-		auto textTr = dialogoBox->addComponent<Transform>(80, 55, 100, 100);
-		textTr->setParent(bgTr);
-		dialogoBox->addComponent<RenderImage>();
-		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
-		actualPlace_->addObjects(dialogoBox);
+		if (canStartConversation)
+		{
+			canStartConversation = false;
+
+			boxBackground->setActive(true);
+
+			// activamos los dialogos correspondientes
+			std::pair<const std::string, int> aux = generalData().getNPCData(
+				generalData().stringToPersonaje(character))->getDialogueInfo();
+
+			dialogMngr_.setDialogues(generalData().stringToPersonaje(character), aux.first, aux.second);
+
+			textDialogue->addComponent<DialogComponent>(&dialogMngr_, this);
+		}
 	};
 
 	ecs::Entity* BotonPress = factory.createImageButton(pos, size, texturaBoton, funcPress);
@@ -205,8 +203,6 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
-		
-
 	}
 	else if (place == "Hefesto")
 	{
@@ -242,6 +238,7 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 
 		}
+
 
 		//boton ir a trabajar
 		ecs::Entity* botonTrabajar = addEntity();
@@ -321,6 +318,28 @@ void ecs::ExplorationScene::createObjects(std::string place) {
 
 		}
 	}
+
+	// creamos la entidad caja dialogo
+	boxBackground = addEntity();
+	auto bgTr = boxBackground->addComponent<Transform>(100, sdlutils().height() - 250, sdlutils().width() - 200, 200);
+	boxBackground->addComponent<RenderImage>(&sdlutils().images().at("cuadroDialogo"));
+
+	// entidad del texto
+	textDialogue = addEntity();
+	auto textTr = textDialogue->addComponent<Transform>(100, 100, 80, 100);
+	textTr->setParent(bgTr);
+	textDialogue->addComponent<RenderImage>();
+
+	boxBackground->setActive(false);
+}
+
+void ecs::ExplorationScene::closeConversation() {
+	textDialogue->getComponent<RenderImage>()->setTexture(nullptr);
+	textDialogue->removeComponent<DialogComponent>();
+	boxBackground->setActive(false);
+	textDialogue->addComponent<DelayedCallback>(0.1, [this]() {
+		canStartConversation = true;
+		});
 }
 
 //LUGAR__________________________________________________________________________________________

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../architecture/Scene.h"
-#include "../components/Dialog_Manager.h"
+#include "../components/DialogManager.h"
 #include "../sistemas/ComonObjectsFactory.h"
 #include <list>
 
@@ -61,7 +61,6 @@ namespace ecs {
 		/// USAR DESPUES DE HABER NAVEGADO
 		/// </summary>
 		void addObjects(ecs::Entity* e);
-
 	private:
 		//Puntero a la textura del fondo
 		Texture* backGround_;
@@ -102,6 +101,8 @@ namespace ecs {
 		/// </summary>
 		void renderBackGround() const;
 
+		// cierra la conversacion
+		void closeConversation();
     private:
 
 		/// <summary>
@@ -135,7 +136,7 @@ namespace ecs {
 		/// <summary>
 		/// Metodo factoria para characters
 		/// </summary>
-		ecs::Entity* createCharacter(Vector2D pos, std::string character, float scale);
+		ecs::Entity* createCharacter(Vector2D pos, const std::string& character, float scale);
         
 		//Puntero al lugar actual
 		Lugar* actualPlace_;
@@ -155,7 +156,13 @@ namespace ecs {
 		DialogManager dialogMngr_;
 
 		std::vector<std::string> placeToGo;
+	
+		// entidades del dialogo
+		ecs::Entity* boxBackground;
+		ecs::Entity* textDialogue;
 
+		// flag para saber si podemos entablar dialogo
+		bool canStartConversation;
     };
 }
 

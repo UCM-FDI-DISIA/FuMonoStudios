@@ -3,7 +3,7 @@
 #include "../architecture/ecs.h";
 #include "../architecture/Entity.h"
 #include "../architecture/Scene.h"
-#include "../components/Dialog_Manager.h"
+#include "../components/DialogManager.h"
 #include <unordered_map>
 #include <vector>
 #include <array>

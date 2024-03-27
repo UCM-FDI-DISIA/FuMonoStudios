@@ -1,0 +1,107 @@
+{
+  "Vagabundo": {
+    "Felicidad": "NoHabladoAun",
+    "numMisionesAceptadas": 0,
+    "numMisionesParaMisionFinal": 13
+  },
+  "Secretario": {
+    "Felicidad": "NoHabladoAun",
+    "numMisionesAceptadas": 0,
+    "numMisionesParaMisionFinal": 7
+  },
+  "Campesino": {
+    "Felicidad": "NoHabladoAun",
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
+  },
+  "Artesano": {
+    "Felicidad": "Mala",
+    "DiasConEvento": {
+      "1": false,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
+  },
+  "Tarotisa": {
+    "Felicidad": "NoHabladoAun",
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
+  },
+  "Soldado": {
+    "Felicidad": "NoHabladoAun",
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
+  },
+  "Contable": {
+    "Felicidad": "NoHabladoAun",
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
+  }
+}

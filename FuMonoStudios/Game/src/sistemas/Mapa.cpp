@@ -10,7 +10,7 @@
 
 Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 {
-	dialogMngr_.setDialogues("recursos/dialogos/dialogo.txt");
+	//dialogMngr_.setDialogues("recursos/dialogos/npc_mayores.json", "vagabundo", "presentacion", "jaja");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &demeter;
@@ -64,7 +64,7 @@ ecs::Entity* Mapa::createCharacter(int x, int y,std::string character) {
 		auto textTr = dialogoBox->addComponent<Transform>(80, 55, 100, 100);
 		textTr->setParent(bgTr);
 		dialogoBox->addComponent<RenderImage>();
-		dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
+		//dialogoBox->addComponent<DialogComponent>(&dialogMngr_);
 		actualPlace_->addObjects(dialogoBox);
 		};
 	clickerPress->addEvent(funcPress);

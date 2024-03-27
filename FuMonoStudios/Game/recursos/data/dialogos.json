@@ -1,0 +1,523 @@
+{
+  "Vagabundo": {
+    "Presentacion": [
+      " $a$A$e$E$i$I EL DIABL$O",
+      "presentacion Vagabundo"
+    ],
+    "FelicidadMinima": [
+      "felicidadMinima vagabundo"
+    ],
+    "FelicidadMaxima": [
+      "felicidadMaxima vagabundo"
+    ],
+    "Dia1": [
+      "dia1"
+    ],
+    "PostConversacionDia1": [
+      "postConvDia1"
+    ],
+    "Dia2": [
+      "dia2"
+    ],
+    "PostConversacionDia2": [
+      "postConvDia2"
+    ],
+    "Dia3": [
+      "dia3"
+    ],
+    "PostConversacionDia3": [
+      "postConvDia3"
+    ],
+    "Dia4": [
+      "dia4"
+    ],
+    "PostConversacionDia4": [
+      "postConvDia4"
+    ],
+    "Dia5": [
+      "dia5"
+    ],
+    "PostConversacionDia5": [
+      "postConvDia5"
+    ],
+    "Dia6": [
+      "dia6"
+    ],
+    "PostConversacionDia6": [
+      "postConvDia6"
+    ],
+    "Dia7": [
+      "dia7"
+    ],
+    "PostConversacionDia7": [
+      "postConvDia7"
+    ],
+    "Dia8": [
+      "dia8"
+    ],
+    "PostConversacionDia8": [
+      "postConvDia8"
+    ],
+    "Dia9": [
+      "dia9"
+    ],
+    "PostConversacionDia9": [
+      "postConvDia9"
+    ],
+    "Dia10": [
+      "dia10"
+    ],
+    "PostConversacionDia10": [
+      "postConvDia10"
+    ],
+    "Dia11": [
+      "dia11"
+    ],
+    "PostConversacionDia11": [
+      "postConvDia11"
+    ],
+    "Dia12": [
+      "dia12"
+    ],
+    "PostConversacionDia12": [
+      "postConvDia12"
+    ],
+    "Dia13": [
+      "dia13"
+    ],
+    "PostConversacionDia13": [
+      "postConvDia13"
+    ],
+    "Dia14": [
+      "dia14"
+    ],
+    "PostConversacionDia14": [
+      "postConvDia14"
+    ]
+  },
+
+
+
+  "Secretario": {
+    "Presentacion": [
+      "Presentacion Secretario"
+    ],
+    "FelicidadMinima": [
+      "FelicidadMinima"
+    ],
+    "FelicidadMaxima": [
+      "FelicidadMaxima"
+    ],
+    "Dia1": [
+      "dia1"
+    ],
+    "PostConversacionDia1": [
+      "postConvDia1"
+    ],
+    "Dia2": [
+      "dia2"
+    ],
+    "PostConversacionDia2": [
+      "postConvDia2"
+    ],
+    "Dia3": [
+      "dia3"
+    ],
+    "PostConversacionDia3": [
+      "postConvDia3"
+    ],
+    "Dia4": [
+      "dia4"
+    ],
+    "PostConversacionDia4": [
+      "postConvDia4"
+    ],
+    "Dia5": [
+      "dia5"
+    ],
+    "PostConversacionDia5": [
+      "postConvDia5"
+    ],
+    "Dia6": [
+      "dia6"
+    ],
+    "PostConversacionDia6": [
+      "postConvDia6"
+    ],
+    "Dia7": [
+      "dia7"
+    ],
+    "PostConversacionDia7": [
+      "postConvDia7"
+    ],
+    "Dia8": [
+      "dia8"
+    ],
+    "PostConversacionDia8": [
+      "postConvDia8"
+    ],
+    "Dia9": [
+      "dia9"
+    ],
+    "PostConversacionDia9": [
+      "postConvDia9"
+    ],
+    "Dia10": [
+      "dia10"
+    ],
+    "PostConversacionDia10": [
+      "postConvDia10"
+    ],
+    "Dia11": [
+      "dia11"
+    ],
+    "PostConversacionDia11": [
+      "postConvDia11"
+    ],
+    "Dia12": [
+      "dia12"
+    ],
+    "PostConversacionDia12": [
+      "postConvDia12"
+    ],
+    "Dia13": [
+      "dia13"
+    ],
+    "PostConversacionDia13": [
+      "postConvDia13"
+    ],
+    "Dia14": [
+      "dia14"
+    ],
+    "PostConversacionDia14": [
+      "postConvDia14"
+    ]
+  },
+
+
+
+  "Campesino": {
+    "Presentacion": [
+      "Presentacion Cmampesino"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Campesino"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Campesino"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+
+  "Artesano": {
+    "Presentacion": [
+      "Presentacion Artesano"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Artesano"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Artesano"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+  "Tarotisa": {
+    "Presentacion": [
+      "Presentacion Tarotisa"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Tarotisa"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Tarotisa"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+
+
+  "Soldado": {
+    "Presentacion": [
+      "Presentacion Soldado"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Soldado"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Soldado"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+  "Contable": {
+    "Presentacion": [
+      "Presentacion Artesano"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Artesano"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Artesano"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+  "EsclavaRemix": [
+    "Bryant myers",
+    "Hoy de nuevo te voy a veeer",
+    "si llama pichea el cell",
+    "estamos fumando marihuana",
+    "hoy seras mi esclava en el cuarto de un motel"
+  ]
+}
