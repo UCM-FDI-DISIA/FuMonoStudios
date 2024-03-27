@@ -106,9 +106,9 @@ void ecs::MainScene::init()
 		createTubo((pq::Distrito)z, false);
 	}
 
-	createSelladores();
+	//createSelladores();
 
-	//createInks();
+	createInks();
   
   	//cinta envolver
 	factory_->setLayer(ecs::layer::TAPE);
@@ -124,12 +124,12 @@ void ecs::MainScene::init()
 	// Me gustaría que todo lo relacionado con los eventos de los dias y los paquetes y herramientas correspondientes estuviera documentado
 	// En el miro había un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
 
-	/*int dia = generalData().getDia();
+	int dia = generalData().getDia();
 	if (dia > 0 && dia < 2) {
-		Texture* texturaSellador = &sdlutils().images().at("selladorA");
+		Texture* texturaSellador = &sdlutils().images().at("sellador0");
 		Entity* sellador = addEntity(ecs::layer::STAMP);
 		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width(), texturaSellador->height());
-		transformSellador->setScale(0.4);
+		transformSellador->setScale(1);
 		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
 		sellador->addComponent<Gravity>();
 		sellador->addComponent<DragAndDrop>();
@@ -146,7 +146,7 @@ void ecs::MainScene::init()
 	}
 	else if (dia >= 4 && dia < 6) {}
 	else if (dia >= 6 && dia < 8) {}
-	else if (dia >= 8 && dia < 10) {}*/
+	else if (dia >= 8 && dia < 10) {}
 
 	/*switch (dia) {
 	case 1: {
@@ -205,7 +205,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleA);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorA"));
+			stampRender->setTexture(&sdlutils().images().at("sellador0"));
 
 		}
 
@@ -235,7 +235,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleB);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorB"));
+			stampRender->setTexture(&sdlutils().images().at("sellador1"));
 
 		}
 
@@ -262,7 +262,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleC);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorC"));
+			stampRender->setTexture(&sdlutils().images().at("sellador2"));
 
 		}
 
