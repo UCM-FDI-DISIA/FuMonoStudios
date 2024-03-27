@@ -10,7 +10,7 @@
 #include <list>
 #include <functional>
 
-PackageChecker::PackageChecker() : extraCond_()
+PackageChecker::PackageChecker(pq::Distrito dis) : toDis_(dis), extraCond_()
 {
 
 }
@@ -37,12 +37,9 @@ bool PackageChecker::checkPackage(Paquete* package)
 		correctPack = checkAdditionalConditions(package);
 	}
 	else {
-		//Esto me gustaria cambiarlo luego, es decir, simplemente darle un booleano de papelera o algo. Nos ahorraria tambien el tema de
-		//que tenemos un distrito extra. Por ahora esta asi simplemente porque la refactorizacion que acabo de hacer parece un poco tonta.
-		//Ademas no se siquiera si vamos a hacer que las papeleras tengan condiciones extras Dx
-		//Pero sí que se que podemos dar a un tubo la condicion de papelera (por ejemplo, un dia decir que todos los paqutes malos tienen que ser 
-		//redirigidos a la oficina en x distrito y entonces funciona ambos de papelera para los errones pero normal para el resto)
-		correctPack = checkAdditionalConditions(package);
+		if (toDis_ == pq::Erroneo) {
+			correctPack = checkAdditionalConditions(package);
+		}
 	}
 	return correctPack;
 }
@@ -53,7 +50,7 @@ void PackageChecker::checkEntity(ecs::Entity* ent)
 	Transform* entTr = ent->getComponent<Transform>();
 	if (ent->getComponent<Paquete>() != nullptr) {
 		ent->removeComponent<Gravity>();
-		ent->addComponent<MoverTransform>( // animación básica del paquete llendose
+		ent->addComponent<MoverTransform>( // animaciï¿½n bï¿½sica del paquete llendose
 				entTr->getPos() + Vector2D(0,-600), 1.5, Easing::EaseOutCubic);
 		ent->addComponent<SelfDestruct>(1);
 		if (checkPackage(ent->getComponent<Paquete>())) {

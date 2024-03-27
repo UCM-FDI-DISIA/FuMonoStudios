@@ -1,6 +1,7 @@
 #include "MainScene.h"
 #include "../architecture/Entity.h"
 #include <iostream>
+#include <fstream>
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_sdlrenderer2.h>
@@ -28,6 +29,10 @@
 #include "../components/Depth.h"
 #include "../components/ErrorNote.h"
 #include "../entities/ClockAux.h"
+#include <QATools/DataCollector.h>
+
+
+
 
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 {
@@ -36,7 +41,7 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 	stampsUnloked_= true;
 	timeToAdd_ = 5;
 #endif // DEV_TOOLS
-	mPaqBuild_ = new PaqueteBuilder();
+	mPaqBuild_ = new PaqueteBuilder(this);
 }
 
 ecs::MainScene::~MainScene()
@@ -63,49 +68,8 @@ void ecs::MainScene::render()
 	Scene::render();
 #ifdef DEV_TOOLS
 	ImGui::NewFrame();
-
-	ImGui::Begin("Paquetes Scene Data");
-	std::string time = "Current Game Time: " + std::to_string(timer_);
-	ImGui::Text(time.c_str());
-	std::string data = "Aciertos: " + std::to_string(correct_);
-	ImGui::Text(data.c_str());
-	data = "Fallos: " + std::to_string(fails_);
-	ImGui::Text(data.c_str());
-	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
-	ImGui::Text(data.c_str());
-	ImGui::End();
-
-
-	ImGui::Begin("Controls");
-	if (ImGui::CollapsingHeader("Paquetes"))
-	{
-		ImGui::Checkbox("Next Pacage Correct",&nextPacageCorrect_);
-		if (ImGui::Button("Create pacage")) {
-			createPaquete(generalData().getPaqueteLevel());
-		}
-	}
-	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
-	if (ImGui::CollapsingHeader("Mecánicas"))
-	{
-		int lvl = generalData().getPaqueteLevel();
-		ImGui::InputInt("Nivel del Paquete", &lvl);
-		generalData().setPaqueteLevel(lvl);
-		//ImGui::Checkbox("Sellos",&stampsUnloked_);
-		//ImGui::Checkbox("Peso",&weightUnloked_);
-		//ImGui::Checkbox("Cinta", &cintaUnloked_);
-	}
-	if (ImGui::CollapsingHeader("Tiempo")) {
-		if (ImGui::Button("Reset Timer")) {
-			timer_ = MINIGAME_TIME;
-		}
-
-		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
-		if (ImGui::Button("Add Time")) {
-			timer_ += timeToAdd_;
-		}
-	}
-
-	ImGui::End();
+	makeDataWindow();
+	makeControlsWindow();
 	ImGui::Render();
 
 	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
@@ -118,7 +82,6 @@ void ecs::MainScene::init()
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
 	//crear objetos
-	ComonObjectsFactory factory(this);
 	timer_ = MINIGAME_TIME;
 	// Fondo
 	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
@@ -131,16 +94,8 @@ void ecs::MainScene::init()
 
 	createPaquete(generalData().getPaqueteLevel());
 
-	// En el caso de que los tubos no estén ordenados, habrá que ordenarlos
-	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
-	int j = 0;
-	for (int i = 0;i < numTubos; i++) {
-		createTubo((Paquete::Distrito)i, true);
-		j++;
-	}
-	//Creación de paquetes bloqueados
-	for (int z = j; z < 7; z++) { //grande jose la los numeros magicos te la sabes
-		createTubo((Paquete::Distrito)z, false);
+	for (int i = 0; i < 7; i++) {
+		createTubo((pq::Distrito)i);
 	}
 
 	//createSelladores();
@@ -148,11 +103,11 @@ void ecs::MainScene::init()
 	createInks();
   
   	//cinta envolver
-	factory.setLayer(ecs::layer::TAPE);
-	Entity* cinta = factory.createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
+	factory_->setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory_->createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
-	factory.setLayer(ecs::layer::DEFAULT);
+	factory_->setLayer(ecs::layer::DEFAULT);
 
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::BIN);
@@ -364,11 +319,10 @@ void ecs::MainScene::createSelladores() {
 void ecs::MainScene::createStamp(TipoHerramienta type)
 {
 	constexpr float STAMPSIZE = 102.4f;
-	ComonObjectsFactory fact(this);
 
-	fact.setLayer(layer::OFFICEELEMENTS);
+	factory_->setLayer(layer::OFFICEELEMENTS);
 
-	auto stamp = fact.createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
+	auto stamp = factory_->createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
 		& sdlutils().images().at("sellador" + std::to_string(type)));
 
 	stamp->addComponent<MoverTransform>(
@@ -384,7 +338,7 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 	herrSelladorA->setFunctionality(type);
 }
 
-void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
+void ecs::MainScene::createTubo(pq::Distrito dist) {
 	float scaleTubos = 0.3f;
 	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);
 	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(dist + 1));
@@ -401,8 +355,14 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 			Transform* entTr = entRec->getComponent<Transform>();
 		if (entRec->getComponent<Paquete>() != nullptr) {
 			entRec->removeComponent<Gravity>();
-			entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-				entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			//entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
+			//	entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
+			auto mover = entRec->getComponent<MoverTransform>();
+			mover->setEasing(Easing::EaseOutCubic);
+			mover->setFinalPos(entTr->getPos() + Vector2D(0, -600));
+			//mover->setMoveTime(1.7f);
+			mover->enable();
+
 			entRec->addComponent<SelfDestruct>(1, [this]() {
 				generalData().correctPackage();
 			createPaquete(generalData().getPaqueteLevel());
@@ -411,16 +371,17 @@ void ecs::MainScene::createTubo(Paquete::Distrito dist, bool desbloqueado) {
 				correct_++;
 			}
 			else {
-				fails_++;				
-				if (dist == entRec->getComponent<Paquete>()->getDistrito()) {
-					createErrorMessage(entRec->getComponent<Paquete>(), false, false);					
-				}
-				else
-				{
-					createErrorMessage(entRec->getComponent<Paquete>(), false, true);
-				}
+				fails_++;
+				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
+				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, dist != entRec->getComponent<Paquete>()->getDistrito());
 			}
-
+			/*
+			Recogida de datos del paquete enviado (no esta implementado el revisar si era correcto o no
+			*/
+#ifdef QA_TOOLS
+			dataCollector().recordPacage(entRec->getComponent<Paquete>());
+#endif // QA_TOOLS
+			std::cout << "crazy! " << dist << std::endl;
 		}
 
 			});
@@ -448,7 +409,6 @@ void ecs::MainScene::createManual()
 	constexpr int MANUALNUMPAGES = 5;
 	constexpr float MANUAL_WIDTH = 670;
 	constexpr float MANUAL_HEITH = 459;
-	ComonObjectsFactory fact(this);
 
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	//creado array de texturas par el libro
@@ -457,9 +417,9 @@ void ecs::MainScene::createManual()
 	for (int i = 1; i <= 5; i++) {
 		bookTextures.emplace_back(&sdlutils().images().at("book"+std::to_string(i)));
 	}
-	fact.setLayer(ecs::layer::MANUAL);
+	factory_->setLayer(ecs::layer::MANUAL);
 
-	auto baseManual = fact.createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
+	auto baseManual = factory_->createMultiTextureImage(Vector2D(500, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH),bookTextures);
 	Transform* manualTransform = baseManual->getComponent<Transform>();
 	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
 	manualRender->setVector(bookTextures);
@@ -469,22 +429,103 @@ void ecs::MainScene::createManual()
 
 
 	Vector2D buttonSize(100, 40);
-	fact.setLayer(ecs::layer::FOREGROUND);
+	factory_->setLayer(ecs::layer::FOREGROUND);
 	auto next = [manualRender]() {manualRender->nextTexture();};
-	auto right = fact.createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
+	auto right = factory_->createImageButton(Vector2D(400, 300), buttonSize, buttonTexture, next);
 	right->getComponent<Transform>()->setParent(manualTransform);
 
 	auto previous = [manualRender]() {manualRender->previousTexture();};
-	auto left = fact.createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
+	auto left = factory_->createImageButton(Vector2D(100, 300), buttonSize, buttonTexture, previous);
 	left->getComponent<Transform>()->setParent(manualTransform);
 
-	fact.setLayer(ecs::layer::DEFAULT);
+	factory_->setLayer(ecs::layer::DEFAULT);
 
 }
+#ifdef DEV_TOOLS
+
+
+void ecs::MainScene::makeDataWindow()
+{
+	ImGui::Begin("Paquetes Scene Data");
+	//Reloj del timepo de la partida
+	std::string time = "Current Game Time: " + std::to_string(timer_);
+	ImGui::Text(time.c_str());
+	//Contador de aciertos
+	std::string data = "Aciertos: " + std::to_string(correct_);
+	ImGui::Text(data.c_str());
+	//contador de Fallos
+	data = "Fallos: " + std::to_string(fails_);
+	ImGui::Text(data.c_str());
+	//Nivel de los paquetes
+	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
+	ImGui::Text(data.c_str());
+	//Dia acutual del juego
+	data = "Current day: " + std::to_string(GeneralData::instance()->getCurrentDay());
+	ImGui::Text(data.c_str());
+	ImGui::End();
+}
+
+void ecs::MainScene::makeControlsWindow()
+{
+	static bool customPackage;
+	ImGui::Begin("Controls");
+	if (ImGui::CollapsingHeader("Paquetes"))
+	{
+		//panel para crear un paquete custom
+		static int dist,calle,tipo,nivPeso,peso = 0;
+		static bool correcto,fragil, carta = false;
+		ImGui::Checkbox("Custom Package", &customPackage);
+		if (customPackage) {
+			ImGui::InputInt("Distrito", &dist);
+			ImGui::InputInt("Calle",&calle);
+			ImGui::InputInt("Tipo",&tipo);
+			ImGui::Checkbox("Correcto", &correcto);
+			ImGui::InputInt("NivPeso",&nivPeso);
+			ImGui::InputInt("Peso", &peso);
+			ImGui::Checkbox("Fragil", &fragil);
+			ImGui::Checkbox("Carta", &carta);
+			ImGui::InputInt("Peso",&peso);
+		}
+		ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
+		if (ImGui::Button("Create pacage")) {
+			if (customPackage) {
+				mPaqBuild_->customPackage((pq::Distrito)dist,(pq::Calle)calle,"Sujeto de Pruebas", (pq::TipoPaquete)tipo, 
+					correcto, (pq::NivelPeso)nivPeso, peso, fragil, carta);
+			}
+			else {
+				createPaquete(generalData().getPaqueteLevel());
+			}
+		}
+	}
+	//Todavia no es funcinal ya que no hay forma actual de limitar las mecánicas
+	if (ImGui::CollapsingHeader("Mecánicas"))
+	{
+		int lvl = generalData().getPaqueteLevel();
+		ImGui::InputInt("Nivel del Paquete", &lvl);
+		generalData().setPaqueteLevel(lvl);
+		//ImGui::Checkbox("Sellos",&stampsUnloked_);
+		//ImGui::Checkbox("Peso",&weightUnloked_);
+		//ImGui::Checkbox("Cinta", &cintaUnloked_);
+	}
+	if (ImGui::CollapsingHeader("Tiempo")) {
+		if (ImGui::Button("Reset Timer")) {
+			timer_ = MINIGAME_TIME;
+		}
+
+		ImGui::InputInt("Aditional Seconds", &timeToAdd_);
+		if (ImGui::Button("Add Time")) {
+			timer_ += timeToAdd_;
+		}
+	}
+	ImGui::End();
+}
+#endif // DEV_TOOLS
 
 void ecs::MainScene::createPaquete (int lv) {
 	/*podriamos hacer que lo que le pases al paquete builder sean las estadisticas o un json 
 	con las configuraciones de los niveles de dificultad y tener un constructora a parte que nos permita crear paquetes con configuraciones
 	personalizadas*/
-	mPaqBuild_->paqueteRND(lv, this);
+	auto pac = mPaqBuild_->paqueteRND(lv, this);
+	pac->addComponent<MoverTransform>(pac->getComponent<Transform>()->getPos()-Vector2D(200,0),
+		1,Easing::EaseOutBack)->enable();
 }

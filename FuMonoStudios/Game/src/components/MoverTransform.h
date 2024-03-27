@@ -35,6 +35,10 @@ public:
 	void update() override;
 	void enable();
 	void disable() { enable_ = false; }
+
+	inline void setEasing(Easing easing) { easing_ = easing; }
+	inline void setFinalPos(const Vector2D& pos) { finalPos_ = pos; }
+	inline void setMoveTime(float time) { movTime_ = time*1000; }
 private:
 	float timer_;
 	float startTimer_;

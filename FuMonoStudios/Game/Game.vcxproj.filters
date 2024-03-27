@@ -59,6 +59,7 @@
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
     <ClCompile Include="src\entities\ClockAux.cpp" />
+    <ClCompile Include="src\QATools\DataCollector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -154,6 +155,8 @@
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
     <ClInclude Include="src\entities\ClockAux.h" />
+    <ClInclude Include="rapidCSV\rapidcsv.h" />
+    <ClInclude Include="src\QATools\DataCollector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />

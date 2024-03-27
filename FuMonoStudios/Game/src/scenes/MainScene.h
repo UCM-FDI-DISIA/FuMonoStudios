@@ -23,12 +23,13 @@ namespace ecs {
     private:
         void createManual();
 
-        void createTubo(Paquete::Distrito dist, bool desbloqueado);
+        //void createTubo(Paquete::Distrito dist, bool desbloqueado);
 
         void createClock();
 
         void createErrorMessage(Paquete* paqComp, bool, bool);
 
+        void createTubo(pq::Distrito dist);
         void createSelladores();
         void createStamp(TipoHerramienta type);
         void createPaquete(int lv);
@@ -49,6 +50,8 @@ namespace ecs {
         bool weightUnloked_;
         bool cintaUnloked_;
         int timeToAdd_;
+        void makeDataWindow();
+        void makeControlsWindow();
 #endif // DEV_TOOLS
 
         // objects

@@ -32,20 +32,12 @@ Paquete::Paquete(Paquete& otherPckg)
 	carta_ = otherPckg.carta_;
 	envuelto_ = otherPckg.envuelto_;
 	calleMarcada_ = otherPckg.calleMarcada_;
+	nombreCalle_ = otherPckg.nombreCalle_;
 }
 
-Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
+Paquete::Paquete(Distrito dis, Calle c, const std::string& nombreCalle, const std::string& remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
 	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
-	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
-	
-	std::string filename = "recursos/config/mail.direcctions.json";
-	getStreetsFromJSON(filename, Demeter, "Demeter");
-	getStreetsFromJSON(filename, Hefesto, "Hefesto");
-	getStreetsFromJSON(filename, Hestia, "Hestia");
-	getStreetsFromJSON(filename, Artemisa, "Artemisa");
-	getStreetsFromJSON(filename, Hermes, "Hermes");
-	getStreetsFromJSON(filename, Apolo, "Apolo");
-	getStreetsFromJSON(filename, Poseidon, "Poseidon");
+	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea), nombreCalle_(nombreCalle) {
 
 }
 
@@ -129,56 +121,20 @@ std::string Paquete::getDirecction()
 		dir = "Interior - ";
 
 	//creacion de codigo postal
-	if (miDistrito_ == Erroneo)
-		dir += "000\n";
+	//se puede mejorar el fallo si se hace que el codigo postal pase a ser un numero aleatorio
+	if (miDistrito_ == Erroneo) {
+		int rand = sdlutils().rand().nextInt(0, 7);
+		dir += std::bitset<3>(rand).to_string() + "\n";
+	}
 	else
 		dir += std::bitset<3>(miDistrito_ + 1).to_string() + "\n";
 
-	//habria que comprobar si la direccion tiene que ser correcta
-	if (miCalle_ == Erronea)
-		dir += "(CALLE INVENTADA)";
-	else if (miDistrito_ == Erroneo)
-		dir += "(CALLE INVENTADA)";
-	else
-		dir += distritoCalle_[miDistrito_][miCalle_];
+	dir += nombreCalle_;
 
 	return dir;
 }
 
-void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
-{
-	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
-
-	// check it was loaded correctly
-	// the root must be a JSON object
-	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
-		throw "Something went wrong while load/parsing '" + filename + "'";
-	}
-
-	// we know the root is JSONObject
-	JSONObject root = jValueRoot->AsObject();
-	JSONValue* jValue = nullptr;
-
-	jValue = root[distString];
-	if (jValue != nullptr) {
-		if (jValue->IsArray()) {
-			distritoCalle_[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
-			for (auto v : jValue->AsArray()) {
-				if (v->IsString()) {
-					std::string aux = v->AsString();
-#ifdef _DEBUG
-					std::cout << "Loading distrito with id: " << aux << std::endl;
-#endif
-					distritoCalle_[dist].emplace_back(aux);
-				}
-				else {
-					throw "'Calles' array in '" + filename
-						+ "' includes and invalid value";
-				}
-			}
-		}
-		else {
-			throw "'Demeter' is not an array in '" + filename + "'";
-		}
-	}
+void Paquete::giveData(std::ofstream& stream) const{
+	stream << (int)miDistrito_ << "," << miRemitente_ << "," << (int)miCalle_<<"\n";
 }
+

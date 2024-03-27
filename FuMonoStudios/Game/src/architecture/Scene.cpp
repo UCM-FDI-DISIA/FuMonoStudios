@@ -1,16 +1,18 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "../components/Transform.h"
+#include <sistemas/ComonObjectsFactory.h>
 #include <iostream>
 
 using objListIt = std::array<std::vector<Entity*>, ecs::layer::maxLayerId>::iterator;
 
 namespace ecs {
 	Scene::Scene() :objs_() {
-
+		factory_ = new ComonObjectsFactory(this);
 	}
 	Scene::~Scene() {
 		clearScene();
+		delete factory_;
 		//std::cout << "Se Destruyo correctamente la escena"<<std::endl;
 	}
 
