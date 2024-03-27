@@ -35,7 +35,6 @@
 
 ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), timerTexture_(nullptr),timerEnt_(nullptr)
 {
-	timeFont_ = new Font("recursos/fonts/ARIAL.ttf", 30);
 	timer_ = MINIGAME_TIME;
 #ifdef DEV_TOOLS
 	stampsUnloked_= true;
@@ -46,7 +45,6 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false), 
 
 ecs::MainScene::~MainScene()
 {
-	delete timeFont_;
 	delete mPaqBuild_;
 }
 
@@ -84,12 +82,15 @@ void ecs::MainScene::init()
 {
 	std::cout << "Hola Main" << std::endl;
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
-	//crear objetos
 	timer_ = MINIGAME_TIME;
 	// Fondo
-	Entity* Fondo = addEntity(ecs::layer::BACKGROUND);
-	Fondo->addComponent<Transform>(0, 0, sdlutils().width(), sdlutils().height());
-	Fondo->addComponent<RenderImage>(&sdlutils().images().at("fondoOficina"));
+	factory_->setLayer(layer::BACKGROUND);
+	factory_->createImage(Vector2D(), Vector2D(sdlutils().width(), sdlutils().height()),
+		&sdlutils().images().at("fondoOficina"));
+
+	for (int i = 0; i < 7; i++) {
+		createTubo((pq::Distrito)i);
+	}
 
 	createManual();
 
@@ -99,9 +100,10 @@ void ecs::MainScene::init()
 
 	createPaquete(generalData().getPaqueteLevel());
 
-	for (int i = 0; i < 7; i++) {
-		createTubo((pq::Distrito)i);
-	}
+	createGarbage();
+
+
+	//creacion de las herramientas
 
 	createSelladores();
   
@@ -110,15 +112,9 @@ void ecs::MainScene::init()
 	Entity* cinta = factory_->createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
 	cinta->addComponent<Gravity>();
 	cinta->addComponent<DragAndDrop>();
+	cinta->addComponent<Depth>();
 	factory_->setLayer(ecs::layer::DEFAULT);
 
-	/*TDOO Meter en un metdo */
-	// papelera
-	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
-	papelera->addComponent<Transform>(50, 650, 100, 150);
-	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
-	Trigger* papTrig = papelera->addComponent<Trigger>();
-	papelera->addComponent<PackageChecker>(Erroneo, this);
 }
 
 void ecs::MainScene::close() {
@@ -150,6 +146,7 @@ void ecs::MainScene::createSelladores() {
 
 void ecs::MainScene::createStamp(TipoHerramienta type)
 {
+	if (type > 2) return;
 	constexpr float STAMPSIZE = 102.4f;
 
 	factory_->setLayer(layer::OFFICEELEMENTS);
@@ -223,6 +220,16 @@ void ecs::MainScene::createManual()
 	factory_->setLayer(ecs::layer::DEFAULT);
 
 }
+void ecs::MainScene::createGarbage()
+{
+	/*TDOO Meter en un metdo */
+	// papelera
+	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
+	papelera->addComponent<Transform>(50, 650, 100, 150);
+	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
+	Trigger* papTrig = papelera->addComponent<Trigger>();
+	papelera->addComponent<PackageChecker>(Erroneo, this);
+}
 #ifdef DEV_TOOLS
 
 
@@ -258,17 +265,19 @@ void ecs::MainScene::makeControlsWindow()
 		static bool correcto,fragil, carta = false;
 		ImGui::Checkbox("Custom Package", &customPackage);
 		if (customPackage) {
+			//Los valores pueden ser de 0 a 7
 			ImGui::InputInt("Distrito", &dist);
+			//Los valores pueden ser de 0 a 3
 			ImGui::InputInt("Calle",&calle);
+			//Los valores son de 0 a 4
 			ImGui::InputInt("Tipo",&tipo);
-			ImGui::Checkbox("Correcto", &correcto);
+			ImGui::Checkbox("SelloCorrecto", &correcto);
 			ImGui::InputInt("NivPeso",&nivPeso);
 			ImGui::InputInt("Peso", &peso);
 			ImGui::Checkbox("Fragil", &fragil);
 			ImGui::Checkbox("Carta", &carta);
-			ImGui::InputInt("Peso",&peso);
 		}
-		ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
+		//ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
 		if (ImGui::Button("Create pacage")) {
 			if (customPackage) {
 				mPaqBuild_->customPackage((pq::Distrito)dist,(pq::Calle)calle,"Sujeto de Pruebas", (pq::TipoPaquete)tipo, 
@@ -301,13 +310,7 @@ void ecs::MainScene::makeControlsWindow()
 #endif // DEV_TOOLS
 
 void ecs::MainScene::initTexts() {
-	// inicializamos el timer
-#ifndef DEV_TOOLS
-	timerEnt_ = addEntity(ecs::layer::UI);
-	timerEnt_->addComponent<Transform>(1250, 50, 200, 200);
-	timerEnt_->addComponent<RenderImage>();
-	updateTimer();
-#endif // DEV_TOOLS
+
 }
 
 void ecs::MainScene::updateTimer() {
@@ -328,22 +331,11 @@ void ecs::MainScene::updateTimer() {
 
 	//std::cout << "y: " << y << " x:" << x << std::endl;
 	//std::cout << "horas " << hours << " minutes: " << minutes << std::endl;
-  
-#ifndef DEV_TOOLS
-	if (timerTexture_ != nullptr)
-	{
-		delete timerTexture_;
-		timerTexture_ = nullptr;
-	}
-
-	timerTexture_ = new Texture(sdlutils().renderer(), std::to_string((int)(timer_)), *timeFont_, build_sdlcolor(0x000000ff), 200);
-	timerEnt_->getComponent<RenderImage>()->setTexture(timerTexture_);
-#endif // !DEV_TOOLS
 }
 
 
 void ecs::MainScene::createPaquete (int lv) {
-	auto pac = mPaqBuild_->paqueteRND(lv, this);
+	auto pac = mPaqBuild_->buildPackage(lv, this);
 	pac->addComponent<MoverTransform>(pac->getComponent<Transform>()->getPos()-Vector2D(200,0),
 		1,Easing::EaseOutBack)->enable();
 }

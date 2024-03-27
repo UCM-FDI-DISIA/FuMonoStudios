@@ -113,14 +113,6 @@ void Game::run()
 /// </summary>
 /// <param name="scene"></param>
 
-//void Game::loadScene(ecs::sc::sceneId scene)
-//{
-//	//llamar al init de la escena a cargar????
-//	gameScenes[scene]->init();
-//	//cargamos la escena
-//	loadedScenes.push_back(gameScenes[scene]);
-//}
-
 void Game::loadScene(ecs::sc::sceneId scene)
 {
 #ifdef QA_TOOLS

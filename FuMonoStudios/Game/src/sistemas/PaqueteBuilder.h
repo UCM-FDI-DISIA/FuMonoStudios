@@ -43,7 +43,7 @@ class PaqueteBuilder
 {
 public:
 	//Método al que se llama que devuelve un Paquete generado aleatoriamente 
-	ecs::Entity* paqueteRND(int level, ecs::Scene*);
+	ecs::Entity* buildPackage(int level, ecs::Scene*);
 	//Método al que se llama que devuelve una Carta generada aleatoriamente 
 	ecs::Entity* cartaRND(ecs::Scene*);
 
@@ -69,7 +69,13 @@ private:
 
 
 	ecs::Entity* buildBasePackage(ecs::Scene* mScene);
+	void stdRandPackage(ecs::Entity*, int);
 	void paqueteNPC(ecs::Entity*);
+	/// <summary>
+	/// determina si se debe crear un paquete de nPC
+	/// </summary>
+	/// <returns></returns>
+	bool shouldBuildNPCPackage();
 
 	pq::Distrito distritoRND();	//Método que elige un distrito aleatorio de los que hay
 	pq::TipoPaquete tipoRND();		//Método que elige un tipo de paquete aleatorio entre los que hay

@@ -21,10 +21,10 @@ namespace ecs {
         void switchTimer() { timerPaused_ = !timerPaused_; }
         void setTimer(float time) { timer_ = time; }
 
-        Font* getFont() { return timeFont_; }
         void createPaquete(int lv);
     private:
         void createManual();
+        void createGarbage();
         void createClock();
         void createTubo(pq::Distrito dist);
         void createSelladores();
@@ -36,7 +36,6 @@ namespace ecs {
         int correct_;
         float timer_;
         bool timerPaused_;
-        Font* timeFont_;
         
         int i = 0;
         float timeMultiplier = 1;
