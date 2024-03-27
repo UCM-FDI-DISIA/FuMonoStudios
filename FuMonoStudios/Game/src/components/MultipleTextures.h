@@ -5,14 +5,7 @@
 class Texture;
 
 /*
-Componente que almacena un vector de texturas para una entidad
-Como usar este componente:
-- Poner a la entidad un RenderImage
-- Poner este componente y todas las texturas que se vayan a usar (una a una mediante addTexture() o todas a la vez en un vector
-al ponets el componente)
-- Llamar al init de este componente
-- Llamar al setTexture del RenderImage pasandole getCurrentTexture()
-- Si se quiere pasar a la siguiente o anterior textura llamar al método correspondiente
+SCRIPT OBSOLETO USAR RENDER IMAGE
 */
 class MultipleTextures : public ecs::Component
 {

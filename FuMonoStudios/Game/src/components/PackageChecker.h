@@ -1,5 +1,6 @@
 #pragma once
 #include "../architecture/Component.h"
+#include <scenes/MainScene.h>
 #include "Paquete.h"
 
 #include <list>
@@ -11,7 +12,7 @@ class PackageChecker : public ecs::Component
 {
 public:
 	__CMP_DECL__(ecs::cmp::CHECKER)
-	PackageChecker();
+	PackageChecker(pq::Distrito, ecs::MainScene* sc);
 	~PackageChecker();
 
 	virtual void initComponent();
@@ -23,6 +24,8 @@ public:
 private:
 	bool checkAdditionalConditions(Paquete*);
 
+	pq::Distrito toDis_;
 	std::list<Condition> extraCond_;
+	ecs::MainScene* mainSc_;
 };
 

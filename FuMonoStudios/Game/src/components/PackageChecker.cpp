@@ -9,8 +9,9 @@
 #include "../architecture/GeneralData.h"
 #include <list>
 #include <functional>
+#include <components/ErrorNote.h>
 
-PackageChecker::PackageChecker() : extraCond_()
+PackageChecker::PackageChecker(pq::Distrito dis, ecs::MainScene* sc) : toDis_(dis), extraCond_(),mainSc_(sc)
 {
 
 }
@@ -21,8 +22,11 @@ PackageChecker::~PackageChecker()
 
 void PackageChecker::initComponent()
 {
-	//std::function<void(ecs::Entity*)> call = [this](ecs::Entity* ent) {checkEntity(ent); };
-	//ent_->getComponent<Trigger>()->addCallback(call);
+
+	std::function<void(ecs::Entity*)> call = [this](ecs::Entity* ent) {checkEntity(ent); };
+	Trigger* tri = ent_->getComponent<Trigger>();
+	assert(tri != nullptr);
+	tri->addCallback(call);
 }
 
 void PackageChecker::addCondition(Condition newCond)
@@ -32,37 +36,48 @@ void PackageChecker::addCondition(Condition newCond)
 
 bool PackageChecker::checkPackage(Paquete* package)
 {
-	bool correctPack = false;
-	if (package->correcto() && package->bienSellado()) {
-		correctPack = checkAdditionalConditions(package);
-	}
-	else {
-		//Esto me gustaria cambiarlo luego, es decir, simplemente darle un booleano de papelera o algo. Nos ahorraria tambien el tema de
-		//que tenemos un distrito extra. Por ahora esta asi simplemente porque la refactorizacion que acabo de hacer parece un poco tonta.
-		//Ademas no se siquiera si vamos a hacer que las papeleras tengan condiciones extras Dx
-		//Pero sí que se que podemos dar a un tubo la condicion de papelera (por ejemplo, un dia decir que todos los paqutes malos tienen que ser 
-		//redirigidos a la oficina en x distrito y entonces funciona ambos de papelera para los errones pero normal para el resto)
-		correctPack = checkAdditionalConditions(package);
-	}
-	return correctPack;
+	bool correctPack = package->correcto() && checkAdditionalConditions(package);
+	return  correctPack && package->bienSellado() || (!correctPack && toDis_ == pq::Erroneo);
 }
 
 void PackageChecker::checkEntity(ecs::Entity* ent)
 {
 	//comprobamos si es un paquete
-	Transform* entTr = ent->getComponent<Transform>();
 	if (ent->getComponent<Paquete>() != nullptr) {
+		Vector2D entPos = ent->getComponent<Transform>()->getPos();
 		ent->removeComponent<Gravity>();
-		ent->addComponent<MoverTransform>( // animación básica del paquete llendose
-				entTr->getPos() + Vector2D(0,-600), 1.5, Easing::EaseOutCubic);
-		ent->addComponent<SelfDestruct>(1);
+
+		//animacion de salida del paquete dependiaendo de que sea
+		auto mover = ent->getComponent<MoverTransform>();
+		if (toDis_ != Erroneo) {
+			mover->setEasing(Easing::EaseOutCubic);
+			mover->setFinalPos(entPos+ Vector2D(0, -600));
+			mover->setMoveTime(1.7f);
+		}
+		else {
+			mover->setEasing(Easing::EaseOutCubic);
+			mover->setFinalPos(entPos+ Vector2D(-600, 0));
+			mover->setMoveTime(1);
+		}
+		mover->enable();
+
+		ent->addComponent<SelfDestruct>(1,[this](){
+			if (mainSc_ != nullptr) mainSc_->createPaquete(generalData().getPaqueteLevel());
+			});
+
 		if (checkPackage(ent->getComponent<Paquete>())) {
 
 			GeneralData::instance()->correctPackage();
 		}
 		else {
 			GeneralData::instance()->wrongPackage();
+			auto note = mainSc_->addEntity(ecs::layer::BACKGROUND);
+			note->addComponent<ErrorNote>(ent->getComponent<Paquete>(), toDis_==Erroneo, 
+				toDis_ != ent->getComponent<Paquete>()->getDistrito());
 		}
+#ifdef QA_TOOLS
+		dataCollector().recordPacage(entRec->getComponent<Paquete>());
+#endif // QA_TOOLS
 	}
 }
 

@@ -61,7 +61,7 @@ void Wrap::initComponent() {
 
 	tri_ = ent_->getComponent<Trigger>();
 
-	mul_ = ent_->getComponent<MultipleTextures>();
+	mul_ = ent_->getComponent<RenderImage>();
 
 	restartRoute();
 
@@ -182,7 +182,7 @@ void Wrap::restartRoute() {
 	wrapFase = 0;
 
 	if (!wrapped) {
-		mul_->restartTexture();
+		mul_->setTexture(0);
 	}
 	
 

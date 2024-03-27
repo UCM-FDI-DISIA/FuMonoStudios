@@ -46,7 +46,6 @@
       <Filter>utilsSource</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
-    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
@@ -56,6 +55,7 @@
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="src\components\Depth.cpp" />
     <ClCompile Include="src\components\ErrorNote.cpp" />
+    <ClCompile Include="src\QATools\DataCollector.cpp" />
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
     <ClCompile Include="src\entities\ClockAux.cpp" />
@@ -140,7 +140,6 @@
     </ClInclude>
     <ClInclude Include="src\scenes\ExplorationScene2.h" />
     <ClInclude Include="src\utils\checkML.h" />
-    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_internal.h" />
@@ -151,6 +150,8 @@
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
+    <ClInclude Include="rapidCSV\rapidcsv.h" />
+    <ClInclude Include="src\QATools\DataCollector.h" />
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
     <ClInclude Include="src\entities\ClockAux.h" />

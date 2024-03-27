@@ -3,6 +3,8 @@
 #include "../architecture/Scene.h"
 #include "../components/Transform.h"
 #include "../components/Paquete.h"
+#include <components/Herramientas.h>
+#include "../sistemas/PaqueteBuilder.h"
 
 namespace ecs {
     class Game;
@@ -18,18 +20,16 @@ namespace ecs {
         void init() override;
         void switchTimer() { timerPaused_ = !timerPaused_; }
         void setTimer(float time) { timer_ = time; }
+        void createPaquete(int lv);
     private:
         void createManual();
-
-        void createTubo(Paquete::Distrito dist, bool desbloqueado);
-
+        void createGarbage();
         void createClock();
-
-        void createErrorMessage(Paquete* paqComp, bool, bool);
-
+        void createTubo(pq::Distrito dist, bool);
         void createSelladores();
-        void createPaquete(int lv);
-
+        void createStamp(TipoHerramienta type);
+        
+        void createErrorMessage(Paquete* paqComp, bool, bool);
         void createInks();
 
         int fails_;
@@ -46,9 +46,15 @@ namespace ecs {
         bool weightUnloked_;
         bool cintaUnloked_;
         int timeToAdd_;
+        void makeDataWindow();
+        void makeControlsWindow();
 #endif // DEV_TOOLS
 
-        // objects
+        Entity* timerEnt_;
+        Texture* timerTexture_;
+
+        //El pinche paquete builder para no crear uno en cada paquete
+        PaqueteBuilder* mPaqBuild_;
     };
 }
 

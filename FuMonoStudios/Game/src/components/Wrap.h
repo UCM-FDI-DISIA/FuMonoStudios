@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../architecture/Component.h"
+#include <components/Render.h>
 
 #include <list>
 
@@ -57,7 +58,7 @@ private:
 
 	Trigger* tri_ = nullptr;
 
-	MultipleTextures* mul_ = nullptr;
+	RenderImage* mul_ = nullptr;
 
 	//Ruta con los distintos puntos por los que debe pasar el ratón
 	std::list<int> route;

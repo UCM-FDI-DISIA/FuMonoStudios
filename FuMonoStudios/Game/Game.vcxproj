@@ -92,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,6 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>DEV_TOOLS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,11 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\QATools\DataCollector.cpp" />
     <ClCompile Include="src\entities\ClockAux.cpp" />
     <ClCompile Include="src\architecture\Config.cpp" />
     <ClCompile Include="src\components\DelayedCallback.cpp" />
     <ClCompile Include="src\scenes\ExplorationScene2.cpp" />
-    <ClCompile Include="src\sistemas\PipeFactory.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp" />
     <ClCompile Include="ImGui\backends\imgui_impl_sdlrenderer2.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -199,11 +203,11 @@
     <ClCompile Include="src\architecture\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\QATools\DataCollector.h" />
     <ClInclude Include="src\entities\ClockAux.h" />
     <ClInclude Include="src\architecture\Config.h" />
     <ClInclude Include="src\components\DelayedCallback.h" />
     <ClInclude Include="src\scenes\ExplorationScene2.h" />
-    <ClInclude Include="src\sistemas\PipeFactory.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_sdlrenderer2.h" />
     <ClInclude Include="ImGui\imconfig.h" />
@@ -212,6 +216,7 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="rapidCSV\rapidcsv.h" />
     <ClInclude Include="src\components\ErrorNote.h" />
     <ClInclude Include="src\components\Depth.h" />
     <ClInclude Include="src\sistemas\ComonObjectsFactory.h" />

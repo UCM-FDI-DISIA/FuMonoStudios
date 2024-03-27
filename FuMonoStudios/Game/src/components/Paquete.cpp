@@ -1,3 +1,4 @@
+
 #include "Paquete.h"
 #include "../json/JSON.h"
 #include <memory>
@@ -18,18 +19,25 @@ const int ligeroMax = 25;
 const int medioMax = 50;
 const int pesadoMax = 75;
 
-Paquete::Paquete(Distrito dis, Calle c, std::string remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) : 
+Paquete::Paquete(Paquete& otherPckg)
+{
+	miDistrito_ = otherPckg.miDistrito_;
+	miCalle_ = otherPckg.miCalle_;
+	miRemitente_ = otherPckg.miRemitente_;
+	miTipo_ = otherPckg.miTipo_;
+	selloCorrecto_ = otherPckg.selloCorrecto_;
+	miPeso_ = otherPckg.miPeso_;
+	peso_ = otherPckg.peso_;
+	fragil_ = otherPckg.fragil_;
+	carta_ = otherPckg.carta_;
+	envuelto_ = otherPckg.envuelto_;
+	calleMarcada_ = otherPckg.calleMarcada_;
+	nombreCalle_ = otherPckg.nombreCalle_;
+}
+
+Paquete::Paquete(Distrito dis, Calle c, const std::string& nombreCalle, const std::string& remitente, TipoPaquete Tp, bool corr, NivelPeso Np, int p, bool f, bool cart) :
 	miDistrito_(dis), miCalle_(c), miRemitente_(remitente),miTipo_(Tp),selloCorrecto_(corr), 
-	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea){
-	
-	std::string filename = "recursos/config/mail.direcctions.json";
-	getStreetsFromJSON(filename, Demeter, "Demeter");
-	getStreetsFromJSON(filename, Hefesto, "Hefesto");
-	getStreetsFromJSON(filename, Hestia, "Hestia");
-	getStreetsFromJSON(filename, Artemisa, "Artemisa");
-	getStreetsFromJSON(filename, Hermes, "Hermes");
-	getStreetsFromJSON(filename, Apolo, "Apolo");
-	getStreetsFromJSON(filename, Poseidon, "Poseidon");
+	miPeso_(Np), peso_(p), fragil_(f), carta_(cart),envuelto_(false), calleMarcada_(Erronea), nombreCalle_(nombreCalle) {
 
 }
 
@@ -41,7 +49,7 @@ void Paquete::initComponent() {
 }
 
 bool Paquete::bienSellado() const{
-	return calleMarcada_ == miCalle_;
+	return calleMarcada_ != Erronea && calleMarcada_ == miCalle_;
 }
 bool Paquete::pesoCorrecto() const {
 	bool result = true;
@@ -58,22 +66,20 @@ bool Paquete::pesoCorrecto() const {
 	}
 	return result;
 }
+bool Paquete::correctFragile() const
+{
+	return (!fragil_ && !envuelto_) || (fragil_ && envuelto_);
+}
 bool Paquete::correcto() const{ 
-	//Metodo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendria que devolver al remitente)
-	bool resul = true;
-	if (miCalle_ == Erronea) { //Si la calle es err0nea, el paquete no es correcto
-		resul = false;
-	}
-	if (miDistrito_ == Erroneo) { //Si el distrito es erroneo, el paquete no es correcto
-		resul = false;
-	}
-	else if (!selloCorrecto_) {	//Si el sello de tipo no es correcto, el paquete no es correcto
-		resul = false;
-	}
-	else if (!pesoCorrecto()){	//Si tiene un sello de pesado y su peso no est� entre los valores indicados, el paquete no es correcto
-		resul = false;				
-	}
-	return resul;	//Si ha superdado todas las pruebas exitosamente, el paquete sera correcto y devolvera true. Si en algun momento ha fallado, devolvera false
+	//M�todo que comprueba si el paquete habia sido generado sin errores (AKA: Si da false, eso significa que se tendr�a que devolver al remitente)
+	bool correcto = miCalle_ != Erronea&&
+		miDistrito_ != Erroneo&&
+		selloCorrecto_&&
+		pesoCorrecto()&&
+		correctFragile()
+		;
+
+	return correcto;	//Si ha superdado todas las pruebas exitosamente, el paquete ser� correcto y devolver� true. Si en alg�n momento ha fallado, devolver� false
 }
 
 void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
@@ -90,7 +96,7 @@ void Paquete::sellarCalle(Calle sello, Transform* trSellador) {
 		//Textura en funcion de tipo calle
 		Texture* selloEntTex = &sdlutils().images().at(
 			(std::string)"sello" += 
-			(std::string)(sello == C1 ? "A" : sello == C2 ? "B" : "C"));
+			(std::string)(sello == C1 ? "0" : sello == C2 ? "1" : "2"));
 
 		//creamos transform y colocamos el sello en el centro del sellador
 		float scale = 0.2f;
@@ -113,56 +119,20 @@ std::string Paquete::getDirecction()
 		dir = "Interior - ";
 
 	//creacion de codigo postal
-	if (miDistrito_ == Erroneo)
-		dir += "000\n";
+	//se puede mejorar el fallo si se hace que el codigo postal pase a ser un numero aleatorio
+	if (miDistrito_ == Erroneo) {
+		int rand = sdlutils().rand().nextInt(0, 7);
+		dir += std::bitset<3>(rand).to_string() + "\n";
+	}
 	else
 		dir += std::bitset<3>(miDistrito_ + 1).to_string() + "\n";
 
-	//habria que comprobar si la direccion tiene que ser correcta
-	if (miCalle_ == Erronea)
-		dir += "(CALLE INVENTADA)";
-	else if (miDistrito_ == Erroneo)
-		dir += "(CALLE INVENTADA)";
-	else
-		dir += distritoCalle_[miDistrito_][miCalle_];
+	dir += nombreCalle_;
 
 	return dir;
 }
 
-void Paquete::getStreetsFromJSON(std::string filename, Distrito dist, std::string distString)
-{
-	std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile(filename));
-
-	// check it was loaded correctly
-	// the root must be a JSON object
-	if (jValueRoot == nullptr || !jValueRoot->IsObject()) {
-		throw "Something went wrong while load/parsing '" + filename + "'";
-	}
-
-	// we know the root is JSONObject
-	JSONObject root = jValueRoot->AsObject();
-	JSONValue* jValue = nullptr;
-
-	jValue = root[distString];
-	if (jValue != nullptr) {
-		if (jValue->IsArray()) {
-			distritoCalle_[dist].reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
-			for (auto v : jValue->AsArray()) {
-				if (v->IsString()) {
-					std::string aux = v->AsString();
-#ifdef _DEBUG
-					std::cout << "Loading distrito with id: " << aux << std::endl;
-#endif
-					distritoCalle_[dist].emplace_back(aux);
-				}
-				else {
-					throw "'Calles' array in '" + filename
-						+ "' includes and invalid value";
-				}
-			}
-		}
-		else {
-			throw "'Demeter' is not an array in '" + filename + "'";
-		}
-	}
+void Paquete::giveData(std::ofstream& stream) const{
+	stream << (int)miDistrito_ << "," << miRemitente_ << "," << (int)miCalle_<<"\n";
 }
+

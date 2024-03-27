@@ -2,6 +2,8 @@
 
 #include "../architecture/Component.h"
 #include <unordered_map>
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "../utils/Vector2D.h"
@@ -9,12 +11,7 @@
 
 class Scene;
 
-class Paquete : public ecs::Component
-{
-public:
-	__CMP_DECL__(ecs::cmp::PAQUETE)
-		
-
+namespace pq {
 	/*
 	De locos pero y si lo metemos en un espacio de nombres
 	*/
@@ -34,10 +31,20 @@ public:
 	/// enum con todas los tipos de medici�n de peso que pueden tener los paquetes
 	/// </summary>
 	enum NivelPeso { Ninguno, Bajo, Medio, Alto };
+}
+
+using namespace pq;
+
+class Paquete : public ecs::Component
+{
+public:
+	__CMP_DECL__(ecs::cmp::PAQUETE)
+		
 
 
-
-	Paquete(Distrito, Calle, std::string remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0, bool fragil = false, bool carta = false);
+	Paquete(Paquete&);
+	Paquete(Distrito, Calle, const std::string& nombreCalle,const std::string& remitente, TipoPaquete, bool correcto = true, NivelPeso nivPeso = Ninguno, int peso = 0,
+		bool fragil = false, bool carta = false);
 	~Paquete();
 
 	void initComponent() override;
@@ -61,29 +68,17 @@ public:
 	bool getSelloCorrecto() const { return selloCorrecto_; }
 	bool isCarta() const { return carta_; }
 	bool pesoCorrecto() const;
+	bool correctFragile() const;
+	void giveData(std::ofstream&) const;
 
 private:
-	/// <summary>
-	/// Funcion auxiliar para cargar en el mapa las direcciones
-	/// </summary>
-	/// <param name="filename">direccion del fichero json</param>
-	/// <param name="dist">valor enum del distritio al que pertenece</param>
-	/// <param name="distString">valor string del distrito al que pertenece</param>
-	void getStreetsFromJSON(std::string filename, Distrito dist, std::string distString);
 	//void createSello(std::string texKey, int x, int y, int width, int height); (movido al paqueteBuilder)
 
-	/*
-	*TODO: Meter estos datos en el paquete builder
-	*/
-	/// <summary>
-	/// mapa que relaciona cada distrito con su calle
-	/// usado para la generacion del string de la direccion
-	/// </summary>
-	std::unordered_map<Distrito, std::vector<std::string>> distritoCalle_;
 	//Variables que se generan automaticamente con informaci�n de los paquetes
 	Distrito miDistrito_;	//Variable con el distrito al que es enviado el paquete	
 	std::string miRemitente_;  //Variable con el nombre del remitente
 	Calle miCalle_;			//Variable con la calle a la que es enviada el paquete	
+	std::string nombreCalle_;
 	TipoPaquete miTipo_;		//Variable con el tipo de cargamente que lleva el paquete
 	bool selloCorrecto_;		//Variable que indica si el sello que contiene el paquete es correcto o no
 	NivelPeso miPeso_;		//Variable que indica qu� peso esta marcado en el paquete, o si este peso ni siquera est� marcado

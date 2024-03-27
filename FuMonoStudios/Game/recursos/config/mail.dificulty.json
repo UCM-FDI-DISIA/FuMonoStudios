@@ -1,0 +1,31 @@
+{
+    "lvl0" : {
+        "streetErrorChance": 20,
+        "stampErrorChance": 0,
+        "weightChance" : 0,
+        "weightErrorChance" : 30,
+        "notFragileChance" : 100
+    },
+    "lvl1" : {
+        "streetErrorChance": 20,
+        "stampErrorChance": 35,
+        "weightChance" : 0,
+        "weightErrorChance" : 30,
+        "notFragileChance" : 100
+    },
+    "lvl2" : {
+        "streetErrorChance": 15,
+        "stampErrorChance": 20,
+        "weightChance" : 25,
+        "weightErrorChance" : 30,
+        "notFragileChance" : 100
+    },
+    "lvl3" : {
+        "streetErrorChance": 20,
+        "stampErrorChance": 20,
+        "weightChance" : 20,
+        "weightErrorChance" : 25,
+        "notFragileChance" : 80
+    }
+
+}
