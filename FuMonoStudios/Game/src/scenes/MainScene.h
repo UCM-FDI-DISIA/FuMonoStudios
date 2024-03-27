@@ -52,7 +52,6 @@ namespace ecs {
 #endif // DEV_TOOLS
 
         // objects
-        void initTexts(); // metodo auxiliar para limpio
         Entity* timerEnt_;
         Texture* timerTexture_;
 

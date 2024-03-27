@@ -41,7 +41,6 @@ ecs::MainScene::MainScene():Scene(),fails_(0),correct_(0), timerPaused_(false)
 
 ecs::MainScene::~MainScene()
 {
-	delete timeFont_;
 	delete mPaqBuild_;
 }
 
@@ -130,7 +129,6 @@ void ecs::MainScene::init()
 
 	createClock();
 
-	initTexts();
 
 	//createPaquete(generalData().getPaqueteLevel());
 
@@ -187,7 +185,7 @@ void ecs::MainScene::init()
 	// En el miro había un esquema, pero este estaba con poco detalle, lo suyo es en gdd ver estas cosas, pero se va trabajando en ello
 	int dia = generalData().getDia();
 	if (dia > 0 && dia < 2) {
-		Texture* texturaSellador = &sdlutils().images().at("selladorA");
+		Texture* texturaSellador = &sdlutils().images().at("sellador1");
 		Entity* sellador = addEntity(ecs::layer::STAMP);
 		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width(), texturaSellador->height());
 		transformSellador->setScale(0.4);
@@ -266,7 +264,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleA);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorA"));
+			stampRender->setTexture(&sdlutils().images().at("sellador0"));
 
 		}
 
@@ -296,7 +294,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleB);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorB"));
+			stampRender->setTexture(&sdlutils().images().at("sellador1"));
 
 		}
 
@@ -323,7 +321,7 @@ void ecs::MainScene::createInks() {
 
 			stampHerramienta->setFunctionality(SelloCalleC);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorC"));
+			stampRender->setTexture(&sdlutils().images().at("sellador2"));
 
 		}
 
