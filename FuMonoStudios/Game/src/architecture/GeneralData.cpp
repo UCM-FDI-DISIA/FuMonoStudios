@@ -81,33 +81,33 @@ void GeneralData::readNPCData() {
 	}
 	
 	JSONObject root = jsonFile->AsObject();
-	JSONValue* jValue = nullptr;
+	JSONValue* jValueRoot = nullptr;
 
 	// cargamos los 7 personajes
 
 	for (int i = 0; i < 7; i++)
 	{
-		jValue = root[personajeToString((Personaje)i)];
+		std::string aux = personajeToString((Personaje)i);
+		jValueRoot = root[aux];
 
-		JSONObject jObject = jValue->AsObject();
-		JSONValue felicidadStr = jObject["Felicidad"];
+		JSONObject jObject = jValueRoot->AsObject();
+		std::string felicidadStr = jObject.find("Felicidad")->second->AsString();
 
 		if (i < 2) // npc grandes
 		{
-			npcData.push_back(new NPCMayorData(stringToFelicidad(felicidadStr.AsString())));
+			npcData.push_back(new NPCMayorData(stringToFelicidad(felicidadStr)));
 		}
 		else
 		{
 			std::vector<bool> diasDanEventos;
-			jValue = root["DiasConEvento"];
-			jObject = jValue->AsObject();
-
+			jObject = jValueRoot->AsObject();
+			JSONObject jDiasEvento = jObject.find("DiasConEvento")->second->AsObject();
 			// leemos los 14 booleanos
 			for (int i = 0; i < 14; i++)
 			{
-				diasDanEventos.push_back(jObject[std::to_string(i)]);
+				diasDanEventos.push_back(jDiasEvento.find(std::to_string(i + 1))->second);
 			}
-			npcData.push_back(new NPCMenorData(stringToFelicidad(felicidadStr.AsString()),diasDanEventos));
+			npcData.push_back(new NPCMenorData(stringToFelicidad(felicidadStr),diasDanEventos));
 		}
 		
 	}
