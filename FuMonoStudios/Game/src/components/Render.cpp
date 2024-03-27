@@ -16,8 +16,8 @@ void RenderImage::initComponent() {
 }
 
 void RenderImage::render() const {
-
-	mTexture_->render(mTr_->getRect(), mTr_->getRotation());
+	if (mTexture_ != nullptr)
+		mTexture_->render(mTr_->getRect(), mTr_->getRotation());
 }
 
 void RenderImage::setTexture(Texture* texture)

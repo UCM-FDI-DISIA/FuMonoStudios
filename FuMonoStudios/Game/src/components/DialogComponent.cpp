@@ -7,18 +7,22 @@
 #include "Transform.h"
 #include "Render.h"
 #include "DelayedCallback.h"
+#include "../scenes/ExplorationScene.h"
 
-DialogComponent::DialogComponent(DialogManager* manager): mTr_(nullptr), mRend_(nullptr),
-	dialogueWidth_(sdlutils().width() - 300),dialogueIndex_(1),mTexture_(nullptr),
+DialogComponent::DialogComponent(DialogManager* manager, ecs::ExplorationScene* Scene): 
+	mTr_(nullptr), mRend_(nullptr),
+	dialogueWidth_(sdlutils().width() - 400),dialogueIndex_(1),mTexture_(nullptr),
 	canSkip(true), endDialogue(false)
 {
 	mDialogMngr_ = manager;
+	scene_ = Scene;
 	mFont_ = new Font("recursos/fonts/ARIAL.ttf", 40);
 }
 
 DialogComponent::~DialogComponent()
 {
 	delete mFont_;
+	delete mTexture_;
 }
 
 void DialogComponent::initComponent()
@@ -38,6 +42,7 @@ void DialogComponent::update()
 		//avance al siguiente caracter
 		if (dialogueIndex_ < mDialogMngr_->getCurrentDialog().size())
 			dialogueIndex_++;
+
 		lastTimePaused_ = sdlutils().virtualTimer().currTime();
 	}
 
@@ -59,7 +64,10 @@ void DialogComponent::update()
 
 			if (endDialogue)
 			{
-				ent_->getComponent<Transform>()->getParentEnt()->setAlive(false);
+				if (mTexture_ != nullptr)
+				{
+					scene_->closeConversation();
+				}
 			}
 		}
 		//Sacar todo el diálogo antes de que acabe de escribirse

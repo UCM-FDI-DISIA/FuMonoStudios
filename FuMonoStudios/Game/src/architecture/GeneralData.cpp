@@ -5,6 +5,7 @@
 #include <fstream>
 #include "../json/JSON.h"
 #include "../json/JSONValue.h"
+#include "../sdlutils/RandomNumberGenerator.h"
 
 GeneralData::GeneralData()
 {
@@ -208,7 +209,7 @@ GeneralData::NPCMenorData::NPCMenorData(Felicidad Felicidad, std::vector<bool> D
 	diasDanEvento = DiasDanEvento;
 }
 
-std::pair<const std::string&, int> GeneralData::NPCMenorData::getDialogueInfo() {
+std::pair<const std::string, int> GeneralData::NPCMenorData::getDialogueInfo() {
 	
 	std::string tipo;
 	int iterationNum = -1;
@@ -220,6 +221,8 @@ std::pair<const std::string&, int> GeneralData::NPCMenorData::getDialogueInfo() 
 	else if (giveEvent)
 	{
 		tipo = "Eventos";
+		RandomNumberGenerator a;
+		iterationNum = a.nextInt(1, 6);
 	}
 	else
 	{
@@ -274,7 +277,7 @@ GeneralData::NPCMayorData::NPCMayorData(Felicidad Felicidad) {
 	postConversation = false;
 }
 
-std::pair<const std::string&, int> GeneralData::NPCMayorData::getDialogueInfo() {
+std::pair<const std::string, int> GeneralData::NPCMayorData::getDialogueInfo() {
 	std::string aux;
 
 	switch (felicidad)
@@ -289,6 +292,7 @@ std::pair<const std::string&, int> GeneralData::NPCMayorData::getDialogueInfo() 
 		default:
 			aux = postConversation ?
 				"PostConversacionDia" : "Dia";
+			aux = aux + std::to_string(generalData().getDia());
 			postConversation = true;
 			break;
 	}

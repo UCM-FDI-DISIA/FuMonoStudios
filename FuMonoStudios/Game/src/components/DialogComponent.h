@@ -15,6 +15,9 @@ class RenderImage;
 class Font;
 class DialogManager;
 class Texture;
+namespace ecs {
+    class ExplorationScene;
+}
 
 /*
 Componente que gestiona el renderizado del texto segun la iformacion que le pasa el dialogManager
@@ -28,7 +31,7 @@ public:
     __CMP_DECL__(ecs::cmp::DIALOGUE)
 
     //mas adelante hacer que la fuente se inicie solaz
-    DialogComponent(DialogManager* manager);
+    DialogComponent(DialogManager* manager, ecs::ExplorationScene* scene);
     ~DialogComponent();
     void initComponent()override;
     void update()override;
@@ -41,6 +44,8 @@ private:
     Transform* mTr_;
     RenderImage* mRend_;
     DialogManager* mDialogMngr_;
+
+    ecs::ExplorationScene* scene_;
 
     Font* mFont_;
     Texture* mTexture_;

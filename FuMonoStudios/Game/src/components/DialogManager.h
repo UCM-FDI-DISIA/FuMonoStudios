@@ -53,6 +53,7 @@ public:
     void setDialogues(const GeneralData::Personaje pers, const std::string& tipoDialogo, int dialogueSelection);
     void setDialogues(const GeneralData::Personaje a, const std::string& t) { setDialogues(a, t, -1); }
 private:
+    std::string crearTildes(std::string aux);
     /// <summary>
     /// Vector donde se almacenan todos los diálogos que se van a soltar
     /// </summary>

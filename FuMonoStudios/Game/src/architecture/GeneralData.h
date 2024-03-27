@@ -43,7 +43,7 @@ public:
 	// LO DE LOS DIALOGOS
 	struct NPCdata {
 		Felicidad felicidad;
-		virtual std::pair<const std::string&, int> getDialogueInfo() = 0;
+		virtual std::pair<const std::string, int> getDialogueInfo() = 0;
 
 		// esto solo lo usa el NPCmenor
 		virtual void iterateDialogues() = 0;
@@ -53,7 +53,7 @@ public:
 	struct NPCMenorData : public NPCdata {
 		NPCMenorData(Felicidad Felicidad, std::vector<bool> DiasDanEvento);
 
-		std::pair<const std::string&, int> getDialogueInfo() override;
+		std::pair<const std::string, int> getDialogueInfo() override;
 		void iterateDialogues() override;
 		void setupDayData() override;
 	private:
@@ -69,7 +69,7 @@ public:
 	struct NPCMayorData : public NPCdata {
 		NPCMayorData(Felicidad Felicidad);
 
-		std::pair<const std::string&, int> getDialogueInfo() override;
+		std::pair<const std::string, int> getDialogueInfo() override;
 		void iterateDialogues() override {};
 		void setupDayData() override;
 	private:
