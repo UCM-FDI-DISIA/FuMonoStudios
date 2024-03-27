@@ -25,9 +25,9 @@
     {"id": "sello0","file": "recursos/images/SelloRojo.png"},
     {"id": "sello1","file": "recursos/images/SelloAzul.png"},
     {"id": "sello2","file": "recursos/images/SelloVerde.png"},
-    {"id": "tintaA","file": "recursos/images/tintaRoja.png"},
-    {"id": "tintaB","file": "recursos/images/tintaAzul.png"},
-    {"id": "tintaC","file": "recursos/images/tintaVerde.png"},
+    {"id": "tinta0","file": "recursos/images/tintaRoja.png"},
+    {"id": "tinta1","file": "recursos/images/tintaAzul.png"},
+    {"id": "tinta2","file": "recursos/images/tintaVerde.png"},
 
     {"id": "press","file": "recursos/images/SDL_logo.png"},
 

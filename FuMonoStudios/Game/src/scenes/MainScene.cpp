@@ -126,6 +126,7 @@ void ecs::MainScene::init()
 
 	int dia = generalData().getDia();
 	if (dia > 0 && dia < 2) {
+		/*
 		Texture* texturaSellador = &sdlutils().images().at("sellador0");
 		Entity* sellador = addEntity(ecs::layer::STAMP);
 		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width(), texturaSellador->height());
@@ -135,6 +136,10 @@ void ecs::MainScene::init()
 		sellador->addComponent<DragAndDrop>();
 		sellador->addComponent<Herramientas>();
 		sellador->getComponent<Herramientas>()->setFunctionality(TipoHerramienta::SelloCalleA);
+		*/
+
+		createStamp(SelloCalleA);
+		
 	}
 	else if (dia >= 2 && dia < 4) {
 		Texture* texturaCinta = &sdlutils().images().at("cinta");
@@ -247,10 +252,6 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 
 }
 
-void ecs::MainScene::createSelladores() {
-	createStamp(SelloCalleA);
-}
-
 void ecs::MainScene::createStamp(TipoHerramienta type)
 {
 	if (type > 2) return;
@@ -262,9 +263,14 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 		Vector2D(sdlutils().images().at("sellador" + std::to_string(type)).width() * STAMPSIZE, sdlutils().images().at("sellador" + std::to_string(type)).height() * STAMPSIZE),
 		& sdlutils().images().at("sellador" + std::to_string(type)));
 
-	stamp->addComponent<DragAndDrop>();
 
 	stamp->addComponent<Gravity>();
+
+	stamp->addComponent<Depth>();
+
+	stamp->addComponent<DragAndDrop>();
+
+	
 
 	Herramientas* herrSelladorA = stamp->addComponent<Herramientas>();
 	herrSelladorA->setFunctionality(type);

@@ -26,11 +26,11 @@ namespace ecs {
         void createGarbage();
         void createClock();
         void createTubo(pq::Distrito dist, bool);
-        void createSelladores();
         void createStamp(TipoHerramienta type);
         
         void createErrorMessage(Paquete* paqComp, bool, bool);
         void createInks();
+        void createOneInk(TipoHerramienta type);
 
         int fails_;
         int correct_;
