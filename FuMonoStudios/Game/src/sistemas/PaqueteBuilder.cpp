@@ -31,16 +31,7 @@ PaqueteBuilder::~PaqueteBuilder() {
 ecs::Entity* PaqueteBuilder::buildPackage(int level, ecs::Scene* mScene) {
 	
 	auto packageBase = buildBasePackage(mScene);
-
-	//por si queremos desactivar las herramientas segun el nivel
-	packageBase->getComponent<Trigger>()->addCallback([packageBase](ecs::Entity* entRec) {
-		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
-		if (herrEnt != nullptr)
-		{
-			herrEnt->interact(packageBase);
-		}
-	});
-
+	
 	//decision de si el paquete que saldrá es de NPC
 	if (!shouldBuildNPCPackage()) {
 		stdRandPackage(packageBase, level);
@@ -110,10 +101,19 @@ ecs::Entity* PaqueteBuilder::buildBasePackage(ecs::Scene* mScene)
 		&sdlutils().images().at("caja100")
 	};
 	auto packageBase = factory->createMultiTextureImage(Vector2D(1600.0f, 600.0f), Vector2D(320.5f, 245.5), textures);
-
+	//interaccion y fisicas
 	packageBase->addComponent<Depth>();
 	packageBase->addComponent<Gravity>();
 	DragAndDrop* drgPq = packageBase->addComponent<DragAndDrop>(true);
+	//herramientas
+	packageBase->getComponent<Trigger>()->addCallback([packageBase](ecs::Entity* entRec) {
+		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
+		if (herrEnt != nullptr)
+		{
+			herrEnt->interact(packageBase);
+		}
+		});
+
 	packageBase->addComponent<MoverTransform>(packageBase->getComponent<Transform>()->getPos() - Vector2D(200, 0),
 		1, Easing::EaseOutBack)->disable();
 	return packageBase;
