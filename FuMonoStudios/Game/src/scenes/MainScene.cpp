@@ -111,12 +111,7 @@ void ecs::MainScene::init()
 	createInks();
   
   	//cinta envolver
-	factory_->setLayer(ecs::layer::TAPE);
-	Entity* cinta = factory_->createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
-	cinta->addComponent<Gravity>();
-	cinta->addComponent<DragAndDrop>();
-	cinta->addComponent<Depth>();
-	factory_->setLayer(ecs::layer::DEFAULT);
+	createCinta();
 
 	//Luis: dejo esto comentado porque con la refactorizacion se va a poder hacer de forma mas elegante
 
@@ -263,17 +258,25 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 		Vector2D(sdlutils().images().at("sellador" + std::to_string(type)).width() * STAMPSIZE, sdlutils().images().at("sellador" + std::to_string(type)).height() * STAMPSIZE),
 		& sdlutils().images().at("sellador" + std::to_string(type)));
 
-
 	stamp->addComponent<Gravity>();
-
 	stamp->addComponent<Depth>();
-
 	stamp->addComponent<DragAndDrop>();
-
-	
 
 	Herramientas* herrSelladorA = stamp->addComponent<Herramientas>();
 	herrSelladorA->setFunctionality(type);
+
+	factory_->setLayer(ecs::layer::DEFAULT);
+}
+
+void ecs::MainScene::createCinta() {
+
+	factory_->setLayer(ecs::layer::TAPE);
+	Entity* cinta = factory_->createImage(Vector2D(560, 500), Vector2D(100, 150), &sdlutils().images().at("cinta"));
+	cinta->addComponent<Gravity>();
+	cinta->addComponent<DragAndDrop>();
+	cinta->addComponent<Depth>();
+	factory_->setLayer(ecs::layer::DEFAULT);
+
 }
 
 void ecs::MainScene::createTubo(pq::Distrito dist,bool unlock) {

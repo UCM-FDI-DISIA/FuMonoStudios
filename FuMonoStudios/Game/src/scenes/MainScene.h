@@ -25,6 +25,7 @@ namespace ecs {
         void createManual();
         void createGarbage();
         void createClock();
+        void createCinta();
         void createTubo(pq::Distrito dist, bool);
         void createStamp(TipoHerramienta type);
         
