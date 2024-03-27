@@ -97,6 +97,18 @@
       "file": "recursos/images/SelloVerde.png"
     },
     {
+      "id": "tintaA",
+      "file": "recursos/images/tintaRoja.png"
+    },
+    {
+      "id": "tintaB",
+      "file": "recursos/images/tintaAzul.png"
+    },
+    {
+      "id": "tintaC",
+      "file": "recursos/images/tintaVerde.png"
+    },
+    {
       "id": "press",
       "file": "recursos/images/SDL_logo.png"
     },
@@ -105,8 +117,32 @@
       "file": "recursos/images/Alimentos.png"
     },
     {
+      "id": "selloAlimentoF0",
+      "file": "recursos/images/Alimentos_Falso1.png"
+    },
+    {
+      "id": "selloAlimentoF1",
+      "file": "recursos/images/Alimentos_Falso2.png"
+    },
+    {
+      "id": "selloAlimentoF2",
+      "file": "recursos/images/Alimentos_Falso3.png"
+    },
+    {
       "id": "selloArmamento",
       "file": "recursos/images/Armas.png"
+    },
+    {
+      "id": "selloArmamentoF0",
+      "file": "recursos/images/Armas_Falso1.png"
+    },
+    {
+      "id": "selloArmamentoF1",
+      "file": "recursos/images/Armas_Falso2.png"
+    },
+    {
+      "id": "selloArmamentoF2",
+      "file": "recursos/images/Armas_Falso3.png"
     },
     {
       "id": "selloFragil",
@@ -117,12 +153,48 @@
       "file": "recursos/images/Joyas.png"
     },
     {
+      "id": "selloJoyasF0",
+      "file": "recursos/images/Joyas_Falso1.png"
+    },
+    {
+      "id": "selloJoyasF1",
+      "file": "recursos/images/Joyas_Falso2.png"
+    },
+    {
+      "id": "selloJoyasF2",
+      "file": "recursos/images/Joyas_Falso3.png"
+    },
+    {
       "id": "selloMateriales",
       "file": "recursos/images/Materiales.png"
     },
     {
+      "id": "selloMaterialesF0",
+      "file": "recursos/images/Materiales_Falso1.png"
+    },
+    {
+      "id": "selloMaterialesF1",
+      "file": "recursos/images/Materiales_Falso2.png"
+    },
+    {
+      "id": "selloMaterialesF2",
+      "file": "recursos/images/Materiales_Falso3.png"
+    },
+    {
       "id": "selloMedicinas",
       "file": "recursos/images/Medicina.png"
+    },
+    {
+      "id": "selloMedicinasF0",
+      "file": "recursos/images/Medicina_Falso1.png"
+    },
+    {
+      "id": "selloMedicinasF1",
+      "file": "recursos/images/Medicina_Falso2.png"
+    },
+    {
+      "id": "selloMedicinasF2",
+      "file": "recursos/images/Medicina_Falso3.png"
     },
     {
       "id": "selloPesoAlto",

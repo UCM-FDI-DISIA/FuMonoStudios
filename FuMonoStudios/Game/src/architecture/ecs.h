@@ -61,6 +61,7 @@ namespace ecs {
 			DEFAULT,
 			BIN,
 			PACKAGE,
+			INK,
 			STAMP,
 			OFFICEELEMENTS,
 			TAPE,

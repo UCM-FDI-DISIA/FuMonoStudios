@@ -96,6 +96,10 @@ void PaqueteBuilder::addVisualElements(ecs::Entity* paq) {
 		miTipo == Paquete::Joyas ? "selloJoyas" :
 		miTipo == Paquete::Materiales ? "selloMateriales" :
 		miTipo == Paquete::Armamento ? "selloArmamento" : "Desconocido");
+	if (!paqComp->getSelloCorrecto()) {
+		std::string rnd = std::to_string(sdlutils().rand().nextInt(0, 3));		
+		tipoString += "F" + rnd;		
+	}
 	crearSello(paq, tipoString, TIPO_SELLO_POS_X, TIPO_SELLO_POS_Y, TIPO_SELLO_SIZE, TIPO_SELLO_SIZE);
 
 	//Creamos la entidad Peso sello 

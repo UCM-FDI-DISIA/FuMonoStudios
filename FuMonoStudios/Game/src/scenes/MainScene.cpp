@@ -143,7 +143,9 @@ void ecs::MainScene::init()
 		createTubo((Paquete::Distrito)z, false);
 	}
 
-	createSelladores();
+	//createSelladores();
+
+	createInks();
   
   	//cinta envolver
 	factory.setLayer(ecs::layer::TAPE);
@@ -183,8 +185,9 @@ void ecs::MainScene::init()
 	int dia = generalData().getDia();
 	if (dia > 0 && dia < 2) {
 		Texture* texturaSellador = &sdlutils().images().at("selladorA");
-		Entity* sellador = addEntity();
-		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width() / 2, texturaSellador->height() / 2);
+		Entity* sellador = addEntity(ecs::layer::STAMP);
+		Transform* transformSellador = sellador->addComponent<Transform>(560, 0, texturaSellador->width(), texturaSellador->height());
+		transformSellador->setScale(0.4);
 		RenderImage* renderSellador = sellador->addComponent<RenderImage>(texturaSellador);
 		sellador->addComponent<Gravity>();
 		sellador->addComponent<DragAndDrop>();
@@ -233,11 +236,96 @@ void ecs::MainScene::close() {
 }
 
 void ecs::MainScene::createClock() {
-	Entity* clock = addEntity(layer::BACKGROUND);
-	clock->addComponent<Transform>(1140, 510, 210, 140, 0);
-	clock->addComponent<RenderImage>(&sdlutils().images().at("reloj"));
-	//clockCenter = clock->getComponent<Transform>()->getCenter();
+	Entity* clock = addEntity(ecs::layer::BACKGROUND);
 	clock->addComponent<ClockAux>(MINIGAME_TIME);
+}
+
+void ecs::MainScene::createInks() {
+
+	// Tinta rojo (1)
+	Entity* inkA = addEntity(layer::INK);
+	Texture* inkATex = &sdlutils().images().at("tintaA");
+	Transform* selloATR = inkA->addComponent<Transform>(300, 500, inkATex->width(), inkATex->height());
+
+	selloATR->setScale(0.5);
+
+	inkA->addComponent<RenderImage>(inkATex);
+
+	Trigger* inkATri = inkA->addComponent<Trigger>();
+
+	inkATri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleA);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorA"));
+
+		}
+
+	});
+
+	
+
+
+	// Tinta azul (2)
+	Entity* inkB = addEntity(layer::INK);
+	Texture* inkBTex = &sdlutils().images().at("tintaB");
+	Transform* selloBTR = inkB->addComponent<Transform>(425, 500, inkBTex->width(), inkBTex->height());
+
+	selloBTR->setScale(0.5);
+
+	inkB->addComponent<RenderImage>(inkBTex);
+
+	Trigger* inkBTri = inkB->addComponent<Trigger>();
+
+	inkBTri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleB);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorB"));
+
+		}
+
+	});
+
+	// Tinta verde (3)
+	Entity* inkC = addEntity(layer::INK);
+	Texture* inkCTex = &sdlutils().images().at("tintaC");
+	Transform* selloCTR = inkC->addComponent<Transform>(550, 500, inkCTex->width(), inkCTex->height());
+
+	selloCTR->setScale(0.5);
+
+	inkC->addComponent<RenderImage>(inkCTex);
+
+	Trigger* inkCTri = inkC->addComponent<Trigger>();
+
+	inkCTri->addCallback([this](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::STAMP) {
+
+			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
+
+			RenderImage* stampRender = entRec->getComponent<RenderImage>();
+
+			stampHerramienta->setFunctionality(SelloCalleC);
+
+			stampRender->setTexture(&sdlutils().images().at("selladorC"));
+
+		}
+
+		});
+
 }
 
 
@@ -263,21 +351,12 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 	distritoRender->setTexture(textureText_);
 	distritoTr->setParent(NotaErronea->getComponent<Transform>());
 
-	Entity* manecillaL = addEntity(layer::BACKGROUND);
-	//trManecillaL = manecillaL->addComponent<Transform>(1230, 555, 25, 40);
-	manecillaL->addComponent<RenderImage>(&sdlutils().images().at("manecillaL"));
-
-	Entity* manecillaS = addEntity(layer::BACKGROUND);
-	//trManecillaS = manecillaS->addComponent<Transform>(1235, 580, 25, 15, 0);
-	manecillaS->addComponent<RenderImage>(&sdlutils().images().at("manecillaS"));
-
-
 	NotaErronea->addComponent<MoverTransform>(Vector2D(100, 880), 0.5, Easing::EaseOutCubic);
 
 }
 
 void ecs::MainScene::createSelladores() {
-	float scaleSelladores = 0.2f;
+	float scaleSelladores = 0.5f;
 
 	// Sellador rojo (1)
 	Entity* selloA = addEntity(layer::STAMP);
