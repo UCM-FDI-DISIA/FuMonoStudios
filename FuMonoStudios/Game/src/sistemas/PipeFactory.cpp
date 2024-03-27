@@ -9,16 +9,16 @@ void PipeFactory::createPipes(ecs::MainScene* mScene) {
 	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
 	int j = 0;
 	for (int i = 0; i < numTubos; i++) {
-		createPipe(mScene, (Paquete::Distrito)i, true);
+		createPipe(mScene, (pq::Distrito)i, true);
 		j++;
 	}
 	//Creación de paquetes bloqueados
 	for (int z = j; z < 7; z++) {
-		createPipe(mScene, (Paquete::Distrito)z, false);
+		createPipe(mScene, (pq::Distrito)z, false);
 	}
 }
 
-void PipeFactory::createPipe(ecs::MainScene* mScene, Paquete::Distrito toDis, bool disponible) {
+void PipeFactory::createPipe(ecs::MainScene* mScene, pq::Distrito toDis, bool disponible) {
 	float scaleTubos = 0.3f;
 	ecs::Entity* tuboEnt = mScene->addEntity(ecs::layer::BACKGROUND);
 	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(toDis + 1));
@@ -29,7 +29,7 @@ void PipeFactory::createPipe(ecs::MainScene* mScene, Paquete::Distrito toDis, bo
 
 	if (disponible) {
 		Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>();
+		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(toDis);
 		tuboTri->addCallback([this, mScene, toDis, tuboCheck](ecs::Entity* entRec) {
 			//comprobamos si es un paquete
 			Transform* entTr = entRec->getComponent<Transform>();

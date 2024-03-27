@@ -347,9 +347,9 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 	tuboTr->setScale(scaleTubos);
 	tuboEnt->addComponent<RenderImage>(texTubo);
 
-	if (desbloqueado) {
+	//if (desbloqueado) {
 		Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>();
+		PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist);
 		tuboTri->addCallback([this, dist, tuboCheck](ecs::Entity* entRec) {
 			//comprobamos si es un paquete
 			Transform* entTr = entRec->getComponent<Transform>();
@@ -388,7 +388,8 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 		tuboCheck->addCondition([dist](Paquete* paqRec) -> bool {
 			return paqRec->getDistrito() == dist;
 			});
-	}
+	//}
+	/*
 	else {
 		Entity* cruzEnt = addEntity(ecs::layer::UI);
 		Texture* texCruz = &sdlutils().images().at("cruz");
@@ -397,6 +398,7 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 		cruzTr->setScale(0.2f);
 		cruzEnt->addComponent<RenderImage>(texCruz);
 	}
+	*/
 
 #ifdef _DEBUG
 	std::cout << "Creado el tubo  " << dist << std::endl;
@@ -406,15 +408,15 @@ void ecs::MainScene::createTubo(pq::Distrito dist) {
 
 void ecs::MainScene::createManual()
 {
-	constexpr int MANUALNUMPAGES = 5;
-	constexpr float MANUAL_WIDTH = 670;
-	constexpr float MANUAL_HEITH = 459;
+	constexpr int MANUALNUMPAGES = 7;
+	constexpr float MANUAL_WIDTH = 570;
+	constexpr float MANUAL_HEITH = 359;
 
 	Texture* buttonTexture = &sdlutils().images().at("flechaTest");
 	//creado array de texturas par el libro
 	std::vector<Texture*> bookTextures;
 	bookTextures.reserve(MANUALNUMPAGES);
-	for (int i = 1; i <= 5; i++) {
+	for (int i = 1; i <= MANUALNUMPAGES; i++) {
 		bookTextures.emplace_back(&sdlutils().images().at("book"+std::to_string(i)));
 	}
 	factory_->setLayer(ecs::layer::MANUAL);

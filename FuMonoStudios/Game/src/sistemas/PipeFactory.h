@@ -27,7 +27,7 @@ public:
 	/// <param name="mScene"> Reference to Scene to build on </param>
 	void createPipes(ecs::MainScene* mScene);
 private:
-	void createPipe(ecs::MainScene*, Paquete::Distrito, bool);
+	void createPipe(ecs::MainScene*, pq::Distrito, bool);
 	//void addExtraConditions(); Pa luego, hay que hablar de arquitectura y de porros
 
 	//std::vector<int> currentExtraConditions;
