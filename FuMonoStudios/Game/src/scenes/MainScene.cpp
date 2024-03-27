@@ -112,33 +112,13 @@ void ecs::MainScene::init()
 	cinta->addComponent<DragAndDrop>();
 	factory_->setLayer(ecs::layer::DEFAULT);
 
+	/*TDOO Meter en un metdo */
 	// papelera
 	Entity* papelera = addEntity(ecs::layer::FOREGROUND);
 	papelera->addComponent<Transform>(50, 650, 100, 150);
 	papelera->addComponent<RenderImage>(&sdlutils().images().at("papelera"));
 	Trigger* papTrig = papelera->addComponent<Trigger>();
-	papTrig->addCallback([this](ecs::Entity* entRec) {
-		Paquete* paqComp = entRec->getComponent<Paquete>();
-		if (paqComp != nullptr)
-		{
-			if (paqComp->correcto())
-			{
-				generalData().wrongPackage();
-				fails_++;
-				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
-				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), true, false);
-			}
-				
-			else
-			{ 
-				generalData().correctPackage();
-				correct_++;
-			}
-			
-			entRec->setAlive(false);
-			createPaquete(generalData().getPaqueteLevel());
-		}
-		});
+	papelera->addComponent<PackageChecker>(Erroneo, this);
 }
 
 void ecs::MainScene::close() {
@@ -191,52 +171,19 @@ void ecs::MainScene::createStamp(TipoHerramienta type)
 }
 
 void ecs::MainScene::createTubo(pq::Distrito dist) {
-	float scaleTubos = 0.3f;
+	constexpr float TUBE_WIDTH = 138;
+	constexpr float TUBE_HEITH = 282;
+	constexpr float TUBES_X_OFFSET = 200;
+	constexpr float DISTANCE_BETWEEN_TUBES = 220;
+	factory_->setLayer(ecs::layer::BACKGROUND);
 	
-	Entity* tuboEnt = addEntity(ecs::layer::BACKGROUND);
-	Texture* texTubo = &sdlutils().images().at("tubo" + std::to_string(dist + 1));
-
-	Transform* tuboTr = tuboEnt->addComponent<Transform>(75 + (220 * dist), -40, texTubo->width(), texTubo->height());
-	tuboTr->setScale(scaleTubos);
-	tuboEnt->addComponent<RenderImage>(texTubo);
+	Entity* tuboEnt = factory_->createImage(
+		Vector2D(TUBES_X_OFFSET + (DISTANCE_BETWEEN_TUBES * dist), - 40),
+		Vector2D(TUBE_WIDTH,TUBE_HEITH), 
+		&sdlutils().images().at("tubo" + std::to_string(dist + 1)));
 
 	Trigger* tuboTri = tuboEnt->addComponent<Trigger>();
-	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist);
-	tuboTri->addCallback([this, dist,tuboCheck](ecs::Entity* entRec) {
-		//comprobamos si es un paquete
-		Transform* entTr = entRec->getComponent<Transform>();
-		if (entRec->getComponent<Paquete>() != nullptr) {
-			entRec->removeComponent<Gravity>();
-			//entRec->addComponent<MoverTransform>( // animación básica del paquete llendose
-			//	entTr->getPos() + Vector2D(0, -600), 1.5, Easing::EaseOutCubic);
-			auto mover = entRec->getComponent<MoverTransform>();
-			mover->setEasing(Easing::EaseOutCubic);
-			mover->setFinalPos(entTr->getPos() + Vector2D(0, -600));
-			//mover->setMoveTime(1.7f);
-			mover->enable();
-
-			entRec->addComponent<SelfDestruct>(1, [this]() {
-				generalData().correctPackage();
-				createPaquete(generalData().getPaqueteLevel());
-				});
-			if (tuboCheck->checkPackage(entRec->getComponent<Paquete>())) {
-				correct_++;
-			}
-			else {
-				fails_++;
-				Entity* NotaErronea = addEntity(ecs::layer::BACKGROUND);
-				NotaErronea->addComponent<ErrorNote>(entRec->getComponent<Paquete>(), false, dist != entRec->getComponent<Paquete>()->getDistrito());
-			}
-			/*
-			Recogida de datos del paquete enviado (no esta implementado el revisar si era correcto o no
-			*/
-#ifdef QA_TOOLS
-			dataCollector().recordPacage(entRec->getComponent<Paquete>());
-#endif // QA_TOOLS
-			std::cout << "crazy! " << dist << std::endl;
-		}
-
-		});
+	PackageChecker* tuboCheck = tuboEnt->addComponent<PackageChecker>(dist,this);
 }
 
 void ecs::MainScene::createManual()
@@ -286,10 +233,10 @@ void ecs::MainScene::makeDataWindow()
 	std::string time = "Current Game Time: " + std::to_string(timer_);
 	ImGui::Text(time.c_str());
 	//Contador de aciertos
-	std::string data = "Aciertos: " + std::to_string(correct_);
+	std::string data = "Aciertos: " + std::to_string(generalData().getCorrects());
 	ImGui::Text(data.c_str());
 	//contador de Fallos
-	data = "Fallos: " + std::to_string(fails_);
+	data = "Fallos: " + std::to_string(generalData().getFails());
 	ImGui::Text(data.c_str());
 	//Nivel de los paquetes
 	data = "Pacage Level: " + std::to_string(generalData().getPaqueteLevel());
@@ -338,9 +285,6 @@ void ecs::MainScene::makeControlsWindow()
 		int lvl = generalData().getPaqueteLevel();
 		ImGui::InputInt("Nivel del Paquete", &lvl);
 		generalData().setPaqueteLevel(lvl);
-		//ImGui::Checkbox("Sellos",&stampsUnloked_);
-		//ImGui::Checkbox("Peso",&weightUnloked_);
-		//ImGui::Checkbox("Cinta", &cintaUnloked_);
 	}
 	if (ImGui::CollapsingHeader("Tiempo")) {
 		if (ImGui::Button("Reset Timer")) {
@@ -399,9 +343,6 @@ void ecs::MainScene::updateTimer() {
 
 
 void ecs::MainScene::createPaquete (int lv) {
-	/*podriamos hacer que lo que le pases al paquete builder sean las estadisticas o un json 
-	con las configuraciones de los niveles de dificultad y tener un constructora a parte que nos permita crear paquetes con configuraciones
-	personalizadas*/
 	auto pac = mPaqBuild_->paqueteRND(lv, this);
 	pac->addComponent<MoverTransform>(pac->getComponent<Transform>()->getPos()-Vector2D(200,0),
 		1,Easing::EaseOutBack)->enable();

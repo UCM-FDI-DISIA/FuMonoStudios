@@ -22,13 +22,13 @@ namespace ecs {
         void setTimer(float time) { timer_ = time; }
 
         Font* getFont() { return timeFont_; }
+        void createPaquete(int lv);
     private:
         void createManual();
         void createClock();
         void createTubo(pq::Distrito dist);
         void createSelladores();
         void createStamp(TipoHerramienta type);
-        void createPaquete(int lv);
         
         void updateTimer();
 

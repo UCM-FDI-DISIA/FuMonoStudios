@@ -32,7 +32,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 	
 	auto packageBase = buildBasePackage(mScene);
 
-
+	//por si queremos desactivar las herramientas segun el nivel
 	packageBase->getComponent<Trigger>()->addCallback([packageBase](ecs::Entity* entRec) {
 		Herramientas* herrEnt = entRec->getComponent<Herramientas>();
 		if (herrEnt != nullptr)
@@ -40,7 +40,7 @@ ecs::Entity* PaqueteBuilder::paqueteRND(int level, ecs::Scene* mScene) {
 			herrEnt->interact(packageBase);
 		}
 	});
-
+	//decision de si el paquete que saldrá es de npc
 	bool continuar = true;
 	if (generalData().areTherePaquetesNPC()) {
 		int rnd = sdlutils().rand().nextInt(0, 4);

@@ -68,7 +68,7 @@ public:
 	bool getSelloCorrecto() const { return selloCorrecto_; }
 	bool isCarta() const { return carta_; }
 	bool pesoCorrecto() const;
-
+	bool correctFragile() const;
 	void giveData(std::ofstream&) const;
 
 private:
