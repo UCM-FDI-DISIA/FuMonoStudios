@@ -129,8 +129,7 @@ void ecs::MainScene::init()
 
 	createClock();
 
-
-	//createPaquete(generalData().getPaqueteLevel());
+	createPaquete(generalData().getPaqueteLevel());
 
 	// En el caso de que los tubos no estén ordenados, habrá que ordenarlos
 	int numTubos = generalData().getTubesAmount(); // coge el numero de tubos que están desbloqueados
