@@ -23,6 +23,8 @@ namespace ecs {
     private:
         void createManual();
 
+        void createMiniManual();
+
         //void createTubo(Paquete::Distrito dist, bool desbloqueado);
 
         void createClock();

@@ -90,6 +90,8 @@ void ecs::MainScene::init()
 
 	createManual();
 
+	createMiniManual();
+
 	createClock();
 
 	createPaquete(generalData().getPaqueteLevel());
@@ -443,6 +445,48 @@ void ecs::MainScene::createManual()
 	factory_->setLayer(ecs::layer::DEFAULT);
 
 }
+
+void ecs::MainScene::createMiniManual() {
+
+	
+	constexpr float MANUAL_WIDTH = 70;
+	constexpr float MANUAL_HEITH = 118;
+
+
+	factory_->setLayer(ecs::layer::MANUAL);
+
+	std::vector<Texture*> bookTextures;
+	bookTextures.reserve(2);
+	bookTextures.emplace_back(&sdlutils().images().at("cartel"));
+	bookTextures.emplace_back(&sdlutils().images().at("miniManual"));
+	
+	
+	auto baseManual = factory_->createMultiTextureImage(Vector2D(1200, 500), Vector2D(MANUAL_WIDTH, MANUAL_HEITH), bookTextures);
+	
+	Transform* manualTransform = baseManual->getComponent<Transform>();
+	RenderImage* manualRender = baseManual->getComponent<RenderImage>();
+	
+	Trigger* mmTri = baseManual->addComponent<Trigger>();
+
+	
+	mmTri->addCallback([this, manualRender](ecs::Entity* entRec) {
+
+		if (entRec->getLayer() == ecs::layer::MANUAL) {
+
+			entRec->setActive(false);
+
+			manualRender->nextTexture();
+
+		}
+
+	});
+	
+
+	factory_->setLayer(ecs::layer::DEFAULT);
+	
+}
+
+
 #ifdef DEV_TOOLS
 
 

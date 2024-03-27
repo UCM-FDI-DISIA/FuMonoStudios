@@ -57,6 +57,7 @@ namespace ecs {
 	namespace layer {
 		enum layerId : lyId_t
 		{
+			INACTIVE,
 			BACKGROUND,
 			DEFAULT,
 			BIN,

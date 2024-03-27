@@ -60,7 +60,7 @@ ecs::Entity* Transform::getParentEnt() const {
 	return parentTr_->ent_;
 }
 
-// Los objetos solo pueden tener un �nico padre
+// Los objetos solo pueden tener un unico padre
 void Transform::setParent(Transform* newParent) {
 	if (parentTr_ != newParent) {
 		parentTr_ = newParent;
