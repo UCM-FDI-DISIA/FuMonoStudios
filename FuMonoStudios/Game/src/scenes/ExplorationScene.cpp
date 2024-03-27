@@ -13,6 +13,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/DialogComponent.h"
 #include "../sistemas/ComonObjectsFactory.h"
+#include "../architecture/GeneralData.h"
 
 ecs::ExplorationScene::ExplorationScene() :Scene()
 {
@@ -148,7 +149,7 @@ ecs::Entity* ecs::ExplorationScene::createNavegationsArrows(Vector2D pos, std::s
 
 }
 
-ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const DialogManager::Personaje character, float scale) {
+ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::string& character, float scale) {
 
 	// Para Dani: El Personaje PlaceHolder que te he creado se compone del bot�n de press que al pulsarse te crea
 // la caja de fondo y te empieza a renderizar el texto (ojo: si lo pulsas varias veces creas varias, esto lo puedes 
@@ -159,7 +160,7 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const DialogMa
 
 	ComonObjectsFactory factory(this);
 
-	Texture* texturaBoton = &sdlutils().images().at(dialogMngr_.personajeToString(character));
+	Texture* texturaBoton = &sdlutils().images().at(character);
 	Vector2D size{ texturaBoton->width() * scale, texturaBoton->height() * scale };
 	
 	CallbackClickeable funcPress = [this, character]() {
@@ -170,7 +171,9 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const DialogMa
 		actualPlace_->addObjects(boxBg);
 
 		// activamos los dialogos correspondientes
-		dialogMngr_.setDialogues(character, );
+		std::pair<DialogManager::TipoDialog,int> aux = generalData().getNPCData(
+			generalData().stringToPersonaje(character))->getDialogueInfo();
+		dialogMngr_.setDialogues(generalData().stringToPersonaje(character), aux.first, aux.second);
 
 		//Aqu� pillar�a el di�logo con el manager y crear�a la entidad que lo renderiza
 		ecs::Entity* dialogoBox = addEntity();

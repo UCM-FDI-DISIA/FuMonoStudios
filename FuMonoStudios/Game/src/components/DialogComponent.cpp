@@ -3,7 +3,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/Font.h"
 #include "../sdlutils/Texture.h"
-#include "Dialog_Manager.h"
+#include "DialogManager.h"
 #include "Transform.h"
 #include "Render.h"
 #include "DelayedCallback.h"

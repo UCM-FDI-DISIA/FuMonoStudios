@@ -1,23 +1,21 @@
 // dialog_manager.h
-#ifndef DIALOG_MANAGER_H
-#define DIALOG_MANAGER_H
+#pragma once
 
 #include <string>
 #include <vector>
 #include <iostream>
+
+class GeneralData;
+
 /*
 Clase que genera los dialogos que se van a escribir
 Carga los dialogos de un fichero te texto que tenemos codificado
 */
 class DialogManager {
+    friend GeneralData;
 public:
     DialogManager();
 
-    /// <summary>
-    /// enum con todos los nombres de cosas interactuables
-    /// </summary>
-    enum Personaje { Vagabundo, Secretario, Campesino, Artesano, Tarotisa, Soldado, Contable,
-        JefeOficina };
     /// <summary>
     /// enum con todos los tipos de dialogos
     /// Los tipos de Presentación, felicidad, genericos y eventos están dedicados a NPCmenores,
@@ -44,11 +42,9 @@ public:
     // Establece los dialogos del personaje introducido, y busca dentro de su
     // seccion en el json el tipoDialogo, mas el numero introducido en el 
     // dialogueSelection. Poner un -1 para no usar el numero de dialogueSelection
-    void setDialogues(const Personaje pers, const TipoDialog tipoDialogo, int dialogueSelection);
-    void setDialogues(const Personaje a, const TipoDialog t) { setDialogues(a, t, -1); }
+    void setDialogues(const GeneralData::Personaje pers, const TipoDialog tipoDialogo, int dialogueSelection);
+    void setDialogues(const GeneralData::Personaje a, const TipoDialog t) { setDialogues(a, t, -1); }
 
-    // convierte Personaje a string
-    const std::string personajeToString(const Personaje pers);
     // convierte TipoDialog a string y añade el indice de dialogo en caso de usarlo
     const std::string tipoDialogToString(const TipoDialog tipo, int dialogueSelection);
 private:
@@ -61,5 +57,3 @@ private:
     /// </summary>
     size_t currentDialogIndex_;
 };
-
-#endif // DIALOG_MANAGER_H

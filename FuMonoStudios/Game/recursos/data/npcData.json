@@ -11,122 +11,97 @@
   },
   "Campesino": {
     "Felicidad": [ "NoHabladoAun" ],
-    "DiasConEvento": [
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true 
-    ]
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
   },
   "Artesano": {
     "Felicidad": [ "NoHabladoAun" ],
-    "DiasConEvento": [
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true
-    ]
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
   },
   "Tarotisa": {
     "Felicidad": [ "NoHabladoAun" ],
-    "DiasConEvento": [
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true
-    ]
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
   },
   "Soldado": {
     "Felicidad": [ "NoHabladoAun" ],
-    "DiasConEvento": [
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true
-    ]
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
   },
   "Contable": {
     "Felicidad": [ "NoHabladoAun" ],
-    "DiasConEvento": [
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-
-      true,
-      true,
-      true,
-
-      true,
-      true,
-      true,
-
-      true
-    ]
+    "DiasConEvento": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+    }
   }
 }

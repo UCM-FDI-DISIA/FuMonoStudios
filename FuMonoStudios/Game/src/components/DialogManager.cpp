@@ -1,5 +1,6 @@
 // dialog_manager.cpp
-#include "dialog_manager.h"
+#include "../architecture/GeneralData.h"
+#include "DialogManager.h"
 #include <fstream>
 #include "../json/JSON.h"
 #include "../json/JSONValue.h"
@@ -32,8 +33,7 @@ bool DialogManager::nextDialog() {
     return isEndOfConversation;
 }
 
-// un string sin referencia es como un d�a sin sol: const string&
-void DialogManager::setDialogues(const Personaje personaje, const TipoDialog tipoDialogo, int dialogueSelection) 
+void DialogManager::setDialogues(const GeneralData::Personaje personaje, const TipoDialog tipoDialogo, int dialogueSelection) 
 {
     //eliminamos los dialogos anteriores
     dialogs_.clear();
@@ -51,7 +51,7 @@ void DialogManager::setDialogues(const Personaje personaje, const TipoDialog tip
     JSONObject root = jValueRoot->AsObject();
     JSONValue* jValue = nullptr;
 
-    const std::string& charName = personajeToString(personaje);
+    const std::string& charName = generalData().personajeToString(personaje);
 
     const std::string& typeDialog = tipoDialogToString(tipoDialogo, dialogueSelection);
 
@@ -84,39 +84,6 @@ void DialogManager::setDialogues(const Personaje personaje, const TipoDialog tip
     }
 }
 
-const std::string DialogManager::personajeToString(const Personaje pers) {
-    std::string aux = "";
-
-    switch (pers) {
-        case Campesino:
-            aux = "Campesino";
-            break;
-        case Secretario:
-            aux = "Secretario";
-            break;
-        case Vagabundo:
-            aux = "Vagabundo";
-            break;
-        case Artesano:
-            aux = "Artesano";
-            break;
-        case Tarotisa:
-            aux = "Tarotisa";
-            break;
-        case Soldado:
-            aux = "Soldado";
-            break;
-        case Contable:
-            aux = "Campesino";
-            break;
-        case JefeOficina:
-            aux = "JefeOficina";
-            break;
-    }
-
-    return aux;
-}
-
 const std::string DialogManager::tipoDialogToString(const TipoDialog tipo, int dialogueSelection) {
     std::string aux = "";
 
@@ -130,8 +97,14 @@ const std::string DialogManager::tipoDialogToString(const TipoDialog tipo, int d
     case FelMaximo:
         aux = "FelicidadMaxima";
         break;
-    case Genericos:
-        aux = "Genericos";
+    case GenericosBueno:
+        aux = "GenericosBueno";
+        break;
+    case GenericosNormal:
+        aux = "GenericosNormal";
+        break;
+    case GenericosMalo:
+        aux = "GenericosMalo";
         break;
     case Eventos:
         aux = "Eventos";

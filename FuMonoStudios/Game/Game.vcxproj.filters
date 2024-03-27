@@ -132,7 +132,7 @@
     <ClInclude Include="src\utils\Vector2D.h">
       <Filter>utilsHeader</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\Dialog_Manager.h">
+    <ClInclude Include="src\components\DialogManager.h">
       <Filter>componetsHeader</Filter>
     </ClInclude>
     <ClInclude Include="src\components\DragAndDrop.h">
@@ -157,7 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\MultipleTextures.h" />
-    <ClCompile Include="src\components\Dialog_Manager.cpp" />
+    <ClCompile Include="src\components\DialogManager.cpp" />
     <ClCompile Include="src\components\DialogComponent.cpp" />
     <ClInclude Include="src\components\DialogComponent.h" />
     <ClInclude Include="src\components\PackageChecker.h" />

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../architecture/Scene.h"
-#include "../components/Dialog_Manager.h"
+#include "../components/DialogManager.h"
 #include "../sistemas/ComonObjectsFactory.h"
 #include <list>
 
@@ -135,7 +135,7 @@ namespace ecs {
 		/// <summary>
 		/// Metodo factoria para characters
 		/// </summary>
-		ecs::Entity* createCharacter(Vector2D pos, DialogManager::Personaje character, float scale);
+		ecs::Entity* createCharacter(Vector2D pos, const std::string& character, float scale);
         
 		//Puntero al lugar actual
 		Lugar* actualPlace_;
