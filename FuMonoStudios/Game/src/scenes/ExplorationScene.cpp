@@ -171,7 +171,7 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::str
 		actualPlace_->addObjects(boxBg);
 
 		// activamos los dialogos correspondientes
-		std::pair<DialogManager::TipoDialog,int> aux = generalData().getNPCData(
+		std::pair<const std::string&,int> aux = generalData().getNPCData(
 			generalData().stringToPersonaje(character))->getDialogueInfo();
 		dialogMngr_.setDialogues(generalData().stringToPersonaje(character), aux.first, aux.second);
 

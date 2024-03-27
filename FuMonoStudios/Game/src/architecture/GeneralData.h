@@ -9,7 +9,6 @@ class DialogManager;
 class GeneralData : public Singleton<GeneralData>
 {
 public:
-	friend DialogManager;
 	friend Singleton<GeneralData>;
 
 	// enum con tipos de felicidad
@@ -44,20 +43,22 @@ public:
 	// LO DE LOS DIALOGOS
 	struct NPCdata {
 		Felicidad felicidad;
-		virtual std::pair<DialogManager::TipoDialog, int> getDialogueInfo() = 0;
+		virtual std::pair<const std::string&, int> getDialogueInfo() = 0;
 
+		// esto solo lo usa el NPCmenor
+		virtual void iterateDialogues() = 0;
 		virtual void setupDayData() = 0;
 	};
 
 	struct NPCMenorData : public NPCdata {
 		NPCMenorData(Felicidad Felicidad, std::vector<bool> DiasDanEvento);
 
-		std::pair<DialogManager::TipoDialog, int> getDialogueInfo() override;
-		void setupDayData();
+		std::pair<const std::string&, int> getDialogueInfo() override;
+		void iterateDialogues() override;
+		void setupDayData() override;
 	private:
 		void activateEvent();
 		void deactivateEvent();
-		void iterateDialogue();
 
 		std::vector<bool> diasDanEvento;
 
@@ -68,7 +69,8 @@ public:
 	struct NPCMayorData : public NPCdata {
 		NPCMayorData(Felicidad Felicidad);
 
-		std::pair<DialogManager::TipoDialog, int> getDialogueInfo() override;
+		std::pair<const std::string&, int> getDialogueInfo() override;
+		void iterateDialogues() override {};
 		void setupDayData() override;
 	private:
 		bool postConversation;

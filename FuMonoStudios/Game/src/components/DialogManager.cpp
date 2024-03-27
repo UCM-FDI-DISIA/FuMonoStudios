@@ -1,5 +1,4 @@
 // dialog_manager.cpp
-#include "../architecture/GeneralData.h"
 #include "DialogManager.h"
 #include <fstream>
 #include "../json/JSON.h"
@@ -33,14 +32,14 @@ bool DialogManager::nextDialog() {
     return isEndOfConversation;
 }
 
-void DialogManager::setDialogues(const GeneralData::Personaje personaje, const TipoDialog tipoDialogo, int dialogueSelection) 
+void DialogManager::setDialogues(const GeneralData::Personaje personaje, const std::string& tipoDialogo, int dialogueSelection)
 {
     //eliminamos los dialogos anteriores
     dialogs_.clear();
     //reseteamos la posicon del indice
     currentDialogIndex_ = 0;
 
-    std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile("recursos/dialogos/dialogos.json"));
+    std::unique_ptr<JSONValue> jValueRoot(JSON::ParseFromFile("recursos/data/dialogos.json"));
 
     // check it was loaded correctly
     // the root must be a JSON object
@@ -53,14 +52,15 @@ void DialogManager::setDialogues(const GeneralData::Personaje personaje, const T
 
     const std::string& charName = generalData().personajeToString(personaje);
 
-    const std::string& typeDialog = tipoDialogToString(tipoDialogo, dialogueSelection);
-
     jValue = root[charName];
     if (jValue != nullptr && jValue->IsObject())
     {
+        std::string strDialogo = tipoDialogo;
         JSONObject charObj = jValue->AsObject();
-        if (tipoDialogo != NOTYPE)
-            jValue = charObj[typeDialog]; // Accede al tipo de diálogo específico
+        if (dialogueSelection != -1)
+            strDialogo = strDialogo + std::to_string(dialogueSelection);
+        if (strDialogo != "NOTYPE")
+            jValue = charObj[strDialogo]; // Accede al tipo de diálogo específico
 
 
         if (jValue != nullptr && jValue->IsArray())
@@ -74,6 +74,15 @@ void DialogManager::setDialogues(const GeneralData::Personaje personaje, const T
                     std::cout << "Cargando diálogo: " << dialogText << std::endl;
 #endif
                     dialogs_.push_back(dialogText);
+
+                    if (dialogueSelection != -1)
+                    {
+                        generalData().getNPCData(personaje)->iterateDialogues();
+                        if (dialogueSelection > 3)
+                            dialogueSelection = 0;
+                    }
+                        
+                        
                 }
                 else
                 {
@@ -82,47 +91,4 @@ void DialogManager::setDialogues(const GeneralData::Personaje personaje, const T
             }
         }
     }
-}
-
-const std::string DialogManager::tipoDialogToString(const TipoDialog tipo, int dialogueSelection) {
-    std::string aux = "";
-
-    switch (tipo) {
-    case Presentacion:
-        aux = "Presentacion";
-        break;
-    case FelMinimo:
-        aux = "FelicidadMinima";
-        break;
-    case FelMaximo:
-        aux = "FelicidadMaxima";
-        break;
-    case GenericosBueno:
-        aux = "GenericosBueno";
-        break;
-    case GenericosNormal:
-        aux = "GenericosNormal";
-        break;
-    case GenericosMalo:
-        aux = "GenericosMalo";
-        break;
-    case Eventos:
-        aux = "Eventos";
-        break;
-    case NPCgrande:
-        aux = "Dia";
-        break;
-    case NPCgrandePostConversacion:
-        aux = "PostConversacionDia";
-        break;
-    case NOTYPE:
-        aux = "NOTYPE";
-        break;
-
-    }
-
-    if (dialogueSelection != -1)
-        aux = aux + std::to_string(dialogueSelection);
-
-    return aux;
 }

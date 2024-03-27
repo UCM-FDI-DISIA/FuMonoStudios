@@ -10,7 +10,7 @@
 
 Mapa::Mapa(ecs::Scene* e) : mScene_(e), dialogMngr_()
 {
-	dialogMngr_.setDialogues("recursos/dialogos/npc_mayores.json", "vagabundo", "presentacion", "jaja");
+	//dialogMngr_.setDialogues("recursos/dialogos/npc_mayores.json", "vagabundo", "presentacion", "jaja");
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &demeter;

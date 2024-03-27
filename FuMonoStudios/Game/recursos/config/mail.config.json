@@ -41,7 +41,7 @@
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "pancracio",
+                "name" : "Campesino",
                 "scale" : 0.25,
                 "dir" : true              
                 }
@@ -81,7 +81,7 @@
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "paulino",
+                "name" : "Artesano",
                 "scale" : 0.25,
                 "dir" : true              
                 }
@@ -120,7 +120,7 @@
                 {"id" : 0,
                 "x" : 675,
                 "y" : 475,
-                "name" : "anemos",
+                "name" : "Vagabundo",
                 "scale" : 0.28,
                 "dir" : true              
                 }
@@ -159,7 +159,7 @@
                 {"id" : 0,
                 "x" : 725,
                 "y" : 300,
-                "name" : "abigail",
+                "name" : "Tarotista",
                 "scale" : 0.18,
                 "dir" : true              
                 }
@@ -206,7 +206,7 @@
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "glover",
+                "name" : "Contable",
                 "scale" : 0.25,
                 "dir" : true              
                 }
@@ -245,7 +245,7 @@
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "abakand",
+                "name" : "Soldado",
                 "scale" : 0.25,
                 "dir" : true              
                 }
@@ -277,7 +277,7 @@
                 {"id" : 0,
                 "x" : 300,
                 "y" : 300,
-                "name" : "gargafiel",
+                "name" : "Secretario",
                 "scale" : 0.25,
                 "dir" : true              
                 }

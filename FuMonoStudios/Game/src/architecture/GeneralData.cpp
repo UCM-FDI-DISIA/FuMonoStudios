@@ -74,7 +74,7 @@ void GeneralData::setPaqueteLevel(int lvl) {
 }
 
 void GeneralData::readNPCData() {
-	std::unique_ptr<JSONValue> jsonFile(JSON::ParseFromFile("recursos/dialogos/npcData.json"));
+	std::unique_ptr<JSONValue> jsonFile(JSON::ParseFromFile("recursos/data/npcData.json"));
 
 	if (jsonFile == nullptr || !jsonFile->IsObject()) {
 		throw "Something went wrong while load/parsing npcData";
@@ -208,39 +208,39 @@ GeneralData::NPCMenorData::NPCMenorData(Felicidad Felicidad, std::vector<bool> D
 	diasDanEvento = DiasDanEvento;
 }
 
-std::pair<DialogManager::TipoDialog, int> GeneralData::NPCMenorData::getDialogueInfo() {
+std::pair<const std::string&, int> GeneralData::NPCMenorData::getDialogueInfo() {
 	
-	DialogManager::TipoDialog tipo;
+	std::string tipo;
 	int iterationNum = -1;
 
 	if (felicidad == Minima || felicidad == Maxima)
 	{
-		tipo = felicidad == Minima ? DialogManager::FelMinimo : DialogManager::FelMaximo;
+		tipo = felicidad == Minima ? "FelicidadMinimo" : "FelicidadMaximo";
 	}
 	else if (giveEvent)
 	{
-		tipo = DialogManager::Eventos;
+		tipo = "Eventos";
 	}
 	else
 	{
 		switch (felicidad){
 			case Mala:
-				tipo = DialogManager::GenericosMalo;
-				iterateDialogue();
+				tipo = "GenericoMalo";
+				iterateDialogues();
 				iterationNum = iteration;
 				break;
 			case Normal:
-				tipo = DialogManager::GenericosNormal;
-				iterateDialogue();
+				tipo = "GenericoNormal";
+				iterateDialogues();
 				iterationNum = iteration;
 				break;
 			case Buena:
-				tipo = DialogManager::GenericosBueno;
-				iterateDialogue();
+				tipo = "GenericoBueno";
+				iterateDialogues();
 				iterationNum = iteration;
 				break;
 			case NoHabladoAun:
-				tipo = DialogManager::Presentacion;
+				tipo =  "Presentacion";
 				felicidad = Normal;
 				break;
 		}
@@ -253,18 +253,18 @@ void GeneralData::NPCMenorData::setupDayData() {
 	giveEvent = diasDanEvento[generalData().getDia() - 1];
 }
 
-void GeneralData::NPCMenorData::iterateDialogue() {
-	iteration++;
-	if (iteration > 3)
-		iteration = 1;
-}
-
 void GeneralData::NPCMenorData::activateEvent(){
 	giveEvent = true;
 }
 
 void GeneralData::NPCMenorData::deactivateEvent() {
 	giveEvent = false;
+}
+
+void GeneralData::NPCMenorData::iterateDialogues() {
+	iteration++;
+	if (iteration > 3)
+		iteration = 1;
 }
 
 // NPC GRANDE
@@ -274,26 +274,26 @@ GeneralData::NPCMayorData::NPCMayorData(Felicidad Felicidad) {
 	postConversation = false;
 }
 
-std::pair<DialogManager::TipoDialog, int> GeneralData::NPCMayorData::getDialogueInfo() {
-	DialogManager::TipoDialog tipo;
+std::pair<const std::string&, int> GeneralData::NPCMayorData::getDialogueInfo() {
+	std::string aux;
 
 	switch (felicidad)
 	{
 		case NoHabladoAun:
-			tipo = DialogManager::Presentacion;
+			aux = "Presentacion";
 			felicidad = Normal;
 			break;
 		case Minima:
-			tipo = DialogManager::FelMinimo;
+			aux = "FelicidadMinimo";
 			break;
 		default:
-			tipo = postConversation ?
-				DialogManager::NPCgrandePostConversacion : DialogManager::NPCgrande;
+			aux = postConversation ?
+				"PostConversacionDia" : "Dia";
 			postConversation = true;
 			break;
 	}
 
-	return std::make_pair(tipo, -1);
+	return std::make_pair(aux, -1);
 }
 
 void GeneralData::NPCMayorData::setupDayData() {

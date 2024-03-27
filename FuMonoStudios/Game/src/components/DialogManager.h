@@ -4,27 +4,35 @@
 #include <string>
 #include <vector>
 #include <iostream>
-
-class GeneralData;
+#include "../architecture/GeneralData.h"
 
 /*
 Clase que genera los dialogos que se van a escribir
 Carga los dialogos de un fichero te texto que tenemos codificado
+
+PARA LOS TIPOS DE DIALOGOS: Presentacion, FelMinimo, FelMaximo,
+GenericosMalo, GenericosNormal, GenericosBueno,
+Eventos, NPCgrande, NPCgrandePostConversacion, NOTYPE
+Los tipos de Presentación, felicidad, genericos y eventos están dedicados a NPCmenores,
+mientras que los de NPCgrande para los grandes. El NOTYPE se usa para cosas interactuables
+del entorno que usen solo un diálogo.
 */
 class DialogManager {
-    friend GeneralData;
 public:
     DialogManager();
 
+    /* COMENTADO POR DEPENDENCIA CIRCULAR DE ENUMS (CRAZY)
     /// <summary>
     /// enum con todos los tipos de dialogos
     /// Los tipos de Presentación, felicidad, genericos y eventos están dedicados a NPCmenores,
     /// mientras que los de NPCgrande para los grandes. El NOTYPE se usa para cosas interactuables
     /// del entorno que usen solo un diálogo.
     /// </summary>
-    enum TipoDialog { Presentacion, FelMinimo, FelMaximo, 
-        GenericosMalo, GenericosNormal, GenericosBueno, 
-        Eventos, NPCgrande, NPCgrandePostConversacion, NOTYPE };
+    enum TipoDialog {
+        Presentacion, FelMinimo, FelMaximo,
+        GenericosMalo, GenericosNormal, GenericosBueno,
+        Eventos, NPCgrande, NPCgrandePostConversacion, NOTYPE
+    };*/
 
     /// <summary>
     /// Devuelve el dialogo acutal segun el indice de dialogo
@@ -42,11 +50,8 @@ public:
     // Establece los dialogos del personaje introducido, y busca dentro de su
     // seccion en el json el tipoDialogo, mas el numero introducido en el 
     // dialogueSelection. Poner un -1 para no usar el numero de dialogueSelection
-    void setDialogues(const GeneralData::Personaje pers, const TipoDialog tipoDialogo, int dialogueSelection);
-    void setDialogues(const GeneralData::Personaje a, const TipoDialog t) { setDialogues(a, t, -1); }
-
-    // convierte TipoDialog a string y añade el indice de dialogo en caso de usarlo
-    const std::string tipoDialogToString(const TipoDialog tipo, int dialogueSelection);
+    void setDialogues(const GeneralData::Personaje pers, const std::string& tipoDialogo, int dialogueSelection);
+    void setDialogues(const GeneralData::Personaje a, const std::string& t) { setDialogues(a, t, -1); }
 private:
     /// <summary>
     /// Vector donde se almacenan todos los diálogos que se van a soltar
