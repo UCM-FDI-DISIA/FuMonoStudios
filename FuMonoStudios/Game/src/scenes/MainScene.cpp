@@ -108,7 +108,7 @@ void ecs::MainScene::init()
 
 	createSelladores();
 
-	//createInks();
+	createInks();
   
   	//cinta envolver
 	factory_->setLayer(ecs::layer::TAPE);
@@ -184,67 +184,17 @@ void ecs::MainScene::createClock() {
 
 void ecs::MainScene::createInks() {
 
-	// Tinta rojo (1)
-	Entity* inkA = addEntity(layer::INK);
-	Texture* inkATex = &sdlutils().images().at("tintaA");
-	Transform* selloATR = inkA->addComponent<Transform>(300, 500, inkATex->width(), inkATex->height());
+	createOneInk(SelloCalleA);
+	createOneInk(SelloCalleB);
+	createOneInk(SelloCalleC);
 
-	selloATR->setScale(0.5);
+}
 
-	inkA->addComponent<RenderImage>(inkATex);
+void ecs::MainScene::createOneInk(TipoHerramienta type) {
 
-	Trigger* inkATri = inkA->addComponent<Trigger>();
-
-	inkATri->addCallback([this](ecs::Entity* entRec) {
-
-		if (entRec->getLayer() == ecs::layer::STAMP) {
-
-			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
-
-			RenderImage* stampRender = entRec->getComponent<RenderImage>();
-
-			stampHerramienta->setFunctionality(SelloCalleA);
-
-			stampRender->setTexture(&sdlutils().images().at("selladorA"));
-
-		}
-
-	});
-
-	
-
-
-	// Tinta azul (2)
-	Entity* inkB = addEntity(layer::INK);
-	Texture* inkBTex = &sdlutils().images().at("tintaB");
-	Transform* selloBTR = inkB->addComponent<Transform>(425, 500, inkBTex->width(), inkBTex->height());
-
-	selloBTR->setScale(0.5);
-
-	inkB->addComponent<RenderImage>(inkBTex);
-
-	Trigger* inkBTri = inkB->addComponent<Trigger>();
-
-	inkBTri->addCallback([this](ecs::Entity* entRec) {
-
-		if (entRec->getLayer() == ecs::layer::STAMP) {
-
-			Herramientas* stampHerramienta = entRec->getComponent<Herramientas>();
-
-			RenderImage* stampRender = entRec->getComponent<RenderImage>();
-
-			stampHerramienta->setFunctionality(SelloCalleB);
-
-			stampRender->setTexture(&sdlutils().images().at("selladorB"));
-
-		}
-
-	});
-
-	// Tinta verde (3)
 	Entity* inkC = addEntity(layer::INK);
-	Texture* inkCTex = &sdlutils().images().at("tintaC");
-	Transform* selloCTR = inkC->addComponent<Transform>(550, 500, inkCTex->width(), inkCTex->height());
+	Texture* inkCTex = &sdlutils().images().at("tinta" + std::to_string(type));
+	Transform* selloCTR = inkC->addComponent<Transform>(350 + 125 * (type), 500, inkCTex->width(), inkCTex->height());
 
 	selloCTR->setScale(0.5);
 
@@ -252,7 +202,7 @@ void ecs::MainScene::createInks() {
 
 	Trigger* inkCTri = inkC->addComponent<Trigger>();
 
-	inkCTri->addCallback([this](ecs::Entity* entRec) {
+	inkCTri->addCallback([this, type](ecs::Entity* entRec) {
 
 		if (entRec->getLayer() == ecs::layer::STAMP) {
 
@@ -260,9 +210,9 @@ void ecs::MainScene::createInks() {
 
 			RenderImage* stampRender = entRec->getComponent<RenderImage>();
 
-			stampHerramienta->setFunctionality(SelloCalleC);
+			stampHerramienta->setFunctionality(type);
 
-			stampRender->setTexture(&sdlutils().images().at("selladorC"));
+			stampRender->setTexture(&sdlutils().images().at("sellador" + std::to_string(type)));
 
 		}
 
@@ -299,28 +249,22 @@ void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tubo
 
 void ecs::MainScene::createSelladores() {
 	createStamp(SelloCalleA);
-	createStamp(SelloCalleB);
-	createStamp(SelloCalleC);
 }
 
 void ecs::MainScene::createStamp(TipoHerramienta type)
 {
 	if (type > 2) return;
-	constexpr float STAMPSIZE = 102.4f;
+	constexpr float STAMPSIZE = 0.5f;
 
-	factory_->setLayer(layer::OFFICEELEMENTS);
+	factory_->setLayer(layer::STAMP);
 
-	auto stamp = factory_->createImage(Vector2D(100,300+(int)type * 110),Vector2D(STAMPSIZE,STAMPSIZE), 
+	auto stamp = factory_->createImage(Vector2D(300, 300),
+		Vector2D(sdlutils().images().at("sellador" + std::to_string(type)).width() * STAMPSIZE, sdlutils().images().at("sellador" + std::to_string(type)).height() * STAMPSIZE),
 		& sdlutils().images().at("sellador" + std::to_string(type)));
 
-	stamp->addComponent<MoverTransform>(
-		stamp->getComponent<Transform>()->getPos(), 
-		0.5, 
-		Easing::EaseOutCubic)->disable();
+	stamp->addComponent<DragAndDrop>();
 
-	stamp->addComponent<DragAndDrop>(true, [stamp]() {
-		stamp->getComponent<MoverTransform>()->enable();
-		});
+	stamp->addComponent<Gravity>();
 
 	Herramientas* herrSelladorA = stamp->addComponent<Herramientas>();
 	herrSelladorA->setFunctionality(type);
