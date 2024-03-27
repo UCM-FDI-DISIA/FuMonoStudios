@@ -1,5 +1,5 @@
 #pragma once
-/*Fichero dedicado a poner las constantes de juego que queramos*/
+/*Fichero dedicado a poner las constantes globales de juego que queramos*/
 constexpr int INITIAL_MONEY = 100;
 constexpr int INITIAL_FINAL = 0;
 constexpr int INITIAL_EVENT = 0;

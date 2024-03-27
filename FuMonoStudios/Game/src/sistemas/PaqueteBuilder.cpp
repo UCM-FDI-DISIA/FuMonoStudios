@@ -87,7 +87,7 @@ ecs::Entity* PaqueteBuilder::customPackage(pq::Distrito distrito, pq::Calle call
 {
 	auto base = buildBasePackage(mScene_);
 	std::string dir = "";
-	if (distrito != Erroneo || calle != Erronea) {
+	if (distrito != Erroneo && calle != Erronea) {
 		dir = distritoCalle_[distrito][calle];
 	}
 	base->addComponent<Paquete>(distrito,calle,dir, remitente, tipo, correcto, nivPeso, peso, fragil, carta);
@@ -114,6 +114,8 @@ ecs::Entity* PaqueteBuilder::buildBasePackage(ecs::Scene* mScene)
 	packageBase->addComponent<Depth>();
 	packageBase->addComponent<Gravity>();
 	DragAndDrop* drgPq = packageBase->addComponent<DragAndDrop>(true);
+	packageBase->addComponent<MoverTransform>(packageBase->getComponent<Transform>()->getPos() - Vector2D(200, 0),
+		1, Easing::EaseOutBack)->disable();
 	return packageBase;
 }
 

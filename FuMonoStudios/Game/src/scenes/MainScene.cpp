@@ -11,14 +11,10 @@
 #include "../components/Clickeable.h"
 #include "../components/DragAndDrop.h"
 #include "../components/Trigger.h"
-#include "../components/Wrap.h"
-#include "../architecture/Game.h"
 #include <string>
 #include <list>
 #include "../sdlutils/Texture.h"
 #include "../components/PackageChecker.h"
-#include "../components/Herramientas.h"
-#include "../components/MultipleTextures.h"
 #include "../components/Gravity.h"
 #include "../components/MoverTransform.h"
 #include "../architecture/Time.h"
@@ -27,7 +23,6 @@
 #include "../architecture/GeneralData.h"
 #include "../sistemas/ComonObjectsFactory.h"
 #include "../components/Depth.h"
-#include "../components/ErrorNote.h"
 #include <QATools/DataCollector.h>
 
 
@@ -280,8 +275,9 @@ void ecs::MainScene::makeControlsWindow()
 		//ImGui::Checkbox("Next Pacage Correct", &nextPacageCorrect_);
 		if (ImGui::Button("Create pacage")) {
 			if (customPackage) {
-				mPaqBuild_->customPackage((pq::Distrito)dist,(pq::Calle)calle,"Sujeto de Pruebas", (pq::TipoPaquete)tipo, 
+				auto custom = mPaqBuild_->customPackage((pq::Distrito)dist,(pq::Calle)calle,"Sujeto de Pruebas", (pq::TipoPaquete)tipo, 
 					correcto, (pq::NivelPeso)nivPeso, peso, fragil, carta);
+				custom->getComponent<MoverTransform>()->enable();
 			}
 			else {
 				createPaquete(generalData().getPaqueteLevel());
@@ -336,6 +332,5 @@ void ecs::MainScene::updateTimer() {
 
 void ecs::MainScene::createPaquete (int lv) {
 	auto pac = mPaqBuild_->buildPackage(lv, this);
-	pac->addComponent<MoverTransform>(pac->getComponent<Transform>()->getPos()-Vector2D(200,0),
-		1,Easing::EaseOutBack)->enable();
+	pac->getComponent<MoverTransform>()->enable();
 }

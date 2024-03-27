@@ -13,29 +13,29 @@
 #include <components/Paquete.h>
 
 
-const int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
-const int MEDIO_MAX = 50;	//Límite del peso máximo de paquetes de peso medio 
-const int LIGERO_MAX = 25;	//Límite del peso máximo de paquetes ligeros
-const int PAQUETE_MIN = 10;	//Límite del peso mínimo de paquetes ligeros
-const int PESO_CARTA = 2;	//Peso carta
+constexpr int PESADO_MAX = 75;	//Límite del peso máximo de paquetes pesados 
+constexpr int MEDIO_MAX = 50;	//Límite del peso máximo de paquetes de peso medio 
+constexpr int LIGERO_MAX = 25;	//Límite del peso máximo de paquetes ligeros
+constexpr int PAQUETE_MIN = 10;	//Límite del peso mínimo de paquetes ligeros
+constexpr int PESO_CARTA = 2;	//Peso carta
 
 // Miguel: En el futuro haremos que salgan un poco desviados de su
 // posición original para que parezcan más orgánicos los paquetes
 // posicion y tama�o Tipo sellos
-const int TIPO_SELLO_POS_X = 20;
-const int TIPO_SELLO_POS_Y = 80;
-const int TIPO_SELLO_SIZE = 80;
+constexpr int TIPO_SELLO_POS_X = 20;
+constexpr int TIPO_SELLO_POS_Y = 80;
+constexpr int TIPO_SELLO_SIZE = 80;
 // posicion y tama�o Fragil sellos
-const int FRAGIL_SELLO_POS_X = 150;
-const int FRAGIL_SELLO_POS_Y = 150;
-const int FRAGIL_SELLO_SIZE = 80;
+constexpr int FRAGIL_SELLO_POS_X = 150;
+constexpr int FRAGIL_SELLO_POS_Y = 150;
+constexpr int FRAGIL_SELLO_SIZE = 80;
 // posicion y tama�o Peso sellos
-const int PESO_SELLO_POS_X = 200;
-const int PESO_SELLO_POS_Y = 200;
-const int PESO_SELLO_SIZE = 80;
+constexpr int PESO_SELLO_POS_X = 200;
+constexpr int PESO_SELLO_POS_Y = 200;
+constexpr int PESO_SELLO_SIZE = 80;
 
 //Escala del paquete 
-const float PAQUETE_SIZE = 0.25f;
+constexpr float PAQUETE_SIZE = 0.25f;
 
 const std::string DIFF_SETTINGS_PATH = "recursos/config/mail.dificulty.json";
 
@@ -116,6 +116,4 @@ private:
 	/// usado para la generacion del string de la direccion
 	/// </summary>
 	std::unordered_map<Distrito, std::vector<std::string>> distritoCalle_;
-
-	std::unordered_map<int,DifficultySettings> tuvieja;
 };
