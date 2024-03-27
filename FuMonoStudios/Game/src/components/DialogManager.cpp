@@ -57,11 +57,16 @@ void DialogManager::setDialogues(const GeneralData::Personaje personaje, const s
     {
         std::string strDialogo = tipoDialogo;
         JSONObject charObj = jValue->AsObject();
-        if (dialogueSelection != -1)
-            strDialogo = strDialogo + std::to_string(dialogueSelection);
+
+            
         if (strDialogo != "NOTYPE")
             jValue = charObj[strDialogo]; // Accede al tipo de diálogo específico
 
+        if (dialogueSelection != -1)
+        {
+            charObj = jValue->AsObject();
+            jValue = charObj[std::to_string(dialogueSelection)];
+        }
 
         if (jValue != nullptr && jValue->IsArray())
         {

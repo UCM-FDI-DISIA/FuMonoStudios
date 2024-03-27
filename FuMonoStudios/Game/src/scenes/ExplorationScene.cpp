@@ -18,7 +18,6 @@
 
 ecs::ExplorationScene::ExplorationScene() :Scene()
 {
-
 	initPlacesDefaultMap();
 	initDirectionsDefaultMap();
 	actualPlace_ = &hestia;
@@ -26,6 +25,7 @@ ecs::ExplorationScene::ExplorationScene() :Scene()
 	createObjects("Hestia");
 	rect_ = build_sdlrect(0, 0, sdlutils().width() / 1.25, sdlutils().height() / 1.25);
 	canStartConversation = true;
+	generalData().setDayData();
 }
 
 ecs::ExplorationScene::~ExplorationScene()

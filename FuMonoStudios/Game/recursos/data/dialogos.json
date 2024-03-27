@@ -322,6 +322,197 @@
     }
   },
 
+
+  "Tarotisa": {
+    "Presentacion": [
+      "Presentacion Tarotisa"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Tarotisa"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Tarotisa"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+
+
+  "Soldado": {
+    "Presentacion": [
+      "Presentacion Soldado"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Soldado"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Soldado"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
+
+  "Contable": {
+    "Presentacion": [
+      "Presentacion Artesano"
+    ],
+    "FelicidadMinima": [
+      "Felicidad minima Artesano"
+    ],
+    "FelicidadMaxima": [
+      "Felicidad maxima Artesano"
+    ],
+    "Eventos": {
+      "1": [
+        "1evento"
+      ],
+      "2": [
+        "2evento"
+      ],
+      "3": [
+        "3evento"
+      ],
+      "4": [
+        "4evento"
+      ],
+      "5": [
+        "5evento"
+      ]
+    },
+    "GenericoMalo": {
+      "1": [
+        "1malo"
+      ],
+      "2": [
+        "2malo"
+      ],
+      "3": [
+        "3malo"
+      ]
+    },
+    "GenericoNormal": {
+      "1": [
+        "1normal"
+      ],
+      "2": [
+        "2normal"
+      ],
+      "3": [
+        "3normal"
+      ]
+    },
+    "GenericoBueno": {
+      "1": [
+        "1bueno"
+      ],
+      "2": [
+        "2bueno"
+      ],
+      "3": [
+        "3bueno"
+      ]
+    }
+  },
+
   "EsclavaRemix": [
     "Bryant myers",
     "Hoy de nuevo te voy a veeer",

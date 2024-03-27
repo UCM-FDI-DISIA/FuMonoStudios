@@ -106,7 +106,7 @@ void GeneralData::readNPCData() {
 			// leemos los 14 booleanos
 			for (int i = 0; i < 14; i++)
 			{
-				diasDanEventos.push_back(jDiasEvento.find(std::to_string(i + 1))->second);
+				diasDanEventos.push_back(jDiasEvento.find(std::to_string(i + 1))->second->AsBool());
 			}
 			npcData.push_back(new NPCMenorData(stringToFelicidad(felicidadStr),diasDanEventos));
 		}
@@ -189,6 +189,13 @@ GeneralData::Felicidad GeneralData::stringToFelicidad(const std::string& str)
 		aux = Felicidad::NoHabladoAun;
 
 	return aux;
+}
+
+void GeneralData::setDayData() {
+	for (int i = 0; i < 7; i++)
+	{
+		npcData[i]->setupDayData();
+	}
 }
 
 // Struct NPCdata

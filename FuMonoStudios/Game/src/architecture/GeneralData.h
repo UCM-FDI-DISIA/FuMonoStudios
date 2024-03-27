@@ -122,6 +122,9 @@ public:
 	// convierte string a Personaje
 	Personaje stringToPersonaje(const std::string& pers);
 
+	// establece los datos del día a todos los npc
+	void setDayData();
+
 	// lee los datos de NPCs desde su JSON
 	void readNPCData();
 	// escribe los datos de NPCs a su JSON
