@@ -420,3 +420,8 @@ inline void modifyJsonData(JSONObject& obj, const std::string& key, T val) {
 	obj[key] = jsonVal;
 	//jsonValVec.push_back(jsonVal);
 }
+
+inline bool file_exist(const std::string& path) {
+	std::ifstream f(path.c_str());
+	return f.good();
+}

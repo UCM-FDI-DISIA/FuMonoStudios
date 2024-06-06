@@ -16,6 +16,9 @@ namespace ecs {
         void init() override;
     protected:
         Entity* mainMenuButton;
+        const SDL_Color baseColor = build_sdlcolor(0x000000ff);
+        const SDL_Color hilightColor = build_sdlcolor(0x444444ff);
+
     private:
         Texture* musicIconTexture_;
         Entity* musicIconEnt_;

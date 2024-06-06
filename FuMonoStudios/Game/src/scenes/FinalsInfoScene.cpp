@@ -69,7 +69,7 @@ FinalsInfoScene::FinalsInfoScene()
             backButton->setActive(true);
         };
 
-        auto button = factory_->createTextuButton(Vector2D(900, 300 + 100* i), "Final con Felicidad " + gD().felicidadToString((Felicidad)(i + 2)), 80, callback, "click", textColor);
+        auto button = factory_->createTextuButton(Vector2D(850, 300 + 100* i), "Final con Felicidad " + gD().felicidadToString((Felicidad)(i + 2)), 70, callback, "click", textColor);
         factory_->addHoverColorMod(button);
 
         finalButtons_.push_back(button);
@@ -86,7 +86,7 @@ FinalsInfoScene::FinalsInfoScene()
             backButton->setActive(true);
         };
 
-        auto button = factory_->createTextuButton(Vector2D(900, 700 + 100 * i), "Final con Felicidad " + gD().felicidadToString((Felicidad)(i + 7)), 80, callback, "click", textColor);
+        auto button = factory_->createTextuButton(Vector2D(850, 700 + 100 * i), "Final secreto " + std::to_string(i + 1), 70, callback, "click", textColor);
         factory_->addHoverColorMod(button);
 
         finalButtonsAdicionales_.push_back(button);

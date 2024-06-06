@@ -64,3 +64,4 @@ void RenderImage::previousTexture()
 void RenderImage::setNumberTexture(int i) {
 	currentTextureIndx_ = i;
 }
+

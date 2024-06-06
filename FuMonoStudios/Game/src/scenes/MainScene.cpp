@@ -651,7 +651,6 @@ ecs::Entity* ecs::MainScene::createMiniManual() {
 
 				manualEnt_->setActive(true);
 				manualTR->setPos(pos);
-				manualEnt_->getComponent<Depth>()->updateChildPos();
 			}
 			else {
 

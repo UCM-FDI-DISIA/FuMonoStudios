@@ -67,6 +67,8 @@ public:
 	/// </summary>
 	/// <param name="i"></param>
 	void setNumberTexture(int i);
+
+
 private:
 	/// <summary>
 	/// indice que indica en que textura del array se encuentra

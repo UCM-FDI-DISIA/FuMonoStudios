@@ -702,7 +702,7 @@
 
         },
         
-        "textoDiario": "Pancracio necesita uno de los paquetes de materiales dirigidos a Hefesto"
+        "textoDiario": "Pancracio necesita en Deemeter uno de los paquetes de materiales dirigidos a Hefesto"
       },
       "3": {
         "numPaquetes": 2,
@@ -713,7 +713,7 @@
         },
         "condiciones": {
           "distrito": "Apolo",
-          "tuboSeleccionado": "Demeter",
+          "tuboSeleccionado": "Hestia",
           "tipoPaquete": "Alimento"
         },
         "recompensa": {
@@ -722,7 +722,7 @@
           "2": " $Campesino--------------------"
 
         },
-        "textoDiario": "Pancracio quiere que desv$ie un paquete de Apolo a Demeter"
+        "textoDiario": "Pancracio quiere que desv$ie un paquete de Apolo a Hestia"
       },
       "4": {
         "numPaquetes": 3,
@@ -809,7 +809,7 @@
           "2": " $Artesano---------------"
 
         },
-        "textoDiario": "El artista Tinteiros necesita un paquete de materiales para sus obras."
+        "textoDiario": "El artista Tinteiros necesita un paquete de materiales para sus obras. Deber$ia enviarselo a Hefesto."
       },
       "2": {
         "numPaquetes": 2,
@@ -827,7 +827,7 @@
           "2": " $Artesano---------------"
 
         },
-        "textoDiario": "Paulino esta molesto con su jefe, dice que necesita un paquete lleno de joyas para sus obras."
+        "textoDiario": "Paulino esta molesto con su jefe, dice que necesita un paquete lleno de joyas para sus obras. Quiz$as podr$ia enviar alguno a Hefesto."
       },
       "3": {
         "numPaquetes": 3,
@@ -845,7 +845,7 @@
           "2": " $Artesano--------------------"
 
         },
-        "textoDiario": "Paulino tiene bastante hambre y me ha pedido que le envie dos paquetes de comida"
+        "textoDiario": "Paulino tiene bastante hambre y me ha pedido que le envie dos paquetes de comida a Hefesto."
       },
       "4": {
         "numPaquetes": 1,
@@ -934,7 +934,7 @@
           "2": " $Tarotisa---------------"
 
         },
-        "textoDiario": "La tarotisa esta muy enfadada, dice que necesita joyas para sus creaciones, quiza podria desviar un paquete."
+        "textoDiario": "La tarotisa esta muy enfadada, dice que necesita joyas para sus creaciones, quiza podria desviar un paquete a Artemisa."
       },
       "2": {
         "numPaquetes": 1,
@@ -952,7 +952,7 @@
           "2": " $Tarotisa---------------"
 
         },
-        "textoDiario": "Abigail realmente es agresiva, me ha pedido que le envie un paquete de armas, aunque dice que es solo para intimidar"
+        "textoDiario": "Abigail realmente es agresiva, me ha pedido que le envie un paquete de armas a Artemisa, aunque dice que es solo para intimidar"
       },
       "3": {
         "numPaquetes": 1,
@@ -1097,7 +1097,7 @@
           "2": " $Soldado--------------------"
 
         },
-        "textoDiario": "Los disturbios de Hestia est$an muy mal. Abakand me ha pedido que mande all$i un paquete de comida y otro de medicina."
+        "textoDiario": "Los disturbios de Hestia est$an muy mal. Abakand me ha pedido que mande all$i dos paquetes de comida."
       },
       "4": {
         "numPaquetes": 2,
@@ -1232,7 +1232,7 @@
           "1": "Contable+++++",
           "2": " $Contable----------"
         },
-        "textoDiario": "Parece que Glover tiene problemas con gente muy chunga. Deber$ia enviarle ese paquete de joyas por su bien."
+        "textoDiario": "Parece que Glover tiene problemas con gente muy chunga. Deber$ia enviarle ese paquete de joyas a Hermes por su bien."
       },
       "5": {
         "numPaquetes": 2,

@@ -816,6 +816,11 @@
       "size": 50
     },
     {
+      "id": "hvdComicSerif70",
+      "file": "recursos/fonts/HVD_Comic_Serif_Pro.otf",
+      "size": 70
+    },
+    {
       "id": "hvdComicSerif80",
       "file": "recursos/fonts/HVD_Comic_Serif_Pro.otf",
       "size": 80

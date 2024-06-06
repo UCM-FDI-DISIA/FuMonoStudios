@@ -3,13 +3,13 @@
     "Presentacion": [
       "Hey, perdona! $?Tienes alguna monedilla de sobra para alguien que est$a pasando un mal d$ia?",
       "No tienes nada verdad... Ah si, $!t$u eres el notas ese que es nuevo en la oficina de correos!",
-      "Bienvenido amigo, a la gran pozilga de distito en el que vivimos llamado Hestia.",
+      "Bienvenido amigo, a la gran pocilga de distrito en el que vivimos llamado Hestia.",
       "Oye amigo perdona por los modales, que llevo mucho tiempo sin que nadie se pare conmigo a hablar y se me est$a olvidando comportarme.",
       "Me llamo Anemos, un placer conocerte.",
       "Bueno, va siendo hora de dejarte que va siendo hora de que vayas a tu primer dia"
     ],
     "FelicidadMinima": [
-      "Jones, estoy triste y decepcionado por t$i. Yo te consideraba un amigo y alguien el que confiar mi futuro. Ya veo que no es as$i",
+      "Jones, estoy triste y decepcionado por t$i. Yo te consideraba un amigo y alguien con el que confiar mi futuro. Ya veo que no es as$i",
       "No me haces ning$un favor y as$i no podemos seguir. No te vuelvas a dirijir a m$i, ya no quiero saber m$as de ti.",
       "Podr$e sobrevivir sin la caridad de Atlantis."
     ],
@@ -53,7 +53,7 @@
       " $!Buenas, socio! $?C$omo te va todo?",
       " $!Hoy es mi d$ia de suerte, amigo! No vas a creer lo que he encontrado rebuscando en la basura. $!Mira!",
       "Te muestra una bola del tama$%o de una u$%a. Tiene un color dorado brillante. Se nota que es falsa",
-      " $!Estoy que me salgo! Se lo voy a mandar a un joyero para que me diga cuanto vale. Lo mandar$e por paqueter$ia, as$i que no me la robes, $?eh?",
+      " $!Estoy que me salgo! Se lo voy a mandar a un joyero para que me diga cu$anto vale. Lo mandar$e por paqueter$ia, as$i que no me la robes, $?eh?",
       " $!Voy a ser rico!"
     ],
     "PostConversacionDia4": [
@@ -61,7 +61,7 @@
     ],
     "Dia5": [
       "Ey, amigo...",
-      "Resulta que la joya de ayer era falsa... No veas que bajona llevo...",
+      "Resulta que la joya de ayer era falsa... No veas qu$e bajona llevo...",
       "Toma, ya no la quiero, te la regalo. Haz lo que quieras con ella.",
       "Ya que somos amigos inseparables y me has ayudado tanto, $?te puedo preguntar algo?",
       " $?Qu$e opinas del rey? $?Crees que es justo con su pueblo? $?Crees que los campesinos nos merecemos estos tratos? $?Crees de verdad que este es el rey que nos merecemos?",
@@ -131,7 +131,7 @@
       "Hemos pasado mucho juntos, gran amigo, no nos conocemos de mucho, pero s$e mucho sobre t$i, y ahora falta que t$u sepas sobre m$i.",
       "Ver$as, Jones, quiero hacerte una pregunta. Como la que te hice cuando te estaba conociendo. $?T$u alguna vez has visto al rey en persona? $?Le has llegado a ver con tus propios ojos? Exacto.",
       " $!El rey no existe, amigo! $!El rey es falso! $!El rey ha muerto! $!Es todo una gran farsa! $!Nos han enga$%ado a todos, TODOS!",
-      "Jones, $?alguna vez te has preguntado que hac$ia yo antes de ser un vagabundo? $?C$omo he acabado aqu$i?",
+      "Jones, $?alguna vez te has preguntado qu$e hac$ia yo antes de ser un vagabundo? $?C$omo he acabado aqu$i?",
       "Mi padre era el rey, Jones. As$i es, yo soy el heredero leg$itimo al trono.",
       "Mi padre era un buen rey, ten$ia a todo el pueblo contento y creaba grandes avances para la sociedad. Pero todo di$o un vuelco cuando encontr$o unos libros enterrados muy antiguos. Era el Critias, el libro que habla de los humanos de la superficie.",
       "Ahora ya conocemos el libro, pero se encontr$o cuando yo solo ten$ia 10 a$%os. Mi padre lo habl$o con Gargafiel, su secretario, y le coment$o de revelarlo a la poblaci$on para mentalizarse para el resurgimiento en 25 a$%os.",
@@ -262,7 +262,7 @@
       "Venga, ahora vete a trabajar, tengo cosas que hacer."
     ],
     "PostConversacionDia5": [
-      "Jones, necesito que elimines paquetes de las lechuzas. Paquetes sellados con alimentos y que van hacia el distrito de Apolo."
+      "Jones, necesito que elimines los paquetes de las lechuzas. Paquetes sellados con alimentos y que van hacia el distrito de Apolo."
     ],
     "Dia6": [
       "Hola de nuevo. Hoy necesito un encargo un tanto especial.",
@@ -276,7 +276,7 @@
       "Jones, elimina los paquetes ilegales de comida que vayan a Apolo o Hermes. Si me ayudas, te dar$e ma$%ana una recompensa."
     ],
     "Dia7": [
-      "Maldito bastardo Jones! $!$?Has sido t$u el que ha publicado ese papel?! $!$?HAS SIDO T$U?",
+      " $!Maldito bastardo Jones! $!$?Has sido t$u el que ha publicado ese papel?! $!$?HAS SIDO T$U?",
       "No... Es imposible que hayas sido t$u... Tienen que haber sido las lechuzas esas...",
       "Perd$on por incriminarte. El rey y yo estamos hartos de que salgan mentiras a la luz que den falsa esperanza al pueblo.",
       "Sabes de sobra que el rey quiere lo mejor para la Atl$antida, y esparcir falsa informaci$on que culpa al rey de no haberla revelado...",
@@ -322,16 +322,16 @@
       "Me dijo que debo desarrollar una forma de subir a la superficie y que, una vez salga, se unir$a a m$i y me conceder$a poder de sobra para derrotar a los humanos.",
       "Una vez derrotados, la ciudad resurgir$a, como est$a escrito y podremos vivir a nuestras anchas como la raza superior que somos.",
       " $!Esto es important$isimo, Jones! No se lo he dicho a nadie para no poner en peligro el plan de Poseid$on, y s$olo yo puedo hacer esto.",
-      " $!No puedo arriesgar a esperar 5 a$%os y que los humanos nos destruyan! $!Debo sacrificarme y luchar por los Atlantes!",
-      " Es por eso lo que el rey se ha escondido. Aunque no lo veas, $el me ha estado apoyando y ayudando a hacer una nave capaz de llevarnos a la superficie.",
+      " $!No puedo arriesgarme a esperar 5 a$%os y que los humanos nos destruyan! $!Debo sacrificarme y luchar por los Atlantes!",
+      " Es por eso que el rey se ha escondido. Aunque no lo veas, $el me ha estado apoyando y ayudando a hacer una nave capaz de llevarnos a la superficie.",
       "Jones, esta es la misi$on m$as importante que te ha podido encomendar el rey. Es una misi$on que decide la extinci$on de nuestra especie o la salvaci$on. $Unete conmigo en la nave.",
       "Esta nave tiene hueco para dos personas. Si me ayudas, podr$as venir conmigo. No puedo dejar el pueblo de Atlantis abandonado, por lo que el rey se quedar$a aqu$i. Una vez subamos, dejaremos que Poseid$on haga lo suyo.",
       " $?Entiendes la magnitud del asunto? Sab$ia que eras un hombre razonable.",
       "Pues no hay tiempo que perder. Necesito materiales para terminar la nave. Ahora mismo necesito dinero. No quiero fundirme todos los recursos del rey.",
-      "Redirige al distrito de Poseid$on 2 paquetes de joyas que vayan a los distritos de los campesinos. Me refiero los de Hestia, Dem$eter, Hefesto o Artemisa. Ellos no necesitan joyas"
+      "Redirige al distrito de Poseid$on 2 paquetes de joyas que vayan a los distritos de los campesinos. Me refiero a los de Hestia, Dem$eter, Hefesto o Artemisa. Ellos no necesitan joyas"
     ],
     "PostConversacionDia10": [
-      "Redirige al distrito de Poseid$on 2 paquetes de joyas que vayan a los distritos de los campesinos. Me refiero los de Hestia, Dem$eter, Hefesto o Artemisa. Ellos no necesitan joyas"
+      "Redirige al distrito de Poseid$on 2 paquetes de joyas que vayan a los distritos de los campesinos. Me refiero a los de Hestia, Dem$eter, Hefesto o Artemisa. Ellos no necesitan joyas"
     ],
     "Dia11": [
       "Hola Jones.",
@@ -352,7 +352,7 @@
       "Est$an a nombre de Pancracio Warawa. Para que te sea m$as f$acil moverlos."
     ],
     "PostConversacionDia12": [
-      "Redirige la comida que vaya a Hermes a Poseid$on. Dos paquetes. Los manda un tal Pancracio Warawa."
+      "Redirige la comida que va a Hermes hacia Poseid$on. Dos paquetes. Los manda un tal Pancracio Warawa."
     ],
     "Dia13": [
       "Jones. No he podido dormir. No puedo parar de trabajar.",
@@ -455,7 +455,7 @@
                 "mi huerto est$a que parece el descampao de enfrente, tiene m$as malas hierbas que buenas, se las quito y vuelven a crecer.",
                 "Encima los intermediarios, los pu$%eteros intermediarios siempre dando por saco. Que si les rob$e la $ultima vez d$andoles mercanc$ia en mal estado...",
                 "Ahora tengo que devolverles el dinero, que si a esto le llamo yo comida, que c$omo me atrevo a cobrar por esta bazofia.",
-                " $!AAAY  QUE PENA LA MIA!",
+                " $!AAAY  QUE PENA LA M$IA!",
                 "Como si no fuera suficiente la miseria que pido por lo poco que tengo encima van y se me quejan.",
                 "Si es que as$i no se puede, as$i no se puede. No s$e si son los cultivos, la tierra, o si soy yo.",
                 "Pero esto no puede... no puede seguir as$i..."
@@ -467,7 +467,7 @@
                 "Ya me rescataron una vez de una situaci$on horrenda, consegu$i este trabajo y conoc$i a mi mujer,",
                 "de verdad parec$ia que la vida me hab$ia dado otra oportunidad.",
                 "Pero ya lo ves, estas tierras en mal estado no me da para mantenernos a m$i y a mi mujer en buenas condiciones.",
-                "No se cu$anto podr$e aguantar en esta situaci$on, estoy molio."
+                "No se cu$anto podr$e aguantar en esta situaci$on, estoy molido."
             ]
         },
         "GenericoNormal": {
@@ -512,7 +512,7 @@
                 "Pero bueno, no te entretengo m$as, a pasar buena tarde."
             ],
             "3": [
-                "Ay hijo, que alegr$ia y que ilusi$on.",
+                "Ay hijo, qu$e alegr$ia y qu$e ilusi$on.",
                 "Con toda tu ayuda no solo mi campo est$a mejor, sino que todos los cultivos prosperan.",
                 "Puede que tu trabajo con esos paquetes no sea tan agotador como la vida en el campo,",
                 "pero realmente puedes llegar a marcar la diferencia desde ah$i.",
@@ -523,7 +523,7 @@
             "1": [
                 "Yeeeeeeepa, que tal estamos m$aquina",
                 "Prueba esto, que est$an los clientes que me los quitan de las manos.",
-                "Les soplo m$as de diez veces m$as de dinero que antes. $?Que cu$anto cuesta? T$u pruebalo.",
+                "Les soplo m$as de diez veces m$as de dinero que antes. $?Qu$e cu$anto cuesta? T$u pruebalo.",
                 "Bueno, tranquilo, tranquilo, con la velocidad que te lo has comido veo que te encanta",
                 "Bueno $?eh?, tengo unos amigos, el grupo de las lechuzas se hacen llamar,",
                 "resulta que junto a ellos estamos llevando un plan ..., digamos que muy discreto.",
@@ -863,8 +863,8 @@
             ],
             "3": [
                 "Un rumor inquietante est$a circulando entre los habitantes del distrito de Apolo.",
-                "Dicen que hay disturbios en el distrito de Hestia.",
-                "Necesito que verifiques la situaci$on y, si es necesario, ser$ia de mucha ayuda si pudieses redirigir 2 paquetes uno de comida y otro de medicina hacia Hestia",
+                "Dicen que hay disturbios en el distrito de Hestia. Al parecer muchos asaltantes entran en casas y roban todo lo que pueden.",
+                "Necesito que verifiques la situaci$on y, si es necesario, ser$ia de mucha ayuda si pudieses redirigir 2 paquetes de comida hacia Hestia",
                 "Los inocentes no deber$ian sufrir por peleas de otros."
             ],
             "4": [
@@ -942,7 +942,7 @@
                 "Un d$ia de estos tenemos que ir a por unos tragos y te cuento todas mis historias."
             ],
             "2": [
-                " $ultimamente las cosas han estado algo movidas por los distritos exteriores, varios de los soldados asignados all$i est$an abandonando su puesto.",
+                " $Ultimamente las cosas han estado algo movidas por los distritos exteriores, varios de los soldados asignados all$i est$an abandonando su puesto.",
                 "Aunque parezca mala situaci$on esto viene muy bien, as$i los soldados se ir$an antes de que pase algo gordo de verdad.",
                 "Si todo sale bien igual puedo obtener el puesto que tanto tiempo he deseado."
             ],
@@ -1105,7 +1105,7 @@
         ],
         "2": [
             "En el manual est$a todo lo que necesitas saber sobre los paquetes que te ir$an llegando.",
-            "Vamos a hacer un ejemplo con un paquete que esta al caer."
+            "Vamos a hacer un ejemplo con un paquete que est$a al caer."
 
         ],
         "3": [
@@ -1115,12 +1115,12 @@
             "Justo arriba est$a el c$odigo postal y la calle. Estos dos nos sirven para saber a que tubo mandar el paquete."
         ],
         "5": [
-            "Debemos primero saber a que tubo debemos mandar este paquete. Los tubos representan cada uno un distrito y su simbolo esta representado en el manual.",
-            "Vamos a buscar el codigo postal del distrito en la pagina del manual sobre codigos postales."
+            "Debemos primero saber a que tubo debemos mandar este paquete. Los tubos representan cada uno un distrito y su s$imbolo est$a representado en el manual.",
+            "Vamos a buscar el c$odigo postal del distrito en la p$agina del manual sobre codigos postales."
         ],
         "6": [
             "En la p$agina izquierda se ven los c$odigos postales y sus distritos correspondientes. Este paquete tiene el c$odigo 001, por lo que ir$a al distrito de Hestia, el primer tubo",
-            "Antes de poder mandar el paquete, tenemos que sellar con un color el paquete en funcion de su calle. Vamos a la pagina de Hestia para saber que color escoger."
+            "Antes de poder mandar el paquete, tenemos que sellar con un color el paquete en funci$on de su calle. Vamos a la p$agina de Hestia para saber que color escoger."
         ],
         "7": [
             "Como ves en la p$agina, hay 3 calles con 3 colores. Hay que sellar el paquete con el color correspondiente de su calle",
@@ -1131,14 +1131,14 @@
             "Una vez sellado, ya podemos mandarlo al tubo. Arrastra el paquete hasta el tubo de color rojo, el de Hestia."
         ],
         "9": [
-            "Ahora toca volver a hacerlo con este otro paquete. Este tiene el codigo 011. Vamos a buscar su distrito en el manual.",
+            "Ahora toca volver a hacerlo con este otro paquete. Este tiene el c$odigo 011. Vamos a buscar su distrito en el manual.",
             "Vuelve a la p$agina de c$odigos que te ense$%e al principio. La n$umero tres"
         ],
         "10": [
             "Es del distrito de Demeter. Vamos a su p$agina."
         ],
         "11": [
-            "Como vemos, es de la calle Camino del Calamar, as$i que sellaremos con el color azul."
+            "Como vemos, es de la calle Camino del Calamar, as$i que lo sellaremos con el color azul."
         ],
         "12": [
             "Ahora lo metemos al tubo con su mismo s$imbolo, el de color verde."
@@ -1155,67 +1155,67 @@
             "Ahora Paco, ve a la s$eptima p$agina del manual, ah$i encontrar$as informaci$on sobre los sellos que marcan el contenido de los paquetes."
         ],
         "16": [
-            "Como veas hay cinco tipos de sellos, los de alimentos, los de materiales, los de joyas, los de armamento y los de medicina.",
+            "Como ves hay cinco tipos de sellos, los de alimentos, los de materiales, los de joyas, los de armamento y los de medicina.",
             "Tranquilo, no te preocupes, esa informaci$on no la necesitas para nada, es algo m$as informativo para los carteros.",
-            "Adem$as no es como si el contenido de los paquetes te interesase para redirigirlos a otras personas y asi ganarte su afecto $?verdad?.",
+            "Adem$as no es como si el contenido de los paquetes te interesase para redirigirlos a otras personas y as$i ganarte su afecto $?verdad?.",
             "Muy bien, sigamos ya con la $ultima parte de tu formaci$on"
         ],
         "17": [
-            "Como somos una empresa super seria, te quiero mostrar que pasa cuando fallas. Para que no falles, obviamente.",
+            "Como somos una empresa super seria, te quiero mostrar qu$e pasa cuando fallas. Para que no falles, obviamente.",
             "No te preocupes que no te voy a penalizar... Tranquilo...",
             "Coge este paquete, que en principio est$a bien reglamentado, y mandalo a la basura.",
             "La basura es el tubo negro de la izquierda, cualquier paquete que no cumpla lo establecido ira ah$i."
         ],
         "18": [
-            "Fijate que te ha salido una notita explicando tu error. Cada paquete correcto son 20 dolares m$as en tu cuenta, y cada paquete err$oneo son 30 dolares menos.",
-            "Espero no ver muchas notitas cuando trabajes... El anterior a ti le hacia demasiados favores a la gente de la ciudad y acababa no ganando nada..."
+            "Fijate que te ha salido una notita explicando tu error. Cada paquete correcto son 20 oricalcos m$as en tu cuenta, y cada paquete err$oneo son 30 oricalcos menos.",
+            "Espero no ver muchas notitas cuando trabajes... El anterior a ti le hac$ia demasiados favores a la gente de la ciudad y acababa no ganando nada..."
         ],
         "19": [
-            "Paco, Paco, dios mio que desgracia, a aparecido una red de trafico de sellos falsos en el reino.",
-            "Si la gente empieza a vender sellos que no sean mios, una gran parte de las ganancias se perdera, pero no te preocupes que aqu$i estoy yo para ense$%arte a detectarlos",
+            "Paco, Paco, dios mio que desgracia, a aparecido una red de tr$afico de sellos falsos en el reino.",
+            "Si la gente empieza a vender sellos que no sean m$ios, una gran parte de las ganancias se perder$a, pero no te preocupes que aqu$i estoy yo para ense$%arte a detectarlos",
             "Tenemos que comprobar que los paquetes son legales, que tengan el sello reglamentario y la calle est$e bien puesta.",
             "Fijate que este paquete que acaba de llegar tiene un sello raro. Vamos a buscarlo en la p$agina de los sellos."
         ],
         "20": [
             "Parece que el sello rojo de Armamento del paquete no coincide con el del manual. Este paquete entonces va directo a la basura.",
-            "Arrastralo hasta la basura para eliminarlo. Es importante que elimines los ilegales, sino te penalizare economicamente."
+            "Arrastralo hasta la basura para eliminarlo. Es importante que elimines los ilegales, sino te penalizar$e econ$omicamente."
         ],
 
         "21": [
-            "Hola Paco, espero que no te hayas acomodado porque he tenido una nueva idea que ayudara al negocio",
+            "Hola Paco, espero que no te hayas acomodado porque he tenido una nueva idea que ayudar$a al negocio",
             "Se ve que $ultimamente la gente trata de mandar m$as y m$as cosas juntas para ahorrarse el dinero de varios env$ios",
             "Esto ha provocado que muchos de mis repartidores se da$%en la espalda llevando esos paquetes al no estar seguros de su peso desde el inicio",
-            "Por eso ahora, varios de los paquetes que debes enviar contendran un sello de pesado por motivos de seguridad a la hora de transportarlos.",
-            "Estos sello indican el peso del paquete, pudiendo ser bajo, medio y alto. En el manual tienes unas paginas que explican la diferencia de sellos.",
-            "El problema es que los habitantes no son muy espabilados asi que tendras que asegurarte con la balanaza que el sello de pesado corresponde a su peso.",
-            "Primero ve a la novena pagina del manual para ver como funciona la balanza"
+            "Por eso ahora, varios de los paquetes que debes enviar contendr$an un sello de pesado por motivos de seguridad a la hora de transportarlos.",
+            "Estos sellos indican el peso del paquete, pudiendo ser bajo, medio y alto. En el manual tienes unas paginas que explican la diferencia de sellos.",
+            "El problema es que los habitantes no son muy espabilados asi que tendras que asegurarte con la balanza que el sello de pesado corresponde a su peso.",
+            "Primero ve a la novena p$agina del manual para ver c$omo funciona la balanza"
         ],
         "22": [
             "Bien como ves a la derecha est$an los diferentes sellos de pesado y a la derecha las distintas regiones por los pesos de la balanza.",
             "Ahora debes arrastrar el paquete a la balanza para ver si la regi$on que marca concuerda con su sello."
         ],
         "23": [
-            "Como ves este paquete esta correcto, por lo cual pon sus sellos correspondientes y envialo."
+            "Como ves este paquete est$a correcto, por lo cual pon sus sellos correspondientes y env$ialo."
         ],
         "24": [
-            "Vale Paco, espero que esta sea la $ultima cosa que tengo que explicarte. Han metido desde palacio una nueva normativa para ciertos envios debido a las quejas de la gente",
+            "Vale Paco, espero que esta sea la $ultima cosa que tengo que explicarte. Han metido desde palacio una nueva normativa para ciertos env$ios debido a las quejas de la gente",
             "Algunos paquetes pueden contener cosas muy delicadas y como se ve que mis empleados no son demasiado delicados, ahora nos obligan a embalar todos los paquetes",
-            "con un sello especifico de fragilidad. Para ello tendras que usar la nueva herramienta que te he dejado en la mesa.",
-            "Antes de nada, que tal si miras el funcionamiento de la cinta en tu manual."
+            "con un sello espec$ifico de fragilidad. Para ello tendr$as que usar la nueva herramienta que te he dejado en la mesa.",
+            "Antes de nada, $?qu$e tal si miras el funcionamiento de la cinta en tu manual?"
         ],
         "25": [
-            "Como ves para envalar un paquete debes seguir una ruta espec$ifica empezando por el punto verde. Mientras sigas los puntos en orden y no te salgas del paquete todo ir$a bien.",
-            "PERO OJO, antes de embalarlo sera mejor que le pongas sello de calle y compruebes todo lo dem$as, ya que una vez embalado no podras ver sus caracter$isticas."
+            "Como ves para embalar un paquete debes seguir una ruta espec$ifica empezando por el punto verde. Mientras sigas los puntos en orden y no te salgas del paquete todo ir$a bien.",
+            "PERO OJO, antes de embalarlo ser$a mejor que le pongas sello de calle y compruebes todo lo dem$as, ya que una vez embalado no podr$as ver sus caracter$isticas."
         ],
         "26": [
             "Como te he dicho antes, para poder embalarlo, coge la herramienta de embalar, y sigue la ruta de puntos que ver$as al ponerla por encima del paquete.",
             "Sigue la ruta empezando por el punto verde y te quedar$a niquelado"
         ],
         "27": [
-            "Por $ultimo envia el paquete y habr$as terminado"
+            "Por $ultimo env$ia el paquete y habr$as terminado"
         ],
         "28": [
-            "Muy bien, por hoy has aprendido sufiente. Ahora mueve ese culo y ponte a trabajar."
+            "Muy bien, por hoy has aprendido suficiente. Ahora mueve ese culo y ponte a trabajar."
         ]
     },
     "Intro": {
@@ -1227,7 +1227,7 @@
             "Trabajaba en correos y s$olamente ten$ia un trabajo: coger los paquetes que le llegaban y mandarlos por un tubo. "
         ],
         "5": [
-            "Hac$ia esto todos los dias y estaba harto de ello, ansiaba una oportunidad de escapar de su mon$otona vida.",
+            "Hac$ia esto todos los d$ias y estaba harto de ello, ansiaba una oportunidad de escapar de su mon$otona vida.",
             "Hasta que un d$ia, algo que no era un paquete corriente lleg$o a su oficina..."
         ],
         "7": [
@@ -1235,8 +1235,8 @@
         ],
         "8": [
             "El remitente de la carta era un grupo que se hac$ia llamar Las Lechuzas y hab$ia un mapa que marcaba la supuesta ubicaci$on de este legendario lugar.",
-            "Paco interpret$o esto como una se$%al del destino para dejar todo atras y se embarc$o en su viaje hacia la Atlantida, gast$andose todos sus ahorros en un submarino y un disfraz de pez para infiltrarse.",
-            "Y as$i, despues de un arduo viaje, Paco lleg$o a su destino, pero este era ligeramente diferente de como se lo imaginaba..."
+            "Paco interpret$o esto como una se$%al del destino para dejar todo atr$as y se embarc$o en su viaje hacia la Atl$antida, gast$andose todos sus ahorros en un submarino y un disfraz de pez para infiltrarse.",
+            "Y as$i, despu$es de un arduo viaje, Paco lleg$o a su destino, pero este era ligeramente diferente de como se lo imaginaba..."
         ],
         "9": [
             "Paco lleg$o a una especie de barrio residencial, donde vi$o lo que parec$ia una oficina de correos y a un pez en la puerta con cara de preocupaci$on.",
@@ -1254,17 +1254,17 @@
         "0": [
             "Bueno Paco, por mucho que seas nuevo por estos distritos no debes quedarte dormido, es importante que vengas a trabajar todos los d$ias para poder ser alguien productivo.",
             "Como es tu primer d$ia, antes de venir a trabajar porque no te das una vuelta por todos los distritos. Para moverte entre distritos pulsa los carteles con flechas.",
-            "Si ves alguno con alguna cruz significa que alguien de tu clase social no puede ir por ah$i. Tambi$en sientete libre de hablar con los habitantes, es importante que hagas amigos",
+            "Si ves alguno con alguna cruz significa que alguien de tu clase social no puede ir por ah$i. Tambi$en si$entete libre de hablar con los habitantes, es importante que hagas amigos",
             "Por $ultimo, toma, un diario para que puedas apuntar tus pensamientos y tus cosas. Pues ale visita los distritos y vuelve al edificio este de la carta para empezar a currar."
         ],
         "1": [
             "Hola.",
-            "Como te has portado bien. El rey te ha permitido el acceso a los distritos interiores. Hermes, Apolo y Poseidon.",
-            "Ademas, el rey quiere verte. Antes de trabajar busca al secretario del rey, que estara en Poseidon."
+            "C$omo te has portado bien. El rey te ha permitido el acceso a los distritos interiores. Hermes, Apolo y Poseidon.",
+            "Adem$as, el rey quiere verte. Antes de trabajar busca al secretario del rey, que estar$a en Poseidon."
         ],
         "2": [
             "Hola Jones, hoy te ha llegado esto a tu correo. Estaban repartiendo a toda la poblaci$on uno.",
-            " lo lees, es un papel con el titulo 'CRITIAS'. Te viene un recuerdo a tu pasado como historiador y jurar$ias escuchar este mismo nombre relacionado con el fil$osofo Plat$on.",
+            " lo lees, es un papel con el t$itulo 'CRITIAS'. Te viene un recuerdo a tu pasado como historiador y jurar$ias escuchar este mismo nombre relacionado con el fil$osofo Plat$on.",
             "Queridos habitantes de Atlantis, hemos descubierto pruebas indudables de la existencia de algo m$as all$a del agua. Gracias a un texto que hemos encontrado y d$ecadas de estudio.",
             "Este papel es una versi$on resumida del texto original, y explicaremos resumidamente nuestros descubrimientos. Sin embargo, no podemos revelarnos, ya que seguramente el rey nos persiga por herej$ia. Nos mantendremos ocultos.",
             "Atlantes, m$as all$a de nuestros muros, m$as all$a del agua, existe un mundo vasto y enorme que jam$as podr$iamos imaginar.",
@@ -1282,7 +1282,7 @@
         ]
     },
     "NoHabladoWarning": {
-        "0": [ "Deberia hablar con todos antes de entrar a trabajar." ]
+        "0": [ "Acu$erdate de hablar con los NPCs. Una vez entres ya no podr$as hablar con ellos por el d$ia de hoy." ]
     },
     "CasaGrande": {
 
@@ -1345,7 +1345,7 @@
             "prefiero no tocar."
         ],
         "TextoCasaGrande111": [
-            "Deber$ian de limpiar m$as amenudo las paredes,",
+            "Deber$ian de limpiar m$as a menudo las paredes,",
             "y bueno, la zona en general."
         ],
 
@@ -1353,7 +1353,7 @@
             "Hay una mancha en la pared, parece ser...",
             "Bueno, mejor no huelo."
         ],
-        "TextoCasaGrande121": [ "Deber$ian de limpiar m$as amenudo todo esto, pero no se ve feo... Curioso" ],
+        "TextoCasaGrande121": [ "Deber$ian de limpiar m$as a menudo todo esto, pero no se ve feo... Curioso" ],
 
         "TextoCasaGrande130": [
             "Puede que no luciera en las mejores condiciones,",
@@ -1446,7 +1446,7 @@
             "a trabajar."
         ],
 
-        "TextoCartelOficina130": [ "Trece (anulo rima) d$ias y todav$ia sigo trabajando aqu$i" ],
+        "TextoCartelOficina130": [ "Trece d$ias y todav$ia sigo trabajando aqu$i" ],
         "TextoCartelOficina131": [
             "Llevo un tiempo pregunt$andomelo,",
             "pero seguro la A del logo es por lo de Atl$antida."
@@ -1465,7 +1465,7 @@
 
         "TextoMuro20": [
             "Recuerdo cuando los guardias de las murallas trataron de perseguirme ayer,",
-            "no puedo creer que la mascara falsa funcionara para distraerlos, qu$e bobos."
+            "no puedo creer que la m$ascara falsa funcionara para distraerlos, qu$e bobos."
         ],
         "TextoMuro21": [ "Seguro que incluso hay m$as muros m$as adentro de la ciudad." ],
 
@@ -1476,7 +1476,7 @@
         "TextoMuro31": [ "Desde lejos parecen diminutos, pero los muros son enormes de cerca." ],
 
         "TextoMuro40": [
-            "Los arboles que hay al fondo, cerca de los muros,",
+            "Los $arboles que hay al fondo, cerca de los muros,",
             "son parecidos a los de la superficie..."
         ],
         "TextoMuro41": [
@@ -1492,7 +1492,7 @@
         ],
 
         "TextoMuro60": [
-            "Me gustan los arboles que hay cerca de los muros.",
+            "Me gustan los $arboles que hay cerca de los muros.",
             "Pero el grande que hay en Dem$eter es todav$ia m$as impresionante."
         ],
         "TextoMuro61": [
@@ -1501,14 +1501,14 @@
             "creo que se llamaba Asedio de los Gigantes, me gust$o la historia."
         ],
 
-        "TextoMuro70": [ "Los arquitectos debiron sudar la gota gorda para construir esos muros." ],
-        "TextoMuro71": [ "Me gustar$ia poder saber cuanto tiempo han aguantado esos muros." ],
+        "TextoMuro70": [ "Los arquitectos debieron sudar la gota gorda para construir esos muros." ],
+        "TextoMuro71": [ "Me gustar$ia poder saber cu$anto tiempo han aguantado esos muros." ],
 
         "TextoMuro80": [ "Construir esos muros debi$o de tomar mucho tiempo y trabajo." ],
         "TextoMuro81": [ "Ser$ia muy loco pensar que esos muros llevan en pie miles de a$%os." ],
 
         "TextoMuro90": [
-            "Me pregunto como consiguieron los materiales para construir los muros,",
+            "Me pregunto c$omo consiguieron los materiales para construir los muros,",
             "estamos debajo de la superficie y no hay tantos recursos aqu$i, creo."
         ],
         "TextoMuro91": [ "De seguro lleva milenios esos muros en pie." ],
@@ -1518,7 +1518,7 @@
             "pero desde peque$%o siempre me ha gustado ser explorador."
         ],
         "TextoMuro101": [
-            "Los arboles del fondo veo que siguen igual de bien que siempre,",
+            "Los $arboles del fondo veo que siguen igual de bien que siempre,",
             "no se marchitan ni nada."
         ],
 
@@ -1526,14 +1526,14 @@
             "Creo que una vez quer$ia dedicarme a la arquitectura de muros",
             "pero siempre quise ser explorador, aunque acab$e trabajando de empaquetador..."
         ],
-        "TextoMuro111": [ "Me gustar$ia saber que les echan a los arboles para que se mantengan tan bien." ],
+        "TextoMuro111": [ "Me gustar$ia saber que les echan a los $arboles para que se mantengan tan bien." ],
 
         "TextoMuro120": [
             "Ser arquitecto y constructor de esos muros debi$o de ser un reto a la hora de construirlos,",
             "pero nada es tan guay como ser un explorador."
         ],
         "TextoMuro121": [
-            "Me pregunto si esos arboles dar$an alg$un tipo de fruto.",
+            "Me pregunto si esos $arboles dar$an alg$un tipo de fruto.",
             "Los de Dem$eter si que dan frutos, seguro."
         ],
 
@@ -1542,7 +1542,7 @@
             "si est$a rodeada por una c$upula y es dif$icil que cuaquiera entre por ella."
         ],
         "TextoMuro131": [
-            "No s$e cuanto miden, pero son bastante altos los muros,",
+            "No s$e cu$anto miden, pero son bastante altos los muros,",
             "todav$ia los veo demasiado grandes desde que llegu$e."
         ],
 
@@ -1568,13 +1568,13 @@
         "TextoTiendaPociones31": [ "Creo que hoy voya seguir desistiendo de comprar un brebaje de aqu$i." ],
 
         "TextoTiendaPociones40": [
-            "Ahora que me fijo, usan probetas y recipientes de cristal dificiles de hacer.",
+            "Ahora que me fijo, usan probetas y recipientes de cristal dif$iciles de hacer.",
             "Me sorprende lo diestros que son estos peces."
         ],
         "TextoTiendaPociones41": [ "No creo que hagan nada, pero me pregunto por qu$e tienen colores tan raros esos brebajes." ],
 
         "TextoTiendaPociones50": [
-            "Usan probetas y recipientes de cristal dificiles de hacer.",
+            "Usan probetas y recipientes de cristal dif$iciles de hacer.",
             "Estos peces no son muy listos, pero s$i muy diestros en esto."
         ],
         "TextoTiendaPociones51": [
@@ -1600,20 +1600,20 @@
             "o a lo mejor las usa para hacer sus brebajes."
         ],
         "TextoTiendaPociones81": [
-            "En clase de qu$imica del instituto hac$iamos liquidos raros como estos.",
-            "Recuerdo cuando yo y un amigo mezclamos mal dos cosas y casi explotamos el laboratorio."
+            "En clase de qu$imica del instituto hac$iamos l$iquidos raros como estos.",
+            "Recuerdo cuando yo y un amigo mezclamos mal las dos cosas y casi explotamos el laboratorio."
         ],
 
         "TextoTiendaPociones90": [
             "La plantita que hay en la estanter$ia, a lo mejor indica que al due$%o le gustan las plantas,",
-            "pero tambien puede que las use para crear estos brebajes."
+            "pero tambi$en puede que las use para crear estos brebajes."
         ],
         "TextoTiendaPociones91": [
             "El d$ia en que casi explotamos el instituto en clase de qu$imica por hacer brebajes como estos,",
             "casi me expulsan, pero tan solo tuve que limpiar el desastre que montamos en el laboratorio. Lo recuerdo muy gracioso."
         ],
 
-        "TextoTiendaPociones100": [ "Ojal$a hubiera mas variedad, todav$ia siguen los mismos brebajes de siempre." ],
+        "TextoTiendaPociones100": [ "Ojal$a hubiera m$as variedad, todav$ia siguen los mismos brebajes de siempre." ],
         "TextoTiendaPociones101": [ "Ahora que me fijo, todo est$a muy bien ordenado, el due$%o debe ser una persona ordenada." ],
 
         "TextoTiendaPociones110": [
@@ -1630,17 +1630,17 @@
 
         "TextoTiendaPociones130": [
             "Me gustar$ia saber como crear brebajes como estos y para qu$e sirven.",
-            "Pero para esto $ultimo quizas deba de comprar alguno."
+            "Pero para esto $ultimo quiz$as deba de comprar alguno."
         ],
         "TextoTiendaPociones131": [ "Los cristales parecen delicados, mejor no tocar." ],
 
         "TextoTiendaPociones140": [
             "Llevo dos semanas, y ahora me pregunto c$omo es el proceso de creaci$on de estos brebajes.",
-            "Pueden que sean diestros, pero hacer liquidos como estos raros requiere a lo mejor de saber de qu$imica,",
+            "Pueden que sean diestros, pero hacer l$iquidos como estos raros requiere a lo mejor de saber de qu$imica,",
             "y estos peces no son muy inteligentes."
         ],
         "TextoTiendaPociones141": [
-            "Los cristales de los brebajes parecen de licados,",
+            "Los cristales de los brebajes parecen delicados,",
             "prefiero no tocar si no los voy a comprar."
         ]
     },
@@ -1650,10 +1650,10 @@
         "TextoTiendaBolas11": [ "Puede que estas frutas se cultiven en el campo que hay en la ciudad." ],
 
         "TextoTiendaBolas20": [ "No se qu$e tipo de frutas son, pero las que venden aqu$i son muy raras." ],
-        "TextoTiendaBolas21": [ "En Dem$eter cultivan cosas a lo mejor, puede que estas futas vengan de all$i." ],
+        "TextoTiendaBolas21": [ "En Dem$eter cultivan cosas a lo mejor, puede que estas frutas vengan de all$i." ],
 
         "TextoTiendaBolas30": [ "Son muy raras estas frutas, quiz$as deba de probar alguna." ],
-        "TextoTiendaBolas31": [ "Ahora que lo veo, parecen patatas, quizas en Dem$eter las cultiven." ],
+        "TextoTiendaBolas31": [ "Ahora que lo veo, parecen patatas, quiz$as en Dem$eter las cultiven." ],
 
         "TextoTiendaBolas40": [
             "No hay mucha variedad en esta tienda de... $?frutas?",
@@ -1677,7 +1677,7 @@
             "Pod$ian costar m$as a lo mejor si tuvieran menos a la venta."
         ],
 
-        "TextoTiendaBolas70": [ "No solo parecen patatas, tambien parecen huevos..." ],
+        "TextoTiendaBolas70": [ "No solo parecen patatas, tambi$en parecen huevos..." ],
         "TextoTiendaBolas71": [
             "1, 2, 3, 4...",
             "67, 68, 69,...",
@@ -1695,7 +1695,7 @@
             "Parecen patatas, pero tambi$en parecen huevos.",
             "Ser$ia raro ver gallinas bajo el mar."
         ],
-        "TextoTiendaBolas91": [ "Contar cuantas frutas hay ser$ia entretenido, pero hay demasiadas a la vista." ],
+        "TextoTiendaBolas91": [ "Contar cu$antas frutas hay ser$ia entretenido, pero hay demasiadas a la vista." ],
 
         "TextoTiendaBolas100": [ "Tengo hambre, quiz$as deba de comprar una fruta de estas." ],
         "TextoTiendaBolas101": [ " $?Esto caducar$a?." ],
@@ -1704,14 +1704,14 @@
         "TextoTiendaBolas111": [ "Espero que si me compre una fruta, pueda conservarla durante d$ias." ],
 
         "TextoTiendaBolas120": [ "Si son parecidas a las patatas, estas frutas pueden saciar mi hambre si las cuezo." ],
-        "TextoTiendaBolas121": [ "Me pregunto como conservar$an la comida en este sitio." ],
+        "TextoTiendaBolas121": [ "Me pregunto c$omo conservar$an la comida en este sitio." ],
 
         "TextoTiendaBolas130": [
             "Creo que hoy me voy a comer una fruta de estas...",
             "bueno, creo que mejor paso."
         ],
         "TextoTiendaBolas131": [
-            "Todav$ia tengo dinero para poder comparar alguna fruta de estas a lo mejor,",
+            "Todav$ia tengo dinero para poder comprar alguna fruta de estas a lo mejor,",
             "pero prefiero ahorrar."
         ],
 
@@ -1739,7 +1739,7 @@
         "TextoTiendaJarrones31": [ "Si estos jarrones son de la tarotista, debe de tener buena mano de obra." ],
 
         "TextoTiendaJarrones40": [ "Deber$ian de pintar los jarrones." ],
-        "TextoTiendaJarrones41": [ "Me pregunto cuanto costar$a hacer un jarr$on en un lugar bajo el mar." ],
+        "TextoTiendaJarrones41": [ "Me pregunto cu$anto costar$a hacer un jarr$on en un lugar bajo el mar." ],
 
         "TextoTiendaJarrones50": [
             "Deber$ian de pintar los jarrones.",
@@ -1778,7 +1778,7 @@
         "TextoTiendaJarrones131": [ "Si estos jarrones los vende la tarotista, de seguro que con tener dos negocios a la vez no le falta dinero." ],
 
         "TextoTiendaJarrones140": [
-            "En la superficie hab$ian un monton de puestos de jarrones,",
+            "En la superficie hab$ian un mont$on de puestos de jarrones,",
             "no estaban en tan buenas condiciones los jarrones, pero recuerdo haber comprado uno porque eran bonitos."
         ],
         "TextoTiendaJarrones141": [ "Si esta tienda es de la tarotista, debe de saber c$omo ha podido mantener a flote dos negocios a la vez." ]
@@ -1822,14 +1822,14 @@
         "TextoMolino111": [ "Todav$ia me cuestiono si todos los campesinos viven en molinos como este o en casas de este u otro distrito." ],
 
         "TextoMolino120": [ "Construir un molino as$i de grande y en buenas condiciones, debe de haber sido mucho trabajo si lleva muchos a$%os en pie" ],
-        "TextoMolino121": [ "Si hay campesinos que no viven en molnos como este, a lo mejor hay m$as casas por Dem$eter o viven en Hestia." ],
+        "TextoMolino121": [ "Si hay campesinos que no viven en molinos como este, a lo mejor hay m$as casas por Dem$eter o viven en Hestia." ],
 
         "TextoMolino130": [ "Llevo aqu$i ya un tiempecito, pero molinos como este no se ven todos los d$ias." ],
         "TextoMolino131": [ "Quisiera saber donde venden el pan si lo hacen aqu$i, para saber si est$a bueno." ],
 
         "TextoMolino140": [ "Alg$un d$ia descubrir$e de donde sacaron la inspiraci$on para hacer un molino como los de la superficie." ],
         "TextoMolino141": [
-            "Si supiera donde venden el pan si lo hacen en etes molino,",
+            "Si supiera donde venden el pan si lo hacen en este molino,",
             "a lo mejor le echar$ia una probadita."
         ]
     },
@@ -1838,8 +1838,8 @@
         "TextoArbol10": [ "Pedazo $arbol." ],
         "TextoArbol11": [ "Este $arbol luce imponente" ],
 
-        "TextoArbol20": [ "No d$e como puede haber un arbol tan grande bajo el mar." ],
-        "TextoArbol21": [ "Un $asrbol como este de grande, impone." ],
+        "TextoArbol20": [ "No se c$omo puede haber un $arbol tan grande bajo el mar." ],
+        "TextoArbol21": [ "Un $arbol como este de grande, impone." ],
 
         "TextoArbol30": [ "Este $arbol me sigue pareciendo enorme." ],
         "TextoArbol31": [ "No he visto todav$ia otro $arbol tan imponente como este por aqu$i." ],
@@ -1859,7 +1859,7 @@
         "TextoArbol80": [ "Este $arbol parece tener muchos a$%os de vida por su tama$%o, pero se ve muy sano." ],
         "TextoArbol81": [ "Alg$un d$ia si no estoy ocupado podr$ia intentar escalar ese $arbol." ],
 
-        "TextoArbol90": [ "Este $arbol puede parecer unas ramas muy fuertes y sanas, a$un si tiene bastante tiempo de vida" ],
+        "TextoArbol90": [ "Este $arbol puede parecer unas ramas muy fuertes y sanas, a$un s$i tiene bastante tiempo de vida" ],
         "TextoArbol91": [ "Creo que si intentara escalar el $arbol podr$ia caerme por ser patoso, pero ser$ia divertido" ],
 
         "TextoArbol100": [ "Ojal$a ver m$as $arboles como este por la zona." ],
@@ -1873,11 +1873,11 @@
             "creo que era un juego de aventuras de una consola muy antigua, era muy peque$%o cuando lo jugu$e."
         ],
         "TextoArbol121": [
-            "Ser$ia posible montar un columpio en este arbol,",
+            "Ser$ia posible montar un columpio en este $arbol,",
             "si las ramas son lo suficientemente fuertes para aguantar el balanceo de una persona."
         ],
 
-        "TextoArbol130": [ "Cada d$ia que pasa, sigue pareciendome enorme este $arbol." ],
+        "TextoArbol130": [ "Cada d$ia que pasa, sigue pareci$endome enorme este $arbol." ],
         "TextoArbol131": [ "Todav$ia me pregunto cuantos a$%os tendr$a este $arbol." ],
 
         "TextoArbol140": [ "Me pregunto si dentro de las hojas hay alg$un nido de alg$un animal." ],
@@ -1889,7 +1889,7 @@
         "TextoCarreta11": [ "Me pregunto si llevar$an cultivos en esa carretilla." ],
 
         "TextoCarreta20": [ "Me parece muy chula esta carretilla." ],
-        "TextoCarreta21": [ "A lo mejor llevan el trigo al molino con la carretilla, si esque se produce pan all$i o algo." ],
+        "TextoCarreta21": [ "A lo mejor llevan el trigo al molino con la carretilla, si es que se produce pan all$i o algo." ],
 
         "TextoCarreta30": [ "Me gusta el color de esta carretilla." ],
         "TextoCarreta31": [ "Puede que adem$as de cultivos, lleven paja en esta carretilla, si es que hay." ],
@@ -1910,14 +1910,14 @@
         "TextoCarreta71": [ "A lo mejor los alimentos que hay en Artemisa a la venta os llevan desde aqu$i con carretillas como esta." ],
 
         "TextoCarreta80": [ "Ser$ia muy loco pensar que hay burros que llevan carretillas como estas en una ciudad bajo el agua." ],
-        "TextoCarreta81": [ "Puede que los frutos raros de aquella tienda de Artemisa, sean traidos con una carretilla como esta." ],
+        "TextoCarreta81": [ "Puede que los frutos raros de aquella tienda de Artemisa, sean tra$idos con una carretilla como esta." ],
 
         "TextoCarreta90": [ "Debe de haber alg$un animal, que no sea un hombre pez, que lleve estas carretillas cual mula de carga." ],
         "TextoCarreta91": [ " $?Desde donde llevar$an los alimentos que podr$ian llevar en una carretilla como esta?" ],
 
         "TextoCarreta100": [ "Quisiera conocer al artesano de esta carretilla, luce bastante bien hecha." ],
         "TextoCarreta101": [
-            "Me pregunto cuanto aguanta una carretilla de madera como esta,",
+            "Me pregunto cu$anto aguanta una carretilla de madera como esta,",
             "en un lugar bajo el mar donde puede haber mucha humedad."
         ],
 
@@ -1931,7 +1931,7 @@
         "TextoCarreta121": [ "Quisiera saber si la madera de esta carretilla es especial o parecida a la que hay en la superficie." ],
 
         "TextoCarreta130": [ "Me pregunto si har$an carreras con carretillas como esta." ],
-        "TextoCarreta131": [ "Puede que en el molino hayan m$as carretillas como estas." ],
+        "TextoCarreta131": [ "Puede que en el molino haya m$as carretillas como estas." ],
 
         "TextoCarreta140": [ "Ser$ia gracioso ver carreras de hombres pez subidos a carretillas como esta." ],
         "TextoCarreta141": [ "Seguro en el molino hay m$as carretillas guardadas." ]
@@ -1947,7 +1947,7 @@
         "TextoPulpoCartel30": [ "El dise$%ador del cartel es muy creativo seguramente." ],
         "TextoPulpoCartel31": [ "La pintura debe de ser de muy buena calidad para verse como nuevo el logo." ],
 
-        "TextoPulpoCartel40": [ "Las herramientas del pulpo deben referiris a las cualidades del artesano del taller." ],
+        "TextoPulpoCartel40": [ "Las herramientas del pulpo deben referirse a las cualidades del artesano del taller." ],
         "TextoPulpoCartel41": [ "Al logo creo que le faltan m$as tent$aculos, pero mola igual." ],
 
         "TextoPulpoCartel50": [ "Me pregunto si cualquier pulpo puede ser un gran carpintero." ],
@@ -1963,7 +1963,7 @@
         "TextoPulpoCartel81": [ "El que un pulpo sea artesano, me recuerda a que cuantas m$as manos, mejor trabajo se har$a" ],
 
         "TextoPulpoCartel90": [
-            "No voy a dejar mi trabajo en Correos Atl$antida, pero si en un taller como este bucan personal,",
+            "No voy a dejar mi trabajo en Correos Atl$antida, pero si en un taller como este buscan personal,",
             "me pensar$e el si quiero trabajar o no por temas de horarios. Pero estar$ia interesante ser artesano tambi$en."
         ],
         "TextoPulpoCartel91": [ "Me pregunto si habr$an m$as carteles como este en otras tiendas de artesanos." ],
@@ -1971,7 +1971,7 @@
         "TextoPulpoCartel100": [ "Creo que al cartel le vendr$ia bien tener m$as herramientas de referencia." ],
         "TextoPulpoCartel101": [ "Molar$ia que estuviera sosteniendo unos clavos tembi$en." ],
 
-        "TextoPulpoCartel110": [ "Molar$ia que tiviese unas tijeras el cartel, como las del fondo del cartel." ],
+        "TextoPulpoCartel110": [ "Molar$ia que tuviese unas tijeras el cartel, como las del fondo del cartel." ],
         "TextoPulpoCartel111": [ "El martillo mola, creo que es porque el artesano es carpintero." ],
 
         "TextoPulpoCartel120": [ "Molar$ia que el cartel tambi$en tuviese un tabl$on de madera agarrado con un tent$aculo." ],
@@ -1979,7 +1979,7 @@
 
         "TextoPulpoCartel130": [
             "El humo que sale por la pared sigue igual de negro que siempre,",
-            "deben de estar quemando muchois materiales en el horno continuamente."
+            "deben de estar quemando muchos materiales en el horno continuamente."
         ],
         "TextoPulpoCartel131": [ "El yunque del taller debe ser para hacer cosas con herrer$ia." ],
 
@@ -2025,7 +2025,7 @@
 
         "TextoTiendaCeramica100": [ "Me pregunto si esta tienda de cer$amica pertenece al pulpo artesano y no me ha dicho nada." ],
         "TextoTiendaCeramica101": [
-            "Pueden que se est$en secando, pero creo que ser$ia conveniente que el vendedor guardara los jarrones a la sombra,",
+            "Puede que se est$en secando, pero creo que ser$ia conveniente que el vendedor guardar$a los jarrones a la sombra,",
             "se pueden estropear aunque parecen que est$an en muy buenas condiciones."
         ],
 
@@ -2090,7 +2090,7 @@
 
         "TextoTiendaEsculturas80": [
             "En cierta manera, la escultura del pez con forma de bumer$an,",
-            "me recuaerda a un pez de la pel$icula de Buscando a Rodolfo. Qu$e buena pel$icula."
+            "me recuerda a un pez de la pel$icula de Buscando a Rodolfo. Qu$e buena pel$icula."
         ],
         "TextoTiendaEsculturas81": [ "El martillo de la pared creo que lo usan para picar con el clavo la piedra." ],
 
@@ -2132,11 +2132,11 @@
         "TextoTiendaDerecha50": [ "Me pregunto si algo de lo que venden por aqu$i ser$a productos de la huerta de Pancracio." ],
         "TextoTiendaDerecha51": [ "Oye y si aqu$i tambi$en venden alguna de las obras de Paulino, por fin podr$ia ver algo de su arte." ],
 
-        "TextoTiendaDerecha60": [ "LLevo dandole vueltas pero no se de donde sacan los materiales estos peces.", "Mejor no me cuestiono estas cosas que me empieza a doler la cabeza." ],
+        "TextoTiendaDerecha60": [ "LLevo d$andole vueltas pero no se de donde sacan los materiales estos peces.", "Mejor no me cuestiono estas cosas que me empieza a doler la cabeza." ],
         "TextoTiendaDerecha61": [ "No se si es demasiado justo que lo que hacen los otros se venda aqu$i a los nobles.", "Pero bueno, mejor no mojarse en esto." ],
 
         "TextoTiendaDerecha70": [ "Quiz$a podr$ia buscar alg$un mueble para mi casa, que ya que pago 100 oricalcos al d$ia al menos estar c$omodo." ],
-        "TextoTiendaDerecha71": [ "Vaya parece que les debe ir muy bien el negocio porque simepre que paso est$an aqu$i los mismos." ],
+        "TextoTiendaDerecha71": [ "Vaya parece que les debe ir muy bien el negocio porque siempre que paso est$an aqu$i los mismos." ],
 
         "TextoTiendaDerecha80": [ "La verdad es que nunca he pensado si quedarme a vivir en la Atl$antida, pero est$a guay tener un mercadito tan cerca." ],
         "TextoTiendaDerecha81": [ "Por lo que me han dicho aqu$i siempre hay una gran cola para comprar.", "Menos mal que yo paseo a primera hora de la ma$%ana y no suele haber nadie en las calles" ],
@@ -2147,8 +2147,8 @@
         "TextoTiendaDerecha100": [ "Me acuerdo que hace a$%os fu$i a un bazar muy parecido a este. Ni siquiera quer$ia lo que vend$ian, solo me gustaba regatear." ],
         "TextoTiendaDerecha101": [ "El $ultimo d$ia no me fije pero de hecho de donde ser$a que sacan la tela para las lonas, si no hay ovejas ni gusanos.", "Creo." ],
 
-        "TextoTiendaDerecha110": [ "Por cierto, no se si aqu$i podr$e regatear, que la verdad con lo que cobro me gustaria ahorrarme algunas monedas." ],
-        "TextoTiendaDerecha111": [ "Por lo que he oido los productos no los hacen ellos,", "los compran m$as baratos y luego los venden a estos precios." ],
+        "TextoTiendaDerecha110": [ "Por cierto, no se si aqu$i podr$e regatear, que la verdad con lo que cobro me gustar$ia ahorrarme algunas monedas." ],
+        "TextoTiendaDerecha111": [ "Por lo que he o$ido los productos no los hacen ellos,", "los compran m$as baratos y luego los venden a estos precios." ],
 
         "TextoTiendaDerecha120": [ "Vaya por lo que he escuchado al $ultimo que intento conseguir un descuento aqu$i le echaron, mejor yo ni lo intento." ],
         "TextoTiendaDerecha121": [ "Por lo que me dijeron algunos comerciantes parece que en las cajas guardan pescado.", "Imaginarme a hombres peces comiendo peces se me hace bastante t$etrico." ],
@@ -2164,29 +2164,29 @@
         "TextoPanteonIzq50": [ "Madre m$ia, que diferencia los edifios de los distritos interiores y exteriores." ],
         "TextoPanteonIzq51": [ "Me pregunto que tendr$an en un edificio tan grande como ese." ],
 
-        "TextoPanteonIzq60": [ "Ya ver algo asi en la superficie es impresionante, pero encima poder verlo aqu$i como si nada, es realmente una maravilla" ],
+        "TextoPanteonIzq60": [ "Ya ver algo as$i en la superficie es impresionante, pero encima poder verlo aqu$i como si nada, es realmente una maravilla" ],
         "TextoPanteonIzq61": [ "Por lo que he escuchado, en ese edificio se encuentran las oficinas de la empresa que maneja el comercio en Hermes, Globinterprise se llamaba creo." ],
 
         "TextoPanteonIzq70": [ "Ojal$a alg$un d$ia pueda sacar el tiempo necesario y as$i poder ver m$as de cerca esta maravilla de edificio." ],
         "TextoPanteonIzq71": [ "Es increible que algunos puedan trabajar en un aut$entico pante$on y yo mientras en una triste oficina." ],
 
-        "TextoPanteonIzq80": [ "Hace bastantes a$%os me ense$%aron sobre los estilos art$isticos de las columnas en la atigua Grecia, ojala me acordar$a ahora." ],
-        "TextoPanteonIzq81": [ "Incluso el panteon tiene telas moradas colgadas, me pregunto porque justo ese color." ],
+        "TextoPanteonIzq80": [ "Hace bastantes a$%os me ense$%aron sobre los estilos art$isticos de las columnas en la antigua Grecia, ojala me acordar$a ahora." ],
+        "TextoPanteonIzq81": [ "Incluso el pante$on tiene telas moradas colgadas, me pregunto porque justo ese color." ],
 
-        "TextoPanteonIzq90": [ "Es increible lo bien conservados que est$an los edificios, al llegar pens$e que todo estar$ia descuidado o derruido." ],
+        "TextoPanteonIzq90": [ "Es incre$ible lo bien conservados que est$an los edificios, al llegar pens$e que todo estar$ia descuidado o derruido." ],
         "TextoPanteonIzq91": [ "Creo haber escuchado que hay tanto morado en Hermes por las apariencias, se ve que el color es s$imbolo de riqueza." ],
 
         "TextoPanteonIzq100": [ "Realmente tiene sentido que la Atl$antida tenga tanta arquitectura griega.", "No se porque en la superficie hay tantos que se lo imaginan futurista." ],
-        "TextoPanteonIzq101": [ "Me pregunto si dentro del pateon habr$a informaci$on sobre la historia de la Atl$antida" ],
+        "TextoPanteonIzq101": [ "Me pregunto si dentro del pante$on habr$a informaci$on sobre la historia de la Atl$antida" ],
 
-        "TextoPanteonIzq110": [ "Al ver el panteon me da algo de lastima la gente de Hestia que no tiene la entrada permitida a los distritos interiores, de verda que es una pena." ],
+        "TextoPanteonIzq110": [ "Al ver el pante$on me da algo de lastima la gente de Hestia que no tiene la entrada permitida a los distritos interiores, de verda que es una pena." ],
         "TextoPanteonIzq111": [ "Supongo que si estos panteones tambi$en se ven en la superficie, significa que la Atl$antida se tuvo que hundir en alg$un momento." ],
 
-        "TextoPanteonIzq120": [ "Ahora que lo pienso no se si creeran en dioses o en alguna religi$on aqu$i en la Atl$antida", "Pero con tantos Panteones no me extra$%ar$ia" ],
-        "TextoPanteonIzq121": [ "Realmente me encantaria haberme traido unas fotos de panteones de la superficie para comparar con los que hay aqu$i" ],
+        "TextoPanteonIzq120": [ "Ahora que lo pienso no se si creen en dioses o en alguna religi$on aqu$i en la Atl$antida", "Pero con tantos Panteones no me extra$%ar$ia" ],
+        "TextoPanteonIzq121": [ "Realmente me encantar$ia haberme tra$ido unas fotos de panteones de la superficie para comparar con los que hay aqu$i" ],
 
-        "TextoPanteonIzq130": [ "Desde aqu$i no se ve bien pero juraria que esos cuadrados tienen seres mitol$ogicos tallados en roca.", "Bueno alg$un d$ia me acercare para verlos mejor" ],
-        "TextoPanteonIzq131": [ "Ojal$a haberme traido una c$amara de fotos aqu$i, tantas maravillosos monumentos y yo sin poder guardarme esos recuerdos." ],
+        "TextoPanteonIzq130": [ "Desde aqu$i no se ve bien pero jurar$ia que esos cuadrados tienen seres mitol$ogicos tallados en roca.", "Bueno alg$un d$ia me acercar$e para verlos mejor" ],
+        "TextoPanteonIzq131": [ "Ojal$a haberme tra$ido una c$amara de fotos aqu$i, tantas maravillosos monumentos y yo sin poder guardarme esos recuerdos." ],
 
         "TextoPanteonIzq140": [ "La verdad, despu$es de pasar tantas veces por aqu$i ya te acostumbras a estos monumentos.", "Supongo que ya no impresiona tanto." ],
         "TextoPanteonIzq141": [ "Creo que lo que m$as me gusta del pante$on es toda la flora que tiene alrededor, le da un toque carism$atico." ]
@@ -2194,14 +2194,14 @@
     "PanteonDer": {
 
         "TextoPanteonDer50": [ "Este pante$on se parece al de las izquierda, est$an muy chulos." ],
-        "TextoPanteonDer51": [ "En la parte de arriba del pante$on hhay una especie de estatua rara." ],
+        "TextoPanteonDer51": [ "En la parte de arriba del pante$on hay una especie de estatua rara." ],
 
         "TextoPanteonDer60": [ "EL pante$on de la derecha se parece al de la izquierda, pero tiene muchos arbustos y plantas." ],
         "TextoPanteonDer61": [ "Me pregunto qu$e clase de estatua es la que hay arriba." ],
 
         "TextoPanteonDer70": [ "Me pregunto cada cuanto tiempo cortar$an las plantas del pante$on de la derecha, hay demasiadas" ],
         "TextoPanteonDer71": [
-            "La estatuta de arriba parece la de una persona...",
+            "La estatua de arriba parece la de una persona...",
             "lo cual es un poco raro pero tampoco se puede ver muy bien, as$i que no s$e."
         ],
 
@@ -2300,14 +2300,14 @@
             "Porque incluso despu$es de que perezcamos otros nos podr$an conocer por lo que hayamos hecho.",
             " $!Por eso es tan importante documentar mis aventuras!"
         ],
-        "TextoPanteon141": [ "El arte, aunque fr$agil, no deber$ia de esconderse en una c$upula, restringido a $elites despotas.",
+        "TextoPanteon141": [ "El arte, aunque fr$agil, no deber$ia de esconderse en una c$upula, restringido a $elites d$espotas.",
                              "Todos deber$ian de ser capaces de admirarlo."
         ]
     },
     "Edificios": {
 
         "TextoEdificios50": [ "Es un edificio bastante ornamentado." ],
-        "TextoEdificios51": [ "Me pregunto que edificio ser$a esto. Es bastante inusual." ],
+        "TextoEdificios51": [ "Me pregunto qu$e edificio ser$a esto. Es bastante inusual." ],
 
         "TextoEdificios60": [ "Es un edificio con una fachada muy cuidada." ],
         "TextoEdificios61": [ "La forma extra$%a me recuerda a la de un supermercado." ],
@@ -2384,7 +2384,7 @@
         "TextoCharco121": [ "No hay muchas fuentes aqu$i, pero alegra verlas de vez en cuando." ],
 
         "TextoCharco130": [ "Al final me he acostumbrado a esta cara como si fuera la m$ia propia." ],
-        "TextoCharco131": [ "Una vez que comprend$i que las razones para la fuente, me result$o bastante mas entranable",
+        "TextoCharco131": [ "Una vez que comprend$i que las razones para la fuente, me result$o bastante m$as entra$%able",
                             "Incluso si hay muchas de ellas en las ciudades de la superficie, aqu$i son tan raras y art$isticas como los cuadros de all$a."
         ],
 
@@ -2405,7 +2405,7 @@
         "TextoEstatua50": [ " $!Ala, qu$e estatua tan majestuosa!" ],
         "TextoEstatua51": [
             "No hab$ia visto una estatua como esta en toda la ciudad.",
-            "Est$a posicionada al frente del palacio real, que parece un pantenon enorme."
+            "Est$a posicionada al frente del palacio real, que parece un pante$on enorme."
         ],
 
         "TextoEstatua60": [
@@ -2415,9 +2415,9 @@
         "TextoEstatua61": [ "Estatuas como esta no las he visto en el distrito de Hefesto todav$ia." ],
 
         "TextoEstatua70": [
-            "Qu$e estatua tan majestuosa, por como est$a esculpida impone bastante.",
+            "Qu$e estatua tan majestuosa, por c$omo est$a esculpida impone bastante.",
             "El escultor es todo un manitas.",
-            "Aunque me gustar$ia saber de donde han sacado la inspiraci$on para basarse en una figura humana."
+            "Aunque me gustar$ia saber de d$onde han sacado la inspiraci$on para basarse en una figura humana."
         ],
         "TextoEstatua71": [ "Esta estatua es la m$as majestuosa de toda la ciudad." ],
 
@@ -2460,14 +2460,14 @@
             "es bastante acertado, impone mucho que est$e aqu$i."
         ],
 
-        "TextoEstatua130": [ "Puede que alg$un d$ia en otro distrito haya una estatua como esta representando a cada distrito." ],
+        "TextoEstatua130": [ "Puede que alg$un d$ia en otro distrito haya una estatua como est$a representando a cada distrito." ],
         "TextoEstatua131": [
             "Me pregunto porqu$e la estatua no expulsa agua,",
             "parece estar encima de una fuente."
         ],
 
         "TextoEstatua140": [
-            "Si cada distrito tuviese su propia estatua como esta,",
+            "S$i cada distrito tuviese su propia estatua como esta,",
             "habr$ian varias estatuas diferentes, por que los nombres coinciden con diferentes dioses,",
             "y en el distrito de Poseid$on est$a Poseid$on."
         ],
@@ -2504,7 +2504,7 @@
 
         "TextoArbolesIzq90": [
             "Los panteones  y estructuras que veo por aqu$i me encantan.",
-            "Hay grandes arquitectos en esta ciudad, y se ven en estos edificios, enlas estructuras, y en los muros que rodean los distritos."
+            "Hay grandes arquitectos en esta ciudad, y se ven en estos edificios, en las estructuras, y en los muros que rodean los distritos."
         ],
         "TextoArbolesIzq91": [ "Est$a todo muy bien cuidado, el rey del palacio debe de tener buenos trabajadores que mantienen todo  impecable." ],
 
@@ -2528,7 +2528,7 @@
 
         "TextoArbolesIzq130": [
             "Recuerdo en la ciudad donde antes viv$ia visitar varios parques con monumentos,",
-            "pero este sitio es bastante m$as chuclo, aunque no es un parque como tal."
+            "pero este sitio es bastante m$as chulo, aunque no es un parque como tal."
         ],
         "TextoArbolesIzq131": [ "Me pregunto cu$antos a$%os de antiguedad tendr$a el palacio y el resto de monumentos de aqu$i." ],
 
@@ -2566,7 +2566,7 @@
 
         "TextoArbolesDer90": [
             "Los panteones  y estructuras que veo por aqu$i me encantan.",
-            "Hay grandes arquitectos en esta ciudad, y se ven en estos edificios, enlas estructuras, y en los muros que rodean los distritos."
+            "Hay grandes arquitectos en esta ciudad, y se ven en estos edificios, en las estructuras, y en los muros que rodean los distritos."
         ],
         "TextoArbolesDer91": [ "Est$a todo muy bien cuidado, el rey del palacio debe de tener buenos trabajadores que mantienen todo  impecable." ],
 
@@ -2590,9 +2590,9 @@
 
         "TextoArbolesDer130": [
             "Recuerdo en la ciudad donde antes viv$ia visitar varios parques con monumentos,",
-            "pero este sitio es bastante m$as chuclo, aunque no es un parque como tal."
+            "pero este sitio es bastante m$as chulo, aunque no es un parque como tal."
         ],
-        "TextoArbolesDer131": [ "Me pregunto cu$antos a$%os de antiguedad tendr$a el palacio y el resto de monumentos de aqu$i." ],
+        "TextoArbolesDer131": [ "Me pregunto cu$antos a$%os tendr$a el palacio y el resto de monumentos de aqu$i." ],
 
         "TextoArbolesDer140": [
             "De todos los lugares que he visitado,",

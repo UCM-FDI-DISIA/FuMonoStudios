@@ -420,12 +420,8 @@ void ecs::ExplorationScene::setupDiarioPages() {
 	int firstPersonaje = -1;
 	bool diarioVacio = true;
 
-	if (rendComp->getCurrentTexture() == &sdlutils().images().at("bookTest")) {
-		diarioText_.clear();
-	}
-
 	//recorremos todos los personajes
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < Jefe; i++) {
 		NPCdata* data = gD().getNPCData((npc::Personaje)i);
 		if (data->felicidad != NoHabladoAun)
 		{
@@ -434,74 +430,11 @@ void ecs::ExplorationScene::setupDiarioPages() {
 			DialogManager a;
 			std::string textoPersonaje = data->introText + "\n";
 			a.fixText(textoPersonaje);
-			//contador de las paginas del personaje
-			int j = 0;
-			bool eventoCompletado = true;
-			while (eventoCompletado && j < data->eventosCompletados.size()) {
-				eventoCompletado = data->eventosCompletados[j].first;
-				if (eventoCompletado) {
-					std::string textoCompletado = " (EN CURSO)";
-					textoPersonaje = textoPersonaje + "- Dia ";
-					if (data->eventosCompletados[j].second == 0) // si el evento es de hoy
-					{
-						if (i < 2) {
-							textoPersonaje = textoPersonaje + std::to_string(day) +
-								textoCompletado + "\n" +
-								data->events[data->numMisionesAceptadas + 
-								dynamic_cast<NPCMayorData*>(data)->firstMision]->textoDiario + "\n";
-						}
-						else {
-							textoPersonaje = textoPersonaje + std::to_string(day) +
-								textoCompletado + "\n" +
-								data->events[j]->textoDiario + "\n";
-						}
-						
-					}
-					else
-					{
-						if (data->eventosCompletados[j].second > 0)
-							textoCompletado = " (COMPLETADO)";
-						else
-							textoCompletado = " (FALLIDO)";
-
-						if (data->npcId < 2) {
-							textoPersonaje = textoPersonaje + std::to_string(
-								std::abs(data->eventosCompletados[j].second)) + "- " + textoCompletado + "\n"
-								+ data->events[abs(data->eventosCompletados[j].second) - 1]->textoDiario + "\n";
-						}
-						else {
-							textoPersonaje = textoPersonaje + std::to_string(
-								std::abs(data->eventosCompletados[j].second)) + "- " + textoCompletado + "\n"
-								+ data->events[j]->textoDiario + "\n";
-						}
-						
-					}
-				}
-				j++;
-			}
-
-			 
+			fillPagesWithEvents(textoPersonaje, data,day);
 			a.fixText(textoPersonaje);
 
-			j = 0;
-			while (textoPersonaje.size() > 0) {
-				int maxLen = j % 2 == 0 ? MAX_CHAR_LEN_LEFT_DIARIO : MAX_CHAR_LEN_RIGHT_DIARIO;
-				std::string provisionalSubstring = textoPersonaje.substr(0, maxLen);
-				int numSaltosLinea = 0;
-				for (int i = 0; i < provisionalSubstring.size(); i++) {
-					if (provisionalSubstring[i] == '\n')
-						numSaltosLinea++;
-				}
-				maxLen = maxLen - (numSaltosLinea * 13);
-
-				diarioText_.push_back(textoPersonaje.substr(0, maxLen));
-				if (textoPersonaje.size() < maxLen)
-					textoPersonaje.clear();
-				else
-					textoPersonaje = textoPersonaje.substr(maxLen);
-				j++;
-			}
-
+			int j = 0;
+			adjustPagesTextAndAdd(textoPersonaje, j);
 			pagesByCharacter[i] = j;
 			// si el numero de paginas es impar añadimos pag vacia para que no quede desparejo
 			if (j % 2 != 0) {
@@ -544,7 +477,15 @@ void ecs::ExplorationScene::setupDiarioPages() {
 		diarioText_.push_back(" ");
 		diarioText_.push_back(" ");
 	}
-
+	else
+	{
+		//Evitamos que haya paginas que sean caracteres invalidos
+		for (auto& text : diarioText_) {
+			if (text == "\n" || text == "\t")
+				text = " ";
+		}
+	}
+	
 	diario_->getComponent<RenderImage>()->getVector()->clear();
 	diario_->getComponent<RenderImage>()->setVector(textureVec);
 
@@ -608,10 +549,14 @@ void ecs::ExplorationScene::makeDiaryPages()
 {
 	//todo este proceso se puede hacer mucho mas secillo si se delega el trabajo a la common objects factory que tiene un sistema para
 	//gestionar las texturas que se crean dinámicamente en el código
-	if (rightPageRnd->getCurrentTexture() != nullptr)
+	if (rightPageRnd->getCurrentTexture() != nullptr) {
 		delete rightPageRnd->getCurrentTexture();
-	if (leftPageRnd->getCurrentTexture() != nullptr)
+		rightPageRnd->setTexture(nullptr);
+	}
+	if (leftPageRnd->getCurrentTexture() != nullptr) {
 		delete leftPageRnd->getCurrentTexture();
+		leftPageRnd->setTexture(nullptr);
+	}
 
 	rightPageRnd->setVector(std::vector<Texture*>(1, nullptr));
 	leftPageRnd->setVector(std::vector<Texture*>(1, nullptr));
@@ -648,8 +593,6 @@ void ecs::ExplorationScene::addDiarioEvent(NPCevent* event)
 }
 
 ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::string& character, float scale, int flip) {
-
-	ComonObjectsFactory factory(this);
 
 	Texture* characterTexture = &sdlutils().images().at(character);
 	Vector2D size{ characterTexture->width() * scale, characterTexture->height() * scale };
@@ -697,7 +640,7 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::str
 
 
 
-	ecs::Entity* characterEnt = factory.createImageButton(pos, size, characterTexture, funcPress, "");
+	ecs::Entity* characterEnt = factory_->createImageButton(pos, size, characterTexture, funcPress, "");
 
 	auto* cTR = characterEnt->getComponent<Transform>();
 
@@ -712,7 +655,7 @@ ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::str
 	}
 
 
-	factory.addHoverColorMod(characterEnt, build_sdlcolor(0xccccccff));
+	factory_->addHoverColorMod(characterEnt, build_sdlcolor(0xccccccff));
 
 	return characterEnt;
 }
@@ -753,6 +696,81 @@ void ecs::ExplorationScene::createPauseButton()
 
 		}, "click");
 	factory_->setFont("arial");
+}
+
+void ecs::ExplorationScene::fillPagesWithEvents(std::string& textoPersonaje,NPCdata* data, int day)
+{
+	//contador de las paginas del personaje
+	int j = 0;
+	bool eventoCompletado = true;
+	while (eventoCompletado && j < data->eventosCompletados.size()) {
+		eventoCompletado = data->eventosCompletados[j].first;
+		if (eventoCompletado) {
+			std::string textoCompletado = " (EN CURSO)";
+			textoPersonaje = textoPersonaje + "- Dia ";
+			if (data->eventosCompletados[j].second == 0) // si el evento es de hoy
+			{
+				if (data->npcId < Secretario) {
+					textoPersonaje = textoPersonaje + std::to_string(day) +
+						textoCompletado + "\n" +
+						data->events[data->numMisionesAceptadas +
+						dynamic_cast<NPCMayorData*>(data)->firstMision]->textoDiario + "\n";
+				}
+				else {
+					textoPersonaje = textoPersonaje + std::to_string(day) +
+						textoCompletado + "\n" +
+						data->events[j]->textoDiario + "\n";
+				}
+
+			}
+			else
+			{
+				if (data->eventosCompletados[j].second > 0)
+					textoCompletado = " (COMPLETADO)";
+				else
+					textoCompletado = " (FALLIDO)";
+
+				if (data->npcId < 2) {
+					textoPersonaje = textoPersonaje + std::to_string(
+						std::abs(data->eventosCompletados[j].second)) + "- " + textoCompletado + "\n"
+						+ data->events[abs(data->eventosCompletados[j].second) - 1]->textoDiario + "\n";
+				}
+				else {
+					textoPersonaje = textoPersonaje + std::to_string(
+						std::abs(data->eventosCompletados[j].second)) + "- " + textoCompletado + "\n"
+						+ data->events[j]->textoDiario + "\n";
+				}
+
+			}
+		}
+		j++;
+	}
+}
+
+void ecs::ExplorationScene::adjustPagesTextAndAdd(std::string& textoPersonaje, int& j)
+{
+	while (textoPersonaje.size() > 0) {
+		//Determinamos la longitud maxima
+		int maxLen = j % 2 == 0 ? MAX_CHAR_LEN_LEFT_DIARIO : MAX_CHAR_LEN_RIGHT_DIARIO;
+
+		std::string provisionalSubstring = textoPersonaje.substr(0, maxLen);
+		int numSaltosLinea = 0;
+		for (int i = 0; i < provisionalSubstring.size(); i++) {
+			if (provisionalSubstring[i] == '\n')
+				numSaltosLinea++;
+		}
+		maxLen = maxLen - (numSaltosLinea * 13);
+
+		diarioText_.push_back(textoPersonaje.substr(0, maxLen));
+		if (textoPersonaje.size() < maxLen)
+			textoPersonaje.clear();
+		else {
+			int aux = provisionalSubstring.find_last_of(" ", maxLen);
+			maxLen = aux != 0 ? aux : maxLen;
+			textoPersonaje = textoPersonaje.substr(maxLen);
+		}
+		j++;
+	}
 }
 
 void ecs::ExplorationScene::setNavegabilityOfPlace(int place, bool value)

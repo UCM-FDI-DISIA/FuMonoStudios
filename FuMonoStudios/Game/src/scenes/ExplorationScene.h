@@ -7,7 +7,7 @@
 #include <sistemas/ComonObjectsFactory.h>
 #include <architecture/GeneralData.h>
 
-constexpr int MAX_CHAR_LEN_LEFT_DIARIO = 350;
+constexpr int MAX_CHAR_LEN_LEFT_DIARIO = 320;
 constexpr int MAX_CHAR_LEN_RIGHT_DIARIO = 390;
 class NPCeventSystem;
 class RenderImage;
@@ -180,6 +180,10 @@ namespace ecs {
 		ecs::Entity* createInteractableObj(Vector2D pos, const std::string& character, float scaleX, float scaleY);
 
 		void createPauseButton();
+
+		void fillPagesWithEvents(std::string& text, NPCdata* data, int day);
+
+		void adjustPagesTextAndAdd(std::string& text, int& j);
 		//VARIABLES
 
 		/// <summary>

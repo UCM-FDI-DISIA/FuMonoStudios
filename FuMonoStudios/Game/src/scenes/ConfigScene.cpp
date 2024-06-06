@@ -12,7 +12,7 @@
 #include <architecture/GameConstants.h>
 #include <sistemas/SoundEmiter.h>
 
-const SDL_Color baseColor = build_sdlcolor(0x666666ff);
+
 
 ecs::ConfigScene::ConfigScene() : Scene() {
 
@@ -46,7 +46,9 @@ void ecs::ConfigScene::init()
 	createMusicOptions();
 	createSFXOptions();
 	createFullscreenOptions();
-	createSkipTutorialOptions();
+	if (gD().hasGameEndedOnce()) {
+		createSkipTutorialOptions();
+	}
 	factory_->setLayer(ecs::layer::DEFAULT);
 
 	//SoundEmiter::instance()->playMusic("printer");
@@ -62,7 +64,7 @@ void ecs::ConfigScene::createMusicOptions()
 		};
 	auto aux = factory_->createTextuButton({ 10,10 }, " - ", 50, funcPress2, "click", baseColor);
 	aux->getComponent<Transform>()->setParent(mainTr);
-	factory_->addHoverColorMod(aux);
+	factory_->addHoverColorMod(aux,hilightColor);
 	// Boton (+) para el parametro de audio musica
 	CallbackClickeable funcPress3 = [this]() {
 		gD().changeParamID(0, true);
@@ -70,7 +72,7 @@ void ecs::ConfigScene::createMusicOptions()
 		};
 	auto plus = factory_->createTextuButton({ 770,15 }, " + ", 50, funcPress3, "click", baseColor);
 	plus->getComponent<Transform>()->setParent(mainTr);
-	factory_->addHoverColorMod(plus);
+	factory_->addHoverColorMod(plus,hilightColor);
 	//iconito del sello
 	musicIconTexture_ = &sdlutils().images().at("iconoRojoAjustes");
 	musicIconEnt_ = factory_->createImage(Vector2D(560 + (gD().getParamMusic() * 7.4f), 330), Vector2D(musicIconTexture_->width(), musicIconTexture_->height()), musicIconTexture_);
@@ -89,7 +91,7 @@ void ecs::ConfigScene::createSFXOptions()
 		};
 	auto minus = factory_->createTextuButton({ 0,15 }, " - ", 50, funcPress4, "click",baseColor);
 	minus->getComponent<Transform>()->setParent(mainTr);
-	factory_->addHoverColorMod(minus);
+	factory_->addHoverColorMod(minus,hilightColor);
 	// Boton (+) para el parametro de audio sfx
 	CallbackClickeable funcPress5 = [this]() {
 		gD().changeParamID(1, true);
@@ -97,7 +99,7 @@ void ecs::ConfigScene::createSFXOptions()
 		};
 	auto plus = factory_->createTextuButton({ 770,15 }, " + ", 50, funcPress5, "click",baseColor);
 	plus->getComponent<Transform>()->setParent(mainTr);
-	factory_->addHoverColorMod(plus);
+	factory_->addHoverColorMod(plus,hilightColor);
 	sfxIconTexture_ = &sdlutils().images().at("iconoAzulAjustes");
 	sfxIconEnt_ = factory_->createImage(Vector2D(560 + (gD().getParamSfx() * 7.4f), 500), Vector2D(sfxIconTexture_->width(), sfxIconTexture_->height()), sfxIconTexture_);
 	factory_->setLayer(ecs::layer::DEFAULT);
@@ -109,7 +111,8 @@ void ecs::ConfigScene::createFullscreenOptions()
 {
 	//screenModeIconTexture_ = &sdlutils().images().at("iconoVerdeAjustes");
 	std::vector<Texture*> textures = { &sdlutils().images().at("iconoVerdeAjustes"),nullptr };
-	Transform* trBase = factory_->createImage(Vector2D(-10,60),&sdlutils().images().at("tinta2"))->getComponent<Transform>();
+	auto base = factory_->createImage(Vector2D(-10, 60), &sdlutils().images().at("tinta2"));
+	Transform* trBase = base->getComponent<Transform>();
 	screenModeIconEnt_ = factory_->createMultiTextureImage(Vector2D(585, 665), Vector2D(95, 122), textures);
 	trBase->setParent(screenModeIconEnt_->getComponent<Transform>());
 
@@ -121,14 +124,16 @@ void ecs::ConfigScene::createFullscreenOptions()
 		screenModeIconEnt_->getComponent<RenderImage>()->setNumberTexture(gD().GetValueFullScreen()?0:1);
 	};
 	auto full= factory_->createTextuButton({ 740,730 }, "Pantalla Completa", 50, funcScreenModeBoton, "click", baseColor);
-	factory_->addHoverColorMod(full);
+	base->addComponent<Clickeable>("click")->addEvent(funcScreenModeBoton);
+	factory_->addHoverColorMod(full,hilightColor);
 }
 
 void ecs::ConfigScene::createSkipTutorialOptions()
 {
 	//skipTutoIconTexture_ = &sdlutils().images().at("iconoAmarilloAjustes");
 	std::vector<Texture*> textures = { &sdlutils().images().at("iconoAmarilloAjustes"),nullptr };
-	Transform* trBase = factory_->createImage(Vector2D(-10, 60), &sdlutils().images().at("tinta3"))->getComponent<Transform>();
+	auto base = factory_->createImage(Vector2D(-10, 60), &sdlutils().images().at("tinta3"));
+	Transform* trBase = base->getComponent<Transform>();
 	skipTutoIconEnt_ = factory_->createMultiTextureImage(Vector2D(585, 850), Vector2D(95, 122), textures);
 	trBase->setParent(skipTutoIconEnt_->getComponent<Transform>());
 	skipTutoIconEnt_->getComponent<RenderImage>()->setNumberTexture(gD().GetValueSkipTutorial() ? 0 : 1);
@@ -138,6 +143,7 @@ void ecs::ConfigScene::createSkipTutorialOptions()
 		skipTutoIconEnt_->getComponent<RenderImage>()->setNumberTexture(gD().GetValueSkipTutorial()?0:1);
 	};
 	auto skip = factory_->createTextuButton({ 740,920 }, "Skip Tutorial", 50, funcPressSkipTutorial, "click", baseColor);
-	factory_->addHoverColorMod(skip);
+	base->addComponent<Clickeable>("click")->addEvent(funcPressSkipTutorial);
+	factory_->addHoverColorMod(skip,hilightColor);
 }
 

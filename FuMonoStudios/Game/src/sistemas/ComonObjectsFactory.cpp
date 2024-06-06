@@ -32,17 +32,17 @@ ecs::Entity* ComonObjectsFactory::createMultiTextureImage(const Vector2D& pos, c
 	return createMultiTextureImage(pos,Vector2D(textures[0]->width(), textures[0]->height()),textures);
 }
 
-ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos , const std::string& text, int fontSize, SDL_Color textColor)
+ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos , const std::string& text, int fontSize, SDL_Color textColor_)
 {
-	return createImage(pos,createTextTexture(text,fontSize,textColor));
+	return createImage(pos,createTextTexture(text,fontSize,textColor_));
 }
-ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos,Uint32 width, const std::string& text, int fontSize, SDL_Color textColor)
+ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos,Uint32 width, const std::string& text, int fontSize, SDL_Color textColor_)
 {
-	return  createImage(pos, createTextTexture(text, fontSize, textColor,width));
+	return  createImage(pos, createTextTexture(text, fontSize, textColor_,width));
 }
-ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const Vector2D& size, const std::string& text, int fontSize, SDL_Color textColor)
+ecs::Entity* ComonObjectsFactory::createLabel(const Vector2D& pos, const Vector2D& size, const std::string& text, int fontSize, SDL_Color textColor_)
 {
-	return createImage(pos, size, createTextTexture(text,fontSize,textColor,size.getX()));
+	return createImage(pos, size, createTextTexture(text,fontSize,textColor_,size.getX()));
 }
 
 ecs::Entity* ComonObjectsFactory::createImage(const Vector2D& pos, const Vector2D& size, Texture* texture)
@@ -75,9 +75,9 @@ ecs::Entity* ComonObjectsFactory::createMultiTextureButton(const Vector2D& pos, 
 }
 
 ecs::Entity* ComonObjectsFactory::createTextuButton(const Vector2D& pos, const std::string& text, int fontSize, CallbackClickeable call, 
-                                                    const std::string& soundClick, SDL_Color textColor)
+                                                    const std::string& soundClick, SDL_Color textColor_)
 {
-	auto entity = createLabel(pos, text, fontSize,textColor);
+	auto entity = createLabel(pos, text, fontSize,textColor_);
 	makeButton(entity, call, soundClick);
 	return entity;
 }
@@ -90,9 +90,11 @@ void ComonObjectsFactory::addHoverColorMod(ecs::Entity* entity, SDL_Color c)
 	}
 	//posiblemente meter en un metodo que agregue esta propiedad
 	auto texture = entity->getComponent<RenderImage>()->getCurrentTexture();
+	auto baseColor = texture->getCurrentColor();
 	hover->addInCall([texture, c]() {texture->modColor(c.r, c.g, c.b); });
-	hover->addOutCall([texture]() {texture->modColor(255, 255, 255); });
-	hover->addDestoryCall([texture]() {texture->modColor(255, 255, 255); });
+	auto recoverColor = [texture, baseColor]() {texture->modColor(baseColor.r,baseColor.g,baseColor.b); };
+	hover->addOutCall(recoverColor);
+	hover->addDestoryCall(recoverColor);
 }
 
 void ComonObjectsFactory::addHilghtOnHover(ecs::Entity* entity)
@@ -116,13 +118,14 @@ Texture* ComonObjectsFactory::createTextTexture(const std::string& text, int fon
 {
 	Texture* nText;
 	if(width == 0)
-		nText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at(fontName_ + std::to_string(fontSize)), c);
+		nText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at(fontName_ + std::to_string(fontSize)), build_sdlcolor(0xffffffff));
 	else if (width > 0) {
-		nText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at(fontName_ + std::to_string(fontSize)), c, width);
+		nText = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at(fontName_ + std::to_string(fontSize)), build_sdlcolor(0xffffffff), width);
 	}
 	else {
 		throw "Invalid Texture Width";
 	}
+	nText->modColor(c.r, c.g, c.b);
 	createdTextures.push_back(nText);
 	return nText;
 }

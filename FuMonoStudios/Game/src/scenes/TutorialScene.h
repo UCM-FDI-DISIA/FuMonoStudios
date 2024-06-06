@@ -35,9 +35,8 @@ namespace ecs {
 		//void createErrorMessage(Paquete* paqComp, bool basura, bool tuboIncorrecto);
 
 		// getters
-		Transform* getManualTransform() { return manualEnt_->getComponent<Transform>(); }
+		ecs::Entity* getManual() { return manualEnt_; }
 
-		DragAndDrop* getManualDragAndDrop() {return manualEnt_->getComponent<DragAndDrop>();}
 	private:
 
 		//Sobreescritura de varios metodos de creacion para incluir la recepcion de la accion

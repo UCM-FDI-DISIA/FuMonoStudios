@@ -1,0 +1,8 @@
+-Se ha arreglado un problema que hacia que al pasar el diario de página el juego crasheara
+-Mejorado la forma en la que se expone el texto en los diarios, ahora ya no deberian cortarse las palabras
+-Evitado error que provocaba el crash del juego al recibir algunas misiones
+-Las opciones de saltar los tutoriales solo están disponibles si se ha completado al menos una vez el juego
+-Si ya existe un archivo de guardado se notificará al jugador ya que empezar una nueva partida sobreescribe el fichero de guardado anterior
+-Corregidas Faltas de ortografía
+-Arreglo de los textos de la pantalla de finales
+-Cambios en la música de la oficina

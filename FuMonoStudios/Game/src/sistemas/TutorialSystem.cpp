@@ -84,7 +84,7 @@ void TutorialSystem::activateEvent(TutorialEvent event) {
 
 		#pragma region Primer Paquete
 		case TutorialEvent::PaqueteEnsenarRemitente:
-			scene_->getManualDragAndDrop()->disable();
+			scene_->getManual()->getComponent<DragAndDrop>()->disable();
 			DragAndDrop::enableDrag = false;
 			scene_->createPackage(ecs::TutorialScene::Primero);
 			delayedCallback(1, [this]() {
@@ -204,7 +204,7 @@ void TutorialSystem::activateEvent(TutorialEvent event) {
 		#pragma region Tercer Paquete
 		case TutorialEvent::EntraTercerPaquete:
 			DragAndDrop::enableDrag = false;
-			scene_->getManualDragAndDrop()->enable();
+			scene_->getManual()->getComponent<DragAndDrop>()->enable();
 			canPassPagesManual = false;
 			scene_->deactivateTubos();
 			scene_->createPackage(ecs::TutorialScene::Tercero);
@@ -325,6 +325,9 @@ void TutorialSystem::stopEvent(TutorialEvent event) {
 			
 			addActionListener(Action::SacarManual, [this]() {
 				activateEvent(TutorialEvent::SacaElManual2);
+				auto manual = scene_->getManual();
+				manual->getComponent<Transform>()->setPos(650, 600);
+				manual->getComponent<Depth>()->updateChildPos();
 				arrow_->removeComponent<MoverTransform>();
 				arrow_->setActive(false);
 				});
@@ -352,8 +355,9 @@ void TutorialSystem::stopEvent(TutorialEvent event) {
 			arrow_->getComponent<Transform>()->setRotation(320);
 
 			arrow_->getComponent<Transform>()->setPos(
-				scene_->getManualTransform()->getPos().getX() + (scene_->getManualTransform()->getWidth() * 0.93),
-				scene_->getManualTransform()->getPos().getY() + (scene_->getManualTransform()->getHeigth() * 0.85));
+
+				scene_->getManual()->getComponent<Transform>()->getPos().getX() + (scene_->getManual()->getComponent<Transform>()->getWidth() * 0.93),
+				scene_->getManual()->getComponent<Transform>()->getPos().getY() + (scene_->getManual()->getComponent<Transform>()->getHeigth() * 0.85));
 			
 			addActionListener(Action::PaginaCodigosPostales, [this]() {
 				DragAndDrop::enableDrag = false;
