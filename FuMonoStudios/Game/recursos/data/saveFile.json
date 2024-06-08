@@ -1,6 +1,6 @@
 {
-  "Dia":1,
-  "Dinero":0,
+  "Dia":2,
+  "Dinero":560,
   "Personajes":{
     "Artesano":{
       "EventosCompletados":[
@@ -15,7 +15,7 @@
       "EventosCompletados":[
         0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
+      "Felicidad":"SeFue",
       "FelicidadNum":50,
       "numMisionesAceptadas":0,
       "unlockUpgrade":false

@@ -594,70 +594,78 @@ void ecs::ExplorationScene::addDiarioEvent(NPCevent* event)
 
 ecs::Entity* ecs::ExplorationScene::createCharacter(Vector2D pos, const std::string& character, float scale, int flip) {
 
-	Texture* characterTexture = &sdlutils().images().at(character);
-	Vector2D size{ characterTexture->width() * scale, characterTexture->height() * scale };
-
 	//QA: DETECTAR CUANTAS VECES SE HA PULSADO EN CADA PERSONAJE EN LA FASE DE EXPLORACION
 	//Actualmente los personajes no tienen memoria, si queremos esto haria falta anadrile un parametro
 
-	// al pulsar sale el dialogo, el dialogue manager y el dialogue component se encargan de todo, no me direis que esto no es mas sencillo de usar que todo lo que habia que hacer antes jajajaj
-	CallbackClickeable funcPress = [this, character]() {
-		if (!gm().gamePaused()) {
-			if (canInteract)
-			{
+	auto charac = gD().stringToPersonaje(character); //de que personaje queremos el dialogo
 
-				dialogMngr_.setEndDialogueCallback([this] {
-					canInteract = true;
-				});
+	auto data = gD().getNPCData(charac); //data de dicho personaje
 
-				canInteract = false;
-				dialogMngr_.startConversation(character);
+	if (data->felicidad != SeFue) {
+		Texture* characterTexture = &sdlutils().images().at(character);
+		Vector2D size{ characterTexture->width() * scale, characterTexture->height() * scale };
 
-				auto charac = gD().stringToPersonaje(character); //de que personaje queremos el dialogo
-				auto data = gD().getNPCData(charac); //data de dicho personaje
-
-				// activamos los dialogos correspondientes
-				std::pair<const std::string, int> aux = data->getDialogueInfo();
-
-				if (aux.first == "Eventos" || aux.first.substr(0, 3) == "Dia")
+		// al pulsar sale el dialogo, el dialogue manager y el dialogue component se encargan de todo, no me direis que esto no es mas sencillo de usar que todo lo que habia que hacer antes jajajaj
+		CallbackClickeable funcPress = [this, character, data]() {
+			if (!gm().gamePaused()) {
+				if (canInteract)
 				{
-					NPCevent* event = data->getEvent();
-					if (event != nullptr)
+
+					dialogMngr_.setEndDialogueCallback([this] {
+						canInteract = true;
+						});
+
+					canInteract = false;
+					dialogMngr_.startConversation(character);
+
+					// activamos los dialogos correspondientes
+					std::pair<const std::string, int> aux = data->getDialogueInfo();
+
+					if (aux.first == "Eventos" || aux.first.substr(0, 3) == "Dia")
 					{
-						for (int i = 0; i < event->numPaquetes; i++) {
-							gD().npcEventSys->addPaqueteNPC(event->paquetes[i]);
+						NPCevent* event = data->getEvent();
+						if (event != nullptr)
+						{
+							for (int i = 0; i < event->numPaquetes; i++) {
+								gD().npcEventSys->addPaqueteNPC(event->paquetes[i]);
+							}
+							gD().npcEventSys->activateEvent(event);
+							addDiarioEvent(event);
+							gD().npcEventSys->shuffleNPCqueue();
 						}
-						gD().npcEventSys->activateEvent(event);
-						addDiarioEvent(event);
-						gD().npcEventSys->shuffleNPCqueue();
 					}
+					else if (aux.first == "Presentacion")
+						setupDiarioPages();
 				}
-				else if (aux.first == "Presentacion")
-					setupDiarioPages();
 			}
+		};
+
+
+
+		ecs::Entity* characterEnt = factory_->createImageButton(pos, size, characterTexture, funcPress, "");
+
+		auto* cTR = characterEnt->getComponent<Transform>();
+
+		if (flip == 1) {
+			cTR->setFlip(SDL_FLIP_VERTICAL);
 		}
-	};
+		else if (flip == 2) {
+			cTR->setFlip(SDL_FLIP_HORIZONTAL);
+		}
+		else {
+			cTR->setFlip(SDL_FLIP_NONE);
+		}
 
 
+		factory_->addHoverColorMod(characterEnt, build_sdlcolor(0xccccccff));
 
-	ecs::Entity* characterEnt = factory_->createImageButton(pos, size, characterTexture, funcPress, "");
-
-	auto* cTR = characterEnt->getComponent<Transform>();
-
-	if (flip == 1) {
-		cTR->setFlip(SDL_FLIP_VERTICAL);
-	}
-	else if (flip == 2) {
-		cTR->setFlip(SDL_FLIP_HORIZONTAL);
+		return characterEnt;
 	}
 	else {
-		cTR->setFlip(SDL_FLIP_NONE);
+		return nullptr;
 	}
 
-
-	factory_->addHoverColorMod(characterEnt, build_sdlcolor(0xccccccff));
-
-	return characterEnt;
+	
 }
 
 ecs::Entity* ecs::ExplorationScene::createInteractableObj(Vector2D pos, const std::string& interactableObj, float scaleX, float scaleY) {

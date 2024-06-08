@@ -645,6 +645,8 @@ Felicidad GeneralData::stringToFelicidad(const std::string& str)
 		aux = Felicidad::Maxima;
 	else if (str == "NoHabladoAun")
 		aux = Felicidad::NoHabladoAun;
+	else if (str == "SeFue")
+		aux = Felicidad::SeFue;
 
 	return aux;
 }
@@ -664,6 +666,8 @@ std::string GeneralData::felicidadToString(Felicidad f)
 		aux = "Maxima";
 	else if (f == NoHabladoAun)
 		aux = "NoHabladoAun";
+	else if (f == SeFue)
+		aux = "SeFue";
 	return aux;
 }
 
