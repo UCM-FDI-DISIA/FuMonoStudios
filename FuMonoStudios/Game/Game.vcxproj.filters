@@ -79,6 +79,7 @@
     <ClCompile Include="src\entities\BombAux.cpp" />
     <ClCompile Include="src\entities\PolvosAux.cpp" />
     <ClCompile Include="src\scenes\DeathScene.cpp" />
+    <ClCompile Include="src\scenes\FinalsInfoScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\Gravity.h" />
@@ -196,6 +197,9 @@
     <ClInclude Include="src\entities\BombAux.h" />
     <ClInclude Include="src\entities\PolvosAux.h" />
     <ClInclude Include="src\scenes\DeathScene.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\architecture\Exceptions.h" />
+    <ClInclude Include="src\scenes\FinalsInfoScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\sistemas\DialogManager.cpp" />
@@ -234,6 +238,8 @@
     <Image Include="recursos\images\Materiales.png" />
     <Image Include="recursos\images\Joyas.png" />
     <Image Include="recursos\images\placeholderTrabajar.png" />
+    <Image Include="recursos\images\IconoEjecutable.ico" />
+    <Image Include="recursos\images\IconoEjecutable2.ico" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="componetsHeader">
@@ -249,5 +255,8 @@
   <ItemGroup>
     <Media Include="recursos\sounds\office.wav" />
     <Media Include="recursos\sounds\printer.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
 </Project>

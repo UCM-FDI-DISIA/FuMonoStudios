@@ -32,10 +32,15 @@ void DialogComponent::initComponent()
 	assert(mTr_ != nullptr);
 	mRend_ = ent_->getComponent<RenderImage>();
 	assert(mRend_ != nullptr);
-	std::string aux = mDialogMngr_->getDialogSound();
-	if (aux != "")
-		SoundEmiter::instance()->playSound(aux);
+	//std::string aux = mDialogMngr_->getDialogSound();
+	//if (aux != "")
+	//	SoundEmiter::instance()->playSound(aux);
 	setCurrentDialogue();
+
+	canSkip = false;
+	ent_->addComponent<DelayedCallback>(0.2, [this]() {
+		canSkip = true;
+	});
 }
 
 void DialogComponent::update()
@@ -59,7 +64,7 @@ void DialogComponent::update()
 		canSkip = false;
 		ent_->addComponent<DelayedCallback>(0.2, [this]() {
 			canSkip = true;
-			});
+		});
 
 		// Pasar al siguiente dialogo o terminar conversacion
 		if (dialogueIndex_ == mDialogMngr_->getCurrentDialog().size())

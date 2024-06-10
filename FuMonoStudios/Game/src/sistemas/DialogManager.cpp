@@ -200,6 +200,7 @@ void DialogManager::startConversation(const std::string& character)
     {
         auto charac = gD().stringToPersonaje(character); //de que personaje queremos el dialogo
         auto data = gD().getNPCData(charac); //data de dicho personaje
+
         setCurrentDialogSound(character);
         if (dialogSound_ != "") {
             SoundEmiter::instance()->playSound(dialogSound_);
