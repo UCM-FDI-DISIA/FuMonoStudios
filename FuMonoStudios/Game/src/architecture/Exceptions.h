@@ -39,3 +39,10 @@ public:
 protected:
 	std::string path_;
 };
+
+class texture_load_fail :public mail_Exception {
+public:
+	texture_load_fail() :mail_Exception() {
+		message_ = "Error al cargar la textura, se generara placeholder";
+	}
+};

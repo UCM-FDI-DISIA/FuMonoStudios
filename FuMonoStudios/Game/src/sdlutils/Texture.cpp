@@ -3,6 +3,7 @@
 #include <utils/checkML.h>
 #endif // !DEV_TOOLS
 #include "Texture.h"
+#include <architecture/Exceptions.h>
 
 Texture& Texture::operator=(Texture &&other) noexcept {
 	this->~Texture();
@@ -26,6 +27,7 @@ Texture::Texture(Texture &&other) noexcept {
 }
 
 Texture::Texture(SDL_Renderer *renderer, const std::string &fileName) {
+
 	assert(renderer != nullptr);
 	renderer_ = renderer;
 
@@ -48,8 +50,8 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 	try {
 		constructFromText(renderer, text, font, &fgColor);
 	}
-	catch (std::string& e) {
-		std::cerr << e << std::endl;
+	catch (texture_load_fail& e) {
+		std::cerr << e.what() << std::endl;
 		SDL_Color red = build_sdlcolor("0xff0000ff");
 		constructFromText(renderer, "[ERROR]", font, &red);
 	}
@@ -60,8 +62,8 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 	try {
 		constructFromText(renderer, text, font, &fgColor, &bgColor);
 	}
-	catch (std::string& e) {
-		std::cerr << e << std::endl;
+	catch (texture_load_fail& e) {
+		std::cerr << e.what() << std::endl;
 		SDL_Color red = build_sdlcolor("0xff0000ff");
 		constructFromText(renderer, "[ERROR]", font, &red, &bgColor);
 	}
@@ -72,8 +74,8 @@ Texture::Texture(SDL_Renderer* renderer, const std::string& text,
 	try {
 		constructFromText(renderer, text, font, &fgColor, nullptr, warpWidth);
 	}
-	catch (std::string& e) {
-		std::cerr << e << std::endl;
+	catch (texture_load_fail& e) {
+		std::cerr << e.what() << std::endl;
 		SDL_Color red = build_sdlcolor("0xff0000ff");
 		constructFromText(renderer, "[ERROR]", font, &red, nullptr, warpWidth);
 	}
@@ -84,8 +86,8 @@ Texture::Texture(SDL_Renderer* renderer, const std::string& text,
 	try {
 		constructFromText(renderer, text, font, &fgColor, &bgColor, warpWidth);
 	}
-	catch (std::string& e) {
-		std::cerr << e << std::endl;
+	catch (texture_load_fail& e) {
+		std::cerr << e.what() << std::endl;
 		SDL_Color red = build_sdlcolor("0xff0000ff");
 		constructFromText(renderer, "[ERROR]", font, &red, &bgColor, warpWidth);
 	}
@@ -103,7 +105,7 @@ void Texture::constructFromText(SDL_Renderer *renderer, const std::string &text,
 					font.renderText(text, *fgColor, *bgColor);
 
 	if (textSurface == nullptr)
-		throw "Couldn't create surface for text: " + text;
+		throw texture_load_fail();
 
 	width_ = textSurface->w;
 	height_ = textSurface->h;
@@ -128,7 +130,7 @@ void Texture::constructFromText(SDL_Renderer* renderer, const std::string& text,
 	;
 
 	if (textSurface == nullptr)
-		throw "Couldn't create surface for text: " + text;
+		throw texture_load_fail();
 
 	width_ = textSurface->w;
 	height_ = textSurface->h;
