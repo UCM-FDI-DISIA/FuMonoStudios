@@ -45,22 +45,50 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &fileName) {
 
 Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color &fgColor) {
-	constructFromText(renderer, text, font, &fgColor);
+	try {
+		constructFromText(renderer, text, font, &fgColor);
+	}
+	catch (std::string& e) {
+		std::cerr << e << std::endl;
+		SDL_Color red = build_sdlcolor("0xff0000ff");
+		constructFromText(renderer, "[ERROR]", font, &red);
+	}
 }
 
 Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color &fgColor, const SDL_Color &bgColor) {
-	constructFromText(renderer, text, font, &fgColor, &bgColor);
+	try {
+		constructFromText(renderer, text, font, &fgColor, &bgColor);
+	}
+	catch (std::string& e) {
+		std::cerr << e << std::endl;
+		SDL_Color red = build_sdlcolor("0xff0000ff");
+		constructFromText(renderer, "[ERROR]", font, &red, &bgColor);
+	}
 }
 
 Texture::Texture(SDL_Renderer* renderer, const std::string& text,
 	const Font& font, const SDL_Color& fgColor, Uint32 warpWidth) {
-	constructFromText(renderer, text, font, &fgColor, nullptr, warpWidth);
+	try {
+		constructFromText(renderer, text, font, &fgColor, nullptr, warpWidth);
+	}
+	catch (std::string& e) {
+		std::cerr << e << std::endl;
+		SDL_Color red = build_sdlcolor("0xff0000ff");
+		constructFromText(renderer, "[ERROR]", font, &red, nullptr, warpWidth);
+	}
 }
 
 Texture::Texture(SDL_Renderer* renderer, const std::string& text,
 	const Font& font, const SDL_Color& fgColor, const SDL_Color& bgColor, Uint32 warpWidth) {
-	constructFromText(renderer, text, font, &fgColor, &bgColor, warpWidth);
+	try {
+		constructFromText(renderer, text, font, &fgColor, &bgColor, warpWidth);
+	}
+	catch (std::string& e) {
+		std::cerr << e << std::endl;
+		SDL_Color red = build_sdlcolor("0xff0000ff");
+		constructFromText(renderer, "[ERROR]", font, &red, &bgColor, warpWidth);
+	}
 }
 
 void Texture::constructFromText(SDL_Renderer *renderer, const std::string &text,

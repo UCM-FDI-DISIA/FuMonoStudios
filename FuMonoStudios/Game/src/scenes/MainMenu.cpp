@@ -60,7 +60,7 @@ void ecs::MainMenu::init()
 
 ecs::Entity* ecs::MainMenu::buildStartButton(Vector2D& pos,bool saveExist)
 {
-	auto start = factory_->createTextuButton(pos, "Nueva partida", 50, [this, saveExist]() {
+	auto start = factory_->createTextuButton(pos, "", 50, [this, saveExist]() {
 		int buttonId = 1;
 		if (saveExist) {
 
