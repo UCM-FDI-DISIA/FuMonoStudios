@@ -440,8 +440,8 @@ bool DialogManager::isNPC(const DialogSelection ds)
 
 void DialogManager::createBox()
 {
-    Vector2D pos = Vector2D(100, LOGICAL_RENDER_HEITH - 250);
-    Vector2D size = Vector2D(LOGICAL_RENDER_WIDTH - 100, 200);
+    Vector2D pos = Vector2D(30, LOGICAL_RENDER_HEITH - 250);
+    Vector2D size = Vector2D(LOGICAL_RENDER_WIDTH - 60, 225);
     scene_->getFactory()->setLayer(ecs::layer::UI);
     boxBackground = scene_->getFactory()->createImage(pos, size, &sdlutils().images().at("cuadroDialogo"));
     scene_->getFactory()->setLayer(ecs::layer::DEFAULT);
@@ -450,7 +450,7 @@ void DialogManager::createBox()
 void DialogManager::createText()
 {
     textDialogue = scene_->addEntity(ecs::layer::UI);
-    auto textTr = textDialogue->addComponent<Transform>(100, 40, 80, 100);
+    auto textTr = textDialogue->addComponent<Transform>(100, 45, 80, 100);
     textTr->setParent(boxBackground->getComponent<Transform>());
     textDialogue->addComponent<RenderImage>();
     textDialogue->addComponent<DialogComponent>(this);
