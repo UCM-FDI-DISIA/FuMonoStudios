@@ -89,8 +89,8 @@ void ecs::MainScene::init()
 {
 
 	gD().npcEventSys->shuffleNPCqueue();
-	gD().npcEventSys->debugPaquetesInQueue();
 #ifdef _DEBUG
+	gD().npcEventSys->debugPaquetesInQueue();
 	std::cout << "Hola Main" << std::endl;
 #endif // _DEBUG
 	sdlutils().clearRenderer(build_sdlcolor(0xFFFFFFFF));
@@ -275,7 +275,7 @@ void ecs::MainScene::createExclamationPoint() {
 
 void ecs::MainScene::createErrorMessage(Paquete* paqComp, bool basura, bool tuboIncorrecto) {
 	Entity* NotaErronea = addEntity(ecs::layer::FOREGROUND);
-	NotaErronea->addComponent<ErrorNote>(paqComp, basura, tuboIncorrecto);
+	NotaErronea->addComponent<ErrorNote>(paqComp, basura, tuboIncorrecto,false);
 	Texture* NotaTex = &sdlutils().images().at("notaError");
 	Transform* NotaTR = NotaErronea->addComponent<Transform>(100 + (35 * GeneralData::instance()->getFails()), 1400, NotaTex->width() * 2, NotaTex->height() * 2);
 	NotaTR->setScale(0.2f);

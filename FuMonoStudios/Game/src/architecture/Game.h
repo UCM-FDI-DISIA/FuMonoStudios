@@ -10,7 +10,7 @@
 
 
 #ifdef _DEBUG
-//#define DEV_TOOLS
+#define DEV_TOOLS
 #endif // _DEBUG
 //#define QA_TOOLS
 

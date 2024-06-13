@@ -6,6 +6,8 @@
 // añade -fsanitize=address a la línea de comandos del compilador
 // para comprobar las fugas.
 //
+#ifndef _DEBUG
+
 
 #if defined(_WIN32) && defined(_DEBUG)
 #define _CRTDBG_MAP_ALLOC
@@ -31,5 +33,6 @@ class crt_leak_setflag_dummy {
 	static constructor ctor;
 };
 //inline crt_leak_setflag_dummy::constructor crt_leak_setflag_dummy::ctor;
+#endif // _DEBUG
 
 #endif

@@ -14,7 +14,9 @@ void PipeManager::init()
 {
 	returnPipe_ = pq::Erroneo;
 	for (int i = 0; i < 8; i++) {
-		std::cout << i;
+#ifdef _DEBUG
+		std::cout << "Pipe" << i << "Config" << std::endl;
+#endif // _DEBUG
 		blockedPipes_.push_back(false);
 		swappedPipes_.push_back({ false, false, Erroneo });
 		bannedTypePipes_.push_back({false, Alimento});

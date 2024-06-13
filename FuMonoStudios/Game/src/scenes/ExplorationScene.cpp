@@ -237,6 +237,8 @@ void ecs::ExplorationScene::makeDataWindow()
 			ImGui::Text(+ npcData.c_str());
 		}
 	}
+	std::string dayText = "Dia: " + std::to_string(gD().getDay());
+	ImGui::Text(dayText.c_str());
 	ImGui::End();
 #endif // DEV_TOOLS
 }
