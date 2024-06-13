@@ -327,7 +327,6 @@ void TutorialSystem::stopEvent(TutorialEvent event) {
 				activateEvent(TutorialEvent::SacaElManual2);
 				auto manual = scene_->getManual();
 				manual->getComponent<Transform>()->setPos(650, 600);
-				manual->getComponent<Depth>()->updateChildPos();
 				arrow_->removeComponent<MoverTransform>();
 				arrow_->setActive(false);
 				});
