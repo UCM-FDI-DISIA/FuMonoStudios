@@ -3,5 +3,5 @@
   "gameEnded":false,
   "musicVal":10,
   "sfxVal":50,
-  "skipTutorial":true
+  "skipTutorial":false
 }

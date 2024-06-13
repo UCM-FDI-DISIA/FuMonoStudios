@@ -642,6 +642,8 @@ ecs::Entity* ecs::MainScene::createMiniManual() {
 
 				Transform* manualTR = manualEnt_->getComponent<Transform>();
 
+				Depth* manualDepth = manualEnt_->getComponent<Depth>();
+
 				Vector2D pos{ manualTransform->getPos().getX() - manualTR->getWidth() / 2, manualTransform->getPos().getY() - manualTR->getHeigth() / 2 };
 
 

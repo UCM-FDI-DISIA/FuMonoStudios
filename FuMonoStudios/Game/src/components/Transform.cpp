@@ -90,8 +90,8 @@ void Transform::setPos(Vector2D& pos)
 
 	if (depthComp_ != nullptr )
 	{
-		depthComp_->updateChildPos();
 		depthComp_->updateDepth();
+		depthComp_->updateChildPos();		
 	}
 }
 
