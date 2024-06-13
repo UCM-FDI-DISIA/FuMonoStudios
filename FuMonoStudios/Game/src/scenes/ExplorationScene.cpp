@@ -727,7 +727,7 @@ void ecs::ExplorationScene::fillPagesWithEvents(std::string& textoPersonaje,NPCd
 				else {
 					textoPersonaje = textoPersonaje + std::to_string(day) +
 						textoCompletado + "\n" +
-						data->events[j]->textoDiario + "\n";
+						data->events[j + 4]->textoDiario + "\n";
 				}
 
 			}

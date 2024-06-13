@@ -1,48 +1,48 @@
 {
-  "Dia":2,
-  "Dinero":560,
+  "Dia":6,
+  "Dinero":950,
   "Personajes":{
     "Artesano":{
       "EventosCompletados":[
         0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
+      "Felicidad":"Normal",
       "FelicidadNum":50,
       "numMisionesAceptadas":0,
       "unlockUpgrade":false
     },
     "Campesino":{
       "EventosCompletados":[
-        0,0,0,0,0
+        4,0,0,0,0
       ],
-      "Felicidad":"SeFue",
-      "FelicidadNum":50,
-      "numMisionesAceptadas":0,
+      "Felicidad":"Normal",
+      "FelicidadNum":63,
+      "numMisionesAceptadas":1,
       "unlockUpgrade":false
     },
     "Contable":{
       "EventosCompletados":[
         0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
+      "Felicidad":"Normal",
       "FelicidadNum":50,
       "numMisionesAceptadas":0,
       "unlockUpgrade":false
     },
     "Secretario":{
       "EventosCompletados":[
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        -5,0,0,0,0,0,0,0,0,0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
-      "FelicidadNum":50,
-      "numMisionesAceptadas":0,
+      "Felicidad":"Normal",
+      "FelicidadNum":32,
+      "numMisionesAceptadas":1,
       "unlockUpgrade":false
     },
     "Soldado":{
       "EventosCompletados":[
         0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
+      "Felicidad":"Normal",
       "FelicidadNum":50,
       "numMisionesAceptadas":0,
       "unlockUpgrade":false
@@ -51,18 +51,18 @@
       "EventosCompletados":[
         0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
+      "Felicidad":"Normal",
       "FelicidadNum":50,
       "numMisionesAceptadas":0,
       "unlockUpgrade":false
     },
     "Vagabundo":{
       "EventosCompletados":[
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        2,3,4,5,0,0,0,0,0,0,0,0,0,0
       ],
-      "Felicidad":"NoHabladoAun",
-      "FelicidadNum":50,
-      "numMisionesAceptadas":0,
+      "Felicidad":"Buena",
+      "FelicidadNum":95,
+      "numMisionesAceptadas":4,
       "unlockUpgrade":false
     }
   }
